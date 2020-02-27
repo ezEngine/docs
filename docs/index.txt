@@ -1,0 +1,6 @@
+# ezEngine Documentation
+
+Welcome to the ezEngine documentation.
+
+## Table of Contents
+{TOC}

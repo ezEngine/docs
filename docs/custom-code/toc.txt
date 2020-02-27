@@ -1,0 +1,3 @@
+cpp|C++
+typescript|TypeScript
+visual-script|Visual Script

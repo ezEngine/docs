@@ -1,0 +1,9 @@
+building-ez.md
+supported-platforms.md
+build-prerequisites.md
+cmake-config.md
+clang-on-windows.md
+build-uwp.md
+build-android.md
+build-linux.md
+build-macos.md
