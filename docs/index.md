@@ -157,7 +157,7 @@ Welcome to the ezEngine documentation.
 * [Console](debugging/console.md)
 * [CVars](debugging/cvars.md)
 * [Debug Rendering (TODO)](debugging/debug-rendering.md)
-* [Logging (TODO)](debugging/logging.md)
+* [Logging](debugging/logging.md)
 * [RenderDoc Integration (TODO)](debugging/renderdoc.md)
 * [Stats (TODO)](debugging/stats.md)
 

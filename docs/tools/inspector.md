@@ -54,7 +54,7 @@ And that's it! The rest is done automatically.
 
 Some tips, what to do to benefit from the inspection functionality:
 
-* Use the [logging system (TODO)](../debugging/logging.md) `ezLog` to output what your application is doing, and which errors it encounters. Use `EZ_LOG_BLOCK` to group logging information.
+* Use the [logging system](../debugging/logging.md) `ezLog` to output what your application is doing, and which errors it encounters. Use `EZ_LOG_BLOCK` to group logging information.
 * Use the `ezStats` system to write out information about what is going on in your application. The more information that you track, the easier you can figure out what is going wrong.
 * Use [CVars](../debugging/cvars.md) to allow configuration of your code at runtime. It is easy to add CVars and thus you should use them whenever you are working on something new, to be able to tweak its behavior quickly. Once you are finished with something you should strip all unnecessary CVars again, but often it makes sense to still keep some configuration options for later.
 * When you are developing larger subsystems that you might want to know the memory consumption of, use a custom allocator for all allocations in that subsystem, then you can track its memory behavior better.
@@ -62,5 +62,5 @@ Some tips, what to do to benefit from the inspection functionality:
 ## See Also
 
 * [CVars](../debugging/cvars.md)
-* [Logging (TODO)](../debugging/logging.md)
+* [Logging](../debugging/logging.md)
 * [Back to Index](../index.md)

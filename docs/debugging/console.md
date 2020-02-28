@@ -1,6 +1,6 @@
 # Console
 
-The in-game console is a utility for inspecting the [log (TODO)](logging.md), modifying [CVars](cvars.md) and calling [console functions](#console-functions).
+The in-game console is a utility for inspecting the [log](logging.md), modifying [CVars](cvars.md) and calling [console functions](#console-functions).
 
 ## Key bindings
 
@@ -91,4 +91,4 @@ If you need to call a certain function repeatedly, you can [bind the call to a k
 
 * [Back to Index](../index.md)
 * [CVars](cvars.md)
-* [Logging (TODO)](logging.md)
+* [Logging](logging.md)
