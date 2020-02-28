@@ -175,7 +175,7 @@ Welcome to the ezEngine documentation.
 * [MiniDump Tool](tools/minidumptool.md)
 * [ezPlayer](tools/player.md)
 * [ShaderCompiler (TODO)](tools/shadercompiler.md)
-* [StaticLinkUtil (TODO)](tools/staticlinkutil.md)
+* [StaticLinkUtil](tools/staticlinkutil.md)
 * [ezTexConv (TODO)](tools/texconv.md)
 
 ---
