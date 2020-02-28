@@ -168,12 +168,12 @@ Welcome to the ezEngine documentation.
 
 ### Tools
 
-* [ArchiveTool (TODO)](tools/archivetool.md)
+* [ArchiveTool](tools/archivetool.md)
 * [FileServe (TODO)](tools/fileserve.md)
 * [HeaderCheck Tool](tools/headercheck.md)
 * [ezInspector](tools/inspector.md)
-* [MiniDump Tool (TODO)](tools/minidumptool.md)
-* [ezPlayer (TODO)](tools/player.md)
+* [MiniDump Tool](tools/minidumptool.md)
+* [ezPlayer](tools/player.md)
 * [ShaderCompiler (TODO)](tools/shadercompiler.md)
 * [StaticLinkUtil (TODO)](tools/staticlinkutil.md)
 * [ezTexConv (TODO)](tools/texconv.md)

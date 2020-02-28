@@ -1,6 +1,6 @@
 # MiniDump Tool
 
-The MiniDumpTool writes a mini-dump (memory, call-stacks) of an application. The mini dump can be used for diagnosing why an application crashed. The tool is used by the [test framework](../tests/test-framework.md).
+The MiniDumpTool writes a mini-dump (memory, call-stacks) of an application. The mini dump can be used for diagnosing why an application crashed. The tool is used by the [test framework (TODO)](../tests/test-framework.md).
 
 ## Arguments
 
