@@ -93,10 +93,10 @@ Then you can just treat it like a regular variable to read or write its value:
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: cvar-2 -->
 ```cpp
-  if (cvar_DebugDisplay)
-  {
-    ezDebugRenderer::DrawLineSphere(m_pMainWorld, ezBoundingSphere(ezVec3::ZeroVector(), 1.0f), ezColor::Orange);
-  }
+if (cvar_DebugDisplay)
+{
+  ezDebugRenderer::DrawLineSphere(m_pMainWorld, ezBoundingSphere(ezVec3::ZeroVector(), 1.0f), ezColor::Orange);
+}
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 

@@ -28,13 +28,26 @@ def SearchSourceSnippets(srcDir: str, snippets: dict):
                 print(f"Found snippet: {snippetName}")
 
                 snippetText = ""
+                maxWhiteSpace = 100
+
+                snippetLines = []
 
                 while(lineIdx < len(lines)):
                     lineIdx += 1
-                    if lines[lineIdx - 1].find("END-DOCS-CODE-SNIPPET") >= 0:
+                    line = lines[lineIdx - 1]
+                    line = line.replace("\t", "  ")
+
+                    if line.find("END-DOCS-CODE-SNIPPET") >= 0:
                         break
 
-                    snippetText += lines[lineIdx - 1]
+                    wsc = len(line) - len(line.lstrip(' '))
+                    maxWhiteSpace = min(maxWhiteSpace, wsc)
+
+                    snippetLines.append(line)
+
+                for line in snippetLines:
+                    line = line[maxWhiteSpace:]
+                    snippetText += line
 
                 snippets[snippetName] = snippetText
 

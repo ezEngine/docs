@@ -58,8 +58,8 @@ This code snippet shows how to declare a console function in a class, for exampl
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: confunc-decl -->
 ```cpp
-  void ConFunc_Print(ezString sText);
-  ezConsoleFunction<void(ezString)> m_ConFunc_Print;
+void ConFunc_Print(ezString sText);
+ezConsoleFunction<void(ezString)> m_ConFunc_Print;
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
