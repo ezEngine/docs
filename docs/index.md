@@ -75,7 +75,7 @@ Welcome to the ezEngine documentation.
 
 ### Graphics
 
-* [Light Types (TODO)](graphics/lights-overview.md)
+* [Lighting (TODO)](graphics/lighting-overview.md)
 * [Mesh Types (TODO)](graphics/meshes-overview.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
 * [Shaders (TODO)](graphics/shaders-overview.md)
@@ -98,9 +98,12 @@ Welcome to the ezEngine documentation.
 ### Effects
 
 * [Decals (TODO)](effects/decals.md)
-* [Particle Effects (TODO)](effects/particle-effects.md)
+* __Particle Effects__
+  * [Particle Effects (TODO)](effects/particle-effects/particle-effects-overview.md)
+  * [How Particle Effects Work](effects/particle-effects/how-particle-effects-work.md)
 * [Render to Texture Effects (TODO)](effects/render-to-texture.md)
-* [Wind Effects (TODO)](effects/wind.md)
+* [Sky (TODO)](effects/sky.md)
+* [Wind (TODO)](effects/wind.md)
 
 ### Animation
 
@@ -191,5 +194,6 @@ Welcome to the ezEngine documentation.
 * [Color Spaces (TODO)](appendix/color-spaces.md)
 * [Container Usage Guidelines](appendix/container-usage.md)
 * [String Usage Guidelines](appendix/string-usage.md)
+* [String Formatting (TODO)](appendix/string-formatting.md)
 * [Videos](appendix/videos.md)
 * [ThirdParty Code](appendix/third-party-code.md)
