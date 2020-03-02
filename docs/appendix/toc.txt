@@ -2,5 +2,6 @@ coding-guidelines.md
 color-spaces.md
 container-usage.md
 string-usage.md
+string-formatting.md
 videos.md
 third-party-code.md

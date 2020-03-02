@@ -1,4 +1,4 @@
-# Wind
+# Lighting
 
 <!-- PAGE IS TODO -->
 

@@ -1,4 +1,4 @@
-# Light Types
+# String Formatting
 
 <!-- PAGE IS TODO -->
 
