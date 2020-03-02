@@ -64,7 +64,7 @@ Welcome to the ezEngine documentation.
 
 ### Assets
 
-* [Asset Browser (TODO)](assets/asset-browser.md)
+* [Asset Browser](assets/asset-browser.md)
 * [Asset Curator (TODO)](assets/asset-curator.md)
 * [Asset Profiles (TODO)](assets/asset-profiles.md)
 * [Asset Import (TODO)](assets/import-assets.md)
