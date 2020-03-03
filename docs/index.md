@@ -44,6 +44,7 @@ Welcome to the ezEngine documentation.
 * [ezEditor Overview (TODO)](editor/editor-overview.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
 * [Editor Settings (TODO)](editor/editor-settings.md)
+* [Template Documents (TODO)](editor/editor-template-documents.md)
 * [Testing a Scene (TODO)](editor/run-scene.md)
 
 ### Projects
@@ -68,7 +69,7 @@ Welcome to the ezEngine documentation.
 * [Asset Curator](assets/asset-curator.md)
 * [Asset Profiles (TODO)](assets/asset-profiles.md)
 * [Assets (TODO)](assets/assets-overview.md)
-* [Asset Import (TODO)](assets/import-assets.md)
+* [Asset Import](assets/import-assets.md)
 
 ### Prefabs
 
@@ -116,6 +117,7 @@ Welcome to the ezEngine documentation.
 ### Sound
 
 * [FMOD Integration (TODO)](sound/fmod.md)
+* [Sound (TODO)](sound/sound-overview.md)
 
 ### Ai
 
