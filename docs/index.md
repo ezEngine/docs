@@ -65,8 +65,9 @@ Welcome to the ezEngine documentation.
 ### Assets
 
 * [Asset Browser](assets/asset-browser.md)
-* [Asset Curator (TODO)](assets/asset-curator.md)
+* [Asset Curator](assets/asset-curator.md)
 * [Asset Profiles (TODO)](assets/asset-profiles.md)
+* [Assets (TODO)](assets/assets-overview.md)
 * [Asset Import (TODO)](assets/import-assets.md)
 
 ### Prefabs
@@ -76,9 +77,10 @@ Welcome to the ezEngine documentation.
 ### Graphics
 
 * [Lighting (TODO)](graphics/lighting-overview.md)
-* [Mesh Types (TODO)](graphics/meshes-overview.md)
+* [Meshes (TODO)](graphics/meshes-overview.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
 * [Shaders (TODO)](graphics/shaders-overview.md)
+* [Textures (TODO)](graphics/textures-overview.md)
 
 ### Materials
 
@@ -101,7 +103,7 @@ Welcome to the ezEngine documentation.
 * __Particle Effects__
   * [Particle Effects (TODO)](effects/particle-effects/particle-effects-overview.md)
   * [How Particle Effects Work](effects/particle-effects/how-particle-effects-work.md)
-* [Render to Texture Effects (TODO)](effects/render-to-texture.md)
+* [Render to Texture (TODO)](effects/render-to-texture.md)
 * [Sky (TODO)](effects/sky.md)
 * [Wind (TODO)](effects/wind.md)
 

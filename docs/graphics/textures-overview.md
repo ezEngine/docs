@@ -1,4 +1,4 @@
-# Render to Texture
+# Textures
 
 <!-- PAGE IS TODO -->
 

@@ -72,15 +72,19 @@ At the bottom right of the asset browser there is a widget with a colored progre
 
 ![Transform Progress](media/transform-progress.png)
 
-The play/pause button is for switching **background processing** on and off. If enabled, outdated assets are automatically transformed in the background. The progressbar displays how many assets need updating and whether there were any errors. For details about processed assets and potential errors, check out the [asset curator (TODO)](asset-curator.md). If you do not want assets to be transformed automatically, disable background processing with the pause button.
+The play/pause button is for switching **background processing** on and off. If enabled, outdated assets are automatically transformed in the background. The progressbar displays how many assets need updating and whether there were any errors. For details about processed assets and potential errors, check out the [asset curator](asset-curator.md). If you do not want assets to be transformed automatically, disable background processing with the pause button.
 
 ## Drag and Drop
 
 You can drag assets from the asset browser into other documents, such as [scenes (TODO)](../scenes/scene-editing.md). For mesh and prefab assets this will instantiate the asset (ie. create a new node that references the asset). For [materials (TODO)](../materials/materials-overview.md) this may assign the material to the object that you drag it onto. Not all asset types support drag and drop. Also dragging an asset into the 3D viewport can have a different effect than dragging it into the scene tree.
 
+## Video
+
+[![ezEngine Overview](https://img.youtube.com/vi/yDD6aQWgrqg/0.jpg)](https://www.youtube.com/watch?v=yDD6aQWgrqg)
+
 ## See Also
 
 * [Back to Index](../index.md)
-* [Asset Curator (TODO)](asset-curator.md)
+* [Asset Curator](asset-curator.md)
 * [Editor Documents (TODO)](../editor/editor-documents.md)
 * [Asset Import (TODO)](import-assets.md)

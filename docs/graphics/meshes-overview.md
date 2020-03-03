@@ -1,4 +1,4 @@
-# Mesh Types
+# Meshes
 
 <!-- PAGE IS TODO -->
 
