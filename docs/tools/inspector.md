@@ -61,6 +61,7 @@ Some tips, what to do to benefit from the inspection functionality:
 
 ## See Also
 
+* [Back to Index](../index.md)
 * [CVars](../debugging/cvars.md)
 * [Logging](../debugging/logging.md)
-* [Back to Index](../index.md)
+* [Stats](../debugging/stats.md)

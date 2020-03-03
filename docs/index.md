@@ -166,7 +166,7 @@ Welcome to the ezEngine documentation.
 * [Debug Rendering (TODO)](debugging/debug-rendering.md)
 * [Logging](debugging/logging.md)
 * [RenderDoc Integration (TODO)](debugging/renderdoc.md)
-* [Stats (TODO)](debugging/stats.md)
+* [Stats](debugging/stats.md)
 
 ### Performance
 
