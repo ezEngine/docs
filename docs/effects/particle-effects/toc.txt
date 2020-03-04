@@ -4,3 +4,4 @@ particle-emitters.md
 particle-initializers.md
 particle-behaviors.md
 particle-renderers.md
+particle-effect-component.md

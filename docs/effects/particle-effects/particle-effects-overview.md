@@ -84,6 +84,12 @@ For details about all available renderer types, see [Particle Renderers (TODO)](
 
 ## Effect Parameters
 
+*Effect parameters* are an advanced feature that allows you to make certain parts of an effect configurable from the outside. You add effect parameters in the *Effect tab*. At the moment only *number parameters* and *color parameters* are supported. All parameters that you add there will appear as [exposed parameters (TODO)](../../scenes/exposed-parameters.md) on [particle effect components (TODO)](particle-effect-component.md).
+
+Effect parameters can only affect select features. For example the [quad renderer](particle-renderers.md#quad-renderer) has a `TintColorParam` property. If you type in the name of a *color parameter* there, the quad renderer will look up the value of the color parameter during every update, and use that to modulate the final color of the rendered particle.
+
+You can use this in a static way, as a means to add more variety to multiple instances of the same effect. Or you can use this in a dynamic way, by modifying the exposed parameter through (script) code, for example to visualize how hot something burns.
+
 ## Events
 
 ## Misc
@@ -110,3 +116,4 @@ For most such values you should use at least some variance (0.2 to 0.4) to make 
 
 * [Back to Index](../../index.md)
 * [How Particle Effects Work](how-particle-effects-work.md)
+* [Particle Effect Component (TODO)](particle-effect-component.md)

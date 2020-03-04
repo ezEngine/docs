@@ -108,6 +108,7 @@ Welcome to the ezEngine documentation.
   * [Particle Initializers (TODO)](effects/particle-effects/particle-initializers.md)
   * [Particle Behaviors (TODO)](effects/particle-effects/particle-behaviors.md)
   * [Particle Renderers (TODO)](effects/particle-effects/particle-renderers.md)
+  * [Particle Effect Component (TODO)](effects/particle-effects/particle-effect-component.md)
 * [Render to Texture (TODO)](effects/render-to-texture.md)
 * [Sky (TODO)](effects/sky.md)
 * [Wind (TODO)](effects/wind.md)

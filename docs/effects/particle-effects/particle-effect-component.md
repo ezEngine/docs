@@ -1,14 +1,6 @@
-# Particle Emitters
+# Particle Effect Component
 
 <!-- PAGE IS TODO -->
-
-## Burst Emitter
-
-## Continuous Emitter
-
-## Distance Emitter
-
-## OnEvent Emitter
 
 ## See Also
 
