@@ -104,6 +104,10 @@ Welcome to the ezEngine documentation.
 * __Particle Effects__
   * [Particle Effects (TODO)](effects/particle-effects/particle-effects-overview.md)
   * [How Particle Effects Work](effects/particle-effects/how-particle-effects-work.md)
+  * [Particle Emitters (TODO)](effects/particle-effects/particle-emitters.md)
+  * [Particle Initializers (TODO)](effects/particle-effects/particle-initializers.md)
+  * [Particle Behaviors (TODO)](effects/particle-effects/particle-behaviors.md)
+  * [Particle Renderers (TODO)](effects/particle-effects/particle-renderers.md)
 * [Render to Texture (TODO)](effects/render-to-texture.md)
 * [Sky (TODO)](effects/sky.md)
 * [Wind (TODO)](effects/wind.md)

@@ -58,16 +58,27 @@ For details about all available emitter types, see [Particle Emitters (TODO)](pa
 
 ### Initializers
 
+Every particle has a number of properties, such as position, velocity, color, size and rotation speed. For a newly spawned particle, these values must get a starting value. *Initializers* allow you to affect the starting value. For example, a particle's position is by default `(0, 0, 0)`, but using a *Sphere Position Initializer*, the starting position will be set to a random position inside a sphere, or even just on its surface.
+
+Initializers are executed exactly once for each new particle, thus they cost little performance. However, they only have an effect, if the starting value isn't subsequently overwritten by *Behaviors*. For instance if the *Random Color Initializer* is used, it will set the color of new particles. If, however, the *Color Gradient Behavior* is also used, the behavior will set the particle's color to a new value in every update, thus making the initializer pointless.
+
+Prefer to use initializers over behaviors, if the desired result can be achieved with either.
 
 For details about all available initializer types, see [Particle Initializers (TODO)](particle-initializers.md).
 
 ### Behaviors
 
+*Behaviors* are the core particle effect update routines. Every time a particle moves, changes color, grows, shrinks or rotates, this is implemented by a behavior. Behaviors are executed for every particle, in every update step. For performance reasons, you should strive to use as few behaviors as possible. Every behavior reads some particle properties and writes one or two properties. For example the *Size Curve Behavior* reads a particles age and maximum lifespan and then looks up its new size from the provided size curve. Therefore it overwrites the particle's *size* property in every update.
+
+*Initializers* set a particle's property once when it is spawned, *behaviors* set (or update) a property continuously. Consequently a behavior may overwrite an initial value, making it redundant. Or it may build on top of the starting value. For example the *Velocity Behavior* can be used to have particles fly upwards (rise). Although the behavior modifies the particle's *position* property, it still works well together with the various position initializers, as it only *adds* to the position instead of replacing it.
+
+It is common for a particle system to have at least one, but often multiple, behaviors.
 
 For details about all available behavior types, see [Particle Behaviors (TODO)](particle-behaviors.md).
 
 ### Renderers
 
+Conceptually a particle is just a point in space. There are many ways this point can be visualized. *Renderers* are used to select how to do that. Most particle systems use one renderer, often the *Billboard Renderer*, which is the most versatile. However, you are free to use multiple renderers. For example to achieve a fire effect with heat haze, you may want to use two renderers. One to render the particles as billboards using a fire texture, and another one to apply the screen space distortion effect.
 
 For details about all available renderer types, see [Particle Renderers (TODO)](particle-renderers.md).
 
@@ -93,7 +104,7 @@ Generally, this type represents a random value, centered around the base value u
 
 However, due to the *normal distribution* of the random numbers, values close to `BaseValue` will appear much more often than values far away from it. Such distributions are common in nature and therefore the result looks more natural.
 
-For most such values you should use at least some variance (0.2 to 0.4) to make you effects look less repetitive and sterile. However, extremely large variance values (0.7 and up) can result in unexpected outliers.
+For most such values you should use at least some variance (0.2 to 0.4) to make your effects look less repetitive and sterile. However, extremely large variance values (0.7 and up) can result in unexpected outliers.
 
 ## See Also
 
