@@ -2,6 +2,8 @@
 
 The in-game console is a utility for inspecting the [log](logging.md), modifying [CVars](cvars.md) and calling [console functions](#console-functions).
 
+![Console](media/console.png)
+
 ## Key bindings
 
 The default key binding for the console is:
