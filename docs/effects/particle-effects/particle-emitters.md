@@ -4,11 +4,43 @@
 
 ## Burst Emitter
 
+**Duration:**
+
+**StartDelay:**
+
+**MinSpawnCount:**
+
+**SpawnCountRange:**
+
+**SpawnCountScaleParam:**
+
 ## Continuous Emitter
+
+**StartDelay:**
+
+**SpawnCountPerSec:**
+
+**SpawnCountPerSecRange:**
+
+**SpawnCountScaleParam:**
+
+**CountCurve:**
+
+**CurveDuration:**
 
 ## Distance Emitter
 
+**DistanceThreshold:**
+
+**MinSpawnCount:**
+
+**SpawnCountRange:**
+
+**SpawnCountScaleParam:**
+
 ## OnEvent Emitter
+
+**EventName:**
 
 ## See Also
 
