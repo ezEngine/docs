@@ -17,6 +17,8 @@ This behavior changes a particle's color during the update step. A [color gradie
 
 **MaxSpeed:** When using *ColorFrom = Speed*, this value specifies the maximum expected speed of any particle. That speed is then mapped to the rightmost side of the color gradient.
 
+<video src="media/color-gradient.webm" width="500" height="500" controls preload></video>
+
 ## Fade Out Behavior
 
 This behavior changes a particle's alpha value to gradually fade out over its lifetime.
@@ -37,10 +39,7 @@ This behavior moves particles around the emitter center in erratic patterns, sim
 
 **MaxSteeringAngle:** Every time a particle has traveled a distance of *PathLength*, it will make a random turn. This value specifies how large that turn may be. A small value results in very slow and wide turns, whereas a large value results in quick and erratic behavior.
 
-
-<video width="500" height="500" controls>
-  <source src="media/flies.webm" type="video/webm">
-</video>
+<video src="media/flies.webm" width="500" height="500" controls preload></video>
 
 ## Gravity Behavior
 
