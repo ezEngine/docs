@@ -4,7 +4,7 @@ This page lists and describes all *particle behaviors*.
 
 ## Color Gradient Behavior
 
-Changes a particle's color during the update step. A [color gradient](../../animation/color-gradients.md) is used as the color source, and a mode specifies how to look up the color from the gradient.
+This behavior changes a particle's color during the update step. A [color gradient](../../animation/color-gradients.md) is used as the color source, and a mode specifies how to look up the color from the gradient.
 
 **Gradient:** The [color gradient](../../animation/color-gradients.md) to use as the source.
 
@@ -19,7 +19,7 @@ Changes a particle's color during the update step. A [color gradient](../../anim
 
 ## Fade Out Behavior
 
-Changes a particle's alpha value to gradually fade out over its lifetime.
+This behavior changes a particle's alpha value to gradually fade out over its lifetime.
 
 **StartAlpha:** The alpha value to begin with when the particle has just spawned.
 
@@ -27,13 +27,20 @@ Changes a particle's alpha value to gradually fade out over its lifetime.
 
 ## Flies Behavior
 
-**FlySpeed:**
+This behavior moves particles around the emitter center in erratic patterns, similar to a swarm of flies circling something.
 
-**PathLength:**
+**FlySpeed:** The speed with which the particles move.
 
-**MaxEmitterDistance:**
+**PathLength:** The distance that the particles move into some direction before making another turn. The shorter this is, the more often the particles can change direction and thus the smoother the motion becomes. They will also clump up more and stay within the *MaxEmitterDistance*, if the particles can correct their course more often. With a long *PathLength* they may spread out more.
 
-**MaxSteeringAngle:**
+**MaxEmitterDistance:** The maximum distance that the particles will fly away from the effect's center before turning back. If they travel further, they will always steer back towards the emitter. How quickly that is possible though, depends on *PathLength* and *MaxSteeringAngle*.
+
+**MaxSteeringAngle:** Every time a particle has traveled a distance of *PathLength*, it will make a random turn. This value specifies how large that turn may be. A small value results in very slow and wide turns, whereas a large value results in quick and erratic behavior.
+
+
+<video width="500" height="500" controls>
+  <source src="media/flies.webm" type="video/webm">
+</video>
 
 ## Gravity Behavior
 
