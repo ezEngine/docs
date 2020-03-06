@@ -2,8 +2,6 @@
 
 This page lists and describes all *particle initializers*.
 
-<!-- PAGE IS TODO -->
-
 ## Box Position Initializer
 
 Initializes a particle's position to a random point within a box shape.
