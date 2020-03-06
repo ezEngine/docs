@@ -4,9 +4,9 @@ This page lists and describes all *particle behaviors*.
 
 ## Color Gradient Behavior
 
-This behavior changes a particle's color during the update step. A [color gradient](../../animation/color-gradients.md) is used as the color source, and a mode specifies how to look up the color from the gradient.
+This behavior changes a particle's color during the update step. A [color gradient (TODO)](../../animation/color-gradients.md) is used as the color source, and a mode specifies how to look up the color from the gradient.
 
-**Gradient:** The [color gradient](../../animation/color-gradients.md) to use as the source.
+**Gradient:** The [color gradient (TODO)](../../animation/color-gradients.md) to use as the source.
 
 **TintColor:** An additional color to be multiplied into the gradient, for tweaking the final result.
 
@@ -79,7 +79,7 @@ This behavior uses raycasts to detect collisions along the trajectory of a parti
 
 This behavior changes a particle's size over the course of its lifetime.
 
-**SizeCurve:** A [curve](../../animation/curves.md) which is used to look up the size of the particle. The current fraction of the particle's lifespan is used for the lookup along the X axis. The absolute X and Y values in the curve don't matter, the curve is normalized to `[0; 1]` range.
+**SizeCurve:** A [curve (TODO)](../../animation/curves.md) which is used to look up the size of the particle. The current fraction of the particle's lifespan is used for the lookup along the X axis. The absolute X and Y values in the curve don't matter, the curve is normalized to `[0; 1]` range.
 
 **BaseSize:** The particles will always have at least this size, the rest is added on top.
 
@@ -89,7 +89,7 @@ This behavior changes a particle's size over the course of its lifetime.
 
 ## Velocity Behavior
 
-This behavior affects particle position and velocity. It can be used to gradually dampen the starting velocity through 'friction' and it may apply a constant upwards movement. If a scene contains [wind](../wind.md), this behavior can also apply a fraction of the wind force to the particle's position.
+This behavior affects particle position and velocity. It can be used to gradually dampen the starting velocity through 'friction' and it may apply a constant upwards movement. If a scene contains [wind (TODO)](../wind.md), this behavior can also apply a fraction of the wind force to the particle's position.
 
 **RiseSpeed:** If non-zero, the particles will move upwards with at least this constant speed. This is added to the particle position independent from its velocity, so if the current velocity points downward, the two may cancel each other out.
 
@@ -103,3 +103,5 @@ This behavior affects particle position and velocity. It can be used to graduall
 
 * [Back to Index](../../index.md)
 * [Particle Effects (TODO)](particle-effects-overview.md)
+* [Particle Initializers](particle-initializers.md)
+* [Particle Renderers (TODO)](particle-renderers.md)

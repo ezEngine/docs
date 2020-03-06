@@ -64,7 +64,7 @@ Initializers are executed exactly once for each new particle, thus they cost lit
 
 Prefer to use initializers over behaviors, if the desired result can be achieved with either.
 
-For details about all available initializer types, see [Particle Initializers (TODO)](particle-initializers.md).
+For details about all available initializer types, see [Particle Initializers](particle-initializers.md).
 
 ### Behaviors
 
@@ -74,7 +74,7 @@ For details about all available initializer types, see [Particle Initializers (T
 
 It is common for a particle system to have at least one, but often multiple, behaviors.
 
-For details about all available behavior types, see [Particle Behaviors (TODO)](particle-behaviors.md).
+For details about all available behavior types, see [Particle Behaviors](particle-behaviors.md).
 
 ### Renderers
 
@@ -118,7 +118,7 @@ For most such values you should use at least some variance (0.2 to 0.4) to make 
 
 ### Shared Effects
 
-### Presimulation
+### Pre-Simulation
 
 ## See Also
 
