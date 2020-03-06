@@ -8,7 +8,7 @@
 
 **TintColor:**
 
-**ColorFrom:**
+**ColorFrom, MaxSpeed:**
 
 ## Fade Out Behavior
 

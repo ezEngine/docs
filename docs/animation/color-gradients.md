@@ -1,4 +1,4 @@
-# Color Curves
+# Color Gradients
 
 <!-- PAGE IS TODO -->
 

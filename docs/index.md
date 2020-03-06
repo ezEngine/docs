@@ -115,7 +115,7 @@ Welcome to the ezEngine documentation.
 
 ### Animation
 
-* [Color Curves (TODO)](animation/color-curves.md)
+* [Color Gradients (TODO)](animation/color-gradients.md)
 * [Curves (TODO)](animation/curves.md)
 * [Property Animation (TODO)](animation/property-animation.md)
 
