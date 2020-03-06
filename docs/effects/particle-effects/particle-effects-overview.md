@@ -112,6 +112,14 @@ However, due to the *normal distribution* of the random numbers, values close to
 
 For most such values you should use at least some variance (0.2 to 0.4) to make your effects look less repetitive and sterile. However, extremely large variance values (0.7 and up) can result in unexpected outliers.
 
+### Local Space Simulation
+
+### Owner Velocity Inheritance
+
+### Shared Effects
+
+### Presimulation
+
 ## See Also
 
 * [Back to Index](../../index.md)
