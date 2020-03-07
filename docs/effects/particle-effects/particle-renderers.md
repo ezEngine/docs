@@ -51,11 +51,15 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
 ## Mesh Renderer
 
-**Mesh:**
+This renderer visualizes each particle using a [mesh](../../graphics/meshes-overview.md).
 
-**Material:**
+**Mesh:** The mesh to use for rendering.
 
-**TintColorParam:**
+**Material:** The material to use on the mesh.
+
+**TintColorParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to tint the color of the meshes.
+
+<video src="media/mesh-renderer.webm" width="500" height="500" autoplay loop></video>
 
 ## Light Renderer
 
