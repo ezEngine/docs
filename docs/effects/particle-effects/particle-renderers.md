@@ -34,17 +34,18 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
 * *Distortion* - This is used to create a *heat haze* effect, which distorts the scene behind it. The alpha-channel of *Texture* is used to determine the shape of the distortion effect. The *Distortion Texture* and *Distortion Strength* are used to decide for each pixels how much to distort the background. Any texture can be used as the distortion texture, but the effect works best using a *normal map*.
 
+**Texture:** The texture used for rendering. May be a texture atlas or contain flipbook animations.
 
+**Texture Atlas:** Specifies how to interpret the content in *Texture*:
 
-**Texture:**
+* *None* - The texture contains only a single image.
+* *Random Variations* - The texture contains *NumSpritesX* x *NumSpritesY* images in a regular grid. Each image is independent and each particle uses a random one.
+* *Flipbook Animation* - The texture contains an animation starting at the top left, going to the right and down. Every particle starts with the first image, and over its lifetime will traverse through the frames to play the animation.
+* *Random Row, Animated Column* - The texture contains *NumSpritesY* animations, each with *NumSpritesX* frames. Each particle plays one random animation over its lifetime.
 
-**Texture Atlas:**
+**TintColorParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to tint the final color of the particle.
 
-**NumSpritesX, NumSpritesY:**
-
-**TintColorParam:**
-
-**Particle Stretch:**
+**Particle Stretch:** Only available in the 'axis' render modes. Allows to stretch the particles along their fixed axis. Useful to create sparks.
 
 <video src="media/billboards.webm" width="500" height="500" autoplay loop></video>
 
