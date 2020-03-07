@@ -63,17 +63,21 @@ This renderer visualizes each particle using a [mesh](../../graphics/meshes-over
 
 ## Light Renderer
 
-**SizeFactor:**
+The light renderer treats each particle as a light source and thus illuminates the scene around it. Usually one would add this renderer as a second renderer to a particle system, such that one can easily reuse the behavior and color of for example billboards. Since light sources have a very high performance overhead, and adding as many lights into a scene as billboards would often be way too much, this renderer may visualize only a fraction of all particles in the system.
 
-**Intensity:**
+**SizeFactor:** A factor to scale the particle's size with to determine the light influence radius. If the particles are also visualized as, for instance, billboards, the light source around the billboard should often be three to five times bigger.
 
-**Percentage:**
+**Intensity:** The light intensity.
 
-**TintColorParam:**
+**Percentage:** How many of the particles in the system should also be used as light sources. Typically you should only use 10% or so of the particles. Fewer lights is not only better for performance, it often also looks better, as there will be more contrast and flickering. Too many lights will result in constant brightness, making the effect less interesting.
 
-**IntensityScaleParam:**
+**TintColorParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to tint the color of the lights.
 
-**SizeScaleParam:**
+**IntensityScaleParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to scale the intensity of the lights.
+
+**SizeScaleParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to scale the light influence radius.
+
+<video src="media/light-renderer.webm" width="500" height="500" autoplay loop></video>
 
 ## Trail Renderer
 
