@@ -81,15 +81,13 @@ The light renderer treats each particle as a light source and thus illuminates t
 
 ## Trail Renderer
 
-**Render Mode:**
+This renderer visualizes particles as long lines that draw the path that the particle took. Trail particles are made up of a fixed number of segments. The more segments the renderer uses, the longer the trails will be. Also the faster a particle moves, the longer the trail will stretch. More segments cost more performance to update and render. For very short sparks that should just stretch a little, it is better to use billboards with *Orientation* set the *Axis: Particle Dir* and *StretchFactor* set to some value between 2 and 5.
 
-**Texture:**
+**Render Mode, Texture, Texture Atlas, TintColorParam:** These options are identical to the [quad renderer](#quad-renderer).
 
-**Segments:**
+**Segments:** The number of segments to use for each particle. More segments cost more performance but also result in longer and more detailed trails.
 
-**Texture Atlas:**
-
-**TintColorParam:**
+<video src="media/trail-renderer.webm" width="500" height="500" autoplay loop></video>
 
 ## Effect Renderer
 
