@@ -91,9 +91,11 @@ This renderer visualizes particles as long lines that draw the path that the par
 
 ## Effect Renderer
 
-**Effect:**
+This renderer visualizes each particle using another particle effect. The referenced effect is spawned at the position of each particle and then moved along as the particle moves. This allows you to create effects like fireworks, where each 'rocket' is represented by a single particle flying into the sky, but visualizes as a complete burning particle effect.
 
-**RandomSeeed:**
+**Effect:** The particle effect to spawn and move along for each particle in this system. Usually the other particle system would use at least one continuous emitter, such that the effect will be active for the whole lifetime of the particle that references it.
+
+**RandomSeeed:** An optional random seed to pass into the spawned effect.
 
 ## See Also
 
