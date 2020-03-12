@@ -12,6 +12,8 @@ Initializes a particle's position to a random point within a box shape.
 
 **Note:** Scaling the volume will change particle density. To compensate, the particle system will automatically spawn more or fewer particles. Thus you can author an effect as a 1x1x0 meter sized patch and then let the user decide how large a patch she needs by exposing these parameters. If your 1x1x0 patch requires roughly 100 particles at all times, then scaling it to a 10x5x0 patch will require 5000 particles.
 
+<video src="media/box-position-init.webm" width="500" height="500" autoplay loop></video>
+
 ## Cylinder Position Initializer
 
 Initializes a particle's position to a random point either within a cylinder or on its surface. A cylinder of height `0` initializes the position to a random point on a circle or its circumference.
@@ -28,6 +30,8 @@ Optional names of [effect parameters](particle-effects-overview.md#effect-parame
 
 **Note:** Scaling the volume will change particle density. See the [box position initializer](#box-position-initializer) for details.
 
+<video src="media/cylinder-position-init.webm" width="500" height="500" autoplay loop></video>
+
 ## Sphere Position Initializer
 
 Initializes a particle's position to a random point within a sphere shape.
@@ -43,6 +47,8 @@ Initializes a particle's position to a random point within a sphere shape.
 Optional name of an [effect parameter](particle-effects-overview.md#effect-parameters). This allows to scale the volume in which particles spawn.
 
 **Note:** Scaling the volume will change particle density. See the [box position initializer](#box-position-initializer) for details.
+
+<video src="media/sphere-position-init.webm" width="500" height="500" autoplay loop></video>
 
 ## Random Color Initializer
 
