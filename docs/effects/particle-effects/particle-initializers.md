@@ -58,6 +58,8 @@ Initializes a particle's color to a random color.
 
 **Color1, Color2:** A random interpolated color between the two given colors is used. So if one color is white and the other is black, particles will get a random grey value as their color. If a *gradient* is set as well, the two colors are combined.
 
+<video src="media/random-color-init.webm" width="500" height="500" autoplay loop></video>
+
 ## Random Size Initializer
 
 Initializes a particle's size to a random value.
@@ -65,6 +67,8 @@ Initializes a particle's size to a random value.
 **Size:** The base size for the particles to start with. To initialize all particles to have a fixed size, set the variance to zero.
 
 **SizeCurve:** If specified, the [curve (TODO)](../../animation/curves.md) is sampled at a random location and the normalized value (always between `0` and `1`) is used to scale the randomly chosen base size. The shape of the curve has no meaning for this use case, it only provides a way to affect the distribution of the random sizes. For example, you could have a curve that sets exactly half of all particles to exactly a tenth of the base size. If you want exactly the same distribution as the curve has, you should set the variance of the *base size* to zero.
+
+<video src="media/random-size-init.webm" width="500" height="500" autoplay loop></video>
 
 ## Rotation Speed Initializer
 
@@ -74,6 +78,8 @@ Initializes a particle's rotation and rotation speed to a random value.
 
 **DegreesPerSecond:** If set to a non-zero value, particles will rotate with a constant speed. Each particle gets its own random speed assigned. With a low variance all particles will rotate similarly fast, with a high variance you will see some particles rotate very fast and some very slowly. Half of the particles rotate clockwise, the other half counter-clockwise.
 
+<video src="media/rotation-speed-init.webm" width="500" height="500" autoplay loop></video>
+
 ## Velocity Cone Initializer
 
 Initializes a particle's velocity to a random up vector.
@@ -81,6 +87,8 @@ Initializes a particle's velocity to a random up vector.
 **Angle:** The maximum opening angle of the upside down cone. With a small opening angle, particles will fly straight up. With a wide opening angle, particles will fly in all directions.
 
 **Speed:** The initial speed for the particles.
+
+<video src="media/velocity-cone-init.webm" width="500" height="500" autoplay loop></video>
 
 ## See Also
 
