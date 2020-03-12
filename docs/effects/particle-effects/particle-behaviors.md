@@ -21,7 +21,7 @@ This behavior changes a particle's color during the update step. A [color gradie
 
 ## Fade Out Behavior
 
-This behavior changes a particle's alpha value to gradually fade out over its lifetime.
+This behavior changes a particle's alpha value to gradually fade out over its lifetime. This behavior can also be achieved using a [color gradient behavior](#color-gradient-behavior), however, the fade out behavior is easier to set up and more efficient at runtime.
 
 **StartAlpha:** The alpha value to begin with when the particle has just spawned.
 
@@ -56,6 +56,10 @@ Typically once a particle has been spawned, its position is unaffected by change
 The *pull along behavior* helps to solve this problem by keeping track of any position changes of the particle effect node and applying a fraction of those movements to all the particles' positions as well. This way, if the effect moves a meter, all particles may move 0.8 meters as well. One typically only applies a fraction, such that when the effect moves fast, the particles will be stretched long behind it and not move in perfect unison with the effect node, yielding a more convincing effect.
 
 **Strength:** How much of the effect node's movement should be carried over to the particle positions.
+
+The video below shows two effects beside each other. The left one does not use the pull along behavior, the right one does. As can be seen, the particles on the right stay closer to the moving emitter position.
+
+<video src="media/pull-along-behavior.webm" width="500" height="500" autoplay loop></video>
 
 ## Raycast Behavior
 
