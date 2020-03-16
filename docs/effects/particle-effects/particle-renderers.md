@@ -97,6 +97,8 @@ This renderer visualizes each particle using another particle effect. The refere
 
 **RandomSeeed:** An optional random seed to pass into the spawned effect.
 
+<video src="media/effect-renderer.webm" width="500" height="500" autoplay loop></video>
+
 ## See Also
 
 * [Back to Index](../../index.md)
