@@ -14,6 +14,8 @@
 
 **SpawnCountScaleParam:**
 
+<video src="media/burst-emitter.webm" width="500" height="500" autoplay loop></video>
+
 ## Continuous Emitter
 
 **StartDelay:**
@@ -27,6 +29,8 @@
 **CountCurve:**
 
 **CurveDuration:**
+
+<video src="media/continuous-emitter.webm" width="500" height="500" autoplay loop></video>
 
 ## Distance Emitter
 
