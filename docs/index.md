@@ -107,7 +107,7 @@ Welcome to the ezEngine documentation.
   * [Particle Emitters (TODO)](effects/particle-effects/particle-emitters.md)
   * [Particle Initializers](effects/particle-effects/particle-initializers.md)
   * [Particle Behaviors](effects/particle-effects/particle-behaviors.md)
-  * [Particle Renderers (TODO)](effects/particle-effects/particle-renderers.md)
+  * [Particle Renderers](effects/particle-effects/particle-renderers.md)
   * [Particle Effect Component (TODO)](effects/particle-effects/particle-effect-component.md)
 * [Render to Texture (TODO)](effects/render-to-texture.md)
 * [Sky (TODO)](effects/sky.md)

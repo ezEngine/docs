@@ -80,7 +80,7 @@ For details about all available behavior types, see [Particle Behaviors](particl
 
 Conceptually a particle is just a point in space. There are many ways this point can be visualized. *Renderers* are used to select how to do that. Most particle systems use one renderer, often the *Billboard Renderer*, which is the most versatile. However, you are free to use multiple renderers. For example to achieve a fire effect with heat haze, you may want to use two renderers. One to render the particles as billboards using a fire texture, and another one to apply the screen space distortion effect.
 
-For details about all available renderer types, see [Particle Renderers (TODO)](particle-renderers.md).
+For details about all available renderer types, see [Particle Renderers](particle-renderers.md).
 
 ## Effect Parameters
 

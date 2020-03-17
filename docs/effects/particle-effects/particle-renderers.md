@@ -1,7 +1,5 @@
 # Particle Renderers
 
-<!-- PAGE IS TODO -->
-
 ## Quad Renderer
 
 This renderer visualizes each particle as a quad. There are several modes to choose from how this quad is oriented. There are also different modes how to blend the particle with the background. This renderer is very versatile.
@@ -24,13 +22,13 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
   <video src="media/quad-fixed-emdir.webm" width="500" height="500" autoplay loop></video>
 
-* *Fixed: World Up* - Similar to *Fixed: Emitter Dir* but the axis used is always the world up direction. This can be useful for effects where the emitter use an arbitrary direction, but these particles should always face upwards. For example for the ripples of water impact effects.
+* *Fixed: World Up* - Similar to *Fixed: Emitter Dir* but the axis used is always the world up direction. This can be useful for effects where the emitter may have an arbitrary direction, but the particles should always face upwards. For example for the ripples of water impact effects.
 
 * *Fixed: Random Dir* - In this mode each quad gets a random axis assigned when it is spawned. This can be useful for creating shockwave effects in explosions.
 
   <video src="media/random-color-init.webm" width="500" height="500" autoplay loop></video>
 
-* *Axis: Emitter Dir* - In this mode the quads fixed axis is the direction of the emitter. The quad will rotate around this axis to face the camera as much as possible. This can be used to create muzzle flashes and other impact effects which should generally move into the direction of the emitter, but also face the camera as much as possible, to be well visible. This mode won't look too convincing if the particles' movement deviates strongly from the emitter direction.
+* *Axis: Emitter Dir* - In this mode the quads fixed axis is the direction of the emitter. The quad will rotate around this axis to face the camera as much as possible. Additionally, the quad will not scale around its center, but around one of its edges. Therefore, when scaling up or down, that edge will stay in a fixed position. This can be used to create muzzle flashes and other impact effects which should generally move into the direction of the emitter, but also face the camera as much as possible, to be well visible. This mode won't look too convincing if the particles' movement deviates strongly from the emitter direction. For most common use cases, the particles may not move at all, but only change their size.
 
   <video src="media/quad-axis-emdir.webm" width="500" height="500" autoplay loop></video>
 
@@ -41,7 +39,9 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 **Render Mode:** This mode specifies how the color from the particle will be combined with the scene background.
 
 * *Opaque* - The particle will use the alpha channel of the texture as mask. Pixels are either fully transparent or fully opaque. This is mostly useful for debris.
+
 * *Additive* - The particle's color will be added to the background. The alpha-channel is not used. This is used for everything that should glow (magic spells, sparks, ...)
+
 * *Blended* - The alpha channel of the texture is used to interpolate the particle's color with the background. This is used for everything that should be transparent, but not glowing (smoke and such). It is also the most tricky mode to make look good, as it depends the most on a good texture with a proper alpha channel. Particles rendered with this mode must be sorted by distance by the renderer, which incurs an additional performance cost.
 
 * *Blended Foreground/Background* - Same as *Blended* but when there are multiple particle systems using *Blended* mode, this allows you to influence in which order the systems are rendered. This is used to fix rendering issues.
@@ -53,8 +53,11 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 **Texture Atlas:** Specifies how to interpret the content in *Texture*:
 
 * *None* - The texture contains only a single image.
+
 * *Random Variations* - The texture contains *NumSpritesX* x *NumSpritesY* images in a regular grid. Each image is independent and each particle uses a random one.
+
 * *Flipbook Animation* - The texture contains an animation starting at the top left, going to the right and down. Every particle starts with the first image, and over its lifetime will traverse through the frames to play the animation.
+
 * *Random Row, Animated Column* - The texture contains *NumSpritesY* animations, each with *NumSpritesX* frames. Each particle plays one random animation over its lifetime.
 
 **TintColorParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to tint the final color of the particle.
@@ -63,7 +66,7 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
 ## Mesh Renderer
 
-This renderer visualizes each particle using a [mesh](../../graphics/meshes-overview.md).
+This renderer visualizes each particle using a [mesh (TODO)](../../graphics/meshes-overview.md).
 
 **Mesh:** The mesh to use for rendering.
 
