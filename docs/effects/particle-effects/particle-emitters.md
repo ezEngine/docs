@@ -42,9 +42,13 @@
 
 **SpawnCountScaleParam:**
 
+<video src="media/distance-emitter.webm" width="500" height="500" autoplay loop></video>
+
 ## OnEvent Emitter
 
 **EventName:**
+
+<video src="media/onevent-emitter.webm" width="500" height="500" autoplay loop></video>
 
 ## See Also
 
