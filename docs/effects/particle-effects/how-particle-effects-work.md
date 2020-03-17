@@ -27,7 +27,7 @@ The code that updates a particle system mostly handles every property of the par
 
 ## Building Blocks
 
-What the particle editor presents to you, are a number of building blocks that you choose and configure. For example, there are a few *behaviors* how the position of a particle should be calculated. There are a few building blocks for determining a particle's color, its size, and how to render it. Many behaviors are mutually exclusive. So if you already chose the "gravity" building block, which lets particles fall down, then you can't chose a second behavior that also affects particle positions. Most building blocks expose options for you to tweak. For example the "gravity" behavior allows you to tweak the strength of the applied gravity.
+What the particle editor presents to you, are a number of building blocks that you choose and configure. For example, there are a few *behaviors* how the position of a particle should be calculated. There are a few building blocks for determining a particle's color, its size, and how to render it. Many behaviors are mutually exclusive. So if you already chose the "gravity" building block, which lets particles fall down, then you can't choose a second behavior that also affects particle positions. Most building blocks expose options for you to tweak. For example the "gravity" behavior allows you to tweak the strength of the applied gravity.
 
 To create an effect, you create multiple particle systems, and for each one you select and configure the desired behaviors.
 
