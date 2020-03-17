@@ -4,7 +4,7 @@ This page lists and describes all *particle emitters*.
 
 ## Burst Emitter
 
-This emitter type spawns particles either in one instantaneous burst or over a limited amount of time. It is mainly used for one-off effects like explosions, impacts, etc, which have a short lifespan. Once the burst emitter is finished, the particle effect will only continue to live until all spawned particles have reached the end of their life. For such effects the [particle effect components (TODO)](particle-effect-component.md) are typically set to auto-delete themselves after the effect is finished.
+This emitter type spawns particles either in one instantaneous burst or over a limited amount of time. It is mainly used for one-off effects like explosions, impacts, etc, which have a short lifespan. Once the burst emitter is finished, the particle effect will only continue to live until all spawned particles have reached the end of their life. For such effects the [particle effect components](particle-effect-component.md) are typically set to auto-delete themselves after the effect is finished.
 
 **Duration:** The timespan over which the emitter will distribute the spawning of the particles. If this is set to zero, all particles spawn at the same instant.
 
@@ -18,7 +18,7 @@ This emitter type spawns particles either in one instantaneous burst or over a l
 
 ## Continuous Emitter
 
-This emitter type continuously spawns new particles. Effects which have at least one such emitter type will never stop, unless custom code specifically switches the effect off, or the owning [particle effect component (TODO)](particle-effect-component.md) is deleted. In both cases all spawned particles will continue to be simulated and rendered, until they reach the end of their life. This emitter type is commonly used for ambient effects such as smoke and fire. By exposing [effect parameters](particle-effects-overview.md#effect-parameters), continuous particle effects can be adjusted dynamically to visualize game mechanics, such as how hot something burns or how active some machine is.
+This emitter type continuously spawns new particles. Effects which have at least one such emitter type will never stop, unless custom code specifically switches the effect off, or the owning [particle effect component](particle-effect-component.md) is deleted. In both cases all spawned particles will continue to be simulated and rendered, until they reach the end of their life. This emitter type is commonly used for ambient effects such as smoke and fire. By exposing [effect parameters](particle-effects-overview.md#effect-parameters), continuous particle effects can be adjusted dynamically to visualize game mechanics, such as how hot something burns or how active some machine is.
 
 **StartDelay:** See the [burst emitter](#burst-emitter).
 
