@@ -48,6 +48,8 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
 * *Distortion* - This is used to create a *heat haze* effect, which distorts the scene behind it. The alpha-channel of *Texture* is used to determine the shape of the distortion effect. The *Distortion Texture* and *Distortion Strength* are used to decide for each pixels how much to distort the background. Any texture can be used as the distortion texture, but the effect works best using a *normal map*.
 
+  <video src="media/render-mode-distortion.webm" width="500" height="500" autoplay loop></video>
+
 **Texture:** The texture used for rendering. May be a texture atlas or contain flipbook animations.
 
 **Texture Atlas:** Specifies how to interpret the content in *Texture*:

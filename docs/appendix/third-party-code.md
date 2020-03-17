@@ -146,7 +146,7 @@ Public domain licensed code by Sean Barrett. Used by ezImage to read and write s
 
 ## UTF8-CPP
 
-Link: [http://utfcpp.sourceforge.net](http://utfcpp.sourceforge.net)
+Link: [https://github.com/nemtrif/utfcpp](https://github.com/nemtrif/utfcpp)
 
 Compile switch: None
 
