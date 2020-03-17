@@ -54,7 +54,7 @@ Additionally, every particle system has these properties:
 
 The *emitter* is what defines how new particles in this system get spawned. It mostly specifies when and how many particles are spawned. Typically particles are either spawned in one big burst or continuously. However, for advanced use cases the emitter may only spawn particles as a reaction to some [event](#events) or when the particle effect node was moved a certain distance.
 
-For details about all available emitter types, see [Particle Emitters (TODO)](particle-emitters.md).
+For details about all available emitter types, see [Particle Emitters](particle-emitters.md).
 
 ### Initializers
 
