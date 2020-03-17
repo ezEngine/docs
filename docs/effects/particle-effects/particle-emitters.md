@@ -4,7 +4,7 @@ This page lists and describes all *particle emitters*.
 
 ## Burst Emitter
 
-This emitter type spawns particles either in one instantaneous burst or over a limited amount of time. It is mainly used for one-off effects like explosions, impacts, etc. which have a short lifespan. Once the burst emitter is finished, the particle effect will only continue to live until all spawned particles have reached the end of their life. For such effects the [particle effect components (TODO)](particle-effect-component.md) are typically set to auto-delete themselves after the effect is finished.
+This emitter type spawns particles either in one instantaneous burst or over a limited amount of time. It is mainly used for one-off effects like explosions, impacts, etc, which have a short lifespan. Once the burst emitter is finished, the particle effect will only continue to live until all spawned particles have reached the end of their life. For such effects the [particle effect components (TODO)](particle-effect-component.md) are typically set to auto-delete themselves after the effect is finished.
 
 **Duration:** The timespan over which the emitter will distribute the spawning of the particles. If this is set to zero, all particles spawn at the same instant.
 
@@ -51,6 +51,8 @@ This emitter type spawns new particles whenever a specific [event](particle-effe
 **MinSpawnCount, SpawnCountRange:** See the [burst emitter](#burst-emitter).
 
 **SpawnCountScaleParam:** See the [burst emitter](#burst-emitter).
+
+In the animation below, the blue particles use a [raycast behavior](particle-behaviors.md#raycast-behavior) to get removed when a collision is detected. The behavior also sends an *event*. This is picked up by a second particle system, which then spawns a number of red particles.
 
 <video src="media/onevent-emitter.webm" width="500" height="500" autoplay loop></video>
 
