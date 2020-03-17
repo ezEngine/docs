@@ -10,19 +10,33 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
 * *Billboard* - This is the most common mode. Billboards always face the camera. If the camera moves around the effect, the billboards keep orienting towards it. When billboards should rotate, they always rotate in screen-space, meaning around the current forward axis of the camera.
 
+  <video src="media/billboards.webm" width="500" height="500" autoplay loop></video>
+
 * *Rotating: Ortho Emitter Dir* - In this mode the quads rotate around the orthogonal axis between the direction of the emitter and the direction the particle moves into. This mode is particularly useful for simulating debris of concrete for bullet impacts and such. When the particles have a high [rotation speed](particle-initializers.md#rotation-speed-initializer), they will fly off in a spectacular fashion. For this type of effect it is also best to use alpha-masked textures representing debris, and to use the 'Opaque' *render mode*.
+
+  <video src="media/quad-rotating-ortho.webm" width="500" height="500" autoplay loop></video>
 
 * *Rotating: Emitter Dir* - Similar to the mode above, but uses the direction of the emitter as its rotation axis. This can be used for muzzle flashes (the part that shows along the direction of the barrel) or impact effects.
 
+  <video src="media/quad-rotating-emdir.webm" width="500" height="500" autoplay loop></video>
+
 * *Fixed: Emitter Dir* - In this mode the quad always uses the emitter direction as its plane normal (with some optional *Deviation*). This mode is useful for creating shockwave effects at a point of impact, or things like ripples in water. It can also be used for muzzle flashes (the part sideways out of a barrel).
+
+  <video src="media/quad-fixed-emdir.webm" width="500" height="500" autoplay loop></video>
 
 * *Fixed: World Up* - Similar to *Fixed: Emitter Dir* but the axis used is always the world up direction. This can be useful for effects where the emitter use an arbitrary direction, but these particles should always face upwards. For example for the ripples of water impact effects.
 
 * *Fixed: Random Dir* - In this mode each quad gets a random axis assigned when it is spawned. This can be useful for creating shockwave effects in explosions.
 
+  <video src="media/random-color-init.webm" width="500" height="500" autoplay loop></video>
+
 * *Axis: Emitter Dir* - In this mode the quads fixed axis is the direction of the emitter. The quad will rotate around this axis to face the camera as much as possible. This can be used to create muzzle flashes and other impact effects which should generally move into the direction of the emitter, but also face the camera as much as possible, to be well visible. This mode won't look too convincing if the particles' movement deviates strongly from the emitter direction.
 
-* *AXis: Particle Dir* - In this mode the quads fixed axis is its own fly direction. The quad will rotate around this axis to face the camera as much as possible. This is useful for creating sparks or laser blasts which shall stretch a little while moving into some direction.
+  <video src="media/quad-axis-emdir.webm" width="500" height="500" autoplay loop></video>
+
+* *Axis: Particle Dir* - In this mode the quads fixed axis is its own fly direction. The quad will rotate around this axis to face the camera as much as possible. This is useful for creating sparks or laser blasts which shall stretch a little while moving into some direction.
+
+  <video src="media/continuous-emitter.webm" width="500" height="500" autoplay loop></video>
 
 **Render Mode:** This mode specifies how the color from the particle will be combined with the scene background.
 
@@ -46,8 +60,6 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 **TintColorParam:** An optional [effect parameter](particle-effects-overview.md#effect-parameters) name. If set, the parameter is used to tint the final color of the particle.
 
 **Particle Stretch:** Only available in the 'axis' render modes. Allows to stretch the particles along their fixed axis. Useful to create sparks.
-
-<video src="media/billboards.webm" width="500" height="500" autoplay loop></video>
 
 ## Mesh Renderer
 
