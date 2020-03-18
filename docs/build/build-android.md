@@ -4,21 +4,20 @@
 
 You need the following to build for Android:
   * Android SDK Platform 6.0 (Marshmallow) API-Level 23
-  * Android SDK Build-Tools
-  * Android NDK 20 or higher
+  * Android NDK 21 or higher
   * Android SDK Tools
   * Android SDK Platform-Tools
   * Java (JRE)
   * Ninja
   * Android Emulator (optional)
+  * Visual Studio 2019
 
-[Ninja](https://ninja-build.org/) is a build generator used by CMake and needs to be added to the **PATH** environment variable.\
+[Ninja](https://ninja-build.org/) is a build generator used by CMake and needs to be added to the `PATH` environment variable.\
 The easiest way to install the Android components is to download [Android Studio](https://developer.android.com/studio) and then to select these from the **SDK Manager**.
 Once installed, the following environment variables need to be set:
-  * **ANDROID_BUILD_TOOLS** needs to point to your installed version, by default this is: `C:\Users\[USERNAME]\AppData\Local\Android\Sdk\build-tools\29.0.2\`
   Change the version to reflect the one you are using.
-  * **ANDROID_NDK** needs to point to your installed version, by default this is: `C:\Users\[USERNAME]\AppData\Local\Android\Sdk\ndk-bundle`
-  * **ANDROID_SDK** needs to point to your installed version, by default this is: `C:\Users\[USERNAME]\AppData\Local\Android\Sdk`
+  * **ANDROID_NDK_HOME** needs to point to your installed version, by default this is: `C:\Users\[USERNAME]\AppData\Local\Android\Sdk\ndk-bundle`
+  * **ANDROID_HOME** needs to point to your installed version, by default this is: `C:\Users\[USERNAME]\AppData\Local\Android\Sdk`
   * **JAVA_HOME** needs to point to a java runtime. Android Studio has its own version so there is no need to download it separately: `C:\Program Files\Android\Android Studio\jre`
 
 
@@ -36,19 +35,45 @@ Open Android Studio, go to `Configure>AVD Manager` and select `Create Virtual De
 
 ## Debugging Code
 
-This approach requires Android development for VS to be installed. In VS, go to `Tools>Options..` then ` Cross Platform>C++>Android` and change Android SDK and Android NDK paths to those matching the environment variables.
-
-Then, follow the steps above to select your target application. Let's assume `FoundationTest` should be run in **debug** on the emulator. First it needs to be build via `Build>Build libFoundationTest.so`. Once succeeded, an apk is found in in `Output\Lib\AndroidNinjaClangDebug32\FoundationTest.apk`.
-
-Open another instace of VS and select `File>Open>Project/Solution` and open the apk file. Switch to **x86** and select the emulator device next to it.\
-RMB on the project and select `Properties`. Change **Additional Symbol Search Paths** to point to `Output\Lib\AndroidNinjaClangDebug32`.
-
-**Warning!** Any **Android Studio** window must be closed before pressing **Start Debugging** as it will prevent **adb** from working. Once that's done debugging can be done in VS like any other debugging target.
-
-VS has a build-in logcat window but the filter is limited so it is better to use the following commandline to only show ezEngine logs:
+Before debugging it should be ensured that you have a emulator setup or a device connected. There should only be every one device or emulator. Otherwise debugging is going to fail because its unkown which target to use.
 
 ```
-%ANDROID_SDK%\platform-tools\adb.exe logcat ezEngine:D *:S
+$ adb devices
+List of devices attached
+ce11171b5298cc120c      device
+```
+
+If adb is not available in the command line `%ANDROID_HOME%\platform-tools` needs to be added to the `PATH` environment variable.
+
+To debug & deploy select one of the launch targets which are prefixed with '>'. These have been configured in the `launch.vs.json` file for debugging. By hitting the "start debugging" button in visual studio, as usual, the app will be installed on the connected device / emulator, started and the debugger will be attached. The app can then be debugged by using the Visual Studio UI the same way as for an windows based C++ project.
+
+## Troubleshooting Debugging / Command Line Debugging
+
+If debugging doesn't work or debugging from the command line is preferred, the command line debugger can be started. It gives detailed output.
+
+The debugging script is located in `Utilities\DbgAndroid.ps1`
+
+The following parameters are present:
+
+| parameter | meaning |
+|-----------|---------|
+|PrintCmds|Prints all commands that are run. Usefull for debugging issues.|
+|packageName|The name of the android package. For example "com.ezengine.FoundationTest". All ezEngine package names start with "com.ezengine.". If the package name is not known the .apk file can be opened with a zip tool. Then inspect the AndroidManifest.xml.|
+|originalSoDir|The location where the shared object (.so) that contains all the binary code is located: Output\Lib\AndroidNinjaClang(Debug\|RelWithDebInfo\|Release)(arm32\|arm64\|x86\|x64)|
+|arch|The architecture of the app you want to debug usually "arm","arm64","x86" or "x86_64"|
+|apk|	The apk to install on the device before starting debugging. This parameter is optional. If not given no apk will be installed and it is assumed that the apk was already installed on the device|
+
+For example command line debugging the FoundationTest:
+```
+Utilities\DbgAndroid.ps1 -packageName "com.ezengine.FoundationTest" -arch arm -apk "Output\Lib\AndroidNinjaClangDebugArm32\FoundationTest.apk" -originalSoDir "Output\Lib\AndroidNinjaClangDebugArm32"
+```
+
+## See ezEngine log output
+
+To see the ezEngine log output the following logcat filter can be used.
+
+```
+adb logcat ezEngine:D *:S
 ```
 
 ## See Also
