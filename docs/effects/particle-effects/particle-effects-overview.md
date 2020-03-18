@@ -92,6 +92,8 @@ You can use this in a static way, as a means to add more variety to multiple ins
 
 ## Events
 
+TODO
+
 ## Misc
 
 ### Variance Values
@@ -114,11 +116,25 @@ For most such values you should use at least some variance (0.2 to 0.4) to make 
 
 ### Local Space Simulation
 
+TODO
+
 ### Owner Velocity Inheritance
+
+TODO
 
 ### Shared Effects
 
+TODO
+
 ### Pre-Simulation
+
+Some effects are supposed to always look as if they are constantly running. Mostly this is needed for ambient effects, such as torch fire or chimney smoke. The game may only spawn these effects when the player enters an area, but it is not desirable to see them getting started before they reach a stable simulation state. Instead, they should always already be in the state that they reach after a couple of seconds of simulation.
+
+For such cases, you can use the *PreSimulationDuration* option from the *Effects tab*. When this is set to a couple of seconds, the first time an effect is simulated, it will be simulated multiple times, to reach the desired state.
+
+**Note:** Pre-simulation obviously has a performance cost during the first simulation step. Therefore, keep the pre-simulation duration as low as possible.
+
+Also be aware that for many ambient effects, that are instantiated a lot throughout a scene, prefer to use [shared effects](#shared-effects). Pre-simulation may still be necessary to fix their very first appearance, though.
 
 ## See Also
 
