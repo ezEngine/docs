@@ -94,6 +94,8 @@ You can use this in a static way, as a means to add more variety to multiple ins
 
 TODO
 
+<video src="media/event-reaction-effect.webm" width="500" height="500" autoplay loop></video>
+
 ## Misc
 
 ### Variance Values
