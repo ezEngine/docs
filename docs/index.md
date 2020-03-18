@@ -14,7 +14,7 @@ Welcome to the ezEngine documentation.
 * [Supported Platforms](build/supported-platforms.md)
 * [Build Prerequisites](build/build-prerequisites.md)
 * [CMake Setup](build/cmake-config.md)
-* [ezEngine As Submodule](build/submodule.md)
+* [ezEngine as a Submodule](build/submodule.md)
 * [Building with Clang on Windows](build/clang-on-windows.md)
 * [UWP Builds](build/build-uwp.md)
 * [Android Builds](build/build-android.md)
