@@ -2,6 +2,7 @@ building-ez.md
 supported-platforms.md
 build-prerequisites.md
 cmake-config.md
+submodule.md
 clang-on-windows.md
 build-uwp.md
 build-android.md

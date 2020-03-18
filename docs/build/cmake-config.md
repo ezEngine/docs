@@ -21,4 +21,5 @@ Checking *Advanced* in the CMake GUI will show additional options to configure t
 ## See Also
 
 * [Supported Platforms](supported-platforms.md)
+* [ezEngine As Submodule](submodule.md)
 * [Back to Index](../index.md)
