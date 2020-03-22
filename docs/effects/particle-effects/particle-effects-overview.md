@@ -128,6 +128,8 @@ For most such values you should use at least some variance (0.2 to 0.4) to make 
 
 TODO
 
+<video src="media/sim-local-space.webm" width="500" height="500" autoplay loop></video>
+
 ### Owner Velocity Inheritance
 
 In the *Effect tab* there is a property **ApplyOwnerVelocity** which is a value between `0` and `1`. By default the value is zero, which means that all particles are initialized with either a zero velocity or with whatever some [initializer](particle-initializers.md) decided. In that case, particles will fly away from the emitter position unaffected by the velocity of the effect object itself. However, if the value is set to non-zero, a part of the velocity of the owning game object will be added to newly spawned particles.
@@ -158,7 +160,7 @@ For such cases, you can use the *PreSimulationDuration* option from the *Effects
 
 Also be aware that for many ambient effects, that are instantiated a lot throughout a scene, prefer to use [shared effects](#shared-effects). Pre-simulation may still be necessary to fix their very first appearance, though.
 
-### Invisible Update Rate
+### Update Rate When Invisible
 
 When a particle effect is not visible, it may still need to be updated, as the way that it changes may make it visible in the first place. For example the smoke of a smoke grenade that is behind the player may become visible when it is blown into the players view by the wind. It may be sufficient, though, to only update the effect ten times, or even just 5 times per second, while invisible. Thus reducing the computational overhead.
 
