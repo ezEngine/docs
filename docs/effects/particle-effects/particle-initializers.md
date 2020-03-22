@@ -93,6 +93,6 @@ Initializes a particle's velocity to a random up vector.
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Particle Effects (TODO)](particle-effects-overview.md)
+* [Particle Effects](particle-effects-overview.md)
 * [Particle Behaviors](particle-behaviors.md)
 * [Particle Renderers](particle-renderers.md)

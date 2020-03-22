@@ -103,7 +103,7 @@ Welcome to the ezEngine documentation.
 
 * [Decals (TODO)](effects/decals.md)
 * __Particle Effects__
-  * [Particle Effects (TODO)](effects/particle-effects/particle-effects-overview.md)
+  * [Particle Effects](effects/particle-effects/particle-effects-overview.md)
   * [How Particle Effects Work](effects/particle-effects/how-particle-effects-work.md)
   * [Particle Emitters](effects/particle-effects/particle-emitters.md)
   * [Particle Initializers](effects/particle-effects/particle-initializers.md)

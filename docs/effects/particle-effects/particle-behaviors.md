@@ -106,6 +106,6 @@ This behavior affects particle position and velocity. It can be used to graduall
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Particle Effects (TODO)](particle-effects-overview.md)
+* [Particle Effects](particle-effects-overview.md)
 * [Particle Initializers](particle-initializers.md)
 * [Particle Renderers](particle-renderers.md)

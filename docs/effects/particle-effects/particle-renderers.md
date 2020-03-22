@@ -119,6 +119,6 @@ This renderer visualizes each particle using another particle effect. The refere
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Particle Effects (TODO)](particle-effects-overview.md)
+* [Particle Effects](particle-effects-overview.md)
 * [Particle Initializers](particle-initializers.md)
 * [Particle Behaviors](particle-behaviors.md)
