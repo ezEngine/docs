@@ -130,11 +130,15 @@ TODO
 
 ### Owner Velocity Inheritance
 
-TODO
+In the *Effect tab* there is a property **ApplyOwnerVelocity** which is a value between `0` and `1`. By default the value is zero, which means that all particles are initialized with either a zero velocity or with whatever some [initializer](particle-initializers.md) decided. In that case, particles will fly away from the emitter position unaffected by the velocity of the effect object itself. However, if the value is set to non-zero, a part of the velocity of the owning game object will be added to newly spawned particles.
+
+This can be used for effects that may be spawned from moving objects and that shall retain some of that momentum. However, unless you additionally configure the effect to have some velocity damping (ie. using the *friction* property of the [velocity behavior](particle-behaviors.md#velocity-behavior)), the particles will fly into that direction continuously, which may look weird, especially when the owner object changes direction or brakes, and the spawned particles overtake it.
+
+Other options to keep particles closer to the owning object are to use the [pull along behavior](particle-behaviors.md#pull-along-behavior) or to fully [simulate in local space](#local-space-simulation).
 
 ### Shared Effects
 
-TODO
+TODO **AlwaysShared**
 
 ### Pre-Simulation
 
@@ -145,6 +149,16 @@ For such cases, you can use the *PreSimulationDuration* option from the *Effects
 **Note:** Pre-simulation obviously has a performance cost during the first simulation step. Therefore, keep the pre-simulation duration as low as possible.
 
 Also be aware that for many ambient effects, that are instantiated a lot throughout a scene, prefer to use [shared effects](#shared-effects). Pre-simulation may still be necessary to fix their very first appearance, though.
+
+### Invisible Update Rate
+
+When a particle effect is not visible, it may still need to be updated, as the way that it changes may make it visible in the first place. For example the smoke of a smoke grenade that is behind the player may become visible when it is blown into the players view by the wind. It may be sufficient, though, to only update the effect ten times, or even just 5 times per second, while invisible. Thus reducing the computational overhead.
+
+However, there are also effects which do not need to be updated, at all, when invisible. A waterfall effect, for instance, will always look similar. Thus once it is out of view, it can be simply paused.
+
+And there are even effects that can be discarded entirely, when out of view. Bullet impact effects, for example, may be so small and have such a short life span, that there is no value in updating them at all, unless they are visible to begin with.
+
+Which update method to use can be chosen from the *Effect tab* using the **WhenInvisible** property.
 
 ## See Also
 
