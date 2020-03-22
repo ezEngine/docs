@@ -32,9 +32,7 @@ These panels show the various options for the *active particle system*. When you
 
 ### Event Reactions
 
-Particles may raise *events*. The most common one is when a particle dies, but different particle behaviors can raise other events as well. For example when a particle collides with the environment.
-
-*Event reactions* allow to configure what happens for a specific event. This is mostly used to chain effects. For example a fireworks effect has particles that represent the rockets flying up, and when one 'dies', a big explosion is spawned at that position, using event reactions.
+See [events](#events) below.
 
 ## Particle System Configuration
 
@@ -90,11 +88,21 @@ Effect parameters can only affect select features. For example the [quad rendere
 
 You can use this in a static way, as a means to add more variety to multiple instances of the same effect. Or you can use this in a dynamic way, by modifying the exposed parameter through (script) code, for example to visualize how hot something burns.
 
-## Events
+## Events and Event Reactions
 
-TODO
+Particles may raise *events*. The most common one is when a particle dies, but different particle behaviors can raise other events as well. For example when a particle collides with the environment (see [raycast behavior](particle-behaviors.md#raycast-behavior)).
+
+The **Event Reactions** tab allows you to configure what happens for a specific event. This is mostly used to chain effects. For example the fireworks effect below has particles that represent the rockets flying up, and when one 'dies', an explosion is spawned at that position, using event reactions.
 
 <video src="media/event-reaction-effect.webm" width="500" height="500" autoplay loop></video>
+
+Instead of spawning other particle effects, you can also spawn entire prefabs, which enables even more complex effects.
+
+Every *event reaction* has a *Probability* value which should be between 1 and 100. For example, if one reaction has a probability of 50, then for half of all events, that event reaction will be spawned. If there is no other event reaction for the same event type, then nothing is spawned. If however, another event reaction exists, say with a probability value of 30, then it also gets a chance to be spawned. Since 20 probability points are still not assigned, there is an overall 20 percent chance that no reaction is spawned.
+
+Be aware that probabilities are not normalized across event reactions. If you have two reactions for the same event type, both with a probability of 100, then in practice the first event reaction will always be spawned, and the second one will never be spawned.
+
+Apart from event reactions, it is also possible to react to events using the [OnEvent emitter](particle-emitters.md#onevent-emitter), however, that is less common.
 
 ## Misc
 
