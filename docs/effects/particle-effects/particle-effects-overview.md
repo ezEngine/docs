@@ -138,7 +138,15 @@ Other options to keep particles closer to the owning object are to use the [pull
 
 ### Shared Effects
 
-TODO **AlwaysShared**
+Typically every particle effect in the world is simulated every frame. However, especially 'ambient' effects, such as the fire of wall torches, is often instantiated many, many times. You may only see a few of them at a time, but if all those effects were simulated every single frame, that would cost significant performance.
+
+A solution to this problem is to use *shared effects*. When an effect is set to be shared, it is simulated only once. All instances, that reference the effect will only be used to render the effect at their position. If not a single instance is visible, the simulation of the shared effect will even be paused.
+
+There are two ways to make an effect shared. The global option is the **AlwaysShared** property which can be found in the *Effect tab*. If this is enabled, then all instances of the effect will always be shared. This should be used for ambient effects which are expected to be instantiated often and where simulating more than one has no benefit.
+
+The second option is to set a **SharedInstanceName** on the [particle effect component](particle-effect-component.md). All effect components that use the exact same *shared instance name*, will share one simulation state and thus look identical. With this method, you can use a finite number of simulated effects, which allows you to have the same effect multiple times next to each other, without having them look identical, but still limiting how many effects need to be simulated.
+
+Because the various instances have different positions and orientations, shared effects are always simulated in [local space](#local-space-simulation). Effect sharing should mainly be used for continuous effects, and the effect should be authored to not be very distinctive. Also note that the rendering cost still has to be paid for every visible instance.
 
 ### Pre-Simulation
 
