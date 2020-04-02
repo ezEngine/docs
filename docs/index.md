@@ -101,7 +101,7 @@ Welcome to the ezEngine documentation.
 
 ### Effects
 
-* [Decals (TODO)](effects/decals.md)
+* [Decals](effects/decals.md)
 * __Particle Effects__
   * [Particle Effects](effects/particle-effects/particle-effects-overview.md)
   * [How Particle Effects Work](effects/particle-effects/how-particle-effects-work.md)
