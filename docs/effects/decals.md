@@ -28,7 +28,7 @@ Each *decal component* represents a single instance of a decal. Its position, ro
 
 ### Decal Component Properties
 
-**Decal:** The decal asset to spawn.
+**Decals:** An array of decal asset references. When the game starts, a random decal from this list is chosen for display.
 
 **ProjectionAxis:** The axis along which to project the decal.
 
@@ -53,7 +53,7 @@ If disabled, the decal will completely overwrite the normal of the underlying ge
 
 **OnFinishedAction:** If the decal component is set to fade out, it may delete itself or its entire owner object afterwards.
 
-**ApplyToDynamic:** By default, decals apply to *static geometry* but not to *dynamic geometry*. If it is desired for a decal to be projected onto a dynamic object, this property should be used to select exactly to which dynamic object the decal should be applied to. Note that decals can only be applied to a single dynamic game object. If the selected object turns out to be *static*, though, the decal will project onto all static objects.
+**ApplyToDynamic:** By default, decals apply to *static geometry* but not to *dynamic geometry*. If it is desired for a decal to be projected onto a dynamic object, this property should be used to select exactly to which dynamic object the decal should be applied to. Note that decals can only be applied to a single dynamic game object. If the selected object turns out to be *static*, though, the decal will be invisible.
 
 ## See Also
 
