@@ -46,7 +46,7 @@ Welcome to the ezEngine documentation.
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
 * [Editor Settings (TODO)](editor/editor-settings.md)
 * [Template Documents (TODO)](editor/editor-template-documents.md)
-* [Testing a Scene (TODO)](editor/run-scene.md)
+* [Testing a Scene](editor/run-scene.md)
 
 ### Projects
 
@@ -128,6 +128,11 @@ Welcome to the ezEngine documentation.
 ### Ai
 
 * [Recast Integration (TODO)](ai/recast.md)
+
+### Gameplay
+
+* [Player Start Point (TODO)](gameplay/player-start-point.md)
+* [Spawn Component (TODO)](gameplay/spawn-component.md)
 
 ---
 
