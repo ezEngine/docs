@@ -92,7 +92,8 @@ Welcome to the ezEngine documentation.
 
 ### Input
 
-* [Input System (TODO)](input/input-system.md)
+* [Input Component (TODO)](input/input-component.md)
+* [Input (TODO)](input/input-overview.md)
 
 ### Physics
 

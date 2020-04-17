@@ -1,4 +1,4 @@
-# Input System
+# Input Component
 
 <!-- PAGE IS TODO -->
 
