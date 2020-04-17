@@ -102,6 +102,7 @@ Welcome to the ezEngine documentation.
 ### Effects
 
 * [Decals](effects/decals.md)
+* [Fog](effects/fog.md)
 * __Particle Effects__
   * [Particle Effects](effects/particle-effects/particle-effects-overview.md)
   * [How Particle Effects Work](effects/particle-effects/how-particle-effects-work.md)
@@ -111,7 +112,7 @@ Welcome to the ezEngine documentation.
   * [Particle Renderers](effects/particle-effects/particle-renderers.md)
   * [Particle Effect Component](effects/particle-effects/particle-effect-component.md)
 * [Render to Texture (TODO)](effects/render-to-texture.md)
-* [Sky (TODO)](effects/sky.md)
+* [Sky](effects/sky.md)
 * [Wind (TODO)](effects/wind.md)
 
 ### Animation
