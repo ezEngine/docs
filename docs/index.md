@@ -131,7 +131,7 @@ Welcome to the ezEngine documentation.
 
 ### Gameplay
 
-* [Player Start Point (TODO)](gameplay/player-start-point.md)
+* [Player Start Point](gameplay/player-start-point.md)
 * [Spawn Component (TODO)](gameplay/spawn-component.md)
 
 ---

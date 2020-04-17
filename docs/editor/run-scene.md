@@ -22,7 +22,7 @@ The *Play-the-Game Mode* (PTG) is activated with the *Controller* button in the 
 
 ![Toolbar buttons for scene simulation](media/toolbar-simulate-buttons.png)
 
-This enables the simulation, similar to the *Simulate Mode*. However, it additionally activates the [Game State (TODO)](../runtime/application/game-state.md). Therefore this mode spawns a separate window and also routes all [input (TODO)](../input/input-system.md) to the running game. If the scene contains a [Player Start Point component (TODO)](../gameplay/player-start-point.md) the game state may spawn the referenced prefab and thus enable you to properly play the game.
+This enables the simulation, similar to the *Simulate Mode*. However, it additionally activates the [Game State (TODO)](../runtime/application/game-state.md). Therefore this mode spawns a separate window and also routes all [input (TODO)](../input/input-system.md) to the running game. If the scene contains a [Player Start Point component](../gameplay/player-start-point.md) the game state may spawn the referenced prefab and thus enable you to properly play the game.
 
 You can `Alt+Tab` out of the PTG window, back to the editor, and modify the scene the same way as in the simulate mode, with the same restrictions.
 
@@ -30,7 +30,7 @@ This mode is useful to quickly run the game with full input. Note that, because 
 
 ### Play From Here
 
-If the scene contains a [Player Start Point component (TODO)](../gameplay/player-start-point.md), then you can right click in the scene and select *Play From Here*. This starts *Play-the-Game* and spawns the player prefab at the desired position. This makes it quick and easy to try out a feature in the scene, without having to move the player start position.
+If the scene contains a [Player Start Point component](../gameplay/player-start-point.md), then you can right click in the scene and select *Play From Here*. This starts *Play-the-Game* and spawns the player prefab at the desired position. This makes it quick and easy to try out a feature in the scene, without having to move the player start position.
 
 ## Export and Run
 
@@ -46,4 +46,4 @@ Both *Simulate Mode* and *Play-the-Game Mode* run inside the editor process. Com
 * [Back to Index](../index.md)
 * [ezPlayer](../tools/player.md)
 * [Game States (TODO)](../runtime/application/game-state.md)
-* [Player Start Point (TODO)](../gameplay/player-start-point.md)
+* [Player Start Point](../gameplay/player-start-point.md)
