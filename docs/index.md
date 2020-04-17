@@ -50,7 +50,7 @@ Welcome to the ezEngine documentation.
 
 ### Projects
 
-* [Data Directories (TODO)](projects/data-directories.md)
+* [Data Directories](projects/data-directories.md)
 * [Project Settings (TODO)](projects/project-settings.md)
 * [Projects (TODO)](projects/projects-overview.md)
 

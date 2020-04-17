@@ -1,6 +1,6 @@
 # ArchiveTool
 
-The ArchiveTool is used to create or extract `.ezArchive` files. Archives are similar to zip files, they contain all the files in a folder, using compression. ezArchive files can be mounted at runtime as [data directories (TODO)](../projects/data-directories.md).
+The ArchiveTool is used to create or extract `.ezArchive` files. Archives are similar to zip files, they contain all the files in a folder, using compression. ezArchive files can be mounted at runtime as [data directories](../projects/data-directories.md).
 
 ## ezArchive Format
 
@@ -75,5 +75,5 @@ ArchiveTool.exe "C:\Stuff.ezArchive" -out "C:\MyStuff"
 ## See Also
 
 * [Back to Index](../index.md)
-* [Data Directories (TODO)](../projects/data-directories.md)
+* [Data Directories](../projects/data-directories.md)
 * [FileSystem](../runtime/filesystem.md)

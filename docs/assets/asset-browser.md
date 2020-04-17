@@ -20,7 +20,7 @@ Below the search field, all available asset types are listed with checkboxes. Cl
 
 ## Filter by Folder
 
-On the bottom left the asset browser displays all [data directories (TODO)](../projects/data-directories.md). When you select a folder in this tree view, the asset browser will only display assets located below that folder.
+On the bottom left the asset browser displays all [data directories](../projects/data-directories.md). When you select a folder in this tree view, the asset browser will only display assets located below that folder.
 
 ### Show Assets in Sub-Folders
 
