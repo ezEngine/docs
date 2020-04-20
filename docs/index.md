@@ -23,6 +23,7 @@ Welcome to the ezEngine documentation.
 
 ### Samples
 
+* [Samples](samples/samples-overview.md)
 * [Asteroids Sample](samples/asteroids.md)
 * [Compute Shader Histogram Sample](samples/cs-histogram.md)
 * [LineCount Sample](samples/line-count.md)
@@ -42,7 +43,7 @@ Welcome to the ezEngine documentation.
 
 * [Editor Background Operations (TODO)](editor/editor-bg-operations.md)
 * [Editor Documents (TODO)](editor/editor-documents.md)
-* [ezEditor Overview (TODO)](editor/editor-overview.md)
+* [ezEditor Overview](editor/editor-overview.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
 * [Editor Settings (TODO)](editor/editor-settings.md)
 * [Template Documents (TODO)](editor/editor-template-documents.md)
@@ -81,7 +82,11 @@ Welcome to the ezEngine documentation.
 * [Lighting (TODO)](graphics/lighting-overview.md)
 * [Meshes (TODO)](graphics/meshes-overview.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
-* [Shaders (TODO)](graphics/shaders-overview.md)
+* __Shaders__
+  * [Shader Debugging](graphics/shaders/shader-debugging.md)
+  * [Shader Permutation Variables](graphics/shaders/shader-permutation-variables.md)
+  * [Shader Render State](graphics/shaders/shader-render-state.md)
+  * [Shaders (TODO)](graphics/shaders/shaders-overview.md)
 * [Textures (TODO)](graphics/textures-overview.md)
 
 ### Materials
@@ -210,6 +215,7 @@ Welcome to the ezEngine documentation.
 * [Coding Guidelines (TODO)](appendix/coding-guidelines.md)
 * [Color Spaces (TODO)](appendix/color-spaces.md)
 * [Container Usage Guidelines](appendix/container-usage.md)
+* [Library Structure](appendix/library-structure.md)
 * [String Usage Guidelines](appendix/string-usage.md)
 * [String Formatting (TODO)](appendix/string-formatting.md)
 * [Videos](appendix/videos.md)

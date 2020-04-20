@@ -1,6 +1,7 @@
 coding-guidelines.md
 color-spaces.md
 container-usage.md
+library-structure.md
 string-usage.md
 string-formatting.md
 videos.md

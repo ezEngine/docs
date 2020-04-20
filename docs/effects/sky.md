@@ -10,7 +10,7 @@ The *SkyBox component* implements a simply sky, which displays a cubemap texture
 
 * **ExposureBias**: This specifies how bright the sky will appear. A higher value results in a brighter sky.
 
-* **InverseTonemap**: Switches the tonemapping mode. The mode affects the brightness and contrast of the sky.
+* **InverseTonemap**: Switches the tonemapping mode. For HDR skyboxes this should stay off. For skyboxes that do not have high-dynamic range values, enabling this mode will improve brightness and contrast of the colors.
 
 * **UseFog, VirtualDistance**: If enabled, [fog](fog.md) will be applied to the sky. In that case *VirtualDistance* is being used to compute how foggy the sky should appear.
 

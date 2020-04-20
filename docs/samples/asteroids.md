@@ -9,7 +9,7 @@ The **Asteroids Sample** is a small game that shows how to use various component
 
 **Note:** The project is only available when the solution is built with **EZ_BUILD_GAMES** activated.
 
-The game itself is a stand-alone application, but the assets that it uses need to be transformed by the [ezEditor (TODO)](../editor/editor-overview.md). Open the editor project in *Data/Samples/Asteroids* in ezEditor, open the *Asset Browser* panel and click the *Transform All* button (white box with red arrow). Afterwards you can run the Asteroids application.
+The game itself is a stand-alone application, but the assets that it uses need to be transformed by the [ezEditor](../editor/editor-overview.md). Open the editor project in *Data/Samples/Asteroids* in ezEditor, open the *Asset Browser* panel and click the *Transform All* button (white box with red arrow). Afterwards you can run the Asteroids application.
 
 ## Code
 
