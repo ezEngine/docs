@@ -2,6 +2,8 @@
 
 Welcome to the ezEngine documentation.
 
+For topics not (yet) covered by the documentation, [contact us](appendix/contact.md).
+
 ## Table of Contents
 
 ### Releases
@@ -212,11 +214,12 @@ Welcome to the ezEngine documentation.
 
 ### Appendix
 
-* [Coding Guidelines (TODO)](appendix/coding-guidelines.md)
-* [Color Spaces (TODO)](appendix/color-spaces.md)
-* [Container Usage Guidelines](appendix/container-usage.md)
+* [Contact](appendix/contact.md)
+* [Videos](appendix/videos.md)
 * [Library Structure](appendix/library-structure.md)
+* [Coding Guidelines (TODO)](appendix/coding-guidelines.md)
+* [Container Usage Guidelines](appendix/container-usage.md)
 * [String Usage Guidelines](appendix/string-usage.md)
 * [String Formatting (TODO)](appendix/string-formatting.md)
-* [Videos](appendix/videos.md)
+* [Color Spaces (TODO)](appendix/color-spaces.md)
 * [ThirdParty Code](appendix/third-party-code.md)

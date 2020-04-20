@@ -2,5 +2,7 @@
 
 Welcome to the ezEngine documentation.
 
+For topics not (yet) covered by the documentation, [contact us](contact.md).
+
 ## Table of Contents
 {TOC}

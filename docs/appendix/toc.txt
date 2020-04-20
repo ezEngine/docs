@@ -1,8 +1,9 @@
-coding-guidelines.md
-color-spaces.md
-container-usage.md
+contact.md
+videos.md
 library-structure.md
+coding-guidelines.md
+container-usage.md
 string-usage.md
 string-formatting.md
-videos.md
+color-spaces.md
 third-party-code.md

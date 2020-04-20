@@ -14,7 +14,7 @@ Of course you are also invited to write entirely new samples.
 
 ## Code Documentation
 
-We try to document our code as good as possible, but there are undocumented or poorly documented pieces, and of course there are also comments that are outdated or not as good as they could be. If you improve any documentation, please contribute it back, even if you only did minor changes or fixed typos.
+We try to document our code as well as possible, but there are undocumented or poorly documented pieces, and of course there are also comments that are outdated or not as good as they could be. If you improve any documentation, please contribute it back, even if you only did minor changes or fixed typos.
 
 ## Bugfixes
 
@@ -28,8 +28,9 @@ And if you really want to contribute to the overall test coverage, search the co
 
 ## Features
 
-We also value feature contributions, but with those we might be much more picky. If you feel confident enough to add a whole new feature, go for it. Contact us if you need help with something. In fact, unless it is a very small feature, it may be beneficial to contact us just to get on the same page what a feature should do, how it should be exposed to the user and what's the best way to implement it. You should have a strong background in C++, though, as we simply do not have the time to walk you through basic programming steps, we can only give high-level help on how to make stuff work inside ez.
+We also value feature contributions, but with those we might be much more picky. If you feel confident enough to add a whole new feature, go for it. [Contact us](../appendix/contact.md) if you need help with something. In fact, unless it is a very small feature, it may be beneficial to contact us just to get on the same page what a feature should do, how it should be exposed to the user and what's the best way to implement it. You should have a strong background in C++, though, as we simply do not have the time to walk you through basic programming steps, we can only give high-level help on how to make stuff work inside ez.
 
 ## See Also
 
 * [Back to Index](../index.md)
+* [Contact](../appendix/contact.md)
