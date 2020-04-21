@@ -47,7 +47,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Editor Documents (TODO)](editor/editor-documents.md)
 * [ezEditor Overview](editor/editor-overview.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
-* [Editor Settings (TODO)](editor/editor-settings.md)
+* [Editor Settings](editor/editor-settings.md)
 * [Template Documents (TODO)](editor/editor-template-documents.md)
 * [Testing a Scene](editor/run-scene.md)
 
