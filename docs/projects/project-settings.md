@@ -54,6 +54,8 @@ The input slots that can be chosen in this dialog are listed in files located un
 
 ## Tags
 
+*Editor > Project Settings > Tags...* opens a dialog to configure which [tags](tags.md) are available in the project.
+
 ## Window Configuration
 
 ## Asset Profiles
