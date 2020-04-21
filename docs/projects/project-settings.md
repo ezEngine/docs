@@ -62,7 +62,7 @@ The input slots that can be chosen in this dialog are listed in files located un
 
 ![Window Configuration](media/editor-window-config.png)
 
-These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in [ezPlayer](../tools/player.md). A proper game would typically implement this logic in a custom [application](../runtime/application/application.md) and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.
+These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in [ezPlayer](../tools/player.md). A proper game would typically implement this logic in a custom [application (TODO)](../runtime/application/application.md) and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.
 
 There are two separately stored configurations:
 
@@ -74,12 +74,17 @@ Apart from the window position and size, the window configuration also controls 
 
 ## Asset Profiles
 
+*Editor > Project Settings > Asset Profiles...* opens a dialog to edit [asset profiles (TODO)](../assets/asset-profiles.md).
+
 ## FMOD
+
+If the [FMOD Integration (TODO)](../sound/fmod-overview.md) is enabled, *Editor > Project Settings > Fmod Project Settings...* will be available to configure the speaker mode and which master sound bank to use.
 
 ## PhysX
 
-<!-- PAGE IS TODO -->
+If the [PhysX Integration (TODO)](../physics/physx-overview.md) is enabled, *Editor > Project Settings > PhysX Project Settings...* will be available to configure the [collision layers (TODO)](../physics/collision-layers.md).
 
 ## See Also
 
 * [Back to Index](../index.md)
+* [Projects (TODO)](projects-overview.md)

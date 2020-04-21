@@ -26,7 +26,7 @@ Tags are used by the renderer to decide which objects to include or exclude from
 
 You can use this to make objects invisible in certain views and only render them in certain other views.
 
-This mechanism is also used to decide which objects cast [shadows](../graphics/lighting-overview.md). Only objects with the *CastShadow* tag will be included in the shadow map generation.
+This mechanism is also used to decide which objects cast [shadows (TODO)](../graphics/lighting-overview.md). Only objects with the *CastShadow* tag will be included in the shadow map generation.
 
 **Note:** The editor uses its own render view, for which you currently cannot edit the include and exclude tags. You have to launch [Play-the-Game mode](../editor/run-scene.md) for the engine to render the scene using your custom camera setup, to see the final result. You can, however, select a camera object and look at its preview window, to see the effect of the tag setup.
 
@@ -36,7 +36,7 @@ The image below shows two objects. The blue object on the left has the *Invisibl
 
 ## Limitations
 
-Tags are always set directly on one object. They are not inherited to child objects and usually the code that evaluates tags does not check parent objects for their tags. Thus, to exclude an object from a view, the tag has to be set directly on the render object. Setting it on parent node or a [prefab instance](../prefabs/prefabs-overview.md), for example, won't work.
+Tags are always set directly on one object. They are not inherited to child objects and usually the code that evaluates tags does not check parent objects for their tags. Thus, to exclude an object from a view, the tag has to be set directly on the render object. Setting it on parent node or a [prefab instance (TODO)](../prefabs/prefabs-overview.md), for example, won't work.
 
 Similarly, if you want to make an object invisible in one view, you probably also need to disable shadow casting on it. If, however, it should be visible in another view, it cannot cast a shadow in that view, as the shadow maps are shared between the views.
 
@@ -44,5 +44,5 @@ Similarly, if you want to make an object invisible in one view, you probably als
 
 * [Back to Index](../index.md)
 * [Project Settings](project-settings.md)
-* [PhysX Integration](../physics/physx.md)
-* [Lighting](../graphics/lighting-overview.md)
+* [PhysX Integration (TODO)](../physics/physx-overview.md)
+* [Lighting (TODO)](../graphics/lighting-overview.md)
