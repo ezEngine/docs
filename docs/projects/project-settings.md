@@ -58,6 +58,20 @@ The input slots that can be chosen in this dialog are listed in files located un
 
 ## Window Configuration
 
+*Editor > Project Settings > Window Configuration...* opens a dialog to configure the default window configuration when [running a scene](../editor/run-scene.md).
+
+![Window Configuration](media/editor-window-config.png)
+
+These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in [ezPlayer](../tools/player.md). A proper game would typically implement this logic in a custom [application](../runtime/application/application.md) and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.
+
+There are two separately stored configurations:
+
+**Project Default:** This configuration will be stored in the project folder and thus should be checked into source control to be shared with others.
+
+**User Specific:** This configuration is only stored locally for the active user and not in the project directory. Therefore it cannot be checked into source control. It is meant for users who want to use settings different from the project default. For instance, when you have multiple monitors, you may want the exported scene to always appear on a specific one. This configuration must be enabled to override the default one.
+
+Apart from the window position and size, the window configuration also controls the behavior of the mouse. If **Clip Mouse Cursor** is enabled, the mouse won't be able to leave the window area. This should be preferred for games that hide the mouse and only use relative mouse movement.
+
 ## Asset Profiles
 
 ## FMOD
