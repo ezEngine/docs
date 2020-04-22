@@ -14,6 +14,8 @@ The list on the left lists all the available preferences. Items prefixed with `A
 
 * **RestoreProjectOnStartup:** If enabled, the editor will load the project that was open the last time.
 
+* **BackgroundAssetProcessing:** If set, background [assets processing](../assets/assets-overview.md) will be activated by default, when you open a project.
+
 * **FieldOfView:** The FOV of the generic editor camera.
 
 * **GizmoScale:** Allows you to change the size of the editor gizmos.
