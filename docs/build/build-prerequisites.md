@@ -8,7 +8,7 @@ We try to keep the number of prerequisites to build ezEngine as small as possibl
 
 ### Fmod (optional)
 
-ez supports [fmod](https://www.fmod.com/) for sound. If you want to enable fmod support, register with fmod and then download the "Fmod Studio API 2.x installer" and install it.
+ez supports [Fmod](https://www.fmod.com/) for sound. If you want to enable Fmod support, register with Fmod and then download the "Fmod Studio API 2.x installer" and install it.
 
 ## See Also
 

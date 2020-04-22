@@ -1,6 +1,6 @@
 # Data Directories
 
-*Data directories* are a vital concept in ezEngine. They define where on disk the game data resides, which data is accessible to your project and how. Data directories can be used to organize your assets and share content across multiple [projects (TODO)](projects-overview.md).
+*Data directories* are a vital concept in ezEngine. They define where on disk the game data resides, which data is accessible to your project and how. Data directories can be used to organize your assets and share content across multiple [projects](projects-overview.md).
 
 For the typical use case, you can treat a data directory simply as a *folder*, which is *mounted* in your game, making all files in that folder accessible. Your game can mount an arbitrary number of data directories. Files outside of data directories are **not accessible** by the game engine. The editor displays all available [assets (TODO)](../assets/assets-overview.md) from the mounted directories in the [asset browser](../assets/asset-browser.md). When browsing for a file, the editor actively refuses to use files that are not inside a mounted data directory. Otherwise this file would not be readable by the engine.
 
@@ -27,6 +27,6 @@ You can also mount data directories from code. Usually you would do this either 
 * [Back to Index](../index.md)
 * [FileSystem](../runtime/filesystem.md)
 * [FileServe (TODO)](../tools/fileserve.md)
-* [Projects (TODO)](projects-overview.md)
+* [Projects](projects-overview.md)
 * [Application (TODO)](../runtime/application/application.md)
 * [Game States (TODO)](../runtime/application/game-state.md)

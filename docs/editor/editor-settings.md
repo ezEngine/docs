@@ -4,7 +4,7 @@ Editor settings are user specific and independent of projects. They are stored i
 
 ## Preferences
 
-Preferences are user specific editor settings. Preferences may affect the entire editor application, only a certain [project (TODO)](../projects/projects-overview.md), or even just a single [document (TODO)](editor-documents.md).
+Preferences are user specific editor settings. Preferences may affect the entire editor application, only a certain [project](../projects/projects-overview.md), or even just a single [document (TODO)](editor-documents.md).
 
 ![Preferences](media/editor-preferences.png)
 
@@ -14,7 +14,7 @@ The list on the left lists all the available preferences. Items prefixed with `A
 
 * **RestoreProjectOnStartup:** If enabled, the editor will load the project that was open the last time.
 
-* **BackgroundAssetProcessing:** If set, background [assets processing](../assets/assets-overview.md) will be activated by default, when you open a project.
+* **BackgroundAssetProcessing:** If set, background [assets processing (TODO)](../assets/assets-overview.md) will be activated by default, when you open a project.
 
 * **FieldOfView:** The FOV of the generic editor camera.
 

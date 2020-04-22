@@ -43,7 +43,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Editor
 
-* [Editor Background Operations (TODO)](editor/editor-bg-operations.md)
+* [Editor Background Operations](editor/editor-bg-operations.md)
 * [Editor Documents (TODO)](editor/editor-documents.md)
 * [ezEditor Overview](editor/editor-overview.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
@@ -55,7 +55,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 * [Data Directories](projects/data-directories.md)
 * [Project Settings](projects/project-settings.md)
-* [Projects (TODO)](projects/projects-overview.md)
+* [Projects](projects/projects-overview.md)
 * [Tags](projects/tags.md)
 
 ### Scenes

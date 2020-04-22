@@ -20,7 +20,7 @@ See [Testing Chambers](../samples/testing-chambers.md).
 
 ## Setting Up a Custom Project
 
-When you create a custom [project (TODO)](../projects/projects-overview.md), you must make a few configurations.
+When you create a custom [project](../projects/projects-overview.md), you must make a few configurations.
 
 Select *Editor > Create Project* and select an empty folder where your project should be stored.
 
