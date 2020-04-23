@@ -49,4 +49,4 @@ The greyboxing shape is not meant to be used for dynamic collisions. That means,
 * [Back to Index](../index.md)
 * [Scene Editing (TODO)](scene-editing.md)
 * [Editing Gizmos](gizmos.md)
-* [Advanced Object Transforms (TODO)](advanced-object-transform.md)
+* [Advanced Object Transforms](advanced-object-transform.md)
