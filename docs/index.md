@@ -60,13 +60,14 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Scenes
 
-* [Editing Gizmos](scenes/editor-gizmos.md)
 * [Editing Views (TODO)](scenes/editor-views.md)
 * [Exposed Parameters (TODO)](scenes/exposed-parameters.md)
+* [Editing Gizmos](scenes/gizmos.md)
 * [Greyboxing (TODO)](scenes/greyboxing.md)
 * [Object References (TODO)](scenes/object-references.md)
 * [Procedural Object Placement (TODO)](scenes/procedural-generation.md)
 * [Scene Editing (TODO)](scenes/scene-editing.md)
+* [Selecting Objects](scenes/selection.md)
 
 ### Assets
 

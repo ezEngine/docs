@@ -44,18 +44,15 @@ Manipulators are component and property specific gizmos. Properties of a compone
 
 ![Manipulator](media/manipulator.jpg)
 
-## Visualizers and Shape Icons
+## Visualizers
 
-Some component types use a *shape icon* as their visible representation. This makes it possible to select these types of objects in the viewport. Shape icons can be toggle with the `I` key. Additionally, some components use *visualizers* to make some of their aspects more obvious, such as the cone of the spotlight in the image below. These visualizers are only drawn for selected objects and can be toggle using the `V` key. When visualizers are enabled, the editor will also display a yellow bounding box around each selected object.
+Some components use *visualizers* to make some of their aspects more obvious, such as the cone of the spotlight in the image below. These visualizers are only drawn for selected objects and can be toggled using the `V` key. When visualizers are enabled, the editor will also display a yellow [bounding box](selection.md#selection-bounding-box) around each selected object.
 
 ![Visualizer and Shape Icon](media/visualizer-shapeicon.jpg)
-
-## Selection Outline
-
-Selected objects are highlighted with a yellow outline, which is visible through walls. This outline can be toggled with the `S` key or the respective toolbar button.
-
-![Selection Outline](media/selection-outline.jpg)
 
 ## See Also
 
 * [Back to Index](../index.md)
+* [Selecting Objects](selection.md)
+* [Greyboxing (TODO)](greyboxing.md)
+* [Scene Editing (TODO)](scene-editing.md)
