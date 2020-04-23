@@ -32,7 +32,7 @@ These affect not only the gizmos, but also the positioning of [assets (TODO)](..
 
 ## Grid
 
-The grid can be toggled with the `G` key or the grid icon from the toolbar. If enabled, the grid shows up for the *transform gizmo* and in [greyboxing mode (TODO)](greyboxing.md). For the translate gizmo you can choose in which plane the grid is shown, by clicking one of its quads. Afterwards you can still move along the orthogonal axis by dragging the respective axis handle.
+The grid can be toggled with the `G` key or the grid icon from the toolbar. If enabled, the grid shows up for the *transform gizmo* and in [greyboxing mode](greyboxing.md). For the translate gizmo you can choose in which plane the grid is shown, by clicking one of its quads. Afterwards you can still move along the orthogonal axis by dragging the respective axis handle.
 
 ![Grid](media/grid.jpg)
 
@@ -54,5 +54,5 @@ Some components use *visualizers* to make some of their aspects more obvious, su
 
 * [Back to Index](../index.md)
 * [Selecting Objects](selection.md)
-* [Greyboxing (TODO)](greyboxing.md)
+* [Greyboxing](greyboxing.md)
 * [Scene Editing (TODO)](scene-editing.md)

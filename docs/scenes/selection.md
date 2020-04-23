@@ -6,6 +6,10 @@ This page describes everything related to object selection.
 
 * Pressing `ESC` will clear the selection.
 
+## Select Transparent
+
+Press the `U` key to toggle whether transparent objects should be selectable. Disabling this can be very useful if you have large objects with special shaders, for instance to create atmospheric effects like volumetric lighting. Such shapes can prevent you from selecting anything else, even though they are mostly invisible.
+
 ## Selection Outline
 
 Selected objects are highlighted with a yellow outline, which is visible through walls. This outline can be toggled with the `S` key or the respective toolbar button.
@@ -45,6 +49,6 @@ You can filter the scene tree with the search box at the top:
 
 * [Back to Index](../index.md)
 * [Editing Gizmos](gizmos.md)
-* [Greyboxing (TODO)](greyboxing.md)
+* [Greyboxing](greyboxing.md)
 * [Scene Editing (TODO)](scene-editing.md)
 
