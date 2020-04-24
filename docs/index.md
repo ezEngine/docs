@@ -61,6 +61,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 ### Scenes
 
 * [Advanced Object Transforms](scenes/advanced-object-transform.md)
+* [Editor Camera](scenes/editor-camera.md)
 * [Editing Views (TODO)](scenes/editor-views.md)
 * [Exposed Parameters (TODO)](scenes/exposed-parameters.md)
 * [Editing Gizmos](scenes/gizmos.md)
