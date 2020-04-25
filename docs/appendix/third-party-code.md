@@ -82,13 +82,24 @@ Compile switch: None (hard dependency for the asset processing)
 
 Tangent space generation code by Morten S. Mikkelsen. See [https://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps](https://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps) for more information. It is used by ezGeometry.
 
-## PhysX 3.4
+## PhysX 4.1.1
 
-Link: [https://github.com/NVIDIAGameWorks/PhysX-3.4](https://github.com/NVIDIAGameWorks/PhysX-3.4)
+Link: [https://github.com/NVIDIAGameWorks/PhysX](https://github.com/NVIDIAGameWorks/PhysX)
 
 Compile switch: **EZ_BUILD_PHYSX**
 
 NVIDIA PhysX is used to provide collision detection, physics simulation, character controllers and other interactions.
+
+To build PhysX yourself:
+
+1. Checkout **https://github.com/NVIDIAGameWorks/PhysX.git**
+1. Goto **physx/buildtools/presets/public** and open all presets that you want to build and change or add\
+\<cmakeSwitch name="NV_USE_STATIC_WINCRT" value="False" comment="Use the statically linked windows CRT" />\
+\<cmakeSwitch name="NV_USE_DEBUG_WINCRT" value="True" comment="Use the debug version of the CRT" />
+1. **Run physx/generate_projects.bat** for every configuration you want to build
+1. Open **physx/compiler/.../PhysXSDK.sln** and compile **CMakePredefinedTargets/INSTALL** for both debug and release
+1. Uwp installs are missing two include folders: **PhysX/include/cudamanager** and **PhysX/include/gpu** so copy those from **physx/include** to **physx/install/.../PhysX/include**
+1. The content of the built configuration in **physx/install** is now ready to be consumed by ezEngine by pointing the advanced cmake var **EZ_PHYSX_SDK** to it.
 
 ## Qt 5
 
