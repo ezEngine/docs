@@ -49,6 +49,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
 * [Editor Settings](editor/editor-settings.md)
 * [Template Documents (TODO)](editor/editor-template-documents.md)
+* [Editing Views](editor/editor-views.md)
 * [Testing a Scene](editor/run-scene.md)
 
 ### Projects
@@ -62,7 +63,6 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 * [Advanced Object Transforms](scenes/advanced-object-transform.md)
 * [Editor Camera](scenes/editor-camera.md)
-* [Editing Views (TODO)](scenes/editor-views.md)
 * [Exposed Parameters (TODO)](scenes/exposed-parameters.md)
 * [Editing Gizmos](scenes/gizmos.md)
 * [Greyboxing](scenes/greyboxing.md)

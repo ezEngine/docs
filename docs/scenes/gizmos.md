@@ -22,6 +22,10 @@ The translate and the rotate gizmo may operate either in **local space** (*objec
 
 All modifiers can be combined.
 
+### Orthographic Views
+
+When the *Translate*, *Rotate* or *Scale* gizmo is active, holding `LMB` and moving the mouse will modify objects. The perspective of the selected [view](../editor/editor-views.md) (top-down, front, right) determines along which axis the object will be translated or rotated (always in global space). *Scale* will always be uniform.
+
 ## Snap Settings
 
 Press `End` or the respective icon from the toolbar to open the snap settings:
@@ -43,6 +47,10 @@ The density of the grid shows the current position snap value. If position snap 
 Manipulators are component and property specific gizmos. Properties of a component that can be changed with a manipulator, are highlighted in blue (off) or violet (on). You can click the property label to toggle the manipulator mode. Once a manipulator is enabled, all *Standard Gizmos* are disabled. You can now also use the `Q` key to toggle manipulator mode off and on.
 
 ![Manipulator](media/manipulator.jpg)
+
+### Orthographic Views
+
+Most manipulators will not be available in orthographic [views](../editor/editor-views.md).
 
 ## Visualizers
 

@@ -29,7 +29,7 @@ In the following `LMB` refers to the *left mouse button*, `RMB` to the *right mo
   * Pressing `F` once will only *pan* the camera towards the selected objects
   * Pressing `F` a second time will additionally zoom in on them
 
-* `SHIFT + F`: Same as `F` but frames the object in all [views (TODO)](editor-views.md) simultaneously
+* `SHIFT + F`: Same as `F` but frames the object in all [views](../editor/editor-views.md) simultaneously
   * This can also be triggered by double-clicking an item in the *Scenegraph*
 
 * `ALT + LMB`: Orbit around the last *framed* object
@@ -86,4 +86,4 @@ The editor camera uses a fixed *field of view* (FOV). The FOV can be changed in 
 
 * [Back to Index](../index.md)
 * [Editor Settings](../editor/editor-settings.md)
-* [Editing Views (TODO)](editor-views.md)
+* [Editing Views](../editor/editor-views.md)
