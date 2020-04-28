@@ -10,7 +10,7 @@ Using the *Perspective* menu in the toolbar (the *eye* icon) you can switch each
 
 ## Render Modes
 
-Render modes are used to visualize different aspects of the scene. The can be useful for debugging rendering issues, see potential performance hotspots, or easier edit a dark scene.
+Render modes are used to visualize different aspects of the scene. They can be useful for debugging rendering issues, see potential performance hotspots, or easier edit a dark scene.
 
 Most 3D viewports allow you to switch the rendering mode through a drop down menu.
 
