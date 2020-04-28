@@ -146,7 +146,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 ### Gameplay
 
 * [Player Start Point](gameplay/player-start-point.md)
-* [Spawn Component (TODO)](gameplay/spawn-component.md)
+* [Spawn Component](gameplay/spawn-component.md)
 
 ---
 
