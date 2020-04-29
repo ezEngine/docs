@@ -43,7 +43,7 @@ Plugins may add project wide options. Not all options may be exposed through edi
 
 * [Data directories](data-directories.md)
 * [Engine plugins (TODO)](../custom-code/cpp/engine-plugins.md)
-* [Collision layers (TODO)](../physics/collision-layers.md)
+* [Collision layers](../physics/collision-layers.md)
 * [Input Configuration](project-settings.md#input-configuration)
 * [Tags](tags.md)
 * [Window Configuration](project-settings.md#window-configuration)

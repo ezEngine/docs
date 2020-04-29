@@ -108,7 +108,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Physics
 
-* [Collision Layers (TODO)](physics/collision-layers.md)
+* [Collision Layers](physics/collision-layers.md)
 * [Collision Meshes (TODO)](physics/collision-meshes.md)
 * [PhysX Integration (TODO)](physics/physx-overview.md)
 
