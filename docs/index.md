@@ -108,9 +108,15 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Physics
 
+* [Physics Actors (TODO)](physics/actors.md)
+* [Character Controller (TODO)](physics/character-controller.md)
 * [Collision Layers](physics/collision-layers.md)
-* [Collision Meshes (TODO)](physics/collision-meshes.md)
+* [Collision Meshes](physics/collision-meshes.md)
+* [Physics Joints (TODO)](physics/joints.md)
 * [PhysX Integration (TODO)](physics/physx-overview.md)
+* [Physics Shapes (TODO)](physics/shapes.md)
+* [Physics Triggers (TODO)](physics/triggers.md)
+* [PhysX Visual Debugger (TODO)](physics/visual-debugger.md)
 
 ### Effects
 
