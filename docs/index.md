@@ -116,7 +116,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [PhysX Integration (TODO)](physics/physx-overview.md)
 * [Physics Shapes (TODO)](physics/shapes.md)
 * [Physics Triggers (TODO)](physics/triggers.md)
-* [PhysX Visual Debugger (TODO)](physics/visual-debugger.md)
+* [PhysX Visual Debugger](physics/visual-debugger.md)
 
 ### Effects
 

@@ -24,7 +24,7 @@ To attach a convex mesh to a dynamic physics actor, use the *Convex Mesh Shape* 
 
 ## Visualizing Collision Meshes
 
-Sometimes you want to visualize the collision mesh of an object within a scene. The most powerful way to look at physics objects is to use the [PhysX Visual Debugger (TODO)](visual-debugger.md). However, for some use cases you can also just attach a *Collision Mesh Visualization* component (`ezPxVisColMeshComponent`). This renders the collision mesh into your scene the same way as in the images above.
+Sometimes you want to visualize the collision mesh of an object within a scene. The most powerful way to look at physics objects is to use the [PhysX Visual Debugger](visual-debugger.md). However, for some use cases you can also just attach a *Collision Mesh Visualization* component (`ezPxVisColMeshComponent`). This renders the collision mesh into your scene the same way as in the images above.
 
 ## See Also
 
@@ -33,4 +33,4 @@ Sometimes you want to visualize the collision mesh of an object within a scene. 
 * [Physics Shapes (TODO)](shapes.md)
 * [Physics Actors (TODO)](actors.md)
 * [Collision Layers](collision-layers.md)
-* [PhysX Visual Debugger (TODO)](visual-debugger.md)
+* [PhysX Visual Debugger](visual-debugger.md)
