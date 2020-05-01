@@ -35,7 +35,7 @@ Select *Editor > Create Document...* and create a [document (TODO)](../editor/ed
 
 ![New Scene](media/new-project-scene.jpg)
 
-If you don't see the [asset browser](../assets/asset-browser.md), make sure to open it. You can now [edit your scene (TODO)](../scenes/scene-editing.md). When you need more assets to play with, you need to [import them](../assets/import-assets.md) into your project. Once you have something in your scene that could *do something*, you can [test your scene](../editor/run-scene.md). A good starting point for that is to simply attach a `Rotor` component to a mesh. A fun next step is to let objects fall down using [PhysX (TODO)](../physics/physx-overview.md) (hint: you need a `Dynamic Actor` component and a `Box Shape` component)
+If you don't see the [asset browser](../assets/asset-browser.md), make sure to open it. You can now [edit your scene](../scenes/scene-editing.md). When you need more assets to play with, you need to [import them](../assets/import-assets.md) into your project. Once you have something in your scene that could *do something*, you can [test your scene](../editor/run-scene.md). A good starting point for that is to simply attach a `Rotor` component to a mesh. A fun next step is to let objects fall down using [PhysX (TODO)](../physics/physx-overview.md) (hint: you need a `Dynamic Actor` component and a `Box Shape` component)
 
 ## Project-wide options
 

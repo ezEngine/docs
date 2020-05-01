@@ -76,7 +76,7 @@ The play/pause button is for switching **background processing** on and off. If 
 
 ## Drag and Drop
 
-You can drag assets from the asset browser into other documents, such as [scenes (TODO)](../scenes/scene-editing.md). For mesh and prefab assets this will instantiate the asset (ie. create a new node that references the asset). For [materials (TODO)](../materials/materials-overview.md) this may assign the material to the object that you drag it onto. Not all asset types support drag and drop. Also dragging an asset into the 3D viewport can have a different effect than dragging it into the scene tree.
+You can drag assets from the asset browser into other documents, such as [scenes](../scenes/scene-editing.md). For mesh and prefab assets this will instantiate the asset (ie. create a new node that references the asset). For [materials (TODO)](../materials/materials-overview.md) this may assign the material to the object that you drag it onto. Not all asset types support drag and drop. Also dragging an asset into the 3D viewport can have a different effect than dragging it into the scene tree.
 
 ## Video
 

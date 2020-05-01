@@ -68,7 +68,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Greyboxing](scenes/greyboxing.md)
 * [Object References (TODO)](scenes/object-references.md)
 * [Procedural Object Placement (TODO)](scenes/procedural-generation.md)
-* [Scene Editing (TODO)](scenes/scene-editing.md)
+* [Scene Editing](scenes/scene-editing.md)
 * [Selecting Objects](scenes/selection.md)
 
 ### Assets
@@ -158,6 +158,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Custom Code
 
+* [Custom Code (TODO)](custom-code/custom-code-overview.md)
 * __C++__
   * [Custom Code with C++ (TODO)](custom-code/cpp/cpp-overview.md)
   * [Engine Plugins (TODO)](custom-code/cpp/engine-plugins.md)

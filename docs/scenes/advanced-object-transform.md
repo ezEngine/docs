@@ -66,4 +66,4 @@ You could go even further and apply a random scale to each object, as well.
 
 * [Back to Index](../index.md)
 * [Editing Gizmos](gizmos.md)
-* [Scene Editing (TODO)](scene-editing.md)
+* [Scene Editing](scene-editing.md)

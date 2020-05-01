@@ -22,7 +22,7 @@ The translate and the rotate gizmo may operate either in **local space** (*objec
 
 All modifiers can be combined.
 
-### Orthographic Views
+### Gizmos in Orthographic Views
 
 When the *Translate*, *Rotate* or *Scale* gizmo is active, holding `LMB` and moving the mouse will modify objects. The perspective of the selected [view](../editor/editor-views.md) (top-down, front, right) determines along which axis the object will be translated or rotated (always in global space). *Scale* will always be uniform.
 
@@ -48,7 +48,7 @@ Manipulators are component and property specific gizmos. Properties of a compone
 
 ![Manipulator](media/manipulator.jpg)
 
-### Orthographic Views
+### Manipulators in Orthographic Views
 
 Most manipulators will not be available in orthographic [views](../editor/editor-views.md).
 
@@ -63,4 +63,4 @@ Some components use *visualizers* to make some of their aspects more obvious, su
 * [Back to Index](../index.md)
 * [Selecting Objects](selection.md)
 * [Greyboxing](greyboxing.md)
-* [Scene Editing (TODO)](scene-editing.md)
+* [Scene Editing](scene-editing.md)
