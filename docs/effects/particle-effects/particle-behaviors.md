@@ -16,9 +16,9 @@ Similarly, an effect that uses the [raycast behavior](#raycast-behavior) to prev
 
 ## Color Gradient Behavior
 
-This behavior changes a particle's color during the update step. A [color gradient (TODO)](../../animation/color-gradients.md) is used as the color source, and a mode specifies how to look up the color from the gradient.
+This behavior changes a particle's color during the update step. A [color gradient](../../animation/color-gradients.md) is used as the color source, and a mode specifies how to look up the color from the gradient.
 
-**Gradient:** The [color gradient (TODO)](../../animation/color-gradients.md) to use as the source.
+**Gradient:** The [color gradient](../../animation/color-gradients.md) to use as the source.
 
 **TintColor:** An additional color to be multiplied into the gradient, for tweaking the final result.
 
@@ -95,7 +95,7 @@ This behavior uses raycasts to detect collisions along the trajectory of a parti
 
 This behavior changes a particle's size over the course of its lifetime.
 
-**SizeCurve:** A [curve (TODO)](../../animation/curves.md) which is used to look up the size of the particle. The current fraction of the particle's lifespan is used for the lookup along the X axis. The absolute X and Y values in the curve don't matter, the curve is normalized to `[0; 1]` range.
+**SizeCurve:** A [curve](../../animation/curves.md) which is used to look up the size of the particle. The current fraction of the particle's lifespan is used for the lookup along the X axis. The absolute X and Y values in the curve don't matter, the curve is normalized to `[0; 1]` range.
 
 **BaseSize:** The particles will always have at least this size, the rest is added on top.
 

@@ -136,8 +136,8 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Animation
 
-* [Color Gradients (TODO)](animation/color-gradients.md)
-* [Curves (TODO)](animation/curves.md)
+* [Color Gradients](animation/color-gradients.md)
+* [Curves](animation/curves.md)
 * [Property Animation (TODO)](animation/property-animation.md)
 
 ### Sound
