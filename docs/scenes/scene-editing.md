@@ -62,7 +62,7 @@ Apart from the single 3D perspective view, there are also orthographic views and
 
 ### Materials
 
-Materials are what is used to give objects a texture. There is much more to this and the [chapter about materials (TODO)](../materials/materials-overview.md) lists all the details, but for the time being you can get away with just the most simple material setup. For instance, when you [import](../assets/import-assets.md) a [mesh (TODO)](../graphics/meshes-overview.md), it may add materials automatically for you. Usually you just need to make sure that the paths to the referenced [textures (TODO)](../graphics/textures-overview.md) are correct.
+Materials are what is used to give objects a texture. There is much more to this and the [chapter about materials (TODO)](../materials/materials-overview.md) lists all the details, but for the time being you can get away with just the most simple material setup. For instance, when you [import](../assets/import-assets.md) a [mesh (TODO)](../graphics/meshes-overview.md), it may add materials automatically for you. Usually you just need to make sure that the paths to the referenced [textures](../graphics/textures-overview.md) are correct.
 
 ### Physics
 

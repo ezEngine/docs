@@ -1,24 +1,24 @@
 # Textures
 
-Textures come in multiple forms. Most common are 2D textures loaded from file. 2D textures can also be created as render targets for [render-to-texture](../effects/render-to-texture.md). For [sky boxes](../effects/sky.md) or special effects you can also set up cubemap textures.
+Textures come in multiple forms. Most common are 2D textures loaded from file. 2D textures can also be created as render targets for [render-to-texture (TODO)](../effects/render-to-texture.md). For [sky boxes](../effects/sky.md) or special effects you can also set up cubemap textures.
 
-When the source texture comes from a file, you can create a texture [asset](../assets/assets-overview.md) for that file by [importing](../assets/import-assets.md) it. Otherwise you need to create the respective asset [document](../editor/editor-documents.md) manually, for example for render targets.
+When the source texture comes from a file, you can create a texture [asset (TODO)](../assets/assets-overview.md) for that file by [importing](../assets/import-assets.md) it. Otherwise you need to create the respective asset [document (TODO)](../editor/editor-documents.md) manually, for example for render targets.
 
-Textures are most often referenced by [materials](../materials/materials-overview.md). Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the [SkyBox component](../effects/sky.md#skybox-component).
+Textures are most often referenced by [materials (TODO)](../materials/materials-overview.md). Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the [SkyBox component](../effects/sky.md#skybox-component).
 
 ![Texture Asset](media/texture-asset.png)
 
 All texture assets show a **3D preview**. Here you can move the camera around to observe how the texture looks. Using the **Mipmap slider** in the toolbar, you can inspect individual mipmaps. With the **channel selection dropdown** next to the slider you can choose which channels to show. In the bottom left of the viewport, some **stats** are displayed, for instance what compression format is used.
 
-On the right-hand side you see the **property grid** where you choose the texture settings. Since transforming a texture can take quite some time, these assets are not automatically updated when you change their properties or even save the asset. Instead, **transform the asset manually** either by clicking the transform button in the toolbar or with `Ctrl + E`.
+On the right-hand side you see the property grid where you choose the **texture settings**. Since transforming a texture can take quite some time, these assets are not automatically updated when you change their properties or even save the asset. Instead, **transform the asset manually** either by clicking the transform button in the toolbar or with `Ctrl + E`.
 
 ## 2D Texture Asset
 
 The following properties are available:
 
-**Usage:** Tells the texture converter what type of data the texture represents. This affects what [color space](../appendix/color-spaces.md) will be used, ie. whether the format uses *sRGB* or *Linear* encoding.
+**Usage:** Tells the texture converter what type of data the texture represents. This affects what [color space (TODO)](../appendix/color-spaces.md) will be used, ie. whether the format uses *sRGB* or *Linear* encoding. If your color texture ends up using the incorrect color space (e.g. *Linear* when it should be *sRGB*) you will typically notice that the texture appears too bright and washed out.
 
-* **Auto:** In this mode the converter will guess the *usage*, utilizing file name heuristics, the source file format and sometimes even the content. If your file names use common naming patterns like `_D`, `_Normal`, etc. this can work pretty well.
+* **Auto:** In this mode the converter will guess the *usage*, utilizing file name heuristics, the source file format and sometimes even the content. If your file names use suffixes like `_D`, `_Normal`, etc. this can work pretty well.
 * **Color:** Use this for textures that represent color. For example diffuse textures, skyboxes and emissive color textures.
 * **Linear:** Use this for textures that represent 'data' that is not directly a color. For example *roughness*, *metallic*, *ao* and *specular* maps.
 * **HDR:** For textures that contain *high dynamic range* data. Since HDR data requires special file formats, *Auto* mode can detect this reliably.
@@ -32,9 +32,13 @@ The following properties are available:
 
 **Compression:** Specifies how strong the texture should be compressed. Depending on *Usage* and whether an alpha channel is present, this determines which exact file format will be used (printed in the lower left corner of the viewport). Note that for some combinations there may be no difference between *medium* and *strong* compression. Don't choose *Uncompressed* unless you actually notice compression artifacts. Texture compression saves significant amount of memory (usually a 4:1 compression, sometimes even 8:1) and has no performance overhead during rendering. The only downside is, that it takes longer to transform compressed texture assets.
 
-**DilateColor:** For textures with alpha mask. Will *dilate* (smear) the color channel outwards everywhere where the alpha channel is zero. Useful for example for vegetation textures, where the alpha channel defines a cutout mask. If the color channel does not contain some average color in the transparent areas, but something different, usually black, this unwanted color will *bleed* into the opaque areas in the lower mipmaps. As a result, masked objects appear to have a black edge. To fix this, either author your source textures to have a representative color in the transparent areas, or enable this option to automatically generate it. Note that this option makes texture transform slower.
+**DilateColor:** For textures with an alpha mask. Will *dilate* (smear) the color channel outwards everywhere where the alpha channel is zero. Useful for example for vegetation textures, where the alpha channel defines a cutout mask. If the color channel does not contain some average color in the transparent areas, but something different, usually black, this unwanted color will *bleed* into the opaque areas in the lower mipmaps. As a result, masked objects appear to have a black edge. To fix this, either author your source textures to have a representative color in the transparent areas, or enable this option to automatically generate it. Note that this option makes texture transform slower.
 
-**Flip Horizontal:** If enabled, the texture will be flipped. Horizontally.
+The image below shows the difference of a texture that is completely black in the transparent areas, versus the same texture, using color dilation. Notice how there is a black edge around the plant in the left image.
+
+![Color Dilation](media/texture-dilation.jpg)
+
+**Flip Horizontal:** For textures that are stored upside down.
 
 **HdrExposureBias:** For textures that have the *HDR Usage*. Allows you to scale the brightness.
 
@@ -52,7 +56,7 @@ Cubemap assets have a subset of the properties that 2D textures have. Their beha
 
 ## Render Target Asset
 
-Render targets can be used like regular 2D textures. That means materials can reference them and display their content. However, they are filled by rendering to them at runtime, for example by using a camera to render the scene from a certain viewpoint. Have a look at the [render to texture](../effects/render-to-texture.md) article for details.
+Render targets can be used like regular 2D textures. That means materials can reference them and display their content. However, they are filled by rendering to them at runtime, for example by using a camera to render the scene from a certain viewpoint. Have a look at the [render to texture (TODO)](../effects/render-to-texture.md) article for details.
 
 Apart from some properties shared with 2D texture assets, render targets have these unique properties:
 
@@ -65,7 +69,7 @@ Apart from some properties shared with 2D texture assets, render targets have th
 ## See Also
 
 * [Back to Index](../index.md)
-* [Materials](../materials/materials-overview.md)
-* [Render to Texture](../effects/render-to-texture.md)
+* [Materials (TODO)](../materials/materials-overview.md)
+* [Render to Texture (TODO)](../effects/render-to-texture.md)
 * [Sky](../effects/sky.md)
-* [Color Spaces](../appendix/color-spaces.md)
+* [Color Spaces (TODO)](../appendix/color-spaces.md)

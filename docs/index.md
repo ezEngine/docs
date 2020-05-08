@@ -93,7 +93,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
   * [Shader Permutation Variables](graphics/shaders/shader-permutation-variables.md)
   * [Shader Render State](graphics/shaders/shader-render-state.md)
   * [Shaders (TODO)](graphics/shaders/shaders-overview.md)
-* [Textures (TODO)](graphics/textures-overview.md)
+* [Textures](graphics/textures-overview.md)
 
 ### Materials
 

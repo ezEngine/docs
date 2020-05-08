@@ -6,7 +6,7 @@ By default the background of a rendered scene is black. To change this, you need
 
 The *SkyBox component* implements a simply sky, which displays a cubemap texture as a static background. The position and scale of the game object has no effect on the sky, it will always appear behind all other geometry. The rotation, however, can be used to orient the sky as desired.
 
-* **CubeMap**: The cubemap [texture asset (TODO)](../graphics/textures-overview.md) to use.
+* **CubeMap**: The cubemap [texture asset](../graphics/textures-overview.md) to use.
 
 * **ExposureBias**: This specifies how bright the sky will appear. A higher value results in a brighter sky.
 
@@ -18,5 +18,5 @@ The *SkyBox component* implements a simply sky, which displays a cubemap texture
 
 * [Back to Index](../index.md)
 * [Fog](fog.md)
-* [Textures (TODO)](../graphics/textures-overview.md)
+* [Textures](../graphics/textures-overview.md)
 * [Lighting (TODO)](../graphics/lighting-overview.md)
