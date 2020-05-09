@@ -8,7 +8,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Releases
 
-* [What's New (TODO)](releases/whats-new.md)
+* [What's New](releases/WhatsNew.htm)
 
 ### Build
 
