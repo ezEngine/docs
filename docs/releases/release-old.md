@@ -1,8 +1,4 @@
-# What's New
-
-<!-- PAGE IS TODO -->
-
-Follow [@ezEngineProject](https://twitter.com/ezEngineProject) to stay up to date.
+# Release Notes before 2020
 
 ## Release 9
 
@@ -401,3 +397,4 @@ Follow [@ezEngineProject](https://twitter.com/ezEngineProject) to stay up to dat
 ## See Also
 
 * [Back to Index](../index.md)
+* [Releases](releases.md)
