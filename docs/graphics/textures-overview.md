@@ -4,7 +4,7 @@ Textures come in multiple forms. Most common are 2D textures loaded from file. 2
 
 When the source texture comes from a file, you can create a texture [asset (TODO)](../assets/assets-overview.md) for that file by [importing](../assets/import-assets.md) it. Otherwise you need to create the respective asset [document (TODO)](../editor/editor-documents.md) manually, for example for render targets.
 
-Textures are most often referenced by [materials (TODO)](../materials/materials-overview.md). Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the [SkyBox component](../effects/sky.md#skybox-component).
+Textures are most often referenced by [materials](../materials/materials-overview.md). Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the [SkyBox component](../effects/sky.md#skybox-component).
 
 ![Texture Asset](media/texture-asset.png)
 
@@ -69,7 +69,7 @@ Apart from some properties shared with 2D texture assets, render targets have th
 ## See Also
 
 * [Back to Index](../index.md)
-* [Materials (TODO)](../materials/materials-overview.md)
+* [Materials](../materials/materials-overview.md)
 * [Render to Texture (TODO)](../effects/render-to-texture.md)
 * [Sky](../effects/sky.md)
 * [Color Spaces (TODO)](../appendix/color-spaces.md)

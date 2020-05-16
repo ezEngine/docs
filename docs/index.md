@@ -97,7 +97,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Materials
 
-* [Materials (TODO)](materials/materials-overview.md)
+* [Materials](materials/materials-overview.md)
 * [Surfaces (TODO)](materials/surfaces.md)
 * [Visual Shaders (TODO)](materials/visual-shaders.md)
 
