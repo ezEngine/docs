@@ -98,7 +98,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 ### Materials
 
 * [Materials](materials/materials-overview.md)
-* [Surfaces (TODO)](materials/surfaces.md)
+* [Surfaces](materials/surfaces.md)
 * [Visual Shaders (TODO)](materials/visual-shaders.md)
 
 ### Input
@@ -152,6 +152,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 ### Gameplay
 
 * [Player Start Point](gameplay/player-start-point.md)
+* [Projectile Component (TODO)](gameplay/projectile-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
 
 ---
