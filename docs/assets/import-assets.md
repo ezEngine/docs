@@ -1,6 +1,6 @@
 # Asset Import
 
-All [assets (TODO)](assets-overview.md) are represented by [documents](../editor/editor-documents.md). That means to get a texture into the engine, you need a [texture document](../graphics/textures-overview.md) which describes which source files (png, jpg, etc) are used to create the texture and how they shall be imported. This is where you configure such things as, whether to use compression, whether an alpha channel should be present and so on.
+All [assets](assets-overview.md) are represented by [documents](../editor/editor-documents.md). That means to get a texture into the engine, you need a [texture document](../graphics/textures-overview.md) which describes which source files (png, jpg, etc) are used to create the texture and how they shall be imported. This is where you configure such things as, whether to use compression, whether an alpha channel should be present and so on.
 
 Other asset types of course have other options for importing.
 
@@ -37,5 +37,5 @@ The automatic import creates the documents using a set of rules to fill out its 
 ## See Also
 
 * [Back to Index](../index.md)
-* [Assets (TODO)](assets-overview.md)
+* [Assets](assets-overview.md)
 * [Asset Browser](asset-browser.md)

@@ -6,7 +6,7 @@
 
 ## Decal Asset
 
-Before being able to place a *decal component*, you must create a decal [asset (TODO)](../assets/assets-overview.md).
+Before being able to place a *decal component*, you must create a decal [asset](../assets/assets-overview.md).
 
 ### Decal Asset Properties
 

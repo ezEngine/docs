@@ -1,6 +1,6 @@
 # Asset Curator
 
-The *asset curator panel* is a tool to help find and fix problems with [assets (TODO)](assets-overview.md). If the panel is not visible, use *Panels > Asset Curator* to open it.
+The *asset curator panel* is a tool to help find and fix problems with [assets](assets-overview.md). If the panel is not visible, use *Panels > Asset Curator* to open it.
 
 ![Asset Curator Panel](media/asset-curator.png)
 
@@ -24,4 +24,4 @@ Once you fix an asset and make sure it is transformed, the asset curator will no
 
 * [Back to Index](../index.md)
 * [Asset Browser](asset-browser.md)
-* [Assets (TODO)](assets-overview.md)
+* [Assets](assets-overview.md)

@@ -76,7 +76,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Asset Browser](assets/asset-browser.md)
 * [Asset Curator](assets/asset-curator.md)
 * [Asset Profiles (TODO)](assets/asset-profiles.md)
-* [Assets (TODO)](assets/assets-overview.md)
+* [Assets](assets/assets-overview.md)
 * [Asset Import](assets/import-assets.md)
 
 ### Prefabs

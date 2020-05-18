@@ -20,7 +20,7 @@ Through the `ShaderMode` property there are three ways a material can select whi
 
 * **Visual Shader:** In this mode the material editor will show an additional editing area beneath the 3D view, where you can create your own shader through a visual graph system. This enables you to create custom shader effects like animated textures. There is a dedicated chapter about [visual shaders (TODO)](visual-shaders.md) that explains how to do so.
 
-If you change the selected shader, you need to *transform* (`Ctrl+E`) the material [asset (TODO)](../assets/assets-overview.md) for the change to take full effect.
+If you change the selected shader, you need to *transform* (`Ctrl+E`) the material [asset](../assets/assets-overview.md) for the change to take full effect.
 
 ## Shader Properties
 

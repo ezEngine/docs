@@ -32,7 +32,7 @@ Press `End` or the respective icon from the toolbar to open the snap settings:
 
 ![Snap Settings](media/snap-settings.png)
 
-These affect not only the gizmos, but also the positioning of [assets (TODO)](../assets/assets-overview.md) dragged from the [asset browser](../assets/asset-browser.md) into the scene.
+These affect not only the gizmos, but also the positioning of [assets](../assets/assets-overview.md) dragged from the [asset browser](../assets/asset-browser.md) into the scene.
 
 ## Grid
 
