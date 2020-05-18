@@ -31,7 +31,7 @@ If you don't use a particular feature in your project, you can of course keep th
 
 ### Create a Scene
 
-Select *Editor > Create Document...* and create a [document (TODO)](../editor/editor-documents.md) of type `ezScene`. The new scene will be filled with some default objects and you should see something like this:
+Select *Editor > Create Document...* and create a [document](../editor/editor-documents.md) of type `ezScene`. The new scene will be filled with some default objects and you should see something like this:
 
 ![New Scene](media/new-project-scene.jpg)
 

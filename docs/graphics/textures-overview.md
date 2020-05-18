@@ -2,7 +2,7 @@
 
 Textures come in multiple forms. Most common are 2D textures loaded from file. 2D textures can also be created as render targets for [render-to-texture (TODO)](../effects/render-to-texture.md). For [sky boxes](../effects/sky.md) or special effects you can also set up cubemap textures.
 
-When the source texture comes from a file, you can create a texture [asset (TODO)](../assets/assets-overview.md) for that file by [importing](../assets/import-assets.md) it. Otherwise you need to create the respective asset [document (TODO)](../editor/editor-documents.md) manually, for example for render targets.
+When the source texture comes from a file, you can create a texture [asset (TODO)](../assets/assets-overview.md) for that file by [importing](../assets/import-assets.md) it. Otherwise you need to create the respective asset [document](../editor/editor-documents.md) manually, for example for render targets.
 
 Textures are most often referenced by [materials](../materials/materials-overview.md). Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the [SkyBox component](../effects/sky.md#skybox-component).
 

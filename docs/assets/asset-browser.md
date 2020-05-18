@@ -1,6 +1,6 @@
 # Asset Browser
 
-The *asset browser* is used for selecting and opening asset [documents (TODO)](../editor/editor-documents.md). Assets can be filtered by type and path or searched for by name.
+The *asset browser* is used for selecting and opening asset [documents](../editor/editor-documents.md). Assets can be filtered by type and path or searched for by name.
 
 ![Asset Browser](media/asset-browser.png)
 
@@ -38,7 +38,7 @@ You can toggle this feature by right clicking any folder and selecting **Show it
 
 ## Create Asset Documents
 
-You can create new asset [documents (TODO)](../editor/editor-documents.md) by right clicking a folder on the bottom left, or an asset on the right and selecting *New > Asset Type*. The advantage over creating a document via *Editor > Create Document...* is that the create file dialog opens directly in the location of the selected asset or folder, which makes it easier to create a new asset next to an existing asset.
+You can create new asset [documents](../editor/editor-documents.md) by right clicking a folder on the bottom left, or an asset on the right and selecting *New > Asset Type*. The advantage over creating a document via *Editor > Create Document...* is that the create file dialog opens directly in the location of the selected asset or folder, which makes it easier to create a new asset next to an existing asset.
 
 ## Display Assets in Recently Used Order
 
@@ -86,5 +86,5 @@ You can drag assets from the asset browser into other documents, such as [scenes
 
 * [Back to Index](../index.md)
 * [Asset Curator](asset-curator.md)
-* [Editor Documents (TODO)](../editor/editor-documents.md)
+* [Editor Documents](../editor/editor-documents.md)
 * [Asset Import](import-assets.md)

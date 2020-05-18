@@ -30,7 +30,7 @@ After closing and reopening the project you are good to go to create your first 
 
 ## Importing Assets
 
-ezEngine represents assets with a dedicated [document (TODO)](editor-documents.md) on the editor side. Typically to get e.g. a texture into the engine, you need to go to *Editor > Create Document* and choose *Texture Asset*. Then fill out the document properties to point to your source asset (e.g. a DDS or TGA file).
+ezEngine represents assets with a dedicated [document](editor-documents.md) on the editor side. Typically to get e.g. a texture into the engine, you need to go to *Editor > Create Document* and choose *Texture Asset*. Then fill out the document properties to point to your source asset (e.g. a DDS or TGA file).
 
 For common asset types (e.g. meshes and textures) you can automate parts of the process by selecting *Editor > Import Assets* and then browse for one or multiple source asset files. The following steps will automatically execute the basic steps, which saves a lot of time.
 

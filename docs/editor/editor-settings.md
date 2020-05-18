@@ -4,7 +4,7 @@ Editor settings are user specific and independent of projects. They are stored i
 
 ## Preferences
 
-Preferences are user specific editor settings. Preferences may affect the entire editor application, only a certain [project](../projects/projects-overview.md), or even just a single [document (TODO)](editor-documents.md).
+Preferences are user specific editor settings. Preferences may affect the entire editor application, only a certain [project](../projects/projects-overview.md), or even just a single [document](editor-documents.md).
 
 ![Preferences](media/editor-preferences.png)
 

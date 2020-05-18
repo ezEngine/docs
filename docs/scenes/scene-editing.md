@@ -1,6 +1,6 @@
 # Scene Editing
 
-A scene or level is a [document (TODO)](../editor/editor-documents.md) like all assets. To edit a scene there are multiple tools available. This page gives a broad overview what tools there are and in what order to try them out.
+A scene or level is a [document](../editor/editor-documents.md) like all assets. To edit a scene there are multiple tools available. This page gives a broad overview what tools there are and in what order to try them out.
 
 ## Basics
 

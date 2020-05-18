@@ -44,7 +44,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 ### Editor
 
 * [Editor Background Operations](editor/editor-bg-operations.md)
-* [Editor Documents (TODO)](editor/editor-documents.md)
+* [Editor Documents](editor/editor-documents.md)
 * [ezEditor Overview](editor/editor-overview.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
 * [Editor Settings](editor/editor-settings.md)
