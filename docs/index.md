@@ -172,6 +172,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 * __Application__
   * [Application (TODO)](runtime/application/application.md)
+  * [Common Application Features](runtime/application/common-application-features.md)
   * [Game States (TODO)](runtime/application/game-state.md)
 * __Configuration__
   * [Actor System (TODO)](runtime/configuration/actor-system.md)
@@ -199,7 +200,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Debugging C++ Code](debugging/debug-cpp.md)
 * [Debug Rendering (TODO)](debugging/debug-rendering.md)
 * [Logging](debugging/logging.md)
-* [RenderDoc Integration (TODO)](debugging/renderdoc.md)
+* [RenderDoc Integration](debugging/renderdoc.md)
 * [Stats](debugging/stats.md)
 
 ### Performance

@@ -20,6 +20,12 @@ Then it will execute the regular game loop. Thus, if the scene contains game obj
 
 Pressing **Escape** will close the Player application (unless overridden by a custom game state).
 
+## Common Application Features
+
+Since ezPlayer is built on the [application (TODO)](../runtime/application/application.md) framework, it provides a set of useful features common to all ez applications.
+
+See [this page](../runtime/application/common-application-features.md) for details.
+
 ## See Also
 
 * [Back to Index](../index.md)
