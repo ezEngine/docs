@@ -20,7 +20,7 @@ With one or multiple objects selected, you can try out the [editing gizmos](gizm
 
 ### Add Objects
 
-The easiest way to add objects to a scene is to *drag and drop* existing items from the [asset browser](../assets/asset-browser.md) into the scene. You would mostly do this for [meshes (TODO)](../graphics/meshes-overview.md) and [prefabs (TODO)](../prefabs/prefabs-overview.md), but it works for many asset types. If you want to get your own assets into the editor, you should read up on how to [import assets](../assets/import-assets.md).
+The easiest way to add objects to a scene is to *drag and drop* existing items from the [asset browser](../assets/asset-browser.md) into the scene. You would mostly do this for [meshes (TODO)](../graphics/meshes-overview.md) and [prefabs](../prefabs/prefabs-overview.md), but it works for many asset types. If you want to get your own assets into the editor, you should read up on how to [import assets](../assets/import-assets.md).
 
 ### Create Objects
 

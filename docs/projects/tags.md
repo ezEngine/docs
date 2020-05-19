@@ -36,7 +36,7 @@ The image below shows two objects. The blue object on the left has the *Invisibl
 
 ## Limitations
 
-Tags are always set directly on one object. They are not inherited to child objects and usually the code that evaluates tags does not check parent objects for their tags. Thus, to exclude an object from a view, the tag has to be set directly on the render object. Setting it on parent node or a [prefab instance (TODO)](../prefabs/prefabs-overview.md), for example, won't work.
+Tags are always set directly on one object. They are not inherited to child objects and usually the code that evaluates tags does not check parent objects for their tags. Thus, to exclude an object from a view, the tag has to be set directly on the render object. Setting it on parent node or a [prefab instance](../prefabs/prefabs-overview.md), for example, won't work.
 
 Similarly, if you want to make an object invisible in one view, you probably also need to disable shadow casting on it. If, however, it should be visible in another view, it cannot cast a shadow in that view, as the shadow maps are shared between the views.
 

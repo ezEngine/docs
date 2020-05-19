@@ -81,7 +81,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Prefabs
 
-* [Prefabs (TODO)](prefabs/prefabs-overview.md)
+* [Prefabs](prefabs/prefabs-overview.md)
 
 ### Graphics
 

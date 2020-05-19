@@ -12,7 +12,7 @@ One can distinguish between two types of assets: Assets that mostly exist to tra
 
 Examples for the former are [textures](../graphics/textures-overview.md), [meshes (TODO)](../graphics/meshes-overview.md), [collision meshes](../physics/collision-meshes.md), [sounds (TODO)](../sound/sound-overview.md) and so on. Their purpose is to ensure that the engine does not need to handle all sorts of source formats, but only optimized runtime formats. Instead, the editor and other tools will deal with the source formats, and allow the user to configure this conversion step.
 
-Examples for the latter are [scenes](../scenes/scene-editing.md), [prefabs (TODO)](../prefabs/prefabs-overview.md), [materials](../materials/materials-overview.md), [property animations (TODO)](../animation/property-animation.md), [curves](../animation/curves.md) and so on. Their data does not come from some other file on disk, but is instead built entirely in the editor. However, they still need to be *transformed* to provide the engine with an optimized format.
+Examples for the latter are [scenes](../scenes/scene-editing.md), [prefabs](../prefabs/prefabs-overview.md), [materials](../materials/materials-overview.md), [property animations (TODO)](../animation/property-animation.md), [curves](../animation/curves.md) and so on. Their data does not come from some other file on disk, but is instead built entirely in the editor. However, they still need to be *transformed* to provide the engine with an optimized format.
 
 ## Creating Assets
 

@@ -10,7 +10,7 @@ This page describes everything related to object selection.
 
 * *Left-click* on an object to select it.
 * Hold `CTRL` to add or remove objects from the selection.
-* Hold `CTRL` and *middle-click* an object to open its material document. This does not work for [prefab instances (TODO)](../prefabs/prefabs-overview.md).
+* Hold `CTRL` and *middle-click* an object to open its material document. This does not work for [prefab instances](../prefabs/prefabs-overview.md).
 
 ## Viewport - Marquee Selection
 

@@ -32,7 +32,7 @@ By default when an asset is located in a folder with a **_data** suffix (e.g. 'M
 
 ![Hidden Folders](media/hidden-folders.png)
 
-A common use case is to put [materials](../materials/materials-overview.md) and textures that are very specific for a [mesh (TODO)](../graphics/meshes-overview.md) or [prefab (TODO)](../prefabs/prefabs-overview.md) into a *xyz_data* subfolder to group the data together, but prevent it from cluttering the asset browser.
+A common use case is to put [materials](../materials/materials-overview.md) and textures that are very specific for a [mesh (TODO)](../graphics/meshes-overview.md) or [prefab](../prefabs/prefabs-overview.md) into a *xyz_data* subfolder to group the data together, but prevent it from cluttering the asset browser.
 
 You can toggle this feature by right clicking any folder and selecting **Show items in hidden folders**.
 

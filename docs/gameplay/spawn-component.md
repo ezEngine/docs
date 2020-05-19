@@ -1,10 +1,10 @@
 # Spawn Component
 
-The *SpawnComponent* is frequently used to spawn instances of [prefabs (TODO)](../prefabs/prefabs-overview.md) at runtime. The component references a prefab. It can then either spawn this prefab continuously in intervals, or at will by triggering the spawn command from (script) code.
+The *SpawnComponent* is frequently used to spawn instances of [prefabs](../prefabs/prefabs-overview.md) at runtime. The component references a prefab. It can then either spawn this prefab continuously in intervals, or at will by triggering the spawn command from (script) code.
 
 ## Properties
 
-**Prefab:** The [prefab (TODO)](../prefabs/prefabs-overview.md) that will be spawned by this component.
+**Prefab:** The [prefab](../prefabs/prefabs-overview.md) that will be spawned by this component.
 
 **AttachAsChild:** If true, the spawned object will be attached to the owner of the SpawnComponent. In most cases this should be disabled.
 
@@ -23,4 +23,4 @@ See the [API Docs](../api-docs/api-docs.md) for `ezSpawnComponent` for the compo
 ## See Also
 
 * [Back to Index](../index.md)
-* [Prefabs (TODO)](../prefabs/prefabs-overview.md)
+* [Prefabs](../prefabs/prefabs-overview.md)
