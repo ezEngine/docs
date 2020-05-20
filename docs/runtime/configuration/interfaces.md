@@ -1,6 +1,6 @@
 # Singleton Interfaces
 
-*Singletons* are classes of which there should only be a single instance throughout the lifetime of the process. Although ez uses the *singleton pattern* quite extensively for built-in classes, such as `ezTaskSystem` and `ezResourceManager`, those classes don't use dedicated singleton infrastructure. Instead, they simply only expose static functions and there is actually never any instance of them.
+*Singletons* are classes of which there should only be a single instance throughout the lifetime of the process. Although ez uses the *singleton pattern* quite extensively for built-in classes, such as `ezTaskSystem` and `ezResourceManager`, those classes don't use dedicated singleton infrastructure. Instead, they only expose static functions, and there is no need for any instance.
 
 Accessing such singletons is trivial, as you can always call their functions directly. However, there is another type of singleton, which does require special handling.
 
@@ -12,7 +12,7 @@ Using the singleton infrastructure, we can simply load an [engine plugin (TODO)]
 
 ## Implementing Singletons
 
-This section shows all the pieces needed for a singleton.
+This section shows all the pieces needed for a singleton. You can find the sample code in the [Sample Game Plugin](../../samples/sample-game-plugin.md).
 
 ### Interface Base Class
 
@@ -52,6 +52,12 @@ public:
   PrintImplementation();
 
   virtual void Print(const ezFormatString& text) override;
+
+private:
+  // needed for the startup system to be able to call the private function below
+  EZ_MAKE_SUBSYSTEM_STARTUP_FRIEND(SampleGamePluginStartupGroup, SampleGamePluginMainStartup);
+
+  void OnCoreSystemsStartup() { /* we could do something important here */ }
 };
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
@@ -73,11 +79,11 @@ PrintImplementation::PrintImplementation()
 
 The macro again inserts vital code for your singleton to work. The constructor also has to follow the pattern shown above.
 
-What remains now is to actually implement the virtual functions.
+You can now implement the desired behavior for the overridden functions.
 
 ## Instantiating Singletons
 
-The ez singleton infrastructure does not automatically create an instance of singleton classes. It is up to you whether, when and how you create your instance. The most common way to do this, is to leverage the [startup system (TODO)](startup.md) to hook into the engine startup process at the right time.
+The ez singleton infrastructure does not automatically create an instance of singleton classes. It is up to you whether, when and how you create your instance. The most common way to do this, is to leverage the [startup system](startup.md) to hook into the engine startup process at the right time.
 
 For details, read that chapter, but here is what you would typically do. At startup you instantiate your singleton implementation:
 
@@ -88,6 +94,7 @@ ON_CORESYSTEMS_STARTUP
   // allocate an implementation of PrintInterface
   s_PrintInterface = EZ_DEFAULT_NEW(PrintImplementation);
 
+  s_PrintInterface->OnCoreSystemsStartup();
   s_PrintInterface->Print("Called ON_CORESYSTEMS_STARTUP");
 }
 ```
@@ -125,10 +132,10 @@ ezSingletonRegistry::GetSingletonInstance<PrintInterface>()->Print("Called ON_HI
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-Here we don't need to know anything about the implementation and therefore have no link dependency on the library that provides it. This is how most code would access a singleton implementation. Be aware this this requires a more expensive lookup, so locally cache the result, if you want to do multiple function calls on it.
+Here we don't need to know anything about the implementation and therefore have no link dependency on the library that provides it. This is how most code would access a singleton implementation. Be aware that this requires a more expensive lookup, so locally cache the result, if you want to do multiple function calls on it.
 
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Startup System (TODO)](startup.md)
+* [Startup System](startup.md)
 * [Engine Plugins (TODO)](../../custom-code/cpp/engine-plugins.md)

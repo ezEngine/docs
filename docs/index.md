@@ -177,7 +177,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * __Configuration__
   * [Actor System (TODO)](runtime/configuration/actor-system.md)
   * [Singleton Interfaces](runtime/configuration/interfaces.md)
-  * [Startup System (TODO)](runtime/configuration/startup.md)
+  * [Startup System](runtime/configuration/startup.md)
 * [FileSystem](runtime/filesystem.md)
 * [Reflection System](runtime/reflection-system.md)
 * [Resource Management (TODO)](runtime/resource-management.md)
