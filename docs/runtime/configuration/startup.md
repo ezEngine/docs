@@ -6,7 +6,7 @@ Therefore, ez uses a dedicated *startup system*, to handle this complexity autom
 
 ## Startup System Concept
 
-The concept of the startup system is simple. For every 'thing' in the engine you write code how to initialize it and shut it down again. 'Things' in the startup system are referred to as **subsystems**. You then define what other subsystem you depend on, so that your startup code should run after the startup code for your dependency, and your shutdown code should run before your dependencies are shut down.
+The concept of the startup system is simple. For every 'thing' in the engine you write code how to initialize it and shut it down again. 'Things' in the startup system are referred to as **subsystems**. You then define what other subsystems you depend on, so that your startup code should run after your dependencies, and your shutdown code should run before your dependencies.
 
 All of this is then (automatically) given to the startup system, and when it comes time to fully boot up the engine, that system sorts all subsystems by their dependencies and executes them in the right order. Conversely, it executes all shutdown code in the reverse order.
 
@@ -14,18 +14,18 @@ All of this is then (automatically) given to the startup system, and when it com
 
 A lot of code can be initialized easily in all applications. However, some code strictly requires a window or graphics API to work with and could never be initialized successfully in a command line application.
 
-Therefore, the startup system splits the engine initialization into two phases: **core system startup** (phase 1) and **high level system startup** (phase 2)
+Therefore, the startup system splits the engine initialization into two phases: **core systems startup** (phase 1) and **high level systems startup** (phase 2).
 For command line applications, we would only ever run phase 1. In a proper game, we would first run phase 1, then create our window and rendering API and finally run phase 2. This way, when we don't need things like a renderer or the [input system (TODO)](../../input/input-overview.md), we simply exclude all high level systems from being initialized.
 
 ### Dependencies
 
-Some subsystems depend on other subsystems to be initialized, before they can be initialized. Therefore the startup system requires you to provide a *name* for every subsystem and also a *group*. The name can be arbitrary but has to be unique. The group name obviously does not need to be unique, as multiple subsystems can be part of the same group.
+Some subsystems depend on other subsystems to be initialized. Therefore the startup system requires you to provide a *name* for every subsystem and also a *group*. The name can be arbitrary but has to be unique. The group name obviously does not need to be unique, as multiple subsystems can be part of the same group.
 
 When you declare a dependency on another subsystem, you can then either specify it by its direct name, or you can also just declare a dependency on an entire group. The latter is very common, as it is often easier, and you rarely have very strict dependencies on a single subsystem.
 
 ## Startup System Usage
 
-In practice, to use the startup system, you need to add a block of code to some cpp file. You can copy this code from `Foundation\Configuration\Startup.h` and then just fill out the parts that you require. An example is given in the [Sample Game Plugin](../../samples/sample-game-plugin.md):
+In practice, to use the startup system, you need to add a block of code to some cpp file. You can copy this code from `Foundation/Configuration/Startup.h` and then just fill out the parts that you require. An example is given in the [Sample Game Plugin](../../samples/sample-game-plugin.md):
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: startup-block -->
 ```cpp
