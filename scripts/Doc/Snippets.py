@@ -14,8 +14,9 @@ def SearchSourceSnippets(srcDir: str, snippets: dict):
             lines = file.readlines()
 
         lineIdx = 0
+        lenLines = len(lines)
 
-        while(lineIdx < len(lines)):
+        while(lineIdx < lenLines):
 
             line = lines[lineIdx]
             lineIdx += 1
@@ -27,26 +28,39 @@ def SearchSourceSnippets(srcDir: str, snippets: dict):
 
                 print(f"Found snippet: {snippetName}")
 
+                nesting = 0
                 snippetText = ""
                 maxWhiteSpace = 100
+                snippetLineIdx = lineIdx
 
                 snippetLines = []
 
-                while(lineIdx < len(lines)):
-                    lineIdx += 1
-                    line = lines[lineIdx - 1]
+                while(snippetLineIdx < lenLines):
+                    snippetLineIdx += 1
+                    line = lines[snippetLineIdx - 1]
                     line = line.replace("\t", "  ")
 
-                    if line.find("END-DOCS-CODE-SNIPPET") >= 0:
-                        break
+                    if line.find("BEGIN-DOCS-CODE-SNIPPET:") >= 0:
+                        nesting += 1
+                        continue
 
-                    wsc = len(line) - len(line.lstrip(' '))
-                    maxWhiteSpace = min(maxWhiteSpace, wsc)
+                    if line.find("END-DOCS-CODE-SNIPPET") >= 0:
+                        if nesting == 0:
+                            break
+                        nesting -= 1
+                        continue
+
+                    if len(line.strip()) > 0:
+                        wsc = len(line) - len(line.lstrip(' '))
+                        maxWhiteSpace = min(maxWhiteSpace, wsc)
 
                     snippetLines.append(line)
 
                 for line in snippetLines:
-                    line = line[maxWhiteSpace:]
+
+                    if len(line) >= maxWhiteSpace:
+                        line = line[maxWhiteSpace:]
+                        
                     snippetText += line
 
                 snippets[snippetName] = snippetText
