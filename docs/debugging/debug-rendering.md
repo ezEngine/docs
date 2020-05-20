@@ -1,14 +1,14 @@
 # Debug Rendering
 
-The rendering in ez is optimized to handle large and complex data efficiently. However, to achieve this, you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the `ezDebugRenderer` is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.
+The rendering in ez is optimized to handle large and complex data efficiently. However, to achieve this you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the `ezDebugRenderer` is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.
 
-This interface is also available through [TypeScript (TODO)](../custom-code/typescript/typescript-overview.md).
+This interface is also (partially) available through [TypeScript (TODO)](../custom-code/typescript/typescript-overview.md).
 
 ![Debug rendering](media/debug-rendering.jpg)
 
 ## Usage
 
-The `ezDebugRenderer` class provides you with a number of static functions that you can call from any thread at any time. The debug renderer gathers all requests and renders them at a specific point in the frame. Afterwards all requests are cleared and you must resubmit the same calls in the next frame, if you want it to appear again.
+The `ezDebugRenderer` class has a number of static functions that you can call from any thread and at any time. The debug renderer gathers all requests and renders them at a specific point in the frame. Afterwards all requests are cleared and you must resubmit the same calls in the next frame, if you want it to appear again.
 
 ### Render Context
 
