@@ -6,6 +6,6 @@ import re
 import Doc
 
 snippets = {}
-Doc.SearchSourceSnippets(r"D:\GitHub\ezEngine\Code\Games\SampleGamePlugin", snippets)
+Doc.SearchSourceSnippets(r"D:\GitHub\ezEngine\Code\Samples\SampleGamePlugin", snippets)
 
 Doc.ReplaceTargetSnippets("./docs", snippets)

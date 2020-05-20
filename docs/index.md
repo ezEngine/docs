@@ -198,7 +198,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Console](debugging/console.md)
 * [CVars](debugging/cvars.md)
 * [Debugging C++ Code](debugging/debug-cpp.md)
-* [Debug Rendering (TODO)](debugging/debug-rendering.md)
+* [Debug Rendering](debugging/debug-rendering.md)
 * [Logging](debugging/logging.md)
 * [RenderDoc Integration](debugging/renderdoc.md)
 * [Stats](debugging/stats.md)
