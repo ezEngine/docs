@@ -16,7 +16,7 @@ Each world has its own simulation state, such as a clock and a random number gen
 
 You can have multiple worlds in parallel and they will be completely separated. This is for example the case when you have multiple [documents](../../editor/editor-documents.md) open in the editor.
 
-Worlds are described in more detail in [this chapter (TODO)](worlds.md).
+Worlds are described in more detail in [this chapter](worlds.md).
 
 ### ezGameObject
 
@@ -65,7 +65,7 @@ Messages are described in more detail in [this chapter (TODO)](world-messaging.m
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Worlds (TODO)](worlds.md)
+* [Worlds](worlds.md)
 * [Game Objects (TODO)](game-objects.md)
 * [Components (TODO)](components.md)
 * [World Modules (TODO)](world-modules.md)
