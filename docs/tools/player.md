@@ -14,9 +14,9 @@ Typically you only need to pass the path to the *exported* scene (or prefab) fil
 
 ## Execution
 
-The Player will automatically detect the [projects](../projects/projects-overview.md) directory by searching the file system for an ezProject file. It then executes the core ezEngine functionality, meaning it reads the configuration for the [data directories](../projects/data-directories.md) as well as the [engine plugins (TODO)](../custom-code/cpp/engine-plugins.md) from the project config files. If the scene requires custom (game) plugins, they must be referenced in those config files.
+The Player will automatically detect the [projects](../projects/projects-overview.md) directory by searching the file system for an ezProject file. It then executes the core ezEngine functionality, meaning it reads the configuration for the [data directories](../projects/data-directories.md) as well as the [engine plugins](../custom-code/cpp/engine-plugins.md) from the project config files. If the scene requires custom (game) plugins, they must be referenced in those config files.
 
-Then it will execute the regular game loop. Thus, if the scene contains game objects to spawn a character controller or otherwise handle input and move the camera, you will be able to interact with it. If a custom [plugin (TODO)](../custom-code/cpp/engine-plugins.md) implements a custom [game state (TODO)](../runtime/application/game-state.md) that will be instantiated and can take full control over the application logic. If no such functionality is available, the Player will instantiate the `ezFallbackGameState` which will spawn a player object, if a `ezPlayerStartPointComponent` is part of the scene. Otherwise it will provide a simple WASD camera movement scheme. If `ezCameraComponent`s are placed in the scene, you can cycle through them using `Page Up` and `Page Down`.
+Then it will execute the regular game loop. Thus, if the scene contains game objects to spawn a character controller or otherwise handle input and move the camera, you will be able to interact with it. If a custom [plugin](../custom-code/cpp/engine-plugins.md) implements a custom [game state (TODO)](../runtime/application/game-state.md) that will be instantiated and can take full control over the application logic. If no such functionality is available, the Player will instantiate the `ezFallbackGameState` which will spawn a player object, if a `ezPlayerStartPointComponent` is part of the scene. Otherwise it will provide a simple WASD camera movement scheme. If `ezCameraComponent`s are placed in the scene, you can cycle through them using `Page Up` and `Page Down`.
 
 Pressing **Escape** will close the Player application (unless overridden by a custom game state).
 
@@ -30,6 +30,6 @@ See [this page](../runtime/application/common-application-features.md) for detai
 
 * [Back to Index](../index.md)
 * [Game States (TODO)](../runtime/application/game-state.md)
-* [Engine Plugins (TODO)](../custom-code/cpp/engine-plugins.md)
+* [Engine Plugins](../custom-code/cpp/engine-plugins.md)
 * [Projects](../projects/projects-overview.md)
 * [ezEditor Overview](../editor/editor-overview.md)

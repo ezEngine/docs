@@ -1,6 +1,6 @@
 # Startup System
 
-Initializing an engine and shutting it properly down again, is a surprisingly difficult task. There are many steps involved, some of which have hard requirements on their ordering. Also, some functionality can only be initialized when at least a window, and potentially even a graphics API is available, which is not the case for command line tools. Once [plugins (TODO)](../../custom-code/cpp/engine-plugins.md) are added to the mix, which can be loaded and unloaded at any time, it becomes impossible to manually set up this process.
+Initializing an engine and shutting it properly down again, is a surprisingly difficult task. There are many steps involved, some of which have hard requirements on their ordering. Also, some functionality can only be initialized when at least a window, and potentially even a graphics API is available, which is not the case for command line tools. Once [plugins](../../custom-code/cpp/engine-plugins.md) are added to the mix, which can be loaded and unloaded at any time, it becomes impossible to manually set up this process.
 
 Therefore, ez uses a dedicated *startup system*, to handle this complexity automatically for you.
 
@@ -75,7 +75,7 @@ Here we give our subsystem the name `SampleGamePluginMainStartup` and we put it 
 
 Now when the application starts running, at some point it will run all the `ON_CORESYSTEMS_STARTUP` code blocks (in a sorted order). Here, we use that hook to set up our [singleton](interfaces.md). Later, the game will execute the `ON_HIGHLEVELSYSTEMS_STARTUP` block, and at shutdown it will first execute `ON_HIGHLEVELSYSTEMS_SHUTDOWN` and finally `ON_CORESYSTEMS_SHUTDOWN` shortly before the application closes.
 
-Command line applications would not execute the high level startup code blocks. Also, when a [plugin (TODO)](../../custom-code/cpp/engine-plugins.md) is loaded or unloaded, the system ensures to call all the right startup and shutdown functions for subsystems from those plugins.
+Command line applications would not execute the high level startup code blocks. Also, when a [plugin](../../custom-code/cpp/engine-plugins.md) is loaded or unloaded, the system ensures to call all the right startup and shutdown functions for subsystems from those plugins.
 
 ## How to know about dependencies
 

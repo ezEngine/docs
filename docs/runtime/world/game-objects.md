@@ -97,7 +97,7 @@ These functions return the respective directions in global space considering the
 
 ## Messaging
 
-You can send messages to all components attached to an object, or the entire hierarchy below an object. You can also send *event messages*, which will 'bubble up' the hierarchy until they find component to handle it.
+You can send messages to all components attached to an object, or the entire hierarchy below an object. You can also send *event messages*, which will 'bubble up' the hierarchy until they find a component to handle it.
 
 See the chapter about [messaging (TODO)](world-messaging.md) for details.
 

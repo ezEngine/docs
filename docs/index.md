@@ -163,7 +163,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * __C++__
   * [Custom Code with C++ (TODO)](custom-code/cpp/cpp-overview.md)
   * [Custom Components with C++ (TODO)](custom-code/cpp/custom-cpp-component.md)
-  * [Engine Plugins (TODO)](custom-code/cpp/engine-plugins.md)
+  * [Engine Plugins](custom-code/cpp/engine-plugins.md)
 * __TypeScript__
   * [Custom Code with TypeScript (TODO)](custom-code/typescript/typescript-overview.md)
 * __Visual Script__

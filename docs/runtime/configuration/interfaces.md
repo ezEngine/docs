@@ -8,7 +8,7 @@ There are cases where you want to define an *interface* to make certain function
 
 Therefore, we want to be able to dynamically load the necessary implementation and make it available through the abstract interface. For the `ezFrameCaptureInterface` we have an implementation by our [RenderDoc integration](../../debugging/renderdoc.md). In the future we might have a second implementation for PIX or some other platform specific tool.
 
-Using the singleton infrastructure, we can simply load an [engine plugin (TODO)](../../custom-code/cpp/engine-plugins.md) that contains an implementation, and from that plugin register our implementation for that interface. Other code can then query for an instance of this interface and, if available, use it without knowing anything about the implementation, and without the need to link against that library.
+Using the singleton infrastructure, we can simply load an [engine plugin](../../custom-code/cpp/engine-plugins.md) that contains an implementation, and from that plugin register our implementation for that interface. Other code can then query for an instance of this interface and, if available, use it without knowing anything about the implementation, and without the need to link against that library.
 
 ## Implementing Singletons
 
@@ -138,4 +138,4 @@ Here we don't need to know anything about the implementation and therefore have 
 
 * [Back to Index](../../index.md)
 * [Startup System](startup.md)
-* [Engine Plugins (TODO)](../../custom-code/cpp/engine-plugins.md)
+* [Engine Plugins](../../custom-code/cpp/engine-plugins.md)

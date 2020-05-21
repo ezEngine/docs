@@ -10,7 +10,7 @@ In the editor you will find the project settings under *Editor > Project Setting
 
 ## Engine Plugins
 
-*Editor > Project Settings > Engine Plugins...* opens a dialog to configure the active [engine plugins (TODO)](../custom-code/cpp/engine-plugins.md):
+*Editor > Project Settings > Engine Plugins...* opens a dialog to configure the active [engine plugins](../custom-code/cpp/engine-plugins.md):
 
 ![Engine Plugins](media/editor-engine-plugins.png)
 

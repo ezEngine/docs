@@ -1,6 +1,6 @@
 # Custom Components with C++
 
-To write a custom C++ component, the first thing you need is a custom [engine plugins (TODO)](engine-plugins.md). Once you have that, and have it enabled in your [project settings](../../projects/project-settings.md), any custom component that you define in that plugin will show up in the editor and can be attached to [game objects](../../runtime/world/game-objects.md).
+To write a custom C++ component, the first thing you need is a custom [engine plugins](engine-plugins.md). Once you have that, and have it enabled in your [project settings](../../projects/project-settings.md), any custom component that you define in that plugin will show up in the editor and can be attached to [game objects](../../runtime/world/game-objects.md).
 
 The [Sample Game Plugin](../../samples/sample-game-plugin.md) shows all the pieces that you need, including multiple components to get inspiration from. This article will describe one of those components in more detail.
 

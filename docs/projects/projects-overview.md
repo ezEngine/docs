@@ -4,7 +4,7 @@ The term *project* refers to one game or application, its global settings, and a
 
 ## Creating a Project
 
-You can use ezEngine entirely without the editor. In that case, you do not need to create a project, at all. Your [application (TODO)](../runtime/application/application.md) is your project and you set up things like the [fileSystem](../runtime/filesystem.md), the [plugins (TODO)](../custom-code/cpp/engine-plugins.md) and so on, entirely from code.
+You can use ezEngine entirely without the editor. In that case, you do not need to create a project, at all. Your [application (TODO)](../runtime/application/application.md) is your project and you set up things like the [fileSystem](../runtime/filesystem.md), the [plugins](../custom-code/cpp/engine-plugins.md) and so on, entirely from code.
 
 It is more convenient, though, to maintain your project through the editor. To create a new project, open the editor and select *Editor > Create Project...*.
 
@@ -42,7 +42,7 @@ If you don't see the [asset browser](../assets/asset-browser.md), make sure to o
 Plugins may add project wide options. Not all options may be exposed through editor UI, there are a few things that can (at the moment) only be configured through config files or directly from code. Most options are stored in [OpenDDL](https://openddl.org/) format or other human-readable files, and you can edit them directly. Some options to be aware of are:
 
 * [Data directories](data-directories.md)
-* [Engine plugins (TODO)](../custom-code/cpp/engine-plugins.md)
+* [Engine plugins](../custom-code/cpp/engine-plugins.md)
 * [Collision layers](../physics/collision-layers.md)
 * [Input Configuration](project-settings.md#input-configuration)
 * [Tags](tags.md)
