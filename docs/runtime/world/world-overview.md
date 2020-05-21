@@ -40,6 +40,10 @@ World modules are the *systems* of the ECS pattern. Worlds are updated in multip
 
 Component managers are described in more detail in [this chapter (TODO)](component-managers.md).
 
+## Object Lifetime
+
+The ez scenegraph does not use any kind of reference counting or garbage collection, however it does provide weak reference semantics through *handles*, to enable you to delete objects exactly when you need them to be removed, while still being able to detect whether an object is still alive. See the [object lifetime chapter](object-lifetime.md) for details.
+
 ## Custom Components
 
 A large part of writing your own game, is to write your own components. If you need maximum control and performance, you need to write your [components in C++ (TODO)](../../custom-code/cpp/custom-cpp-component.md).

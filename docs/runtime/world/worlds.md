@@ -69,5 +69,5 @@ To step your world, call `ezWorld::Update()`. The time delta that will be applie
 * [Game Objects (TODO)](game-objects.md)
 * [Components (TODO)](components.md)
 * [World Modules (TODO)](world-modules.md)
-* [Object Lifetime (TODO)](object-lifetime.md)
+* [Object Lifetime](object-lifetime.md)
 * [World Messaging (TODO)](world-messaging.md)
