@@ -13,7 +13,7 @@ The game itself is a stand-alone [application (TODO)](../runtime/application/app
 
 ## Code
 
-The code is a slightly more complex demonstration of how to write [custom components (TODO)](../runtime/world/custom-components.md) and let them interact to create game logic.
+The code is a slightly more complex demonstration of how to write [custom components (TODO)](../runtime/world/components.md) and let them interact to create game logic.
 
 ## See Also
 

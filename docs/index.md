@@ -162,6 +162,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Custom Code (TODO)](custom-code/custom-code-overview.md)
 * __C++__
   * [Custom Code with C++ (TODO)](custom-code/cpp/cpp-overview.md)
+  * [Custom Components with C++ (TODO)](custom-code/cpp/custom-cpp-component.md)
   * [Engine Plugins (TODO)](custom-code/cpp/engine-plugins.md)
 * __TypeScript__
   * [Custom Code with TypeScript (TODO)](custom-code/typescript/typescript-overview.md)
@@ -182,10 +183,13 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Reflection System](runtime/reflection-system.md)
 * [Resource Management (TODO)](runtime/resource-management.md)
 * __World__
-  * [Custom World Components (TODO)](runtime/world/custom-components.md)
+  * [Component Managers (TODO)](runtime/world/component-managers.md)
+  * [Components (TODO)](runtime/world/components.md)
+  * [Game Objects (TODO)](runtime/world/game-objects.md)
   * [World Messaging (TODO)](runtime/world/world-messaging.md)
   * [World Modules (TODO)](runtime/world/world-modules.md)
-  * [The World / Scenegraph System (TODO)](runtime/world/world-overview.md)
+  * [The World / Scenegraph System](runtime/world/world-overview.md)
+  * [Worlds (TODO)](runtime/world/worlds.md)
 
 ### API Documentation
 

@@ -39,7 +39,7 @@ Another way to test the scene is to export it to a binary format and run it in t
 Both *Simulate Mode* and *Play-the-Game Mode* run inside the editor process. Compared to a game running in a stand-alone process this has two drawbacks:
 
 1. The editor process limits the maximum framerate, and has some performance overhead of its own, so this is not useful for performance testing.
-1. All component properties are initialized from the values as the editor has saved them. This is not the (optimized) binary serialization that is used for a final game. Since the binary serialization code has to be written manually, it can happen that properties that are exposed in the editor and work fine there, have been forgotten to be included in the binary serialization and therefore have no effect in the final game. Therefore, always make sure to test [custom components (TODO)](../runtime/world/custom-components.md) properly with exported scenes.
+1. All component properties are initialized from the values as the editor has saved them. This is not the (optimized) binary serialization that is used for a final game. Since the binary serialization code has to be written manually, it can happen that properties that are exposed in the editor and work fine there, have been forgotten to be included in the binary serialization and therefore have no effect in the final game. Therefore, always make sure to test [custom components (TODO)](../runtime/world/components.md) properly with exported scenes.
 
 ## See Also
 
