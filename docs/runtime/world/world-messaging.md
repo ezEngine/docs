@@ -1,4 +1,4 @@
-# World Messaging
+# Messaging
 
 <!-- PAGE IS TODO -->
 

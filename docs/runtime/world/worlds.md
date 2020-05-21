@@ -6,7 +6,7 @@ This documentation focuses on the C++ `ezWorld` class. The functionality exposed
 
 ## Game Objects
 
-Game objects are allocated, destroyed and accessed through the world. For these details, see the chapter about [game objects (TODO)](game-objects.md).
+Game objects are allocated, destroyed and accessed through the world. For these details, see the chapter about [game objects](game-objects.md).
 
 ## Components
 
@@ -26,7 +26,7 @@ Every world can be actively simulated, or paused. `ezWorld::SetWorldSimulationEn
 
 ### Clock
 
-Each world has its own `ezClock` which can be retrieved through `ezWorld::GetClock()`. The clock is used to speed up or slow down simulation or to set a fixed update rate. The clock keeps track of the 'game time', so when a component needs to know the current time, it should query this from the world's clock.
+Each world has its own `ezClock` which can be retrieved through `ezWorld::GetClock()`. The clock is used to speed up or slow down the simulation or to set a fixed update rate. The clock keeps track of the 'game time', so when a component needs to know the current time, it should query this from the world's clock.
 
 ### Random Number Generator
 
@@ -40,7 +40,7 @@ The default coordinate system in ez is:
 * `+Y` is 'right`
 * `+Z` is 'up'
 
-That makes it a left-handed coordinate system. You can query these axis in the space of a [game object (TODO)](game-objects.md), if you need to.
+That makes it a left-handed coordinate system. You can query these axis in the space of a [game object](game-objects.md), if you need to.
 
 The coordinate system can be changed through `ezWorld::SetCoordinateSystemProvider()`. The `ezCoordinateSystemProvider` can potentially return a different coordinate system at different locations, so you could implement a provider that changes the coordinate system to follow a sphere.
 
@@ -66,8 +66,8 @@ To step your world, call `ezWorld::Update()`. The time delta that will be applie
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Game Objects (TODO)](game-objects.md)
+* [Game Objects](game-objects.md)
 * [Components (TODO)](components.md)
 * [World Modules (TODO)](world-modules.md)
 * [Object Lifetime](object-lifetime.md)
-* [World Messaging (TODO)](world-messaging.md)
+* [Messaging (TODO)](world-messaging.md)

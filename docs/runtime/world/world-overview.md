@@ -10,7 +10,7 @@ The main classes involved are `ezWorld`, `ezGameObject`, `ezComponent` and `ezWo
 
 ### ezWorld
 
-Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects (TODO)](game-objects.md) (`ezGameObject`) and all [world modules (TODO)](world-modules.md) (`ezWorldModule`), which in turn hold all [components (TODO)](components.md) (`ezComponent`).
+Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects](game-objects.md) and all [world modules (TODO)](world-modules.md), which in turn hold all [components (TODO)](components.md).
 
 Each world has its own simulation state, such as a clock and a random number generator. Through the world modules, worlds also hold their own state for other simulation aspects, such as [physics (TODO)](../../physics/physx-overview.md).
 
@@ -26,7 +26,7 @@ Game objects by themselves do not have any *behavior*. Instead, each game object
 
 The object's *transform* (position, rotation, scale) is local to its parent node, but it also holds a *global* transform, which is computed by concatenating the transformations of all parent nodes. Every time a game object or any of its parent nodes is moved, this global transform is updated.
 
-Game object are described in more detail in [this chapter (TODO)](game-objects.md).
+Game objects are described in more detail in [this chapter](game-objects.md).
 
 ### ezComponent
 
@@ -36,13 +36,15 @@ Components are described in more detail in [this chapter (TODO)](components.md).
 
 ### ezWorldModule / ezComponentManager
 
-World modules are the *systems* of the ECS pattern. Worlds are updated in multiple phases. Some phases are multi-threaded, others aren't.World modules can hook into these phases and make sure that they are called at the right time. World modules implement things like stepping third party code (e.g. physics). The most common type of world modules are *component managers*. Each component type has its own component manager, which is responsible for updating those components. The manager can leverage knowledge from other sources for determining which components need updating, and it can easily update components in a multi-threaded fashion, if it is save to do so.
+World modules are the *systems* of the ECS pattern. Worlds are updated in multiple phases. Some phases are multi-threaded, others aren't. World modules can hook into these phases and make sure that they are called at the right time. World modules implement things like stepping third party code (e.g. physics). The most common type of world modules are *component managers*. Each component type has its own component manager, which is responsible for updating those components. The manager can leverage knowledge from other sources for determining which components need updating, and it can easily update components in a multi-threaded fashion, if it is save to do so.
 
-Component managers are described in more detail in [this chapter (TODO)](component-managers.md).
+World modules are described in more detail in [this chapter (TODO)](world-modules.md) and component managers in [this chapter (TODO)](component-managers.md).
 
 ## Object Lifetime
 
-The ez scenegraph does not use any kind of reference counting or garbage collection, however it does provide weak reference semantics through *handles*, to enable you to delete objects exactly when you need them to be removed, while still being able to detect whether an object is still alive. See the [object lifetime chapter](object-lifetime.md) for details.
+The ez scenegraph does not use any kind of reference counting or garbage collection, however it does provide weak reference semantics through *handles*, to enable you to delete objects exactly when you need them to be removed, while still being able to detect whether an object is still alive.
+
+See the [object lifetime chapter](object-lifetime.md) for details.
 
 ## Custom Components
 
@@ -70,9 +72,9 @@ Messages are described in more detail in [this chapter (TODO)](world-messaging.m
 
 * [Back to Index](../../index.md)
 * [Worlds](worlds.md)
-* [Game Objects (TODO)](game-objects.md)
+* [Game Objects](game-objects.md)
 * [Components (TODO)](components.md)
 * [World Modules (TODO)](world-modules.md)
 * [Component Managers (TODO)](component-managers.md)
-* [World Messaging (TODO)](world-messaging.md)
+* [Messaging (TODO)](world-messaging.md)
 * [Custom Code (TODO)](../../custom-code/custom-code-overview.md)

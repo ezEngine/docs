@@ -185,9 +185,9 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * __World__
   * [Component Managers (TODO)](runtime/world/component-managers.md)
   * [Components (TODO)](runtime/world/components.md)
-  * [Game Objects (TODO)](runtime/world/game-objects.md)
+  * [Game Objects](runtime/world/game-objects.md)
   * [Object Lifetime](runtime/world/object-lifetime.md)
-  * [World Messaging (TODO)](runtime/world/world-messaging.md)
+  * [Messaging (TODO)](runtime/world/world-messaging.md)
   * [World Modules (TODO)](runtime/world/world-modules.md)
   * [The World / Scenegraph System](runtime/world/world-overview.md)
   * [Worlds](runtime/world/worlds.md)
