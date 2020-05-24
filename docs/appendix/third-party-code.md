@@ -1,4 +1,4 @@
-# ThirdParty Code
+# ThirdParty Code and Data
 
 This page lists which third party code and data is used by ez.
 
@@ -9,6 +9,18 @@ Link: [http://www.assimp.org](http://www.assimp.org)
 Compile switch: None (hard dependency for the asset processing)
 
 Open Asset Import Library, a portable Open Source library to import various well-known 3D model formats in a uniform manner.
+
+## cc0Textures
+
+Link: [https://cc0textures.com](https://cc0textures.com)
+
+CC0 Textures offers a library containing hundreds of detailed PBR materials with displacement-, normal- and roughness maps for photorealistic rendering. All assets are available for free and without any restrictions.
+
+## cgbookcase
+
+Link: [https://cgbookcase.com](https://cgbookcase.com)
+
+cgbookcase provides hundreds of high quality, PBR textures. All textures on cgbookcase.com are licensed as CC0.
 
 ## Dear Imgui
 
@@ -43,6 +55,12 @@ Compile switch: **EZ_3RDPARTY_ENET_SUPPORT**
 
 An efficient and easy to use networking library, built on top of the UDP protocoll. It is used by ezTelemetry to interact with the ezInspector, and it is also used to implement the file serving functionality.
 
+## FleetOps
+
+Link: [https://www.fleetops.net](https://www.fleetops.net)
+
+Some assets were kindly provided with permission to use and redistribute, by the awesome team behind the FleetOps project. Thanks so much guys!
+
 ## Fmod 2.x
 
 Link: [https://www.fmod.com](https://www.fmod.com)
@@ -58,6 +76,12 @@ ez has an integration for the Fmod sound system. However, you need to download t
 1. In CMake, enable the Fmod compile switch
 1. Recompile ezEngine
 
+## FreeSound
+
+Link: [https://freesound.org](https://freesound.org/)
+
+Freesound is a collaborative database of Creative Commons Licensed sounds.
+
 ## jc_voronoi
 
 Link: [https://github.com/JCash/voronoi/blob/dev/src/jc_voronoi.h](https://github.com/JCash/voronoi/blob/dev/src/jc_voronoi.h)
@@ -65,6 +89,12 @@ Link: [https://github.com/JCash/voronoi/blob/dev/src/jc_voronoi.h](https://githu
 Compile switch: None
 
 A fast single file 2D voronoi diagram generator. Used by ezBreakableSheetComponent.
+
+## Kenney.nl
+
+Link: [kenney.nl](https://kenney.nl/)
+
+Kenney provides thousands of textures, 3D models and sound effects under a generous public domain license. Some of them are used in our sample projects.
 
 ## Lua
 
@@ -133,6 +163,12 @@ Compile switch: **EZ_3RDPARTY_RENDERDOC_SUPPORT**
   
 RenderDoc is a free MIT licensed stand-alone graphics debugger. The ezRenderDocPlugin enables full control over taking RenderDoc snapshots from within the engine.
 
+## RmlUI
+
+Link: [https://mikke89.github.io/RmlUiDoc/](https://mikke89.github.io/RmlUiDoc/)
+
+RmlUi is the C++ user interface package based on the HTML and CSS standards, designed as a complete solution for any project's interface needs. It is a fork of the libRocket project, introducing new features, bug fixes, and performance improvements.
+
 ## SFML
 
 Link: [http://www.sfml-dev.org](http://www.sfml-dev.org)
@@ -146,6 +182,12 @@ This library provides a simple and portable interface for window creation, input
 Link: [http://www.famfamfam.com/lab/icons/silk](http://www.famfamfam.com/lab/icons/silk)
 
 Icons from this set are used by the tools.
+
+## Sonniss
+
+Link: [https://sonniss.com](https://sonniss.com)
+
+Sonniss is a premium distribution platform for high-quality sound effects libraries. Sounds distributed from Sonnis are taken from the GameAudioGDC bundles. See `Data\Content\Sound\FmodProject\Assets\Sonnis\Licensing.pdf` for details.
 
 ## stb
 

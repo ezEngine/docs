@@ -242,4 +242,4 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [String Usage Guidelines](appendix/string-usage.md)
 * [String Formatting](appendix/string-formatting.md)
 * [Color Spaces (TODO)](appendix/color-spaces.md)
-* [ThirdParty Code](appendix/third-party-code.md)
+* [ThirdParty Code and Data](appendix/third-party-code.md)
