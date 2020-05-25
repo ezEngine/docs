@@ -23,4 +23,4 @@ Open the *Corridor* scene document. Make sure to transform all assets (in the *A
 ## See Also
 
 * [Back to Index](../index.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

@@ -17,4 +17,4 @@ The C++ code uses a minimal setup to load the shaders and render a quad on scree
 ## See Also
 
 * [Back to Index](../index.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

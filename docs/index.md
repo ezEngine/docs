@@ -2,9 +2,18 @@
 
 Welcome to the ezEngine documentation.
 
-For topics not (yet) covered by the documentation, [contact us](appendix/contact.md).
+For topics not (yet) covered by the documentation, [contact us](getting-started/contact.md).
 
 ## Table of Contents
+
+### Getting Started
+
+* [API Docs](getting-started/api-docs.md)
+* [Contact](getting-started/contact.md)
+* [ezEditor Overview](getting-started/editor-overview.md)
+* [Frequently Asked Questions](getting-started/faq.md)
+* [How to Contribute](getting-started/how-to-contribute.md)
+* [Videos](getting-started/videos.md)
 
 ### Releases
 
@@ -35,17 +44,12 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Testing Chambers](samples/testing-chambers.md)
 * [Texture Sample](samples/texture-sample.md)
 
-### Contribute
-
-* [How to Contribute](contribute/how-to-contribute.md)
-
 ---
 
 ### Editor
 
 * [Editor Background Operations](editor/editor-bg-operations.md)
 * [Editor Documents](editor/editor-documents.md)
-* [ezEditor Overview](editor/editor-overview.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
 * [Editor Settings](editor/editor-settings.md)
 * [Template Documents (TODO)](editor/editor-template-documents.md)
@@ -191,10 +195,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
   * [World Modules (TODO)](runtime/world/world-modules.md)
   * [The World / Scenegraph System](runtime/world/world-overview.md)
   * [Worlds](runtime/world/worlds.md)
-
-### API Documentation
-
-* [API Docs](api-docs/api-docs.md)
+* [](./docs\api-docs)
 
 ---
 
@@ -234,8 +235,8 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 
 ### Appendix
 
-* [Contact](appendix/contact.md)
-* [Videos](appendix/videos.md)
+* [Contact](getting-started/contact.md)
+* [Videos](getting-started/videos.md)
 * [Library Structure](appendix/library-structure.md)
 * [Coding Guidelines (TODO)](appendix/coding-guidelines.md)
 * [Container Usage Guidelines](appendix/container-usage.md)

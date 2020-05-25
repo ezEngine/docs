@@ -4,7 +4,7 @@ If you want to contribute to ezEngine, there are several ways how you can help o
 
 ## Using the Engine
 
-Just using the engine and filing bug reports, feature requests or generally giving feedback is already a very, very valuable way of contributing. Be sure to include a detailed description of what you where doing, what you saw vs. what you expected, such that it is easy for us to reproduce. We cannot test every feature under all conditions and we do not know all the ways people want to use a feature, so giving feedback is a great way of contributing.
+Just using the engine and [filing bug reports](https://github.com/ezEngine/ezEngine/issues), feature requests or generally giving feedback is already a very, very valuable way of contributing. Be sure to include a detailed description of what you where doing, what you saw vs. what you expected, such that it is easy for us to reproduce. We cannot test every feature under all conditions and we do not know all the ways people want to use a feature, so giving feedback is a great way of contributing.
 
 ## Extend the Samples
 
@@ -20,6 +20,8 @@ We try to document our code as well as possible, but there are undocumented or p
 
 If you find a bug, and manage to fix it yourself, don't hold back! Create a PR and we will gladly integrate it. Become our personal hero by also adding an automated test to prevent regressions.
 
+If you itch to fix *something* you can also search our [bug tickets](https://github.com/ezEngine/ezEngine/issues). Items that we consider 'relatively easy' to fix without much knowledge of the engine, have the label *good first issue*.
+
 ## Unit Tests
 
 ez ships with a large number of unit tests. Especially the lower level functionality is well covered with tests, but the higher up code coverage becomes more and more spotty. If you want to add a test, that's great. Especially if you run into a bug, no matter whether you are able to fix it yourself or not, adding a test that reproduces the bug (and thus ensures it won't reappear after a fix) is very useful. If you do not want to go through the hassle of setting up a proper test, even just posting a piece of code that reproduces an issue in general, allows us to put that into a proper test scenario with little effort.
@@ -28,9 +30,10 @@ And if you really want to contribute to the overall test coverage, search the co
 
 ## Features
 
-We also value feature contributions, but with those we might be much more picky. If you feel confident enough to add a whole new feature, go for it. [Contact us](../appendix/contact.md) if you need help with something. In fact, unless it is a very small feature, it may be beneficial to contact us just to get on the same page what a feature should do, how it should be exposed to the user and what's the best way to implement it. You should have a strong background in C++, though, as we simply do not have the time to walk you through basic programming steps, we can only give high-level help on how to make stuff work inside ez.
+We also value feature contributions, but with those we might be much more picky. If you feel confident enough to add a whole new feature, go for it. [Contact us](contact.md) if you need help with something. In fact, unless it is a very small feature, it may be beneficial to contact us just to get on the same page what a feature should do, how it should be exposed to the user and what's the best way to implement it. You should have a strong background in C++, though, as we simply don't have the time to walk you through basic programming steps, we can only give high-level help on how to make stuff work inside ez.
 
 ## See Also
 
 * [Back to Index](../index.md)
-* [Contact](../appendix/contact.md)
+* [Contact](contact.md)
+* [Frequently Asked Questions](faq.md)

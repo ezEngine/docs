@@ -34,4 +34,4 @@ You can also [export and run the scene](../editor/run-scene.md) externally in th
 * [Running a Scene](../editor/run-scene.md)
 * [Game States (TODO)](../runtime/application/game-state.md)
 * [Custom Code (TODO)](../custom-code/custom-code-overview.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

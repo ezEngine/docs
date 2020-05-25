@@ -19,7 +19,7 @@ Log messages can be *grouped* using the `EZ_LOG_BLOCK` macro.
 
 There are multiple ways to see the content of the log:
 
-* In the [ezEditor](../editor/editor-overview.md) you can open *Panels > Log* to see two logs, the one for the editor and the one from the engine process.
+* In the [ezEditor](../getting-started/editor-overview.md) you can open *Panels > Log* to see two logs, the one for the editor and the one from the engine process.
 * [ezInspector](../tools/inspector.md) shows the log of the connected process.
 * The in-game [console](console.md) outputs the log messages.
 * By default all ez [applications (TODO)](../runtime/application/application.md) also write the log output to a `Log.htm` file in the application's *appdata* folder.
@@ -30,7 +30,7 @@ The logging system uses a thread-local variable to store the *active* logging sy
 
 ## Custom Log Writers
 
-`ezLog` is the central class for all messages to be logged. By default, it routes all messages through an instance of `ezGlobalLog`, though you can redirect this on the calling side if you want. On `ezGlobalLog` you can register multiple handlers that take the messages and either write them to some output or forward them to another system. This method is used to, for instance, forward log messages from one process to another. The [ezInspector](../tools/inspector.md) integration, for example, registers a custom log writer to gather all log messages, and send them over the network, for display in the external tool. [ezEditor](../editor/editor-overview.md) does something similar for the messages from the engine process.
+`ezLog` is the central class for all messages to be logged. By default, it routes all messages through an instance of `ezGlobalLog`, though you can redirect this on the calling side if you want. On `ezGlobalLog` you can register multiple handlers that take the messages and either write them to some output or forward them to another system. This method is used to, for instance, forward log messages from one process to another. The [ezInspector](../tools/inspector.md) integration, for example, registers a custom log writer to gather all log messages, and send them over the network, for display in the external tool. [ezEditor](../getting-started/editor-overview.md) does something similar for the messages from the engine process.
 
 For an in-depth explanation of how you can configure the system, see `ezLog` and `ezGlobalLog`.
 

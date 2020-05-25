@@ -21,4 +21,4 @@ If you prefer to ask a question in private, you can try to contact us via [ezeng
 ## See Also
 
 * [Back to Index](../index.md)
-* [How to Contribute](../contribute/how-to-contribute.md)
+* [How to Contribute](how-to-contribute.md)

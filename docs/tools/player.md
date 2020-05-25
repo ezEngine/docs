@@ -10,7 +10,7 @@ The Player takes these command line arguments:
 Player.exe -scene "path/to/exported/scene.ezObjectGraph" [-wnd "optional/path/to/Window.ddl"] [-profile "OptionalAssetProfileName"]
 ```
 
-Typically you only need to pass the path to the *exported* scene (or prefab) file. The other options are used by the [ezEditor](../editor/editor-overview.md) to select different configurations.
+Typically you only need to pass the path to the *exported* scene (or prefab) file. The other options are used by the [ezEditor](../getting-started/editor-overview.md) to select different configurations.
 
 ## Execution
 
@@ -32,4 +32,4 @@ See [this page](../runtime/application/common-application-features.md) for detai
 * [Game States (TODO)](../runtime/application/game-state.md)
 * [Engine Plugins](../custom-code/cpp/engine-plugins.md)
 * [Projects](../projects/projects-overview.md)
-* [ezEditor Overview](../editor/editor-overview.md)
+* [ezEditor Overview](../getting-started/editor-overview.md)

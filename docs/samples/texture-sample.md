@@ -17,4 +17,4 @@ The code creates a custom resource loader, which virtualizes reads to a large am
 ## See Also
 
 * [Back to Index](../index.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

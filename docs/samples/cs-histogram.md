@@ -15,4 +15,4 @@ The code shows how to use the ez rendering API to set up buffers and textures, l
 ## See Also
 
 * [Back to Index](../index.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

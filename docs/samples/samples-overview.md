@@ -12,4 +12,4 @@ If you want to see how you can extend the engine with your own C++ code through 
 
 ## See Also
 
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

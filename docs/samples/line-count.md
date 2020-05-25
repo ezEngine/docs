@@ -15,4 +15,4 @@ The LineCount sample shows how to create a basic application using the ezEngine 
 ## See Also
 
 * [Back to Index](../index.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)

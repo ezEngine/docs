@@ -25,4 +25,4 @@ The code shows how to use a custom ezGameState for high-level game logic, as wel
 ## See Also
 
 * [Back to Index](../index.md)
-* [Videos](../appendix/videos.md)
+* [Videos](../getting-started/videos.md)
