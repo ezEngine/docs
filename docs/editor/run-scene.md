@@ -1,4 +1,4 @@
-# Testing a Scene
+# Running a Scene
 
 When you have a scene open in the editor, there are multiple ways how you can test it.
 
@@ -34,7 +34,11 @@ If the scene contains a [Player Start Point component](../gameplay/player-start-
 
 ## Export and Run
 
-Another way to test the scene is to export it to a binary format and run it in the [ezPlayer](../tools/player.md). You export a scene using *Scene > Export Scene...* or by pressing `CTRL+E`. You then run the exported scene using *Scene > Run Scene...* or by pressing `CTRL+R`. If you only run a scene, without re-exporting it, it will reuse the previously exported state.
+Another way to test the scene is to export it to a binary format and run it in the [ezPlayer](../tools/player.md). You do so using *Scene > Export and Run...* or by pressing `CTRL+E`.
+
+![Export and Run](media/export-and-run.png)
+
+If you keep `Transform all Assets` checked, all [assets](../assets/assets-overview.md) in the project will be *transformed* first, making sure they are up-to-date. You can uncheck this, to speed up the process, if you know that all assets that you require are up-to-date already.
 
 Both *Simulate Mode* and *Play-the-Game Mode* run inside the editor process. Compared to a game running in a stand-alone process this has two drawbacks:
 

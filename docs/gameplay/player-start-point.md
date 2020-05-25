@@ -11,5 +11,5 @@ When a scene contains a player start point component, you can use the [Play From
 ## See Also
 
 * [Back to Index](../index.md)
-* [Testing a Scene](../editor/run-scene.md)
+* [Running a Scene](../editor/run-scene.md)
 * [ezPlayer](../tools/player.md)

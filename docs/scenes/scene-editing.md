@@ -83,4 +83,4 @@ Now that you are familiar with how to create, edit and test a basic scene, there
 * [Editor Camera](editor-camera.md)
 * [Editing Gizmos](gizmos.md)
 * [Greyboxing](greyboxing.md)
-* [Testing a Scene](../editor/run-scene.md)
+* [Running a Scene](../editor/run-scene.md)

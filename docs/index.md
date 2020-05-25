@@ -50,7 +50,7 @@ For topics not (yet) covered by the documentation, [contact us](appendix/contact
 * [Editor Settings](editor/editor-settings.md)
 * [Template Documents (TODO)](editor/editor-template-documents.md)
 * [Editing Views](editor/editor-views.md)
-* [Testing a Scene](editor/run-scene.md)
+* [Running a Scene](editor/run-scene.md)
 
 ### Projects
 
