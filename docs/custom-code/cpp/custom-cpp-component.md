@@ -8,7 +8,7 @@ The [Sample Game Plugin](../../samples/sample-game-plugin.md) shows all the piec
 
 For every type of C++ component there is a corresponding *component manager*. The component manager is responsible for allocating and deallocating components and for updating them. Each component manager is tied to a single `ezWorld`, so if you have multiple worlds, each world will hold its own instance of each component manager. 
 
-A component manager is a [world module (TODO)](../../runtime/world/world-modules.md), so it can register functions to be called during specific update phases of the world. That is 
+A component manager is a [world module](../../runtime/world/world-modules.md), so it can register functions to be called during specific update phases of the world. That is 
 
 
 

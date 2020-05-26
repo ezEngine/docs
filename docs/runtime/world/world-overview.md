@@ -4,13 +4,13 @@ When you build a scene in the editor or through code, the structure of all the o
 
 ## ECS
 
-In ez we use a variation of an **E**ntity **C**omponent **S**ystem ([ECS](https://en.wikipedia.org/wiki/Entity_component_system)). It doesn't matter whether you are familiar with ECSs, but if you are, the main difference of our implementation to a pure ECS is, that in ez there is always exactly one *system* to handle each *component type*. You can have additional systems (see [World Modules (TODO)](world-modules.md)), however, this is not as common as in other engines.
+In ez we use a variation of an **E**ntity **C**omponent **S**ystem ([ECS](https://en.wikipedia.org/wiki/Entity_component_system)). It doesn't matter whether you are familiar with ECSs, but if you are, the main difference of our implementation to a pure ECS is, that in ez there is always exactly one *system* to handle each *component type*. You can have additional systems (see [World Modules](world-modules.md)), however, this is not as common as in other engines.
 
 The main classes involved are `ezWorld`, `ezGameObject`, `ezComponent` and `ezWorldModule` / `ezComponentManager`.
 
 ### ezWorld
 
-Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects](game-objects.md) and all [world modules (TODO)](world-modules.md), which in turn hold all [components (TODO)](components.md).
+Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects](game-objects.md) and all [world modules](world-modules.md), which in turn hold all [components (TODO)](components.md).
 
 Each world has its own simulation state, such as a clock and a random number generator. Through the world modules, worlds also hold their own state for other simulation aspects, such as [physics (TODO)](../../physics/physx-overview.md).
 
@@ -38,7 +38,7 @@ Components are described in more detail in [this chapter (TODO)](components.md).
 
 World modules are the *systems* of the ECS pattern. Worlds are updated in multiple phases. Some phases are multi-threaded, others aren't. World modules can hook into these phases and make sure that they are called at the right time. World modules implement things like stepping third party code (e.g. physics). The most common type of world modules are *component managers*. Each component type has its own component manager, which is responsible for updating those components. The manager can leverage knowledge from other sources for determining which components need updating, and it can easily update components in a multi-threaded fashion, if it is save to do so.
 
-World modules are described in more detail in [this chapter (TODO)](world-modules.md) and component managers in [this chapter (TODO)](component-managers.md).
+World modules are described in more detail in [this chapter](world-modules.md) and component managers in [this chapter (TODO)](component-managers.md).
 
 ## Object Lifetime
 
@@ -74,7 +74,7 @@ Messages are described in more detail in [this chapter](world-messaging.md).
 * [Worlds](worlds.md)
 * [Game Objects](game-objects.md)
 * [Components (TODO)](components.md)
-* [World Modules (TODO)](world-modules.md)
+* [World Modules](world-modules.md)
 * [Component Managers (TODO)](component-managers.md)
 * [Messaging](world-messaging.md)
 * [Custom Code (TODO)](../../custom-code/custom-code-overview.md)

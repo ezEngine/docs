@@ -10,7 +10,7 @@ Game objects are allocated, destroyed and accessed through the world. For these 
 
 ## Components
 
-Components are not directly managed by a world. Instead, worlds manage [world modules (TODO)](world-modules.md) and [component managers (TODO)](component-managers.md), which in turn manage components. For details, see the chapter about [components (TODO)](components.md).
+Components are not directly managed by a world. Instead, worlds manage [world modules](world-modules.md) and [component managers (TODO)](component-managers.md), which in turn manage components. For details, see the chapter about [components (TODO)](components.md).
 
 ## World Modules
 
@@ -68,6 +68,6 @@ To step your world, call `ezWorld::Update()`. The time delta that will be applie
 * [Back to Index](../../index.md)
 * [Game Objects](game-objects.md)
 * [Components (TODO)](components.md)
-* [World Modules (TODO)](world-modules.md)
+* [World Modules](world-modules.md)
 * [Object Lifetime](object-lifetime.md)
 * [Messaging](world-messaging.md)
