@@ -22,7 +22,7 @@ You can also call `ezWorld::DeleteObjectNow()`. This will indeed delete the obje
 
 ## Deleting Components
 
-To delete a component, get its [component manager (TODO)](component-managers.md) and call `DeleteComponent()` on it. The component won't be deallocated right away, that is deferred till the end of the frame. However, it will be *deactivated* and *deinitialized* immediately. Therefore, if other code tries to access such a component, it will get valid memory, but it may see a deinitialized component. Such a situation can be detected by calling `ezComponent::IsActiveAndInitialized()` on the target. If you delete individual components during a frame (and not entire objects), code that accesses those components should be prepared to deal with deinitialized components.
+To delete a component, get its [component manager](component-managers.md) and call `DeleteComponent()` on it. The component won't be deallocated right away, that is deferred till the end of the frame. However, it will be *deactivated* and *deinitialized* immediately. Therefore, if other code tries to access such a component, it will get valid memory, but it may see a deinitialized component. Such a situation can be detected by calling `ezComponent::IsActiveAndInitialized()` on the target. If you delete individual components during a frame (and not entire objects), code that accesses those components should be prepared to deal with deinitialized components.
 
 ## See Also
 

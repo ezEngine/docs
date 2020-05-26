@@ -187,7 +187,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Reflection System](runtime/reflection-system.md)
 * [Resource Management (TODO)](runtime/resource-management.md)
 * __World__
-  * [Component Managers (TODO)](runtime/world/component-managers.md)
+  * [Component Managers](runtime/world/component-managers.md)
   * [Components (TODO)](runtime/world/components.md)
   * [Game Objects](runtime/world/game-objects.md)
   * [Object Lifetime](runtime/world/object-lifetime.md)

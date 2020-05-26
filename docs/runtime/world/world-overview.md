@@ -38,7 +38,7 @@ Components are described in more detail in [this chapter (TODO)](components.md).
 
 World modules are the *systems* of the ECS pattern. Worlds are updated in multiple phases. Some phases are multi-threaded, others aren't. World modules can hook into these phases and make sure that they are called at the right time. World modules implement things like stepping third party code (e.g. physics). The most common type of world modules are *component managers*. Each component type has its own component manager, which is responsible for updating those components. The manager can leverage knowledge from other sources for determining which components need updating, and it can easily update components in a multi-threaded fashion, if it is save to do so.
 
-World modules are described in more detail in [this chapter](world-modules.md) and component managers in [this chapter (TODO)](component-managers.md).
+World modules are described in more detail in [this chapter](world-modules.md) and component managers in [this chapter](component-managers.md).
 
 ## Object Lifetime
 
@@ -75,6 +75,6 @@ Messages are described in more detail in [this chapter](world-messaging.md).
 * [Game Objects](game-objects.md)
 * [Components (TODO)](components.md)
 * [World Modules](world-modules.md)
-* [Component Managers (TODO)](component-managers.md)
+* [Component Managers](component-managers.md)
 * [Messaging](world-messaging.md)
 * [Custom Code (TODO)](../../custom-code/custom-code-overview.md)

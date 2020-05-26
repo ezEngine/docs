@@ -12,7 +12,7 @@ You create a new world module class by deriving from `ezWorldModule`.
 
 You never instantiate world modules yourself. Instead, call `ezWorld::GetOrCreateModule()`. This will allocate the desired world module if necessary.
 
-Consequently, if no code path ever calls `ezWorld::GetOrCreateModule()`, the respective world module will never be instantiated. Therefore, the lifetime and existence of a world module is often coupled to some component. Once a component is added to a world, its respective [component manager (TODO)](component-managers.md) (which also is a world module) is automatically instantiated. If those components request access to another world module, that will be instantiated, as well.
+Consequently, if no code path ever calls `ezWorld::GetOrCreateModule()`, the respective world module will never be instantiated. Therefore, the lifetime and existence of a world module is often coupled to some component. Once a component is added to a world, its respective [component manager](component-managers.md) (which also is a world module) is automatically instantiated. If those components request access to another world module, that will be instantiated, as well.
 
 Only few systems require a world module, without having some component type that would request its instantiation. For example, there is no need to instantiate a physics world module, if the scene doesn't contain any physics component.
 
@@ -60,5 +60,5 @@ In all of these phases you can modify the owner game object's *local transform*,
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Component Managers (TODO)](component-managers.md)
+* [Component Managers](component-managers.md)
 * [The World / Scenegraph System](world-overview.md)

@@ -10,11 +10,11 @@ Game objects are allocated, destroyed and accessed through the world. For these 
 
 ## Components
 
-Components are not directly managed by a world. Instead, worlds manage [world modules](world-modules.md) and [component managers (TODO)](component-managers.md), which in turn manage components. For details, see the chapter about [components (TODO)](components.md).
+Components are not directly managed by a world. Instead, worlds manage [world modules](world-modules.md) and [component managers](component-managers.md), which in turn manage components. For details, see the chapter about [components (TODO)](components.md).
 
 ## World Modules
 
-World modules are bigger systems that manage aspects like [particle effects](../../effects/particle-effects/particle-effects-overview.md), the [PhysX integration (TODO)](../../physics/physx-overview.md), [wind (TODO)](../../effects/wind.md) and so on. [Component managers (TODO)](component-managers.md) are a special type of world modules that take care of updating the various component types.
+World modules are bigger systems that manage aspects like [particle effects](../../effects/particle-effects/particle-effects-overview.md), the [PhysX integration (TODO)](../../physics/physx-overview.md), [wind (TODO)](../../effects/wind.md) and so on. [Component managers](component-managers.md) are a special type of world modules that take care of updating the various component types.
 
 ## Simulation State
 
@@ -30,7 +30,7 @@ Each world has its own `ezClock` which can be retrieved through `ezWorld::GetClo
 
 ### Random Number Generator
 
-When a component needs a random number, it should query this from the world via `ezWorld::GetRandomNumberGenerator()`. Components or better, [component managers (TODO)](component-managers.md) can of course also have their own random number generator, for example when they need multi-threaded access to it, or when they want to control the seed value for determinism. The [particle systems](../../effects/particle-effects/particle-effects-overview.md), for example, do this to achieve deterministic results.
+When a component needs a random number, it should query this from the world via `ezWorld::GetRandomNumberGenerator()`. Components or better, [component managers](component-managers.md) can of course also have their own random number generator, for example when they need multi-threaded access to it, or when they want to control the seed value for determinism. The [particle systems](../../effects/particle-effects/particle-effects-overview.md), for example, do this to achieve deterministic results.
 
 ### Coordinate System
 
