@@ -99,7 +99,7 @@ These functions return the respective directions in global space considering the
 
 You can send messages to all components attached to an object, or the entire hierarchy below an object. You can also send *event messages*, which will 'bubble up' the hierarchy until they find a component to handle it.
 
-See the chapter about [messaging (TODO)](world-messaging.md) for details.
+See the chapter about [messaging](world-messaging.md) for details.
 
 ## Team ID
 
@@ -115,4 +115,4 @@ Although it would be possible to implement something similar entirely with custo
 * [The World / Scenegraph System](world-overview.md)
 * [Components (TODO)](components.md)
 * [Object Lifetime](object-lifetime.md)
-* [Messaging (TODO)](world-messaging.md)
+* [Messaging](world-messaging.md)

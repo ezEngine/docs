@@ -50,7 +50,7 @@ See the [object lifetime chapter](object-lifetime.md) for details.
 
 A large part of writing your own game, is to write your own components. If you need maximum control and performance, you need to write your [components in C++ (TODO)](../../custom-code/cpp/custom-cpp-component.md).
 
-You can also write components in [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md). Their functionality is very similar but a bit more limited. It is possible to use both and communicate between Typescript and C++ components using [messages (TODO)](world-messaging.md).
+You can also write components in [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md). Their functionality is very similar but a bit more limited. It is possible to use both and communicate between Typescript and C++ components using [messages](world-messaging.md).
 
 ## Messaging
 
@@ -66,7 +66,7 @@ When our projectile component now hits some object, it simply sends a *damage me
 
 Using messages decouples code, as components that know nothing of each other can still communicate and interact. The message system is also highly optimized for best performance.
 
-Messages are described in more detail in [this chapter (TODO)](world-messaging.md).
+Messages are described in more detail in [this chapter](world-messaging.md).
 
 ## See Also
 
@@ -76,5 +76,5 @@ Messages are described in more detail in [this chapter (TODO)](world-messaging.m
 * [Components (TODO)](components.md)
 * [World Modules (TODO)](world-modules.md)
 * [Component Managers (TODO)](component-managers.md)
-* [Messaging (TODO)](world-messaging.md)
+* [Messaging](world-messaging.md)
 * [Custom Code (TODO)](../../custom-code/custom-code-overview.md)
