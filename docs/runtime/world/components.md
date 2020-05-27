@@ -229,7 +229,7 @@ For examples, have a look at the [Sample Game Plugin](../../samples/sample-game-
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Custom Code (TODO)](../../custom-code/custom-code-overview.md)
+* [Custom Code](../../custom-code/custom-code-overview.md)
 * [The World / Scenegraph System](world-overview.md)
 * [Game Objects](game-objects.md)
 * [Sample Game Plugin](../../samples/sample-game-plugin.md)

@@ -77,4 +77,4 @@ Messages are described in more detail in [this chapter](world-messaging.md).
 * [World Modules](world-modules.md)
 * [Component Managers](component-managers.md)
 * [Messaging](world-messaging.md)
-* [Custom Code (TODO)](../../custom-code/custom-code-overview.md)
+* [Custom Code](../../custom-code/custom-code-overview.md)

@@ -163,7 +163,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Custom Code
 
-* [Custom Code (TODO)](custom-code/custom-code-overview.md)
+* [Custom Code](custom-code/custom-code-overview.md)
 * __C++__
   * [Custom Code with C++ (TODO)](custom-code/cpp/cpp-overview.md)
   * [Custom Components with C++ (TODO)](custom-code/cpp/custom-cpp-component.md)

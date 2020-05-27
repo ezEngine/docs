@@ -1,6 +1,6 @@
 # Sample Game Plugin
 
-The **SampleGamePlugin** demonstrates the basics of how to build a [custom plugin (TODO)](../custom-code/custom-code-overview.md) for game code that can run both in a stand-alone application (such as [ezPlayer](../tools/player.md)) as well as inside the editor.
+The **SampleGamePlugin** demonstrates the basics of how to build a [custom plugin](../custom-code/custom-code-overview.md) for game code that can run both in a stand-alone application (such as [ezPlayer](../tools/player.md)) as well as inside the editor.
 
 ## Prerequisites
 
@@ -33,5 +33,5 @@ You can also [export and run the scene](../editor/run-scene.md) externally in th
 * [Back to Index](../index.md)
 * [Running a Scene](../editor/run-scene.md)
 * [Game States (TODO)](../runtime/application/game-state.md)
-* [Custom Code (TODO)](../custom-code/custom-code-overview.md)
+* [Custom Code](../custom-code/custom-code-overview.md)
 * [Videos](../getting-started/videos.md)
