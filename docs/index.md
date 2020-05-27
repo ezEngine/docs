@@ -172,7 +172,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Custom Components with TypeScript (TODO)](custom-code/typescript/custom-ts-components.md)
   * [Custom Code with TypeScript (TODO)](custom-code/typescript/typescript-overview.md)
 * __Visual Script__
-  * [Custom Code with Visual Scripts (TODO)](custom-code/visual-script/visual-script-overview.md)
+  * [Custom Code with Visual Scripts](custom-code/visual-script/visual-script-overview.md)
 
 ### Runtime
 
