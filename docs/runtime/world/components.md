@@ -59,6 +59,57 @@ if (pObject->TryGetComponentOfBaseType(pMesh))
 
 You can iterate over all components of one type by calling `ezComponentManager::GetComponents()`. This returns an iterator with which you can efficiently access all components managed by that component manager. Be aware that some components may not be active, so you should skip those.
 
+## Component Reflection Block
+
+All component types must use [reflection](../reflection-system.md). Only reflected members show up as properties in the editor. An example block looks like this:
+
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-reflection-block -->
+```cpp
+EZ_BEGIN_COMPONENT_TYPE(DebugRenderComponent, 2, ezComponentMode::Static)
+{
+  EZ_BEGIN_PROPERTIES
+  {
+    EZ_MEMBER_PROPERTY("Size", m_fSize)->AddAttributes(new ezDefaultValueAttribute(1), new ezClampValueAttribute(0, 10)),
+    EZ_MEMBER_PROPERTY("Color", m_Color)->AddAttributes(new ezDefaultValueAttribute(ezColor::White)),
+    EZ_ACCESSOR_PROPERTY("Texture", GetTextureFile, SetTextureFile)->AddAttributes(new ezAssetBrowserAttribute("Texture 2D")),
+    EZ_BITFLAGS_MEMBER_PROPERTY("Render", DebugRenderComponentMask, m_RenderTypes)->AddAttributes(new ezDefaultValueAttribute(DebugRenderComponentMask::Box)),
+  }
+  EZ_END_PROPERTIES;
+
+  EZ_BEGIN_ATTRIBUTES
+  {
+    new ezCategoryAttribute("SampleGamePlugin"), // Component menu group
+  }
+  EZ_END_ATTRIBUTES;
+
+  EZ_BEGIN_MESSAGEHANDLERS
+  {
+    EZ_MESSAGE_HANDLER(ezMsgSetColor, OnSetColor)
+  }
+  EZ_END_MESSAGEHANDLERS;
+
+  EZ_BEGIN_FUNCTIONS
+  {
+    EZ_SCRIPT_FUNCTION_PROPERTY(SetRandomColor)
+  }
+  EZ_END_FUNCTIONS;
+}
+EZ_END_COMPONENT_TYPE
+```
+<!-- END-DOCS-CODE-SNIPPET -->
+
+The *properties* section lists all the members that should be editable. Components can have 'virtual' properties, that don't exist as members, but use *accessors* (functions). Properties can have *attributes* to configure how they show up in the editor.
+
+The *attributes* section can additionally specify type specific properties. For example, here we tell the editor where in the component menu this component should appear.
+
+The *message handler* section is important to enable [messaging](world-messaging.md).
+
+The *functions* section is used to expose certain member functions to the reflection system, such that script bindings, such as [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md) can call these functions.
+
+<!-- TODO: at some point 'we' must document all the available options *sigh* -->
+
+At the moment there is no documentation that lists all the available options. It is best to get inspiration by looking at the code for existing components.
+
 ## Component Activation
 
 There are three important states for components:
@@ -87,7 +138,7 @@ An example is a physics joint component. To set up a joint, the component needs 
 
 ## User Flags
 
-`ezComponent::SetUserFlag` and `ezComponent::GetUserFlag` can be used to store up to 8 bits of user flags. This should be only used internally, to reduce memory consumption.
+`ezComponent::SetUserFlag` and `ezComponent::GetUserFlag` can be used to store up to 8 bits of user flags. This should only be used internally, to reduce memory consumption.
 
 ## Dynamic and Static Components
 
@@ -99,7 +150,7 @@ EZ_BEGIN_COMPONENT_TYPE(DemoComponent, 3 /* version */, ezComponentMode::Dynamic
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-This information tells the editor whether this component type attempts to modify the owner's transformation (position, rotation, scale). If any *dynamic* component is attached to a [game object](game-objects.md), the entire object will be marked as dynamic and will have its transform updated every frame. If only *static* components are attached, the game object can be marked as static as well, and will require less performance.
+This information tells the editor whether this component type attempts to modify the owner's transformation (position, rotation, scale). If any *dynamic* component is attached to a [game object](game-objects.md), the entire object will be marked as dynamic and will have its transform updated every frame. If only *static* components are attached, the game object can be marked as static as well, and costs less performance.
 
 See [Static vs. Dynamic Objects](game-objects.md#static-vs-dynamic-objects).
 
@@ -166,55 +217,6 @@ void DemoComponent::DeserializeComponent(ezWorldReader& stream)
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-## Component Reflection Block
-
-All component types must use [reflection](../reflection-system.md). Only reflected members show up as properties in the editor. An example block looks like this:
-
-<!-- BEGIN-DOCS-CODE-SNIPPET: component-reflection-block -->
-```cpp
-EZ_BEGIN_COMPONENT_TYPE(DebugRenderComponent, 2, ezComponentMode::Static)
-{
-  EZ_BEGIN_PROPERTIES
-  {
-    EZ_MEMBER_PROPERTY("Size", m_fSize)->AddAttributes(new ezDefaultValueAttribute(1), new ezClampValueAttribute(0, 10)),
-    EZ_MEMBER_PROPERTY("Color", m_Color)->AddAttributes(new ezDefaultValueAttribute(ezColor::White)),
-    EZ_ACCESSOR_PROPERTY("Texture", GetTextureFile, SetTextureFile)->AddAttributes(new ezAssetBrowserAttribute("Texture 2D")),
-    EZ_BITFLAGS_MEMBER_PROPERTY("Render", DebugRenderComponentMask, m_RenderTypes)->AddAttributes(new ezDefaultValueAttribute(DebugRenderComponentMask::Box)),
-  }
-  EZ_END_PROPERTIES;
-
-  EZ_BEGIN_ATTRIBUTES
-  {
-    new ezCategoryAttribute("SampleGamePlugin"), // Component menu group
-  }
-  EZ_END_ATTRIBUTES;
-
-  EZ_BEGIN_MESSAGEHANDLERS
-  {
-    EZ_MESSAGE_HANDLER(ezMsgSetColor, OnSetColor)
-  }
-  EZ_END_MESSAGEHANDLERS;
-
-  EZ_BEGIN_FUNCTIONS
-  {
-    EZ_SCRIPT_FUNCTION_PROPERTY(SetRandomColor)
-  }
-  EZ_END_FUNCTIONS;
-}
-EZ_END_COMPONENT_TYPE
-```
-<!-- END-DOCS-CODE-SNIPPET -->
-
-The *properties* section lists all the members that should be editable. Components can have 'virtual' properties, that don't exist as members, but use *accessors* (functions). Properties can have *attributes* to configure how they show up in the editor.
-
-The *attributes* section can additionally specify type specific properties. For example, here we tell the editor where in the component menu this component should appear.
-
-The *message handler* section is important to enable [messaging](world-messaging.md).
-
-The *functions* section is used to expose certain member functions to the reflection system, such that script bindings, such as [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md) can call these functions.
-
-<!-- TODO: at some point 'we' must document all the available options *sigh* -->
-
 ## Custom Components
 
 You can extend the engine with custom components:
@@ -222,7 +224,12 @@ You can extend the engine with custom components:
 * [Custom Components with C++ (TODO)](../../custom-code/cpp/custom-cpp-component.md)
 * [Custom Components with TypeScript (TODO)](../../custom-code/typescript/custom-ts-components.md)
 
+For examples, have a look at the [Sample Game Plugin](../../samples/sample-game-plugin.md).
+
 ## See Also
 
 * [Back to Index](../../index.md)
 * [Custom Code (TODO)](../../custom-code/custom-code-overview.md)
+* [The World / Scenegraph System](world-overview.md)
+* [Game Objects](game-objects.md)
+* [Sample Game Plugin](../../samples/sample-game-plugin.md)
