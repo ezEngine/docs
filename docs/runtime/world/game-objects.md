@@ -26,7 +26,7 @@ The global transform is computed from the local transform and the global transfo
 
 *Static* game objects are objects that are considered to never move. *Dynamic* objects, however, can move around the scene arbitrarily. Internally the engine separates these two types of objects into different memory regions. The object transform for dynamic objects is updated *every frame*. That means from a performance perspective it makes no difference whether a dynamic object was moved in a frame or not. The transforms for static objects, however, are only updated when it is needed (after creation). If you try to move a static object, you will see warnings in the [log](../../debugging/logging.md) in development builds, and the object will not move.
 
-When you build a scene in the editor, you generally don't need to worry about this. Each [component type (TODO)](components.md) is flagged to either be *dynamic* (meaning it may modify its owner's position) or static. From the attached components, the editor will automatically detect whether a game object must be created as static or dynamic.
+When you build a scene in the editor, you generally don't need to worry about this. Each [component type](components.md) is flagged to either be *dynamic* (meaning it may modify its owner's position) or static. From the attached components, the editor will automatically detect whether a game object must be created as static or dynamic.
 
 However, in some cases you may know that an object will end up having dynamic components later. So to prevent a costly switch from static to dynamic, you can force a game object to be dynamic, by selecting this mode from the properties.
 
@@ -113,6 +113,6 @@ Although it would be possible to implement something similar entirely with custo
 
 * [Back to Index](../../index.md)
 * [The World / Scenegraph System](world-overview.md)
-* [Components (TODO)](components.md)
+* [Components](components.md)
 * [Object Lifetime](object-lifetime.md)
 * [Messaging](world-messaging.md)

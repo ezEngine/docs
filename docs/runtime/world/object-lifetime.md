@@ -1,6 +1,6 @@
 # Object Lifetime
 
-The lifetime of [game objects](game-objects.md) and [components (TODO)](components.md) is tightly controlled by the [world](worlds.md) that they belong to. Neither are objects reference counted, nor garbage collected. You have full control over the destruction of objects, but by default 'deleted' objects are not destroyed before the end of the frame, to make writing robust code easy.
+The lifetime of [game objects](game-objects.md) and [components](components.md) is tightly controlled by the [world](worlds.md) that they belong to. Neither are objects reference counted, nor garbage collected. You have full control over the destruction of objects, but by default 'deleted' objects are not destroyed before the end of the frame, to make writing robust code easy.
 
 The lifetime of objects is directly linked to the object hierarchy. If a game object gets deleted, that also deletes all child nodes and all attached components.
 
@@ -28,4 +28,4 @@ To delete a component, get its [component manager](component-managers.md) and ca
 
 * [Back to Index](../../index.md)
 * [Game Objects](game-objects.md)
-* [Components (TODO)](components.md)
+* [Components](components.md)

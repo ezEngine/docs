@@ -10,7 +10,7 @@ The main classes involved are `ezWorld`, `ezGameObject`, `ezComponent` and `ezWo
 
 ### ezWorld
 
-Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects](game-objects.md) and all [world modules](world-modules.md), which in turn hold all [components (TODO)](components.md).
+Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects](game-objects.md) and all [world modules](world-modules.md), which in turn hold all [components](components.md).
 
 Each world has its own simulation state, such as a clock and a random number generator. Through the world modules, worlds also hold their own state for other simulation aspects, such as [physics (TODO)](../../physics/physx-overview.md).
 
@@ -22,7 +22,7 @@ Worlds are described in more detail in [this chapter](worlds.md).
 
 `ezGameObject` is our *entity* class. The terms *entity*, *game object* and *node* are used interchangeably. Every game object has a position, rotation and scale. It may be attached to a single *parent* game object and it may have multiple game objects attached as children. The game object hierarchy is a directed acyclic graph (DAG).
 
-Game objects by themselves do not have any *behavior*. Instead, each game object can have an arbitrary number of [components (TODO)](components.md) attached.
+Game objects by themselves do not have any *behavior*. Instead, each game object can have an arbitrary number of [components](components.md) attached.
 
 The object's *transform* (position, rotation, scale) is local to its parent node, but it also holds a *global* transform, which is computed by concatenating the transformations of all parent nodes. Every time a game object or any of its parent nodes is moved, this global transform is updated.
 
@@ -32,7 +32,7 @@ Game objects are described in more detail in [this chapter](game-objects.md).
 
 Components can be attached to game objects. They bring their own data and functionality. Components are used to implement behavior. For example light source components are used to tell the renderer how to light the scene, physics components are used to make objects collide with each other and AI components let creatures run around. By attaching components to game objects, you configure how that game object behaves. Components can interact with or depend on each other. For example a physics *actor* component would make an object fall to the ground, but it also needs a physics *shape* component to know whether the object should behave like a box, a sphere or something else.
 
-Components are described in more detail in [this chapter (TODO)](components.md).
+Components are described in more detail in [this chapter](components.md).
 
 ### ezWorldModule / ezComponentManager
 
@@ -73,7 +73,7 @@ Messages are described in more detail in [this chapter](world-messaging.md).
 * [Back to Index](../../index.md)
 * [Worlds](worlds.md)
 * [Game Objects](game-objects.md)
-* [Components (TODO)](components.md)
+* [Components](components.md)
 * [World Modules](world-modules.md)
 * [Component Managers](component-managers.md)
 * [Messaging](world-messaging.md)

@@ -169,6 +169,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Custom Components with C++ (TODO)](custom-code/cpp/custom-cpp-component.md)
   * [Engine Plugins](custom-code/cpp/engine-plugins.md)
 * __TypeScript__
+  * [Custom Components with TypeScript (TODO)](custom-code/typescript/custom-ts-components.md)
   * [Custom Code with TypeScript (TODO)](custom-code/typescript/typescript-overview.md)
 * __Visual Script__
   * [Custom Code with Visual Scripts (TODO)](custom-code/visual-script/visual-script-overview.md)
@@ -188,7 +189,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Resource Management (TODO)](runtime/resource-management.md)
 * __World__
   * [Component Managers](runtime/world/component-managers.md)
-  * [Components (TODO)](runtime/world/components.md)
+  * [Components](runtime/world/components.md)
   * [Game Objects](runtime/world/game-objects.md)
   * [Object Lifetime](runtime/world/object-lifetime.md)
   * [Messaging](runtime/world/world-messaging.md)

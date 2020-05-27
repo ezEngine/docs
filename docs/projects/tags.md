@@ -16,7 +16,7 @@ In the image below the selected game object only has `My Custom Tag` assigned, a
 
 ![Tag editor](media/editor-tags.png)
 
-Using *New Category* you can set up multiple tag categories. However, which categories are used where, is defined by code. *Game objects* for example, use tags from the *Default* category. Unless you have [custom components (TODO)](../runtime/world/components.md) which use a different tag category, there is no use in adding a new category.
+Using *New Category* you can set up multiple tag categories. However, which categories are used where, is defined by code. *Game objects* for example, use tags from the *Default* category. Unless you have [custom components](../runtime/world/components.md) which use a different tag category, there is no use in adding a new category.
 
 **Important:** Be careful how you name your tags, they cannot be renamed. Once tags are used and saved in scene files, you would need to manually modify scene and prefab files to change their name.
 

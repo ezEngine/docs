@@ -63,7 +63,7 @@ ezPlugin s_Plugin(false, &OnPluginLoaded, &OnPluginUnloaded);
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-The important part here is the definition of the global variable `s_Plugin`. This injects code into the plugin DLL, that helps the engine to distinguish which plugin things like [components (TODO)](../../runtime/world/components.md) or [subsystems](../../runtime/configuration/startup.md) belong to. You really don't have to do more than this. In the snippet above we provide callbacks that are triggered when a plugin is loaded or unloaded. These callbacks are optional, though in some cases you may want to register and unregister things here.
+The important part here is the definition of the global variable `s_Plugin`. This injects code into the plugin DLL, that helps the engine to distinguish which plugin things like [components](../../runtime/world/components.md) or [subsystems](../../runtime/configuration/startup.md) belong to. You really don't have to do more than this. In the snippet above we provide callbacks that are triggered when a plugin is loaded or unloaded. These callbacks are optional, though in some cases you may want to register and unregister things here.
 
 ## Loading a Plugin
 

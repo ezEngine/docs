@@ -1,6 +1,6 @@
 # Component Managers
 
-A component manager is a [world module](world-modules.md) whose purpose it is to create, store and update [components (TODO)](components.md) of a single type. For every component type, there is exactly one component manager to handle that type.
+A component manager is a [world module](world-modules.md) whose purpose it is to create, store and update [components](components.md) of a single type. For every component type, there is exactly one component manager to handle that type.
 
 ## Simple Component Managers
 
@@ -64,4 +64,4 @@ If in doubt, both options are fine. The `ezComponentManagerSimple` defaults to `
 
 * [Back to Index](../../index.md)
 * [World Modules](world-modules.md)
-* [Components (TODO)](components.md)
+* [Components](components.md)

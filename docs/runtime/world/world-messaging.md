@@ -4,7 +4,7 @@ For an introduction what a message is and how it fits into the overall picture, 
 
 This documentation focuses on the C++ `ezMessage` class. The functionality exposed through other mechanisms, such as [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md), may be more limited in scope, but ultimately maps to the C++ implementation.
 
-Messages can be sent from any code. They can only be received by [components (TODO)](components.md), though, as the messaging system is implemented by `ezWorld`.
+Messages can be sent from any code. They can only be received by [components](components.md), though, as the messaging system is implemented by `ezWorld`.
 
 ## Declaring a Message
 
