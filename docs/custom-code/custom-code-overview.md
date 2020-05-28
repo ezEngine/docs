@@ -2,7 +2,7 @@
 
 There are currently three ways to write custom code:
 
-1. [Custom Code with C++ (TODO)](cpp/cpp-overview.md)
+1. [Custom Code with C++](cpp/cpp-overview.md)
 1. [Custom Code with TypeScript (TODO)](typescript/typescript-overview.md)
 1. [Custom Code with Visual Scripts](visual-script/visual-script-overview.md)
 
