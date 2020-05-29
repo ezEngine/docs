@@ -14,7 +14,7 @@ The **Core** library is built on top of Foundation. This library contains engine
 
 The **TestFramework** library implements code to manage our unit-tests. You can ignore this entirely.
 
-**GameEngine** builds on top of all the other libraries, including the rendering code. It contains the most high-level code for a game engine, such as AI and Animation, [ezGameApplication (TODO)](../runtime/application/application.md) and [ezGameState (TODO)](../runtime/application/game-state.md), which are the basis for any game application built with ez, the prefab system, the visual scripting and much more.
+**GameEngine** builds on top of all the other libraries, including the rendering code. It contains the most high-level code for a game engine, such as AI and Animation, [ezGameApplication (TODO)](../runtime/application/application.md) and [ezGameState](../runtime/application/game-state.md), which are the basis for any game application built with ez, the prefab system, the visual scripting and much more.
 
 In general the most interesting libraries to look at are **Foundation**, **Core** and **GameEngine**.
 
@@ -84,7 +84,7 @@ In **GameEngine** you will find all the high-level code needed in a game engine.
 
 **GameEngine\\GameApplication** contains [ezGameApplication (TODO)](../runtime/application/application.md), which extends `ezApplication` with higher-level, more game specific functionality. This is one of the most important high-level classes to look at and extend when writing your own, stand-alone game application (assuming you can't do so with `ezGameState` alone).
 
-In **GameEngine\\GameState** you find [ezGameState (TODO)](../runtime/application/game-state.md), which is the most important class to extend when writing your own game code, especially if you want to be able to run your code within the editor.
+In **GameEngine\\GameState** you find [ezGameState](../runtime/application/game-state.md), which is the most important class to extend when writing your own game code, especially if you want to be able to run your code within the editor.
 
 **GameEngine\\Interfaces** contains various interface definitions for instance for basic interactions with physics and audio engines.
 

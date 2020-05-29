@@ -16,7 +16,7 @@ Consequently, if no code path ever calls `ezWorld::GetOrCreateModule()`, the res
 
 Only few systems require a world module, without having some component type that would request its instantiation. For example, there is no need to instantiate a physics world module, if the scene doesn't contain any physics component.
 
-If you do need a system that is always running, consider putting it into a [game state (TODO)](../application/game-state.md). And if you determine it really does need to be a world module, a custom game state may be the right place to do the initial call to `ezWorld::GetOrCreateModule()` to instantiate the system.
+If you do need a system that is always running, consider putting it into a [game state](../application/game-state.md). And if you determine it really does need to be a world module, a custom game state may be the right place to do the initial call to `ezWorld::GetOrCreateModule()` to instantiate the system.
 
 The more common approach, though, is to have a custom component type, which ensures to set up a world module. You would then put a single component of this type into each world. This also allows you to have properties on the component, with which you can configure the world module.
 

@@ -20,7 +20,7 @@ You may notice the `>sdk` and `>project` prefixes. These are *special directory*
 
 ### From Custom Code
 
-You can also mount data directories from code. Usually you would do this either in a custom [application (TODO)](../runtime/application/application.md) class or in a [game state (TODO)](../runtime/application/game-state.md). Either way, you should do this early at game startup. For more more information, see the [filesystem documentation](../runtime/filesystem.md#data-directories).
+You can also mount data directories from code. Usually you would do this either in a custom [application (TODO)](../runtime/application/application.md) class or in a [game state](../runtime/application/game-state.md). Either way, you should do this early at game startup. For more more information, see the [filesystem documentation](../runtime/filesystem.md#data-directories).
 
 ## See Also
 
@@ -29,4 +29,4 @@ You can also mount data directories from code. Usually you would do this either 
 * [FileServe (TODO)](../tools/fileserve.md)
 * [Projects](projects-overview.md)
 * [Application (TODO)](../runtime/application/application.md)
-* [Game States (TODO)](../runtime/application/game-state.md)
+* [Game States](../runtime/application/game-state.md)

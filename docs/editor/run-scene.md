@@ -22,7 +22,7 @@ The *Play-the-Game Mode* (PTG) is activated with the *Controller* button in the 
 
 ![Toolbar buttons for scene simulation](media/toolbar-simulate-buttons.png)
 
-This enables the simulation, similar to the *Simulate Mode*. However, it additionally activates the [Game State (TODO)](../runtime/application/game-state.md). Therefore this mode spawns a separate window and also routes all [input (TODO)](../input/input-overview.md) to the running game. If the scene contains a [Player Start Point component](../gameplay/player-start-point.md) the game state may spawn the referenced prefab and thus enable you to properly play the game.
+This enables the simulation, similar to the *Simulate Mode*. However, it additionally activates the [Game State](../runtime/application/game-state.md). Therefore this mode spawns a separate window and also routes all [input (TODO)](../input/input-overview.md) to the running game. If the scene contains a [Player Start Point component](../gameplay/player-start-point.md) the game state may spawn the referenced prefab and thus enable you to properly play the game.
 
 You can `Alt+Tab` out of the PTG window, back to the editor, and modify the scene the same way as in the simulate mode, with the same restrictions.
 
@@ -49,5 +49,5 @@ Both *Simulate Mode* and *Play-the-Game Mode* run inside the editor process. Com
 
 * [Back to Index](../index.md)
 * [ezPlayer](../tools/player.md)
-* [Game States (TODO)](../runtime/application/game-state.md)
+* [Game States](../runtime/application/game-state.md)
 * [Player Start Point](../gameplay/player-start-point.md)

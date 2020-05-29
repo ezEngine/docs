@@ -30,7 +30,7 @@ If you want to fully remove a certain integration, even in the editor, you need 
 
 ### Loading Plugins from Code
 
-A custom [application (TODO)](../runtime/application/application.md) or [game state (TODO)](../runtime/application/game-state.md) can load plugins directly from code if necessary. For example the `ezInspectorPlugin` is automatically loaded for you by stock ez applications, when building the code for development.
+A custom [application (TODO)](../runtime/application/application.md) or [game state](../runtime/application/game-state.md) can load plugins directly from code if necessary. For example the `ezInspectorPlugin` is automatically loaded for you by stock ez applications, when building the code for development.
 
 ## Input Configuration
 

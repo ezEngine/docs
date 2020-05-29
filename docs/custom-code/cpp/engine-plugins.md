@@ -73,11 +73,11 @@ The more convenient way to load your game plugin, though, is to enable it in the
 
 ## Add Custom Code
 
-Once you have your basic plugin set up and can load it into your project, you can start adding custom code. The easiest way to get started is to write a [custom component](custom-cpp-component.md). Once you need control over higher level game logic, you can add your own [game state (TODO)](../../runtime/application/game-state.md). And if you need to initialize and shut down certain systems, you should utilize the [startup system](../../runtime/configuration/startup.md).
+Once you have your basic plugin set up and can load it into your project, you can start adding custom code. The easiest way to get started is to write a [custom component](custom-cpp-component.md). Once you need control over higher level game logic, you can add your own [game state](../../runtime/application/game-state.md). And if you need to initialize and shut down certain systems, you should utilize the [startup system](../../runtime/configuration/startup.md).
 
 ## Utility Plugins
 
-If you want to write a plugin that provides some functionality for shared access, like some integration of a third-party library, the process is exactly the same. The only difference is, that such libraries would never contain a [game state (TODO)](../../runtime/application/game-state.md).
+If you want to write a plugin that provides some functionality for shared access, like some integration of a third-party library, the process is exactly the same. The only difference is, that such libraries would never contain a [game state](../../runtime/application/game-state.md).
 
 Also, have a look at [singletons](../../runtime/configuration/interfaces.md) if your plugin is supposed to provide an implementation of some abstract interface.
 
@@ -85,7 +85,7 @@ Also, have a look at [singletons](../../runtime/configuration/interfaces.md) if 
 
 * [Back to Index](../../index.md)
 * [Sample Game Plugin](../../samples/sample-game-plugin.md)
-* [Game States (TODO)](../../runtime/application/game-state.md)
+* [Game States](../../runtime/application/game-state.md)
 * [Custom Components with C++](custom-cpp-component.md)
 * [Startup System](../../runtime/configuration/startup.md)
 * [Singleton Interfaces](../../runtime/configuration/interfaces.md)

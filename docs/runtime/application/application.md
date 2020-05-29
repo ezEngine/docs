@@ -1,6 +1,6 @@
 # Application
 
-See [Game States (TODO)](game-state.md)
+See [Game States](game-state.md)
 
 <!-- PAGE IS TODO -->
 

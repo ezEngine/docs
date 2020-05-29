@@ -56,7 +56,7 @@ Now the output window will only show strings that contain 'some text'.
 
 Console functions are an easy way to expose C++ utility functions through the console. The class `ezConsoleFunction` is used to wrap any function (static or method function) in a delegate and enable the console to call it. Of course, since the user can only input certain types of variables in the console, the argument types that you can use are very limited: strings, numbers (int / float) and boolean.
 
-This code snippet shows how to declare a console function in a class, for example inside a custom [game state (TODO)](../runtime/application/game-state.md).
+This code snippet shows how to declare a console function in a class, for example inside a custom [game state](../runtime/application/game-state.md).
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: confunc-decl -->
 ```cpp

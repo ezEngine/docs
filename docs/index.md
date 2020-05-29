@@ -180,7 +180,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * __Application__
   * [Application (TODO)](runtime/application/application.md)
   * [Common Application Features](runtime/application/common-application-features.md)
-  * [Game States (TODO)](runtime/application/game-state.md)
+  * [Game States](runtime/application/game-state.md)
 * __Configuration__
   * [Actor System (TODO)](runtime/configuration/actor-system.md)
   * [Singleton Interfaces](runtime/configuration/interfaces.md)
