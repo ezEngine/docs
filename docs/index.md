@@ -165,7 +165,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 * [Custom Code](custom-code/custom-code-overview.md)
 * __C++__
-  * [Hot Reloading C++ Game Plugins in the Editor (TODO)](custom-code/cpp/cpp-code-reload.md)
+  * [Hot Reloading C++ Game Plugins in the Editor](custom-code/cpp/cpp-code-reload.md)
   * [Custom Code with C++](custom-code/cpp/cpp-overview.md)
   * [Custom Components with C++](custom-code/cpp/custom-cpp-component.md)
   * [Engine Plugins](custom-code/cpp/engine-plugins.md)

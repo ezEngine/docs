@@ -10,7 +10,7 @@ This file is already referenced by our CMake scripts in the `Foundation` library
 
 Please be aware that the editor uses at least one, but potentially multiple child processes for its operation. Everything that is actually 3D rendered, is done by the `EditorEngineProcess`, which is spawned when the editor opens a project. This makes the editor more resilient. However, it means that if you launch the editor in a debugger, by default breakpoints inside the engine runtime code cannot be hit, as you are not attached to the right process.
 
-The easiest way to fix this, is to use an extension for Visual Studio: **Microsoft Child Process Debugging Power Tool**
+You can attach manually to this process. However, it is much easier to use an extension for Visual Studio: **Microsoft Child Process Debugging Power Tool**
 
 This tool enables Visual Studio to automatically attach to all child processes spawned by the parent process, which makes debugging the ez editor much easier.
 
@@ -18,9 +18,14 @@ After installing the extension go to *Debug > Other Debug Targets > Child Proces
 
 ![Child Debug Settings](media/child-debug.png)
 
+## Hot Reloading C++ Game Code
+
+You can't reload any C++ code at runtime. You can, however, reload the entire engine process in the editor. See [this chapter](../custom-code/cpp/cpp-code-reload.md) for details.
+
 ## See Also
 
 * [Back to Index](../index.md)
 * [Debug Rendering](debug-rendering.md)
 * [PhysX Visual Debugger](../physics/visual-debugger.md)
 * [Shader Debugging](../graphics/shaders/shader-debugging.md)
+* [Hot Reloading C++ Game Plugins in the Editor](../custom-code/cpp/cpp-code-reload.md)

@@ -100,6 +100,8 @@ DemoComponent::~DemoComponent() = default;
 
 void DemoComponent::OnSimulationStarted()
 {
+  SUPER::OnSimulationStarted();
+
   // this component doesn't need to anything for initialization
 }
 
@@ -115,9 +117,9 @@ void DemoComponent::Update()
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-Components rarely need to do much in their constructor and destructor. Most setup should be done in `ezComponent::OnSimulationStarted()`. For components that should already have functionality in the editor, while the simulation is not yet running, you should do your setup in `ezComponent::OnActivation()` instead. There is no `OnSimulationStopped()`, as this would always be the same as `ezComponent::OnDeactivation()`.
+Components rarely need to do much in their constructor and destructor. Most setup should be done in `ezComponent::OnSimulationStarted()`. For components that should already have functionality in the editor, while the simulation is not yet running, you should do your setup in `ezComponent::OnActivated()` instead. There is no `OnSimulationStopped()`, as this would always be the same as `ezComponent::OnDeactivated()`.
 
-As you can see, this component modifies the position of its owner object during its update.
+As you can see, this component modifies the position of its owner object during its update. This is why we had to use `ezComponentMode::Dynamic` in the reflection block, to tell the engine that objects with this component attached may change their position.
 
 ## Serialization
 
@@ -170,7 +172,7 @@ void DemoComponent::DeserializeComponent(ezWorldReader& stream)
 
 ## Conclusion
 
-Adding a custom component in C++ is not hard. Use the [Sample Game Plugin](../../samples/sample-game-plugin.md) as a playground to get started. Of course with C++ you have the typical restriction that you can't hot reload code, you have to close the editor, compile your plugin and reopen the editor. [Hot Reloading C++ Game Plugins in the Editor (TODO)](cpp-code-reload.md) describes a mechanism that can basically do all that for you with a single button press, though.
+Adding a custom component in C++ is not hard. Use the [Sample Game Plugin](../../samples/sample-game-plugin.md) as a playground to get started. Of course with C++ you have the typical restriction that you can't hot reload code, you have to close the editor, compile your plugin and reopen the editor. [Hot Reloading C++ Game Plugins in the Editor](cpp-code-reload.md) describes a mechanism that can basically do all that for you with a single button press, though.
 
 Armed with these basics, you should have a look at existing components to see how to solve specific issues.
 
@@ -180,4 +182,4 @@ Armed with these basics, you should have a look at existing components to see ho
 * [Components](../../runtime/world/components.md)
 * [Custom Code](../custom-code-overview.md)
 * [Sample Game Plugin](../../samples/sample-game-plugin.md)
-* [Hot Reloading C++ Game Plugins in the Editor (TODO)](cpp-code-reload.md)
+* [Hot Reloading C++ Game Plugins in the Editor](cpp-code-reload.md)
