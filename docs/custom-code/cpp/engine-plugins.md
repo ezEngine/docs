@@ -73,7 +73,7 @@ The more convenient way to load your game plugin, though, is to enable it in the
 
 ## Add Custom Code
 
-Once you have your basic plugin set up and can load it into your project, you can start adding custom code. The easiest way to get started is to write a [custom component (TODO)](custom-cpp-component.md). Once you need control over higher level game logic, you can add your own [game state (TODO)](../../runtime/application/game-state.md). And if you need to initialize and shut down certain systems, you should utilize the [startup system](../../runtime/configuration/startup.md).
+Once you have your basic plugin set up and can load it into your project, you can start adding custom code. The easiest way to get started is to write a [custom component](custom-cpp-component.md). Once you need control over higher level game logic, you can add your own [game state (TODO)](../../runtime/application/game-state.md). And if you need to initialize and shut down certain systems, you should utilize the [startup system](../../runtime/configuration/startup.md).
 
 ## Utility Plugins
 
@@ -86,6 +86,6 @@ Also, have a look at [singletons](../../runtime/configuration/interfaces.md) if 
 * [Back to Index](../../index.md)
 * [Sample Game Plugin](../../samples/sample-game-plugin.md)
 * [Game States (TODO)](../../runtime/application/game-state.md)
-* [Custom Components with C++ (TODO)](custom-cpp-component.md)
+* [Custom Components with C++](custom-cpp-component.md)
 * [Startup System](../../runtime/configuration/startup.md)
 * [Singleton Interfaces](../../runtime/configuration/interfaces.md)

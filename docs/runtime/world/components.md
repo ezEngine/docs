@@ -59,6 +59,8 @@ if (pObject->TryGetComponentOfBaseType(pMesh))
 
 You can iterate over all components of one type by calling `ezComponentManager::GetComponents()`. This returns an iterator with which you can efficiently access all components managed by that component manager. Be aware that some components may not be active, so you should skip those.
 
+You can also access all components on a game object using `ezGameObject::GetComponents()`.
+
 ## Component Reflection Block
 
 All component types must use [reflection](../reflection-system.md). Only reflected members show up as properties in the editor. An example block looks like this:
@@ -221,7 +223,7 @@ void DemoComponent::DeserializeComponent(ezWorldReader& stream)
 
 You can extend the engine with custom components:
 
-* [Custom Components with C++ (TODO)](../../custom-code/cpp/custom-cpp-component.md)
+* [Custom Components with C++](../../custom-code/cpp/custom-cpp-component.md)
 * [Custom Components with TypeScript (TODO)](../../custom-code/typescript/custom-ts-components.md)
 
 For examples, have a look at the [Sample Game Plugin](../../samples/sample-game-plugin.md).

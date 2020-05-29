@@ -62,6 +62,8 @@ You can iterate over *all* objects in a world using `ezWorld::GetObjects()`. Thi
 
 You can also traverse the object *hierarchy* with `ezWorld::Traverse()`. This allows you to list the objects either in a depth-first or a breadth-first order.
 
+When you have a specific game object, you can also iterate over its children with `ezGameObject::GetChildren()`.
+
 ## Finding Objects
 
 There are multiple ways to find specific objects, or objects relative to some parent node.

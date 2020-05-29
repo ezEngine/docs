@@ -18,7 +18,7 @@ All three solutions give you tight integration of your code and the ezEngine cod
 
 ## Custom Game Code
 
-For an example how to set up a game plugin, see the [Sample Game Plugin](../../samples/sample-game-plugin.md). It is best to start with writing a [custom component (TODO)](custom-cpp-component.md).
+For an example how to set up a game plugin, see the [Sample Game Plugin](../../samples/sample-game-plugin.md). It is best to start with writing a [custom component](custom-cpp-component.md).
 
 If you need higher level game logic, have a look at [game states (TODO)](../../runtime/application/game-state.md). Also have a look at [input (TODO)](../../input/input-overview.md).
 

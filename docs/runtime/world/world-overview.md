@@ -48,7 +48,7 @@ See the [object lifetime chapter](object-lifetime.md) for details.
 
 ## Custom Components
 
-A large part of writing your own game, is to write your own components. If you need maximum control and performance, you need to write your [components in C++ (TODO)](../../custom-code/cpp/custom-cpp-component.md).
+A large part of writing your own game, is to write your own components. If you need maximum control and performance, you need to write your [components in C++](../../custom-code/cpp/custom-cpp-component.md).
 
 You can also write components in [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md). Their functionality is very similar but a bit more limited. It is possible to use both and communicate between Typescript and C++ components using [messages](world-messaging.md).
 
