@@ -11,22 +11,15 @@ There are two types of simple component managers:
 
 ### No Update Component Manager
 
-A component manager that doesn't update its components is implemented like this:
+A component manager that doesn't update its components is declared like this:
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: component-manager-trivial -->
 ```cpp
-class SendMsgComponentManager : public ezComponentManager<class SendMsgComponent, ezBlockStorageType::Compact>
-{
-public:
-  SendMsgComponentManager(ezWorld* pWorld)
-    : ezComponentManager<class SendMsgComponent, ezBlockStorageType::Compact>(pWorld)
-  {
-  }
-};
+using SendMsgComponentManager = ezComponentManager<class SendMsgComponent, ezBlockStorageType::Compact>;
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-Here we define a component manager for a component type, but we don't do anything in its constructor and we don't override its `Initialize()` function, where we would typically register an update function (see [World Modules](world-modules.md)). Therefore this component manager does not have any update function and so the component type that it manages is never updated. That does not mean that the component type in question can't do things periodically. In fact the `SendMsgComponent` does update its state regularly, but it triggers its own update through [messaging](world-messaging.md), which is more efficient for components that only need to wake up every once in a while.
+We can simply instantiate the `ezComponentManager` template and not override anything. Therefore this component manager doesn't have any update function and so the component type that it manages is never updated. That doesn't mean that the component type in question can't do things periodically. In fact the `SendMsgComponent` does update its state regularly, but it triggers its own update through [messaging](world-messaging.md), which is more efficient for components that only need to wake up every once in a while.
 
 ### Simple Update Component Manager
 
