@@ -1,6 +1,12 @@
-# ezEngine Documentation
+# ezEngine
 
-Welcome to the ezEngine documentation.
+Welcome to ezEngine !
+
+The latest source code can be cloned from [GitHub](https://github.com/ezEngine/ezEngine). Prefer to use the 'dev' branch, it contains the latest changes and bugfixes. 
+
+Precompiled binary packages are provided under [Releases](https://github.com/ezEngine/ezEngine/releases). See the [Release Notes](releases/release-notes.md) for details.
+
+This website is the main documentation for ezEngine. Additional source code API documentation [can be found here](https://ezengine.github.io/api-docs/). 
 
 For topics not (yet) covered by the documentation, [contact us](getting-started/contact.md).
 
