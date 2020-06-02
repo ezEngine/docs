@@ -161,6 +161,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Gameplay
 
+* [Marker Component (TODO)](gameplay/marker-component.md)
 * [Player Start Point](gameplay/player-start-point.md)
 * [Projectile Component (TODO)](gameplay/projectile-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
@@ -199,6 +200,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Components](runtime/world/components.md)
   * [Game Objects](runtime/world/game-objects.md)
   * [Object Lifetime](runtime/world/object-lifetime.md)
+  * [Spatial System](runtime/world/spatial-system.md)
   * [Messaging](runtime/world/world-messaging.md)
   * [World Modules](runtime/world/world-modules.md)
   * [The World / Scenegraph System](runtime/world/world-overview.md)

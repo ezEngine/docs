@@ -68,6 +68,12 @@ Using messages decouples code, as components that know nothing of each other can
 
 Messages are described in more detail in [this chapter](world-messaging.md).
 
+## Spatial System
+
+The world also sorts objects into a spatial system, to enable efficient queries for which objects are within a certain area. Although this is the basis for frustum culling in the renderer, it is also available to other systems.
+
+See [this chapter](spatial-system.md) for details.
+
 ## See Also
 
 * [Back to Index](../../index.md)
