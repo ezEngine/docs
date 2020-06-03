@@ -34,9 +34,13 @@ ezSpatialData::Category RtsSelectableComponent::s_SelectableCategory = ezSpatial
 ```
 <!-- END-DOCS-CODE-SNIPPET -->
 
-When using the editor, there are components, such as the [marker component (TODO)](../../gameplay/marker-component.md), which allow you to select a category from a predefined list. This list is project specific and (currently) has to be configured with a text file:
+When using the editor, there are components, such as the [marker component](../../gameplay/marker-component.md), which allow you to select a category from a predefined list. This list is project specific. When you click on such a dropdown box, the last entry allows you to open an editor to configure the available categories:
 
-Create the file `>project/Editor/SpatialDataCategoryEnum.txt` and add one line for each needed category. Make sure to restart the editor when modifying this file. For examples, look at the [Testing Chambers project](../../samples/testing-chambers.md) or the [Sample Game Plugin project](../../samples/sample-game-plugin.md).
+![Edit Enum](media/edit-enum.png)
+
+### The Invalid Category
+
+Some components 'add' their bounds to a `ezMsgUpdateLocalBounds` using `ezInvalidSpatialDataCategory`. This means that they want to specify their bounds, but do *not* want to add anything to the spatial system. This is useful for components that do have a perceived size, such as physics shapes, which should be visible when selecting these objects in the editor, but where there is no benefit of inserting this into the spatial system.
 
 ## Exposing Game Objects to the Spatial System
 
@@ -101,8 +105,14 @@ On the other hand, things like the `RtsSelectableComponent` (see above) could be
 
 > **Note:** If you require doing *raycasts* or *queries against meshes*, you will need to use the physics engine, as the spatial system only works with very basic shapes.
 
+## Spatial System vs. Tags
+
+The spatial data categories are very similar to [tags](../../projects/tags.md). The difference is, that tags are set up on [game objects](game-objects.md) and they don't have any spatial quality. A game object can have many tags, but not be registered spatially and therefore cannot be found through spatial queries. On the other hand, because of this, tags have nearly no performance overhead, whereas spatial data must be updated whenever an object moves.
+
+Ultimately, both systems can be used to solve many of the same problems. When you need to be able to inspect an area and find all objects of a certain kind, you should use spatial data, for example through a [marker component](../../gameplay/marker-component.md). If, however, you need to semtantically label objects, but do not require to find them spatially, prefer tags to not waste performance.
+
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Marker Component (TODO)](../../gameplay/marker-component.md)
+* [Marker Component](../../gameplay/marker-component.md)
 * [The World / Scenegraph System](world-overview.md)

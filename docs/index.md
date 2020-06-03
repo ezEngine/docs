@@ -161,7 +161,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Gameplay
 
-* [Marker Component (TODO)](gameplay/marker-component.md)
+* [Marker Component](gameplay/marker-component.md)
 * [Player Start Point](gameplay/player-start-point.md)
 * [Projectile Component (TODO)](gameplay/projectile-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
