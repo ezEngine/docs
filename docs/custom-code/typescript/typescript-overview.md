@@ -18,7 +18,7 @@ At the moment you can't use TypeScript to write things like custom [game states]
 
 ## Instantiating TypeScript Components
 
-TypeScript code is executed through the [TypeScript component (TODO)](ts-component.md). This is effectively a C++ component which forwards everything of relevance to script code and back. Therefore you never add a script directly to a [game object](../../runtime/world/game-objects.md), instead you attach a TypeScript component, which then references the desired script.
+TypeScript code is executed through the [TypeScript component](ts-component.md). This is effectively a C++ component which forwards everything of relevance to script code and back. Therefore you never add a script directly to a [game object](../../runtime/world/game-objects.md), instead you attach a TypeScript component, which then references the desired script.
 
 ## Compiling TypeScript Code
 

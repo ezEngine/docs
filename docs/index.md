@@ -179,7 +179,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * __TypeScript__
   * [Custom Components with TypeScript (TODO)](custom-code/typescript/custom-ts-components.md)
   * [TypeScript Asset (TODO)](custom-code/typescript/ts-asset.md)
-  * [TypeScript Component (TODO)](custom-code/typescript/ts-component.md)
+  * [TypeScript Component](custom-code/typescript/ts-component.md)
   * [Messaging in TypeScript Code (TODO)](custom-code/typescript/ts-messaging.md)
   * [Custom Code with TypeScript](custom-code/typescript/typescript-overview.md)
 * __Visual Script__
