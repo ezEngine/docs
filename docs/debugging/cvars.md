@@ -49,7 +49,7 @@ In-game a convenient way to modify CVars is the [console](console.md).
 
 ### TypeScript  
 
-The [TypeScript binding (TODO)](../custom-code/typescript/typescript-overview.md) is also able to access CVars.
+The [TypeScript binding](../custom-code/typescript/typescript-overview.md) is also able to access CVars.
 
 ## Command Line
 

@@ -23,7 +23,7 @@ The second thing you should check is which [engine plugins](project-settings.md#
 The following engine plugins are useful to enable for most projects:
 
 * **ezParticlePlugin** - for [particle effects](../effects/particle-effects/particle-effects-overview.md)
-* **ezTypeScriptPlugin** - for [scripting with TypeScript (TODO)](../custom-code/typescript/typescript-overview.md)
+* **ezTypeScriptPlugin** - for [scripting with TypeScript](../custom-code/typescript/typescript-overview.md)
 * **ezPhysXPlugin** - for physics with [PhysX (TODO)](../physics/physx-overview.md)
 * **ezFmodPlugin** - for sound with [FMOD (TODO)](../sound/fmod-overview.md) (requires that you have [Fmod support](../build/build-prerequisites.md) enabled)
 

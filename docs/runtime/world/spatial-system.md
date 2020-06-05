@@ -16,7 +16,7 @@ Since there is exactly one spatial system per world, it usually means that the c
 
 In C++ code you get access to the world's spatial system through `ezWorld::GetSpatialSystem()`.
 
-When using other languages bindings the spatial system may not be exposed directly. For example, when using [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md), the most useful functions are exposed directly through `ez.World`, for example `ez.World.FindObjectsInBox()` and `ez.World.FindObjectsInSphere()`.
+When using other languages bindings the spatial system may not be exposed directly. For example, when using [TypeScript](../../custom-code/typescript/typescript-overview.md), the most useful functions are exposed directly through `ez.World`, for example `ez.World.FindObjectsInBox()` and `ez.World.FindObjectsInSphere()`.
 
 ## Spatial Data Categories
 

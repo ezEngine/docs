@@ -2,7 +2,7 @@
 
 For an introduction what a component is and how it fits into the overall picture, see [The World / Scenegraph System](world-overview.md).
 
-This documentation focuses on the C++ `ezComponent` class. The functionality exposed through other mechanisms, such as [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md), may be more limited in scope, but ultimately maps to the C++ implementation.
+This documentation focuses on the C++ `ezComponent` class. The functionality exposed through other mechanisms, such as [TypeScript](../../custom-code/typescript/typescript-overview.md), may be more limited in scope, but ultimately maps to the C++ implementation.
 
 Components are the fundamental building blocks with which to make the engine do things. Components act as glue between systems like the renderer and the user. They expose the available functionality to the editor and they control when and how each system is used. This document describes how components work.
 
@@ -106,7 +106,7 @@ The *attributes* section can additionally specify type specific properties. For 
 
 The *message handler* section is important to enable [messaging](world-messaging.md).
 
-The *functions* section is used to expose certain member functions to the reflection system, such that script bindings, such as [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md) can call these functions.
+The *functions* section is used to expose certain member functions to the reflection system, such that script bindings, such as [TypeScript](../../custom-code/typescript/typescript-overview.md) can call these functions.
 
 <!-- TODO: at some point 'we' must document all the available options *sigh* -->
 

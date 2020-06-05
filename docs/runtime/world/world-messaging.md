@@ -2,7 +2,7 @@
 
 For an introduction what a message is and how it fits into the overall picture, see [The World / Scenegraph System](world-overview.md).
 
-This documentation focuses on the C++ `ezMessage` class. The functionality exposed through other mechanisms, such as [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md), may be more limited in scope, but ultimately maps to the C++ implementation.
+This documentation focuses on the C++ `ezMessage` class. The functionality exposed through other mechanisms, such as [TypeScript](../../custom-code/typescript/typescript-overview.md), may be more limited in scope, but ultimately maps to the C++ implementation.
 
 Messages can be sent from any code. They can only be received by [components](components.md), though, as the messaging system is implemented by `ezWorld`.
 
@@ -33,7 +33,7 @@ EZ_END_DYNAMIC_REFLECTED_TYPE;
 
 This is all that is needed to send and receive the message in C++ code.
 
-> **Note:** The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from [TypeScript (TODO)](../../custom-code/typescript/typescript-overview.md), then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.
+> **Note:** The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from [TypeScript](../../custom-code/typescript/typescript-overview.md), then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.
 
 ## Message Handlers
 
