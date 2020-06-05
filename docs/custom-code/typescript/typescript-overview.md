@@ -8,7 +8,7 @@ The benefit of using TypeScript is mostly in ease of use. You can edit TypeScrip
 
 Providing a decent text editing experience for code is difficult. Therefore ezEditor doesn't even attempt to. All code editing has to be done in an external editor, usually meaning Visual Studio Code.
 
-For details see the [TypeScript asset (TODO)](ts-asset.md).
+For details see the [TypeScript asset](ts-asset.md).
 
 ## Extending the Engine with TypeScript
 
@@ -60,5 +60,5 @@ Finally, bindings for larger systems, such as [worlds](../../runtime/world/world
 * [TypeScript](https://www.typescriptlang.org)
 * [Visual Studio Code](https://code.visualstudio.com)
 * [Custom Code](../custom-code-overview.md)
-* [TypeScript Asset (TODO)](ts-asset.md)
+* [TypeScript Asset](ts-asset.md)
 * [Custom Components with TypeScript (TODO)](custom-ts-components.md)
