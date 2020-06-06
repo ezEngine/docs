@@ -163,7 +163,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 * [Marker Component](gameplay/marker-component.md)
 * [Player Start Point](gameplay/player-start-point.md)
-* [Projectile Component (TODO)](gameplay/projectile-component.md)
+* [Projectile Component](gameplay/projectile-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
 
 ---

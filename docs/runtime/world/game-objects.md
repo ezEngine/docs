@@ -109,7 +109,7 @@ All game objects store a 16 bit *team ID*. This value can be used to identify wh
 
 The one feature that the team ID has, is that it is automatically propagated for you when components create objects or instantiate [prefabs](../../prefabs/prefabs-overview.md). This way, when a player with team ID `3` shoots, the bullet prefab that gets instantiated by the [spawn component](../../gameplay/spawn-component.md) will automatically be assigned team ID `3` as well. Thus when that bullet hits another player, your code can easily attribute a kill to a team, or filter out friendly fire.
 
-Although it would be possible to implement something similar entirely with custom components, only by having this in the basic game object, is it possible to trace this information even through built in components, meaning you don't need to reimplement basic functionality like the spawn component or the [projectile component (TODO)](../../gameplay/projectile-component.md).
+Although it would be possible to implement something similar entirely with custom components, only by having this in the basic game object, is it possible to trace this information even through built in components, meaning you don't need to reimplement basic functionality like the spawn component or the [projectile component](../../gameplay/projectile-component.md).
 
 ## See Also
 
