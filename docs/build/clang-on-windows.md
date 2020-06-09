@@ -1,8 +1,26 @@
 # Building with Clang on Windows
 
-You can build ezEngine using the Clang front-end on Windows through Visual Studio. This can be useful to find and fix compilation errors and warnings, that do not happen with MSVC. However, as Clang support on Windows is still experimental, you may not be able to build a working executable.
+You can build ezEngine using the Clang on Windows. This can be useful to find and fix compilation errors and warnings, that do not happen with MSVC. However, as Clang support on Windows is still experimental, you may not be able to build a working executable.
 
-## Using the CMake GUI
+## Using Clang/LLVM with the CMake GUI
+
+1. Get the latest clang windows distribution: https://releases.llvm.org/download.html (the 64-bit version is recommended)
+1. Create a new solution for the Clang build by pointing *Where to build the binaries* to a new location.
+1. Press **Configure** once, a dialog will show up.
+1. Choose **Ninja** as the generator. (Note: Get ninja from https://ninja-build.org and put it in your **PATH**)
+1. Choose *Specify native compilers* then hit **Finish**.
+1. Specify the *C* and *C++* compiler. When using the default paths they are located at:
+	- C: C:/Program Files/LLVM/bin/clang.exe
+	- C++: C:/Program Files/LLVM/bin/clang++.exe
+1. Hit **Finish**
+1. You will now get an error from cmake ```No CMAKE_RC_COMPILER could be found```. Check the **Advanced** checkbox to show additional options and point ```CMAKE_RC_COMPILER``` to ```C:\Program Files (x86)\Windows Kits\10\bin\<windows-sdk-version>\x64\rc.exe``` (for example ```C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe```).
+1. Hit **Configure**
+1. Hit **Generate**
+1. ```cd``` into the build location and run ```ninja``` to build.
+
+## Using the Clang frontend for Visual Studio with the CMake GUI
+
+The clang frontend for the Visual Studio Compiler is no longer in development. Using the official LLVM clang is recommended.
 
 1. Create a new solution for the Clang build by pointing *Where to build the binaries* to a new location.
 1. Press **Configure** once, a dialog will show up.
