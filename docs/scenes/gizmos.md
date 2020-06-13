@@ -58,6 +58,10 @@ Some components use *visualizers* to make some of their aspects more obvious, su
 
 ![Visualizer and Shape Icon](media/visualizer-shapeicon.jpg)
 
+## Video
+
+[![video](https://img.youtube.com/vi/ua70HBP93co/0.jpg)](https://www.youtube.com/watch?v=ua70HBP93co)
+
 ## See Also
 
 * [Back to Index](../index.md)

@@ -107,6 +107,10 @@ Visualizes the roughness of objects.
 
 ![Render Mode](media/render-mode-roughness.jpg)
 
+## Video
+
+[![video](https://img.youtube.com/vi/2erB3AfSAJ0/0.jpg)](https://www.youtube.com/watch?v=2erB3AfSAJ0)
+
 ## See Also
 
 * [Back to Index](../index.md)

@@ -82,6 +82,10 @@ The level camera actions can also be found in the menu *Scene > Favorite Cameras
 
 The editor camera uses a fixed *field of view* (FOV). The FOV can be changed in the [preferences](../editor/editor-settings.md#preferences).
 
+## Video
+
+[![video](https://img.youtube.com/vi/qDiqRlzafLs/0.jpg)](https://www.youtube.com/watch?v=qDiqRlzafLs)
+
 ## See Also
 
 * [Back to Index](../index.md)

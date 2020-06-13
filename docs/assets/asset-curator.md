@@ -20,6 +20,10 @@ If **Show Indirect Issues** is disabled (the default), only assets that have pro
 
 Once you fix an asset and make sure it is transformed, the asset curator will no longer show it in the issues list.
 
+## Video
+
+[![video](https://img.youtube.com/vi/q9_bGgBjENA/0.jpg)](https://www.youtube.com/watch?v=q9_bGgBjENA)
+
 ## See Also
 
 * [Back to Index](../index.md)

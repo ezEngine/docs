@@ -38,6 +38,10 @@ Please be aware that disabling the loading of an editor plugin is machine wide a
 
 ![Preferences](media/editor-plugins.png)
 
+## Video
+
+[![video](https://img.youtube.com/vi/ivkAIlbK5f0/0.jpg)](https://www.youtube.com/watch?v=ivkAIlbK5f0)
+
 ## See Also
 
 * [Back to Index](../index.md)

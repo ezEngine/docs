@@ -8,6 +8,10 @@ A document can represent any type of data. However, the most common case is, tha
 
 The only exception to documents in the editor are things like [project settings](../projects/project-settings.md) and [editor settings](editor-settings.md), which are not handled by documents.
 
+## Video
+
+[![ezEngine Overview](https://img.youtube.com/vi/ky3HFWzuUk4/0.jpg)](https://www.youtube.com/watch?v=ky3HFWzuUk4)
+
 ## See Also
 
 * [Back to Index](../index.md)

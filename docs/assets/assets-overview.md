@@ -50,6 +50,10 @@ Assets and resources are conceptually two different things. Assets always live o
 
 Consequently, when the documentation mentions 'assets', it always refers the data and behavior in the editor, and when it mentions 'resources' it always refers to data that is used by the runtime side (the renderer, the physics engine, the game logic, etc). When you work with the editor, the two code paths are even separated into different processes: `Editor.exe` and `EditorEngineProcess.exe`
 
+## Video
+
+[![ezEngine Overview](https://img.youtube.com/vi/1OUJfB6ltWw/0.jpg)](https://www.youtube.com/watch?v=1OUJfB6ltWw)
+
 ## See Also
 
 * [Back to Index](../index.md)
