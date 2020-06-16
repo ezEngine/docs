@@ -63,12 +63,12 @@ The editor may insert auto generated code into the `.ts` file. This is needed fo
 
 To initialize things, use the `OnSimulationStarted()` callback. For regular updates, put your code into the `Tick()` function. Use [messaging (TODO)](ts-messaging.md) to communicate with unknown component types or when a delay is desired. For all known component types, you can call functions or read and write properties directly.
 
-For an overview what functionality is available through TypeScript, check out the [TypeScript API (TODO)](ts-api.md).
+For an overview what functionality is available through TypeScript, check out the [TypeScript API](ts-api.md).
 
 ## See Also
 
 * [Back to Index](../../index.md)
 * [TypeScript Asset](ts-asset.md)
 * [Messaging in TypeScript Code (TODO)](ts-messaging.md)
-* [TypeScript API (TODO)](ts-api.md)
+* [TypeScript API](ts-api.md)
 * [Custom Code with TypeScript](typescript-overview.md)
