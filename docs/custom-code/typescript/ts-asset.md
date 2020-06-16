@@ -1,6 +1,6 @@
 # TypeScript Asset
 
-Each *TypeScript asset* manages the script for a single [custom TypeScript component (TODO)](custom-ts-components.md). You create a new TypeScript asset using *Editor > Create Document...*.
+Each *TypeScript asset* manages the script for a single [custom TypeScript component](custom-ts-components.md). You create a new TypeScript asset using *Editor > Create Document...*.
 
 ![TypeScript asset](media/ts-asset.png)
 
@@ -25,5 +25,5 @@ You can split up script code into multiple files, for example to easier share co
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Custom Components with TypeScript (TODO)](custom-ts-components.md)
+* [Custom Components with TypeScript](custom-ts-components.md)
 * [TypeScript Component](ts-component.md)

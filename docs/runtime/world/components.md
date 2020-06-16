@@ -224,7 +224,7 @@ void DemoComponent::DeserializeComponent(ezWorldReader& stream)
 You can extend the engine with custom components:
 
 * [Custom Components with C++](../../custom-code/cpp/custom-cpp-component.md)
-* [Custom Components with TypeScript (TODO)](../../custom-code/typescript/custom-ts-components.md)
+* [Custom Components with TypeScript](../../custom-code/typescript/custom-ts-components.md)
 
 For examples, have a look at the [Sample Game Plugin](../../samples/sample-game-plugin.md).
 

@@ -12,7 +12,7 @@ For details see the [TypeScript asset](ts-asset.md).
 
 ## Extending the Engine with TypeScript
 
-The TypeScript integration allows you to create [custom components (TODO)](custom-ts-components.md). TypeScript components can interact both with each other, as well as with C++ components. The APIs available to TypeScript code are deliberately very similar to their C++ counterparts, to make it easy to migrate a TypeScript component to C++, if the need arises.
+The TypeScript integration allows you to create [custom components](custom-ts-components.md). TypeScript components can interact both with each other, as well as with C++ components. The APIs available to TypeScript code are deliberately very similar to their C++ counterparts, to make it easy to migrate a TypeScript component to C++, if the need arises.
 
 At the moment you can't use TypeScript to write things like custom [game states](../../runtime/application/game-state.md).
 
@@ -61,4 +61,4 @@ Finally, bindings for larger systems, such as [worlds](../../runtime/world/world
 * [Visual Studio Code](https://code.visualstudio.com)
 * [Custom Code](../custom-code-overview.md)
 * [TypeScript Asset](ts-asset.md)
-* [Custom Components with TypeScript (TODO)](custom-ts-components.md)
+* [Custom Components with TypeScript](custom-ts-components.md)
