@@ -9,7 +9,7 @@ Your component class must extend one of these base classes:
 1. `ez.TypescriptComponent`
 1. `ez.TickedTypescriptComponent`
 
-If it extends `ez.TypescriptComponent`, it can react to messages, startup/shutdown and activation/deactivation callbacks. However, it will not be updated regularly. Though this can be achieved through [messages (TODO)](ts-messaging.md).
+If it extends `ez.TypescriptComponent`, it can react to messages, startup/shutdown and activation/deactivation callbacks. However, it will not be updated regularly. Though this can be achieved through [messages](ts-messaging.md).
 
 If it extends `ez.TickedTypescriptComponent`, the member function `Tick()` is executed regularly. The rate at which it shall be called can be modified using `SetTickInterval()`.
 
@@ -43,7 +43,7 @@ These functions are called in the same way as for C++ components. See [Component
 
 ## Message Handlers
 
-TypeScript components can both send and receive messages. The article [Messaging in TypeScript Code (TODO)](ts-messaging.md) explains this in more detail.
+TypeScript components can both send and receive messages. The article [Messaging in TypeScript Code](ts-messaging.md) explains this in more detail.
 
 To handle messages, message handler functions must be registered first. This is done on a per-type basis, rather than per instance. Therefore you have to register message handlers from within the static function `RegisterMessageHandlers()`.
 
@@ -61,7 +61,7 @@ The editor may insert auto generated code into the `.ts` file. This is needed fo
 
 ## Writing Your Component
 
-To initialize things, use the `OnSimulationStarted()` callback. For regular updates, put your code into the `Tick()` function. Use [messaging (TODO)](ts-messaging.md) to communicate with unknown component types or when a delay is desired. For all known component types, you can call functions or read and write properties directly.
+To initialize things, use the `OnSimulationStarted()` callback. For regular updates, put your code into the `Tick()` function. Use [messaging](ts-messaging.md) to communicate with unknown component types or when a delay is desired. For all known component types, you can call functions or read and write properties directly.
 
 For an overview what functionality is available through TypeScript, check out the [TypeScript API](ts-api.md).
 
@@ -69,6 +69,6 @@ For an overview what functionality is available through TypeScript, check out th
 
 * [Back to Index](../../index.md)
 * [TypeScript Asset](ts-asset.md)
-* [Messaging in TypeScript Code (TODO)](ts-messaging.md)
+* [Messaging in TypeScript Code](ts-messaging.md)
 * [TypeScript API](ts-api.md)
 * [Custom Code with TypeScript](typescript-overview.md)

@@ -12,6 +12,41 @@ All TypeScript APIs are documented with code comments. In Visual Studio Code you
 
 You can also **jump to a function or class declaration** using `F12`. This is useful to see what functions are available on a given class.
 
+## Importing Files (`require`)
+
+TypeScript and JavaScript have multiple mechanisms how to make code from other files available. In ez only the `require` mechanism will work:
+
+```typescript
+import ez = require("TypeScript/ez")
+```
+
+This imports all *exported* declarations from the file *TypeScript/ez.ts* into an object called *ez* in this file. Thus typing `ez.` grants access to all the exported classes, namespaces and functions from that file.
+
+The path given to `require` must be relative to a [data directory](../../projects/data-directories.md). For example, the file above is located in the *Plugins* data directory.
+
+> **Note:**
+> `require` always returns an object and therefore you must assign its result to a variable. Consequently, there is no way to make the imported names globally accessible, you can only access them through that variable.
+
+To import multiple files, you need to store each result in a different variable:
+
+```typescript
+import ez = require("TypeScript/ez")
+import _ge = require("Scripting/GameEnums")
+```
+
+### Re-exporting Imported Declarations
+
+You can re-export declarations from a `.ts` file that you imported from somewhere else. For plenty of examples, look at the file *ez.ts*:
+
+```typescript
+import __Log = require("TypeScript/ez/Log")
+export import Log = __Log.Log;
+```
+
+Here, everything from the file *Log.ts* is imported into the variable `__Log`. We then selectively re-export the namespace `Log` from the variable `__Log` again, under the name `Log`. We could rename the exported symbol, if we wanted.
+
+Unfortunately, there does not seem to be a way to re-export *all* declarations automatically, you need to name each one individually.
+
 ## Scenegraph
 
 ### ez.Component
@@ -40,7 +75,7 @@ Additionally, functionality like `ez.Clock` and `ez.Random`, which are in C++ bo
 
 ### ez.Message
 
-`ez.Message` and `ez.EventMessage` are base classes for all messages. The page [Messaging in TypeScript Code (TODO)](ts-messaging.md) goes into more detail.
+`ez.Message` and `ez.EventMessage` are base classes for all messages. The page [Messaging in TypeScript Code](ts-messaging.md) goes into more detail.
 
 ## Math
 
@@ -85,4 +120,4 @@ In `ez.Physics` you find functions to query the physics engine. For example to d
 
 * [Back to Index](../../index.md)
 * [TypeScript Component](ts-component.md)
-* [Messaging in TypeScript Code (TODO)](ts-messaging.md)
+* [Messaging in TypeScript Code](ts-messaging.md)
