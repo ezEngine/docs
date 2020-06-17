@@ -25,6 +25,7 @@ This imports all *exported* declarations from the file *TypeScript/ez.ts* into a
 The path given to `require` must be relative to a [data directory](../../projects/data-directories.md). For example, the file above is located in the *Plugins* data directory.
 
 > **Note:**
+>
 > `require` always returns an object and therefore you must assign its result to a variable. Consequently, there is no way to make the imported names globally accessible, you can only access them through that variable.
 
 To import multiple files, you need to store each result in a different variable:

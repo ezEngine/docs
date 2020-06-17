@@ -41,7 +41,9 @@ The vast majority of component managers are very simple, but they can also be mu
 
 To write a more complex component manager you basically just register your own update functions and then do whatever needs to be done there. See the chapter about [world modules](world-modules.md) for how to do that.
 
-> **Note:** When you write your own update function, don't forget to skip *inactive* components. Otherwise deactivating a component or object hierarchy has no effect on your component type. See `ezComponentManagerSimple::SimpleUpdate()` for an example.
+> **Note:**
+>
+> When you write your own update function, don't forget to skip *inactive* components. Otherwise deactivating a component or object hierarchy has no effect on your component type. See `ezComponentManagerSimple::SimpleUpdate()` for an example.
 
 ## Component Storage
 

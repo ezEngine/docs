@@ -4,7 +4,9 @@ The **SampleGamePlugin** demonstrates the basics of how to build a [custom plugi
 
 ## Prerequisites
 
-> **Note:** The project is only available when the solution is built with **EZ_BUILD_SAMPLES** activated.
+> **Note:**
+>
+> The project is only available when the solution is built with **EZ_BUILD_SAMPLES** activated.
 
 ## GameState
 

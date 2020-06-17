@@ -15,11 +15,12 @@ The `SendMessage()` functions on `ez.Component` and `ez.GameObject` take an addi
 TypeScript components can raise *event messages* on themselves through `ez.TypescriptComponent.BroadcastEvent()`.
 
 > **Note:**
+>
 > At the moment TypeScript components can't raise event messages on other components or game objects.
 
 ## Handling Messages
 
-To handle messages of a specific type, a component needs a function that takes that message types as its only parameter, and it must register that function as a message handler:
+To handle messages of a specific type, a component needs a function that takes that message type as its only parameter, and it must register that function as a message handler:
 
 ```typescript
 static RegisterMessageHandlers()
@@ -49,13 +50,15 @@ export class MsgShowText extends ez.Message {
 ```
 
 > **Important:**
+>
 > It is vital to insert `EZ_DECLARE_MESSAGE_TYPE;` into the body of the message to make it work.
 
-If you need to send a message from one component and handle it in other component types, you should put the message declaration into a separate `.ts` file and `import` that file from both component files.
+If you need to send a message from one component and handle it in other component types, you should put the message declaration into a separate `.ts` file and `import` that file from both component files. See [Importing Files (`require`)](ts-api.md#importing-files-require) for details.
 
 ### Declaring Event Messages
 
 > **Note:**
+>
 > At the moment it is **not supported to declare event messages**.
 
 ## See Also

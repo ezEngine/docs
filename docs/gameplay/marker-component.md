@@ -8,7 +8,9 @@ The [spatial system](../runtime/world/spatial-system.md) is there to provide eff
 
 All that the marker component does, is to insert a sphere of a given size and [category](../runtime/world/spatial-system.md#spatial-data-categories) into the spatial system, so that the object that the component is attached to, can be found with spatial queries.
 
-> **Note:** Keep in mind that the number of categories available for use is limited to about 25. You should therefore prefer generic categories where possible.
+> **Note:**
+>
+> Keep in mind that the number of categories available for use is limited to about 25. You should therefore prefer generic categories where possible.
 
 ## Properties
 

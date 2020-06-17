@@ -130,7 +130,9 @@ It should be extremely rare that you need to override `ezComponent::Initialize()
 
 For all the details on the activation functions, refer to the [API Docs](../../getting-started/api-docs.md).
 
-> **Caution:** A common mistake is to override a function like `ezComponent::OnActivated()` but to not call its base class implementation (`SUPER::OnActivated()`). It is good practice to always do so.
+> **Caution:**
+>
+> A common mistake is to override a function like `ezComponent::OnActivated()` but to not call its base class implementation (`SUPER::OnActivated()`). It is good practice to always do so.
 
 ### Forced Activation
 

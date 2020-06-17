@@ -103,7 +103,9 @@ If you want to query for things that already need to have a physical representat
 
 On the other hand, things like the `RtsSelectableComponent` (see above) could be achieved by setting up fake [physics actors (TODO)](../../physics/actors.md) so that they can be found with physics queries. The performance cost for doing so would be unnecessary high though, as the physics engine would perform additional maintenance that is ultimately not needed, and it may waste precious resources such as [collision layers](../../physics/collision-layers.md). Here, using the spatial system makes much more sense.
 
-> **Note:** If you require doing *raycasts* or *queries against meshes*, you will need to use the physics engine, as the spatial system only works with very basic shapes.
+> **Note:**
+>
+> If you require doing *raycasts* or *queries against meshes*, you will need to use the physics engine, as the spatial system only works with very basic shapes.
 
 ## Spatial System vs. Tags
 

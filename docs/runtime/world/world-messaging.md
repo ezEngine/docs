@@ -33,7 +33,9 @@ EZ_END_DYNAMIC_REFLECTED_TYPE;
 
 This is all that is needed to send and receive the message in C++ code.
 
-> **Note:** The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from [TypeScript](../../custom-code/typescript/typescript-overview.md), then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.
+> **Note:**
+>
+> The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from [TypeScript](../../custom-code/typescript/typescript-overview.md), then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.
 
 ## Message Handlers
 
@@ -131,7 +133,9 @@ For components that regularly raise events to the same object hierarchy (their o
 
 If a component that is an `ezEventMessageHandlerComponent` itself wants to send an event message further up the hierarchy, it has to send the event to its own parent node.
 
-> **Caution:** Event messages are also just regular messages and *can* be sent that way using `SendMessage()` or `PostMessage()`. If you accidentally use those functions, rather than `SendEventMessage()` or `PostEventMessage()`, your message will not get delivered as intended.
+> **Caution:**
+>
+> Event messages are also just regular messages and *can* be sent that way using `SendMessage()` or `PostMessage()`. If you accidentally use those functions, rather than `SendEventMessage()` or `PostEventMessage()`, your message will not get delivered as intended.
 
 ### Global Event Message Handlers
 

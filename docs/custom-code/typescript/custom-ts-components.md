@@ -57,6 +57,7 @@ The editor may insert auto generated code into the `.ts` file. This is needed fo
 ```
 
 > **Important:**
+>
 > Don't remove these comments and don't put any of your code between these two lines.
 
 ## Writing Your Component

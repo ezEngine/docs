@@ -44,7 +44,9 @@ That makes it a left-handed coordinate system. You can query these axis in the s
 
 The coordinate system can be changed through `ezWorld::SetCoordinateSystemProvider()`. The `ezCoordinateSystemProvider` can potentially return a different coordinate system at different locations, so you could implement a provider that changes the coordinate system to follow a sphere.
 
-> **Warning:** Although components are supposed to not hard-code assumptions about which axis is 'forward', etc, using a non-default coordinate system is not well tested. Using a dynamic coordinate system even less so.
+> **Warning:**
+>
+> Although components are supposed to not hard-code assumptions about which axis is 'forward', etc, using a non-default coordinate system is not well tested. Using a dynamic coordinate system even less so.
 
 ## Read / Write Access Control
 
