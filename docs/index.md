@@ -208,17 +208,17 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 * [Custom Code](custom-code/custom-code-overview.md)
 * __C++__
-  * [Hot Reloading C++ Game Plugins in the Editor](custom-code/cpp/cpp-code-reload.md)
   * [Custom Code with C++](custom-code/cpp/cpp-overview.md)
-  * [Custom Components with C++](custom-code/cpp/custom-cpp-component.md)
   * [Engine Plugins](custom-code/cpp/engine-plugins.md)
+  * [Custom Components with C++](custom-code/cpp/custom-cpp-component.md)
+  * [Hot Reloading C++ Game Plugins in the Editor](custom-code/cpp/cpp-code-reload.md)
 * __TypeScript__
+  * [Custom Code with TypeScript](custom-code/typescript/typescript-overview.md)
+  * [TypeScript Asset](custom-code/typescript/ts-asset.md)
   * [Custom Components with TypeScript](custom-code/typescript/custom-ts-components.md)
   * [TypeScript API](custom-code/typescript/ts-api.md)
-  * [TypeScript Asset](custom-code/typescript/ts-asset.md)
-  * [TypeScript Component](custom-code/typescript/ts-component.md)
   * [Messaging in TypeScript Code](custom-code/typescript/ts-messaging.md)
-  * [Custom Code with TypeScript](custom-code/typescript/typescript-overview.md)
+  * [TypeScript Component](custom-code/typescript/ts-component.md)
 * __Visual Script__
   * [Custom Code with Visual Scripts](custom-code/visual-script/visual-script-overview.md)
 
@@ -236,15 +236,15 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Reflection System](runtime/reflection-system.md)
 * [Resource Management (TODO)](runtime/resource-management.md)
 * __World__
-  * [Component Managers](runtime/world/component-managers.md)
-  * [Components](runtime/world/components.md)
+  * [The World / Scenegraph System](runtime/world/world-overview.md)
   * [Game Objects](runtime/world/game-objects.md)
+  * [Components](runtime/world/components.md)
+  * [Worlds](runtime/world/worlds.md)
   * [Object Lifetime](runtime/world/object-lifetime.md)
-  * [Spatial System](runtime/world/spatial-system.md)
   * [Messaging](runtime/world/world-messaging.md)
   * [World Modules](runtime/world/world-modules.md)
-  * [The World / Scenegraph System](runtime/world/world-overview.md)
-  * [Worlds](runtime/world/worlds.md)
+  * [Component Managers](runtime/world/component-managers.md)
+  * [Spatial System](runtime/world/spatial-system.md)
 
 ---
 

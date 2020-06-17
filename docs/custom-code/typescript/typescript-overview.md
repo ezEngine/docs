@@ -32,7 +32,7 @@ Note that C++ reflection information is used to expose C++ components, enums, an
 
 TypeScript code can use [messages](../../runtime/world/world-messaging.md) to communicate both with other TS components as well as with C++ components. TypeScript code can *handle* any message, and it can *send* (or *post*) any message. To communicate with another TS component, you can define custom message types directly in script code. To communicate with a C++ component, only C++ messages can be used, as the C++ code has no means to know and handle a TypeScript message. If necessary to do so, the custom message type has to be defined in C++.
 
-See [Messaging in TypeScript Code (TODO)](ts-messaging.md) for details.
+See [Messaging in TypeScript Code](ts-messaging.md) for details.
 
 ## Functionality Available in TypeScript
 
