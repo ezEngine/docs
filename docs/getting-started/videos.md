@@ -47,6 +47,10 @@ For the full list of available videos, see the [ezEngine YouTube channel](https:
 
 [![video](https://img.youtube.com/vi/q9_bGgBjENA/0.jpg)](https://www.youtube.com/watch?v=q9_bGgBjENA)
 
+## Scripting with TypeScript
+
+[![video](https://img.youtube.com/vi/T1eDenHWPKc/0.jpg)](https://www.youtube.com/watch?v=T1eDenHWPKc)
+
 ## See Also
 
 * [Back to Index](../index.md)

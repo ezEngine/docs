@@ -54,6 +54,10 @@ Basic types such as the math classes (Vec2, Vec3, Mat4, Quat, ...) have been des
 
 Finally, bindings for larger systems, such as [worlds](../../runtime/world/worlds.md) or [physics (TODO)](../../physics/physx-overview.md) are also built by hand. Here, exposing the C++ API 1:1 to TypeScript would simply not yield a good user experience. Instead, the TypeScript binding is fine tuned to expose useful functionality, and to hide pointless complexity. If you need full control over every aspect, there is no way around using C++ anyway. Consequently, if you decide that scripting is fine for your use case, the binding tries to make this as convenient as possible.
 
+## Video
+
+[![video](https://img.youtube.com/vi/T1eDenHWPKc/0.jpg)](https://www.youtube.com/watch?v=T1eDenHWPKc)
+
 ## See Also
 
 * [Back to Index](../../index.md)

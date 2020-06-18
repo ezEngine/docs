@@ -52,7 +52,7 @@ Unfortunately, there does not seem to be a way to re-export *all* declarations a
 
 ### ez.Component
 
-`ez.Component` is the base class for all component types, including the C++ components. You custom components must extend either `ez.TypescriptComponent` or `ez.TickedTypescriptComponent`.
+`ez.Component` is the base class for all component types, including the C++ components. Your custom components must extend either `ez.TypescriptComponent` or `ez.TickedTypescriptComponent`.
 
 The functionality exposed through `ez.Component` is mostly identical to all other [components](../../runtime/world/components.md).
 
