@@ -96,13 +96,14 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 ### Graphics
 
 * [Always Visible Component (TODO)](graphics/always-visible-component.md)
-* [Ambient Light Component (TODO)](graphics/ambient-light-component.md)
+* [Ambient Light Component](graphics/ambient-light-component.md)
 * [Camera Component (TODO)](graphics/camera-component.md)
 * [Directional Light Component (TODO)](graphics/directional-light-component.md)
+* [Dynamic Shadows (TODO)](graphics/dynamic-shadows.md)
 * [Instanced Mesh Component (TODO)](graphics/instanced-mesh-component.md)
 * [Lighting (TODO)](graphics/lighting-overview.md)
 * [Meshes (TODO)](graphics/meshes-overview.md)
-* [Point Light Component (TODO)](graphics/point-light-component.md)
+* [Point Light Component](graphics/point-light-component.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
 * __Shaders__
   * [Shader Debugging](graphics/shaders/shader-debugging.md)
@@ -110,7 +111,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Shader Render State](graphics/shaders/shader-render-state.md)
   * [Shaders (TODO)](graphics/shaders/shaders-overview.md)
 * [Sky Light Component (TODO)](graphics/sky-light-component.md)
-* [Spot Light Component (TODO)](graphics/spot-light-component.md)
+* [Spot Light Component](graphics/spot-light-component.md)
 * [Sprite Component (TODO)](graphics/sprite-component.md)
 * [Textures](graphics/textures-overview.md)
 
