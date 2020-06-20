@@ -56,7 +56,7 @@ To temporarily focus on certain objects, it is possible to make objects invisibl
 * `CTRL + H`: Show all hidden objects
 * `SHIFT + H`: Hide all objects that are not selected
 
-Note that 'hide unselected' may hide lighting nodes, which can turn your level very dark. You can either activate [ambient lighting (TODO)](../graphics/lighting-overview.md) in your scene, or switch the [render mode](editor-views.md#render-modes) to 'Diffuse Color', if necessary.
+Note that 'hide unselected' may hide lighting nodes, which can turn your level very dark. You can either activate [ambient lighting (TODO)](../graphics/lighting/lighting-overview.md) in your scene, or switch the [render mode](editor-views.md#render-modes) to 'Diffuse Color', if necessary.
 
 The hidden state of objects is not saved in the scene. Also [Play-the-Game](../editor/run-scene.md) mode and [ezPlayer](../tools/player.md) always show all objects. Similarly, the hidden state only excludes objects from rendering, not from simulation.
 

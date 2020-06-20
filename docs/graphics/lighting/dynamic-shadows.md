@@ -6,7 +6,7 @@ The image below shows a spot light casting shadows:
 
 ![Spot Light](media/spot-light.jpg)
 
-Whether an object casts a shadow depends on whether it has the [tag](../projects/tags.md) `CastShadow` set.
+Whether an object casts a shadow depends on whether it has the [tag](../../projects/tags.md) `CastShadow` set.
 
 Shadows are implemented using *shadow maps*. That means every light source that shall cast a shadow, has to first render the current scene depth to a texture. This is a very costly operation, which is why you should keep the number of shadow casting light sources as low as possible.
 
@@ -31,4 +31,4 @@ Dynamic light sources such as [directional lights (TODO)](directional-light-comp
 
 ## See Also
 
-* [Back to Index](../index.md)
+* [Back to Index](../../index.md)

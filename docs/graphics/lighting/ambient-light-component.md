@@ -18,6 +18,6 @@ Instead of ambient light, you could also use a [sky light component (TODO)](sky-
 
 ## See Also
 
-* [Back to Index](../index.md)
+* [Back to Index](../../index.md)
 * [Lighting (TODO)](lighting-overview.md)
 * [Sky Light Component (TODO)](sky-light-component.md)
