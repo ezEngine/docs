@@ -129,26 +129,29 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Physics
 
-* [6DOF Joint Component (TODO)](physics/6dof-joint-component.md)
-* [Physics Actors (TODO)](physics/actors.md)
-* [Breakable Sheet Component (TODO)](physics/breakable-sheet-component.md)
-* [Center of Mass Component (TODO)](physics/center-of-mass-component.md)
-* [Character Controller (TODO)](physics/character-controller.md)
-* [Character Proxy Component (TODO)](physics/character-proxy-component.md)
-* [Collision Layers](physics/collision-layers.md)
-* [Collision Meshes](physics/collision-meshes.md)
-* [Distance Joint Component (TODO)](physics/distance-joint-component.md)
-* [Dynamic Actor Component (TODO)](physics/dynamic-actor-component.md)
-* [Fixed Joint Component (TODO)](physics/fixed-joint-component.md)
-* [Physics Joints (TODO)](physics/joints.md)
+* __Actors__
+  * [Physics Actors (TODO)](physics/actors/actors.md)
+  * [Breakable Sheet Component (TODO)](physics/actors/breakable-sheet-component.md)
+  * [Character Controller (TODO)](physics/actors/character-controller.md)
+  * [Character Proxy Component (TODO)](physics/actors/character-proxy-component.md)
+  * [Dynamic Actor Component (TODO)](physics/actors/dynamic-actor-component.md)
+  * [Static Actor Component (TODO)](physics/actors/static-actor-component.md)
+  * [Trigger Component (TODO)](physics/actors/trigger-component.md)
+* __Collision Shapes__
+  * [Center of Mass Component (TODO)](physics/collision-shapes/center-of-mass-component.md)
+  * [Collision Layers](physics/collision-shapes/collision-layers.md)
+  * [Collision Meshes](physics/collision-shapes/collision-meshes.md)
+  * [Physics Shapes (TODO)](physics/collision-shapes/shapes.md)
+* __Joints__
+  * [6DOF Joint Component (TODO)](physics/joints/6dof-joint-component.md)
+  * [Distance Joint Component (TODO)](physics/joints/distance-joint-component.md)
+  * [Fixed Joint Component (TODO)](physics/joints/fixed-joint-component.md)
+  * [Physics Joints (TODO)](physics/joints/joints.md)
+  * [Prismatic Joint Component (TODO)](physics/joints/prismatic-joint-component.md)
+  * [Revolute Joint Component (TODO)](physics/joints/revolute-joint-component.md)
+  * [Spherical Joint Component (TODO)](physics/joints/spherical-joint-component.md)
 * [PhysX Integration (TODO)](physics/physx-overview.md)
 * [PhysX Settings Component (TODO)](physics/physx-settings-component.md)
-* [Prismatic Joint Component (TODO)](physics/prismatic-joint-component.md)
-* [Revolute Joint Component (TODO)](physics/revolute-joint-component.md)
-* [Physics Shapes (TODO)](physics/shapes.md)
-* [Spherical Joint Component (TODO)](physics/spherical-joint-component.md)
-* [Static Actor Component (TODO)](physics/static-actor-component.md)
-* [Trigger Component (TODO)](physics/trigger-component.md)
 * [PhysX Visual Debugger](physics/visual-debugger.md)
 
 ### Effects

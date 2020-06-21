@@ -12,7 +12,7 @@ Each layer can be set to collide or not collide with each other layer. Consequen
 
 For convenience, in the editor you can give a name to each layer. The name is irrelevant at runtime, though.
 
-![Collision layer config](media/physx-settings.png)
+![Collision layer config](../media/physx-settings.png)
 
 Under *Editor > Project Settings > PhysX Project Settings...* you can configure the PhysX collision layers, as seen above.
 
@@ -26,6 +26,6 @@ When doing a raycast or other shape query, you also need to provide a collision 
 
 ## See Also
 
-* [Back to Index](../index.md)
-* [PhysX Integration (TODO)](physx-overview.md)
+* [Back to Index](../../index.md)
+* [PhysX Integration (TODO)](../physx-overview.md)
 * [Collision Meshes](collision-meshes.md)
