@@ -100,8 +100,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Instanced Mesh Component (TODO)](graphics/instanced-mesh-component.md)
 * __Lighting__
   * [Ambient Light Component](graphics/lighting/ambient-light-component.md)
-  * [Directional Light Component (TODO)](graphics/lighting/directional-light-component.md)
-  * [Dynamic Shadows (TODO)](graphics/lighting/dynamic-shadows.md)
+  * [Directional Light Component](graphics/lighting/directional-light-component.md)
+  * [Dynamic Shadows](graphics/lighting/dynamic-shadows.md)
   * [Lighting (TODO)](graphics/lighting/lighting-overview.md)
   * [Point Light Component](graphics/lighting/point-light-component.md)
   * [Sky Light Component (TODO)](graphics/lighting/sky-light-component.md)

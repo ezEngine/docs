@@ -1,12 +1,12 @@
 # Spot Light Component
 
-The *spot light component* adds a dynamic light source that illuminates the scene within a cone. The cone's inner angle determines the area that is illuminated equally bright. Between the inner angle and outer angle the light will fade to black. Spot lights should be preferred over [point lights](point-light-component.md) when this can prevent the need for [dynamic shadows (TODO)](dynamic-shadows.md). For example, a light mounted to a ceiling should illuminate the area below it, but not shine through the ceiling and illuminate objects above. A spot light with a large cone can achieve this.
+The *spot light component* adds a dynamic light source that illuminates the scene within a cone. The cone's inner angle determines the area that is illuminated equally bright. Between the inner angle and outer angle the light will fade to black. Spot lights should be preferred over [point lights](point-light-component.md) when this can prevent the need for [dynamic shadows](dynamic-shadows.md). For example, a light mounted to a ceiling should illuminate the area below it, but not shine through the ceiling and illuminate objects above. A spot light with a large cone can achieve this.
 
 ![Spot Light](media/spot-light.jpg)
 
 Each light source costs performance. Try to reduce the number of light sources that illuminate the same area. Use the [light count render mode](../editor/editor-views.md#light-count) to find hotspots.
 
-Note that unless a light source casts [dynamic shadows (TODO)](dynamic-shadows.md), it's light will shine through walls. Casting shadows is very costly, though. When it is possible to avoid casting shadows, for example by using multiple smaller lights instead, the performance should always be better.
+Note that unless a light source casts [dynamic shadows](dynamic-shadows.md), it's light will shine through walls. Casting shadows is very costly, though. When it is possible to avoid casting shadows, for example by using multiple smaller lights instead, the performance should always be better.
 
 ## Component Properties
 

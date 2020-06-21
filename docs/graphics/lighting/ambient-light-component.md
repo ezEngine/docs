@@ -6,7 +6,7 @@ The image below shows a scene without ambient light on the left, and with ambien
 
 ![Ambient Light](media/ambient-light.jpg)
 
-Ambient light should be used sparingly. Prefer to use [directional light components (TODO)](directional-light-component.md) for the main sky and sun light contributions. You can even use multiple directional light components (without shadows and low intensity) to fake ambient light but with more directionality, ie. by having each directional light shine from roughly the same direction, to add some variation.
+Ambient light should be used sparingly. Prefer to use [directional light components](directional-light-component.md) for the main sky and sun light contributions. You can even use multiple directional light components (without shadows and low intensity) to fake ambient light but with more directionality, ie. by having each directional light shine from roughly the same direction, to add some variation.
 
 Instead of ambient light, you could also use a [sky light component (TODO)](sky-light-component.md).
 

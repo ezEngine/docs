@@ -1,6 +1,6 @@
 # Dynamic Shadows
 
-Light sources, such as [point lights](point-light-component.md), [spot lights](spot-light-component.md) and [directional lights (TODO)](directional-light-component.md) may cast dynamic shadows.
+Light sources, such as [point lights](point-light-component.md), [spot lights](spot-light-component.md) and [directional lights](directional-light-component.md) may cast dynamic shadows.
 
 The image below shows a spot light casting shadows:
 
@@ -16,18 +16,18 @@ Shadow maps are prone to artifacts called *shadow acne*. Either light leaks thro
 
 ## Shadow Component Properties
 
-Dynamic light sources such as [directional lights (TODO)](directional-light-component.md), [point lights](point-light-component.md) and [spot lights](spot-light-component.md) can cast dynamic shadows. These components all have properties to tweak the shadows for quality. The following properties are common to these component types:
+Dynamic light sources such as [directional lights](directional-light-component.md), [point lights](point-light-component.md) and [spot lights](spot-light-component.md) can cast dynamic shadows. These components all have properties to tweak the shadows for quality. The following properties are common to these component types:
 
 * `CastShadows`: If enabled, the light will cast dynamic shadows.
 
   > **Important:**
   > Casting shadows costs a lot of performance. Make sure to only have a small number of lights with shadows active at any one time, otherwise your game may perform poorly.
 
-* `PenumbraSize`: TODO
+* `PenumbraSize`: This value specifies how soft the edge of shadows is supposed to be. The image below shows a penumbra size of `0` on the left and `0.5` on the right:
+
+  ![Penumbra Size](media/penumbra.jpg)
 
 * `SlopeBias, ConstantBias`: TODO
-
-<!-- PAGE IS TODO -->
 
 ## See Also
 
