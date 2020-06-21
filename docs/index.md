@@ -113,7 +113,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Shader Permutation Variables](graphics/shaders/shader-permutation-variables.md)
   * [Shader Render State](graphics/shaders/shader-render-state.md)
   * [Shaders (TODO)](graphics/shaders/shaders-overview.md)
-* [Sprite Component (TODO)](graphics/sprite-component.md)
+* [Sprite Component](graphics/sprite-component.md)
 * [Textures](graphics/textures-overview.md)
 
 ### Materials
