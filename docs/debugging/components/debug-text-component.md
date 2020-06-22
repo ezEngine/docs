@@ -15,3 +15,5 @@ The *debug text component* can be used to display a short piece of text at the l
 ## See Also
 
 * [Back to Index](../../index.md)
+* [Debug Rendering](../debug-rendering.md)
+

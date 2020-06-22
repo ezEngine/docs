@@ -205,7 +205,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Raycast Interaction Component (TODO)](gameplay/raycast-interaction-component.md)
 * [Raycast Placement Component (TODO)](gameplay/raycast-placement-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
-* [Timed Death Component (TODO)](gameplay/timed-death-component.md)
+* [Timed Death Component](gameplay/timed-death-component.md)
 
 ---
 
