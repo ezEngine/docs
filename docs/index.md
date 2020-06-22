@@ -95,7 +95,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Graphics
 
-* [Always Visible Component (TODO)](graphics/always-visible-component.md)
+* [Always Visible Component](graphics/always-visible-component.md)
 * [Camera Component (TODO)](graphics/camera-component.md)
 * [Instanced Mesh Component (TODO)](graphics/instanced-mesh-component.md)
 * __Lighting__
@@ -256,7 +256,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 ### Debugging
 
 * __Components__
-  * [Debug Text Component (TODO)](debugging/components/debug-text-component.md)
+  * [Debug Text Component](debugging/components/debug-text-component.md)
   * [DrawLineToObject Component (TODO)](debugging/components/draw-line-component.md)
 * [Console](debugging/console.md)
 * [CVars](debugging/cvars.md)
