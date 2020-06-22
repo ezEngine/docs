@@ -257,7 +257,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 * __Components__
   * [Debug Text Component](debugging/components/debug-text-component.md)
-  * [DrawLineToObject Component (TODO)](debugging/components/draw-line-component.md)
+  * [DrawLineToObject Component](debugging/components/draw-line-component.md)
 * [Console](debugging/console.md)
 * [CVars](debugging/cvars.md)
 * [Debugging C++ Code](debugging/debug-cpp.md)
