@@ -198,7 +198,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Gameplay
 
-* [Area Damage Component (TODO)](gameplay/area-damage-component.md)
+* [Area Damage Component](gameplay/area-damage-component.md)
 * [Marker Component](gameplay/marker-component.md)
 * [Player Start Point](gameplay/player-start-point.md)
 * [Projectile Component](gameplay/projectile-component.md)
