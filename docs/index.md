@@ -156,7 +156,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Effects
 
-* [Beam Component (TODO)](effects/beam-component.md)
+* [Beam Component](effects/beam-component.md)
 * [Decals](effects/decals.md)
 * [Fog](effects/fog.md)
 * __Particle Effects__

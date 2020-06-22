@@ -26,6 +26,10 @@ All modifiers can be combined.
 
 When the *Translate*, *Rotate* or *Scale* gizmo is active, holding `LMB` and moving the mouse will modify objects. The perspective of the selected [view](../editor/editor-views.md) (top-down, front, right) determines along which axis the object will be translated or rotated (always in global space). *Scale* will always be uniform.
 
+> **Note:**
+>
+> The 3D gizmos are not displayed in orthographic views, just left-clicking anywhere in the view will perform the selected action.
+
 ## Snap Settings
 
 Press `End` or the respective icon from the toolbar to open the snap settings:

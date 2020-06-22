@@ -47,9 +47,9 @@ In-game a convenient way to modify CVars is the [console](console.md).
   cvar_int = cvar_int + 1
   ```
 
-### TypeScript  
+### TypeScript
 
-The [TypeScript binding](../custom-code/typescript/typescript-overview.md) is also able to access CVars.
+CVars can also be accessed through the [TypeScript API](../custom-code/typescript/ts-api.md#ezdebug).
 
 ## Command Line
 
