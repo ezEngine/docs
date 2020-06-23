@@ -269,7 +269,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 ### Performance
 
 * [Asset Collections (TODO)](performance/asset-collections.md)
-* [Collection Component (TODO)](performance/collection-component.md)
+* [Collection Component](performance/collection-component.md)
 * [Profiling (TODO)](performance/profiling.md)
 
 ### Tools
