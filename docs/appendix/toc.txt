@@ -1,5 +1,3 @@
-contact.md
-videos.md
 library-structure.md
 coding-guidelines.md
 container-usage.md

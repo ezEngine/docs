@@ -293,8 +293,6 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Appendix
 
-* [Contact](getting-started/contact.md)
-* [Videos](getting-started/videos.md)
 * [Library Structure](appendix/library-structure.md)
 * [Coding Guidelines (TODO)](appendix/coding-guidelines.md)
 * [Container Usage Guidelines](appendix/container-usage.md)
