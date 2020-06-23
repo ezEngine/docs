@@ -181,8 +181,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [MoveTo Component (TODO)](animation/move-to-component.md)
 * [Property Animation Component (TODO)](animation/property-animation-component.md)
 * [Property Animation (TODO)](animation/property-animation.md)
-* [Rotor Component (TODO)](animation/rotor-component.md)
-* [Slider Component (TODO)](animation/slider-component.md)
+* [Rotor Component](animation/rotor-component.md)
+* [Slider Component](animation/slider-component.md)
 
 ### Sound
 
