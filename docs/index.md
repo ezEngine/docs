@@ -138,7 +138,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Static Actor Component (TODO)](physics/actors/static-actor-component.md)
   * [Trigger Component (TODO)](physics/actors/trigger-component.md)
 * __Collision Shapes__
-  * [Center of Mass Component (TODO)](physics/collision-shapes/center-of-mass-component.md)
+  * [Center of Mass Component](physics/collision-shapes/center-of-mass-component.md)
   * [Collision Layers](physics/collision-shapes/collision-layers.md)
   * [Collision Meshes](physics/collision-shapes/collision-meshes.md)
   * [Physics Shapes (TODO)](physics/collision-shapes/shapes.md)

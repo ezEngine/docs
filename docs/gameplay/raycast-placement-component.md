@@ -2,6 +2,8 @@
 
 The *raycast placement component* does a ray cast and positions a target object there.
 
+The image below shows raycast placement components being used together with a [beam components](../effects/beam-component.md) to create laser beams.
+
 ![Laser Beam](../effects/media/beam.jpg)
 
 This component does a ray cast along the forward axis of the game object it is attached to. If this produces a hit, the target object is placed there. If no hit is found the target object is either placed at the maximum distance or deactivated depending on the component configuration.
@@ -16,8 +18,6 @@ Sample setup:
 
 This will lead to trigger messages being sent when a physics actor on the 'Player' layer comes between
 the original hit on the default layer and the ray cast origin.
-
-This component works well in combination with the [beam component](../effects/beam-component.md) to create laser beams.
 
 ## Component Properties
 
