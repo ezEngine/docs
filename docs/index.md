@@ -203,7 +203,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Player Start Point](gameplay/player-start-point.md)
 * [Projectile Component](gameplay/projectile-component.md)
 * [Raycast Interaction Component (TODO)](gameplay/raycast-interaction-component.md)
-* [Raycast Placement Component (TODO)](gameplay/raycast-placement-component.md)
+* [Raycast Placement Component](gameplay/raycast-placement-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
 * [Timed Death Component](gameplay/timed-death-component.md)
 

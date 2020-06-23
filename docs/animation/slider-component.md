@@ -14,8 +14,6 @@ The *slider component* is a very useful utility component to move an object back
 
 ## Scripting
 
-The following functions are available for scripting:
-
 * `SetDirectionForwards`: Allows to force the direction of the slider to either forwards or backwards along its axis.
 * `IsDirectionForwards`: Queries whether the slider is currently moving forwards or backwards.
 * `ToggleDirection`: Toggles the current direction of the slider.

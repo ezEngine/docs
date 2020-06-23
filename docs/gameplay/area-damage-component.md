@@ -12,8 +12,6 @@ The *area damage component* posts an `ezMsgDamage` to all objects in its vicinit
 
 ## Scripting
 
-This component exposes the following functionality to script languages:
-
 * `ApplyAreaDamage()`: This function can be called manually to control when and how often this component applies damage. For example a 'dangerous' area can be implemented by repeatedly triggering a component of this type.
 
 ## See Also
