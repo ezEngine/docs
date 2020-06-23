@@ -175,7 +175,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Animation
 
-* [Color Animation Component (TODO)](animation/color-animation-component.md)
+* [Color Animation Component](animation/color-animation-component.md)
 * [Color Gradients](animation/color-gradients.md)
 * [Curves](animation/curves.md)
 * [MoveTo Component (TODO)](animation/move-to-component.md)
