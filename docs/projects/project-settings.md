@@ -34,23 +34,7 @@ A custom [application (TODO)](../runtime/application/application.md) or [game st
 
 ## Input Configuration
 
-*Editor > Project Settings > Input Configuration...* opens a dialog to configure the available input actions.
-
-See the [input chapter (TODO)](../input/input-overview.md) for background information.
-
-![Input Configuration](media/editor-input-config.png)
-
-Using the *New Input Set* button at the top left, you can add *input sets*. These typically represent a certain state in your game. For example you may have one set for when the player character is by foot, and another input set for when they are steering a vehicle. Both input sets can use the same keys, but they may represent different actions. Since both states are mutually exclusive in the game, they don't clash. Each [input component (TODO)](../input/input-component.md) takes its input state from one specific input set.
-
-Using the *New Action* button, you can add an action to the selected input set. Each *action* represents something that the player can *do*. You can then select a an *input slot* that triggers this action. Slots represent keyboard keys, controller buttons, voice commands, head movements and everything else that can be considered 'input'. The **Scale** value allows to adjust how strongly a slot activates the action.
-
-The **Time Scale** option specifies whether the [0; 1] value of an action will be taken 1:1 from the input slot, or whether the value will be scaled by the amount of time passed between frames.
-
-As an example, many actions like *shoot* or *jump* are purely on/off decisions. For these actions time scaling has no use. However, an action like 'rotate left/right' should be something that is smooth and always the same speed, no matter whether the game runs at 30 Hz or at 60 Hz or wildly varies. Thus the value that is given to the game code should be scaled by the time that has passed between frames, such that applying the value to your character or vehicle will still result in a constant, smooth change.
-
-### Configuring Available Slots
-
-The input slots that can be chosen in this dialog are listed in files located under `Data/Tools/ezEditor/InputSlots`. If you want to expose new slots for a custom input device, you can just add a file there. At the moment the available slots are not automatically extracted from the plugins.
+*Editor > Project Settings > Input Configuration...* opens a dialog to [configure input actions](../input/input-config.md).
 
 ## Tags
 

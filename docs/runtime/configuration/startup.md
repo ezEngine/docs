@@ -15,7 +15,7 @@ All of this is then (automatically) given to the startup system, and when it com
 A lot of code can be initialized easily in all applications. However, some code strictly requires a window or graphics API to work with and could never be initialized successfully in a command line application.
 
 Therefore, the startup system splits the engine initialization into two phases: **core systems startup** (phase 1) and **high level systems startup** (phase 2).
-For command line applications, we would only ever run phase 1. In a proper game, we would first run phase 1, then create our window and rendering API and finally run phase 2. This way, when we don't need things like a renderer or the [input system (TODO)](../../input/input-overview.md), we simply exclude all high level systems from being initialized.
+For command line applications, we would only ever run phase 1. In a proper game, we would first run phase 1, then create our window and rendering API and finally run phase 2. This way, when we don't need things like a renderer or the [input system](../../input/input-overview.md), we simply exclude all high level systems from being initialized.
 
 ### Dependencies
 
