@@ -28,7 +28,7 @@ Once you add more complex systems, you may need the [startup system](../../runti
 
 The chapter [Debugging C++ Code](../../debugging/debug-cpp.md) gives some useful tips. Things you should also be aware of are the [console](../../debugging/console.md) and [CVars](../../debugging/cvars.md), as well as [stats](../../debugging/stats.md) and [debug rendering](../../debugging/debug-rendering.md).
 
-Finally, have a look at [profiling (TODO)](../../performance/profiling.md), to know where your code spends most of its time.
+Finally, have a look at [profiling](../../performance/profiling.md), to know where your code spends most of its time.
 
 ## Standalone App
 

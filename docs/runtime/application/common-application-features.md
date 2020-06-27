@@ -18,7 +18,7 @@ Reloading resources works for all assets that are used directly by the engine (e
 
 ## Take a Profiling Capture
 
-**Press F8** to take a capture of the profiling data. See the [profiling (TODO)](../../performance/profiling.md) documentation for details.
+**Press F8** to take a capture of the profiling data. See the [profiling](../../performance/profiling.md) documentation for details.
 
 ## Take a RenderDoc Capture
 
@@ -33,5 +33,5 @@ Reloading resources works for all assets that are used directly by the engine (e
 * [Back to Index](../../index.md)
 * [Application (TODO)](application.md)
 * [ezPlayer](../../tools/player.md)
-* [Profiling (TODO)](../../performance/profiling.md)
+* [Profiling](../../performance/profiling.md)
 * [RenderDoc Integration](../../debugging/renderdoc.md)

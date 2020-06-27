@@ -14,4 +14,4 @@ If a deactivated collection component is part of a scene, it will not trigger a 
 
 * [Back to Index](../index.md)
 * [Asset Collections (TODO)](asset-collections.md)
-* [Profiling (TODO)](profiling.md)
+* [Profiling](profiling.md)

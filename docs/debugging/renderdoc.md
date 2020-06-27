@@ -19,5 +19,5 @@ You can then open the capture using RenderDoc.
 
 * [Back to Index](../index.md)
 * [ezInspector](../tools/inspector.md)
-* [Profiling (TODO)](../performance/profiling.md)
+* [Profiling](../performance/profiling.md)
 * [Common Application Features](../runtime/application/common-application-features.md)
