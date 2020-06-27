@@ -124,9 +124,9 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Input
 
-* [Input Component](input/input-component.md)
+* [Input System](input/input-overview.md)
 * [Input Set Configuration](input/input-config.md)
-* [Input](input/input-overview.md)
+* [Input Component](input/input-component.md)
 
 ### Physics
 
