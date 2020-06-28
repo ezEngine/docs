@@ -97,7 +97,6 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 * [Always Visible Component](graphics/always-visible-component.md)
 * [Camera Component (TODO)](graphics/camera-component.md)
-* [Instanced Mesh Component (TODO)](graphics/instanced-mesh-component.md)
 * __Lighting__
   * [Ambient Light Component](graphics/lighting/ambient-light-component.md)
   * [Directional Light Component](graphics/lighting/directional-light-component.md)
@@ -106,7 +105,11 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Point Light Component](graphics/lighting/point-light-component.md)
   * [Sky Light Component (TODO)](graphics/lighting/sky-light-component.md)
   * [Spot Light Component](graphics/lighting/spot-light-component.md)
-* [Meshes (TODO)](graphics/meshes-overview.md)
+* __Meshes__
+  * [Meshes (TODO)](graphics/meshes/meshes-overview.md)
+  * [Mesh Asset (TODO)](graphics/meshes/mesh-asset.md)
+  * [Mesh Component (TODO)](graphics/meshes/mesh-component.md)
+  * [Instanced Mesh Component (TODO)](graphics/meshes/instanced-mesh-component.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
 * __Shaders__
   * [Shader Debugging](graphics/shaders/shader-debugging.md)

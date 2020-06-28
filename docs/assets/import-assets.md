@@ -14,7 +14,7 @@ This method always works for all asset types and for some types it is the only w
 
 ## Create Documents Automatically
 
-For asset types that are mostly defined by a single source file (e.g. [textures](../graphics/textures-overview.md) and [meshes (TODO)](../graphics/meshes-overview.md)), the editor often provides an importing method that automates most of the trivial setup.
+For asset types that are mostly defined by a single source file (e.g. [textures](../graphics/textures-overview.md) and [meshes (TODO)](../graphics/meshes/mesh-asset.md)), the editor often provides an importing method that automates most of the trivial setup.
 
 Select **Editor > Import Assets...** or press **CTRL+I** to open a file browse dialog. Navigate to the file(s) that you want to import and select them. If you want to know which asset types are currently supported for automatic import, you can open the dropdown with the allowed file extensions here.
 

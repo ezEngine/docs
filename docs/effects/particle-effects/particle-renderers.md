@@ -68,7 +68,7 @@ This renderer visualizes each particle as a quad. There are several modes to cho
 
 ## Mesh Renderer
 
-This renderer visualizes each particle using a [mesh (TODO)](../../graphics/meshes-overview.md).
+This renderer visualizes each particle using a [mesh (TODO)](../../graphics/meshes/mesh-asset.md).
 
 **Mesh:** The mesh to use for rendering.
 

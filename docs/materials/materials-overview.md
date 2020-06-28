@@ -1,6 +1,6 @@
 # Materials
 
-*Materials* are used to define the visual properties of rendered objects. Materials specify what [shader (TODO)](../graphics/shaders/shaders-overview.md) to use to render an object and they allow you to configure that shader. Most commonly you select which [textures](../graphics/textures-overview.md) to use. The most common use case for materials is through [meshes (TODO)](../graphics/meshes-overview.md). Each sub-mesh can have its own material.
+*Materials* are used to define the visual properties of rendered objects. Materials specify what [shader (TODO)](../graphics/shaders/shaders-overview.md) to use to render an object and they allow you to configure that shader. Most commonly you select which [textures](../graphics/textures-overview.md) to use. The most common use case for materials is through [meshes (TODO)](../graphics/meshes/meshes-overview.md). Each sub-mesh can have its own material.
 
 ![Material editor](media/material-editor.jpg)
 
@@ -8,7 +8,7 @@ The image above shows the material asset editor. Material assets are often autom
 
 ## Physical Properties
 
-Although materials are mainly used to configure the rendering, they can optionally reference a [surface](surfaces.md), which is used to define physical properties (e.g. friction) and gameplay relevant interactions. Whether the referenced surface is actually used depends on where the material is applied. For instance, on a [greyboxing component](../scenes/greyboxing.md) the material sets up both the graphics and the physics properties, on a [mesh component (TODO)](../graphics/meshes-overview.md) it only sets up the rendering and you would need to additionally select a surface for the corresponding [collision mesh](../physics/collision-shapes/collision-meshes.md).
+Although materials are mainly used to configure the rendering, they can optionally reference a [surface](surfaces.md), which is used to define physical properties (e.g. friction) and gameplay relevant interactions. Whether the referenced surface is actually used depends on where the material is applied. For instance, on a [greyboxing component](../scenes/greyboxing.md) the material sets up both the graphics and the physics properties, on a [mesh component (TODO)](../graphics/meshes/mesh-component.md) it only sets up the rendering and you would need to additionally select a surface for the corresponding [collision mesh](../physics/collision-shapes/collision-meshes.md).
 
 ## Selecting a Shader
 
@@ -75,4 +75,4 @@ The 3D viewport of the material editor allows you to switch [render modes](../ed
 * [Back to Index](../index.md)
 * [Visual Shaders (TODO)](visual-shaders.md)
 * [Textures](../graphics/textures-overview.md)
-* [Meshes (TODO)](../graphics/meshes-overview.md)
+* [Meshes (TODO)](../graphics/meshes/meshes-overview.md)

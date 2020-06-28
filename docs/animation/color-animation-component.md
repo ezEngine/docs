@@ -1,6 +1,6 @@
 # Color Animation Component
 
-The *color animation component* allows you to apply an animated [color gradient](color-gradients.md) to other components, such as [meshes (TODO)](../graphics/meshes-overview.md) or [light sources (TODO)](../graphics/lighting/lighting-overview.md) or any other component type that handles the message type `ezMsgSetColor`.
+The *color animation component* allows you to apply an animated [color gradient](color-gradients.md) to other components, such as [meshes (TODO)](../graphics/meshes/mesh-component.md) or [light sources (TODO)](../graphics/lighting/lighting-overview.md) or any other component type that handles the message type `ezMsgSetColor`.
 
 > **Important:**
 >

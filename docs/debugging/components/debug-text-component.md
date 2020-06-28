@@ -4,7 +4,7 @@ The *debug text component* can be used to display a short piece of text at the l
 
 ![Debug Text](media/debug-text.jpg)
 
-> **Important:** If this component is attached to an object that has no other rendered component, its text will not show up! This component will only render its text, if the parent object is already being rendered because of other things, such as an attached [mesh (TODO)](../../graphics/meshes-overview.md).
+> **Important:** If this component is attached to an object that has no other rendered component, its text will not show up! This component will only render its text, if the parent object is already being rendered because of other things, such as an attached [mesh (TODO)](../../graphics/meshes/mesh-component.md).
 
 ## Component Properties
 
