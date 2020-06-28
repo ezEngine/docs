@@ -54,7 +54,7 @@ We have an integration for building **nav-meshes with [Recast](../appendix/third
 
 ## Streaming
 
-All our resources (textures, materials, shaders, ...) always use streaming. However, we have **no level streaming**. Since we also don't have a terrain system, this is currently not really needed. However, we do have [asset collections (TODO)](../performance/asset-collections.md), which can be used to load data in the background. So you could build a system that instantiates e.g. a part of a level only once the background loading is finished. The building blocks are there, but it's not working out of the box.
+All our resources (textures, materials, shaders, ...) always use streaming. However, we have **no level streaming**. Since we also don't have a terrain system, this is currently not really needed. However, we do have [asset collections](../performance/asset-collections.md), which can be used to load data in the background. So you could build a system that instantiates e.g. a part of a level only once the background loading is finished. The building blocks are there, but it's not working out of the box.
 
 ## Roadmap
 
