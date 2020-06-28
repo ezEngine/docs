@@ -56,7 +56,7 @@ This has to be called in every frame in which it should appear. Therefore this h
 
 ## Performance Considerations
 
-The debug renderer is meant for quickly visualizing data. If the data potentially changes every frame anyway (like visualizing AI raycasts), its performance will be on par with what a 'proper' solution could do. However, if you want to place things in a scene that may stay for a longer duration, it's usually much better to instead build a game object, attach a [mesh component (TODO)](../graphics/meshes/mesh-component.md) and just render a proper asset. This enables culling, static object optimizations, and gives you the option to choose [materials](../materials/materials-overview.md).
+The debug renderer is meant for quickly visualizing data. If the data potentially changes every frame anyway (like visualizing AI raycasts), its performance will be on par with what a 'proper' solution could do. However, if you want to place things in a scene that may stay for a longer duration, it's usually much better to instead build a game object, attach a [mesh component](../graphics/meshes/mesh-component.md) and just render a proper asset. This enables culling, static object optimizations, and gives you the option to choose [materials](../materials/materials-overview.md).
 
 ## See Also
 
