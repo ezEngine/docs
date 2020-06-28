@@ -76,7 +76,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Exposed Parameters (TODO)](scenes/exposed-parameters.md)
 * [Editing Gizmos](scenes/gizmos.md)
 * [Greyboxing](scenes/greyboxing.md)
-* [Object References (TODO)](scenes/object-references.md)
+* [Object References](scenes/object-references.md)
 * [Procedural Object Placement (TODO)](scenes/procedural-generation.md)
 * [Scene Editing](scenes/scene-editing.md)
 * [Selecting Objects](scenes/selection.md)

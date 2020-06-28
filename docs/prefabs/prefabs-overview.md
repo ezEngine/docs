@@ -68,4 +68,4 @@ This is especially important to keep in mind when writing custom (script) code t
 * [Scene Editing](../scenes/scene-editing.md)
 * [Spawn Component](../gameplay/spawn-component.md)
 * [Exposed Parameters (TODO)](../scenes/exposed-parameters.md)
-* [Object References (TODO)](../scenes/object-references.md)
+* [Object References](../scenes/object-references.md)
