@@ -109,7 +109,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Meshes (TODO)](graphics/meshes/meshes-overview.md)
   * [Mesh Asset (TODO)](graphics/meshes/mesh-asset.md)
   * [Mesh Component](graphics/meshes/mesh-component.md)
-  * [Instanced Mesh Component (TODO)](graphics/meshes/instanced-mesh-component.md)
+  * [Instanced Mesh Component](graphics/meshes/instanced-mesh-component.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
 * __Shaders__
   * [Shader Debugging](graphics/shaders/shader-debugging.md)
