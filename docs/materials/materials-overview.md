@@ -1,6 +1,6 @@
 # Materials
 
-*Materials* are used to define the visual properties of rendered objects. Materials specify what [shader (TODO)](../graphics/shaders/shaders-overview.md) to use to render an object and they allow you to configure that shader. Most commonly you select which [textures](../graphics/textures-overview.md) to use. The most common use case for materials is through [meshes (TODO)](../graphics/meshes/meshes-overview.md). Each sub-mesh can have its own material.
+*Materials* are used to define the visual properties of rendered objects. Materials specify what [shader (TODO)](../graphics/shaders/shaders-overview.md) to use to render an object and they allow you to configure that shader. Most commonly you select which [textures](../graphics/textures-overview.md) to use. The most common use case for materials is through [meshes](../graphics/meshes/meshes-overview.md). Each sub-mesh can have its own material.
 
 ![Material editor](media/material-editor.jpg)
 
@@ -75,4 +75,4 @@ The 3D viewport of the material editor allows you to switch [render modes](../ed
 * [Back to Index](../index.md)
 * [Visual Shaders (TODO)](visual-shaders.md)
 * [Textures](../graphics/textures-overview.md)
-* [Meshes (TODO)](../graphics/meshes/meshes-overview.md)
+* [Meshes](../graphics/meshes/meshes-overview.md)

@@ -106,7 +106,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Sky Light Component (TODO)](graphics/lighting/sky-light-component.md)
   * [Spot Light Component](graphics/lighting/spot-light-component.md)
 * __Meshes__
-  * [Meshes (TODO)](graphics/meshes/meshes-overview.md)
+  * [Meshes](graphics/meshes/meshes-overview.md)
   * [Mesh Asset](graphics/meshes/mesh-asset.md)
   * [Mesh Component](graphics/meshes/mesh-component.md)
   * [Instanced Mesh Component](graphics/meshes/instanced-mesh-component.md)
