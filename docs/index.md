@@ -73,7 +73,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 * [Advanced Object Transforms](scenes/advanced-object-transform.md)
 * [Editor Camera](scenes/editor-camera.md)
-* [Exposed Parameters (TODO)](scenes/exposed-parameters.md)
+* [Exposed Parameters](scenes/exposed-parameters.md)
 * [Editing Gizmos](scenes/gizmos.md)
 * [Greyboxing](scenes/greyboxing.md)
 * [Object References](scenes/object-references.md)

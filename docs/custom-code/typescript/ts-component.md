@@ -10,7 +10,7 @@ The component itself is a C++ component. It mediates between C++ and TypeScript 
 
 `Script`: The [TypeScript asset](ts-asset.md) reference for which script to run.
 
-`Parameters`: In case the referenced script has [exposed parameters (TODO)](../../scenes/exposed-parameters.md), they are being listed here and can be modified. When the script gets instantiated, the values of these parameters are passed into the script. Modifying the values after the script was started currently has no effect.
+`Parameters`: In case the referenced script has [exposed parameters](../../scenes/exposed-parameters.md), they are being listed here and can be modified. When the script gets instantiated, the values of these parameters are passed into the script. Modifying the values after the script was started currently has no effect.
 
 ## See Also
 

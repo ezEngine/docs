@@ -16,7 +16,7 @@ From there on, you can write the code in the external editor. Transforming the a
 
 In the asset properties you can add *variables*. Each variable has a name and a default value. After changing the variables you have to **transform** the script (toolbar button or `Ctrl+E`). This will insert the necessary code into the script. Make sure to not touch the markers for the auto-generated code section.
 
-The variables that you add here will become [exposed parameters (TODO)](../../scenes/exposed-parameters.md) for this script. Meaning, when this asset is used through a [TypeScript component](ts-component.md), the component can override the values of these variables. Thus you can instantiate the same script many times with different starting parameters.
+The variables that you add here will become [exposed parameters](../../scenes/exposed-parameters.md) for this script. Meaning, when this asset is used through a [TypeScript component](ts-component.md), the component can override the values of these variables. Thus you can instantiate the same script many times with different starting parameters.
 
 ## Non-Component TS Files
 

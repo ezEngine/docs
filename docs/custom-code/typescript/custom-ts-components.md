@@ -49,7 +49,7 @@ To handle messages, message handler functions must be registered first. This is 
 
 ## Auto Generated Code
 
-The editor may insert auto generated code into the `.ts` file. This is needed for example for variables that are supposed to show up as [exposed parameters (TODO)](../../scenes/exposed-parameters.md). Special code comments are used to tag the are where the editor can insert the generated code:
+The editor may insert auto generated code into the `.ts` file. This is needed for example for variables that are supposed to show up as [exposed parameters](../../scenes/exposed-parameters.md). Special code comments are used to tag the are where the editor can insert the generated code:
 
 ```typescript
 /* BEGIN AUTO-GENERATED: VARIABLES */
