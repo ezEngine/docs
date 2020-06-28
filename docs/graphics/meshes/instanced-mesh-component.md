@@ -30,7 +30,7 @@ Consequently, if you write custom code that places meshes procedurally, you may 
 
 ## Component Properties
 
-* `Mesh`: The [mesh asset (TODO)](mesh-asset.md) to render.
+* `Mesh`: The [mesh asset](mesh-asset.md) to render.
 * `MainColor`: This color will be combined with the color of each individual mesh instance.
 * `Materials`: An array of [materials](../../materials/materials-overview.md) to override the default material. Works the same way as for [regular mesh components](mesh-component.md).
 * `InstanceData`: An array of instances. Each instance has its own transform and color. Click the blue transform properties to activate a [manipulator](../../scenes/gizmos.md#manipulators) for that instance.

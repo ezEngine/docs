@@ -107,7 +107,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Spot Light Component](graphics/lighting/spot-light-component.md)
 * __Meshes__
   * [Meshes (TODO)](graphics/meshes/meshes-overview.md)
-  * [Mesh Asset (TODO)](graphics/meshes/mesh-asset.md)
+  * [Mesh Asset](graphics/meshes/mesh-asset.md)
   * [Mesh Component](graphics/meshes/mesh-component.md)
   * [Instanced Mesh Component](graphics/meshes/instanced-mesh-component.md)
 * [Render Pipeline (TODO)](graphics/render-pipeline-overview.md)
