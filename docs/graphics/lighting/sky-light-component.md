@@ -11,7 +11,7 @@ The image above shows some objects lit only with the skylight component. Here th
 
 ## Skylight vs. Ambient Light Component
 
-The [ambient light component](ambient-light-component.md) uses a fixed color for lighting objects. Although you could animate those colors over time, for instance using a [property animation](../../animation/property-animation.md), it is not possible to be directional. Using the skylight component you can have a bit of directional lighting.
+The [ambient light component](ambient-light-component.md) uses a fixed color for lighting objects. Although you could animate those colors over time, for instance using a [property animation (TODO)](../../animation/property-animation.md), it is not possible to be directional. Using the skylight component you can have a bit of directional lighting.
 
 In the image below the objects on the left are lit with an ambient light component. Note that the lighting is very flat. The objects on the right are lit with a skylight component. To demonstrate how it illuminates objects directionally, the skybox is set to have red, green and blue faces.
 
@@ -37,7 +37,7 @@ The image below shows the `ShowDebugInfo` mode. Here the skylight component visu
 
 * `Intensity`: This allows you to adjust the intensity of the applied ambient light.
 * `Saturation`: With a saturation of 1, the color of the sky is applied exactly as it is to the scene. Often this would result in too colorful lighting, for example a strong blue hue. By reducing saturation, the light will become more monochrome. In the image at the top, saturation was set to 0.4 to reduce the blue tint from the sky.
-* `IncludeTags`, `ExcludeTags`: These [tags](../../projects/tags.md) define which objects in the scene are used to compute the skylight. Make sure that the object that renders your [sky](../../effects/sky.md) has this include tag set. This is the same mechanism as used in the [camera component](../camera-component.md).
+* `IncludeTags`, `ExcludeTags`: These [tags](../../projects/tags.md) define which objects in the scene are used to compute the skylight. Make sure that the object that renders your [sky](../../effects/sky.md) has this include tag set. This is the same mechanism as used in the [camera component (TODO)](../camera-component.md).
 * `ShowDebugInfo`: If enabled, a sphere with a preview of the sky image is rendered at the position of the skylight object. Use this to check whether all desired objects contribute to the skylight.
 
 ## See Also

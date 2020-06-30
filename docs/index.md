@@ -104,7 +104,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Spot Light Component](graphics/lighting/spot-light-component.md)
   * [Dynamic Shadows](graphics/lighting/dynamic-shadows.md)
   * [Ambient Light Component](graphics/lighting/ambient-light-component.md)
-  * [Sky Light Component (TODO)](graphics/lighting/sky-light-component.md)
+  * [Skylight Component](graphics/lighting/sky-light-component.md)
 * __Meshes__
   * [Meshes](graphics/meshes/meshes-overview.md)
   * [Mesh Asset](graphics/meshes/mesh-asset.md)

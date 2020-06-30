@@ -28,7 +28,7 @@ There are different component types to provide different types of lighting:
 * [Directional Light Component](directional-light-component.md): For sun/moon light.
 * [Point Light Component](point-light-component.md): For light bulbs and overall fill lights.
 * [Spot Light Component](spot-light-component.md): For flashlights and directed lighting.
-* [Sky Light Component (TODO)](sky-light-component.md): For dynamic light contribution from the sky.
+* [Sky Light Component](sky-light-component.md): For dynamic light contribution from the sky.
 
 ## See Also
 
