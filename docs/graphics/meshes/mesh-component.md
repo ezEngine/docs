@@ -4,7 +4,7 @@ A *mesh component* is used to instantiate a [mesh asset](mesh-asset.md). Mesh co
 
 ![Mesh](media/mesh.jpg)
 
-Mesh components will cast [shadows](../lighting/dynamic-shadows.md) when the `CastShadow` [tag](../../projects/tags.md) is set on the owner game object. The referenced mesh is rendered according to the used [materials](../../materials/materials-overview.md), which determine [lighting (TODO)](../lighting/lighting-overview.md) and other visual effects.
+Mesh components will cast [shadows](../lighting/dynamic-shadows.md) when the `CastShadow` [tag](../../projects/tags.md) is set on the owner game object. The referenced mesh is rendered according to the used [materials](../../materials/materials-overview.md), which determine [lighting](../lighting/lighting-overview.md) and other visual effects.
 
 ## Component Properties
 
@@ -17,4 +17,4 @@ Mesh components will cast [shadows](../lighting/dynamic-shadows.md) when the `Ca
 * [Back to Index](../../index.md)
 * [Meshes](meshes-overview.md)
 * [Materials](../../materials/materials-overview.md)
-* [Lighting (TODO)](../lighting/lighting-overview.md)
+* [Lighting](../lighting/lighting-overview.md)

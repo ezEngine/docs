@@ -26,7 +26,7 @@ Tags are used by the renderer to decide which objects to include or exclude from
 
 You can use this to make objects invisible in certain views and only render them in certain other views.
 
-This mechanism is also used to decide which objects cast [shadows (TODO)](../graphics/lighting/lighting-overview.md). Only objects with the *CastShadow* tag will be included in the shadow map generation.
+This mechanism is also used to decide which objects cast [shadows](../graphics/lighting/lighting-overview.md). Only objects with the *CastShadow* tag will be included in the shadow map generation.
 
 **Note:** The editor uses its own render view, for which you currently cannot edit the include and exclude tags. You have to launch [Play-the-Game mode](../editor/run-scene.md) for the engine to render the scene using your custom camera setup, to see the final result. You can, however, select a camera object and look at its preview window, to see the effect of the tag setup.
 
@@ -45,4 +45,4 @@ Similarly, if you want to make an object invisible in one view, you probably als
 * [Back to Index](../index.md)
 * [Project Settings](project-settings.md)
 * [PhysX Integration (TODO)](../physics/physx-overview.md)
-* [Lighting (TODO)](../graphics/lighting/lighting-overview.md)
+* [Lighting](../graphics/lighting/lighting-overview.md)

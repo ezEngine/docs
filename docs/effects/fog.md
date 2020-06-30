@@ -20,5 +20,5 @@ The rotation and scale of the game object has no effect on the fog. The position
 
 * [Back to Index](../index.md)
 * [Sky](sky.md)
-* [Lighting (TODO)](../graphics/lighting/lighting-overview.md)
+* [Lighting](../graphics/lighting/lighting-overview.md)
 * [Particle Effects](particle-effects/particle-effects-overview.md)

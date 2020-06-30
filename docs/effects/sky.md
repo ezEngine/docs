@@ -19,4 +19,4 @@ The *SkyBox component* implements a simply sky, which displays a cubemap texture
 * [Back to Index](../index.md)
 * [Fog](fog.md)
 * [Textures](../graphics/textures-overview.md)
-* [Lighting (TODO)](../graphics/lighting/lighting-overview.md)
+* [Lighting](../graphics/lighting/lighting-overview.md)

@@ -25,5 +25,5 @@ See [this page](dynamic-shadows.md#shadow-component-properties) for shadow relat
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Lighting (TODO)](lighting-overview.md)
+* [Lighting](lighting-overview.md)
 * [Dynamic Shadows](dynamic-shadows.md)
