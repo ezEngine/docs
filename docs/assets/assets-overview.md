@@ -10,7 +10,7 @@ Therefore, instead of loading a texture directly into the engine, you need to cr
 
 One can distinguish between two types of assets: Assets that mostly exist to transform existing data from a source format into an optimized format, and assets that represent entirely new data, authored in the editor.
 
-Examples for the former are [textures](../graphics/textures-overview.md), [meshes](../graphics/meshes/mesh-asset.md), [collision meshes](../physics/collision-shapes/collision-meshes.md), [sounds (TODO)](../sound/sound-overview.md) and so on. Their purpose is to ensure that the engine does not need to handle all sorts of source formats, but only optimized runtime formats. Instead, the editor and other tools will deal with the source formats, and allow the user to configure this conversion step.
+Examples for the former are [textures](../graphics/textures-overview.md), [meshes](../graphics/meshes/mesh-asset.md), [collision meshes](../physics/collision-shapes/collision-meshes.md), [sounds](../sound/sound-overview.md) and so on. Their purpose is to ensure that the engine does not need to handle all sorts of source formats, but only optimized runtime formats. Instead, the editor and other tools will deal with the source formats, and allow the user to configure this conversion step.
 
 Examples for the latter are [scenes](../scenes/scene-editing.md), [prefabs](../prefabs/prefabs-overview.md), [materials](../materials/materials-overview.md), [property animations (TODO)](../animation/property-animation.md), [curves](../animation/curves.md) and so on. Their data does not come from some other file on disk, but is instead built entirely in the editor. However, they still need to be *transformed* to provide the engine with an optimized format.
 
@@ -40,7 +40,7 @@ All erroneous assets are listed in the [asset curator](asset-curator.md). The cu
 
 ## Asset Profiles
 
-Assets can produce different, platform specific output, depending on which platform they are being transformed for. That means a texture may, for example, generate a runtime file that contains full resolution 4K textures for PC, but only limited 1K resolution textures for mobile devices. Such platform specific options can be configured through [asset profiles (TODO)](asset-profiles.md). For some types of assets, such platform specific settings may also be handled externally, for example [FMOD (TODO)](../sound/fmod-overview.md) already deals with platform specific audio encoding on its own.
+Assets can produce different, platform specific output, depending on which platform they are being transformed for. That means a texture may, for example, generate a runtime file that contains full resolution 4K textures for PC, but only limited 1K resolution textures for mobile devices. Such platform specific options can be configured through [asset profiles (TODO)](asset-profiles.md). For some types of assets, such platform specific settings may also be handled externally, for example [FMOD](../sound/fmod-overview.md) already deals with platform specific audio encoding on its own.
 
 ## Assets and Resources
 

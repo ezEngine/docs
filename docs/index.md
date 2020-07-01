@@ -190,10 +190,12 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Sound
 
-* [Fmod Event Component (TODO)](sound/fmod-event-component.md)
-* [Fmod Listener Component (TODO)](sound/fmod-listener-component.md)
-* [FMOD Integration (TODO)](sound/fmod-overview.md)
-* [Sound (TODO)](sound/sound-overview.md)
+* [Sound](sound/sound-overview.md)
+* [Fmod Integration](sound/fmod-overview.md)
+* [Fmod Sound Bank Asset](sound/fmod-soundbank-asset.md)
+* [Fmod Sound Event Asset](sound/fmod-soundevent-asset.md)
+* [Fmod Listener Component](sound/fmod-listener-component.md)
+* [Fmod Event Component](sound/fmod-event-component.md)
 
 ### Ai
 
