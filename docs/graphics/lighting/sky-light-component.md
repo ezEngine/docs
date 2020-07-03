@@ -37,7 +37,7 @@ The image below shows the `ShowDebugInfo` mode. Here the skylight component visu
 
 * `Intensity`: This allows you to adjust the intensity of the applied ambient light.
 * `Saturation`: With a saturation of 1, the color of the sky is applied exactly as it is to the scene. Often this would result in too colorful lighting, for example a strong blue hue. By reducing saturation, the light will become more monochrome. In the image at the top, saturation was set to 0.4 to reduce the blue tint from the sky.
-* `IncludeTags`, `ExcludeTags`: These [tags](../../projects/tags.md) define which objects in the scene are used to compute the skylight. Make sure that the object that renders your [sky](../../effects/sky.md) has this include tag set. This is the same mechanism as used in the [camera component (TODO)](../camera-component.md).
+* `IncludeTags`, `ExcludeTags`: These [tags](../../projects/tags.md) define which objects in the scene are used to compute the skylight. Make sure that the object that renders your [sky](../../effects/sky.md) has this include tag set. This is the same mechanism as used in the [camera component](../camera-component.md).
 * `ShowDebugInfo`: If enabled, a sphere with a preview of the sky image is rendered at the position of the skylight object. Use this to check whether all desired objects contribute to the skylight.
 
 ## See Also

@@ -96,7 +96,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 ### Graphics
 
 * [Always Visible Component](graphics/always-visible-component.md)
-* [Camera Component (TODO)](graphics/camera-component.md)
+* [Camera Component](graphics/camera-component.md)
 * __Lighting__
   * [Lighting](graphics/lighting/lighting-overview.md)
   * [Directional Light Component](graphics/lighting/directional-light-component.md)
