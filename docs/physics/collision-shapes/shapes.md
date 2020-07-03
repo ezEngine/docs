@@ -1,4 +1,4 @@
-# Physics Shapes
+# PhysX Shapes
 
 <!-- PAGE IS TODO -->
 
@@ -7,6 +7,12 @@
 * capsule
 * collision mesh
 * center of mass
+
+## Shared Shape Component Properties
+
+* `Surface`:
+* `CollisionLayer`:
+* `OnContact`:
 
 ## See Also
 

@@ -1,10 +1,12 @@
-# PhysX Fixed Joint Component
+# PhysX Convex Shape Component
 
 <!-- PAGE IS TODO -->
 
 ## Component Properties
 
-* only shared
+* shared
+
+* `CollisionMesh`:
 
 ## See Also
 

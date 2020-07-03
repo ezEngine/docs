@@ -1,6 +1,11 @@
-# Trigger Component
+# PhysX Trigger Component
 
 <!-- PAGE IS TODO -->
+
+## Component Properties
+
+* `Kinematic`:
+* `TriggerMessage`:
 
 ## See Also
 

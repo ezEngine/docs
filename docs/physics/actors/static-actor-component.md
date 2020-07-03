@@ -1,6 +1,12 @@
-# Static Actor Component
+# PhysX Static Actor Component
 
 <!-- PAGE IS TODO -->
+
+## Component Properties
+
+* `CollisionMesh`:
+* `CollisionLayer`:
+* `IncludeInNavmesh`:
 
 ## See Also
 

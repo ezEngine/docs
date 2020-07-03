@@ -1,4 +1,4 @@
-# Physics Actors
+# PhysX Actors
 
 <!-- PAGE IS TODO -->
 

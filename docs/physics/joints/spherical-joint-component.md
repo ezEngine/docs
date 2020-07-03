@@ -1,6 +1,14 @@
-# Spherical Joint Component
+# PhysX Spherical Joint Component
 
 <!-- PAGE IS TODO -->
+
+## Component Properties
+
+* shared
+
+* `LimitRotation`:
+* `ConeLimitY`:
+* `ConeLimitZ`:
 
 ## See Also
 

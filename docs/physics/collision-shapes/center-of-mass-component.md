@@ -1,4 +1,4 @@
-# Center of Mass Component
+# PhysX Center of Mass Component
 
 The *center of mass component* is used to adjust the weight distribution of a [physics actor (TODO)](../actors/dynamic-actor-component.md). In general the mass of an physical object is computed from all the [shapes (TODO)](shapes.md) that it is made up of. Since all shapes are assumed to have constant density, the center of mass for many objects often ends up being different from where it would be for a real object.
 

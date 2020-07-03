@@ -1,10 +1,12 @@
-# PhysX Fixed Joint Component
+# PhysX Sphere Shape Component
 
 <!-- PAGE IS TODO -->
 
 ## Component Properties
 
-* only shared
+* shared
+
+* `Radius`:
 
 ## See Also
 

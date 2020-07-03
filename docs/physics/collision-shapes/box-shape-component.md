@@ -1,10 +1,12 @@
-# PhysX Fixed Joint Component
+# PhysX Box Shape Component
 
 <!-- PAGE IS TODO -->
 
 ## Component Properties
 
-* only shared
+* shared
+
+* `Extents`:
 
 ## See Also
 

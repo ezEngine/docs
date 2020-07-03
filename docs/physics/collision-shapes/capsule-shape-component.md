@@ -1,10 +1,13 @@
-# PhysX Fixed Joint Component
+# PhysX Capsule Shape Component
 
 <!-- PAGE IS TODO -->
 
 ## Component Properties
 
-* only shared
+* shared
+
+* `Radius`:
+* `Height`:
 
 ## See Also
 
