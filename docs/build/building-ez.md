@@ -26,5 +26,5 @@ To try out ezEngine, you can download a [precompiled binary package](https://git
 
 ## See Also
 
-* [Supported Platforms](supported-platforms.md)
 * [Back to Index](../index.md)
+* [Supported Platforms](supported-platforms.md)

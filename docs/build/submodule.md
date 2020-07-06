@@ -29,5 +29,5 @@ For a full example see: [https://github.com/ezEngine/submodule-example](https://
 
 ## See Also
 
-* [CMake Setup](cmake-config.md)
 * [Back to Index](../index.md)
+* [CMake Setup](cmake-config.md)

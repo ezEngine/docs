@@ -60,6 +60,7 @@ See [Linux Builds](build-linux.md) for details.
 ## Android
 
 Versions:
+
 * Android 6.0 Marshmallow (API 23) or newer
 
 See [Android Builds](build-android.md) for details.
