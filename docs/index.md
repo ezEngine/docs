@@ -139,7 +139,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Character Controller (TODO)](physics/actors/physx-character-controller.md)
   * [PhysX Character Proxy Component (TODO)](physics/actors/physx-character-proxy-component.md)
   * [PhysX Dynamic Actor Component (TODO)](physics/actors/physx-dynamic-actor-component.md)
-  * [PhysX Static Actor Component (TODO)](physics/actors/physx-static-actor-component.md)
+  * [PhysX Static Actor Component](physics/actors/physx-static-actor-component.md)
   * [PhysX Trigger Component (TODO)](physics/actors/physx-trigger-component.md)
 * __Collision Shapes__
   * [Collision Layers](physics/collision-shapes/collision-layers.md)
@@ -203,7 +203,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Ai
 
-* [Recast Navmesh Component (TODO)](ai/navmesh-component.md)
+* [Recast Navmesh Component (TODO)](ai/recast-navmesh-component.md)
+* [Recast Navmesh (TODO)](ai/recast-navmesh.md)
 * [Recast Integration (TODO)](ai/recast.md)
 
 ### Gameplay
