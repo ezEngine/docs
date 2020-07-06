@@ -134,7 +134,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 ### Physics
 
 * __Actors__
-  * [PhysX Actors (TODO)](physics/actors/physx-actors.md)
+  * [PhysX Actors](physics/actors/physx-actors.md)
   * [PhysX Breakable Sheet Component (TODO)](physics/actors/physx-breakable-sheet-component.md)
   * [Character Controller (TODO)](physics/actors/physx-character-controller.md)
   * [PhysX Character Proxy Component (TODO)](physics/actors/physx-character-proxy-component.md)
