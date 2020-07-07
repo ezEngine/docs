@@ -6,7 +6,7 @@ In some special cases, for instance for [greyboxing geometry](../../scenes/greyb
 
 PhysX distinguishes between two types of actors: *static* actors and *dynamic* actors. Additionally, dynamic actors can be *kinematic* and actors may be used as triggers.
 
-Actors don't have a physical shape. Instead they have to be made up of pieces which hold [shape components (TODO)](../collision-shapes/physx-shapes.md). Upon creation, every actor traverses the node hierarchy below its owner [game object](../../runtime/world/game-objects.md) to search for shape components. All shapes that are found are added to the actor as a *compound shape*. If another actor is found in the process, shapes below that node are ignored, though. This way a single actor can have a complex shape, even if every single piece is only a sphere, box, capsule or other simple shape.
+Actors don't have a physical shape. Instead they have to be made up of pieces which hold [shape components](../collision-shapes/physx-shapes.md). Upon creation, every actor traverses the node hierarchy below its owner [game object](../../runtime/world/game-objects.md) to search for shape components. All shapes that are found are added to the actor as a *compound shape*. If another actor is found in the process, shapes below that node are ignored, though. This way a single actor can have a complex shape, even if every single piece is only a sphere, box, capsule or other simple shape.
 
 ## Static Actors
 
@@ -51,7 +51,7 @@ The [breakable sheet component (TODO)](physx-breakable-sheet-component.md) is a 
 ## See Also
 
 * [Back to Index](../../index.md)
-* [PhysX Shapes (TODO)](../collision-shapes/physx-shapes.md)
+* [PhysX Shapes](../collision-shapes/physx-shapes.md)
 * [PhysX Static Actor Component](physx-static-actor-component.md)
 * [PhysX Dynamic Actor Component (TODO)](physx-dynamic-actor-component.md)
 * [PhysX Trigger Component (TODO)](physx-trigger-component.md)
