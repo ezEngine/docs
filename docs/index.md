@@ -144,12 +144,12 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * __Collision Shapes__
   * [Collision Layers](physics/collision-shapes/collision-layers.md)
   * [Collision Meshes](physics/collision-shapes/collision-meshes.md)
-  * [PhysX Box Shape Component (TODO)](physics/collision-shapes/physx-box-shape-component.md)
-  * [PhysX Capsule Shape Component (TODO)](physics/collision-shapes/physx-capsule-shape-component.md)
+  * [PhysX Box Shape Component](physics/collision-shapes/physx-box-shape-component.md)
+  * [PhysX Capsule Shape Component](physics/collision-shapes/physx-capsule-shape-component.md)
   * [PhysX Center of Mass Component](physics/collision-shapes/physx-center-of-mass-component.md)
   * [PhysX Convex Shape Component (TODO)](physics/collision-shapes/physx-convex-shape-component.md)
   * [PhysX Shapes](physics/collision-shapes/physx-shapes.md)
-  * [PhysX Sphere Shape Component (TODO)](physics/collision-shapes/physx-sphere-shape-component.md)
+  * [PhysX Sphere Shape Component](physics/collision-shapes/physx-sphere-shape-component.md)
 * __Joints__
   * [PhysX 6DOF Joint Component (TODO)](physics/joints/physx-6dof-joint-component.md)
   * [PhysX Distance Joint Component (TODO)](physics/joints/physx-distance-joint-component.md)

@@ -8,9 +8,9 @@ A [PhysX actor](../actors/physx-actors.md) configures how an object behaves in t
 
 The following shape components are available:
 
-* [PhysX Sphere Shape Component (TODO)](physx-sphere-shape-component.md)
-* [PhysX Box Shape Component (TODO)](physx-box-shape-component.md)
-* [PhysX Capsule Shape Component (TODO)](physx-capsule-shape-component.md)
+* [PhysX Sphere Shape Component](physx-sphere-shape-component.md)
+* [PhysX Box Shape Component](physx-box-shape-component.md)
+* [PhysX Capsule Shape Component](physx-capsule-shape-component.md)
 * [PhysX Convex Shape Component (TODO)](physx-convex-shape-component.md)
 
 ## Actor Shape Setup
