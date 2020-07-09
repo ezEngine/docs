@@ -6,7 +6,7 @@ The *PhysX box shape component* adds a box as a [shape](physx-shapes.md) to the 
 
 You can attach this component to the same node where the actor component is attached, or you can create a child object to attach it to, which allows you to position the shape relative to the actor.
 
-Boxes are relatively efficient for the physics engine to handle. Prefer them over the [convex shape component (TODO)](physx-convex-shape-component.md) when possible.
+Boxes are relatively efficient for the physics engine to handle. Prefer them over the [convex shape component](physx-convex-shape-component.md) when possible.
 
 ## Component Properties
 

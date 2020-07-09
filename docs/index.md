@@ -147,7 +147,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Box Shape Component](physics/collision-shapes/physx-box-shape-component.md)
   * [PhysX Capsule Shape Component](physics/collision-shapes/physx-capsule-shape-component.md)
   * [PhysX Center of Mass Component](physics/collision-shapes/physx-center-of-mass-component.md)
-  * [PhysX Convex Shape Component (TODO)](physics/collision-shapes/physx-convex-shape-component.md)
+  * [PhysX Convex Shape Component](physics/collision-shapes/physx-convex-shape-component.md)
   * [PhysX Shapes](physics/collision-shapes/physx-shapes.md)
   * [PhysX Sphere Shape Component](physics/collision-shapes/physx-sphere-shape-component.md)
 * __Joints__

@@ -6,7 +6,7 @@ The *PhysX capsule shape component* adds a capsule as a [shape](physx-shapes.md)
 
 You can attach this component to the same node where the actor component is attached, or you can create a child object to attach it to, which allows you to position the shape relative to the actor.
 
-Capsules are relatively efficient for the physics engine to handle. Prefer them over the [convex shape component (TODO)](physx-convex-shape-component.md) when possible. For long thin objects, especially static collision geometry, capsules may also be more efficient and yield better results, than [box shapes](physx-box-shape-component.md).
+Capsules are relatively efficient for the physics engine to handle. Prefer them over the [convex shape component](physx-convex-shape-component.md) when possible. For long thin objects, especially static collision geometry, capsules may also be more efficient and yield better results, than [box shapes](physx-box-shape-component.md).
 
 ## Component Properties
 

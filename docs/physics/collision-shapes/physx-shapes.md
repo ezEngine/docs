@@ -11,7 +11,7 @@ The following shape components are available:
 * [PhysX Sphere Shape Component](physx-sphere-shape-component.md)
 * [PhysX Box Shape Component](physx-box-shape-component.md)
 * [PhysX Capsule Shape Component](physx-capsule-shape-component.md)
-* [PhysX Convex Shape Component (TODO)](physx-convex-shape-component.md)
+* [PhysX Convex Shape Component](physx-convex-shape-component.md)
 
 ## Actor Shape Setup
 
