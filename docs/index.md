@@ -140,7 +140,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Character Proxy Component (TODO)](physics/actors/physx-character-proxy-component.md)
   * [PhysX Dynamic Actor Component](physics/actors/physx-dynamic-actor-component.md)
   * [PhysX Static Actor Component](physics/actors/physx-static-actor-component.md)
-  * [PhysX Trigger Component (TODO)](physics/actors/physx-trigger-component.md)
+  * [PhysX Trigger Component](physics/actors/physx-trigger-component.md)
 * __Collision Shapes__
   * [Collision Layers](physics/collision-shapes/collision-layers.md)
   * [Collision Meshes](physics/collision-shapes/collision-meshes.md)

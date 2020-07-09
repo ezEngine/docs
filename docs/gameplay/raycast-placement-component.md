@@ -33,4 +33,4 @@ the original hit on the default layer and the ray cast origin.
 
 * [Back to Index](../index.md)
 * [Beam Component](../effects/beam-component.md)
-* [Trigger Component (TODO)](../physics/actors/physx-trigger-component.md)
+* [Trigger Component](../physics/actors/physx-trigger-component.md)

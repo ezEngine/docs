@@ -34,7 +34,7 @@ Triggers are a special type of actor. Triggers don't interfere with the simulati
 
 Triggers are an efficient solution to detect overlaps, when it is imperative that no overlap is ever missed. If on the other hand you only want to check for overlapping objects at some (relatively rare) times or only every couple of seconds, it can be more efficient to just do an *overlap check* through the physics API.
 
-Triggers are set up by attaching a [trigger component (TODO)](physx-trigger-component.md) to a [game object](../../runtime/world/game-objects.md).
+Triggers are set up by attaching a [trigger component](physx-trigger-component.md) to a [game object](../../runtime/world/game-objects.md).
 
 ## Other Actors
 
@@ -54,4 +54,4 @@ The [breakable sheet component (TODO)](physx-breakable-sheet-component.md) is a 
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
 * [PhysX Static Actor Component](physx-static-actor-component.md)
 * [PhysX Dynamic Actor Component](physx-dynamic-actor-component.md)
-* [PhysX Trigger Component (TODO)](physx-trigger-component.md)
+* [PhysX Trigger Component](physx-trigger-component.md)
