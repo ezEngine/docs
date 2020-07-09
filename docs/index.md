@@ -138,7 +138,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Breakable Sheet Component (TODO)](physics/actors/physx-breakable-sheet-component.md)
   * [Character Controller (TODO)](physics/actors/physx-character-controller.md)
   * [PhysX Character Proxy Component (TODO)](physics/actors/physx-character-proxy-component.md)
-  * [PhysX Dynamic Actor Component (TODO)](physics/actors/physx-dynamic-actor-component.md)
+  * [PhysX Dynamic Actor Component](physics/actors/physx-dynamic-actor-component.md)
   * [PhysX Static Actor Component](physics/actors/physx-static-actor-component.md)
   * [PhysX Trigger Component (TODO)](physics/actors/physx-trigger-component.md)
 * __Collision Shapes__

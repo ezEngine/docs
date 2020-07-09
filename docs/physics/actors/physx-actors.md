@@ -26,7 +26,7 @@ Regular actors are used to represent all the physical objects in a world that sh
 
 Whether a dynamic actor is treated as a kinematic actor or not, is a simple boolean property. It is fully supported to switch this property back and forth at will.
 
-Dynamic actors are set up by attaching a [dynamic actor component (TODO)](physx-dynamic-actor-component.md) to a [game object](../../runtime/world/game-objects.md).
+Dynamic actors are set up by attaching a [dynamic actor component](physx-dynamic-actor-component.md) to a [game object](../../runtime/world/game-objects.md).
 
 ## Triggers
 
@@ -53,5 +53,5 @@ The [breakable sheet component (TODO)](physx-breakable-sheet-component.md) is a 
 * [Back to Index](../../index.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
 * [PhysX Static Actor Component](physx-static-actor-component.md)
-* [PhysX Dynamic Actor Component (TODO)](physx-dynamic-actor-component.md)
+* [PhysX Dynamic Actor Component](physx-dynamic-actor-component.md)
 * [PhysX Trigger Component (TODO)](physx-trigger-component.md)

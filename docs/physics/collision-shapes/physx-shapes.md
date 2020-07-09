@@ -2,7 +2,7 @@
 
 A [PhysX actor](../actors/physx-actors.md) configures how an object behaves in the physics simulation. However, every physical presence also requires to have a 3D shape. The shape of actors is set up using PhysX shape components.
 
-[Dynamic actors (TODO)](../actors/physx-dynamic-actor-component.md) can only be simulated with convex shapes. Therefore concave [collision meshes](collision-meshes.md) are exclusive to [static actors](../actors/physx-static-actor-component.md). All shape components represent convex geometry and work with all physics actor types.
+[Dynamic actors](../actors/physx-dynamic-actor-component.md) can only be simulated with convex shapes. Therefore concave [collision meshes](collision-meshes.md) are exclusive to [static actors](../actors/physx-static-actor-component.md). All shape components represent convex geometry and work with all physics actor types.
 
 ## Shape Components
 

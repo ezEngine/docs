@@ -4,7 +4,7 @@ The *PhysX static actor component* is used to represent static collision geomtry
 
 All [PhysX shapes](../collision-shapes/physx-shapes.md) that can be found in the hierarchy below the static actor are combined to form the compound shape of the actor. However, if any other actor (static or dynamic) is part of the hierarchy below the static actor, the shapes below that object are ignored for this actor. Additionally, if the static actor itself references a [collision mesh](../collision-shapes/collision-meshes.md), it will also become part of the actor compound shape. Only static actors are able to reference concave triangle collision meshes.
 
-If you need your geometry to be able to move, use a [dynamic actor (TODO)](physx-dynamic-actor-component.md) instead.
+If you need your geometry to be able to move, use a [dynamic actor](physx-dynamic-actor-component.md) instead.
 
 ## Component Properties
 
@@ -15,7 +15,7 @@ If you need your geometry to be able to move, use a [dynamic actor (TODO)](physx
 ## See Also
 
 * [Back to Index](../../index.md)
-* [PhysX Dynamic Actor Component (TODO)](physx-dynamic-actor-component.md)
+* [PhysX Dynamic Actor Component](physx-dynamic-actor-component.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
 * [Collision Meshes](../collision-shapes/collision-meshes.md)
 * [Collision Layers](../collision-shapes/collision-layers.md)
