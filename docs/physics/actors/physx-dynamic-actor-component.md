@@ -63,4 +63,4 @@ Consequently, you have to be careful how you set up your rigid-bodies, to improv
 * [Back to Index](../../index.md)
 * [PhysX Static Actor Component](physx-static-actor-component.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
-* [Physics Joints (TODO)](../joints/physx-joints.md)
+* [Physics Joints](../joints/physx-joints.md)

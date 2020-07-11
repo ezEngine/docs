@@ -1,22 +1,59 @@
 # Physics Joints
 
-<!-- PAGE IS TODO -->
+A *PhysX joint* is a component that links [PhysX actors](../actors/physx-actors.md) to constrain their movement. There are multiple types of joints that each constrain the actors in different ways.
 
-* prismatic
-* spherical
-* distance
-* fixed
-* revolute
-* 6DOF
+Joints can be used for simple things like door hinges, up to complex configurations like rag dolls.
+
+## Joining Actors
+
+Joints can be used to link:
+
+* Two [dynamic actors](../actors/physx-dynamic-actor-component.md). This will create a more complex dynamic object that can still freely move throughout the scene, but has multiple parts that can wiggle around.
+* One [static actor](../actors/physx-static-actor-component.md) with one [dynamic actor](../actors/physx-dynamic-actor-component.md). In this case the dynamic actor is now constrained in its movement relative to the static actor. Since the static actor never moves, the dynamic actor's freedom is severly limited.
+* One [dynamic actor](../actors/physx-dynamic-actor-component.md) with no second actor. This just affixes the dynamic actor with 'the world'. This is effectively the same as joining it with another static actor.
+
+There are two ways that a joint component can link actors.
+
+### Using Object References
+
+The more flexibly way is to use the [object references](../../scenes/object-references.md) on the joint component to specify the *parent actor* and the *child actor*:
+
+![Linking Actors](media/link-joints.png)
+
+With this method, the [game objects](../../runtime/world/game-objects.md) for the actors and the joint don't need to have a specific hierarchy, they can be placed just next to each other. This also allows to create *loops* of linked actors. On the other hand, you always need to know exactly which actors shall be linked.
+
+### Using the Object Hierarchy
+
+Another method is to put the actors and the link into a proper parent/child hierarchy, where the joint is wedged between two actors:
+
+![Linking Actors](media/link-joints-hierarchy.png)
+
+In this case, the joint will link the closest parent actor that it can find, with the next best child actor.
+
+This method can be useful especially when you want to put the joint into a [prefab](../../prefabs/prefabs-overview.md). For example, if you have a prefab for a chandelier that can swing around, you can set up the joint to only reference the actor that represents the chandelier, but the prefab does not contain an actor for the anchor point. If this prefab is placed into a scene, the rule that a joint *without* a parent actor just gets linked to the world, means that you can easily place these prefabs in a scene, and they will swing around the location where they have been instantiated.
+
+However, if your scene contains for example a moveable room, you can also place it there and make sure to attach the chandelier prefab as a child node of the moveable room actor. That means, the joint of the chandelier will now link the chandelier actor with the moveable room actor, and thus whenever the room moves, the chandelier will be physically dragged by that.
 
 ## Shared Joint Component Properties
 
-* `BreakForce`:
-* `BreakTorque`:
-* `PairCollision`:
-* `ParentActor`:
-* `ChildActor`:
+These properties are shared among all joint types:
+
+* `BreakForce`, `BreakTorque`: By specifying non-zero values here, the joint is turned into a *breakable* joint. If enough force is applied to the joint, it will break apart and the two actors are not linked any further. Unfortunately it can be tricky to choose a proper break threshold, especially for torques, as some interactions produce surprisingly large forces, whereas other actions don't.
+* `PairCollision`: By default actors that are linked with a joint will not collide with each other, instead they will pass through each other. Some joints have options that won't allow such situations to happen, and those options are always more efficient and preferable. However, you can also enable this, to have the two actors still collide with each other.
+* `ParentActor`, `ChildActor`: References to objects with [actor components](../actors/physx-actors.md) to link with this joint. If not set, the parent/child hierarchy is used instead.
+
+## Joint Types
+
+These types of constraints are currently available:
+
+* [PhysX Revolute Joint Component (TODO)](physx-revolute-joint-component.md)
+* [PhysX Spherical Joint Component (TODO)](physx-spherical-joint-component.md)
+* [PhysX Fixed Joint Component (TODO)](physx-fixed-joint-component.md)
+* [PhysX Prismatic Joint Component (TODO)](physx-prismatic-joint-component.md)
+* [PhysX Distance Joint Component (TODO)](physx-distance-joint-component.md)
+* [PhysX 6DOF Joint Component (TODO)](physx-6dof-joint-component.md)
 
 ## See Also
 
 * [Back to Index](../../index.md)
+* [PhysX Actors](../actors/physx-actors.md)

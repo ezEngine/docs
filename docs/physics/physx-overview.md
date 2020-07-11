@@ -22,7 +22,7 @@ How to set up actors [is described here](actors/physx-actors.md). Reading up on 
 
 Actors are made up of shapes, such as spheres, boxes, capsules and meshes. Shapes are [described here](collision-shapes/physx-shapes.md).
 
-Actors can be physically linked, to constrain their movement. This is how you would set up a door hinge for example. Linking two actors is accomplished using [joints (TODO)](joints/physx-joints.md).
+Actors can be physically linked, to constrain their movement. This is how you would set up a door hinge for example. Linking two actors is accomplished using [joints](joints/physx-joints.md).
 
 To make a player or NPC walk through a physically simulated scene, you need something that computes how the character collides with walls, climbs stairs, slides down slopes, and so on. This functionality is provided by a so called [character controller (TODO)](actors/physx-character-controller.md).
 

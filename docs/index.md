@@ -154,7 +154,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Collision Meshes](physics/collision-shapes/collision-meshes.md)
   * [Collision Layers](physics/collision-shapes/collision-layers.md)
 * __Joints__
-  * [Physics Joints (TODO)](physics/joints/physx-joints.md)
+  * [Physics Joints](physics/joints/physx-joints.md)
   * [PhysX Revolute Joint Component (TODO)](physics/joints/physx-revolute-joint-component.md)
   * [PhysX Spherical Joint Component (TODO)](physics/joints/physx-spherical-joint-component.md)
   * [PhysX Fixed Joint Component (TODO)](physics/joints/physx-fixed-joint-component.md)
