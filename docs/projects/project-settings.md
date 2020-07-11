@@ -66,7 +66,7 @@ If the [FMOD Integration](../sound/fmod-overview.md) is enabled, *Editor > Proje
 
 ## PhysX
 
-If the [PhysX Integration (TODO)](../physics/physx-overview.md) is enabled, *Editor > Project Settings > PhysX Project Settings...* will be available to configure the [collision layers](../physics/collision-shapes/collision-layers.md).
+If the [PhysX Integration](../physics/physx-overview.md) is enabled, *Editor > Project Settings > PhysX Project Settings...* will be available to configure the [collision layers](../physics/collision-shapes/collision-layers.md).
 
 ## Video
 

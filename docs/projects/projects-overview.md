@@ -18,13 +18,13 @@ The name of the folder represents the name of your project. This name is stored 
 
 Now you have a new, blank project. The first thing you should do is to check the [project settings](project-settings.md). Specifically, if you want to share assets between multiple projects, you need to put those assets into a dedicated folder and then add that folder to your project as a [data directory](data-directories.md).
 
-The second thing you should check is which [engine plugins](project-settings.md#engine-plugins) you want to use. This is not critical at this point, but if you start using features from some plugin (e.g. [PhysX (TODO)](../physics/physx-overview.md)) and then try to [run a scene standalone](../editor/run-scene.md), it won't work.
+The second thing you should check is which [engine plugins](project-settings.md#engine-plugins) you want to use. This is not critical at this point, but if you start using features from some plugin (e.g. [PhysX](../physics/physx-overview.md)) and then try to [run a scene standalone](../editor/run-scene.md), it won't work.
 
 The following engine plugins are useful to enable for most projects:
 
 * **ezParticlePlugin** - for [particle effects](../effects/particle-effects/particle-effects-overview.md)
 * **ezTypeScriptPlugin** - for [scripting with TypeScript](../custom-code/typescript/typescript-overview.md)
-* **ezPhysXPlugin** - for physics with [PhysX (TODO)](../physics/physx-overview.md)
+* **ezPhysXPlugin** - for physics with [PhysX](../physics/physx-overview.md)
 * **ezFmodPlugin** - for sound with [FMOD](../sound/fmod-overview.md) (requires that you have [Fmod support](../build/build-prerequisites.md) enabled)
 
 If you don't use a particular feature in your project, you can of course keep the respective plugin deactivated.
@@ -35,7 +35,7 @@ Select *Editor > Create Document...* and create a [document](../editor/editor-do
 
 ![New Scene](media/new-project-scene.jpg)
 
-If you don't see the [asset browser](../assets/asset-browser.md), make sure to open it. You can now [edit your scene](../scenes/scene-editing.md). When you need more assets to play with, you need to [import them](../assets/import-assets.md) into your project. Once you have something in your scene that could *do something*, you can [test your scene](../editor/run-scene.md). A good starting point for that is to simply attach a `Rotor` component to a mesh. A fun next step is to let objects fall down using [PhysX (TODO)](../physics/physx-overview.md) (hint: you need a `Dynamic Actor` component and a `Box Shape` component)
+If you don't see the [asset browser](../assets/asset-browser.md), make sure to open it. You can now [edit your scene](../scenes/scene-editing.md). When you need more assets to play with, you need to [import them](../assets/import-assets.md) into your project. Once you have something in your scene that could *do something*, you can [test your scene](../editor/run-scene.md). A good starting point for that is to simply attach a `Rotor` component to a mesh. A fun next step is to let objects fall down using [PhysX](../physics/physx-overview.md) (hint: you need a `Dynamic Actor` component and a `Box Shape` component)
 
 ## Project-wide options
 

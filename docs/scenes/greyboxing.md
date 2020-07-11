@@ -42,7 +42,7 @@ As long as a greyboxing object has the `AutoColMesh` [tag](../projects/tags.md),
 
 ## Dynamic Collision
 
-The greyboxing shape is not meant to be used for dynamic collisions. That means, if you attach a dynamic [PhysX (TODO)](../physics/physx-overview.md) actor, it will not get the necessary physical setup to behave correctly. Instead, its collision mesh will simply be disabled entirely. You can therefore use greybox shapes for dynamic objects, but you need to add the required physics shapes yourself.
+The greyboxing shape is not meant to be used for dynamic collisions. That means, if you attach a dynamic [PhysX](../physics/physx-overview.md) actor, it will not get the necessary physical setup to behave correctly. Instead, its collision mesh will simply be disabled entirely. You can therefore use greybox shapes for dynamic objects, but you need to add the required physics shapes yourself.
 
 ## See Also
 

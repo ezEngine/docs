@@ -12,7 +12,7 @@ The main classes involved are `ezWorld`, `ezGameObject`, `ezComponent` and `ezWo
 
 Each `ezWorld` represents the entire state of a scene. Worlds hold all [game objects](game-objects.md) and all [world modules](world-modules.md), which in turn hold all [components](components.md).
 
-Each world has its own simulation state, such as a clock and a random number generator. Through the world modules, worlds also hold their own state for other simulation aspects, such as [physics (TODO)](../../physics/physx-overview.md).
+Each world has its own simulation state, such as a clock and a random number generator. Through the world modules, worlds also hold their own state for other simulation aspects, such as [physics](../../physics/physx-overview.md).
 
 You can have multiple worlds in parallel and they will be completely separated. This is for example the case when you have multiple [documents](../../editor/editor-documents.md) open in the editor.
 

@@ -1,6 +1,6 @@
 # Meshes
 
-Meshes are the central feature of any 3D engine. Meshes can be separated into two kinds: the ones used for rendering, and the ones used for interactions ([physics (TODO)](../../physics/physx-overview.md)).
+Meshes are the central feature of any 3D engine. Meshes can be separated into two kinds: the ones used for rendering, and the ones used for interactions ([physics](../../physics/physx-overview.md)).
 
 Mesh data is either [imported](../../assets/import-assets.md) from external files, such as FBX files, or procedurally generated. Generating meshes procedurally is mostly useful for very basic shapes either for special cases or as placeholders during early development.
 

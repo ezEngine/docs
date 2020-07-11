@@ -158,7 +158,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Prismatic Joint Component (TODO)](physics/joints/physx-prismatic-joint-component.md)
   * [PhysX Revolute Joint Component (TODO)](physics/joints/physx-revolute-joint-component.md)
   * [PhysX Spherical Joint Component (TODO)](physics/joints/physx-spherical-joint-component.md)
-* [PhysX Integration (TODO)](physics/physx-overview.md)
+* [PhysX Integration](physics/physx-overview.md)
 * [PhysX Settings Component](physics/physx-settings-component.md)
 * [PhysX Visual Debugger](physics/physx-visual-debugger.md)
 
