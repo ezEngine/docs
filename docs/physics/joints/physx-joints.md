@@ -53,7 +53,21 @@ These types of constraints are currently available:
 * [PhysX Distance Joint Component (TODO)](physx-distance-joint-component.md)
 * [PhysX 6DOF Joint Component (TODO)](physx-6dof-joint-component.md)
 
+## Joint Stability
+
+Joining multiple actors in a chain can quickly result in really bad simulation results. Have a look at [dynamic actor simulation stability](../actors/physx-dynamic-actor-component.md#simulation-stability) for ways to improve this. When working with joints the following aspects help a lot:
+
+* Make sure that the involved actors are not too light. For smaller objects they automatically computed mass is often too low for the joint to be stable.
+* Drastically increase linear and especially angular damping on the actors (`0.1` to `0.8`).
+* Reduce `MaxContactImpulse`, especially on smaller actors.
+* Don't create very long chains, try to achieve the desired result with as few joints as possible.
+* Don't use joint limits (revolute joint, spherical joint), they can add significant instability.
+
+Also have a look at NVIDIA's recommendations: [Configuring Joints for Best Behavior (nvidia.com)](https://gameworksdocs.nvidia.com/PhysX/4.0/documentation/PhysXGuide/Manual/Joints.html#configuring-joints-for-best-behavior)
+
+
 ## See Also
 
 * [Back to Index](../../index.md)
 * [PhysX Actors](../actors/physx-actors.md)
+* [Joints (nvidia.com)](https://gameworksdocs.nvidia.com/PhysX/4.0/documentation/PhysXGuide/Manual/Joints.html)

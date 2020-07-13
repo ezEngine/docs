@@ -11,6 +11,7 @@
 * `UpperLimit`:
 * `EnableDrive`:
 * `DriveVelocity`:
+* `MaxDriveTorque`:
 * `DriveBraking`:
 
 ## See Also
