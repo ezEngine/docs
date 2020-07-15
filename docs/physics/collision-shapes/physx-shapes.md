@@ -23,7 +23,7 @@ When an actor is initialized for the simulation, it traverses the hierarchy belo
 
 All shapes that are found this way are added to the actor as one *compound shape*. This way you can build a single actor that has a complex shape, made up of many parts.
 
-You can't add or remove individual shapes during simulation. If you need pieces to be destructible, you need to turn them into separate actors. To still have those actors move in unison, you need to join them using a [fixed joint (TODO)](../joints/physx-fixed-joint-component.md).
+You can't add or remove individual shapes during simulation. If you need pieces to be destructible, you need to turn them into separate actors. To still have those actors move in unison, you need to join them using a [fixed joint](../joints/physx-fixed-joint-component.md).
 
 ## Center Of Mass
 

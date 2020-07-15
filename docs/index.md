@@ -156,8 +156,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * __Joints__
   * [Physics Joints](physics/joints/physx-joints.md)
   * [PhysX Revolute Joint Component (TODO)](physics/joints/physx-revolute-joint-component.md)
-  * [PhysX Spherical Joint Component (TODO)](physics/joints/physx-spherical-joint-component.md)
-  * [PhysX Fixed Joint Component (TODO)](physics/joints/physx-fixed-joint-component.md)
+  * [PhysX Spherical Joint Component](physics/joints/physx-spherical-joint-component.md)
+  * [PhysX Fixed Joint Component](physics/joints/physx-fixed-joint-component.md)
   * [PhysX Prismatic Joint Component (TODO)](physics/joints/physx-prismatic-joint-component.md)
   * [PhysX Distance Joint Component (TODO)](physics/joints/physx-distance-joint-component.md)
   * [PhysX 6DOF Joint Component (TODO)](physics/joints/physx-6dof-joint-component.md)

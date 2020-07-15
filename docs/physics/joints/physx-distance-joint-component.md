@@ -6,7 +6,7 @@
 
 ## Component Properties
 
-* shared
+* [Shared Joint Component Properties](physx-joints.md#shared-joint-component-properties)
 
 * `MinDistance`:
 * `MaxDistance`:
