@@ -2,6 +2,8 @@
 
 <!-- PAGE IS TODO -->
 
+<video src="media/prismatic-joint.webm" width="600" height="600" autoplay loop></video>
+
 ## Component Properties
 
 * shared
