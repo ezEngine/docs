@@ -34,6 +34,16 @@ This method can be useful especially when you want to put the joint into a [pref
 
 However, if your scene contains for example a moveable room, you can also place it there and make sure to attach the chandelier prefab as a child node of the moveable room actor. That means, the joint of the chandelier will now link the chandelier actor with the moveable room actor, and thus whenever the room moves, the chandelier will be physically dragged by that.
 
+> **Important:**
+>
+> This method of linking actors only works properly, if the parent actor is either **static** or **kinematic**. It doesn't work for simulated dynamic actors, as the transform update will introduce jitter.
+
+## Joint Position
+
+The position and rotation of a joint object specifies the pivot point. For [revolute joints](physx-revolute-joint-component.md), [spherical joints](physx-spherical-joint-component.md) and [6DOF joints](physx-6dof-joint-component.md) the position of the joint determines around which point the linked actors rotate. For [fixed joints](physx-fixed-joint-component.md) the position still affects how strong forces may become due to lever effects.
+
+For [distance joints](physx-distance-joint-component.md) the joint position determines from where the distance is computed. Only for [prismatic joints](physx-prismatic-joint-component.md) is the position of the joint less relevant, though for computational stability, it should still be somewhere in between the linked actors.
+
 ## Shared Joint Component Properties
 
 These properties are shared among all joint types:
