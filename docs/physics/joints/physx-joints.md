@@ -40,7 +40,7 @@ However, if your scene contains for example a moveable room, you can also place 
 
 ## Joint Position
 
-The position and rotation of a joint object specifies the pivot point. For [revolute joints (TODO)](physx-revolute-joint-component.md), [spherical joints](physx-spherical-joint-component.md) and [6DOF joints (TODO)](physx-6dof-joint-component.md) the position of the joint determines around which point the linked actors rotate. For [fixed joints](physx-fixed-joint-component.md) the position still affects how strong forces may become due to lever effects.
+The position and rotation of a joint object specifies the pivot point. For [revolute joints](physx-revolute-joint-component.md), [spherical joints](physx-spherical-joint-component.md) and [6DOF joints (TODO)](physx-6dof-joint-component.md) the position of the joint determines around which point the linked actors rotate. For [fixed joints](physx-fixed-joint-component.md) the position still affects how strong forces may become due to lever effects.
 
 For [distance joints (TODO)](physx-distance-joint-component.md) the joint position determines from where the distance is computed. Only for [prismatic joints](physx-prismatic-joint-component.md) is the position of the joint less relevant, though for computational stability, it should still be somewhere in between the linked actors.
 
@@ -56,7 +56,7 @@ These properties are shared among all joint types:
 
 These types of constraints are currently available:
 
-* [PhysX Revolute Joint Component (TODO)](physx-revolute-joint-component.md)
+* [PhysX Revolute Joint Component](physx-revolute-joint-component.md)
 * [PhysX Spherical Joint Component](physx-spherical-joint-component.md)
 * [PhysX Fixed Joint Component](physx-fixed-joint-component.md)
 * [PhysX Prismatic Joint Component](physx-prismatic-joint-component.md)

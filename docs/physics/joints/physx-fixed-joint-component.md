@@ -14,4 +14,5 @@ Fixed joints can be used to set up very simple destructible objects.
 
 * [Back to Index](../../index.md)
 * [Physics Joints](physx-joints.md)
+* [PhysX Actors](../actors/physx-actors.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
