@@ -16,3 +16,4 @@ Fixed joints can be used to set up very simple destructible objects.
 * [Physics Joints](physx-joints.md)
 * [PhysX Actors](../actors/physx-actors.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
+* [Fixed Joint (nvidia.com)](https://gameworksdocs.nvidia.com/PhysX/4.0/documentation/PhysXGuide/Manual/Joints.html#fixed-joint)

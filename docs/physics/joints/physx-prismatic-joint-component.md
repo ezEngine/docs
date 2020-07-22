@@ -23,3 +23,4 @@ Optionally, how for the joined actors can slide can be limited.
 * [Physics Joints](physx-joints.md)
 * [PhysX Actors](../actors/physx-actors.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
+* [Prismatic Joint (nvidia.com)](https://gameworksdocs.nvidia.com/PhysX/4.0/documentation/PhysXGuide/Manual/Joints.html#prismatic-joint)

@@ -31,3 +31,4 @@ The revolute joint can also be powered with a *drive*, meaning it will rotate on
 * [Physics Joints](physx-joints.md)
 * [PhysX Actors](../actors/physx-actors.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
+* [Revolute Joint (nvidia.com)](https://gameworksdocs.nvidia.com/PhysX/4.0/documentation/PhysXGuide/Manual/Joints.html#revolute-joint)

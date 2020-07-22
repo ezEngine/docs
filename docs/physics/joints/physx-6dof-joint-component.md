@@ -19,3 +19,4 @@
 * [Physics Joints](physx-joints.md)
 * [PhysX Actors](../actors/physx-actors.md)
 * [PhysX Shapes](../collision-shapes/physx-shapes.md)
+* [6DOF Joint (nvidia.com)](https://gameworksdocs.nvidia.com/PhysX/4.0/documentation/PhysXGuide/Manual/Joints.html#d6-joint)
