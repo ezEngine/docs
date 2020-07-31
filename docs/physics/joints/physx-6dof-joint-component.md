@@ -2,7 +2,7 @@
 
 The *PhysX 6DOF joint component* is the most versatile [joint](physx-joints.md) type. *6DOF* stands for *six degrees of freedom*, meaning that this joint can be configured separately for each linear axis (movement) and angular axis (rotation).
 
-<!-- PAGE IS TODO -->
+<video src="media/6dof-joint.webm" width="600" height="600" autoplay loop></video>
 
 This joint component is based on the [PhysX 6DOF joint](https://gameworksdocs.nvidia.com/PhysX/4.1/documentation/physxguide/Manual/Joints.html#d6-joint). However, the ez 6DOF joint component does not expose all of the many configuration options of the PhysX 6DOF joint. Instead it condenses some of these options down to a most commonly useful set of options.
 

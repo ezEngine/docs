@@ -160,7 +160,9 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Fixed Joint Component](physics/joints/physx-fixed-joint-component.md)
   * [PhysX Prismatic Joint Component](physics/joints/physx-prismatic-joint-component.md)
   * [PhysX Distance Joint Component](physics/joints/physx-distance-joint-component.md)
-  * [PhysX 6DOF Joint Component (TODO)](physics/joints/physx-6dof-joint-component.md)
+  * [PhysX 6DOF Joint Component](physics/joints/physx-6dof-joint-component.md)
+* __Special__
+  * [PhysX Grab Object Component](physics/special/physx-grab-object-component.md)
 
 ### Effects
 
@@ -210,10 +212,10 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 ### Gameplay
 
 * [Area Damage Component](gameplay/area-damage-component.md)
+* [Grabbable Item Component](gameplay/grabbable-item-component.md)
 * [Marker Component](gameplay/marker-component.md)
 * [Player Start Point](gameplay/player-start-point.md)
 * [Projectile Component](gameplay/projectile-component.md)
-* [Raycast Interaction Component (TODO)](gameplay/raycast-interaction-component.md)
 * [Raycast Placement Component](gameplay/raycast-placement-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
 * [Timed Death Component](gameplay/timed-death-component.md)

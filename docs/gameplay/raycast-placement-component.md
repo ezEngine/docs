@@ -12,6 +12,7 @@ This component can also trigger messages when objects enter the ray. E.g. when a
 To enable this set the trigger collision layer to another layer than the main ray cast and set a trigger message.
 
 Sample setup:
+
 * `CollisionLayerEndPoint` = Default
 * `CollisionLayerTrigger` = Player
 * `TriggerMessage` = "APlayerEnteredTheBeam"
