@@ -4,11 +4,11 @@ The *asset browser* is used for selecting and opening asset [documents](../edito
 
 ![Asset Browser](media/asset-browser.png)
 
-If the asset browser panel is not visible, select *Panels > Asset Browser*. You will notice that the asset browser will show up in two modes. The *panel* is constantly visible and can be interacted with at all times, to search for assets and open them via double click, or instantiate them with drag and drop. Additionally, when an object has an *asset reference property*, left clicking the button right next to it will open another asset browser in *file picker mode*.
+If the asset browser panel is not visible, select *Panels > Asset Browser*. You will notice that the asset browser will show up in two modes. The *panel* is constantly visible and can be interacted with at all times, to search for assets and open them via double click, or instantiate them with drag and drop. Additionally, when an object has an *asset reference property*, choosing *Select Asset* from the button menu right next to it will open another asset browser in *file picker mode*.
 
 ![Asset Reference Property](media/asset-reference-button.png)
 
-Additionally, you can always right click the asset reference property buttons to bring up additional options. For example, *Open Asset* allows you to open the referenced asset document, which can be useful to follow a chain of asset references.
+Several other options are available, for example, *Open Asset* allows you to open the referenced asset document, which can be useful to follow a chain of asset references.
 
 ## Search
 
