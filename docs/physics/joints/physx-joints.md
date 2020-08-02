@@ -47,6 +47,10 @@ The position and rotation of a joint object specifies the pivot point. For [revo
 
 For [distance joints](physx-distance-joint-component.md) the joint position determines from where the distance is computed. Only for [prismatic joints](physx-prismatic-joint-component.md) is the position of the joint less relevant, though for computational stability, it should still be somewhere in between the linked actors.
 
+## Video: Basic Setup
+
+[![video](https://img.youtube.com/vi/r3wVz3Xd8xU/0.jpg)](https://www.youtube.com/watch?v=r3wVz3Xd8xU)
+
 ## Using the ChildActorAnchor Property
 
 Using the `ChildActorAnchor` property is entirely optional and often not needed. Basically this option is used to reference any object, and tell the joint that the position and orientation of that object should be the anchor point where the joint acts upon the child actor. For most joint types this is rarely needed. If you link two actors with a revolute joint, the position of the joint already defines where between the actors the hinge will be.
@@ -55,9 +59,11 @@ However, this setup always assumes that the two actors should start out in the '
 
 Similarly, for a distance joint, the child actor would always need to start out such that the joint position is exactly at the position of the actor, where it should link to the actor. This can be problematic especially when the distance joint uses a *minimum distance*, as the joint would immediately push away the actor, potentially with high speed.
 
-Using a dedicated object to specify the anchor point, both situations can be fixed. The anchor point specifies the position at which the joint affects the child actor. For most joint types the rotation of the anchor point is important as well. If the anchor's transform is identical to the joint's transform, it is redundant and could be left out. However, if it is different from the joint's transform, this difference basically tells the joint how much its start state deviates from the 'default configuration'. For example for a revolute joint the position of the anchor should always be identical to the joint's position, otherwise the child actor will jerk towards the revolute joint at startup. However, the rotation may deviate from the joint's rotation, which specifies how much the joint is already rotated at startup.  
+Using a dedicated object to specify the anchor point, both situations can be fixed. The anchor point specifies the position at which the joint affects the child actor. For most joint types the rotation of the anchor point is important as well. If the anchor's transform is identical to the joint's transform, it is redundant and could be left out. However, if it is different from the joint's transform, this difference basically tells the joint how much its start state deviates from the 'default configuration'. For example for a revolute joint the position of the anchor should always be identical to the joint's position, otherwise the child actor will jerk towards the revolute joint at startup. However, the rotation may deviate from the joint's rotation, which specifies how much the joint is already rotated at startup.
 
-<!-- TODO: video -->
+### Video: How to use the Anchor Property
+
+[![video](https://img.youtube.com/vi/xnQEaA8E0SM/0.jpg)](https://www.youtube.com/watch?v=xnQEaA8E0SM)
 
 ## Shared Joint Component Properties
 
