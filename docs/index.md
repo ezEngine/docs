@@ -141,8 +141,6 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Static Actor Component](physics/actors/physx-static-actor-component.md)
   * [PhysX Dynamic Actor Component](physics/actors/physx-dynamic-actor-component.md)
   * [PhysX Trigger Component](physics/actors/physx-trigger-component.md)
-  * [Character Controller (TODO)](physics/actors/physx-character-controller.md)
-  * [PhysX Character Proxy Component (TODO)](physics/actors/physx-character-proxy-component.md)
   * [PhysX Breakable Sheet Component (TODO)](physics/actors/physx-breakable-sheet-component.md)
 * __Collision Shapes__
   * [PhysX Shapes](physics/collision-shapes/physx-shapes.md)
@@ -162,6 +160,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Distance Joint Component](physics/joints/physx-distance-joint-component.md)
   * [PhysX 6DOF Joint Component](physics/joints/physx-6dof-joint-component.md)
 * __Special__
+  * [Character Controller (TODO)](physics/special/physx-character-controller.md)
   * [PhysX Grab Object Component](physics/special/physx-grab-object-component.md)
 
 ### Effects

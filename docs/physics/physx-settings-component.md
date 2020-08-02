@@ -6,7 +6,7 @@ The *PhysX settings component* is used to configure general PhysX simulation opt
 
 * `ObjectGravity`: The gravity that is applied to all [dynamic actors](actors/physx-dynamic-actor-component.md). This property sets both the direction and strength of the gravity.
 
-* `CharacterGravity`: A separate gravity value that is used for [characters controllers (TODO)](actors/physx-character-controller.md). In many games the gravity for characters is higher than what's used for regular objects.
+* `CharacterGravity`: A separate gravity value that is used for [characters controllers (TODO)](special/physx-character-controller.md). In many games the gravity for characters is higher than what's used for regular objects.
 
 * `MaxDepenetrationVelocity`: The maximum speed with which PhysX may separate objects that managed to penetrate each other.
 

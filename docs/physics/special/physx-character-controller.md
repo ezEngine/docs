@@ -13,6 +13,17 @@
 * `WalkInteractionDistance`, `RunInteractionDistance`:
 * `FallbackWalkSurface`:
 
+## Proxy Component Properties
+
+* `CapsuleHeight`:
+* `CapsuleCrouchHeight`:
+* `CapsuleRadius`:
+* `Mass`:
+* `MaxStepHeight`:
+* `MaxSlopeAngle`:
+* `ForceSlopeSliding`:
+* `ConstrainedClimbMode`:
+* `CollisionLayer`:
 
 ## See Also
 

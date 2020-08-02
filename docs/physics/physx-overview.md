@@ -24,7 +24,7 @@ Actors are made up of shapes, such as spheres, boxes, capsules and meshes. Shape
 
 Actors can be physically linked, to constrain their movement. This is how you would set up a door hinge for example. Linking two actors is accomplished using [joints](joints/physx-joints.md).
 
-To make a player or NPC walk through a physically simulated scene, you need something that computes how the character collides with walls, climbs stairs, slides down slopes, and so on. This functionality is provided by a so called [character controller (TODO)](actors/physx-character-controller.md).
+To make a player or NPC walk through a physically simulated scene, you need something that computes how the character collides with walls, climbs stairs, slides down slopes, and so on. This functionality is provided by a so called [character controller (TODO)](special/physx-character-controller.md).
 
 Often games have invisible areas that either need to be reached as a goal, or that activate something. Such areas are called [triggers](actors/physx-trigger-component.md).
 
