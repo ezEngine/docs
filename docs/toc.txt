@@ -16,6 +16,7 @@ effects
 animation
 sound
 ai
+ui
 gameplay
 ---
 custom-code

@@ -397,4 +397,4 @@
 ## See Also
 
 * [Back to Index](../index.md)
-* [Releases](releases.md)
+* [Release Notes](release-notes.md)
