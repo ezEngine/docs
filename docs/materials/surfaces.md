@@ -24,7 +24,7 @@ Every surface interaction is configured by adding an entry to the *Interactions*
 
 ### Triggering Interactions
 
-Interactions are triggered by different systems. The [physics engine](../physics/physx-overview.md) triggers interactions when objects collide with enough force. Components, such as the [projectile component](../gameplay/projectile-component.md) trigger interactions when they hit something. The [character controller (TODO)](../physics/special/physx-character-controller.md) component triggers an interaction with the ground every time the player moved a certain distance (for footsteps). There are many ways that both built in code, as well as custom code can leverage surface interactions to spawn effects. Having the configuration defined by the surfaces, and not by the components themselves, decouples and centralizes this information and makes maintaining and changing this configuration a lot easier.
+Interactions are triggered by different systems. The [physics engine](../physics/physx-overview.md) triggers interactions when objects collide with enough force. Components, such as the [projectile component](../gameplay/projectile-component.md) trigger interactions when they hit something. The [character controller](../physics/special/physx-character-controller.md) component triggers an interaction with the ground every time the player moved a certain distance (for footsteps). There are many ways that both built in code, as well as custom code can leverage surface interactions to spawn effects. Having the configuration defined by the surfaces, and not by the components themselves, decouples and centralizes this information and makes maintaining and changing this configuration a lot easier.
 
 > **Example:**
 >

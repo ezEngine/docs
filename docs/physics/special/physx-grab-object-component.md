@@ -1,6 +1,6 @@
 # PhysX Grab Object Component
 
-The *PhysX grab object component* enables a [character controller (TODO)](physx-character-controller.md) to pick up physical items to carry around, drop or throw.
+The *PhysX grab object component* enables a [character controller](physx-character-controller.md) to pick up physical items to carry around, drop or throw.
 
 <video src="media/grab-items.webm" width="600" height="600" autoplay loop></video>
 
@@ -16,7 +16,7 @@ The grabbed item still physically interacts with the environment. If such collis
 
 * `MaxGrabPointDistance`: The maximum distance from this object for an individual *grab point* to be considered as a candidate.
 * `CollisionLayer`: The [collision layer](../collision-shapes/collision-layers.md) to use for raycasting to detect which object to pick.
-* `SpringStiffness`, `SpringDamping`: The stiffness and damping of the internally used [6DOF joint](../joints/physx-6dof-joint-component.md). Affects how stiff the object is held. **Careful:** This also determines how much force the held object can apply to other objects when you push against them. High values mean that the held object can push objects, that the [character controller (TODO)](physx-character-controller.md) itself may not be able to push.
+* `SpringStiffness`, `SpringDamping`: The stiffness and damping of the internally used [6DOF joint](../joints/physx-6dof-joint-component.md). Affects how stiff the object is held. **Careful:** This also determines how much force the held object can apply to other objects when you push against them. High values mean that the held object can push objects, that the [character controller](physx-character-controller.md) itself may not be able to push.
 * `BreakDistance`: If the held object deviates more than this distance from the anchor point it is attached to, the hold will break. In this case a `ezMsgPhysicsJointBroke` event message is raised. Set to zero to disable this feature.
 * `AttachTo`: A reference to another game object, to which the held object will be attached to. The target object **must have** a kinematic [PhysX actor](../actors/physx-dynamic-actor-component.md) (and a dummy [PhysX shape](../collision-shapes/physx-shapes.md)), such that a [joint](../joints/physx-joints.md) can be attached. The reference may point to this component's owner object. However, using a different object allows you to place the held object in a more suitable location.
 * `GrabAnyObjectWithSize`: If this is non-zero, objects that have no [grabbable item component](../../gameplay/grabbable-item-component.md) can be picked up as well, as long as their bounding box is smaller than this value.

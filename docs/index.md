@@ -160,7 +160,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [PhysX Distance Joint Component](physics/joints/physx-distance-joint-component.md)
   * [PhysX 6DOF Joint Component](physics/joints/physx-6dof-joint-component.md)
 * __Special__
-  * [Character Controller (TODO)](physics/special/physx-character-controller.md)
+  * [Character Controller](physics/special/physx-character-controller.md)
   * [PhysX Grab Object Component](physics/special/physx-grab-object-component.md)
 
 ### Effects

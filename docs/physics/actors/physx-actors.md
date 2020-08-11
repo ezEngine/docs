@@ -42,7 +42,7 @@ ezEngine comes with a couple of additional components that end up as physics act
 
 ### Character Controller
 
-A [character controller (TODO)](../special/physx-character-controller.md) is a special kind of kinematic actor that has convenience functions to move around a scene, slide along obstacles and slopes, and so on. Character controllers are used as very abstract representations of creatures and players and implement the important aspect of moving and colliding properly throughout a physical scene.
+A [character controller](../special/physx-character-controller.md) is a special kind of kinematic actor that has convenience functions to move around a scene, slide along obstacles and slopes, and so on. Character controllers are used as very abstract representations of creatures and players and implement the important aspect of moving and colliding properly throughout a physical scene.
 
 ### Breakable Sheets
 
