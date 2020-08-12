@@ -78,10 +78,10 @@ The [RTS Sample](../samples/rts.md) and the [Sample Game Plugin](../samples/samp
 
 ## Limitations
 
-It is very difficult to adjust the appearance of ImGui elements. Use ImGui for developer tools and to prototype ideas quickly. Prefer to use [Rml UI (TODO)](rmlui.md) once you need more control over the look and feel.
+It is very difficult to adjust the appearance of ImGui elements. Use ImGui for developer tools and to prototype ideas quickly. Prefer to use [RmlUi](rmlui.md) once you need more control over the look and feel.
 
 ## See Also
 
 * [Back to Index](../index.md)
 * [Ingame UI](ui.md)
-* [RmlUI (TODO)](rmlui.md)
+* [RmlUi](rmlui.md)

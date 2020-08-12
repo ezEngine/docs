@@ -163,7 +163,7 @@ Compile switch: **EZ_3RDPARTY_RENDERDOC_SUPPORT**
   
 RenderDoc is a free MIT licensed stand-alone graphics debugger. The ezRenderDocPlugin enables full control over taking RenderDoc snapshots from within the engine.
 
-## RmlUI
+## RmlUi
 
 Link: [https://mikke89.github.io/RmlUiDoc/](https://mikke89.github.io/RmlUiDoc/)
 

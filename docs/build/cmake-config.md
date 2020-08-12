@@ -12,7 +12,7 @@ The screenshot above shows a common setup. Noteworthy are the following points:
 
 * **EZ_BUILD_PHYSX** Enable this, if you want to add [NVIDIA PhysX](../physics/physx-overview.md) support to your build. Once enabled, the next run of "Configure" will automatically download PhysX binaries and set the **EZ_PHYSX_SDK** variable accordingly.
 
-* **EZ_BUILD_RMLUI** Enable this, if you want to add support for [RML UI](https://github.com/mikke89/RmlUi) to your build.
+* **EZ_BUILD_RMLUI** Enable this, if you want to add support for [RmlUi](https://github.com/mikke89/RmlUi) to your build.
 
 Once you have configured everything, run **Generate** and then **Open Project**.
 
@@ -24,4 +24,4 @@ Checking *Advanced* in the CMake GUI will show additional options to configure t
 
 * [Back to Index](../index.md)
 * [Supported Platforms](supported-platforms.md)
-* [ezEngine As Submodule](submodule.md)
+* [ezEngine as a Submodule](submodule.md)

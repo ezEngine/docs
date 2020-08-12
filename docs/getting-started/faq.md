@@ -32,10 +32,6 @@ We have a [TypeScript](../custom-code/typescript/typescript-overview.md) binding
 
 Future work for the TypeScript binding is [gathered here](https://github.com/ezEngine/ezEngine/projects/2). If you have some experience working with the TypeScript compiler tools, we could use your help.
 
-## Game UI
-
-We are currently working on an integration for RmlUI (formerly known as libRocket). [See this](https://github.com/ezEngine/ezEngine/projects/9) for details.
-
 ## Rendering
 
 We don't have occlusion culling at the moment (through a CPU rasterizer), though would like to add that at some point.
@@ -65,7 +61,7 @@ We don't plan very far ahead. Here are the things we intend to work on in the ne
 1. Automated tests for some features, especially where the documentation can benefit as well.
 1. Bug fixing for issues discovered by the documentation efforts.
 1. Polish user experience, especially for first time users, where possible with little effort.
-1. RmlUI integration.
+1. RmlUi integration.
 1. Skeletal Animation System.
 
 "Intend to work" **doesn't mean complete**, though. We can't give estimates on that.
