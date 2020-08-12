@@ -210,8 +210,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Ui
 
-* [UI (TODO)](ui/ui.md)
-* [ImGui (TODO)](ui/imgui.md)
+* [Ingame UI](ui/ui.md)
+* [ImGui](ui/imgui.md)
 * [Rml UI (TODO)](ui/rmlui.md)
 
 ### Gameplay
