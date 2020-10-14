@@ -8,19 +8,35 @@ To create a concave collision mesh, use the asset type *Collision Mesh* (`ezColl
 
 ![Concave Collision Mesh](../media/colmesh-concave.jpg)
 
-The image above shows a mesh imported as a concave collision mesh. As you can see it represents every detail faithfully. Due to this complexity, the model can only be used for static [physics actors](../actors/physx-actors.md), meaning you can place it in a level, scale and rotate it, but you may not move it dynamically during the game and it cannot be used to simulate a rigid body. The complexity of a mesh has a direct impact on the performance of the game. Especially small details may result in larger computational costs when dynamic objects collide with those detailed areas. If you want to optimize performance, you should author dedicated collision meshes with reduced complexity, instead of using the render mesh directly.
+The image above shows a mesh imported as a concave collision mesh. As you can see it represents every detail faithfully. Due to this complexity, the model can only be used for static [physics actors](../actors/physx-actors.md), meaning you can place it in a level, scale and rotate it, but you may not move it dynamically during the game and it cannot be used to simulate a rigid body. The complexity of a mesh has direct impact on the performance of the game. Especially small details may result in large computational costs when dynamic objects collide with those detailed areas. If you want to optimize performance, you should author dedicated collision meshes with reduced complexity, instead of using the render mesh directly.
 
 Concave collision meshes are set directly on the [static physics actor](../actors/physx-actors.md) component and have no dedicated [physics shape](physx-shapes.md) component.
 
 ## Convex Collision Meshes
 
-To create a convex collision mesh, use the asset type *Collision Mesh (Convex)* (`ezConvexCollisionMeshAsset`) when [importing an asset](../../assets/import-assets.md).
+The simulation of [dynamic actors](../actors/physx-dynamic-actor-component.md) is only possible with convex shapes. To create a convex collision mesh, use the asset type *Collision Mesh (Convex)* (`ezConvexCollisionMeshAsset`) when [importing an asset](../../assets/import-assets.md). To attach a convex mesh to an actor, use the [Convex Mesh Shape component](physx-convex-shape-component.md).
 
-![Convex Collision Mesh](../media/colmesh-convex.jpg)
+There are multiple modes how to create the convex collision mesh:
 
-The image above shows the same mesh imported as a convex collision mesh. Here the asset transformation computed the *convex hull* of the input data and reduced that to less than 250 triangles (a requirement by PhysX). Obviously, the mesh lost all of its details. This collision mesh can now be used for all kinds of physics computations, including dynamic [physics actors](../actors/physx-actors.md) for rigid body simulation. Of course the object will not collide with its surroundings according to its actual geometry, but in many use cases that won't be obvious.
+### Convex Hull
 
-To attach a convex mesh to a dynamic physics actor, use the *Convex Mesh Shape* component (`ezPxShapeConvexComponent`) as a dedicated [physics shape](physx-shapes.md). Of course convex meshes may also be used directly by [static physics actor](../actors/physx-actors.md) components.
+![Convex Hull Collision Mesh](../media/colmesh-convex.jpg)
+
+In the image above the mesh import computed the *convex hull*. The number of vertices and triangles was also reduced to less than 250 (a requirement by PhysX).
+
+Obviously, the mesh lost all of its details and the object will not collide with its surroundings according to its actual geometry, but in many use cases that won't be obvious. This is the most efficient way to use an arbitrary mesh as a collision mesh, as it will always use exactly one, very low poly convex mesh for the physics calculations.
+
+### Convex Decomposition
+
+![Convex Decomposition Collision Mesh](../media/colmesh-convex-decomp.jpg)
+
+In the image above the mesh import decomposed the mesh into multiple pieces (seven pieces in this case). Each piece is a convex mesh with less than 250 vertices and triangles.
+
+This mode allows you to dictate into how many pieces to split the mesh. The more pieces, the closer the result resembles the original shape. These collision meshes can still be used for dynamic simulation, the PhysX actors simply use multiple convex shapes as their representation. Of course the more pieces such a mesh contains, the less efficient the simulation becomes.
+
+### Cylinder
+
+Cylindrical shapes are common in games, but since they are not supported as first class shapes by most physics engines, the convex mesh asset allows you to create such collision meshes procedurally.
 
 ## Visualizing Collision Meshes
 
