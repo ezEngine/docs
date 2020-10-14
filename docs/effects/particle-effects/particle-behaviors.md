@@ -75,7 +75,7 @@ The video below shows two effects beside each other. The left one does not use t
 
 ## Raycast Behavior
 
-This behavior uses raycasts to detect collisions along the trajectory of a particle. If a particle would collide with geometry, the behavior can either adjust the its velocity, or terminate the particle early, potentially raising an [event](particle-effects-overview.md#events), which could in turn lead to other effects or being spawned.
+This behavior uses raycasts to detect collisions along the trajectory of a particle. If a particle would collide with geometry, the behavior can either adjust the its velocity, or terminate the particle early, potentially raising an [event](particle-effects-overview.md#events-and-event-reactions), which could in turn lead to other effects or being spawned.
 
 **Reaction:** Specifies how the particle should react to a collision.
 
@@ -87,7 +87,7 @@ This behavior uses raycasts to detect collisions along the trajectory of a parti
 
 **CollisionLayer:** The physics collision layer to use. Affects with which geometry the particle will collide and which it will pass through.
 
-**OnCollideEvent:** An optional name of an [event](particle-effects-overview.md#events) to raise. If set, other effects or prefabs can be spawned at the location of impact.
+**OnCollideEvent:** An optional name of an [event](particle-effects-overview.md#events-and-event-reactions) to raise. If set, other effects or prefabs can be spawned at the location of impact.
 
 <video src="media/raycast.webm" width="500" height="500" autoplay loop></video>
 

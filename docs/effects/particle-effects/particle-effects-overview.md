@@ -30,7 +30,7 @@ These panels show the various options for the *active particle system*. When you
 
 ### Event Reactions
 
-See [events](#events) below.
+See [events](#events-and-event-reactions) below.
 
 ## Particle System Configuration
 
@@ -44,11 +44,11 @@ Additionally, every particle system has these properties:
 
 **LifeScaleParam:** An optional [effect parameter](#effect-parameters) which can be used to scale the particle lifespan.
 
-**OnDeathEvent:** An optional name for the [event](#events) when a particle dies. This can be used to spawn other effects.
+**OnDeathEvent:** An optional name for the [event](#events-and-event-reactions) when a particle dies. This can be used to spawn other effects.
 
 ### Emitter
 
-The *emitter* is what defines how new particles in this system get spawned. It mostly specifies when and how many particles are spawned. Typically particles are either spawned in one big burst or continuously. However, for advanced use cases the emitter may only spawn particles as a reaction to some [event](#events) or when the particle effect node was moved a certain distance.
+The *emitter* is what defines how new particles in this system get spawned. It mostly specifies when and how many particles are spawned. Typically particles are either spawned in one big burst or continuously. However, for advanced use cases the emitter may only spawn particles as a reaction to some [event](#events-and-event-reactions) or when the particle effect node was moved a certain distance.
 
 For details about all available emitter types, see [Particle Emitters](particle-emitters.md).
 

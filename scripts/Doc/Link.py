@@ -80,6 +80,22 @@ def FixFileLinks(srcFile: str, nameToFile: dict):
     with open(srcFile, "r") as file:
         content = file.read()
 
+    pattern = r"\#+\s+([^\n]+)\n"
+    allowedSublinks: dict = {}
+
+    for match in re.finditer(pattern, content):
+
+        sublink = match.group(1).lower()
+        sublink = sublink.replace(" ", "-")
+        sublink = sublink.replace("(", "")
+        sublink = sublink.replace(")", "")
+        sublink = sublink.replace("`", "")
+        sublink = sublink.replace(".", "")
+        sublink = sublink.replace("/", "")
+
+        allowedSublinks["#" + sublink] = match.group(0)
+
+
     result = content
     pattern = r"\[([^\]]*)\]\(([^\)]*)\)"
 
@@ -99,6 +115,20 @@ def FixFileLinks(srcFile: str, nameToFile: dict):
         else:
             newRelLink = orgLink
             targetFile = orgLink
+
+            isValid = False
+
+            if not isValid and orgLink.startswith("http"):
+                isValid = True
+                
+            if not isValid and orgLink.startswith("mailto"):
+                isValid = True
+
+            if not isValid and allowedSublinks.get(orgLink, "") != "":
+                isValid = True
+
+            if not isValid:
+                print(f"Warning in '{srcFile}': Unknown link: '{orgLink}'")
 
         newString = f"[{displayName}]({newRelLink})"
 

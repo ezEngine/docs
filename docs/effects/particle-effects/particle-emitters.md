@@ -44,9 +44,9 @@ This emitter type only spawns new particles when the particle effect is moved fo
 
 ## OnEvent Emitter
 
-This emitter type spawns new particles whenever a specific [event](particle-effects-overview.md#events) happens. It does *not* create the new particles at the position of the event. If that is desired, use an [event reaction](particle-effects-overview.md#event-reactions) instead.
+This emitter type spawns new particles whenever a specific [event](particle-effects-overview.md#events-and-event-reactions) happens. It does *not* create the new particles at the position of the event. If that is desired, use an [event reaction](particle-effects-overview.md#event-reactions) instead.
 
-**EventName:** The name of the [event](particle-effects-overview.md#events) which shall trigger spawning particles.
+**EventName:** The name of the [event](particle-effects-overview.md#events-and-event-reactions) which shall trigger spawning particles.
 
 **MinSpawnCount, SpawnCountRange:** See the [burst emitter](#burst-emitter).
 
