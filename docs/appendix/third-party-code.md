@@ -112,6 +112,14 @@ Compile switch: None (hard dependency for the asset processing)
 
 Tangent space generation code by Morten S. Mikkelsen. See [https://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps](https://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps) for more information. It is used by ezGeometry.
 
+## Ozz
+
+Link: [http://guillaumeblanc.github.io/ozz-animation](http://guillaumeblanc.github.io/ozz-animation)
+
+Compile switch: None
+
+Used as the basis for skeletal animations. Both during asset import (to build an optimized skeleton structure) and at runtime for animation playback.
+
 ## PhysX 4.1.1
 
 Link: [https://github.com/NVIDIAGameWorks/PhysX](https://github.com/NVIDIAGameWorks/PhysX)
@@ -204,6 +212,14 @@ Link: [https://github.com/nemtrif/utfcpp](https://github.com/nemtrif/utfcpp)
 Compile switch: None
 
 A library that provides Unicode related functionality. Integrated directly into ezFoundation.
+
+## V-HACD
+
+Link: [https://github.com/kmammou/v-hacd](https://github.com/kmammou/v-hacd)
+
+Compile switch: **EZ_3RDPARTY_VHACD_SUPPORT**
+
+The "Volumetric Hierarchical Approximate Convex Decomposition" library is used to decompose a concave triangle mesh into multiple convex pieces. This allows you to generate complex [collision meshes](../physics/collision-shapes/collision-meshes.md) which can be used as the shapes of [dynamic PhysX actors](../physics/actors/physx-dynamic-actor-component.md).
 
 ## xxHash
 
