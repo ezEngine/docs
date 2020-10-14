@@ -2,7 +2,7 @@
 
 <!-- TODO: This page needs a lot more information -->
 
-![ezEditor](media/ezEditor.jpg)
+![ezEditor](../editor/media/ezEditor.jpg)
 
 ezEditor is the central application for authoring content and bringing existing assets together. It includes a scene editor, functionality for working with [meshes](../graphics/meshes/meshes-overview.md), [textures](../graphics/textures-overview.md), [materials](../materials/materials-overview.md), [particles](../effects/particle-effects/particle-effects-overview.md) and [sounds](../sound/sound-overview.md), as well as a [visual shader editor (TODO)](../materials/visual-shaders.md), [visual scripting](../custom-code/visual-script/visual-script-overview.md) and [prefabs](../prefabs/prefabs-overview.md). The editor transforms [assets](../assets/assets-overview.md) from source data into the optimized runtime formats and keeps track which assets are up to date.
 

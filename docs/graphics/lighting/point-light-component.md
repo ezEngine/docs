@@ -4,7 +4,7 @@ The *point light component* adds a dynamic light source that illuminates the sce
 
 ![Point Light](media/point-light.jpg)
 
-Each light source costs performance. Try to reduce the number of light sources that illuminate the same area. Use the [light count render mode](../editor/editor-views.md#light-count) to find hotspots.
+Each light source costs performance. Try to reduce the number of light sources that illuminate the same area. Use the [light count render mode](../../editor/editor-views.md#light-count) to find hotspots.
 
 Note that unless a light source casts [dynamic shadows](dynamic-shadows.md), it's light will shine through walls. Casting shadows is very costly, though. When it is possible to avoid casting shadows, for example by using multiple smaller lights instead, the performance should always be better.
 
