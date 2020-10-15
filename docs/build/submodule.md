@@ -11,6 +11,9 @@ git submodule add https://github.com/ezEngine/ezEngine.git
 Next, add the ezEngine folder in your root `CMakeLists.txt`:
 
 ```cmake
+# Set the build filter, if you only want to integrate parts of ez into your build.
+# set(EZ_BUILD_FILTER "FoundationOnly")
+
 add_subdirectory(ezEngine)
 ```
 
@@ -26,6 +29,14 @@ project("MyProject" LANGUAGES ${EZ_LANGUAGES})
 ```
 
 For a full example see: [https://github.com/ezEngine/submodule-example](https://github.com/ezEngine/submodule-example)
+
+> **Important:**
+>
+> This kind of integration is useful, if you want to integrate ez *code* into your project, for instance, if you want to use ezFoundation as your base library. Since the ez folder isn't top-level in this setup, using the full engine and all the data located in the [data directories](../projects/data-directories.md) won't work out of the box. For additional options, see the [CMake setup](cmake-config.md) page.
+
+## Strip Unnecessary Code
+
+When integrating ez this way, you may only want a subset of the available functionality. For instance, you may only need the ezFoundation base library (and 3rd party dependencies). You can achieve this by configuring the [build filter](cmake-config.md#build-filter)
 
 ## See Also
 

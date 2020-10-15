@@ -16,6 +16,18 @@ The screenshot above shows a common setup. Noteworthy are the following points:
 
 Once you have configured everything, run **Generate** and then **Open Project**.
 
+## Adding a Custom Project
+
+The easiest way to get started with a custom project, is to copy an existing sample, such as the [Sample Game Plugin](../samples/sample-game-plugin.md). For starters, just create it in the same location, within the ez source tree. If you want to move it into your own repository, you can then reference its location as an *external project* (see below).
+
+## External Projects
+
+The options **EZ_EXTERNAL_PROJECT_1-3** allow you to specify folders outside the ez repository, which will be integrated into the solution. This is the most practical way to store your own code in a separate repository, yet have it all compiled in the same solution. This makes building, linking and debugging code as convenient as if it was stored inside the ez file structure.
+
+## Build Filter
+
+The option **EZ_BUILD_FILTER** allows you to strip down the code that is included in the solution. This is mainly meant for use cases where ez is [integrated as a submodule](submodule.md) and you only need parts of its functionality.
+
 ## Advanced CMake Options
 
 Checking *Advanced* in the CMake GUI will show additional options to configure the ez build. These are mostly used to remove specific 3rd party code (and all dependent features). This is particularly helpful, if you want to build ez on a platform on which one of the dependencies may not compile.
