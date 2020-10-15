@@ -8,6 +8,14 @@ First ezEngine needs to be added as a submodule to git:
 git submodule add https://github.com/ezEngine/ezEngine.git
 ```
 
+Additionally, if you want to use the precompiled tools and the sample content from ez, you also need to pull in its submodules as well:
+
+```cmd
+cd ezEngine
+git submodule init
+git submodule update
+```
+
 Next, add the ezEngine folder in your root `CMakeLists.txt`:
 
 ```cmake
