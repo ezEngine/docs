@@ -28,3 +28,4 @@ To try out ezEngine, you can download a [precompiled binary package](https://git
 
 * [Back to Index](../index.md)
 * [Supported Platforms](supported-platforms.md)
+* [ezEngine as a Submodule](submodule.md)

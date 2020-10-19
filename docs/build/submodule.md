@@ -46,6 +46,10 @@ For a full example see: [https://github.com/ezEngine/submodule-example](https://
 
 When integrating ez this way, you may only want a subset of the available functionality. For instance, you may only need the ezFoundation base library (and 3rd party dependencies). You can achieve this by configuring the [build filter](cmake-config.md#build-filter)
 
+## SDK Root Folder
+
+When integrating ez as a submodule, it is common for the binaries to be located outside of the ezEngine sub-folder, which means the engine won't be able to find the SDK root folder anymore. See [this article](sdk-root.md) for ways to fix this.
+
 ## See Also
 
 * [Back to Index](../index.md)

@@ -32,6 +32,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Build Prerequisites](build/build-prerequisites.md)
 * [CMake Setup](build/cmake-config.md)
 * [ezEngine as a Submodule](build/submodule.md)
+* [SDK Root Folder](build/sdk-root.md)
 * [Building with Clang on Windows](build/clang-on-windows.md)
 * [UWP Builds](build/build-uwp.md)
 * [Android Builds](build/build-android.md)
