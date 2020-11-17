@@ -301,7 +301,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [ezPlayer](tools/player.md)
 * [ShaderCompiler (TODO)](tools/shadercompiler.md)
 * [StaticLinkUtil](tools/staticlinkutil.md)
-* [ezTexConv (TODO)](tools/texconv.md)
+* [ezTexConv](tools/texconv.md)
 
 ---
 
