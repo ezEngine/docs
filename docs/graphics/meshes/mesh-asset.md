@@ -18,27 +18,25 @@ On the right hand side the asset properties specify how to import or generate th
 
 * `ForwardDir`, `RightDir`, `UpDir`: With these you can change which axis is considered forward, right and up in the mesh data. For  mesh data from FBX files, this information is typically embedded in the file. For other file types, you may need to adjust these to make the imported data appear correctly upright.
 
-* `RecalculateNormals`: If enabled, information about normals in the mesh file is ignored, and instead the normals are recomputed.
+* `UniformScaling`: Adjusts the size of the mesh, for example to convert a mesh from centimeter to meter scale.
 
-* `InvertNormals`: If enabled, normals get negated to point into the opposite direction.
+* `RecalculateNormals`, `RecalculateTangents`: If enabled, information about normals or tangents in the mesh file is ignored, and is instead computed from the vertex data.
 
 * `NormalPrecision`, `TexCoordPrecision`: These options allow you to choose how precise normals and UV coordinates are represented. Leave these at the default, unless you notice precision issues. Higher precision means the mesh takes up more RAM on the GPU and is slightly slower to render.
 
-* `(Non-)UniformScaling`: Using these scaling factors you can adjust the size of the mesh, for example to convert a mesh from centimeter to meter scale.
-
-* `SubMeshName`: If a mesh file contains multiple named meshes, you can choose to only import a single sub-mesh by giving its name here.
-
-  > **Note:**
-  >
-  > This option hasn't been tested or used in a long while and may not work (well). Also its usability is not great. If you have need for such a feature, feedback and improvements are welcome.
-
-* `ImportMaterials`, `UseSubfolderForMaterials`: If enabled, the mesh import automatically generates [material assets](../../materials/materials-overview.md) for the materials that the mesh file specifies. It also tries to populate those materials with sensible values and if possible also creates [texture assets](../textures-overview.md). Unfortunately this rarely works perfectly, and typically requires you to fix the generated assets afterwards. If `UseSubfolderForMaterials` is checked, those generated assets are stored in a dedicated sub-folder.
+* `ImportMaterials`: If enabled, the mesh import automatically generates [material assets](../../materials/materials-overview.md) for the materials that the mesh file specifies. It also tries to populate those materials with sensible values and if possible also creates [texture assets](../textures-overview.md). Unfortunately this rarely works perfectly, and typically requires you to fix the generated assets afterwards.
 
   > **Note:**
   >
   > Materials are only generated when the mesh has no materials set yet. After the initial creation of these other assets, you usually need to **transform the mesh a second time** to make them properly show up.
 
 * `Materials`: The list of [materials](../../materials/materials-overview.md) to use. The mesh may have multiple *sub-meshes*, and each sub-mesh uses a different material slot. [Mesh components](mesh-component.md) can override which material is used for which slot.
+
+### Procedural Mesh Generation
+
+Through the `PrimitiveType` option you can choose to create a mesh procedurally. In this case object specific options appear. Note that by default objects use a *detail* level of `0` which means that the editor will pick a decent value, depending on the chosen primitive type.
+
+Be aware that some *detail* values seemingly have no effect. For instance, for cones, capsules and cylinders the *detail* represents the number of subdivisions along the circumference, and therefore can't be lower than 3. Therefore the values `1`, `2` and `3` all produce the same result.
 
 ## See Also
 
