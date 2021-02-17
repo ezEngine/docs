@@ -15,9 +15,11 @@ physics
 effects
 animation
 sound
+terrain|Terrain and Vegetation
 ai
 ui
 gameplay
+miscellaneous
 ---
 custom-code
 runtime

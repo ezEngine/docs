@@ -203,6 +203,12 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Fmod Listener Component](sound/fmod-listener-component.md)
 * [Fmod Event Component](sound/fmod-event-component.md)
 
+### Terrain and Vegetation
+
+* [Terrain and Vegetation](terrain/terrain-overview.md)
+* [Heightfield Component](terrain/heightfield-component.md)
+* [Kraut](terrain/kraut-overview.md)
+
 ### Ai
 
 * [Recast Navmesh Component (TODO)](ai/recast-navmesh-component.md)
@@ -225,6 +231,10 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Raycast Placement Component](gameplay/raycast-placement-component.md)
 * [Spawn Component](gameplay/spawn-component.md)
 * [Timed Death Component](gameplay/timed-death-component.md)
+
+### Miscellaneous
+
+* [ImageData Asset](Miscellaneous/imagedata-asset.md)
 
 ---
 
