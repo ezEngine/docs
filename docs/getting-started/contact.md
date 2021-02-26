@@ -2,7 +2,7 @@
 
 ## Questions and Discussions
 
-For questions that are not covered by the documentation, we are reachable via Gitter: [https://gitter.im/ezEngine](https://gitter.im/ezEngine)
+For questions that are not covered by the documentation, we are reachable via Discord. Use this link to join the server: [https://discord.gg/rfJewc5khZ](https://discord.gg/rfJewc5khZ)
 
 Please be aware that we don't always have the time to answer right away, and that we may be in a different time-zone than you (GMT+1).
 

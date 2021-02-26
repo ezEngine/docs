@@ -38,11 +38,11 @@ We don't have occlusion culling at the moment (through a CPU rasterizer), though
 
 ## Terrain
 
-We currently have **no terrain system**. We have several ideas how we would like to do this, but this is very low priority at the moment. If you want to do terrain, you should just import static meshes. Of course that also means you need to do terrain sculpting in a separate tool.
+We currently have **no terrain system**. We have several ideas how we would like to do this, but this is very low priority at the moment. If you want to do terrain, you should just import static meshes. Of course that also means you need to do terrain sculpting in a separate tool. What we do have, is a simple [heightfield component](../terrain/heightfield-component.md). For basic scenarios this may already be sufficient.
 
 ## Skeletal Animation
 
-We started implementing a skeletal animation system a long time ago, and got the basics up an running (though they are broken atm). This is currently in an **unusable state** though. However, a skeletal animation system does have **high priority** for us after some documentation and polishing work.
+We started implementing a skeletal animation system and got the basics up an running. It's still very, very limited, though. However, a skeletal animation system does have **high priority** for us.
 
 ## AI
 
@@ -61,7 +61,6 @@ We don't plan very far ahead. Here are the things we intend to work on in the ne
 1. Automated tests for some features, especially where the documentation can benefit as well.
 1. Bug fixing for issues discovered by the documentation efforts.
 1. Polish user experience, especially for first time users, where possible with little effort.
-1. RmlUi integration.
 1. Skeletal Animation System.
 
 "Intend to work" **doesn't mean complete**, though. We can't give estimates on that.
