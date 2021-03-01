@@ -1,6 +1,6 @@
 # Color Gradients
 
-*Color gradients* are used to color things using a 1D lookup. They are typically set up once and shared across many assets, such as [particle effects](../effects/particle-effects/particle-effects-overview.md). Modifying a color gradient will affect all resources that use the gradient. Therefore it is advisable to create common gradients early during development.
+*Color gradients* are used to color things using a 1D lookup. They are typically set up once and shared across many assets, such as [particle effects](../../effects/particle-effects/particle-effects-overview.md). Modifying a color gradient will affect all resources that use the gradient. Therefore it is advisable to create common gradients early during development.
 
 The color gradient can be sampled along the X-axis. This is frequently used to sample a color over time, but other parameters may be used for the lookup as well. If a gradient is supposed to be used in a looping fashion, the first and last color have to be set up to match.
 
@@ -8,7 +8,7 @@ The color gradient can be sampled along the X-axis. This is frequently used to s
 
 The image below shows a color gradient and its editing controls:
 
-![Color Gradient](media/color-gradient.png)
+![Color Gradient](../media/color-gradient.png)
 
 The gradient is displayed in four different ways:
 
@@ -45,6 +45,6 @@ The dotted lines indicate which keyframe is the leftmost and which is the rightm
 
 ## See Also
 
-* [Back to Index](../index.md)
+* [Back to Index](../../index.md)
 * [Curves](curves.md)
-* [Property Animation (TODO)](property-animation.md)
+* [Property Animation (TODO)](../property-animation/property-animation-overview.md)

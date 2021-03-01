@@ -14,6 +14,6 @@ The *rotor component* is a very useful utility component to rotate an object aro
 
 ## See Also
 
-* [Back to Index](../index.md)
+* [Back to Index](../../index.md)
 * [Slider Component](slider-component.md)
-* [Property Animation (TODO)](property-animation.md)
+* [Property Animation (TODO)](property-animation-overview.md)

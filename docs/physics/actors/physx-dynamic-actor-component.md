@@ -10,7 +10,7 @@ Dynamic actors can be in one of two modes: *fully simulated* or *kinematic*. For
 
 Non-kinematic, or fully simulated objects on the other hand, are fully controlled by the physics engine. Their position and rotation is determined by forces, such as gravity, acting on them, as well as what other static and dynamic objects they collide with. Setting the position of such an actor has no effect, the physics engine will override the value with its own result. To affect a simulated object, you can apply external **forces** and **impulses**. For example the [area damage component](../../gameplay/area-damage-component.md) applies an outward impulse to all rigid bodies in its vicinity to push them away.
 
-Whether a dynamic actor is kinematic or not is simply a flag and it is possible to toggle that state back and forth at runtime. This for example allows to animate an object along a predetermined path by making it kinematic at first, and then switch it to simulated at the end of its animation, to make it fall and collide realistically from there on. In the video below a [property animation (TODO)](../../animation/property-animation.md) was used to do exactly that:
+Whether a dynamic actor is kinematic or not is simply a flag and it is possible to toggle that state back and forth at runtime. This for example allows to animate an object along a predetermined path by making it kinematic at first, and then switch it to simulated at the end of its animation, to make it fall and collide realistically from there on. In the video below a [property animation (TODO)](../../animation/property-animation/property-animation-overview.md) was used to do exactly that:
 
 <video src="media/kinematic-switch.webm" width="600" height="600" autoplay loop></video>
 

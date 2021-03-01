@@ -11,7 +11,7 @@ The image above shows some objects lit only with the skylight component. Here th
 
 ## Skylight vs. Ambient Light Component
 
-The [ambient light component](ambient-light-component.md) uses a fixed color for lighting objects. Although you could animate those colors over time, for instance using a [property animation (TODO)](../../animation/property-animation.md), it is not possible to be directional. Using the skylight component you can have a bit of directional lighting.
+The [ambient light component](ambient-light-component.md) uses a fixed color for lighting objects. Although you could animate those colors over time, for instance using a [property animation (TODO)](../../animation/property-animation/property-animation-overview.md), it is not possible to be directional. Using the skylight component you can have a bit of directional lighting.
 
 In the image below the objects on the left are lit with an ambient light component. Note that the lighting is very flat. The objects on the right are lit with a skylight component. To demonstrate how it illuminates objects directionally, the skybox is set to have red, green and blue faces.
 

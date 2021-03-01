@@ -1,12 +1,12 @@
 # Curves
 
-*Curves* are used to animate properties. They are typically set up once and shared across many assets, such as [particle effects](../effects/particle-effects/particle-effects-overview.md). Modifying a curve will affect all resources that use it. Therefore it is advisable to create common curves early during development.
+*Curves* are used to animate properties. They are typically set up once and shared across many assets, such as [particle effects](../../effects/particle-effects/particle-effects-overview.md). Modifying a curve will affect all resources that use it. Therefore it is advisable to create common curves early during development.
 
 The curve can be sampled along the X-axis. This is frequently used to sample a value over time, but other parameters may be used for the lookup as well. If a curve is supposed to be used in a looping fashion, the first and last control point have to be set up to match.
 
 ## Curve Editor
 
-![Curve Editor](media/curve-editor.png)
+![Curve Editor](../media/curve-editor.png)
 
 To add a control point, **double click** where you want to insert one.
 
@@ -27,7 +27,7 @@ To add a control point, **double click** where you want to insert one.
 * Holding `Ctrl` *toggles* the selection of a control point.
 * Distinguishing between *add* and *remove* is particularly useful when changing the selection by dragging a rectangle.
 
-![Curve Editor Selection](media/curve-editor-selection.png)
+![Curve Editor Selection](../media/curve-editor-selection.png)
 
 * Left click and drag selected points to move them around.
 * Press `Shift` *after you started dragging*, to limit modifications to either left/right or up/down. The axis along which you moved the control points the most, before you pressed `Shift`, determines which axis gets limited.
@@ -54,6 +54,6 @@ To make a curve loop nicely, open the context menu and select *Curve > Loop: Adj
 
 ## See Also
 
-* [Back to Index](../index.md)
+* [Back to Index](../../index.md)
 * [Color Gradients](color-gradients.md)
-* [Property Animation (TODO)](property-animation.md)
+* [Property Animation (TODO)](../property-animation/property-animation-overview.md)

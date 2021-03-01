@@ -185,14 +185,19 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Animation
 
-* [Color Animation Component](animation/color-animation-component.md)
-* [Color Gradients](animation/color-gradients.md)
-* [Curves](animation/curves.md)
-* [MoveTo Component (TODO)](animation/move-to-component.md)
-* [Property Animation Component (TODO)](animation/property-animation-component.md)
-* [Property Animation (TODO)](animation/property-animation.md)
-* [Rotor Component](animation/rotor-component.md)
-* [Slider Component](animation/slider-component.md)
+* __Common__
+  * [Color Gradients](animation/common/color-gradients.md)
+  * [Curves](animation/common/curves.md)
+* __Property Animation__
+  * [Color Animation Component](animation/property-animation/color-animation-component.md)
+  * [MoveTo Component (TODO)](animation/property-animation/move-to-component.md)
+  * [Property Animation Asset (TODO)](animation/property-animation/property-animation-asset.md)
+  * [Property Animation Component (TODO)](animation/property-animation/property-animation-component.md)
+  * [Property Animations (TODO)](animation/property-animation/property-animation-overview.md)
+  * [Rotor Component](animation/property-animation/rotor-component.md)
+  * [Slider Component](animation/property-animation/slider-component.md)
+* __Skeletal Animation__
+  * [Skeletal Animations](animation/skeletal-animation/skeletal-animation-overview.md)
 
 ### Sound
 

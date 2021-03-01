@@ -54,7 +54,7 @@ Optional name of an [effect parameter](particle-effects-overview.md#effect-param
 
 Initializes a particle's color to a random color.
 
-**Gradient:** If specified, the random color will be picked from the given [color gradient](../../animation/color-gradients.md).
+**Gradient:** If specified, the random color will be picked from the given [color gradient](../../animation/common/color-gradients.md).
 
 **Color1, Color2:** A random interpolated color between the two given colors is used. So if one color is white and the other is black, particles will get a random grey value as their color. If a *gradient* is set as well, the two colors are combined.
 
@@ -66,7 +66,7 @@ Initializes a particle's size to a random value.
 
 **Size:** The base size for the particles to start with. To initialize all particles to have a fixed size, set the variance to zero.
 
-**SizeCurve:** If specified, the [curve](../../animation/curves.md) is sampled at a random location and the normalized value (always between `0` and `1`) is used to scale the randomly chosen base size. The shape of the curve has no meaning for this use case, it only provides a way to affect the distribution of the random sizes. For example, you could have a curve that sets exactly half of all particles to exactly a tenth of the base size. If you want exactly the same distribution as the curve has, you should set the variance of the *base size* to zero.
+**SizeCurve:** If specified, the [curve](../../animation/common/curves.md) is sampled at a random location and the normalized value (always between `0` and `1`) is used to scale the randomly chosen base size. The shape of the curve has no meaning for this use case, it only provides a way to affect the distribution of the random sizes. For example, you could have a curve that sets exactly half of all particles to exactly a tenth of the base size. If you want exactly the same distribution as the curve has, you should set the variance of the *base size* to zero.
 
 <video src="media/random-size-init.webm" width="500" height="500" autoplay loop></video>
 
