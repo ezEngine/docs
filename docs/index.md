@@ -216,8 +216,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Ai
 
-* [Recast Navmesh Component (TODO)](ai/recast-navmesh-component.md)
-* [Recast Navmesh (TODO)](ai/recast-navmesh.md)
+* [Recast Navmesh Component](ai/recast-navmesh-component.md)
+* [Recast Navmesh](ai/recast-navmesh.md)
 * [Recast Integration (TODO)](ai/recast.md)
 
 ### Ui
