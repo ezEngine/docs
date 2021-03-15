@@ -198,6 +198,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Slider Component](animation/property-animation/slider-component.md)
 * __Skeletal Animation__
   * [Skeletal Animations](animation/skeletal-animation/skeletal-animation-overview.md)
+  * [Authoring and Exporting Animations with Blender](animation/skeletal-animation/blender-export.md)
 
 ### Sound
 
