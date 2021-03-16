@@ -1,6 +1,6 @@
 # Singleton Interfaces
 
-*Singletons* are classes of which there should only be a single instance throughout the lifetime of the process. Although ez uses the *singleton pattern* quite extensively for built-in classes, such as `ezTaskSystem` and `ezResourceManager`, those classes don't use dedicated singleton infrastructure. Instead, they only expose static functions, and there is no need for any instance.
+*Singletons* are classes of which there should only be a single instance throughout the lifetime of the process. Although EZ uses the *singleton pattern* quite extensively for built-in classes, such as `ezTaskSystem` and `ezResourceManager`, those classes don't use dedicated singleton infrastructure. Instead, they only expose static functions, and there is no need for any instance.
 
 Accessing such singletons is trivial, as you can always call their functions directly. However, there is another type of singleton, which does require special handling.
 
@@ -86,7 +86,7 @@ You can now implement the desired behavior for the overridden functions.
 
 ## Instantiating Singletons
 
-The ez singleton infrastructure does not automatically create an instance of singleton classes. It is up to you whether, when and how you create your instance. The most common way to do this, is to leverage the [startup system](startup.md) to hook into the engine startup process at the right time.
+The EZ singleton infrastructure does not automatically create an instance of singleton classes. It is up to you whether, when and how you create your instance. The most common way to do this, is to leverage the [startup system](startup.md) to hook into the engine startup process at the right time.
 
 For details, read that chapter, but here is what you would typically do. At startup you instantiate your singleton implementation:
 

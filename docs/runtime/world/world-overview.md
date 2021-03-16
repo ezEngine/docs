@@ -1,10 +1,10 @@
 # The World / Scenegraph System
 
-When you build a scene in the editor or through code, the structure of all the objects is stored in something that is commonly referred to as a *scenegraph*. In ez the scenegraph is implemented by the class `ezWorld`, which is why the terms *scenegraph* and *world* are used interchangeably in our documentation.
+When you build a scene in the editor or through code, the structure of all the objects is stored in something that is commonly referred to as a *scenegraph*. In EZ the scenegraph is implemented by the class `ezWorld`, which is why the terms *scenegraph* and *world* are used interchangeably in our documentation.
 
 ## ECS
 
-In ez we use a variation of an **E**ntity **C**omponent **S**ystem ([ECS](https://en.wikipedia.org/wiki/Entity_component_system)). It doesn't matter whether you are familiar with ECSs, but if you are, the main difference of our implementation to a pure ECS is, that in ez there is always exactly one *system* to handle each *component type*. You can have additional systems (see [World Modules](world-modules.md)), however, this is not as common as in other engines.
+In EZ we use a variation of an **E**ntity **C**omponent **S**ystem ([ECS](https://en.wikipedia.org/wiki/Entity_component_system)). It doesn't matter whether you are familiar with ECSs, but if you are, the main difference of our implementation to a pure ECS is, that in EZ there is always exactly one *system* to handle each *component type*. You can have additional systems (see [World Modules](world-modules.md)), however, this is not as common as in other engines.
 
 The main classes involved are `ezWorld`, `ezGameObject`, `ezComponent` and `ezWorldModule` / `ezComponentManager`.
 
@@ -42,7 +42,7 @@ World modules are described in more detail in [this chapter](world-modules.md) a
 
 ## Object Lifetime
 
-The ez scenegraph does not use any kind of reference counting or garbage collection, however it does provide weak reference semantics through *handles*, to enable you to delete objects exactly when you need them to be removed, while still being able to detect whether an object is still alive.
+The EZ scenegraph does not use any kind of reference counting or garbage collection, however it does provide weak reference semantics through *handles*, to enable you to delete objects exactly when you need them to be removed, while still being able to detect whether an object is still alive.
 
 See the [object lifetime chapter](object-lifetime.md) for details.
 

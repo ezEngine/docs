@@ -24,7 +24,7 @@ The *skeleton* asset stores the bone hierarchy of the animated object. This is a
 
 ### Animation Clip Asset
 
-The *animation clip* asset represents **a single animation**, such as a walk or a jump animation. You may have multiple animations stored in a single `.fbx` or `.glb` file, but you need to create one animation clip asset for each animation that you want to import into ez. Just reference the same source file each time. The animation clip asset has a property `UseAnimationClip` through which you can choose which animation to extract from the source file. Currently you have to **type** the name of the animation. The *Available Clips* list just below it shows you which animations have been found in the file.
+The *animation clip* asset represents **a single animation**, such as a walk or a jump animation. You may have multiple animations stored in a single `.fbx` or `.glb` file, but you need to create one animation clip asset for each animation that you want to import into EZ. Just reference the same source file each time. The animation clip asset has a property `UseAnimationClip` through which you can choose which animation to extract from the source file. Currently you have to **type** the name of the animation. The *Available Clips* list just below it shows you which animations have been found in the file.
 
 ![Anim clip properties](../media/anim-clip-properties.png)
 

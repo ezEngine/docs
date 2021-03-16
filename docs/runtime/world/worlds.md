@@ -34,7 +34,7 @@ When a component needs a random number, it should query this from the world via 
 
 ### Coordinate System
 
-The default coordinate system in ez is:
+The default coordinate system in EZ is:
 
 * `+X` is 'forwards'
 * `+Y` is 'right`

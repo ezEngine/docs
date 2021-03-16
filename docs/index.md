@@ -198,6 +198,12 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Slider Component](animation/property-animation/slider-component.md)
 * __Skeletal Animation__
   * [Skeletal Animations](animation/skeletal-animation/skeletal-animation-overview.md)
+  * [Animated Mesh Asset (TODO)](animation/skeletal-animation/animated-mesh-asset.md)
+  * [Skeleton Asset (TODO)](animation/skeletal-animation/skeleton-asset.md)
+  * [Animation Clip Asset (TODO)](animation/skeletal-animation/animation-clip-asset.md)
+  * [Simple Animation Component (TODO)](animation/skeletal-animation/simple-animation-component.md)
+  * [Animation Controller Asset (TODO)](animation/skeletal-animation/animation-controller-asset.md)
+  * [Animation Controller Component (TODO)](animation/skeletal-animation/animation-controller-component.md)
   * [Authoring and Exporting Animations with Blender](animation/skeletal-animation/blender-export.md)
 
 ### Sound

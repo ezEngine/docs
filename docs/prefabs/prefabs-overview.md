@@ -2,7 +2,7 @@
 
 When you build a game you need many different objects that you can place in your world. The complexity of objects can range from very simple objects with just one node and component, up to thousands of nodes and components. Some will be placed in scenes, others need to be instantiated dynamically at runtime.
 
-These *prefabricated* objects are commonly referred to as *prefabs*. Generally, prefabs in ez are the same as [scenes](../scenes/scene-editing.md). Therefore the workflow for creating prefabs is mostly identical.
+These *prefabricated* objects are commonly referred to as *prefabs*. Generally, prefabs in EZ are the same as [scenes](../scenes/scene-editing.md). Therefore the workflow for creating prefabs is mostly identical.
 
 ## Templates and Instances
 

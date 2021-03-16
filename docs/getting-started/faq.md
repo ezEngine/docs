@@ -18,13 +18,13 @@ Obviously, this would also be a prerequisite to porting the editor to other plat
 
 The engine ships with the [Enet](../appendix/third-party-code.md#enet) networking library included. This is a great, easy to use library that was developed for an FPS game.
 
-There is **no multiplayer support** in ez, whatsoever. For the foreseeable future we have no plans to add something. Multiplayer is a very complicated topic and the solutions vary drastically between genres, so providing something that "just works" isn't really possible.
+There is **no multiplayer support** in EZ, whatsoever. For the foreseeable future we have no plans to add something. Multiplayer is a very complicated topic and the solutions vary drastically between genres, so providing something that "just works" isn't really possible.
 
 If you want to do multiplayer, you have to implement that aspect yourself. This is possible, of course, and for games with simpler networking logic (turn based, slow or simply not competitive) it may not be too hard (still lots of work, though, as all game development is).
 
 ## Visual Scripting
 
-Yes, ez has [visual scripting](../custom-code/visual-script/visual-script-overview.md). It's not really great, though. You can do simple level logic, like "if that lever is pulled, open that door". You shouldn't really use it for anything else. We are generally not convinced that visual scripting is a great way to program (in no engine, no matter how good their tools are). Therefore we have no plans on improving our implementation at the moment, we rather improve the [TypeScript](../custom-code/typescript/typescript-overview.md) binding. Though, if you are a fan of visual scripting and want to improve it, feel free to look into it.
+Yes, EZ has [visual scripting](../custom-code/visual-script/visual-script-overview.md). It's not really great, though. You can do simple level logic, like "if that lever is pulled, open that door". You shouldn't really use it for anything else. We are generally not convinced that visual scripting is a great way to program (in no engine, no matter how good their tools are). Therefore we have no plans on improving our implementation at the moment, we rather improve the [TypeScript](../custom-code/typescript/typescript-overview.md) binding. Though, if you are a fan of visual scripting and want to improve it, feel free to look into it.
 
 ## Scripting with TypeScript
 
@@ -75,7 +75,7 @@ From the start our intention was to create something that is free to use with no
 
 Consequently, good documentation both directly inside code, as well as external, is very dear to us. The best technology is worthless, if only few people know how to use it.
 
-We would love to see ez being used by other people. We try to fix issues and help out as well as possible, but there is only so much we can do with our time. We understand that for many people other engines are a better fit. If ez does fit your needs, that's great. And if you are able to help out make it better, that's really awesome.
+We would love to see EZ being used by other people. We try to fix issues and help out as well as possible, but there is only so much we can do with our time. We understand that for many people other engines are a better fit. If EZ does fit your needs, that's great. And if you are able to help out make it better, that's really awesome.
 
 ## See Also
 

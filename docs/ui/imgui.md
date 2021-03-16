@@ -47,7 +47,7 @@ ezImgui::GetSingleton()->SetCurrentContextForView(m_hMainView);
 
 Often you only want to pass input to ImGui during certain phases of your game. This can be controlled via `ezImgui::SetPassInputToImgui()` and whether ImGui currently has focus in a certain UI element can be queried through `ezImGui::WantsInput()`.
 
-From there on, all the functionality of the Dear ImGui library is used directly, without any ez specific wrappers. For example a simple panel is created like this:
+From there on, all the functionality of the Dear ImGui library is used directly, without any EZ specific wrappers. For example a simple panel is created like this:
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: imgui-panel -->
 ```cpp

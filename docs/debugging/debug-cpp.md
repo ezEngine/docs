@@ -2,7 +2,7 @@
 
 ## Visual Studio Debug Visualizers
 
-To ease debugging the C++ code, we provide a `natvis` file, located at *Utilities/Visual Studio Visualizer/ezEngine.natvis*. The file adds improved inspection for ez specific code, such as the [container](../appendix/container-usage.md) and [string](../appendix/string-usage.md) classes.
+To ease debugging the C++ code, we provide a `natvis` file, located at *Utilities/Visual Studio Visualizer/ezEngine.natvis*. The file adds improved inspection for EZ specific code, such as the [container](../appendix/container-usage.md) and [string](../appendix/string-usage.md) classes.
 
 This file is already referenced by our CMake scripts in the `Foundation` library and therefore works out of the box.
 
@@ -12,9 +12,9 @@ Please be aware that the editor uses at least one, but potentially multiple chil
 
 You can attach manually to this process. However, it is much easier to use an extension for Visual Studio: **Microsoft Child Process Debugging Power Tool**
 
-This tool enables Visual Studio to automatically attach to all child processes spawned by the parent process, which makes debugging the ez editor much easier.
+This tool enables Visual Studio to automatically attach to all child processes spawned by the parent process, which makes debugging the EZ editor much easier.
 
-After installing the extension go to *Debug > Other Debug Targets > Child Process Debugging Settings...*. There you need to enable child process debugging. Additionally, you may want to exclude debugging Git (`git.exe`) and Visual Studio Code (`code.exe`), as those may be spawned by the ez editor (indirectly) and have some annoying behavior when attached to with a debugger:
+After installing the extension go to *Debug > Other Debug Targets > Child Process Debugging Settings...*. There you need to enable child process debugging. Additionally, you may want to exclude debugging Git (`git.exe`) and Visual Studio Code (`code.exe`), as those may be spawned by the EZ editor (indirectly) and have some annoying behavior when attached to with a debugger:
 
 ![Child Debug Settings](media/child-debug.png)
 

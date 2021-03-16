@@ -22,7 +22,7 @@ Pressing **Escape** will close the Player application (unless overridden by a cu
 
 ## Common Application Features
 
-Since ezPlayer is built on the [application (TODO)](../runtime/application/application.md) framework, it provides a set of useful features common to all ez applications.
+Since ezPlayer is built on the [application (TODO)](../runtime/application/application.md) framework, it provides a set of useful features common to all EZ applications.
 
 See [this page](../runtime/application/common-application-features.md) for details.
 

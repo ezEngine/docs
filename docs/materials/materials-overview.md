@@ -16,7 +16,7 @@ Through the `ShaderMode` property there are three ways a material can select whi
 
 * **From Base Material:** This is the most convenient and most commonly used method. In this mode, you need to select a `BaseMaterial`, which is just another material. All the properties of that base material are copied over to your material, including the shader selection. You can then override each property as you like. This makes it easy to set up a few common base materials and then "derive" all other materials from this common base.
 
-* **From File:** In this mode the material actually references a proper shader file. This allows you to select a custom [shader (TODO)](../graphics/shaders/shaders-overview.md). By default, ez doesn't have many different shader files, as all important variations are provided by the same shader file. However, if you do decide to write a custom one, this is the way to select it for your material. The engine parses the shader file for configurable properties and displays those as UI elements in the material editor. So things like which texture you can select and what other lighting properties the material will have, are all defined by the selected shader.
+* **From File:** In this mode the material actually references a proper shader file. This allows you to select a custom [shader (TODO)](../graphics/shaders/shaders-overview.md). By default, EZ doesn't have many different shader files, as all important variations are provided by the same shader file. However, if you do decide to write a custom one, this is the way to select it for your material. The engine parses the shader file for configurable properties and displays those as UI elements in the material editor. So things like which texture you can select and what other lighting properties the material will have, are all defined by the selected shader.
 
 * **Visual Shader:** In this mode the material editor will show an additional editing area beneath the 3D view, where you can create your own shader through a visual graph system. This enables you to create custom shader effects like animated textures. There is a dedicated chapter about [visual shaders (TODO)](visual-shaders.md) that explains how to do so.
 
@@ -28,7 +28,7 @@ The `Shader Properties` section lists all the properties that the selected shade
 
 ### DefaultMaterial Properties
 
-The `DefaultMaterial` shader that comes with ez implements a **P**hysically **B**ased **R**endering model (PBR), which is the de facto industry standard these days. The details of PBR rendering are beyond the scope of this documentation, if you want to get an understanding of how *roughness* and *metalness* are use (see below), please search the internet.
+The `DefaultMaterial` shader that comes with EZ implements a **P**hysically **B**ased **R**endering model (PBR), which is the de facto industry standard these days. The details of PBR rendering are beyond the scope of this documentation, if you want to get an understanding of how *roughness* and *metalness* are use (see below), please search the internet.
 
 The `DefaultMaterial` provides these options:
 

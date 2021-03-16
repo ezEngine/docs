@@ -17,7 +17,7 @@ Fmod Studio has a vast number of features. Describing how it works is out of sco
 * [Fmod Learning Resources](https://www.fmod.com/learn)
 * [Fmod Studio Documentation](https://www.fmod.com/resources/documentation-studio)
 
-There is a set of tutorials about Fmod in Unreal, which is a very good introduction. There are also several videos about Fmod in Unity. Since most of the work is done in Fmod Studio anyway, most things that you see in those videos apply equally to ez.
+There is a set of tutorials about Fmod in Unreal, which is a very good introduction. There are also several videos about Fmod in Unity. Since most of the work is done in Fmod Studio anyway, most things that you see in those videos apply equally to EZ.
 
 * [FMOD Studio for UE4 Video 1 - Getting Started](https://www.youtube.com/watch?v=K64sGI9cKEg)
 * [Audio for Unity 5: Viking Village (1/5) - Getting Started](https://www.youtube.com/watch?v=KkQ89ZXv5sQ)

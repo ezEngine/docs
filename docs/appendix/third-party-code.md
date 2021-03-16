@@ -1,6 +1,6 @@
 # ThirdParty Code and Data
 
-This page lists which third party code and data is used by ez.
+This page lists which third party code and data is used by EZ.
 
 ## Assimp
 
@@ -67,7 +67,7 @@ Link: [https://www.fmod.com](https://www.fmod.com)
 
 Compile switch: **EZ_BUILD_FMOD**
 
-ez has an integration for the Fmod sound system. However, you need to download the SDK yourself.
+EZ has an integration for the Fmod sound system. However, you need to download the SDK yourself.
 
 1. Go to [fmod.com](https://www.fmod.com)
 1. Sign up / log in
@@ -102,7 +102,7 @@ Link: [(http://www.lua.org](http://www.lua.org)
 
 Compile switch: **EZ_3RDPARTY_LUA_SUPPORT**
 
-The Lua scripting language. Can be used directly or through ezLuaWrapper for easier access to common functionality. Non-essential for ez, only the ingame console interpreter would stop working without it.
+The Lua scripting language. Can be used directly or through ezLuaWrapper for easier access to common functionality. Non-essential for EZ, only the ingame console interpreter would stop working without it.
 
 ## Mikktspace
 

@@ -1,6 +1,6 @@
 # Greyboxing
 
-*Greyboxing* (or *whiteboxing*) is the process of blocking out a rough level concept to test ideas, before working on the details. The ez editor provides a dedicated tool to quickly create the most commonly needed geometric shapes to block out a level, such as boxes, stairs, ramps and columns.
+*Greyboxing* (or *whiteboxing*) is the process of blocking out a rough level concept to test ideas, before working on the details. The EZ editor provides a dedicated tool to quickly create the most commonly needed geometric shapes to block out a level, such as boxes, stairs, ramps and columns.
 
 ![Greyboxing](media/greyboxing.jpg)
 

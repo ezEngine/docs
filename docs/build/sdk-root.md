@@ -33,7 +33,7 @@ Here ezEngine is integrated into another repository. The 'Bin' folder is top lev
 
 To enable such a pattern, you can place a 'redirection file', which points to the SDK root folder. The file has to be called **ezSdkRoot.txt** and it must be located somewhere along the path that the default strategy searches. In this case it would be put into `C:/MyRepo/ezSdkRoot.txt` and it would contain the string `ezEngine-module`. This way, when the engine searches for the folder that contains 'Data/Base', it will reach `C:/MyRepo`, see the `ezSdkRoot.txt` file, read its content, append the relative path inside to its current path (`C:/MyRepo/ezEngine-module`) and find `C:/MyRepo/ezEngine-module/Data/Base`, which means it determines `C:/MyRepo/ezEngine-module` to be the SDK root folder.
 
-Using a redirection file is the least invasive method and it works for all ez applications, e.g. the editor, samples and tools.
+Using a redirection file is the least invasive method and it works for all EZ applications, e.g. the editor, samples and tools.
 
 ## Custom SDK Root
 
@@ -45,7 +45,7 @@ Note that this method will only work for applications that you control. Tools su
 
 ## When to Redirect At All
 
-The SDK root folder doesn't need to point to the folder where ezEngine is stored. This is only necessary, when you really need the data that is stored in `Data/Base`. If you only use a fraction of ez, for example only the Foundation library, or not the editor and rendering code, then you can also use a very different folder as your root (for example `C:/MyRepo` in the example above). In such cases your application would almost certainly specify its [custom SDK root](#custom-sdk-root) in its startup code directly.
+The SDK root folder doesn't need to point to the folder where ezEngine is stored. This is only necessary, when you really need the data that is stored in `Data/Base`. If you only use a fraction of EZ, for example only the Foundation library, or not the editor and rendering code, then you can also use a very different folder as your root (for example `C:/MyRepo` in the example above). In such cases your application would almost certainly specify its [custom SDK root](#custom-sdk-root) in its startup code directly.
 
 ## See Also
 

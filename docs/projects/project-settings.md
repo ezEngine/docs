@@ -14,7 +14,7 @@ In the editor you will find the project settings under *Editor > Project Setting
 
 ![Engine Plugins](media/editor-engine-plugins.png)
 
-This dialog shows all available engine plugins. These are DLLs that are located in the same directory as `Editor.exe`. Note that ez uses a specific name schema to differentiate which DLLs are considered engine plugins:
+This dialog shows all available engine plugins. These are DLLs that are located in the same directory as `Editor.exe`. Note that EZ uses a specific name schema to differentiate which DLLs are considered engine plugins:
 
 * All DLLs named `ezEnginePluginXYZ.dll` are considered to be plugins for the engine, but typically only used in conjunction with another plugin called `ezEditorPluginXYZ.dll`. These are only needed by `EditorEngineProcess.exe` to implement editor specific functionality such as 3D previews of assets. These plugins are **not needed** by the final game application and are not loaded by [ezPlayer](../tools/player.md) when [running an exported scene](../editor/run-scene.md#export-and-run).
 
@@ -30,7 +30,7 @@ If you want to fully remove a certain integration, even in the editor, you need 
 
 ### Loading Plugins from Code
 
-A custom [application (TODO)](../runtime/application/application.md) or [game state](../runtime/application/game-state.md) can load plugins directly from code if necessary. For example the `ezInspectorPlugin` is automatically loaded for you by stock ez applications, when building the code for development.
+A custom [application (TODO)](../runtime/application/application.md) or [game state](../runtime/application/game-state.md) can load plugins directly from code if necessary. For example the `ezInspectorPlugin` is automatically loaded for you by stock EZ applications, when building the code for development.
 
 ## Input Configuration
 

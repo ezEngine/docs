@@ -2,7 +2,7 @@
 
 Initializing an engine and shutting it properly down again, is a surprisingly difficult task. There are many steps involved, some of which have hard requirements on their ordering. Also, some functionality can only be initialized when at least a window, and potentially even a graphics API is available, which is not the case for command line tools. Once [plugins](../../custom-code/cpp/engine-plugins.md) are added to the mix, which can be loaded and unloaded at any time, it becomes impossible to manually set up this process.
 
-Therefore, ez uses a dedicated *startup system*, to handle this complexity automatically for you.
+Therefore, EZ uses a dedicated *startup system*, to handle this complexity automatically for you.
 
 ## Startup System Concept
 

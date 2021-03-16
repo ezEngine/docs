@@ -8,7 +8,7 @@ To try out ezEngine, you can download a [precompiled binary package](https://git
     * If you need a good git GUI, have a look at [Fork](https://git-fork.com/).
     * If you want a stable release, clone the 'release' branch.
     * If you want the latest features, clone the 'dev' branch.
-1. Unless your git client already checks out git sub-modules for you, also run `git submodule init` and `git submodule update` in your local clone. The ez project uses submodules to deliver additional data such as [sample content](https://github.com/ezEngine/content) and [precompiled tools](https://github.com/ezEngine/precompiled-tools).
+1. Unless your git client already checks out git sub-modules for you, also run `git submodule init` and `git submodule update` in your local clone. The EZ project uses submodules to deliver additional data such as [sample content](https://github.com/ezEngine/content) and [precompiled tools](https://github.com/ezEngine/precompiled-tools).
 
 ## Regular Builds
 

@@ -4,7 +4,7 @@ The *PhysX 6DOF joint component* is the most versatile [joint](physx-joints.md) 
 
 <video src="media/6dof-joint.webm" width="600" height="600" autoplay loop></video>
 
-This joint component is based on the [PhysX 6DOF joint](https://gameworksdocs.nvidia.com/PhysX/4.1/documentation/physxguide/Manual/Joints.html#d6-joint). However, the ez 6DOF joint component does not expose all of the many configuration options of the PhysX 6DOF joint. Instead it condenses some of these options down to a most commonly useful set of options.
+This joint component is based on the [PhysX 6DOF joint](https://gameworksdocs.nvidia.com/PhysX/4.1/documentation/physxguide/Manual/Joints.html#d6-joint). However, the EZ 6DOF joint component does not expose all of the many configuration options of the PhysX 6DOF joint. Instead it condenses some of these options down to a most commonly useful set of options.
 
 Consequently some very specialized scenarios would be possible to do with PhysX, but are currently not possible with the available joint component types. In such a case, it most likely makes sense to add a joint type for the specialized use case, which utilizes the 6DOF joint functionality accordingly.
 

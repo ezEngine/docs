@@ -3,7 +3,7 @@
 When **statically linking** libraries into an application the linker will only pull in all the functions and variables that are inside
 translation units (CPP files) that somehow get referenced.
 
-In ez a lot of stuff happens automatically (e.g. types register themselves etc.), which is accomplished through global variables
+In EZ a lot of stuff happens automatically (e.g. types register themselves etc.), which is accomplished through global variables
 that execute code in their constructor during the application's startup phase. This only works when those global variables are actually
 put into the application by the linker. If the linker does not do that, functionality will not work as intended.
 

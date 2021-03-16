@@ -1,8 +1,8 @@
 # TypeScript API
 
-This page gives an overview over the functionality that ez exposes through TypeScript. For an introduction to the TypeScript language please refer to the web (for example [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)).
+This page gives an overview over the functionality that EZ exposes through TypeScript. For an introduction to the TypeScript language please refer to the web (for example [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)).
 
-Note that you don't need to install anything to use TypeScript in ez, the required TypeScript transpiler is already included.
+Note that you don't need to install anything to use TypeScript in EZ, the required TypeScript transpiler is already included.
 
 ## API Documentation
 
@@ -14,10 +14,10 @@ You can also **jump to a function or class declaration** using `F12`. This is us
 
 ## Importing Files (`require`)
 
-TypeScript and JavaScript have multiple mechanisms how to make code from other files available. In ez only the `require` mechanism will work:
+TypeScript and JavaScript have multiple mechanisms how to make code from other files available. In EZ only the `require` mechanism will work:
 
 ```typescript
-import ez = require("TypeScript/ez")
+import EZ = require("TypeScript/ez")
 ```
 
 This imports all *exported* declarations from the file *TypeScript/ez.ts* into an object called *ez* in this file. Thus typing `ez.` grants access to all the exported classes, namespaces and functions from that file.
@@ -31,7 +31,7 @@ The path given to `require` must be relative to a [data directory](../../project
 To import multiple files, you need to store each result in a different variable:
 
 ```typescript
-import ez = require("TypeScript/ez")
+import EZ = require("TypeScript/ez")
 import _ge = require("Scripting/GameEnums")
 ```
 
@@ -80,7 +80,7 @@ Additionally, functionality like `ez.Clock` and `ez.Random`, which are in C++ bo
 
 ## Math
 
-TypeScript already provides mathematical functions through the `Math` namespace. Additionally, the ez API provides these classes:
+TypeScript already provides mathematical functions through the `Math` namespace. Additionally, the EZ API provides these classes:
 
 * `ez.Vec2` and `ez.Vec3`: 2 and 3 component vectors for 2D and 3D linear algebra.
 * `ez.Mat3` and `ez.Mat4`: A 3x3 and 4x4 matrix.

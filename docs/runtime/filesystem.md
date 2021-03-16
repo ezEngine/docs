@@ -52,7 +52,7 @@ read_stream >> s;
 
 ### Using Complex Types with Streams
 
-To serialize and deserialize data that is in ez containers, you can also use functions like `ezStreamReader::ReadArray()`, `ezStreamReader::ReadMap()`, `ezStreamWriter::WriteArray()` and `ezStreamWriter::WriteMap()`. Those functions will try to serialize the container information and all the elements. For that to work, there must either be `<<` and `>>` operaters overloaded for the element type, or the element types must have member functions with the following signature:
+To serialize and deserialize data that is in EZ containers, you can also use functions like `ezStreamReader::ReadArray()`, `ezStreamReader::ReadMap()`, `ezStreamWriter::WriteArray()` and `ezStreamWriter::WriteMap()`. Those functions will try to serialize the container information and all the elements. For that to work, there must either be `<<` and `>>` operaters overloaded for the element type, or the element types must have member functions with the following signature:
 
 ```cpp
 ezResult Serialize(ezStreamWriter& stream) const;

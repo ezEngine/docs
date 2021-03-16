@@ -16,7 +16,7 @@ The only files you need to look at are:
 
 ### Build System Setup
 
-The file `CMakeLists.txt` is only of interest here in case you want to reuse the ez build infrastructure to generate your library. If you use [ezEngine as a Submodule](../../build/submodule.md) then you probably have your own CMake scripts. Either way, you need to add a project that generates a DLL.
+The file `CMakeLists.txt` is only of interest here in case you want to reuse the EZ build infrastructure to generate your library. If you use [ezEngine as a Submodule](../../build/submodule.md) then you probably have your own CMake scripts. Either way, you need to add a project that generates a DLL.
 
 ### Plugin DLL Name
 
@@ -45,7 +45,7 @@ If your plugin will be entirely on its own, you don't even need this. However, i
 
 ### ezPlugin Instance
 
-The 'secret sauce' to ez engine plugins can be found in `SampleGamePlugin.cpp`:
+The 'secret sauce' to EZ engine plugins can be found in `SampleGamePlugin.cpp`:
 
 <!-- BEGIN-DOCS-CODE-SNIPPET: plugin-setup -->
 ```cpp

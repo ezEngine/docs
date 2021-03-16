@@ -10,7 +10,7 @@ The **ComputeShaderHistogram Sample** shows how to write a simple compute shader
 
 ## Code
 
-The code shows how to use the ez rendering API to set up buffers and textures, load shaders, etc. It also demonstrates how one can watch a directory for file changes and reload resources on the fly, to iterate on shaders.
+The code shows how to use the EZ rendering API to set up buffers and textures, load shaders, etc. It also demonstrates how one can watch a directory for file changes and reload resources on the fly, to iterate on shaders.
 
 ## See Also
 

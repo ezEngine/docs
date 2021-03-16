@@ -1,6 +1,6 @@
 # Debug Rendering
 
-The rendering in ez is optimized to handle large and complex data efficiently. However, to achieve this you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the `ezDebugRenderer` is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.
+The rendering in EZ is optimized to handle large and complex data efficiently. However, to achieve this you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the `ezDebugRenderer` is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.
 
 This interface is also (partially) available through [TypeScript](../custom-code/typescript/typescript-overview.md).
 

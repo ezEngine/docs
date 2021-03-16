@@ -12,7 +12,7 @@ See [CMake Setup](../build/cmake-config.md) on how to enable PhysX support in yo
 
 The most important PhysX functionality is exposed through components, as well as through [TypeScript](../custom-code/typescript/typescript-overview.md).
 
-When you write custom C++ code, you can access the most important functionality, like raycasts and shape queries, through the abstract `ezPhysicsWorldModuleInterface`, which is implementation independent. If you need to access PhysX features that are not exposed in ez, you can cast that interface to `ezPhysXWorldModule` and directly work with `PxScene`. For PhysX details, refer to its [documentation](https://gameworksdocs.nvidia.com/simulation.html).
+When you write custom C++ code, you can access the most important functionality, like raycasts and shape queries, through the abstract `ezPhysicsWorldModuleInterface`, which is implementation independent. If you need to access PhysX features that are not exposed in EZ, you can cast that interface to `ezPhysXWorldModule` and directly work with `PxScene`. For PhysX details, refer to its [documentation](https://gameworksdocs.nvidia.com/simulation.html).
 
 ## Feature Overview
 

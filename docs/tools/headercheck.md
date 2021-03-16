@@ -21,7 +21,7 @@ EZ_FOUNDATION_INTERNAL_HEADER
 The header checker tool will automatically be run by the continues integration to check for leakage of implementation detail. If a leak is found the build will fail. Usually you will see an error message such as:
 
 ```plaintext
-Including 'wrl/wrappers/corewrappers.h' in ezEngine/Code/Engine/Foundation/Strings/StringConversion.h:9 leaks underlying implementation detail. Including system or thirdparty headers in public ez header files is not allowed. Please use an interface, factory or pimpl to hide the implementation and avoid the include.
+Including 'wrl/wrappers/corewrappers.h' in ezEngine/Code/Engine/Foundation/Strings/StringConversion.h:9 leaks underlying implementation detail. Including system or thirdparty headers in public EZ header files is not allowed. Please use an interface, factory or pimpl to hide the implementation and avoid the include.
 ```
 
 In this example including `wrl/wrappers/corewrappers.h` is illegal. This header file is included from `ezEngine/Code/Engine/Foundation/Strings/StringConversion.h` at line 9. To fix these issues follow one of the techniques below to hide implementation details.

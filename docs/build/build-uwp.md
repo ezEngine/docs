@@ -1,6 +1,6 @@
 # UWP Builds
 
-To generate a solution for building for the Universal Windows Platform (UWP), you need to pass a *toolchain file* to CMake. The file is located in the ez repository under **Code/BuildSystem/CMake/toolchain-winstore.cmake**.
+To generate a solution for building for the Universal Windows Platform (UWP), you need to pass a *toolchain file* to CMake. The file is located in the EZ repository under **Code/BuildSystem/CMake/toolchain-winstore.cmake**.
 
 ## Using the CMake GUI
 

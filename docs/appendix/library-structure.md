@@ -14,7 +14,7 @@ The **Core** library is built on top of Foundation. This library contains engine
 
 The **TestFramework** library implements code to manage our unit-tests. You can ignore this entirely.
 
-**GameEngine** builds on top of all the other libraries, including the rendering code. It contains the most high-level code for a game engine, such as AI and Animation, [ezGameApplication (TODO)](../runtime/application/application.md) and [ezGameState](../runtime/application/game-state.md), which are the basis for any game application built with ez, the prefab system, the visual scripting and much more.
+**GameEngine** builds on top of all the other libraries, including the rendering code. It contains the most high-level code for a game engine, such as AI and Animation, [ezGameApplication (TODO)](../runtime/application/application.md) and [ezGameState](../runtime/application/game-state.md), which are the basis for any game application built with EZ, the prefab system, the visual scripting and much more.
 
 In general the most interesting libraries to look at are **Foundation**, **Core** and **GameEngine**.
 
@@ -39,7 +39,7 @@ In **Foundation\\Algorithm** you will find some useful algorithms, mostly for so
 
 In **Foundation\\Basics** you can find a lot of platform specific code, most of which might not be very interesting. You will also find `EZ_ASSERT` which you should be using frequently.
 
-In **Foundation\\Basics\\Types** you will find some fundamental types that are used frequently in ez. `ezDelegate` is often used for callbacks. `ezEnum` is used for type-safe enum types and `ezBitflags` is used for type-safe and easy to use bitflags. `ezArrayPtr` is a 'fat pointer' that stores the start and length of an array. Finally `ezVariant` is a type that can store different types of data (float, int, string, vector, etc.) and knows which type it has stored. It can do conversions between related types and is often used in message passing.
+In **Foundation\\Basics\\Types** you will find some fundamental types that are used frequently in EZ. `ezDelegate` is often used for callbacks. `ezEnum` is used for type-safe enum types and `ezBitflags` is used for type-safe and easy to use bitflags. `ezArrayPtr` is a 'fat pointer' that stores the start and length of an array. Finally `ezVariant` is a type that can store different types of data (float, int, string, vector, etc.) and knows which type it has stored. It can do conversions between related types and is often used in message passing.
 
 In **Foundation\\CodeUtils** you can find utilities to work with code or text, such as `ezTokenizer`. You will also find a full implementation of a C preprocessor (`ezPreprocessor`).
 

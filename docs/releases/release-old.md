@@ -281,7 +281,7 @@
 * Removed ezSharedString. Use ezString or ezHashedString instead.
 * Removed official support for Visual Studio 2010. Might still compile, but we won't ensure that anymore.
 * More extensive usage of C++ 11:
-* ez now uses nullptr directly, instead of a redefined NULL, which solves issues on platforms that already redefined NULL to some compiler specific intrinsic
+* EZ now uses nullptr directly, instead of a redefined NULL, which solves issues on platforms that already redefined NULL to some compiler specific intrinsic
 * Some container and string classes now support move semantics for improved performance when they are copied around. Note that it is still more efficient to NOT copy such objects around, at all, though.
 * Added ezDataTransfer, which allows ezInspector to pull arbitrary (custom) data from the connected application. This can be used to make screenshots, etc.
 * Improved the profiling system: When GPA is not used, it can now store the profiling history in a ringbuffer in memory and dump it on request. We are currently supporting a JSON file format that can be displayed by Google Chrome using chrome://tracing
@@ -293,7 +293,7 @@
 * Message routing has been improved
 * The different update phases have been fixed
 * Changed some of the macros of the reflection system to be easier to use.
-* Fixed some issues compiling ez on Windows 8 and Windows 8.1
+* Fixed some issues compiling EZ on Windows 8 and Windows 8.1
 * Added ezPreprocessor, a class that allows to run a C preprocessor on text and get the result, it supports all the standard features
 * ezVariant now supports more basic types and is more efficient by using move semantics when possible.
 
