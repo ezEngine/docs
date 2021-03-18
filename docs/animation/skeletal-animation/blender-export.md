@@ -5,19 +5,41 @@ This page contains various pieces of information that are good to know when one 
 ## Exporting Animated Meshes
 
 1. To get animated meshes out of Blender and into ezEngine, export the animated mesh to a binary GLTF file (`.glb`).
-1. You can enable `+Y up` or not. In both cases you need to adjust the transformation on the skeleton asset.
+1. You can enable `+Y up` or not. In both cases you need to adjust the transformation on the [skeleton asset (TODO)](skeleton-asset.md).
 1. Make sure that the GLTF export contains *Animations* and *Skinning* information.
 1. Don't disable animation sampling on export.
 1. Be aware that GLTF uses 1000 frames per second for all exported animation clips. Blender, by default, uses 24 frames per second. If you want to only use a sub-range of an animation in EZ, you will need to re-calculate the frame indices accordingly. You can set Blender to use 25 or 50 frames per second to make this calculation easier.
+1. Enable `Export Deformation Bones Only` to strip IK pole targets and other unnecessary bones from the file.
+
+![GLB export settings](../media/glb-export.png)
+
+## Importing Meshes into EZ
+
+When importing a mesh, EZ remaps the model space to its own convention. You may need to change the mapping, to get the desired result. For static meshes, this is configure on the [mesh asset](../../graphics/meshes/mesh-asset.md). For animated models, the mapping is chosen on the root node of the corresponding [skeleton asset (TODO)](skeleton-asset.md).
+
+EZ uses the following convention:
+
+1. `+X` is the **forward axis**
+1. `+Y` is the **right axis**
+1. `+Z` is the **up axis**
+
+By default all code uses `+X` as its main direction. For example AI nodes move characters *forwards* along the `+X` axis, spot lights and cameras "look" into the `+X` direction and so on.
+
+In Blender it is common to have a character look along the `-Y` axis so that it faces the user when pressing `Numpad 1`. This also means that the right side of the character will be along the `-X` axis.
+
+If you export such a mesh to a GLB and enable **Y UP** convention, you need to configure the mapping this way:
+
+* Set `Right Dir` to **Negative X**
+* Set `Up Dir` to **Positive Y**
+* Set `FlipForwardDir` to **off**
 
 ## Authoring Meshes
 
-1. Make sure all triangles face into the same direction. Use Blender's `Show Face Normals` viewport option to see whether there are flipped triangles. If there are flipped triangles, they will show up incorrectly in EZ.
-1. Blender uses the convention that `+Z` is up, `X` is left/right and `Y` is forward/backward. EZ uses the convention that `+X` is forward, `+Y` is right and `+Z` is up. No matter whether you export the GLTF with Y up or Z up, the necessary transformation can easily be applied either in the [mesh asset](../../graphics/meshes/mesh-asset.md) for static meshes or in the skeleton asset for animated meshes.
+1. Make sure all triangles face into the same direction. Use Blender's `Face Orientation` viewport option to see whether there are flipped triangles. If there are flipped triangles, they will show up incorrectly in EZ.
 
 ## Authoring Animations
 
-1. EZ only supports skeletal animations via skinned meshes. That means every vertex in the mesh needs to have a bone assigned via vertex weights. Blender can move entire objects through bone animations, but if they are only parented to a bone, and don't use vertex skinning (vertex weights), EZ will not show those objects as animated. Use the *vertex weight* visualization in Blender to inspect which vertices are set up properly and which aren't.
+1. EZ only supports skeletal animations via skinned meshes. That means every vertex in the mesh needs to have a bone assigned via vertex weights. Blender can move entire objects through bone animations, but if they are only parented to a bone, and don't use vertex skinning (vertex weights), EZ will not show those objects as animated. Use the *Vertex Group Weights* visualization in Blender to inspect which vertices are set up properly and which aren't.
 
 1. Be aware that Blender exports ALL keyframes of an animation. The preview window of an animation has no effect on the exported animation data.
 
