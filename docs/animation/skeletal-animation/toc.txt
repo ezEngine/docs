@@ -4,4 +4,6 @@ skeleton-asset.md
 animation-clip-asset.md
 simple-animation-component.md
 animation-controller
+joint-attachment-component.md
+joint-override-component.md
 blender-export.md

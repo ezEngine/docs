@@ -1,9 +1,9 @@
-# Animation Controller Nodes: Input
+# Input Nodes
 
 <!-- PAGE IS TODO -->
 
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller Asset (TODO)](animation-controller-asset.md)
+* [Animation Controller (TODO)](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)
