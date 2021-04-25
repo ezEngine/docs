@@ -3,6 +3,5 @@ animated-mesh-asset.md
 skeleton-asset.md
 animation-clip-asset.md
 simple-animation-component.md
-animation-controller-asset.md
-animation-controller-component.md
+animation-controller
 blender-export.md

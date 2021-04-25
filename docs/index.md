@@ -202,8 +202,20 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Skeleton Asset (TODO)](animation/skeletal-animation/skeleton-asset.md)
   * [Animation Clip Asset (TODO)](animation/skeletal-animation/animation-clip-asset.md)
   * [Simple Animation Component (TODO)](animation/skeletal-animation/simple-animation-component.md)
-  * [Animation Controller Asset (TODO)](animation/skeletal-animation/animation-controller-asset.md)
-  * [Animation Controller Component (TODO)](animation/skeletal-animation/animation-controller-component.md)
+  * __Animation Controller__
+    * [Animation Controller Asset (TODO)](animation/skeletal-animation/animation-controller/animation-controller-asset.md)
+    * [Animation Controller Component (TODO)](animation/skeletal-animation/animation-controller/animation-controller-component.md)
+    * [Animation Controller Nodes: Blackboard (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md)
+    * [Animation Controller Nodes: Bone Weights (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.md)
+    * [Animation Controller Nodes: Combine Poses (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.md)
+    * [Animation Controller Nodes: Events (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-events.md)
+    * [Animation Controller Nodes: Input (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-input.md)
+    * [Animation Controller Nodes: Logic and Math (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-logic-math.md)
+    * [Animation Controller Nodes: Mix Clips 1D (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-mix1d.md)
+    * [Animation Controller Nodes: Mix Clips 2D (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-mix2d.md)
+    * [Animation Controller Nodes: Local to Modelspace (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-modelspace.md)
+    * [Animation Controller Nodes: Output (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-output.md)
+    * [Animation Controller Nodes: Play Clip (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-playclip.md)
   * [Authoring and Exporting Animations with Blender](animation/skeletal-animation/blender-export.md)
 
 ### Sound
