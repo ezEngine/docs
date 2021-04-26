@@ -10,7 +10,7 @@ The `Model Pose Output` node is currently the only available type of output node
 
 ### Properties
 
-*none*
+* *none*
 
 ### Input Pins
 
@@ -20,7 +20,7 @@ The `Model Pose Output` node is currently the only available type of output node
 
 ### Output Pins
 
-*none*
+* *none*
 
 ## See Also
 

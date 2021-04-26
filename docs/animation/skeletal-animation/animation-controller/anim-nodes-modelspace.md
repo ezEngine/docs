@@ -10,7 +10,7 @@ Therefore this node is necessary to convert a pose from one representation to th
 
 ## Properties
 
-*none*
+* *none*
 
 ## Input Pins
 

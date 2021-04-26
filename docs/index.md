@@ -206,7 +206,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
     * [Animation Controller (TODO)](animation/skeletal-animation/animation-controller/animation-controller-overview.md)
     * [Animation Controller Asset (TODO)](animation/skeletal-animation/animation-controller/animation-controller-asset.md)
     * [Animation Controller Component (TODO)](animation/skeletal-animation/animation-controller/animation-controller-component.md)
-    * [Blackboard Nodes (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md)
+    * [Blackboard Nodes](animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md)
     * [Bone Weight Nodes (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.md)
     * [Combine Poses Nodes](animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.md)
     * [Event Nodes (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-events.md)
@@ -262,6 +262,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Miscellaneous
 
+* [Blackboards (TODO)](Miscellaneous/blackboards.md)
 * [ImageData Asset](Miscellaneous/imagedata-asset.md)
 
 ---
