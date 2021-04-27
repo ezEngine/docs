@@ -207,7 +207,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
     * [Animation Controller Asset (TODO)](animation/skeletal-animation/animation-controller/animation-controller-asset.md)
     * [Animation Controller Component (TODO)](animation/skeletal-animation/animation-controller/animation-controller-component.md)
     * [Blackboard Nodes](animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md)
-    * [Bone Weight Nodes (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.md)
+    * [Bone Weight Nodes](animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.md)
     * [Combine Poses Nodes](animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.md)
     * [Event Nodes](animation/skeletal-animation/animation-controller/anim-nodes-events.md)
     * [Input Nodes](animation/skeletal-animation/animation-controller/anim-nodes-input.md)
