@@ -18,10 +18,6 @@ When this node is triggered, it broadcasts an `ezMsgGenericEvent` with `Message`
 
 * **Active**: While this pin is triggered, the message is sent (once every frame).
 
-### Output Pins
-
-* *none*
-
 ## See Also
 
 * [Back to Index](../../../index.md)

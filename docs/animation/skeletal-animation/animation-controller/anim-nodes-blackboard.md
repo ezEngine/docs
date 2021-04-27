@@ -25,10 +25,6 @@ When activated or deactivated, this node writes a given value to the blackboard.
 
 * **Active**: The *active* state determines when either the `ActivationValue` or `DeactivationValue` shall be written to the blackbard. As long as this pin's state doesn't change, no value is written.
 
-### Output Pins
-
-* *none*
-
 ## Check Blackboard Value Node
 
 This node constantly monitors a blackboard value and compares it to a reference value. Whenever the comparison yields `true`, the `Active` output pin is enabled, otherwise disabled.
@@ -41,10 +37,6 @@ This node constantly monitors a blackboard value and compares it to a reference 
 
 * **Comparison**: The way the two values get compared.
 
-### Input Pins
-
-* *none*
-
 ### Output Pins
 
 * **Active**: This output pin will be triggered whenever the comparison was successful.
@@ -56,10 +48,6 @@ This node outputs the value of a specific blackboard entry. The number value can
 ### Properties
 
 * **BlackboardEntry**: The name of the blackboard entry (variable) to read.
-
-### Input Pins
-
-* *none*
 
 ### Output Pins
 

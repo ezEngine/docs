@@ -67,7 +67,7 @@ The expression must be syntactically correct, otherwise the node prints an error
 
 * **a**, **b**, **c** and **d**: Input values to the mathematical expression. Unconnected pins are treated as having the value zero.
 
-## Output Pins
+### Output Pins
 
 * **Result**: Outputs the result of the evaluated expression.
 

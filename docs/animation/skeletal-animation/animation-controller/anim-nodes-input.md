@@ -10,14 +10,6 @@ This node reads the raw state of the connected XBox controller 1. It then output
 
 This node completely ignores any kind of button mapping. It is purely meant for prototyping scenarios, where it can be very convenient.
 
-### Properties
-
-* *none*
-
-### Input Pins
-
-* *none*
-
 ### Output Pins
 
 * This node has one output pin for every button and stick direction. If you need to turn an analog signal into a trigger value, use the [Compare Number node](anim-nodes-logic-math.md).

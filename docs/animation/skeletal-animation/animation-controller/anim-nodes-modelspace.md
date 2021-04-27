@@ -8,10 +8,6 @@ Having the data in this representation is advantageous for mixing multiple anima
 
 Therefore this node is necessary to convert a pose from one representation to the other, before it can be passed to an [output node](anim-nodes-output.md).
 
-## Properties
-
-* *none*
-
 ## Input Pins
 
 * **LocalPose**: A single pose in local space.
