@@ -20,7 +20,7 @@ This node completely ignores any kind of button mapping. It is purely meant for 
 
 ### Output Pins
 
-* This node has one output pin for every button and stick direction. If you need to turn an analog signal into a trigger value, use the [Compare Number node (TODO)](anim-nodes-logic-math.md).
+* This node has one output pin for every button and stick direction. If you need to turn an analog signal into a trigger value, use the [Compare Number node](anim-nodes-logic-math.md).
 
 ## See Also
 
