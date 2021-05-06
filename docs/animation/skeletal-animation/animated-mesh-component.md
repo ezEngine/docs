@@ -1,6 +1,6 @@
 # Animated Mesh Component
 
-An *animated mesh component* is used to instantiate an [animated mesh asset](animated-mesh-asset.md). Animated mesh components are mostly identical to regular [mesh components](../../graphics/meshes/mesh-component.md) except that they can only be used with [animated mesh assets](animated-mesh-asset.md). An animated mesh will be skinned with its current animation pose. Which pose is applied to an animated mesh can be controlled with a [simple animation component](simple-animation-component.md) or an [animation controller component](animation-controller/animation-controller-component.md).
+An *animated mesh component* is used to instantiate an [animated mesh asset](animated-mesh-asset.md). Animated mesh components are mostly identical to regular [mesh components](../../graphics/meshes/mesh-component.md) except that they can only be used with [animated mesh assets](animated-mesh-asset.md). An animated mesh will be skinned with its current animation pose. Which pose is applied to an animated mesh can be controlled with a [simple animation component (TODO)](simple-animation-component.md) or an [animation controller component (TODO)](animation-controller/animation-controller-component.md).
 
 ![Animated Mesh](../media/animated-mesh.jpg)
 
@@ -13,6 +13,6 @@ An *animated mesh component* is used to instantiate an [animated mesh asset](ani
 ## See Also
 
 * [Back to Index](../../index.md)
-* [Meshes](meshes-overview.md)
+* [Meshes](../../graphics/meshes/meshes-overview.md)
 * [Skeletal Animations](skeletal-animation-overview.md)
-* [Simple Animation Component](simple-animation-component.md)
+* [Simple Animation Component (TODO)](simple-animation-component.md)

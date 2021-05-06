@@ -5,7 +5,7 @@ This page contains various pieces of information that are good to know when one 
 ## Exporting Animated Meshes
 
 1. To get animated meshes out of Blender and into ezEngine, export the animated mesh to a binary GLTF file (`.glb`).
-1. You can enable `+Y up` or not. In both cases you need to adjust the transformation on the [skeleton asset (TODO)](skeleton-asset.md).
+1. You can enable `+Y up` or not. In both cases you need to adjust the transformation on the [skeleton asset](skeleton-asset.md).
 1. Make sure that the GLTF export contains *Animations* and *Skinning* information.
 1. Don't disable animation sampling on export.
 1. Be aware that GLTF uses 1000 frames per second for all exported animation clips. Blender, by default, uses 24 frames per second. If you want to only use a sub-range of an animation in EZ, you will need to re-calculate the frame indices accordingly. You can set Blender to use 25 or 50 frames per second to make this calculation easier.
@@ -15,7 +15,7 @@ This page contains various pieces of information that are good to know when one 
 
 ## Importing Meshes into EZ
 
-When importing a mesh, EZ remaps the model space to its own convention. You may need to change the mapping, to get the desired result. For static meshes, this is configure on the [mesh asset](../../graphics/meshes/mesh-asset.md). For animated models, the mapping is chosen on the root node of the corresponding [skeleton asset (TODO)](skeleton-asset.md).
+When importing a mesh, EZ remaps the model space to its own convention. You may need to change the mapping, to get the desired result. For static meshes, this is configure on the [mesh asset](../../graphics/meshes/mesh-asset.md). For animated models, the mapping is chosen on the root node of the corresponding [skeleton asset](skeleton-asset.md).
 
 EZ uses the following convention:
 

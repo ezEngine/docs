@@ -198,9 +198,11 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Slider Component](animation/property-animation/slider-component.md)
 * __Skeletal Animation__
   * [Skeletal Animations](animation/skeletal-animation/skeletal-animation-overview.md)
-  * [Animated Mesh Asset (TODO)](animation/skeletal-animation/animated-mesh-asset.md)
-  * [Skeleton Asset (TODO)](animation/skeletal-animation/skeleton-asset.md)
-  * [Animation Clip Asset (TODO)](animation/skeletal-animation/animation-clip-asset.md)
+  * [Animated Mesh Asset](animation/skeletal-animation/animated-mesh-asset.md)
+  * [Animated Mesh Component](animation/skeletal-animation/animated-mesh-component.md)
+  * [Skeleton Asset](animation/skeletal-animation/skeleton-asset.md)
+  * [Skeleton Component](animation/skeletal-animation/skeleton-component.md)
+  * [Animation Clip Asset](animation/skeletal-animation/animation-clip-asset.md)
   * [Simple Animation Component (TODO)](animation/skeletal-animation/simple-animation-component.md)
   * __Animation Controller__
     * [Animation Controller (TODO)](animation/skeletal-animation/animation-controller/animation-controller-overview.md)
@@ -217,6 +219,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
     * [Local To Model Pose Node](animation/skeletal-animation/animation-controller/anim-nodes-modelspace.md)
     * [Output Nodes](animation/skeletal-animation/animation-controller/anim-nodes-output.md)
     * [Play Single Clip Nodes (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-playclip.md)
+  * [Animation Events (TODO)](animation/skeletal-animation/animation-events.md)
   * [Root Motion (TODO)](animation/skeletal-animation/root-motion.md)
   * [Joint Attachment Component (TODO)](animation/skeletal-animation/joint-attachment-component.md)
   * [Joint Override Component (TODO)](animation/skeletal-animation/joint-override-component.md)
