@@ -1,6 +1,6 @@
 # Blackboard Nodes
 
-The animation controller provides nodes to read and write values from and to a [blackboard (TODO)](../../../Miscellaneous/blackboards.md). For this, the [game object](../../../runtime/world/game-objects.md) on which the [animation controller component (TODO)](animation-controller-component.md) is attached, also needs to hold a blackboard component.
+The animation controller provides nodes to read and write values from and to a [blackboard (TODO)](../../../Miscellaneous/blackboards.md). For this, the [game object](../../../runtime/world/game-objects.md) on which the [animation controller component](animation-controller-component.md) is attached, also needs to hold a blackboard component.
 
 > **Note:**
 > If no blackboad is available, these nodes will output a warning to the [log](../../../debugging/logging.md). If a blackboard is available, but the desired entry is not (yet) in the blackboard, they may add the entry or assume a default value of zero.

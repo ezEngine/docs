@@ -4,7 +4,7 @@ The *animation clip asset* is used to import a single animation for an [animated
 
 <video src="../media/anim-clip.webm" width="800" height="600" autoplay loop></video>
 
-An animation clip represents a single motion, such as a walk cycle, a jump or other action. Simple animations can be played on a mesh using a [simple animation component (TODO)](simple-animation-component.md). For complex behavior you will need to use multiple clips and fade from one to the other at the right times. Use an [animation controller (TODO)](animation-controller/animation-controller-overview.md) for that.
+An animation clip represents a single motion, such as a walk cycle, a jump or other action. Simple animations can be played on a mesh using a [simple animation component](simple-animation-component.md). For complex behavior you will need to use multiple clips and fade from one to the other at the right times. Use an [animation controller (TODO)](animation-controller/animation-controller-overview.md) for that.
 
 ## Asset Properties
 
@@ -20,7 +20,7 @@ An animation clip represents a single motion, such as a walk cycle, a jump or ot
 
 * `PreviewMesh`: The [animated mesh](animated-mesh-asset.md) to use for previewing this animation clip. This has to be set to see any preview.
 
-* `RootMotion`: If the animation clip should be able to move the [game object](../../runtime/world/game-objects.md), this can be achieved through [root motion (TODO)](root-motion.md). This option allows you to select how root motion should be incorporated into the animation clip.
+* `RootMotion`: If the animation clip should be able to move the [game object](../../runtime/world/game-objects.md), this can be achieved through [root motion](root-motion.md). This option allows you to select how root motion should be incorporated into the animation clip.
 
   For the time being the only mode available is *constant motion*, which means that when this clip is played, the parent object will be moved at a constant speed into a single direction. This can be used for walking animations, but it might be tricky to avoid *foot sliding*.
 
