@@ -1,6 +1,8 @@
 skeletal-animation-overview.md
 animated-mesh-asset.md
+animated-mesh-component.md
 skeleton-asset.md
+skeleton-component.md
 animation-clip-asset.md
 simple-animation-component.md
 animation-controller
