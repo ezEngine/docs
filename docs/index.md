@@ -221,8 +221,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
     * [Play Single Clip Nodes (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-playclip.md)
   * [Animation Events (TODO)](animation/skeletal-animation/animation-events.md)
   * [Root Motion](animation/skeletal-animation/root-motion.md)
-  * [Joint Attachment Component (TODO)](animation/skeletal-animation/joint-attachment-component.md)
-  * [Joint Override Component (TODO)](animation/skeletal-animation/joint-override-component.md)
+  * [Joint Attachment Component](animation/skeletal-animation/joint-attachment-component.md)
+  * [Joint Override Component](animation/skeletal-animation/joint-override-component.md)
   * [Authoring and Exporting Animations with Blender](animation/skeletal-animation/blender-export.md)
 
 ### Sound
