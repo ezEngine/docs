@@ -214,7 +214,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
     * [Event Nodes](animation/skeletal-animation/animation-controller/anim-nodes-events.md)
     * [Input Nodes](animation/skeletal-animation/animation-controller/anim-nodes-input.md)
     * [Logic and Math Nodes](animation/skeletal-animation/animation-controller/anim-nodes-logic-math.md)
-    * [Mix Clips 1D Node (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-mix1d.md)
+    * [Mix Clips 1D Node](animation/skeletal-animation/animation-controller/anim-nodes-mix1d.md)
     * [Mix Clips 2D Node (TODO)](animation/skeletal-animation/animation-controller/anim-nodes-mix2d.md)
     * [Local To Model Pose Node](animation/skeletal-animation/animation-controller/anim-nodes-modelspace.md)
     * [Output Nodes](animation/skeletal-animation/animation-controller/anim-nodes-output.md)
