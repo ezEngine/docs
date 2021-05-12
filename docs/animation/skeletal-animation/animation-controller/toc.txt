@@ -12,3 +12,4 @@ anim-nodes-mix2d.md
 anim-nodes-modelspace.md
 anim-nodes-output.md
 anim-nodes-playclip.md
+anim-nodes-sequence.md
