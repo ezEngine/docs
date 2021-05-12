@@ -8,7 +8,7 @@ Animation controller graphs provide multiple node types that are used for sampli
 
 All animation controller nodes that sample animation clips share these properties:
 
-* `Loop`: If enabled the node will loop playback while its `Active` pin is triggered. Which clip exactly gets looped depends on the node. The *play single clip node* for example just loops playback in general, but randomly picks a different clip in every iteration. The [play clip sequence node (TODO)](anim-nodes-sequence.md) on the other hand will loop its middle clip instead.
+* `Loop`: If enabled the node will loop playback while its `Active` pin is triggered. Which clip exactly gets looped depends on the node. The *play single clip node* for example just loops playback in general, but randomly picks a different clip in every iteration. The [play clip sequence node](anim-nodes-sequence.md) on the other hand will loop its middle clip instead.
 
 * `ApplyRootMotion`: If enabled, the node will compute the [root motion](../root-motion.md) from the sampled clips and forward this to the [animation controller component](animation-controller-component.md), which may apply this to the game object's position.
 
@@ -54,5 +54,5 @@ Many animation controller nodes have some or all of these output pins:
 * [Animation Controller (TODO)](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)
 * [Bone Weight Nodes](anim-nodes-bone-weights.md)
-* [Play Clip Sequence Node (TODO)](anim-nodes-sequence.md)
+* [Play Clip Sequence Node](anim-nodes-sequence.md)
 * [Mix Clips 2D Node (TODO)](anim-nodes-mix2d.md)

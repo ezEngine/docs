@@ -4,6 +4,7 @@ animation-controller-component.md
 anim-nodes-blackboard.md
 anim-nodes-bone-weights.md
 anim-nodes-combine-poses.md
+anim-nodes-debug.md
 anim-nodes-events.md
 anim-nodes-input.md
 anim-nodes-logic-math.md
