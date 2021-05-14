@@ -221,7 +221,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
     * [Output Nodes](animation/skeletal-animation/animation-controller/anim-nodes-output.md)
     * [Play Single Clip Nodes](animation/skeletal-animation/animation-controller/anim-nodes-playclip.md)
     * [Play Clip Sequence Node](animation/skeletal-animation/animation-controller/anim-nodes-sequence.md)
-  * [Animation Events (TODO)](animation/skeletal-animation/animation-events.md)
+  * [Animation Events](animation/skeletal-animation/animation-events.md)
   * [Root Motion](animation/skeletal-animation/root-motion.md)
   * [Joint Attachment Component](animation/skeletal-animation/joint-attachment-component.md)
   * [Joint Override Component](animation/skeletal-animation/joint-override-component.md)

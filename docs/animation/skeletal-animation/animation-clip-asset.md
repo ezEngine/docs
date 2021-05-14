@@ -30,7 +30,7 @@ The toolbar buttons allow you to play/pause/reset and slow-down the animation pl
 
 ## Event Track
 
-Below the time scrubber there is an additional strip to edit [animation events (TODO)](animation-events.md). Here you can add events that shall occur at specific times during the animation clip playback, such as *foot-down* or *fire-weapon*. Use the time scrubber above to play the clip and inspect at which time the event shall occur. Then *right click* into the event track and select **Add Event**. Which type of event will be added is specified with the combo box at the bottom right.
+Below the time scrubber there is an additional strip to edit [animation events](animation-events.md). Here you can add events that shall occur at specific times during the animation clip playback, such as *foot-down* or *fire-weapon*. Use the time scrubber above to play the clip and inspect at which time the event shall occur. Then *right click* into the event track and select **Add Event**. Which type of event will be added is specified with the combo box at the bottom right.
 
 ## See Also
 

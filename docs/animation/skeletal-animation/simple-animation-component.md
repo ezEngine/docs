@@ -24,7 +24,7 @@ For more complex scenarios use an [animation controller (TODO)](animation-contro
 
 ## Events
 
-The component will broadcast the event `ezMsgGenericEvent` every time it encounters an [animation event (TODO)](animation-events.md) in the animation clip. [Custom code](../../custom-code/custom-code-overview.md) can listen for these events and trigger relevant game mechanics.
+The component will broadcast the event `ezMsgGenericEvent` every time it encounters an [animation event](animation-events.md) in the animation clip. [Custom code](../../custom-code/custom-code-overview.md) can listen for these events and trigger relevant game mechanics.
 
 ## See Also
 
