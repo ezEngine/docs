@@ -37,5 +37,5 @@ See [common output pins](anim-nodes-playclip.md#common-output-pins).
 * [Back to Index](../../../index.md)
 * [Animation Controller (TODO)](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)
-* [Mix Clips 2D Node (TODO)](anim-nodes-mix2d.md)
+* [Mix Clips 2D Node](anim-nodes-mix2d.md)
 * [Play Single Clip Nodes](anim-nodes-playclip.md)

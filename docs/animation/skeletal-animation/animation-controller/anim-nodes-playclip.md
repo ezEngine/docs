@@ -55,4 +55,4 @@ Many animation controller nodes have some or all of these output pins:
 * [Skeletal Animations](../skeletal-animation-overview.md)
 * [Bone Weight Nodes](anim-nodes-bone-weights.md)
 * [Play Clip Sequence Node](anim-nodes-sequence.md)
-* [Mix Clips 2D Node (TODO)](anim-nodes-mix2d.md)
+* [Mix Clips 2D Node](anim-nodes-mix2d.md)
