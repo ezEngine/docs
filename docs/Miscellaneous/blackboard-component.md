@@ -4,20 +4,20 @@ The *blackboard component* contains a [blackboard](blackboards.md). The componen
 
 If a system requires a blackboard, it will typically search for a blackboard component by traversing its own object structure upwards (in C++ you can use `ezBlackboardComponent::FindBlackboard()` to do so).
 
-For example the [animation controller](../animation/skeletal-animation/animation-controller/animation-controller-overview.md) is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through [custom code](../custom-code/custom-code-overview.md). For this, the blackboard component has to be attached either to the same object, or a parent object.
+For example the [animation controller (TODO)](../animation/skeletal-animation/animation-controller/animation-controller-overview.md) is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through [custom code](../custom-code/custom-code-overview.md). For this, the blackboard component has to be attached either to the same object, or a parent object.
 
 ## Properties
 
-* `BlackboardName`:
+* `BlackboardName`: The *name* for the blackboard. This could be used to search for a specific blackboard (if multiple are available), however, that is rarely a problem.
 
-* `ShowDebugInfo`:
+* `ShowDebugInfo`: If enabled, the component will [draw a debug text overlay](../debugging/debug-rendering.md) with the current entries and their values at the position of the game object.
 
-* `SendEntryChangedMessage`:
+* `SendEntryChangedMessage`: If enabled, all changes to blackboard entries will be broadcast as an [event message](../runtime/world/world-messaging.md#event-messages) of type `ezMsgBlackboardEntryChanged`. This allows other systems to react to every change, but also has a small performance cost.
 
-* `Entries`:
+* `Entries`: Entries that will be added at start with their initial values. Some systems will may their own entries, others expect an entry to already exist. For example the [input component](../input/input-component.md) may write input state into a blackboard, but it will only do so for entries that already exist. Therefore, you will need to add all entries that you want to receive from the input system here.
 
 ## See Also
 
 * [Back to Index](../index.md)
 * [Blackboards](blackboards.md)
-* [Animation Controller](../animation/skeletal-animation/animation-controller/animation-controller-overview.md)
+* [Animation Controller (TODO)](../animation/skeletal-animation/animation-controller/animation-controller-overview.md)

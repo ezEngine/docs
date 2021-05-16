@@ -267,7 +267,8 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ### Miscellaneous
 
-* [Blackboards (TODO)](Miscellaneous/blackboards.md)
+* [Blackboard Component](Miscellaneous/blackboard-component.md)
+* [Blackboards](Miscellaneous/blackboards.md)
 * [ImageData Asset](Miscellaneous/imagedata-asset.md)
 
 ---

@@ -1,6 +1,6 @@
 # Logic and Math Nodes
 
-The animation controller provides a couple of nodes to evaluate basic arithmatic and logic. This is meant for very simple use cases and for quick prototyping. Often animation logic requires much more complex rules than what would be feasible to express in the animation controller graph. Instead use [custom code](../../../custom-code/custom-code-overview.md) to decide which animation should run under which circumstances, and pass the result to the animation controller via a [blackboard (TODO)](../../../Miscellaneous/blackboards.md). The animation controller can then simply read the state for each animation using the [blackboard nodes](anim-nodes-blackboard.md).
+The animation controller provides a couple of nodes to evaluate basic arithmatic and logic. This is meant for very simple use cases and for quick prototyping. Often animation logic requires much more complex rules than what would be feasible to express in the animation controller graph. Instead use [custom code](../../../custom-code/custom-code-overview.md) to decide which animation should run under which circumstances, and pass the result to the animation controller via a [blackboard](../../../Miscellaneous/blackboards.md). The animation controller can then simply read the state for each animation using the [blackboard nodes](anim-nodes-blackboard.md).
 
 ## Logic AND Node
 
