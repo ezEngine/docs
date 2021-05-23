@@ -91,4 +91,4 @@ See the [20.8 milestone](https://github.com/ezEngine/ezEngine/milestone/5?closed
 ## See Also
 
 * [Back to Index](../index.md)
-* [Release Notes](release-notes.md)
+* [Releases](releases.md)

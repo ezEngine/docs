@@ -1,1 +1,1 @@
-release-notes.md
+releases.md

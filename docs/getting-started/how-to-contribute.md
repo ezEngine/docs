@@ -8,7 +8,7 @@ Just using the engine and [filing bug reports](https://github.com/ezEngine/ezEng
 
 ## Extend the Samples
 
-The samples are there for you to get to know the engine and have a playground to try out stuff. As you may notice, most samples are not "complete", ie. they could be extended a great deal with functionality, with code comments etc. This was not a didactic decision, but rather due to limited time on our side, so if you play with a sample and improve it, even just slightly, please feel welcome to contribute your changes back, so that others can benefit from it.
+The samples are there for you to get to know the engine and have a playground to try out stuff. As you may notice, most samples are not "complete", ie. they could be extended a great deal with functionality, with code comments, etc. This was not a didactic decision, but rather due to limited time on our side, so if you play with a sample and improve it, even just slightly, please feel welcome to contribute your changes back, so that others can benefit from it.
 
 Of course you are also invited to write entirely new samples.
 

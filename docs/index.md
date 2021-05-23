@@ -4,7 +4,7 @@ Welcome to ezEngine !
 
 The latest source code can be cloned from [GitHub](https://github.com/ezEngine/ezEngine). Prefer to use the 'dev' branch, it contains the latest changes and bugfixes. 
 
-Precompiled binary packages are provided under [Releases](https://github.com/ezEngine/ezEngine/releases). See the [Release Notes](releases/release-notes.md) for details.
+Precompiled binary packages are provided under [Releases](https://github.com/ezEngine/ezEngine/releases). See the [Release Notes](releases/releases.md) for details.
 
 This website is the main documentation for ezEngine. Additional source code API documentation [can be found here](https://ezengine.github.io/api-docs/). 
 
@@ -12,7 +12,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ## Table of Contents
 
-### Getting Started
+## Getting Started
 
 * [API Docs](getting-started/api-docs.md)
 * [Contact](getting-started/contact.md)
@@ -21,11 +21,11 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [How to Contribute](getting-started/how-to-contribute.md)
 * [Videos](getting-started/videos.md)
 
-### Releases
+## Releases
 
-* [Release Notes](releases/release-notes.md)
+* [Releases](releases/releases.md)
 
-### Build
+## Build
 
 * [Building ezEngine](build/building-ez.md)
 * [Supported Platforms](build/supported-platforms.md)
@@ -39,7 +39,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Linux Builds](build/build-linux.md)
 * [MacOS Builds](build/build-macos.md)
 
-### Samples
+## Samples
 
 * [Samples](samples/samples-overview.md)
 * [Asteroids Sample](samples/asteroids.md)
@@ -53,7 +53,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ---
 
-### Editor
+## Editor
 
 * [Editor Background Operations](editor/editor-bg-operations.md)
 * [Editor Documents](editor/editor-documents.md)
@@ -63,14 +63,14 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Editing Views](editor/editor-views.md)
 * [Running a Scene](editor/run-scene.md)
 
-### Projects
+## Projects
 
 * [Data Directories](projects/data-directories.md)
 * [Project Settings](projects/project-settings.md)
 * [Projects](projects/projects-overview.md)
 * [Tags](projects/tags.md)
 
-### Scenes
+## Scenes
 
 * [Advanced Object Transforms](scenes/advanced-object-transform.md)
 * [Editor Camera](scenes/editor-camera.md)
@@ -82,7 +82,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Scene Editing](scenes/scene-editing.md)
 * [Selecting Objects](scenes/selection.md)
 
-### Assets
+## Assets
 
 * [Asset Browser](assets/asset-browser.md)
 * [Asset Curator](assets/asset-curator.md)
@@ -90,11 +90,11 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Assets](assets/assets-overview.md)
 * [Asset Import](assets/import-assets.md)
 
-### Prefabs
+## Prefabs
 
 * [Prefabs](prefabs/prefabs-overview.md)
 
-### Graphics
+## Graphics
 
 * [Always Visible Component](graphics/always-visible-component.md)
 * [Camera Component](graphics/camera-component.md)
@@ -120,19 +120,19 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Sprite Component](graphics/sprite-component.md)
 * [Textures](graphics/textures-overview.md)
 
-### Materials
+## Materials
 
 * [Materials](materials/materials-overview.md)
 * [Surfaces](materials/surfaces.md)
 * [Visual Shaders (TODO)](materials/visual-shaders.md)
 
-### Input
+## Input
 
 * [Input System](input/input-overview.md)
 * [Input Set Configuration](input/input-config.md)
 * [Input Component](input/input-component.md)
 
-### Physics
+## Physics
 
 * [PhysX Integration](physics/physx-overview.md)
 * [PhysX Settings Component](physics/physx-settings-component.md)
@@ -164,7 +164,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Character Controller](physics/special/physx-character-controller.md)
   * [PhysX Grab Object Component](physics/special/physx-grab-object-component.md)
 
-### Effects
+## Effects
 
 * [Beam Component](effects/beam-component.md)
 * [Decals](effects/decals.md)
@@ -183,7 +183,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Sky](effects/sky.md)
 * [Wind (TODO)](effects/wind.md)
 
-### Animation
+## Animation
 
 * __Common__
   * [Color Gradients](animation/common/color-gradients.md)
@@ -227,7 +227,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
   * [Joint Override Component](animation/skeletal-animation/joint-override-component.md)
   * [Authoring and Exporting Animations with Blender](animation/skeletal-animation/blender-export.md)
 
-### Sound
+## Sound
 
 * [Sound](sound/sound-overview.md)
 * [Fmod Integration](sound/fmod-overview.md)
@@ -236,25 +236,25 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Fmod Listener Component](sound/fmod-listener-component.md)
 * [Fmod Event Component](sound/fmod-event-component.md)
 
-### Terrain and Vegetation
+## Terrain and Vegetation
 
 * [Terrain and Vegetation](terrain/terrain-overview.md)
 * [Heightfield Component](terrain/heightfield-component.md)
 * [Kraut](terrain/kraut-overview.md)
 
-### Ai
+## Ai
 
 * [Recast Navmesh Component](ai/recast-navmesh-component.md)
 * [Recast Navmesh](ai/recast-navmesh.md)
 * [Recast Integration (TODO)](ai/recast.md)
 
-### Ui
+## Ui
 
 * [Ingame UI](ui/ui.md)
 * [ImGui](ui/imgui.md)
 * [RmlUi](ui/rmlui.md)
 
-### Gameplay
+## Gameplay
 
 * [Area Damage Component](gameplay/area-damage-component.md)
 * [Grabbable Item Component](gameplay/grabbable-item-component.md)
@@ -265,7 +265,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [Spawn Component](gameplay/spawn-component.md)
 * [Timed Death Component](gameplay/timed-death-component.md)
 
-### Miscellaneous
+## Miscellaneous
 
 * [Blackboard Component](Miscellaneous/blackboard-component.md)
 * [Blackboards](Miscellaneous/blackboards.md)
@@ -273,7 +273,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ---
 
-### Custom Code
+## Custom Code
 
 * [Custom Code](custom-code/custom-code-overview.md)
 * __C++__
@@ -291,7 +291,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * __Visual Script__
   * [Custom Code with Visual Scripts](custom-code/visual-script/visual-script-overview.md)
 
-### Runtime
+## Runtime
 
 * __Application__
   * [Application (TODO)](runtime/application/application.md)
@@ -317,7 +317,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 
 ---
 
-### Debugging
+## Debugging
 
 * __Components__
   * [Debug Text Component](debugging/components/debug-text-component.md)
@@ -330,13 +330,13 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [RenderDoc Integration](debugging/renderdoc.md)
 * [Stats](debugging/stats.md)
 
-### Performance
+## Performance
 
 * [Asset Collections](performance/asset-collections.md)
 * [Collection Component](performance/collection-component.md)
 * [Profiling](performance/profiling.md)
 
-### Tools
+## Tools
 
 * [ArchiveTool](tools/archivetool.md)
 * [FileServe (TODO)](tools/fileserve.md)
@@ -347,15 +347,11 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [ShaderCompiler (TODO)](tools/shadercompiler.md)
 * [StaticLinkUtil](tools/staticlinkutil.md)
 * [ezTexConv](tools/texconv.md)
+* [Unit Tests (TODO)](tools/unit-tests.md)
 
 ---
 
-### Tests
-
-* [Test Framework (TODO)](tests/test-framework.md)
-* [Unit Tests (TODO)](tests/unit-tests.md)
-
-### Appendix
+## Appendix
 
 * [Library Structure](appendix/library-structure.md)
 * [Coding Guidelines (TODO)](appendix/coding-guidelines.md)

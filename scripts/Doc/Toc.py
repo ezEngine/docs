@@ -86,7 +86,7 @@ def GenerateToc(nameToFile: dict, order: list):
             headline = line[3:]
 
             if topLevel:
-                tocContent += f"\n### {headline}\n\n"
+                tocContent += f"\n## {headline}\n\n"
 
                 topLevel = False
                 indentation = ""

@@ -69,4 +69,4 @@
 ## See Also
 
 * [Back to Index](../index.md)
-* [Release Notes](release-notes.md)
+* [Releases](releases.md)
