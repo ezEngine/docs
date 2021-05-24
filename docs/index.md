@@ -347,7 +347,7 @@ For topics not (yet) covered by the documentation, [contact us](getting-started/
 * [ShaderCompiler (TODO)](tools/shadercompiler.md)
 * [StaticLinkUtil](tools/staticlinkutil.md)
 * [ezTexConv](tools/texconv.md)
-* [Unit Tests (TODO)](tools/unit-tests.md)
+* [Unit Tests](tools/unit-tests.md)
 
 ---
 
