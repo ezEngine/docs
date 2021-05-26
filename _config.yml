@@ -1,0 +1,5 @@
+theme: jekyll-theme-slate
+title: <a href="https://ezEngine.net">ezEngine</a>
+description: An open source game engine
+show_downloads: false
+#remote_theme: chrisrhymes/bluma-clean-theme

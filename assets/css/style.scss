@@ -1,0 +1,119 @@
+---
+---
+
+@import "jekyll-theme-slate";
+
+.ez_logo {
+    display: block;
+    float: center;
+    width: 325px;
+    height:110px;
+    text-indent: -5000px;
+    overflow: hidden;
+    background: url(https://ezEngine.net/assets/images/EZ-text.svg) no-repeat;
+    margin-bottom: 30px;
+  }
+
+#menu_item {
+  display: inline;
+  z-index: 10;
+  padding: 10px 15px;
+  color: rgb(155, 155, 155);
+  text-align: center;
+  background: #272b2e no-repeat;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#menu_item_github {
+  display: inline;
+  z-index: 10;
+  padding: 10px 40px 10px 15px;
+  color: rgb(155, 155, 155);
+  text-align: center;
+  background: #272b2e no-repeat url('../images/logo-github-white.svg');
+  background-size: 22px;
+  background-position: 90% 50%;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#logo_ez {
+  display: inline;
+  z-index: 10;
+  padding: 15px;
+  background: url('../images/EZ-logo.svg') no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+#logo_github {
+  display: inline;
+  z-index: 10;
+  padding: 15px;
+  background: url('../images/logo-github-white.svg') no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+#logo_twitter {
+  display: inline;
+  z-index: 10;
+  padding: 15px;
+  background: url('../images/logo-twitter.svg') no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+#logo_discord {
+  display: inline;
+  z-index: 10;
+  padding: 15px;
+  background: url('../images/logo-discord.svg') no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+#logo_youtube {
+  display: inline;
+  z-index: 10;
+  padding: 15px;
+  background: url('../images/logo-youtube.svg') no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #B7613F;
+}
+
+h2 {
+  font-size: 24px;
+  color: #5B3020;
+}
+
+h3 {
+  font-size: 21px;
+  color: #593D33;
+}
+
+h4 {
+  font-size: 18px;
+  color: #564741;
+}
+
+h5 {
+  font-size: 16px;
+  color: #3D3D3D;
+}
+
+h6 {
+  font-size: 16px;
+  color: #464646;
+}
