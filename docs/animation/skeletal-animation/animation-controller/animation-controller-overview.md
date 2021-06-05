@@ -6,7 +6,7 @@ An *animation controller* is used to configure how each animation clip of a char
 
 ## Creating and Using Animation Controllers
 
-Animation controllers are configured through the [animation controller asset type (TODO)](animation-controller-asset.md). To apply the output pose of an animation controller to an [animated mesh](../animated-mesh-component.md), add an [animation controller component](animation-controller-component.md) to the same [game object](../../../runtime/world/game-objects.md). The controller will send the output pose to the mesh every frame, but only while the scene is [simulated](../../../editor/run-scene.md).
+Animation controllers are configured through the [animation controller asset type](animation-controller-asset.md). To apply the output pose of an animation controller to an [animated mesh](../animated-mesh-component.md), add an [animation controller component](animation-controller-component.md) to the same [game object](../../../runtime/world/game-objects.md). The controller will send the output pose to the mesh every frame, but only while the scene is [simulated](../../../editor/run-scene.md).
 
 To control what an animation controller will output, you typically also need a [blackboard](../../../Miscellaneous/blackboards.md). The blackboard is used to store state. Scripts or other [custom code](../../../custom-code/custom-code-overview.md) decide which animations should be played and write that state to the blackboard. The animation controller in turn reads state from the blackboard and then activates the desired animation clip playback. The controller can also write back state to the blackboard, for example to communicate back that an animation clip has finished playing.
 
@@ -44,5 +44,5 @@ Simple animation state machines can be built directly in the animation controlle
 
 * [Back to Index](../../../index.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)
-* [Animation Controller Asset (TODO)](animation-controller-asset.md)
+* [Animation Controller Asset](animation-controller-asset.md)
 * [Animation Controller Component](animation-controller-component.md)

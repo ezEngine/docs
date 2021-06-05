@@ -196,7 +196,7 @@
   * [Simple Animation Component](animation/skeletal-animation/simple-animation-component.md)
   * __Animation Controller__
     * [Animation Controller](animation/skeletal-animation/animation-controller/animation-controller-overview.md)
-    * [Animation Controller Asset (TODO)](animation/skeletal-animation/animation-controller/animation-controller-asset.md)
+    * [Animation Controller Asset](animation/skeletal-animation/animation-controller/animation-controller-asset.md)
     * [Animation Controller Component](animation/skeletal-animation/animation-controller/animation-controller-component.md)
     * [Blackboard Nodes](animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md)
     * [Bone Weight Nodes](animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.md)
