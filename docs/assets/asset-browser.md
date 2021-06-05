@@ -14,6 +14,18 @@ Several other options are available, for example, *Open Asset* allows you to ope
 
 The *Search* field in the top-left corner allows you to search for assets by name, path and GUID. The search by path or name is case insensitive. For paths, both slashes and backslashes are allowed. You can also input the GUID of an asset (for example *{ 1c47ee4c-0379-4280-85f5-b8cda61941d2 }*).
 
+## Advanced Search
+
+The *Search* field supports special keywords to find assets by certain criteria.
+
+### Find Asset References (`ref` and `ref-all`)
+
+It can be very useful to know in which assets one particular asset is used. By typing `ref:{asset-guid}` into the search field, the asset browser will display all assets that directly reference that particular asset themselves. Using `ref-all:{asset-guid}` will display also all assets that are indirectly dependent on that asset.
+
+However, it is much more convenient to just *right-click* an asset and select *Find all references to this asset*. This will fill out the search field accordingly:
+
+![Find Asset References](media/find-asset-references.png)
+
 ## Filter by Asset Type
 
 Below the search field, all available asset types are listed with checkboxes. Click the checkboxes to only display assets of those types. Click *\<All\>* or uncheck all asset types to display assets of all types.
