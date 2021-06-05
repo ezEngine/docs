@@ -27,11 +27,17 @@ In this mode the scene is rendered only as wireframe. Either monochrome or color
 ![Render Mode](media/render-mode-wireframe-color.jpg)
 <!-- ![Render Mode](media/render-mode-wireframe-mono.jpg) -->
 
-### Lit
+### Diffuse Lit Only
 
-This mode visualizes all lighting contributions.
+This mode visualizes only the diffuse lighting contributions.
 
 ![Render Mode](media/render-mode-lit.jpg)
+
+### Specular Lit Only
+
+This mode visualizes only the specular lighting contributions, including reflections.
+
+![Render Mode](media/render-mode-specular-lit.jpg)
 
 ### Decal Count
 
