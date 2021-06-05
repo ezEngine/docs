@@ -44,6 +44,7 @@
 
 ## Editor
 
+* [Dashboard](editor/dashboard.md)
 * [Editor Background Operations](editor/editor-bg-operations.md)
 * [Editor Documents](editor/editor-documents.md)
 * [Editor Plugins (TODO)](editor/editor-plugins.md)
@@ -333,7 +334,7 @@
 * [ezInspector](tools/inspector.md)
 * [MiniDump Tool](tools/minidumptool.md)
 * [ezPlayer](tools/player.md)
-* [ShaderCompiler (TODO)](tools/shadercompiler.md)
+* [ShaderCompiler](tools/shadercompiler.md)
 * [StaticLinkUtil](tools/staticlinkutil.md)
 * [ezTexConv](tools/texconv.md)
 * [Unit Tests](tools/unit-tests.md)

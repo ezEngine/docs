@@ -6,7 +6,9 @@ The term *project* refers to one game or application, its global settings, and a
 
 You can use ezEngine entirely without the editor. In that case, you do not need to create a project, at all. Your [application (TODO)](../runtime/application/application.md) is your project and you set up things like the [fileSystem](../runtime/filesystem.md), the [plugins](../custom-code/cpp/engine-plugins.md) and so on, entirely from code.
 
-It is more convenient, though, to maintain your project through the editor. To create a new project, open the editor and select *Editor > Create Project...*.
+It is more convenient, though, to maintain your project through the editor. To create a new project, open the editor's [dashboard](../editor/dashboard.md) (*Editor > Show Dashboard*) and select **New** from the top-right corner:
+
+![Dashboard](../editor/media/dashboard-projects.png)
 
 The dialog will ask you to select a **new folder** for your project:
 
