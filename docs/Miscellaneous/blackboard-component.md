@@ -4,7 +4,7 @@ The *blackboard component* contains a [blackboard](blackboards.md). The componen
 
 If a system requires a blackboard, it will typically search for a blackboard component by traversing its own object structure upwards (in C++ you can use `ezBlackboardComponent::FindBlackboard()` to do so).
 
-For example the [animation controller (TODO)](../animation/skeletal-animation/animation-controller/animation-controller-overview.md) is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through [custom code](../custom-code/custom-code-overview.md). For this, the blackboard component has to be attached either to the same object, or a parent object.
+For example the [animation controller](../animation/skeletal-animation/animation-controller/animation-controller-overview.md) is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through [custom code](../custom-code/custom-code-overview.md). For this, the blackboard component has to be attached either to the same object, or a parent object.
 
 ## Properties
 
@@ -20,4 +20,4 @@ For example the [animation controller (TODO)](../animation/skeletal-animation/an
 
 * [Back to Index](../index.md)
 * [Blackboards](blackboards.md)
-* [Animation Controller (TODO)](../animation/skeletal-animation/animation-controller/animation-controller-overview.md)
+* [Animation Controller](../animation/skeletal-animation/animation-controller/animation-controller-overview.md)

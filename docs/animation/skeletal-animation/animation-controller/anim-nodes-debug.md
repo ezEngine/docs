@@ -19,5 +19,5 @@ The *log node* simply prints a *dev* string to the [log](../../../debugging/logg
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller (TODO)](animation-controller-overview.md)
+* [Animation Controller](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)

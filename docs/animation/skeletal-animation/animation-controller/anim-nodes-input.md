@@ -17,5 +17,5 @@ This node completely ignores any kind of button mapping. It is purely meant for 
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller (TODO)](animation-controller-overview.md)
+* [Animation Controller](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)

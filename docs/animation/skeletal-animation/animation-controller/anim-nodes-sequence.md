@@ -35,5 +35,5 @@ See [common output pins](anim-nodes-playclip.md#common-output-pins).
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller (TODO)](animation-controller-overview.md)
+* [Animation Controller](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)

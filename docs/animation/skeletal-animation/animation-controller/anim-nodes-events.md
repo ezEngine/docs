@@ -21,5 +21,5 @@ When this node is triggered, it broadcasts an `ezMsgGenericEvent` with `Message`
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller (TODO)](animation-controller-overview.md)
+* [Animation Controller](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)

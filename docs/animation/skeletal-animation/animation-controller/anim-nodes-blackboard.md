@@ -57,5 +57,5 @@ This node outputs the value of a specific blackboard entry. The number value can
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller (TODO)](animation-controller-overview.md)
+* [Animation Controller](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)

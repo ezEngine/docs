@@ -1,6 +1,6 @@
 # Output Nodes
 
-Every [animation controller (TODO)](animation-controller-overview.md) must have exactly one `output` node. Only animation poses that are ultimately connected to an output node will affect the [animated mesh](../animated-mesh-asset.md).
+Every [animation controller](animation-controller-overview.md) must have exactly one `output` node. Only animation poses that are ultimately connected to an output node will affect the [animated mesh](../animated-mesh-asset.md).
 
 This allows you to quickly deactivate an entire part of the graph simply by removing the connection to the output node. Nodes that are not connected to the output are not evaluated at runtime and therefore don't cost any performance.
 
@@ -17,5 +17,5 @@ The `Model Pose Output` node is currently the only available type of output node
 ## See Also
 
 * [Back to Index](../../../index.md)
-* [Animation Controller (TODO)](animation-controller-overview.md)
+* [Animation Controller](animation-controller-overview.md)
 * [Skeletal Animations](../skeletal-animation-overview.md)
