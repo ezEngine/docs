@@ -1,5 +1,4 @@
 library-structure.md
-coding-guidelines.md
 container-usage.md
 string-usage.md
 string-formatting.md

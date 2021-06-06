@@ -151,6 +151,5 @@ Make sure to `Reserve` how much elements you probably will put into the `ezHashT
 
 ## See Also
 
-* [Coding Guidelines (TODO)](coding-guidelines.md)
 * [String Usage Guidelines](string-usage.md)
 * [Back to Index](../index.md)

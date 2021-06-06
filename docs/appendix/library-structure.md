@@ -109,5 +109,4 @@ In **Utilities** you will find various different things that may be useful, but 
 ## See Also
 
 * [Back to Index](../index.md)
-* [Coding Guidelines (TODO)](coding-guidelines.md)
 * [Samples](../samples/samples-overview.md)

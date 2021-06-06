@@ -82,6 +82,5 @@ Just make sure that you convert your data to Utf8 when you store something insid
 
 ## See Also
 
-* [Coding Guidelines (TODO)](coding-guidelines.md)
 * [Container Usage Guidelines](container-usage.md)
 * [String Formatting](string-formatting.md)

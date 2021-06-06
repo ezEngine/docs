@@ -344,7 +344,6 @@
 ## Appendix
 
 * [Library Structure](appendix/library-structure.md)
-* [Coding Guidelines (TODO)](appendix/coding-guidelines.md)
 * [Container Usage Guidelines](appendix/container-usage.md)
 * [String Usage Guidelines](appendix/string-usage.md)
 * [String Formatting](appendix/string-formatting.md)
