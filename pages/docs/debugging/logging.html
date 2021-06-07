@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Logging | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Logging | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="logging">Logging</h1>
+
+<p>Log messages are often very helpful in finding problems.</p>
+<h2 id="logging-information">Logging Information</h2>
+<p>The log is accessible through the <code>ezLog</code> class. There are multiple functions to log information of different severity:</p>
+<ul>
+<li><code>ezLog::Debug</code> - for verbose output, will be compiled out in non-debug builds</li>
+<li><code>ezLog::Dev</code> - for output during development, will typically be silenced (but not compiled out) in non-development builds</li>
+<li><code>ezLog::Info</code> - for regular information</li>
+<li><code>ezLog::Warning</code> - for important information that may point at problems</li>
+<li><code>ezLog::SeriousWarning</code> - for problems that should be fixed but won't crash the system just now</li>
+<li><code>ezLog::Error</code> - for errors</li>
+</ul>
+<p>Log messages can be <em>grouped</em> using the <code>EZ_LOG_BLOCK</code> macro.</p>
+<h3 id="typescript">TypeScript</h3>
+<p>Information can also be logged through the <a href="../custom-code/typescript/ts-api.html#ezlog">TypeScript API</a>.</p>
+<h2 id="inspecting-the-log">Inspecting the Log</h2>
+<p>There are multiple ways to see the content of the log:</p>
+<ul>
+<li>In the <a href="../../getting-started/editor-overview.html">ezEditor</a> you can open <em>Panels &gt; Log</em> to see two logs, the one for the editor and the one from the engine process.</li>
+<li><a href="../tools/inspector.html">ezInspector</a> shows the log of the connected process.</li>
+<li>The in-game <a href="console.html">console</a> outputs the log messages.</li>
+<li>By default all EZ <a href="../runtime/application/application.html">applications (TODO)</a> also write the log output to a <code>Log.htm</code> file in the application's <em>appdata</em> folder.</li>
+</ul>
+<h2 id="thread-local-logging">Thread-local logging</h2>
+<p>The logging system uses a thread-local variable to store the <em>active</em> logging system, through which to route all messages that originate on that thread. This can be used to easily replace the entire logging backend on a thread and capture all log messages in a custom backend. See <code>ezLogSystemScope</code> and <code>ezLogInterface</code>, if you want to write a custom backend. This can be used to, for example, capture all output from some subsystem and prevent the messages from reaching the regular outputs.</p>
+<h2 id="custom-log-writers">Custom Log Writers</h2>
+<p><code>ezLog</code> is the central class for all messages to be logged. By default, it routes all messages through an instance of <code>ezGlobalLog</code>, though you can redirect this on the calling side if you want. On <code>ezGlobalLog</code> you can register multiple handlers that take the messages and either write them to some output or forward them to another system. This method is used to, for instance, forward log messages from one process to another. The <a href="../tools/inspector.html">ezInspector</a> integration, for example, registers a custom log writer to gather all log messages, and send them over the network, for display in the external tool. <a href="../../getting-started/editor-overview.html">ezEditor</a> does something similar for the messages from the engine process.</p>
+<p>For an in-depth explanation of how you can configure the system, see <code>ezLog</code> and <code>ezGlobalLog</code>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../tools/inspector.html">ezInspector</a></li>
+<li><a href="console.html">Console</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/logging.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

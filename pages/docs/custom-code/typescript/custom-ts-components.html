@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Components with TypeScript | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Components with TypeScript | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-components-with-typescript">Custom Components with TypeScript</h1>
+
+<p>To create a new component type, create a new <a href="ts-asset.html">TypeScript asset</a>. In that asset document, click the toolbar button to edit the script with Visual Studio Code. This will not only open the text editor, but also ensure that the <code>.ts</code> file exists and contains a basic template for your new component.</p>
+<h2 id="base-class">Base Class</h2>
+<p>Your component class must extend one of these base classes:</p>
+<ol>
+<li><code>ez.TypescriptComponent</code></li>
+<li><code>ez.TickedTypescriptComponent</code></li>
+</ol>
+<p>If it extends <code>ez.TypescriptComponent</code>, it can react to messages, startup/shutdown and activation/deactivation callbacks. However, it will not be updated regularly. Though this can be achieved through <a href="ts-messaging.html">messages</a>.</p>
+<p>If it extends <code>ez.TickedTypescriptComponent</code>, the member function <code>Tick()</code> is executed regularly. The rate at which it shall be called can be modified using <code>SetTickInterval()</code>.</p>
+<p>Often game components need to do regular checks and update their own state. Use the <em>ticked</em> base class when this is necessary. Choose a tick interval that is as long as possible to reduce their performance cost. You can also dynamically change the tick rate, to e.g. do more updates when the player is close, than when they are far away.</p>
+<p>Whenever possible, though, prefer to use the non-ticked base class and have no regular update, at all. Such components rely on other machnisms, such as <a href="../../physics/actors/physx-trigger-component.html">triggers</a> to detect when they need to react, and they can use delayed messages (sent by others or by themselves) to trigger follow up work.</p>
+<h3 id="tick-function">Tick Function</h3>
+<p>When extending <code>ez.TickedTypescriptComponent</code>, the component code must contain a function with this signature:</p>
+<pre><code class="lang-typescript">Tick(): void
+{
+}
+</code></pre>
+<p>It will be executed during the game update whenever enough time has passed. Use <code>SetTickInterval()</code> to adjust the frequency.</p>
+<h2 id="initialization">Initialization</h2>
+<p>The template code contains examples for these functions:</p>
+<ol>
+<li><code>Initialize()</code></li>
+<li><code>Deinitialize()</code></li>
+<li><code>OnActivated()</code></li>
+<li><code>OnDeactivated()</code></li>
+<li><code>OnSimulationStarted()</code></li>
+</ol>
+<p>These functions are called in the same way as for C++ components. See <a href="../../runtime/world/components.html#component-activation">Component Activation</a> for details.</p>
+<h2 id="message-handlers">Message Handlers</h2>
+<p>TypeScript components can both send and receive messages. The article <a href="ts-messaging.html">Messaging in TypeScript Code</a> explains this in more detail.</p>
+<p>To handle messages, message handler functions must be registered first. This is done on a per-type basis, rather than per instance. Therefore you have to register message handlers from within the static function <code>RegisterMessageHandlers()</code>.</p>
+<h2 id="auto-generated-code">Auto Generated Code</h2>
+<p>The editor may insert auto generated code into the <code>.ts</code> file. This is needed for example for variables that are supposed to show up as <a href="../../scenes/exposed-parameters.html">exposed parameters</a>. Special code comments are used to tag the are where the editor can insert the generated code:</p>
+<pre><code class="lang-typescript">/* BEGIN AUTO-GENERATED: VARIABLES */
+/* END AUTO-GENERATED: VARIABLES */
+</code></pre>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Don't remove these comments and don't put any of your code between these two lines.</p>
+</blockquote>
+<h2 id="writing-your-component">Writing Your Component</h2>
+<p>To initialize things, use the <code>OnSimulationStarted()</code> callback. For regular updates, put your code into the <code>Tick()</code> function. Use <a href="ts-messaging.html">messaging</a> to communicate with unknown component types or when a delay is desired. For all known component types, you can call functions or read and write properties directly.</p>
+<p>For an overview what functionality is available through TypeScript, check out the <a href="ts-api.html">TypeScript API</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="ts-asset.html">TypeScript Asset</a></li>
+<li><a href="ts-messaging.html">Messaging in TypeScript Code</a></li>
+<li><a href="ts-api.html">TypeScript API</a></li>
+<li><a href="typescript-overview.html">Custom Code with TypeScript</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/typescript/custom-ts-components.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

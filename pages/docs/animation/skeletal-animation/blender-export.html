@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Authoring and Exporting Animations with Blender | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Authoring and Exporting Animations with Blender | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="authoring-and-exporting-animations-with-blender">Authoring and Exporting Animations with Blender</h1>
+
+<p>This page contains various pieces of information that are good to know when one uses Blender to build and export animated meshes. It is assumed that you know Blender well enough to create animated meshes.</p>
+<h2 id="exporting-animated-meshes">Exporting Animated Meshes</h2>
+<ol>
+<li>To get animated meshes out of Blender and into ezEngine, export the animated mesh to a binary GLTF file (<code>.glb</code>).</li>
+<li>You can enable <code>+Y up</code> or not. In both cases you need to adjust the transformation on the <a href="skeleton-asset.html">skeleton asset</a>.</li>
+<li>Make sure that the GLTF export contains <em>Animations</em> and <em>Skinning</em> information.</li>
+<li>Don't disable animation sampling on export.</li>
+<li>Be aware that GLTF uses 1000 frames per second for all exported animation clips. Blender, by default, uses 24 frames per second. If you want to only use a sub-range of an animation in EZ, you will need to re-calculate the frame indices accordingly. You can set Blender to use 25 or 50 frames per second to make this calculation easier.</li>
+<li>Enable <code>Export Deformation Bones Only</code> to strip IK pole targets and other unnecessary bones from the file.</li>
+</ol>
+<p><img src="../media/glb-export.png" alt="GLB export settings"></p>
+<h2 id="importing-meshes-into-ez">Importing Meshes into EZ</h2>
+<p>When importing a mesh, EZ remaps the model space to its own convention. You may need to change the mapping, to get the desired result. For static meshes, this is configure on the <a href="../../graphics/meshes/mesh-asset.html">mesh asset</a>. For animated models, the mapping is chosen on the root node of the corresponding <a href="skeleton-asset.html">skeleton asset</a>.</p>
+<p>EZ uses the following convention:</p>
+<ol>
+<li><code>+X</code> is the <strong>forward axis</strong></li>
+<li><code>+Y</code> is the <strong>right axis</strong></li>
+<li><code>+Z</code> is the <strong>up axis</strong></li>
+</ol>
+<p>By default all code uses <code>+X</code> as its main direction. For example AI nodes move characters <em>forwards</em> along the <code>+X</code> axis, spot lights and cameras &quot;look&quot; into the <code>+X</code> direction and so on.</p>
+<p>In Blender it is common to have a character look along the <code>-Y</code> axis so that it faces the user when pressing <code>Numpad 1</code>. This also means that the right side of the character will be along the <code>-X</code> axis.</p>
+<p>If you export such a mesh to a GLB and enable <strong>Y UP</strong> convention, you need to configure the mapping this way:</p>
+<ul>
+<li>Set <code>Right Dir</code> to <strong>Negative X</strong></li>
+<li>Set <code>Up Dir</code> to <strong>Positive Y</strong></li>
+<li>Set <code>FlipForwardDir</code> to <strong>off</strong></li>
+</ul>
+<h2 id="authoring-meshes">Authoring Meshes</h2>
+<ol>
+<li>Make sure all triangles face into the same direction. Use Blender's <code>Face Orientation</code> viewport option to see whether there are flipped triangles. If there are flipped triangles, they will show up incorrectly in EZ.
+<img src="../media/blender-face-orientation.png" alt="Face Orientation"></li>
+</ol>
+<h2 id="authoring-animations">Authoring Animations</h2>
+<ol>
+<li><p>EZ only supports skeletal animations via skinned meshes. That means every vertex in the mesh needs to have a bone assigned via vertex weights. Blender can move entire objects through bone animations, but if they are only parented to a bone, and don't use vertex skinning (vertex weights), EZ will not show those objects as animated. Use the <em>Vertex Group Weights</em> visualization in Blender to inspect which vertices are set up properly and which aren't.</p>
+<p><img src="../media/blender-vertex-weights.png" alt="Vertex Weights"></p>
+</li>
+<li><p>EZ uses a maximum of 4 bones per vertex. By default Blender's GLTF export already restricts vertex weights to 4 bones, though there is an option to allow more influences. This won't have a positive effect in EZ though.</p>
+</li>
+<li><p>Be aware that Blender exports ALL keyframes of an animation. The preview window of an animation has no effect on the exported animation data.</p>
+</li>
+<li><p>Blender always sets the first keyframe of all animations to index <code>1</code> and that is also how the data is exported. EZ expects the first keyframe to be at index <code>0</code>, though. So set the animation range in Blender to start at index <code>0</code> and put the first keyframe there.</p>
+</li>
+<li><p>Use the <em>Action Editor</em> in Blender to create and manage multiple animations in a single file. Be sure to set the <em>Fake User</em> flag on all of them to not lose any work.</p>
+</li>
+<li><p>Now it gets weird: If you add multiple animations in Blender, usually 4 to 6 of them will be exported in the GLTF file. Once you add more animations, seemingly random ones won't be exported. This is because Blender thinks those animations are <em>unused</em> and won't export such unreferenced animations. The fix is to <strong>fake reference every animation</strong> in Blenders NLA editor. The way to do this, is to push the <em>Stash</em> button in the action editor on every animation.
+<img src="../media/blender-action-stash.png" alt="Stash action"><br>
+You will then see this reference show up in the scene outline/hierarchy window.
+<img src="../media/blender-nla-stashes.png" alt="Stashed actions"><br>
+<strong>Don't rename the stashed item!</strong> Every animation should be stashed only once, and if you keep the auto-generated name, Blender won't create another stash reference, if you push the stash button multiple times on the same animation. If you rename the item, that won't work anymore.</p>
+</li>
+<li><p>To delete an animation that has been stashed (and thus referenced by the NLA editor), remove the <em>Fake User</em> flag and also open the NLA editor and delete any reference to the animation by pointing with the mouse on a track and pressing <code>X</code> or <code>Del</code>.<br>
+<img src="../media/blender-nla-editor.png" alt="NLA editor"><br>
+Once no reference exists anymore, Blender removes the animation when you save and close the program.</p>
+</li>
+</ol>
+<h3 id="animation-cycles">Animation Cycles</h3>
+<ol>
+<li>To create an animation that can be repeated, such as walk cycles, the first and the last keyframe must be identical.</li>
+<li>Furthermore, Blender will typically use cubic interpolation between the keyframes. For the first and last keyframe this will result in an interpolation that slows down and speeds up and is therefore not smooth. The simplest solution is to set these (or all) keyframes to use <em>linear interpolation</em> instead.</li>
+<li>Another option is to insert duplicated dummy keyframes before the first and after the last keyframe, to force the desired interpolation, but then you need to configure the animation clip in EZ to only use the proper sub-range of keyframes, which can be tricky to figure out.</li>
+</ol>
+<h3 id="rigging-meshes">Rigging Meshes</h3>
+<p>There are many good tutorials how to rig meshes. However, here are some additional tips, some that are specific to using animated meshes in game engines.</p>
+<ol>
+<li><p>Make sure your mesh is rigged perfectly before you start animating. Even small adjustments to the rig later may require you to redo all your animations.</p>
+</li>
+<li><p>Make sure that all bones are connected correctly to each other. For example, hand and foot bones MUST be connected to their respective arm and leg bones. You must not have any disconnected bones that would be connected in a real skeleton. Some tutorials suggest to disconnect hand and foot bones and use a <em>copy transform constraint</em> instead, when setting up IK in Blender. This is a really bad practice. It will appear to work at first, but once you use partial animation blending (for example to play an animation only on the upper or lower body), it won't work, because the disconnected bones are not part of the correct hierarchy. Similarly, setting up rag dolls for physics (currently not available in EZ) requires the bone hierarchy to be correct. Other engines have the same requirement.<br>
+<img src="../media/blender-rig-structure.png" alt="Armature Structure"><br></p>
+</li>
+<li><p>If you want to add IK to your Blender rig, duplicate the desired bone (for instance the hand bone), then disconnect that bone from the hierarchy (making it a root bone), disable <code>Deformation</code> on that bone, and then use that as the IK target bone. Since <code>Deformation</code> is disabled, this bone won't be exported to GLTF either, which is what you want. It will only be a control bone.<br>
+<img src="../media/blender-ik-constraint.png" alt="IK constraint"><br></p>
+</li>
+<li><p>If you want your actual hand bone to fully follow your IK target bone, add a <code>Copy Rotation Constraint</code> to it to have it follow both position and rotation animations that you add to the IK target bone.<br>
+<img src="../media/blender-ik-copy-constraint.png" alt="Copy rotation constraint"><br></p>
+</li>
+<li><p>You may also want to <em>hide</em> the original hand bone, such that you don't accidentally pick and animate it, when instead you want to animate the IK target bone (which will most of the time be in the exact same location).</p>
+</li>
+<li><p>Be aware though, that once a bone is hidden, it is quite a pain to make any modifications to it, because Blender won't allow you to select it anymore, not even from the outliner tree view. Instead you must <em>unhide the bone first</em>. Either unhide everything (using <code>ALT+H</code>) or unhide only the desired bone through its context menu in the outliner pane.</p>
+</li>
+<li><p>For IK bones, make sure your pole targets really work correctly. Most tutorials mention that you need to use a rotation offset of +90, -90 or 180 degree, but I have also observed the need for 45 degrees (and consequently 135 degrees) etc. The best way to check is to toggle between <em>Edit Mode</em> and <em>Pose Mode</em> (with the rest pose active) and check that bones with IK don't have extreme twist in pose mode. The bones should only slightly move to fulfill their IK configuration, but if for example arm bones twist by a large amount, then your pole target configuration isn't correct.</p>
+</li>
+<li><p>If you seem to not get the pole target configuration correct, first make sure the target joint has a slight bend (for instance an elbow shouldn't be fully straight). Then remove the IK constraint on the bone entirely and set it up from scratch. Blender seems to have internal state that can't be fixed differently.</p>
+</li>
+</ol>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="skeletal-animation-overview.html">Skeletal Animations</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/blender-export.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

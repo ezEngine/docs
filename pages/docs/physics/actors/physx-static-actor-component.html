@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PhysX Static Actor Component | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PhysX Static Actor Component | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="physx-static-actor-component">PhysX Static Actor Component</h1>
+
+<p>The <em>PhysX static actor component</em> is used to represent static collision geomtry. Most geometry in a scene should be <em>static</em>, meaning that it never moves, rotates, scales or is animated in any way. Static geometry is generally faster to process, and in the case of physics simulations, only static actors may use <strong>concave</strong> collision geometry.</p>
+<p>All <a href="../collision-shapes/physx-shapes.html">PhysX shapes</a> that can be found in the hierarchy below the static actor are combined to form the compound shape of the actor. However, if any other actor (static or dynamic) is part of the hierarchy below the static actor, the shapes below that object are ignored for this actor. Additionally, if the static actor itself references a <a href="../collision-shapes/collision-meshes.html">collision mesh</a>, it will also become part of the actor compound shape. Only static actors are able to reference concave triangle collision meshes.</p>
+<p>If you need your geometry to be able to move, use a <a href="physx-dynamic-actor-component.html">dynamic actor</a> instead.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>CollisionMesh</code>: An optional convex or concave <a href="../collision-shapes/collision-meshes.html">collision mesh</a> representing the static actor geometry. This will be combined with all <a href="../collision-shapes/physx-shapes.html">shapes</a> found in the hierarchy below the owner object.</li>
+<li><code>CollisionLayer</code>: The <a href="../collision-shapes/collision-layers.html">collision layer</a> defines which objects will collide with this actor.</li>
+<li><code>IncludeInNavmesh</code>: If set, this object will be considered an obstacle for AI and <a href="../../ai/recast-navmesh.html">navmeshes</a> are generated around it.</li>
+<li><code>PullSurfacesFromGraphicsMesh</code>: If this is enabled, at startup the actor will check whether there is a <a href="../../graphics/meshes/mesh-component.html">graphics mesh component</a> attached to the same owner, which has the same amount of materials, as the collision mesh. If so, it will query those materials for their <a href="../../materials/surfaces.html">surfaces</a> and use them to override the surfaces that are stored in the collision mesh. This can be very convenient, especially for complex meshes, because you only need to set up the materials for the graphics mesh, and don't need to mirror the same setup on the collision mesh. Also modifications to the graphics mesh (or its materials) will then apply to the collision mesh as well. Enabling this option forces the graphics mesh to be loaded at startup and therefore reduces potential for streaming data in the background.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="physx-dynamic-actor-component.html">PhysX Dynamic Actor Component</a></li>
+<li><a href="../collision-shapes/physx-shapes.html">PhysX Shapes</a></li>
+<li><a href="../collision-shapes/collision-meshes.html">Collision Meshes</a></li>
+<li><a href="../collision-shapes/collision-layers.html">Collision Layers</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/actors/physx-static-actor-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

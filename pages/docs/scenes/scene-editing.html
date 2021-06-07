@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Scene Editing | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Scene Editing | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="scene-editing">Scene Editing</h1>
+
+<p>A scene or level is a <a href="../editor/editor-documents.html">document</a> like all assets. To edit a scene there are multiple tools available. This page gives a broad overview what tools there are and in what order to try them out.</p>
+<h2 id="basics">Basics</h2>
+<h3 id="open-a-project-and-scene">Open a Project and Scene</h3>
+<p>You can start editing an existing project and scene, or you can create your own. See the article about <a href="../projects/projects-overview.html">projects</a> for how to do so. We suggest to start by looking at the <a href="../../samples/testing-chambers.html">Testing Chambers</a> project, even if you then use an empty scene, as there are some useful prefabs in that project.</p>
+<p>If you don't have a scene open yet, the easiest way is to set the <em>Filter</em> in the <a href="../assets/asset-browser.html">asset browser</a> to <strong>Scene</strong> and then double click one of the scenes that belong to that project.</p>
+<h3 id="first-steps">First Steps</h3>
+<p>The very first thing you should familiarize yourself with is how to move the editor camera around the scene. The chapter about <a href="editor-camera.html#camera-controls">camera controls</a> lists all the available options.</p>
+<p>Next, try out <a href="selection.html">selecting objects</a>.</p>
+<p>With one or multiple objects selected, you can try out the <a href="gizmos.html">editing gizmos</a>.</p>
+<h3 id="add-objects">Add Objects</h3>
+<p>The easiest way to add objects to a scene is to <em>drag and drop</em> existing items from the <a href="../assets/asset-browser.html">asset browser</a> into the scene. You would mostly do this for <a href="../graphics/meshes/mesh-asset.html">meshes</a> and <a href="../prefabs/prefabs-overview.html">prefabs</a>, but it works for many asset types. If you want to get your own assets into the editor, you should read up on how to <a href="../assets/import-assets.html">import assets</a>.</p>
+<h3 id="create-objects">Create Objects</h3>
+<p>You can, of course, also build objects from the ground up by creating empty game objects and components. Game objects mostly specify the position of an object, components give objects behavior.</p>
+<p>The easiest way to create a new game object is to point somewhere with the mouse cursor and press <code>Ctrl + Shift + X</code>. This will create a new game object at the position you pointed at. It also attaches a <em>Shape Icon</em> component, whose sole purpose is to make that new object visible and selectable. You can remove that component as soon as you have no need for it anymore.</p>
+<p>You can also right-click anywhere in the scene tree and select <em>Create Empty Child Object</em>.</p>
+<p>When you copy an object (<code>Ctrl + C</code>), you can also point anywhere and <em>paste</em> (<code>Ctrl + V</code>) to create a duplicate at that position.</p>
+<h3 id="editing-object-hierarchies">Editing Object Hierarchies</h3>
+<p>The way objects are parented to each other is often very important. There are multiple ways to change the hierarchy:</p>
+<ul>
+<li><p><strong>Drag and drop:</strong> In the <em>Scenegraph</em> panel, you can drag and drop a node onto another node to parent it to that.</p>
+</li>
+<li><p><strong>Right-click -&gt; Detach:</strong> Selecting <em>Detach</em> from the context menu, will make a node a top-level game object that has no parent.</p>
+</li>
+<li><p><strong>Right-click -&gt; Attach to This:</strong> Selecting <em>Attach to This</em> from the context menu, will make the selected node a child of the object that you pointed at in the viewport.</p>
+</li>
+<li><p><strong>Paste As Child:</strong> When you copied an object, you can select a desired parent node and then use <em>Paste As Child</em> from the context menu, to paste a new object and attach it to the selected object right away.</p>
+</li>
+</ul>
+<h3 id="blocking-out-a-scene">Blocking Out a Scene</h3>
+<p>To get some geometry into your scene, you can use the <a href="greyboxing.html">greyboxing</a> tool. The nice thing about greyboxing geometry is, that it automatically sets up colliders, as well, thus once you try to play your game, you won't fall through the geometry.</p>
+<h3 id="play">Play</h3>
+<p>You can now try to <a href="../editor/run-scene.html">run your scene</a>. If you use the <a href="../../samples/testing-chambers.html">Testing Chambers</a> sample project, and you created an empty scene, make sure to add a <a href="../gameplay/player-start-point.html">Player Start Point</a> and make it reference the <code>Player</code> prefab. This way when you use <em>Play-the-Game</em> mode, you get a first person shooter game play experience.</p>
+<h2 id="advanced">Advanced</h2>
+<p>Now that you know the basics, you can explore some of the more advanced functionality.</p>
+<h3 id="views">Views</h3>
+<p>Apart from the single 3D perspective view, there are also orthographic views and different types of render modes. <a href="../editor/editor-views.html">This article</a> describes all the details.</p>
+<h3 id="materials">Materials</h3>
+<p>Materials are what is used to give objects a texture. There is much more to this and the <a href="../materials/materials-overview.html">chapter about materials</a> lists all the details, but for the time being you can get away with just the most simple material setup. For instance, when you <a href="../assets/import-assets.html">import</a> a <a href="../graphics/meshes/meshes-overview.html">mesh</a>, it may add materials automatically for you. Usually you just need to make sure that the paths to the referenced <a href="../graphics/textures-overview.html">textures</a> are correct.</p>
+<h3 id="physics">Physics</h3>
+<p>The fun really starts once you get to play around with physics. Read up on the <a href="../physics/physx-overview.html">PhysX Integration</a> for this. For a basic setup you always need at least an <em>actor component</em> (<em>static</em> for scene geometry, <em>dynamic</em> for stuff that should fall down) and a <em>shape component</em> to give the object a physical shape.</p>
+<h3 id="advanced-editing">Advanced Editing</h3>
+<p>Once you have <em>one</em> physically correct falling box, you may want to have one hundred. Using <a href="advanced-object-transform.html">these tools</a>, you are only a few clicks away from that.</p>
+<h2 id="video">Video</h2>
+<p><a href="https://www.youtube.com/watch?v=tIr5UEgSz2s"><img src="https://img.youtube.com/vi/tIr5UEgSz2s/0.jpg" alt="ezEngine Overview"></a></p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you are familiar with how to create, edit and test a basic scene, there are many other things to explore. <a href="../effects/decals.html">Decals</a> and <a href="../effects/particle-effects/particle-effects-overview.html">particle effects</a> can make your scene more interesting. Proper <a href="../sound/sound-overview.html">sounds</a> add a lot of atmosphere. And finally, by writing <a href="../custom-code/custom-code-overview.html">custom code</a>, either in C++ or through scripting, you will bring your own game idea to life.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../assets/asset-browser.html">Asset Browser</a></li>
+<li><a href="editor-camera.html">Editor Camera</a></li>
+<li><a href="gizmos.html">Editing Gizmos</a></li>
+<li><a href="greyboxing.html">Greyboxing</a></li>
+<li><a href="../editor/run-scene.html">Running a Scene</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/scenes/scene-editing.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

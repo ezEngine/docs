@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Particle Effects | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Particle Effects | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="particle-effects">Particle Effects</h1>
+
+<p>Particle effects are used to create the visual part of things like explosions, smoke, fire, water splashes and much more. They are randomized to have slight variations every time. To create a full effect, like an explosion, with <a href="../../sound/sound-overview.html">sound</a> and physical properties such as pushing nearby objects away or damaging objects and creatures, a particle effect is typically put into a <a href="../../prefabs/prefabs-overview.html">prefab</a>, which contains additional components for sound and game play logic (e.g. through <a href="../../custom-code/typescript/typescript-overview.html">scripts</a>).</p>
+<p>To create a new particle effect, use <em>Editor &gt; Create Document</em> and select <em>Particle Effect</em> as the file type. Or alternatively, right-click on any asset in the <a href="../../assets/asset-browser.html">asset browser</a> and select <em>New &gt; Particle Effect</em>.</p>
+<h2 id="particle-editor-ui">Particle Editor UI</h2>
+<p>This is an overview screenshot of the particle editor:</p>
+<p><img src="../media/particle-overview.png" alt="The particle editor"></p>
+<p>The 3D viewport plays the effect in a loop. Using the toolbar buttons you can pause, reset, slow down or speed up the playback. On the right hand side there are multiple tabs which hold the various settings of the effect. If you are not too familiar with particle effects yet, please read <a href="how-particle-effects-work.html">how particle effects work</a>.</p>
+<p>On the right hand side you see multiple tabbed panels:</p>
+<h3 id="systems">Systems</h3>
+<p>The <strong>Systems</strong> panel is very central. Here you add new particle systems to the effect. However, this is also where you <strong>select which particle system to edit</strong>. The combo box specifies which particle system is currently active. All panels below (<em>Emitter</em>, <em>Initializers</em>, <em>Behaviors</em> and <em>Renderers</em>) show only the settings of the <em>active particle system</em>.</p>
+<p>When you add a new particle system with the green '+' button, you get a new system that uses a default configuration.</p>
+<h3 id="effect">Effect</h3>
+<p>The <strong>Effect</strong> panel lists options for the overall effect, independent of the individual particle systems. Adjusting these options is typically only necessary once an effect is working well and you need to tweak its performance or allow users to adjust details through <a href="../../scenes/exposed-parameters.html">exposed parameters</a>.</p>
+<h3 id="emitter-initializers-behaviors-and-renderers">Emitter, Initializers, Behaviors and Renderers</h3>
+<p>These panels show the various options for the <em>active particle system</em>. When you select a different particle system from the combo box in the <em>Systems</em> panel, these panels will show different options.</p>
+<h3 id="event-reactions">Event Reactions</h3>
+<p>See <a href="#events-and-event-reactions">events</a> below.</p>
+<h2 id="particle-system-configuration">Particle System Configuration</h2>
+<p>Every particle system has exactly one <em>emitter</em>, usually multiple <em>initializers</em> and <em>behaviors</em>, and typically one <em>renderer</em>. Most parameters are configured on those parts.</p>
+<p>Additionally, every particle system has these properties:</p>
+<p><strong>Visible:</strong> This is an option for testing. If <em>Visible</em> is deactivated, the particle system is not simulated or rendered. Use this when you need to focus on editing other systems, or when a particle system is not yet good enough to be used. Invisible particle systems don't cost performance.</p>
+<p><strong>Life:</strong> This is a <a href="#variance-values">value with variance</a>. It specifies how long each particle will be simulated and rendered before it is removed from the system. A low variance means all particles live equally long, a high variance means some will have a short lifespan, others a much longer one. Note: A <strong>life span of zero seconds</strong> guarantees that a particle lives for <strong>exactly one frame</strong>, independent of frame rate. This is useful for effects where something visually striking (e.g. a flash) should pop up for the shortest possible time.</p>
+<p><strong>LifeScaleParam:</strong> An optional <a href="#effect-parameters">effect parameter</a> which can be used to scale the particle lifespan.</p>
+<p><strong>OnDeathEvent:</strong> An optional name for the <a href="#events-and-event-reactions">event</a> when a particle dies. This can be used to spawn other effects.</p>
+<h3 id="emitter">Emitter</h3>
+<p>The <em>emitter</em> is what defines how new particles in this system get spawned. It mostly specifies when and how many particles are spawned. Typically particles are either spawned in one big burst or continuously. However, for advanced use cases the emitter may only spawn particles as a reaction to some <a href="#events-and-event-reactions">event</a> or when the particle effect node was moved a certain distance.</p>
+<p>For details about all available emitter types, see <a href="particle-emitters.html">Particle Emitters</a>.</p>
+<h3 id="initializers">Initializers</h3>
+<p>Every particle has a number of properties, such as position, velocity, color, size and rotation speed. For a newly spawned particle, these values must get a starting value. <em>Initializers</em> allow you to affect the starting value. For example, a particle's position is by default <code>(0, 0, 0)</code>, but using a <em>Sphere Position Initializer</em>, the starting position will be set to a random position inside a sphere, or even just on its surface.</p>
+<p>Initializers are executed exactly once for each new particle, thus they cost little performance. However, they only have an effect, if the starting value isn't subsequently overwritten by <em>Behaviors</em>. For instance if the <em>Random Color Initializer</em> is used, it will set the color of new particles. If, however, the <em>Color Gradient Behavior</em> is also used, the behavior will set the particle's color to a new value in every update, thus making the initializer pointless.</p>
+<p>Prefer to use initializers over behaviors, if the desired result can be achieved with either.</p>
+<p>For details about all available initializer types, see <a href="particle-initializers.html">Particle Initializers</a>.</p>
+<h3 id="behaviors">Behaviors</h3>
+<p><em>Behaviors</em> are the core particle effect update routines. Every time a particle moves, changes color, grows, shrinks or rotates, this is implemented by a behavior. Behaviors are executed for every particle, in every update step. For performance reasons, you should strive to use as few behaviors as possible. Every behavior reads some particle properties and writes one or two properties. For example the <em>Size Curve Behavior</em> reads a particles age and maximum lifespan and then looks up its new size from the provided size curve. Therefore it overwrites the particle's <em>size</em> property in every update.</p>
+<p><em>Initializers</em> set a particle's property once when it is spawned, <em>behaviors</em> set (or update) a property continuously. Consequently a behavior may overwrite an initial value, making it redundant. Or it may build on top of the starting value. For example the <em>Velocity Behavior</em> can be used to have particles fly upwards (rise). Although the behavior modifies the particle's <em>position</em> property, it still works well together with the various position initializers, as it only <em>adds</em> to the position instead of replacing it.</p>
+<p>It is common for a particle system to have at least one, but often multiple, behaviors.</p>
+<p>For details about all available behavior types, see <a href="particle-behaviors.html">Particle Behaviors</a>.</p>
+<h3 id="renderers">Renderers</h3>
+<p>Conceptually a particle is just a point in space. There are many ways this point can be visualized. <em>Renderers</em> are used to select how to do that. Most particle systems use one renderer, often the <em>Billboard Renderer</em>, which is the most versatile. However, you are free to use multiple renderers. For example to achieve a fire effect with heat haze, you may want to use two renderers. One to render the particles as billboards using a fire texture, and another one to apply the screen space distortion effect.</p>
+<p>For details about all available renderer types, see <a href="particle-renderers.html">Particle Renderers</a>.</p>
+<h2 id="effect-parameters">Effect Parameters</h2>
+<p><em>Effect parameters</em> are an advanced feature that allows you to make certain parts of an effect configurable from the outside. You add effect parameters in the <em>Effect tab</em>. At the moment only <em>number parameters</em> and <em>color parameters</em> are supported. All parameters that you add there will appear as <a href="../../scenes/exposed-parameters.html">exposed parameters</a> on <a href="particle-effect-component.html">particle effect components</a>.</p>
+<p>Effect parameters can only affect select features. For example the <a href="particle-renderers.html#quad-renderer">quad renderer</a> has a <code>TintColorParam</code> property. If you type in the name of a <em>color parameter</em> there, the quad renderer will look up the value of the color parameter during every update, and use that to modulate the final color of the rendered particle.</p>
+<p>You can use this in a static way, as a means to add more variety to multiple instances of the same effect. Or you can use this in a dynamic way, by modifying the exposed parameter through (script) code, for example to visualize how hot something burns.</p>
+<h2 id="events-and-event-reactions">Events and Event Reactions</h2>
+<p>Particles may raise <em>events</em>. The most common one is when a particle dies, but different particle behaviors can raise other events as well. For example when a particle collides with the environment (see <a href="particle-behaviors.html#raycast-behavior">raycast behavior</a>).</p>
+<p>The <strong>Event Reactions</strong> tab allows you to configure what happens for a specific event. This is mostly used to chain effects. For example the fireworks effect below has particles that represent the rockets flying up, and when one 'dies', an explosion is spawned at that position, using event reactions.</p>
+<p><video src="media/event-reaction-effect.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p>Instead of spawning other particle effects, you can also spawn entire prefabs, which enables even more complex effects.</p>
+<p>Every <em>event reaction</em> has a <em>Probability</em> value which should be between 1 and 100. For example, if one reaction has a probability of 50, then for half of all events, that event reaction will be spawned. If there is no other event reaction for the same event type, then nothing is spawned. If however, another event reaction exists, say with a probability value of 30, then it also gets a chance to be spawned. Since 20 probability points are still not assigned, there is an overall 20 percent chance that no reaction is spawned.</p>
+<p>Be aware that probabilities are not normalized across event reactions. If you have two reactions for the same event type, both with a probability of 100, then in practice the first event reaction will always be spawned, and the second one will never be spawned.</p>
+<p>Apart from event reactions, it is also possible to react to events using the <a href="particle-emitters.html#onevent-emitter">OnEvent emitter</a>, however, that is less common.</p>
+<h2 id="misc">Misc</h2>
+<h3 id="variance-values">Variance Values</h3>
+<p>The particle editor presents many values as <em>values with variance</em>. They appear as a single value with a slider next to it:</p>
+<p><img src="media/variance-value.png" alt="Variance Value"></p>
+<p>The input box represents the <em>base value</em> and the slider represents the <em>variance</em>. The variance is between <code>0</code> and <code>1</code>.</p>
+<p>Generally, this type represents a random value, centered around the base value using a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a>. The variance affects the range from which random values are drawn. The range is always between <code>BaseValue - Variance*BaseValue</code> and <code>BaseValue + Variance*BaseValue</code>. Consequently:</p>
+<ul>
+<li>If <code>Variance</code> is <code>0</code>, the range and thus the result for every 'random' value will be exactly <code>BaseValue</code>.</li>
+<li>If the variance is <code>1</code>, the random value will be anywhere between <code>0</code> and <code>2 * BaseValue</code>.</li>
+<li>For a variance of <code>0.5</code>, the random value will be between <code>BaseValue - 0.5*BaseValue</code> and <code>BaseValue + 0.5*BaseValue</code></li>
+</ul>
+<p>However, due to the <em>normal distribution</em> of the random numbers, values close to <code>BaseValue</code> will appear much more often than values far away from it. Such distributions are common in nature and therefore the result looks more natural.</p>
+<p>For most such values you should use at least some variance (0.2 to 0.4) to make your effects look less repetitive and sterile. However, extremely large variance values (0.7 and up) can result in unexpected outliers.</p>
+<h3 id="local-space-simulation">Local Space Simulation</h3>
+<p>Some effects should always behave the same, no matter how the owning game object is rotated, or how fast it moves. This is often the case for rocket exhaust effects, for example. Such behavior is hard to achieve with the way particle effects typically work, though, as each particle would need to have an extremely short life span and move very fast.</p>
+<p>When enabling <strong>SimulateInLocalSpace</strong> in the <em>Effect tab</em>, the effect is simulated as if it was positioned at the world origin and with the default orientation. This removes any influence that the effects position, orientation and movement would otherwise have on the effect, as shown below:</p>
+<p><video src="media/sim-local-space.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p>Some behaviors won't properly work for effects that are simulated in local space. For example the <a href="particle-behaviors.html#raycast-behavior">raycast behavior</a> will do it's raycasts at the origin of the scene, rendering it pointless.</p>
+<p>There is no performance benefit to using local space simulation. However, when using <a href="#shared-effects">shared effects</a>, the shared state must be simulated in local space.</p>
+<p>Other options to keep particles closer to the owning object are to use the <a href="particle-behaviors.html#pull-along-behavior">pull along behavior</a> or to <a href="#owner-velocity-inheritance">inherit the owner velocity</a>.</p>
+<h3 id="owner-velocity-inheritance">Owner Velocity Inheritance</h3>
+<p>In the <em>Effect tab</em> there is a property <strong>ApplyOwnerVelocity</strong> which is a value between <code>0</code> and <code>1</code>. By default the value is zero, which means that all particles are initialized with either a zero velocity or with whatever some <a href="particle-initializers.html">initializer</a> decided. In that case, particles will fly away from the emitter position unaffected by the velocity of the effect object itself. However, if the value is set to non-zero, a part of the velocity of the owning game object will be added to newly spawned particles.</p>
+<p>This can be used for effects that may be spawned from moving objects and that shall retain some of that momentum. However, unless you additionally configure the effect to have some velocity damping (ie. using the <em>friction</em> property of the <a href="particle-behaviors.html#velocity-behavior">velocity behavior</a>), the particles will fly into that direction continuously, which may look weird, especially when the owner object changes direction or brakes, and the spawned particles overtake it.</p>
+<p>Other options to keep particles closer to the owning object are to use the <a href="particle-behaviors.html#pull-along-behavior">pull along behavior</a> or to fully <a href="#local-space-simulation">simulate in local space</a>.</p>
+<h3 id="shared-effects">Shared Effects</h3>
+<p>Typically every particle effect in the world is simulated every frame. However, especially 'ambient' effects, such as the fire of wall torches, is often instantiated many, many times. You may only see a few of them at a time, but if all those effects were simulated every single frame, that would cost significant performance.</p>
+<p>A solution to this problem is to use <em>shared effects</em>. When an effect is set to be shared, it is simulated only once. All instances, that reference the effect will only be used to render the effect at their position. If not a single instance is visible, the simulation of the shared effect will even be paused.</p>
+<p>There are two ways to make an effect shared. The global option is the <strong>AlwaysShared</strong> property which can be found in the <em>Effect tab</em>. If this is enabled, then all instances of the effect will always be shared. This should be used for ambient effects which are expected to be instantiated often and where simulating more than one has no benefit.</p>
+<p>The second option is to set a <strong>SharedInstanceName</strong> on the <a href="particle-effect-component.html">particle effect component</a>. All effect components that use the exact same <em>shared instance name</em>, will share one simulation state and thus look identical. With this method, you can use a finite number of simulated effects, which allows you to have the same effect multiple times next to each other, without having them look identical, but still limiting how many effects need to be simulated.</p>
+<p>Because the various instances have different positions and orientations, shared effects are always simulated in <a href="#local-space-simulation">local space</a>. Effect sharing should mainly be used for continuous effects, and the effect should be authored to not be very distinctive. Also note that the rendering cost still has to be paid for every visible instance.</p>
+<h3 id="pre-simulation">Pre-Simulation</h3>
+<p>Some effects are supposed to always look as if they are constantly running. Mostly this is needed for ambient effects, such as torch fire or chimney smoke. The game may only spawn these effects when the player enters an area, but it is not desirable to see them getting started before they reach a stable simulation state. Instead, they should always already be in the state that they reach after a couple of seconds of simulation.</p>
+<p>For such cases, you can use the <em>PreSimulationDuration</em> option from the <em>Effects tab</em>. When this is set to a couple of seconds, the first time an effect is simulated, it will be simulated multiple times, to reach the desired state.</p>
+<p><strong>Note:</strong> Pre-simulation obviously has a performance cost during the first simulation step. Therefore, keep the pre-simulation duration as low as possible.</p>
+<p>Also be aware that for many ambient effects, that are instantiated a lot throughout a scene, prefer to use <a href="#shared-effects">shared effects</a>. Pre-simulation may still be necessary to fix their very first appearance, though.</p>
+<h3 id="update-rate-when-invisible">Update Rate When Invisible</h3>
+<p>When a particle effect is not visible, it may still need to be updated, as the way that it changes may make it visible in the first place. For example the smoke of a smoke grenade that is behind the player may become visible when it is blown into the players view by the wind. It may be sufficient, though, to only update the effect ten times, or even just 5 times per second, while invisible. Thus reducing the computational overhead.</p>
+<p>However, there are also effects which do not need to be updated, at all, when invisible. A waterfall effect, for instance, will always look similar. Thus once it is out of view, it can be simply paused.</p>
+<p>And there are even effects that can be discarded entirely, when out of view. Bullet impact effects, for example, may be so small and have such a short life span, that there is no value in updating them at all, unless they are visible to begin with.</p>
+<p>Which update method to use can be chosen from the <em>Effect tab</em> using the <strong>WhenInvisible</strong> property.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="how-particle-effects-work.html">How Particle Effects Work</a></li>
+<li><a href="particle-effect-component.html">Particle Effect Component</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-effects-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

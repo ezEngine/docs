@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project Settings | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Project Settings | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="project-settings">Project Settings</h1>
+
+<p>Project settings are options that are configured once and affect the entire application. Most project settings can be configured from the editor, though some (currently) can only be configured by writing certain configuration files manually.</p>
+<p>In the editor you will find the project settings under <em>Editor &gt; Project Settings &gt; ...</em>.</p>
+<h2 id="data-directories">Data Directories</h2>
+<p><em>Editor &gt; Project Settings &gt; Data Directories...</em> opens a dialog to set up the <a href="data-directories.html">data directories</a>.</p>
+<h2 id="engine-plugins">Engine Plugins</h2>
+<p><em>Editor &gt; Project Settings &gt; Engine Plugins...</em> opens a dialog to configure the active <a href="../custom-code/cpp/engine-plugins.html">engine plugins</a>:</p>
+<p><img src="media/editor-engine-plugins.png" alt="Engine Plugins"></p>
+<p>This dialog shows all available engine plugins. These are DLLs that are located in the same directory as <code>Editor.exe</code>. Note that EZ uses a specific name schema to differentiate which DLLs are considered engine plugins:</p>
+<ul>
+<li><p>All DLLs named <code>ezEnginePluginXYZ.dll</code> are considered to be plugins for the engine, but typically only used in conjunction with another plugin called <code>ezEditorPluginXYZ.dll</code>. These are only needed by <code>EditorEngineProcess.exe</code> to implement editor specific functionality such as 3D previews of assets. These plugins are <strong>not needed</strong> by the final game application and are not loaded by <a href="../tools/player.html">ezPlayer</a> when <a href="../editor/run-scene.html#export-and-run">running an exported scene</a>.</p>
+</li>
+<li><p>All DLLs named <code>ezXYZPlugin.dll</code> are considered to be proper plugins for the engine and implement runtime functionality. When your game uses a feature from one of these plugins, you need to make sure that the corresponding DLL is checked in this list, such that stand-alone applications will load the DLL.</p>
+</li>
+</ul>
+<p>In the list above a number of plugins have a <strong>checkmark</strong>. Also, most plugins are tagged with <strong>(active)</strong>, even if they are not checked:</p>
+<ul>
+<li><p><strong>Checked</strong> plugins are the ones that are selected to be loaded by stand-alone applications such as <a href="../tools/player.html">ezPlayer</a> or your own <a href="../runtime/application/application.html">application (TODO)</a>. These are the plugins that you consciously decided to use in your final game. Consequently you need to ship those DLLs and you can use all the features that they provide.</p>
+</li>
+<li><p><strong>Active</strong> plugins are DLLs that are currently loaded by the engine process. Their functionality is therefore available to you in the editor. As you can see, there are many <em>active</em> plugins, although they are not <em>checked</em>. This is because plugins can have dependencies on other plugins. The editor automatically loads most <a href="../editor/editor-plugins.html">editor plugins (TODO)</a>, which provide most of the editing functionality, and those will automatically include the necessary engine plugins. Therefore, even though you may not want to use the <a href="../ai/recast.html">Recast integration (TODO)</a> in your game, the <code>ezRecastPlugin</code> is still <em>active</em> in the editor, because the <code>ezEditorPluginRecast</code> is loaded. This allows you to use the Recast functionality (to generate navmeshes), but if you were to export your game and run it stand-alone, all Recast specific components would be ignored.</p>
+</li>
+</ul>
+<p>If you want to fully remove a certain integration, even in the editor, you need to edit the list of <a href="../editor/editor-plugins.html">editor plugins (TODO)</a>. Then plugin specific asset types will not show up in the <a href="../assets/asset-browser.html">asset browser</a> and its dedicated <a href="../runtime/world/components.html">components</a> won't show up in the component list. However, this is a machine wide setting, that applies to all projects and should only be done when a plugin interacts badly with some other functionality.</p>
+<h3 id="loading-plugins-from-code">Loading Plugins from Code</h3>
+<p>A custom <a href="../runtime/application/application.html">application (TODO)</a> or <a href="../runtime/application/game-state.html">game state</a> can load plugins directly from code if necessary. For example the <code>ezInspectorPlugin</code> is automatically loaded for you by stock EZ applications, when building the code for development.</p>
+<h2 id="input-configuration">Input Configuration</h2>
+<p><em>Editor &gt; Project Settings &gt; Input Configuration...</em> opens a dialog to <a href="../input/input-config.html">configure input actions</a>.</p>
+<h2 id="tags">Tags</h2>
+<p><em>Editor &gt; Project Settings &gt; Tags...</em> opens a dialog to configure which <a href="tags.html">tags</a> are available in the project.</p>
+<h2 id="window-configuration">Window Configuration</h2>
+<p><em>Editor &gt; Project Settings &gt; Window Configuration...</em> opens a dialog to configure the default window configuration when <a href="../editor/run-scene.html">running a scene</a>.</p>
+<p><img src="media/editor-window-config.png" alt="Window Configuration"></p>
+<p>These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in <a href="../tools/player.html">ezPlayer</a>. A proper game would typically implement this logic in a custom <a href="../runtime/application/application.html">application (TODO)</a> and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.</p>
+<p>There are two separately stored configurations:</p>
+<p><strong>Project Default:</strong> This configuration will be stored in the project folder and thus should be checked into source control to be shared with others.</p>
+<p><strong>User Specific:</strong> This configuration is only stored locally for the active user and not in the project directory. Therefore it cannot be checked into source control. It is meant for users who want to use settings different from the project default. For instance, when you have multiple monitors, you may want the exported scene to always appear on a specific one. This configuration must be enabled to override the default one.</p>
+<p>Apart from the window position and size, the window configuration also controls the behavior of the mouse. If <strong>Clip Mouse Cursor</strong> is enabled, the mouse won't be able to leave the window area. This should be preferred for games that hide the mouse and only use relative mouse movement.</p>
+<h2 id="asset-profiles">Asset Profiles</h2>
+<p><em>Editor &gt; Project Settings &gt; Asset Profiles...</em> opens a dialog to edit <a href="../assets/asset-profiles.html">asset profiles (TODO)</a>.</p>
+<h2 id="fmod">FMOD</h2>
+<p>If the <a href="../sound/fmod-overview.html">FMOD Integration</a> is enabled, <em>Editor &gt; Project Settings &gt; Fmod Project Settings...</em> will be available to configure the speaker mode and which master sound bank to use.</p>
+<h2 id="physx">PhysX</h2>
+<p>If the <a href="../physics/physx-overview.html">PhysX Integration</a> is enabled, <em>Editor &gt; Project Settings &gt; PhysX Project Settings...</em> will be available to configure the <a href="../physics/collision-shapes/collision-layers.html">collision layers</a>.</p>
+<h2 id="video">Video</h2>
+<p><a href="https://www.youtube.com/watch?v=ivkAIlbK5f0"><img src="https://img.youtube.com/vi/ivkAIlbK5f0/0.jpg" alt="video"></a></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="projects-overview.html">Projects</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/projects/project-settings.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

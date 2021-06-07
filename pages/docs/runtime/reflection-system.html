@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Reflection System | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Reflection System | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="reflection-system">Reflection System</h1>
+
+<p>The ezEngine reflection system allows to inspect structs and classes at runtime. It is used primarily for communication with tools and serialization.
+The reflection system is macro-based, meaning that it is not generated automatically but needs to be written manually for each type, member, etc that needs to be known at runtime.</p>
+<h2 id="types">Types</h2>
+<p>There are four distinct types that can be represented by reflection: classes, structs, enums and bitflags. Each is represented by the <code>ezRTTI</code> class that stores the type information.</p>
+<h3 id="classes">Classes</h3>
+<p>Classes are separated into two types: dynamic and static reflected. Dynamic classes derive from <code>ezReflectedClass</code> which allows you to determine its type using <code>ezReflectedClass::GetDynamicRTTI()</code>. So with a pointer to an <code>ezReflectedClass</code> you can access its type information.</p>
+<p>A static reflected class does not derive from <code>ezReflectedClass</code> so it is not possible to get the RTTI information in a common way. However, if you know the type of a variable you can use the template function <code>ezGetStaticRTTI</code> to retrieve the <code>ezRTTI</code> instance of a specific type. Alternatively, you can also search for a type by name using <code>ezRTTI::FindTypeByName()</code>.</p>
+<pre><code class="lang-cpp">ezReflectedClass* pTest = new ezDynamicTestClass;
+const ezRTTI* pRtti = pTest-&gt;GetDynamicRTTI();
+const ezRTTI* pRtti2 = ezGetStaticRTTI&lt;ezDynamicTestClass&gt;();
+const ezRTTI* pRtti3 = ezRTTI::FindTypeByName(&quot;ezDynamicTestClass&quot;);
+</code></pre>
+<p>Declaring a dynamic class involves deriving from <code>ezReflectedClass</code>, adding the <code>EZ_ADD_DYNAMIC_REFLECTION(SELF, BASE_TYPE)</code> macro into the class body and adding a <code>EZ_BEGIN_DYNAMIC_REFLECTED_TYPE(Type, Version, AllocatorType)</code> block into a compilation unit.</p>
+<pre><code class="lang-cpp">//Header
+class ezDynamicTestClass : public ezReflectedClass
+{
+  EZ_ADD_DYNAMIC_REFLECTION(ezDynamicTestClass, ezReflectedClass);
+};
+</code></pre>
+<pre><code class="lang-cpp">//Cpp
+EZ_BEGIN_DYNAMIC_REFLECTED_TYPE(ezDynamicTestClass, 1, ezRTTIDefaultAllocator&lt;ezDynamicTestClass&gt;)
+EZ_END_DYNAMIC_REFLECTED_TYPE
+</code></pre>
+<p>Declaring a static class is very similar to declaring a dynamic class. However, you need to declare the type outside the class via <code>EZ_DECLARE_REFLECTABLE_TYPE(Linkage, TYPE)</code> and use <code>EZ_BEGIN_STATIC_REFLECTED_TYPE(Type, BaseType, Version, AllocatorType)</code> in a compilation unit. If a class has no base class, use the dummy class <code>ezNoBase</code> instead.</p>
+<pre><code class="lang-cpp">// Header
+class ezStaticTestClass
+{
+};
+EZ_DECLARE_REFLECTABLE_TYPE(EZ_NO_LINKAGE, ezStaticTestClass);
+</code></pre>
+<pre><code class="lang-cpp">// Cpp
+EZ_BEGIN_STATIC_REFLECTED_TYPE(ezStaticTestClass, ezNoBase, 1, ezRTTIDefaultAllocator&lt;ezStaticTestClass&gt;);
+EZ_END_STATIC_REFLECTED_TYPE
+</code></pre>
+<h3 id="structs">Structs</h3>
+<p>Structs are identical to static reflected classes so you can use the exact same macros.</p>
+<h3 id="enums">Enums</h3>
+<p>Enums are limited to structured enums, i.e. those used by the <code>ezEnum</code> class. Declaration is similar to static classes, but you use <code>EZ_BEGIN_STATIC_REFLECTED_ENUM(Type, Version)</code> instead in the compilation unit code.</p>
+<pre><code class="lang-cpp">// Header
+struct ezExampleEnum
+{
+    typedef ezInt8 StorageType;
+    enum Enum
+    {
+    Value1 = 1,          // normal value
+    Value2 = -2,         // normal value
+    Value3 = 4,          // normal value
+    Default = Value1     // Default initialization value (required)
+    };
+};
+EZ_DECLARE_REFLECTABLE_TYPE(EZ_NO_LINKAGE, ezExampleEnum);
+</code></pre>
+<pre><code class="lang-cpp">// Cpp
+EZ_BEGIN_STATIC_REFLECTED_ENUM(ezExampleEnum, 1)
+  EZ_ENUM_CONSTANTS(ezExampleEnum::Value1, ezExampleEnum::Value2)
+  EZ_ENUM_CONSTANT(ezExampleEnum::Value3),
+EZ_END_STATIC_REFLECTED_ENUM
+</code></pre>
+<p>The enum constants can either be declared via <code>EZ_ENUM_CONSTANTS()</code> or <code>EZ_ENUM_CONSTANT(Value)</code> inside the begin / end block of the enum declaration. An enum type can be identified by its base type which is always the dummy <code>ezEnumBase</code>.</p>
+<h3 id="bitflags">Bitflags</h3>
+<p>Bitflags are limited to structured bitflags, i.e. those used by the <code>ezBitflags</code> class. Declaration is similar to static classes, but you use <code>EZ_BEGIN_STATIC_REFLECTED_BITFLAGS(Type, Version)</code> instead in the compilation unit code.</p>
+<pre><code class="lang-cpp">// Header
+struct ezExampleBitflags
+{
+    typedef ezUInt64 StorageType;
+    enum Enum : ezUInt64
+    {
+    Value1 = EZ_BIT(0),  // normal value
+    Value2 = EZ_BIT(31), // normal value
+    Value3 = EZ_BIT(63), // normal value
+    Default = Value1     // Default initialization value (required)
+    };
+
+    struct Bits
+    {
+    StorageType Value1 : 1;
+    StorageType Padding : 30;
+    StorageType Value2 : 1;
+    StorageType Padding2 : 31;
+    StorageType Value3 : 1;
+    };
+};
+EZ_DECLARE_REFLECTABLE_TYPE(EZ_NO_LINKAGE, ezExampleBitflags);
+</code></pre>
+<pre><code class="lang-cpp">// Cpp
+EZ_BEGIN_STATIC_REFLECTED_BITFLAGS(ezExampleBitflags, 1)
+  EZ_BITFLAGS_CONSTANTS(ezExampleBitflags::Value1, ezExampleBitflags::Value2)
+  EZ_BITFLAGS_CONSTANT(ezExampleBitflags::Value3),
+EZ_END_STATIC_REFLECTED_BITFLAGS();
+</code></pre>
+<p>The bitflags constants can either be declared via <code>EZ_BITFLAGS_CONSTANTS()</code> or <code>EZ_BITFLAGS_CONSTANT(Value)</code> inside the begin / end block of the bitflags declaration. A bitflags type can be identified by its base type which is always the dummy <code>ezBitflagsBase</code>.</p>
+<h2 id="properties">Properties</h2>
+<p>Properties are the most important information in a type as they define the data inside it. The properties of a type can be accessed via <code>ezRTTI::GetProperties()</code>. There are different categories of properties, each deriving from <code>ezAbstractProperty</code>. The type of property can be determined by calling <code>ezAbstractProperty::GetCategory()</code>.
+Properties are added via the property macros inside the <code>EZ_BEGIN_PROPERTIES()</code> / <code>EZ_END_PROPERTIES()</code> block of the type declaration like this:</p>
+<pre><code class="lang-cpp">EZ_BEGIN_STATIC_REFLECTED_TYPE(ezStaticTestClass, ezNoBase, 1, ezRTTIDefaultAllocator&lt;ezStaticTestClass&gt;)
+{
+    EZ_BEGIN_PROPERTIES
+    {
+        EZ_CONSTANT_PROPERTY(&quot;Constant&quot;, 5),
+        EZ_MEMBER_PROPERTY(&quot;Member&quot;, m_fFloat),
+        EZ_ACCESSOR_PROPERTY(&quot;MemberAccessor&quot;, GetInt, SetInt),
+        EZ_ARRAY_MEMBER_PROPERTY(&quot;Array&quot;, m_Deque),
+        EZ_ARRAY_ACCESSOR_PROPERTY(&quot;ArrayAccessor&quot;, GetCount, GetValue, SetValue, Insert, Remove),
+        EZ_SET_MEMBER_PROPERTY(&quot;Set&quot;, m_SetMember),
+        EZ_SET_ACCESSOR_PROPERTY(&quot;SetAccessor&quot;, GetSet, SetInsert, SetRemove),
+    }
+    EZ_END_PROPERTIES
+}
+EZ_END_STATIC_REFLECTED_TYPE();
+</code></pre>
+<h3 id="constants">Constants</h3>
+<p>Constants are declared via <code>EZ_CONSTANT_PROPERTY(PropertyName, Value)</code>. The value is stored within the property so no instance of the class is necessary to access it. To access the constant, cast the property to <code>ezAbstractConstantProperty</code> and call <code>ezAbstractConstantProperty::GetPropertyType()</code> to determine the constant type. Then either cast to <code>ezTypedConstantProperty</code> of the matching type, or if the type is not known to you at compile time, use <code>ezAbstractConstantProperty::GetPropertyPointer()</code> to access its data.</p>
+<h3 id="members">Members</h3>
+<p>There are two types of member properties, direct member properties and accessor properties. The first has direct access to the memory location of the property in the class while the later uses functions to get and set the property's value.
+Direct member properties are declared via <code>EZ_MEMBER_PROPERTY(PropertyName, MemberName)</code> while accessor properties are declared via <code>EZ_ACCESSOR_PROPERTY(PropertyName, Getter, Setter)</code>. The getter and setter functions must have the following signature:</p>
+<pre><code class="lang-cpp">Type GetterFunc() const;
+void SetterFunc(Type value);
+</code></pre>
+<p>Type can be decorated with const and reference but must be consistent between get and set function. The available macros are the following:</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Member&quot;, m_fFloat1),
+EZ_MEMBER_PROPERTY_READ_ONLY(&quot;MemberRO&quot;, m_vProperty3),
+EZ_ACCESSOR_PROPERTY(&quot;MemberAccessor&quot;, GetInt, SetInt),
+EZ_ACCESSOR_PROPERTY_READ_ONLY(&quot;MemberAccessorRO&quot;, GetInt),
+</code></pre>
+<p>To access an instance's member variable value, cast the property to <code>ezAbstractMemberProperty</code> and call <code>ezAbstractMemberProperty::GetPropertyType()</code> to determine the member type. Then either cast to <code>ezTypedMemberProperty</code> of the matching type, or if the type is not known to you at compile time, use <code>ezAbstractMemberProperty::GetPropertyPointer()</code> or <code>ezAbstractMemberProperty::GetValuePtr()</code> and <code>ezAbstractMemberProperty::SetValuePtr()</code> to access its data. The first solution will only return a valid pointer if the property is a direct member property.</p>
+<h3 id="arrays">Arrays</h3>
+<p>Array properties are very similar to member properties, they just handle arrays instead of single values. Direct array properties are declared via <code>EZ_ARRAY_MEMBER_PROPERTY(PropertyName, MemberName)</code> while accessor array properties are declared via <code>EZ_ARRAY_ACCESSOR_PROPERTY(PropertyName, GetCount, Getter, Setter, Insert, Remove)</code>. The accessor interface functions must have the following signature:</p>
+<pre><code class="lang-cpp">ezUInt32 GetCount() const;
+Type GetValue(ezUInt32 uiIndex) const;
+void SetValue(ezUInt32 uiIndex, Type value);
+void Insert(ezUInt32 uiIndex, Type value);
+void Remove(ezUInt32 uiIndex);
+</code></pre>
+<p>The available macros are the following:</p>
+<pre><code class="lang-cpp">EZ_ARRAY_ACCESSOR_PROPERTY(&quot;ArrayAccessor&quot;, GetCount, GetValue, SetValue, Insert, Remove),
+EZ_ARRAY_ACCESSOR_PROPERTY_READ_ONLY(&quot;ArrayAccessorRO&quot;, GetCount, GetValue),
+EZ_ARRAY_MEMBER_PROPERTY(&quot;Hybrid&quot;, m_Hybrid),
+EZ_ARRAY_MEMBER_PROPERTY(&quot;Dynamic&quot;, m_Dynamic),
+EZ_ARRAY_MEMBER_PROPERTY_READ_ONLY(&quot;Deque&quot;, m_Deque),
+</code></pre>
+<p>To access an instance's array, cast the property to <code>ezAbstractArrayProperty</code> and call <code>ezAbstractArrayProperty::GetElementType()</code> to determine the element type. From here you can use the various functions inside <code>ezAbstractArrayProperty</code> to manipulate an instance's array.</p>
+<h3 id="sets">Sets</h3>
+<p>Set properties are very similar to member properties, they just handle sets instead of single values. Direct set properties are declared via <code>EZ_SET_MEMBER_PROPERTY(PropertyName, MemberName)</code> while accessor set properties are declared via <code>EZ_SET_ACCESSOR_PROPERTY(PropertyName, GetValues, Insert, Remove)</code>. The accessor interface functions must have the following signature:</p>
+<pre><code class="lang-cpp">void Insert(Type value);
+void Remove(Type value);
+Container&lt;Type&gt; GetValues() const;
+</code></pre>
+<p>The available macros are the following:</p>
+<pre><code class="lang-cpp">EZ_SET_ACCESSOR_PROPERTY(&quot;SetAccessor&quot;, GetValues, Insert, Remove),
+EZ_SET_ACCESSOR_PROPERTY_READ_ONLY(&quot;SetAccessorRO&quot;, GetValues),
+EZ_SET_MEMBER_PROPERTY(&quot;Set&quot;, m_SetMember),
+EZ_SET_MEMBER_PROPERTY_READ_ONLY(&quot;SetRO&quot;, m_SetMember),
+</code></pre>
+<p>To access an instance's set, cast the property to <code>ezAbstractSetProperty</code> and call <code>ezAbstractSetProperty::GetElementType()</code> to determine the element type. From here you can use the various functions inside <code>ezAbstractSetProperty</code> to manipulate an instance's set.</p>
+<h2 id="flags">Flags</h2>
+<p>Types as well as properties have flags that quickly let you determine the kind of type / property you are dealing with.
+For types, <code>ezRTTI::GetTypeFlags()</code> lets you access its <code>ezTypeFlags::Enum</code> flags which are automatically deduced from the type at compile time.</p>
+<p>Properties can have flags as well, <code>ezAbstractMemberProperty::GetFlags()</code>, <code>ezAbstractArrayProperty::GetFlags()</code> and <code>ezAbstractSetProperty::GetFlags()</code> let you access the <code>ezPropertyFlags::Enum</code> flags of the handled property type. The only difference here is that besides automatically deduced flags there are also user-defined flags that can be added during declaration of the property by using <code>ezAbstractMemberProperty::AddFlags</code> and the variants on the other property categories:</p>
+<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;ArraysPtr&quot;, GetArrays, SetArrays)-&gt;AddFlags(ezPropertyFlags::PointerOwner),
+</code></pre>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>No two types can share the same name.</li>
+<li>Each property name must be unique within its type.</li>
+<li>Only constants that are a basic type (i.e. can be stored inside an <code>ezVariant</code>) will be available to tools.</li>
+<li>A pointer to a type cannot be its own type, the only exception to this is const char*.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/reflection-system.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

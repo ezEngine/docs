@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>String Formatting | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="String Formatting | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="string-formatting">String Formatting</h1>
+
+<p>For formatting strings there are a couple of different options:</p>
+<ul>
+<li><code>ezConversionUtils</code> provides various <code>ToString</code> functions. These are useful for generic cases, where only individual variables need to be converted to a string representation and no control over the exact formatting is needed. <code>ezConversionUtils</code> also provides functions to parse strings for numbers.</li>
+<li><code>ezStringUtils::snprintf</code> is a custom implementation of the infamous C <code>printf</code> function, with better security against buffer overruns and consistent behavior across platforms. It is available, but should generally be avoided, as it cannot provide any type safety.</li>
+<li><code>ezFormatString</code> is the preferred way to do string formatting. It is easy to use, fully type safe, extensible with custom formatters and optimized for performance by doing only very few allocation and delaying the formatting until it is needed, which enables functions to not pay the price for formatting an incoming string, if the function doesn't actually use the result.</li>
+</ul>
+<h2 id="using-ezformatstring-as-an-argument">Using ezFormatString as an Argument</h2>
+<p><code>ezFormatString</code> is a class that can be easily used as a function parameter to accept formatted strings:</p>
+<pre><code class="lang-cpp">void Print(const ezFormatString&amp; text);
+</code></pre>
+<p>A function that takes just an <code>ezFormatString</code> has to be called with the <code>ezFmt</code> wrapper:</p>
+<pre><code class="lang-cpp">Print(ezFmt(&quot;Hello {}&quot;, &quot;World&quot;));
+</code></pre>
+<p>The <code>ezFmt</code> function is a variadic template, that can take up to 10 arguments and wraps them all up into an <code>ezFormatString</code> object.</p>
+<p>If you want your <code>Print</code> function to be a little bit more convenient, and not require the use of <code>ezFmt</code>, you can add an overload that provides the variadic template functionality directly.</p>
+<pre><code class="lang-cpp">template &lt;typename... ARGS&gt;
+void Print(const char* szFormat, ARGS&amp;&amp;... args)
+{
+    Print(ezFormatStringImpl&lt;ARGS...&gt;(szFormat, std::forward&lt;ARGS&gt;(args)...));
+}
+</code></pre>
+<p>Now <code>Print</code> can be called like this:</p>
+<pre><code class="lang-cpp">Print(&quot;Hello {}&quot;, &quot;World&quot;);
+</code></pre>
+<p>Inside <code>Print</code>, all you need to do to get the formatted string is to call <code>ezFormatString::GetText()</code>:</p>
+<pre><code class="lang-cpp">void Print(const ezFormatString&amp; text)
+{
+    ezStringBuilder tmp;
+    const char* szResult = text.GetText(tmp);
+
+    // do something with szResult, do not use tmp, as it is not guaranteed to hold the result (meaning, it may not have been needed)
+}
+</code></pre>
+<h2 id="using-ezformatstring">Using ezFormatString</h2>
+<p>Once a function takes an <code>ezFormatString</code> (see above), you can use <code>{}</code> notation to indicate where an argument shall be inserted.</p>
+<h3 id="positional-arguments">Positional Arguments</h3>
+<p>If a formatting string contains <code>{}</code>, every instance will use the <em>next</em> argument, as given to the function. You can also use <code>{n}</code> with n being <code>0</code> to <code>9</code> to insert the n-th argument. This allows you to skip, rearrange, or repeat arguments:</p>
+<pre><code class="lang-cpp">Print(&quot;Arg1: {1}, Arg2: {2}, Arg1: {1}&quot;, &quot;zero&quot;, &quot;one&quot;, &quot;two&quot;);
+</code></pre>
+<h3 id="formatting-options">Formatting Options</h3>
+<p>Most types that can be formatted, can be passed in directly:</p>
+<pre><code class="lang-cpp">Print(&quot;int value is {}&quot;, 23);
+</code></pre>
+<p>However, often you may want to specify exactly how to display the value. To do so, you need to wrap the incoming argument in an option struct. Each option struct can have arbitrary parameters to configure how it works.</p>
+<pre><code class="lang-cpp">Print(&quot;HEX: 0x{}&quot;, ezArgU(value, 8, true, 16, true));
+</code></pre>
+<p><code>ezArgU</code> is an option struct for unsigned int values. Here we specify that the output should have a fixed <em>width</em> of 8 characters, should pad the output with zeros if necessary, use base 16 (hex) and upper case letters.</p>
+<p>There are many such option structs available, each with their own parameters. By convention, all formatting option structs are named <code>ezArgXYZ</code>.</p>
+<h3 id="available-option-structs">Available Option Structs</h3>
+<p>This is a not necessarily complete list of available option structs:</p>
+<ul>
+<li><code>ezArgC</code> - for single characters</li>
+<li><code>ezArgF</code> - for floating point values</li>
+<li><code>ezArgI</code> - for int values</li>
+<li><code>ezArgU</code> - for unsigned int values</li>
+<li><code>ezArgP</code> - for pointers</li>
+<li><code>ezArgErrorCode</code> - for Windows error codes</li>
+<li><code>ezArgDateTime</code> - for ezDateTime</li>
+<li><code>ezArgHumanReadable</code> - for shortening numbers with suffixes (such as <code>K</code> (kilo) and <code>M</code> (mega))</li>
+<li><code>ezArgFileSize</code> - for shortening file sizes and use suffixes (such as <code>KB</code> and <code>MB</code>)</li>
+</ul>
+<h3 id="custom-argument-formatters">Custom Argument Formatters</h3>
+<p>You can easily write your own formatter. The formatting work is done by a free function called <code>BuildString</code>, overloaded for the type that it shall format. If you search for <code>BuildString</code> functions, you will find many overloads, each handling a different type. Please look at those functions to see how to write your own formatter.</p>
+<p>For it to work, all that is necessary, is that your code is <code>#include</code>'d when it is used in a format string. If you try to use a type (such as <code>MyType</code>) in a format string and your custom formatter is not known (<code>#include</code>'d) in that cpp file, you will get a compile time error with a <em>very long</em> message telling you that no overload of of <code>BuildString</code> is available to handle this type.</p>
+<p>The <code>ezArgXYZ</code> structs are just used to wrap a type and store additional options. This is not required, for <code>BuildString</code> to work, but it does allow you to wrap the same type multiple times to select different formatters. For example, unsigned int is wrapped by <code>ezArgU</code> for regular int formatting options, by <code>ezArgFileSize</code> to print a value with <code>B</code>, <code>KB</code>, <code>MB</code> or <code>GB</code> suffixes and by <code>ezArgErrorCode</code> to interpret it as a Windows error code and translate it to a readable string. If you have a custom type <code>MyType</code> and you do not need any formatting options, you can write a <code>BuildString</code> overload, that takes a <code>MyType</code> directly.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="string-usage.html">String Usage Guidelines</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/appendix/string-formatting.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

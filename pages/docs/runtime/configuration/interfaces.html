@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Singleton Interfaces | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Singleton Interfaces | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="singleton-interfaces">Singleton Interfaces</h1>
+
+<p><em>Singletons</em> are classes of which there should only be a single instance throughout the lifetime of the process. Although EZ uses the <em>singleton pattern</em> quite extensively for built-in classes, such as <code>ezTaskSystem</code> and <code>ezResourceManager</code>, those classes don't use dedicated singleton infrastructure. Instead, they only expose static functions, and there is no need for any instance.</p>
+<p>Accessing such singletons is trivial, as you can always call their functions directly. However, there is another type of singleton, which does require special handling.</p>
+<p>There are cases where you want to define an <em>interface</em> to make certain functionality available, but you may have different implementations. Only one implementation should ever be active, though. Concrete examples are the integrations of third party libraries. For example there is an <code>ezFrameCaptureInterface</code>. This class defines an interface through which <code>ezGameApplicationBase</code> can do a capture of the rendered frame, which can be used for debugging graphics issues. However, <em>how</em> such a frame capture could be taken, depends on the platform, the installed tools, the used graphics API and so on. This functionality may be available or not and the exact implementation that is needed can differ drastically.</p>
+<p>Therefore, we want to be able to dynamically load the necessary implementation and make it available through the abstract interface. For the <code>ezFrameCaptureInterface</code> we have an implementation by our <a href="../../debugging/renderdoc.html">RenderDoc integration</a>. In the future we might have a second implementation for PIX or some other platform specific tool.</p>
+<p>Using the singleton infrastructure, we can simply load an <a href="../../custom-code/cpp/engine-plugins.html">engine plugin</a> that contains an implementation, and from that plugin register our implementation for that interface. Other code can then query for an instance of this interface and, if available, use it without knowing anything about the implementation, and without the need to link against that library.</p>
+<h2 id="implementing-singletons">Implementing Singletons</h2>
+<p>This section shows all the pieces needed for a singleton. You can find the sample code in the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>.</p>
+<h3 id="interface-base-class">Interface Base Class</h3>
+<p>First, you need to have a virtual base class that declares the actual interface.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-interface -->
+<pre><code class="lang-cpp">/// \brief Pure virtual interface for demonstrating the singleton work flow
+///
+/// This declaration would typically be in a shared location, that all code can #include
+class PrintInterface
+{
+public:
+  virtual ~PrintInterface() = default;
+
+  virtual void Print(const ezFormatString&amp; text) = 0;
+};
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This is the class through which other code will later access the functionality, so it must be in a shared location.</p>
+<h3 id="interface-implementation">Interface Implementation</h3>
+<p>Next, you need one or more <em>implementations</em> of your interface. You can, of course, have zero implementations, if all you want to provide is the option for future extensibility, and your code should generally be able to handle the fact that no implementation is currently loaded.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-impl-declaration -->
+<pre><code class="lang-cpp">/// \brief Implementation of the PrintInterface, just forwards the text to ezLog::Info()
+///
+/// This would typically be in a different plugin than the interface and would be allocated by that plugin on startup.
+class PrintImplementation : public PrintInterface
+{
+  EZ_DECLARE_SINGLETON_OF_INTERFACE(PrintImplementation, PrintInterface);
+
+public:
+  PrintImplementation();
+
+  virtual void Print(const ezFormatString&amp; text) override;
+
+private:
+  // needed for the startup system to be able to call the private function below
+  EZ_MAKE_SUBSYSTEM_STARTUP_FRIEND(SampleGamePluginStartupGroup, SampleGamePluginMainStartup);
+
+  void OnCoreSystemsStartup()
+  {
+    /* we could do something important here */
+  }
+};
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Note the <code>EZ_DECLARE_SINGLETON_OF_INTERFACE</code> macro. This adds one part of the required functionality. For one, this class adds a function to query the one and only instance of your class (<code>GetSingleton()</code>). Also, it prevents you from creating two instances of this class, as that would violate the singleton contract.</p>
+<p>Finally, you need to add this to you cpp file:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-impl-definition -->
+<pre><code class="lang-cpp">EZ_IMPLEMENT_SINGLETON(PrintImplementation);
+
+PrintImplementation::PrintImplementation()
+  : m_SingletonRegistrar(this) // needed for automatic registration
+{
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>The macro again inserts vital code for your singleton to work. The constructor also has to follow the pattern shown above.</p>
+<p>You can now implement the desired behavior for the overridden functions.</p>
+<h2 id="instantiating-singletons">Instantiating Singletons</h2>
+<p>The EZ singleton infrastructure does not automatically create an instance of singleton classes. It is up to you whether, when and how you create your instance. The most common way to do this, is to leverage the <a href="startup.html">startup system</a> to hook into the engine startup process at the right time.</p>
+<p>For details, read that chapter, but here is what you would typically do. At startup you instantiate your singleton implementation:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-allocate -->
+<pre><code class="lang-cpp">ON_CORESYSTEMS_STARTUP
+{
+  // allocate an implementation of PrintInterface
+  s_PrintInterface = EZ_DEFAULT_NEW(PrintImplementation);
+
+  s_PrintInterface-&gt;OnCoreSystemsStartup();
+  s_PrintInterface-&gt;Print(&quot;Called ON_CORESYSTEMS_STARTUP&quot;);
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>And at shutdown you make sure to clean it up again:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-deallocate -->
+<pre><code class="lang-cpp">ON_CORESYSTEMS_SHUTDOWN
+{
+  s_PrintInterface-&gt;Print(&quot;Called ON_CORESYSTEMS_SHUTDOWN&quot;);
+
+  // clean up the s_PrintInterface, otherwise we would get asserts about memory leaks at shutdown
+  s_PrintInterface.Clear();
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="accessing-singletons">Accessing Singletons</h2>
+<p>There are two ways that you can access your singleton instance. In a piece of code that knows for certain that it will only run in conjunction with a specific singleton implementation, you can access it directly:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-query-instance -->
+<pre><code class="lang-cpp">PrintImplementation::GetSingleton()-&gt;Print(&quot;Called ON_HIGHLEVELSYSTEMS_SHUTDOWN&quot;);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This is the most efficient way. However, use cases for this should be relatively rare. The more common situation is, when you want to get the implementation for an interface. To do so, you need to go through <code>ezSingletonRegistry</code>:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: singleton-query-interface -->
+<pre><code class="lang-cpp">ezSingletonRegistry::GetSingletonInstance&lt;PrintInterface&gt;()-&gt;Print(&quot;Called ON_HIGHLEVELSYSTEMS_STARTUP&quot;);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Here we don't need to know anything about the implementation and therefore have no link dependency on the library that provides it. This is how most code would access a singleton implementation. Be aware that this requires a more expensive lookup, so locally cache the result, if you want to do multiple function calls on it.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="startup.html">Startup System</a></li>
+<li><a href="../../custom-code/cpp/engine-plugins.html">Engine Plugins</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/configuration/interfaces.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

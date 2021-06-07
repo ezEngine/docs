@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Engine Plugins | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Engine Plugins | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="engine-plugins">Engine Plugins</h1>
+
+<p>Engine plugins are the best way to get your custom code into the engine, such that it is accessible by the editor and also <a href="../../tools/player.html">ezPlayer</a>.</p>
+<p>Contrary to using a plugin, you could also build your own <a href="../../runtime/application/application.html">application (TODO)</a>, which may link to static libraries that contain your code. However, that approach means that your code cannot be loaded into the editor process and therefore you won't be able to leverage those tools to their full extent. We strongly advise against that.</p>
+<h2 id="creating-a-plugin">Creating a Plugin</h2>
+<p>The <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a> is a good reference for how to build a custom game plugin. To just create a plugin, at all, you only need very little setup.</p>
+<p>The only files you need to look at are:</p>
+<ul>
+<li><code>CMakeLists.txt</code></li>
+<li><code>SampleGamePluginDLL.h</code></li>
+<li><code>SampleGamePlugin.cpp</code></li>
+</ul>
+<h3 id="build-system-setup">Build System Setup</h3>
+<p>The file <code>CMakeLists.txt</code> is only of interest here in case you want to reuse the EZ build infrastructure to generate your library. If you use <a href="../../build/submodule.html">ezEngine as a Submodule</a> then you probably have your own CMake scripts. Either way, you need to add a project that generates a DLL.</p>
+<h3 id="plugin-dll-name">Plugin DLL Name</h3>
+<p>Make sure to call your plugin DLL <code>XyzPlugin.dll</code>. That means it should have the <code>Plugin</code> suffix in its name. Generally, plugins can have any name, but only DLLs with this naming convention will be listed by the editor in the <a href="../../projects/project-settings.html">project settings</a> for you to activate.</p>
+<h3 id="dll-symbol-importexport">DLL Symbol Import/Export</h3>
+<p>The file <code>SampleGamePluginDLL.h</code> only contains <code>#define</code>s for DLL import/export macros.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: dll-export-defines -->
+<pre><code class="lang-cpp">// Configure the DLL Import/Export Define
+#if EZ_ENABLED(EZ_COMPILE_ENGINE_AS_DLL)
+#  ifdef BUILDSYSTEM_BUILDING_SAMPLEGAMEPLUGIN_LIB
+#    define EZ_SAMPLEGAMEPLUGIN_DLL __declspec(dllexport)
+#  else
+#    define EZ_SAMPLEGAMEPLUGIN_DLL __declspec(dllimport)
+#  endif
+#else
+#  define EZ_SAMPLEGAMEPLUGIN_DLL
+#endif
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>If your plugin will be entirely on its own, you don't even need this. However, if you want to use multiple plugins and some of them should contain shared code, then others need to be able to link against the shared libraries and access classes and functions from that library. By tagging classes with these macros you can <em>export</em> symbols from a DLL and thus make those things available to other code. For examples how to use this, just search the sample plugin.</p>
+<h3 id="ezplugin-instance">ezPlugin Instance</h3>
+<p>The 'secret sauce' to EZ engine plugins can be found in <code>SampleGamePlugin.cpp</code>:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: plugin-setup -->
+<pre><code class="lang-cpp">static void OnPluginLoaded(bool)
+{
+  // you could do something here, though this is rare
+}
+
+static void OnPluginUnloaded(bool)
+{
+  // you could do something here, though this is rare
+}
+
+ezPlugin s_Plugin(false, &amp;OnPluginLoaded, &amp;OnPluginUnloaded);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>The important part here is the definition of the global variable <code>s_Plugin</code>. This injects code into the plugin DLL, that helps the engine to distinguish which plugin things like <a href="../../runtime/world/components.html">components</a> or <a href="../../runtime/configuration/startup.html">subsystems</a> belong to. You really don't have to do more than this. In the snippet above we provide callbacks that are triggered when a plugin is loaded or unloaded. These callbacks are optional, though in some cases you may want to register and unregister things here.</p>
+<h2 id="loading-a-plugin">Loading a Plugin</h2>
+<p>If you want to load a plugin from code, you would use <code>ezPlugin::LoadPlugin()</code> and provide only the name (no path) of your plugin. Make sure that the DLL is stored in the same directory as all other DLLs and EXEs.</p>
+<p>The more convenient way to load your game plugin, though, is to enable it in the <a href="../../projects/project-settings.html">project settings</a>. Then it will be automatically loaded by every <a href="../../runtime/application/application.html">application (TODO)</a>.</p>
+<h2 id="add-custom-code">Add Custom Code</h2>
+<p>Once you have your basic plugin set up and can load it into your project, you can start adding custom code. The easiest way to get started is to write a <a href="custom-cpp-component.html">custom component</a>. Once you need control over higher level game logic, you can add your own <a href="../../runtime/application/game-state.html">game state</a>. And if you need to initialize and shut down certain systems, you should utilize the <a href="../../runtime/configuration/startup.html">startup system</a>.</p>
+<h2 id="utility-plugins">Utility Plugins</h2>
+<p>If you want to write a plugin that provides some functionality for shared access, like some integration of a third-party library, the process is exactly the same. The only difference is, that such libraries would never contain a <a href="../../runtime/application/game-state.html">game state</a>.</p>
+<p>Also, have a look at <a href="../../runtime/configuration/interfaces.html">singletons</a> if your plugin is supposed to provide an implementation of some abstract interface.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
+<li><a href="../../runtime/application/game-state.html">Game States</a></li>
+<li><a href="custom-cpp-component.html">Custom Components with C++</a></li>
+<li><a href="../../runtime/configuration/startup.html">Startup System</a></li>
+<li><a href="../../runtime/configuration/interfaces.html">Singleton Interfaces</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/cpp/engine-plugins.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Building with Clang on Windows | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Building with Clang on Windows | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="building-with-clang-on-windows">Building with Clang on Windows</h1>
+
+<p>You can build ezEngine using the Clang on Windows. This can be useful to find and fix compilation errors and warnings, that do not happen with MSVC. However, as Clang support on Windows is still experimental, you may not be able to build a working executable.</p>
+<h2 id="using-clangllvm-with-the-cmake-gui">Using Clang/LLVM with the CMake GUI</h2>
+<ol>
+<li>Get the latest clang windows distribution: <a href="https://releases.llvm.org/download.html">https://releases.llvm.org/download.html</a> (the 64-bit version is recommended)</li>
+<li>Create a new solution for the Clang build by pointing <em>Where to build the binaries</em> to a new location.</li>
+<li>Press <strong>Configure</strong> once, a dialog will show up.</li>
+<li>Choose <strong>Ninja</strong> as the generator. (Note: Get ninja from <a href="https://ninja-build.org">https://ninja-build.org</a> and put it in your <strong>PATH</strong>)</li>
+<li>Choose <em>Specify native compilers</em> then hit <strong>Finish</strong>.</li>
+<li>Specify the <em>C</em> and <em>C++</em> compiler. When using the default paths they are located at:
+<ul>
+<li>C: C:/Program Files/LLVM/bin/clang.exe</li>
+<li>C++: C:/Program Files/LLVM/bin/clang++.exe</li>
+</ul>
+</li>
+<li>Hit <strong>Finish</strong></li>
+<li>You will now get an error from cmake <code>No CMAKE_RC_COMPILER could be found</code>. Check the <strong>Advanced</strong> checkbox to show additional options and point <code>CMAKE_RC_COMPILER</code> to <code>C:\Program Files (x86)\Windows Kits\10\bin\&lt;windows-sdk-version&gt;\x64\rc.exe</code> (for example <code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe</code>).</li>
+<li>Hit <strong>Configure</strong></li>
+<li>Hit <strong>Generate</strong></li>
+<li><code>cd</code> into the build location and run <code>ninja</code> to build.</li>
+</ol>
+<h2 id="using-the-clang-frontend-for-visual-studio-with-the-cmake-gui">Using the Clang frontend for Visual Studio with the CMake GUI</h2>
+<p>The clang frontend for the Visual Studio Compiler is no longer in development. Using the official LLVM clang is recommended.</p>
+<ol>
+<li>Create a new solution for the Clang build by pointing <em>Where to build the binaries</em> to a new location.</li>
+<li>Press <strong>Configure</strong> once, a dialog will show up.</li>
+<li>Choose the desired Visual Studio generator at the top.</li>
+<li>In the field <strong>Optional toolset to use (argument to -T)</strong> type <strong>v140_clang_c2</strong></li>
+<li>Finish the dialog and run 'Configure'.</li>
+<li>Check the <strong>Advanced</strong> checkbox to show additional options.</li>
+<li><strong>Disable EZ_USE_PCH</strong>, as the Clang build will not work with precompiled headers.</li>
+<li>You may also want to <strong>disable EZ_ENABLE_FOLDER_UNITY_FILES</strong> as that makes it easier to see from which file a compilation error originated.</li>
+<li>Finish the <a href="cmake-config.html">CMake configuration</a>, open the solution in Visual Studio and start compiling.</li>
+</ol>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="building-ez.html">Building ezEngine</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/clang-on-windows.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

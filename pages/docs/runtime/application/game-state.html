@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Game States | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Game States | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="game-states">Game States</h1>
+
+<p>Most game code is implemented by writing custom <a href="../world/components.html">components</a>. However, components always work in the context of an object, be it a single <a href="../world/game-objects.html">game object</a> or an entire <a href="../../prefabs/prefabs-overview.html">prefab</a>. The most that a single component can be responsible for, is to do high level logic for a level, by acting as a <a href="../world/world-messaging.html#global-event-message-handlers">global message handler</a>.</p>
+<p>However, for a full game you need a layer of control that is outside the world, where you can do logic like what level to load, what to do when the player dies or reaches their goal, how to display a main menu for the game settings and level selection, and so on. Most of these things would be possible with world components alone, but it would be cumbersome. Especially switching from one level to another is difficult, if some of your overall game logic has to be transitioned as well.</p>
+<p><em>Game States</em> are this extra layer. A game state sits between the <a href="application.html">application (TODO)</a> layer and the <a href="../world/worlds.html">world</a>.</p>
+<p><img src="media/code-hierarchy.png" alt="Code Hierarchy"></p>
+<p>A game state is in so far optional, in that the engine will create an instance of <code>ezFallbackGameState</code>, if no custom game state is available. The diagram above shows, that the editor skips the game state in <em>simulate mode</em>. In practice that means that the editor will not allocate any game state when the scene is being edited or only simulated. Only when you enter <em>play-the-game mode</em>, will it create a game state, which can then take over full control for the windows, input and the main camera.</p>
+<h2 id="game-state-responsibilities">Game State Responsibilities</h2>
+<p>The typical things that a game state controls are:</p>
+<ul>
+<li>Spawning one or multiple windows</li>
+<li>Setting up the main render pipeline</li>
+<li>Creating a world and loading a scene into it
+<ul>
+<li>Unless it's run in the editor, where it is handed an existing world</li>
+</ul>
+</li>
+<li>Setting up input devices and bindings</li>
+<li>Processing main input (not component specific input)</li>
+<li>Setting up and controlling the main camera</li>
+<li>Spawning the player prefab</li>
+<li>Displaying game UI</li>
+<li>Providing a main menu</li>
+<li>Saving and restoring global state (progression, high-scores, etc)</li>
+</ul>
+<p>For example when you have a <a href="../../gameplay/player-start-point.html">player start point component</a> in a scene, the component itself doesn't do anything, it just holds some data. Instead, when you enter play-the-game mode, the active game state <em>can</em> (but is not required to) use the information from these components to spawn a player prefab.</p>
+<p>Similarly, most scenes have a camera component whose usage hint is set to 'Main Camera' (this may be part of the player prefab). This camera defines what part of the scene will be shown on screen. At least that's how it appears. In reality it is the game state that controls the camera for the main render target. It's simply a feature of the <code>ezFallbackGameState</code>, that it searches the world for an appropriate camera component and applies that to the main camera. If it doesn't find any such camera component, it provides simple WASD fly-camera controls. You can even cycle through the different camera components in a scene using <code>Page Up</code> and <code>Page Down</code>.</p>
+<p>As you can see, by implementing a custom game state, you can gain control over many things that otherwise appear to be built-in.</p>
+<h2 id="game-state-instantiation">Game State Instantiation</h2>
+<p>It is the responsibility of the <code>ezGameApplication</code> to instantiate a game state. By default this is done right at application startup, but if you write your own <a href="application.html">application (TODO)</a> you could handle this differently. For example the editor only instantiates the game state for play-the-game mode.</p>
+<p>The application knows what game states are available through the <a href="../reflection-system.html">reflection information</a>. When a game state is needed, all available ones are instantiated and 'asked' (via <code>ezGameStateBase::DeterminePriority()</code>) whether it is the right one to handle the situation. The game state that is the best fit will be kept and gets control.</p>
+<p>The idea is, that there are typically only few game states available anyway. Usually you have the built-in <code>ezFallbackGameState</code> and then you have one other game state implementation from your custom game plugin. The latter one will take precedence. You could have multiple game states, for example when you have multiple game plugins loaded simultaneously, but then they would need to somehow figure out which one should get activated (e.g. through command line arguments).</p>
+<h2 id="sample-game-state">Sample Game State</h2>
+<p>For an example game state have a look at the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>. The game state in the sample derives from <code>ezFallbackGameState</code> to benefit from its utilities, such as the default fly camera. In fact, it is a good idea to look at the source of <code>ezFallbackGameState</code> as an example, as well.</p>
+<p>For all the details, read the <a href="../../../getting-started/api-docs.html">API Docs</a> for <code>ezGameStateBase</code>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../custom-code/custom-code-overview.html">Custom Code</a></li>
+<li><a href="application.html">Application (TODO)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/game-state.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

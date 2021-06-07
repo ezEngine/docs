@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Projectile Component | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Projectile Component | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="projectile-component">Projectile Component</h1>
+
+<p>The <em>projectile component</em> makes an object move along a straight line (with optional gravity), checks for collisions and triggers <a href="../materials/surfaces.html#surface-interactions">surface interactions</a>. It also applies <em>damage</em> and a <em>physical impulse</em> when it hits something.</p>
+<p>There are many ways projectiles may work in different games. The projectile component only implements the most commonly needed functionality. For some games this may already be sufficient. For more creative games you most certainly need to implement your own component. The built-in projectile component is mostly meant as a showcase and demonstration, how you can generally implement such functionality, especially how to interact with <a href="../materials/surfaces.html">surfaces</a>.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p><code>Speed</code>: The speed (m/sec) at which the projectile will fly along the +X axis. For dramatic effect it is often more interesting for bullets to fly much slower than is realistic, so that one can see them.</p>
+<p><code>GravityMultiplier</code>: How strong gravity should affect the bullet. If set to 0, the projectile will fly straight ahead. With values &gt; 0, it will fall downwards.</p>
+<p><code>MaxLifetime</code>: If the projectile lives longer than this, it will destroy itself.</p>
+<p><code>OnTimeoutSpawn</code>: If the projectile destroys itself because it didn't hit anything before <code>MaxLifetime</code> ended, it will spawn this prefab. Can be used to let rockets 'explode' after a while.</p>
+<p><code>CollisionLayer</code>: The physics <a href="../physics/collision-shapes/collision-layers.html">collision layer</a> to use for raycasting whether the projectile hit something.</p>
+<p><code>FallbackSurface</code>: If the projectile hits something that has no <a href="../materials/surfaces.html">surface</a> assigned, it will assume that this type of surface was hit. This just guarantees that you always get any kind of hit response, even when the hit geometry is just dummy or placeholder geometry.</p>
+<p><code>Interactions</code>: This array allows you to specify exactly what the projectile will do, when it hits different types of surfaces. Each entry is used to configure the action of the projectile if a certain type of surface is hit. Note that surfaces and surface interactions already work hierarchically. That means for most types of projectiles this array only needs to contain a single entry, with a base surface, and all it needs to specify is what 'interaction' to trigger. The exact type of surface that is hit, will then decide what prefabs to spawn for that kind of interaction.</p>
+<h3 id="interaction-properties">Interaction Properties</h3>
+<ul>
+<li><code>Surface</code>: The (base) type of surface for which this array element applies.</li>
+<li><code>Reaction</code>: How the projectile itself should react. <code>Absorb</code> means it will stop there, <code>Reflect</code> means the bullet will bounce off, <code>Attach</code> means the bullet will stop but attach itself to the target object and <code>Pass Through</code> means it will continue on its path.</li>
+<li><code>Interaction</code>: The <a href="../materials/surfaces.html#surface-interactions">surface interaction</a> to trigger when the projectile hits this type of surface.</li>
+<li><code>Impulse</code>: The amount of physical impulse to exert on the hit object.</li>
+<li><code>Damage</code>: The amount of damage to apply to the hit object.</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>The image below shows a basic bullet projectile setup:</p>
+<p><img src="media/projectile-properties.png" alt="Projectile Properties"></p>
+<p>The projectile flies relatively fast, has a short lifetime and uses a collision layer that would hit most physical objects. In the <em>interactions</em> array we only have two elements. One is the <em>default</em> surface, which is the base surface for all others, that means no matter what type of surface a projectile hits, this entry will always apply, unless there is a more specific entry. As you can see, the bullet is configured to be <em>absorbed</em> when it hits anything solid, it will apply some damage and push the object backwards with some impulse. It is also set to trigger the 'BulletImpact' surface interaction. What that means, ie. whether there will be sparks or splinters and what sounds to play, etc, is all configured through the <a href="../materials/surfaces.html">surfaces</a>.</p>
+<p>There is a second entry in this array, for when the bullet hits <em>water</em>. The main difference here is, that the bullet reaction is set to <em>pass through</em>, which means that the projectile will not stop, but continue forwards. It will still trigger the 'BulletImpact' surface reaction, though, so this allows the surface to spawn a water splash effect.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>With these settings you can build a wide variety of interesting projectiles, especially if you use all the flexibility of surfaces and surface interactions. Still, there are many things that are not possible, and you are encouraged to write your own projectile component(s) that suit your needs. The code of the <code>ezProjectileComponent</code> is a good starting point for inspiration.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../materials/surfaces.html">Surfaces</a></li>
+<li><a href="../physics/collision-shapes/collision-layers.html">Collision Layers</a></li>
+<li><a href="../effects/particle-effects/particle-effects-overview.html">Particle Effects</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/projectile-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

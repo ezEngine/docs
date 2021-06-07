@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ImGui | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ImGui | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="imgui">ImGui</h1>
+
+<p><a href="https://github.com/ocornut/imgui">Dear ImGui</a> is a well known library for building <em>immediate mode GUIs</em>.</p>
+<p>The ImGui library was built to make it quick and easy to create GUIs that need to be functional, but not pretty. ImGui is popular with programmers, because it only takes a few lines of code to build UI panels with buttons, sliders, text boxes, checkboxs and many more. A very common use case for ImGui is for quick developer tools and for exposing options in tech demos.</p>
+<p><img src="media/imgui.jpg" alt="ImGui"></p>
+<p>On the other hand, ImGui is not meant to be styled. Changing the appearance of ImGui elements is difficult, and controlling the layout of elements is only very basic.</p>
+<h2 id="using-imgui">Using ImGui</h2>
+<p><em>Dear ImGui</em> is integrated by the singleton class <code>ezImgui</code>. To use ImGui, you need to allocate one such instance first:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: imgui-alloc -->
+<pre><code class="lang-cpp">#ifdef BUILDSYSTEM_ENABLE_IMGUI_SUPPORT
+  if (ezImgui::GetSingleton() == nullptr)
+  {
+    EZ_DEFAULT_NEW(ezImgui);
+  }
+#endif
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This can be done for example in <code>OnActivation()</code> of a custom <a href="../runtime/application/game-state.html">game state</a>. Similarly, you should delete the <code>ezImgui</code> instance at shutdown:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: imgui-dealloc -->
+<pre><code class="lang-cpp">#ifdef BUILDSYSTEM_ENABLE_IMGUI_SUPPORT
+  if (ezImgui::GetSingleton() != nullptr)
+  {
+    ezImgui* pImgui = ezImgui::GetSingleton();
+    EZ_DEFAULT_DELETE(pImgui);
+  }
+#endif
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>During a frame, the <code>ezImgui</code> instance needs to know which <em>view</em> to render the UI elements to. Therefore you should call this every frame:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: imgui-activate -->
+<pre><code class="lang-cpp">ezImgui::GetSingleton()-&gt;SetCurrentContextForView(m_hMainView);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Often you only want to pass input to ImGui during certain phases of your game. This can be controlled via <code>ezImgui::SetPassInputToImgui()</code> and whether ImGui currently has focus in a certain UI element can be queried through <code>ezImGui::WantsInput()</code>.</p>
+<p>From there on, all the functionality of the Dear ImGui library is used directly, without any EZ specific wrappers. For example a simple panel is created like this:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: imgui-panel -->
+<pre><code class="lang-cpp">ImGui::SetNextWindowSize(ImVec2(200, 100), ImGuiCond_FirstUseEver);
+ImGui::Begin(&quot;Imgui Window&quot;, &amp;window);
+ImGui::Text(&quot;Hello World!&quot;);
+ImGui::SliderFloat(&quot;Slider&quot;, &amp;slider, 0.0f, 1.0f);
+ImGui::ColorEdit3(&quot;Color&quot;, color);
+
+
+if (ImGui::Button(&quot;Toggle Stats&quot;))
+{
+  stats = !stats;
+}
+
+if (stats)
+{
+  ImGui::Text(&quot;Application average %.3f ms/frame (%.1f FPS)&quot;, 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+}
+
+ImGui::End();
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="samples">Samples</h2>
+<p>The <a href="../../samples/rts.html">RTS Sample</a> and the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a> demonstrate how to use ImGui.</p>
+<h2 id="limitations">Limitations</h2>
+<p>It is very difficult to adjust the appearance of ImGui elements. Use ImGui for developer tools and to prototype ideas quickly. Prefer to use <a href="rmlui.html">RmlUi</a> once you need more control over the look and feel.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="ui.html">Ingame UI</a></li>
+<li><a href="rmlui.html">RmlUi</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/imgui.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

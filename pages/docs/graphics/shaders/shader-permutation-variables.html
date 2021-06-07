@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shader Permutation Variables | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shader Permutation Variables | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="shader-permutation-variables">Shader Permutation Variables</h1>
+
+<p>Permutation variables are global variables set either through C++ code or exposed through materials. The value of a permutation variable at the time of a drawcall affects which permutation of a shader is used for rendering.</p>
+<p>Permutation variables allow to create different variants of the same shader, without creating different shader files. Since their state is global, they decouple the decision which shader to use from the code that actually has this information at hand.</p>
+<p>For instance, materials support different rendering modes. By default they use proper lighting, but for debugging purposes we might want to override this and always output unlit diffuse color (or normals, UV coordinates, etc). The information which shader to use to render a certain object is stored either in a material or directly set through code. Without permutation variables we would either need to use an entirely different shader to get our debug output, which would mean that everything would need to support this functionality, or the shader would need to decide the final output mode dynamically, adding a large performance hit for a feature that is not used in the final game.</p>
+<p>Permutation variables solve this problem by creating different variants of the shader, and letting the engine pick the correct one depending on the current values.</p>
+<p>In shader code, permutation variables are exposed as <code>#define</code>'d preprocessor variables and therefore can be evaluated like any other preprocessor directive.</p>
+<h2 id="the-shader-permutations-section">The Shader Permutations Section</h2>
+<p>Each shader is made up of several <strong>sections</strong>.</p>
+<pre><code class="lang-cpp">[PLATFORMS]
+
+ALL
+DEBUG
+
+[PERMUTATIONS]
+
+ALPHATEST
+WIREFRAME
+
+[MATERIALPARAMETER]
+
+Permutation ALPHATEST;
+
+[RENDERSTATE]
+
+#if WIREFRAME == 1
+    WireFrame = true
+#endif
+
+[VERTEXSHADER]
+
+VS_OUT main(VS_IN Input)
+{
+  ...
+}
+
+[PIXELSHADER]
+
+...
+</code></pre>
+<p>In the <strong>[PERMUTATIONS]</strong> section the shader author has to list all permutation variables that are going to be evaluated inside the shader code. If a variable is used without being mentioned in this section, your shader might compile and work, but the result will always be the same.</p>
+<h2 id="ezpermvar-files">ezPermVar Files</h2>
+<p>Every permutation variable must be defined in a file that has the exact name of the permutation variable and the <code>.ezPermVar</code> extension.</p>
+<p>All ezPermVar files must reside in a specific subfolder in any data directory. By default the subfolder is <strong>&quot;Shaders/PermutationVars&quot;</strong>.</p>
+<h2 id="bool-permutation-variables">bool Permutation variables</h2>
+<p>The definition of a boolean permutation variable in its ezPermVar file simply looks like this:</p>
+<pre><code class="lang-cpp">bool TWO_SIDED;
+</code></pre>
+<p>A boolean permutation variable is permuted over the values <strong>TRUE</strong> and <strong>FALSE</strong>. In a shader it would be evaluate like this:</p>
+<pre><code class="lang-cpp">#if defined(PIXEL_SHADER) &amp;&amp; TWO_SIDED == TRUE
+    uint FrontFace : SV_IsFrontFace;
+#endif
+</code></pre>
+<p>In C++ code the variable is set like this:</p>
+<pre><code class="lang-cpp">ezRenderContext::SetShaderPermutationVariable(&quot;TWO_SIDED&quot;, &quot;TRUE&quot;);
+</code></pre>
+<h2 id="enum-permutation-variables">enum Permutation Variables</h2>
+<p>Enum permutation variables allow you to use more than two permutation values and they can have more descriptive names.</p>
+<p>The definition of an enum variable in its ezPermVar file looks like this:</p>
+<pre><code class="lang-cpp">enum BLEND_MODE
+{
+    OPAQUE,
+    MASKED,
+    TRANSPARENT,
+    ADDITIVE,
+    MODULATE
+};
+</code></pre>
+<p><strong>Note:</strong> When evaluating an enum variable in a shader, the value must be prefixed with the name of the variable and an underscore:</p>
+<pre><code class="lang-cpp">#if BLEND_MODE == BLEND_MODE_MASKED
+    return opacity - MaskThreshold;
+#else
+    return opacity;
+#endif
+</code></pre>
+<p>As you can see, the name used for comparison is <strong>BLEND_MODE_MASKED</strong> although in the definition it was named <strong>MASKED</strong>. In C++ code we use the actual name though:</p>
+<pre><code class="lang-cpp">ezRenderContext::SetShaderPermutationVariable(&quot;BLEND_MODE&quot;, &quot;MASKED&quot;);
+</code></pre>
+<h2 id="exposing-permutations-to-materials">Exposing Permutations to materials</h2>
+<p>By default permutation variables do not show up in materials and therefore cannot be manually specified by artists. If you want a variable to show up, simply list it in the <strong>[MATERIALPARAMETER]</strong> section:</p>
+<pre><code class="lang-cpp">[MATERIALPARAMETER]
+
+Permutation ALPHATEST;
+
+</code></pre>
+<p>The type (<code>bool</code> or <code>enum</code>) and the available values are automatically read from the ezPermVar file that defines the variable and will show up in the material properties accordingly.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="shaders-overview.html">Shaders (TODO)</a></li>
+<li><a href="shader-debugging.html">Shader Debugging</a></li>
+<li><a href="shader-render-state.html">The Shader Render State Section</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-permutation-variables.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

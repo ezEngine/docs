@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Debug Rendering | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Debug Rendering | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="debug-rendering">Debug Rendering</h1>
+
+<p>The rendering in EZ is optimized to handle large and complex data efficiently. However, to achieve this you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the <code>ezDebugRenderer</code> is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.</p>
+<p>This interface is also (partially) available through <a href="../custom-code/typescript/typescript-overview.html">TypeScript</a>.</p>
+<p><img src="media/debug-rendering.jpg" alt="Debug rendering"></p>
+<h2 id="usage">Usage</h2>
+<p>The <code>ezDebugRenderer</code> class has a number of static functions that you can call from any thread and at any time. The debug renderer gathers all requests and renders them at a specific point in the frame. Afterwards all requests are cleared and you must resubmit the same calls in the next frame, if you want it to appear again.</p>
+<h3 id="render-context">Render Context</h3>
+<p>Every function in <code>ezDebugRenderer</code> takes an <code>ezDebugRendererContext</code> as its first parameter. This specifies where the debug geometry should be rendered. You can either pass in an <code>ezViewHandle</code> or an <code>ezWorld</code> here. If you pass in a view handle, the geometry will only be rendered in the corresponding <code>ezView</code>, meaning you can have the debug geometry only appear in a specific render target. If you pass in an <code>ezWorld</code>, the geometry appears in all views that render that world.</p>
+<p>It is more common to bind debug geometry to an entire <code>ezWorld</code>, such that it appears in any view. The <a href="../custom-code/typescript/typescript-overview.html">TypeScript</a> binding omits the <code>ezDebugRendererContext</code> parameter and always binds it to the world.</p>
+<h3 id="debug-geometry-types">Debug Geometry Types</h3>
+<p>The debug renderer allows you to render arbitrary lines and triangles. For convenience it also provides functions to render a number of common shapes:</p>
+<ul>
+<li>3D lines</li>
+<li>2D lines (screenspace)</li>
+<li>Boxes (wireframe)</li>
+<li>Boxes (solid)</li>
+<li>Spheres (wireframe)</li>
+<li>Capsules (wireframe)</li>
+<li>Frustums (wireframe)</li>
+<li>3D triangles (solid)</li>
+<li>3D triangles (textured)</li>
+<li>2D rectangles (solid, screenspace)</li>
+<li>2D rectangles (textured, screenspace)</li>
+<li>2D text (screenspace)</li>
+<li>3D text (3D location, fixed size and always facing the camera)</li>
+</ul>
+<h3 id="shading">Shading</h3>
+<p>The debug renderer always uses a fullbright shading model. No lighting is ever applied to debug geometry. In fact, most geometry simply has a color, and only some functions allow you to choose a texture.</p>
+<h2 id="example">Example</h2>
+<p>A full example for how to use the debug renderer is given in the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a>. Here, the <code>DebugRenderComponent</code> shows how to utilize the debug renderer.</p>
+<p>The following code snippet is sufficient to render a wireframe sphere at the location of the component:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: debugrender-sphere -->
+<pre><code class="lang-cpp">ezBoundingSphere sphere;
+sphere.SetElements(ezVec3::ZeroVector(), m_fSize);
+ezDebugRenderer::DrawLineSphere(GetWorld(), sphere, m_Color, ownerTransform);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This has to be called in every frame in which it should appear. Therefore this has been added to the <code>DebugRenderComponent::Update()</code> function.</p>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>The debug renderer is meant for quickly visualizing data. If the data potentially changes every frame anyway (like visualizing AI raycasts), its performance will be on par with what a 'proper' solution could do. However, if you want to place things in a scene that may stay for a longer duration, it's usually much better to instead build a game object, attach a <a href="../graphics/meshes/mesh-component.html">mesh component</a> and just render a proper asset. This enables culling, static object optimizations, and gives you the option to choose <a href="../materials/materials-overview.html">materials</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="debug-cpp.html">Debugging C++ Code</a></li>
+<li><a href="../graphics/shaders/shader-debugging.html">Shader Debugging</a></li>
+<li><a href="../physics/physx-visual-debugger.html">PhysX Visual Debugger</a></li>
+<li><a href="../custom-code/typescript/typescript-overview.html">Custom Code with TypeScript</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/debug-rendering.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

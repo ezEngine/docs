@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>How to Contribute | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="How to Contribute | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-contribute">How to Contribute</h1>
+
+<p>If you want to contribute to ezEngine, there are several ways how you can help out.</p>
+<h2 id="using-the-engine">Using the Engine</h2>
+<p>Just using the engine and <a href="https://github.com/ezEngine/ezEngine/issues">filing bug reports</a>, feature requests or generally giving feedback is already a very, very valuable way of contributing. Be sure to include a detailed description of what you where doing, what you saw vs. what you expected, such that it is easy for us to reproduce. We cannot test every feature under all conditions and we do not know all the ways people want to use a feature, so giving feedback is a great way of contributing.</p>
+<h2 id="extend-the-samples">Extend the Samples</h2>
+<p>The samples are there for you to get to know the engine and have a playground to try out stuff. As you may notice, most samples are not &quot;complete&quot;, ie. they could be extended a great deal with functionality, with code comments, etc. This was not a didactic decision, but rather due to limited time on our side, so if you play with a sample and improve it, even just slightly, please feel welcome to contribute your changes back, so that others can benefit from it.</p>
+<p>Of course you are also invited to write entirely new samples.</p>
+<h2 id="code-documentation">Code Documentation</h2>
+<p>We try to document our code as well as possible, but there are undocumented or poorly documented pieces, and of course there are also comments that are outdated or not as good as they could be. If you improve any documentation, please contribute it back, even if you only did minor changes or fixed typos.</p>
+<h2 id="bugfixes">Bugfixes</h2>
+<p>If you find a bug, and manage to fix it yourself, don't hold back! Create a PR and we will gladly integrate it. Become our personal hero by also adding an automated test to prevent regressions.</p>
+<p>If you itch to fix <em>something</em> you can also search our <a href="https://github.com/ezEngine/ezEngine/issues">bug tickets</a>. Items that we consider 'relatively easy' to fix without much knowledge of the engine, have the label <em>good first issue</em>.</p>
+<h2 id="unit-tests">Unit Tests</h2>
+<p>EZ ships with a large number of unit tests. Especially the lower level functionality is well covered with tests, but the higher up code coverage becomes more and more spotty. If you want to add a test, that's great. Especially if you run into a bug, no matter whether you are able to fix it yourself or not, adding a test that reproduces the bug (and thus ensures it won't reappear after a fix) is very useful. If you do not want to go through the hassle of setting up a proper test, even just posting a piece of code that reproduces an issue in general, allows us to put that into a proper test scenario with little effort.</p>
+<p>And if you really want to contribute to the overall test coverage, search the code-base for &quot;\\\test&quot; or &quot;TODO&quot; to find code pieces that developers already marked up to need a test.</p>
+<h2 id="features">Features</h2>
+<p>We also value feature contributions, but with those we might be much more picky. If you feel confident enough to add a whole new feature, go for it. <a href="../contact.html">Contact us</a> if you need help with something. In fact, unless it is a very small feature, it may be beneficial to contact us just to get on the same page what a feature should do, how it should be exposed to the user and what's the best way to implement it. You should have a strong background in C++, though, as we simply don't have the time to walk you through basic programming steps, we can only give high-level help on how to make stuff work inside EZ.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../contact.html">Contact</a></li>
+<li><a href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/getting-started/how-to-contribute.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

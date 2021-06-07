@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>String Usage Guidelines | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="String Usage Guidelines | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="string-usage-guidelines">String Usage Guidelines</h1>
+
+<p>All strings in the ezEngine are Utf8 encoded. As such they are accessible as simple <code>const char*</code> arrays.
+However, one has to be very careful to distinguish between the &quot;Element Count&quot; (the number of bytes in the string) and the &quot;Character Count&quot;.
+Utf8 is a variable length encoding, which means that all ASCII characters (the first 127 characters in the ANSI set) are encoded with one byte.
+Everything else can take between two and four bytes per character.
+Therefore it is very dangerous to apply an algorithm to every byte in a string, as it might actually need to be aware of the individual characters.</p>
+<p>Therefore all the string classes provide lots of high-level functionality for modifying the strings, which take care of these things internally.
+On the other hand, direct access to the char array is not granted, to ensure the encoding does not get corrupted.</p>
+<p>The following classes provide functionality to work on <code>char*</code> arrays:</p>
+<ul>
+<li><code>ezUnicodeUtils</code></li>
+<li><code>ezStringUtils</code></li>
+<li><code>ezPathUtils</code></li>
+</ul>
+<p>These generally implement 'read-only' functionality. The actual string classes provide the same functions, but with more comfortable interfaces.
+Note that many of these functions take an 'end' pointer. This can generally be ignored, if you are working on zero terminated strings.
+It can however also be used to work on non zero-terminated sub-strings.</p>
+<h2 id="how-to-access-c-strings">How to access C strings</h2>
+<p>Working on Utf8 strings is difficult, as you usually want to work on a per-character basis, which does not have a 1:1 mapping to bytes, when the data is Utf8 encoded.
+To make this possible, use <code>ezStringIterator</code>.</p>
+<p><code>ezStringIterator</code> provides an interface on top of a char array, that allows to iterate forwards and backwards through a string on a per-character basis.
+You can access the current character and get it in Utf32 encoding. This can easily be compared with standard C++ char-constants like 'a', 'b', '\', '\n', '\0' etc.</p>
+<p>If you want to work on a per-character basis on a char that might be Utf8 encoded, you should always wrap it inside an <code>ezStringIterator</code> and then use the iterator instead of accessing the array directly. Note that it only provides read-access though, as you cannot modify a Utf8 string in place in all circumstances.</p>
+<p>Additionally there is <code>ezStringView</code>, which allows to only work on sub-strings of other strings, which can be used to implement parsing functions very efficiently.</p>
+<h2 id="how-to-create-and-modify-strings">How to create and modify strings</h2>
+<p>When you need to modify or build strings, use <code>ezStringBuilder</code>.</p>
+<p><code>ezStringBuilder</code> provides a large set of functions to easily modify strings. It includes a set of dedicated 'path functions' for working with paths (to prevent duplicate slashes, extract certain information etc.).</p>
+<p><code>ezStringBuilder</code> uses an internal cache of 128 bytes, which is allocated on the stack. That means working with local <code>ezStringBuilders</code> is very efficient, as usually no memory allocations are required, unless you build very long strings.</p>
+<p>That in turn means, that you should never use <code>ezStringBuilders</code> for storage, as they will waste a lot of memory. <code>ezStringBuilders</code> should nearly always be local variables with a short life span.</p>
+<h2 id="how-to-store-strings">How to store strings</h2>
+<p>For storing strings, use <code>ezString</code>.
+<code>ezString</code> is a typedef for <code>ezHybridString&lt;32&gt;</code>. That means it has an internal cache for storing up to 32 bytes without the need for memory allocations. That usually covers more than 90% of all strings, which means that memory allocations are rare, but the amount of wasted memory is also relatively low.</p>
+<p><code>ezString</code> does not provide functions to modify the string (other than completely replacing it), use <code>ezStringBuilder</code> in such cases.</p>
+<p>If you know that you are storing strings of certain lengths, e.g. filename extensions, you can use other predefined <code>ezString</code>s, such as <code>ezString8</code> or <code>ezString48</code> to tune the internal cache size to be more fitting.</p>
+<h2 id="how-to-convert-strings-between-utf8-utf16-utf32-and-wchar_t">How to convert strings between Utf8, Utf16, Utf32 and wchar_t</h2>
+<p>ezEngine provides a few classes to enable converting to and from all the Utf encodings and <code>wchar_t</code> encoding (which is simply Utf16 one some platforms and Utf32 on others).</p>
+<p>The following classes take strings encoded in any encoding and convert them into their target encoding:</p>
+<ul>
+<li><code>ezStringWChar</code></li>
+<li><code>ezStringUtf8</code></li>
+<li><code>ezStringUtf16</code></li>
+<li><code>ezStringUtf32</code></li>
+</ul>
+<p>Ie. an instance of <code>ezStringWChar</code> will always encode a string to (the platform specific) <code>wchar_t</code> encoding and instances of <code>ezStringUtf8</code> will convert strings to Utf8 encoding, etc.</p>
+<p>Use it like this:</p>
+<pre><code class="lang-cpp">ezStringUtf8 MyUtf8 = L&quot;My wchar_t string&quot;; // The 'L' makes it a 'wide-string', ie. a wchar_t array
+printf(&quot;Output Utf8: %s&quot;, MyUtf8.GetData());
+</code></pre>
+<p>or for interacting with win32 functions:</p>
+<pre><code class="lang-cpp">ezStringWChar FileNameW = MyUtf8FileName.GetData();
+DeleteFileW(FileNameW.GetData());
+</code></pre>
+<p>This allows to quickly and easily convert back and forth between the different encodings.
+Just make sure that you convert your data to Utf8 when you store something inside the Engine, and to the platform-specific encoding (typically <code>wchar_t</code>) when interacting with OS functions (unless they support Utf8 as well).</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="container-usage.html">Container Usage Guidelines</a></li>
+<li><a href="string-formatting.html">String Formatting</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/appendix/string-usage.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

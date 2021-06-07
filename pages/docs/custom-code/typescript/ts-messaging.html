@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Messaging in TypeScript Code | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Messaging in TypeScript Code | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="messaging-in-typescript-code">Messaging in TypeScript Code</h1>
+
+<p>TypeScript components can both send and receive messages. The way messages can be sent, posted and received, and how messages are routed is identical to the behavior on the C++ side. Please read the chapter about <a href="../../runtime/world/world-messaging.html">messaging</a> to familiarize yourself with the general concepts.</p>
+<p>The main difference in TypeScript is, that messages that have been declared in C++ can be sent and received in TypeScript, but messages that have been declared in TypeScript can only be sent and received by TypeScript code.</p>
+<h2 id="sending-messages">Sending Messages</h2>
+<p>You can either send a message directly to a specific component (through <code>ez.Component</code>) or to a game object hierarchy (through <code>ez.GameObject</code>). Contrary to the C++ API, there are no functions on <code>ez.World</code> to send messages.</p>
+<p>The <code>SendMessage()</code> functions on <code>ez.Component</code> and <code>ez.GameObject</code> take an additional boolean parameter <code>expectResultData</code>. If this is set to true, that means that the sender of the message expects the receiver(s) to write back result data into the sent message, and intends to read those results afterwards. If it is set to false, the message sender does either not expect result data in the message, or doesn't intend to read it. This is an optimization, if you need any result data, set the parameter to true, which means additional work is necessary to synchronize the message back to the caller. Otherwise keep this set to the default value (false).</p>
+<h3 id="sending-event-messages">Sending Event Messages</h3>
+<p>TypeScript components can raise <em>event messages</em> on themselves through <code>ez.TypescriptComponent.BroadcastEvent()</code>.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>At the moment TypeScript components can't raise event messages on other components or game objects.</p>
+</blockquote>
+<h2 id="handling-messages">Handling Messages</h2>
+<p>To handle messages of a specific type, a component needs a function that takes that message type as its only parameter, and it must register that function as a message handler:</p>
+<pre><code class="lang-typescript">static RegisterMessageHandlers()
+{
+    ez.TypescriptComponent.RegisterMessageHandler(ez.MsgSetColor, &quot;OnMsgSetColor&quot;);
+}
+
+OnMsgSetColor(msg: ez.MsgSetColor): void
+{
+    ez.Log.Info(&quot;MsgSetColor: &quot; + msg.Color.r + &quot;, &quot; + msg.Color.g + &quot;, &quot; + msg.Color.b + &quot;, &quot; + msg.Color.a);
+}
+</code></pre>
+<p>The static function <code>RegisterMessageHandlers()</code> is the only place where your code may call <code>ez.TypescriptComponent.RegisterMessageHandler()</code>. It is an error to call this from anywhere else.</p>
+<h2 id="declaring-a-message-in-typescript">Declaring a Message in TypeScript</h2>
+<p>You declare a custom message in TypeScript by extending <code>ez.Message</code>:</p>
+<pre><code class="lang-typescript">export class MsgShowText extends ez.Message {
+
+    EZ_DECLARE_MESSAGE_TYPE;
+    
+    text: string;
+}
+</code></pre>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>It is vital to insert <code>EZ_DECLARE_MESSAGE_TYPE;</code> into the body of the message to make it work.</p>
+</blockquote>
+<p>If you need to send a message from one component and handle it in other component types, you should put the message declaration into a separate <code>.ts</code> file and <code>import</code> that file from both component files. See <a href="ts-api.html#importing-files-require">Importing Files (<code>require</code>)</a> for details.</p>
+<h3 id="declaring-event-messages">Declaring Event Messages</h3>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>At the moment it is <strong>not supported to declare event messages</strong>.</p>
+</blockquote>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="ts-api.html">TypeScript API</a></li>
+<li><a href="custom-ts-components.html">Custom Components with TypeScript</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/typescript/ts-messaging.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

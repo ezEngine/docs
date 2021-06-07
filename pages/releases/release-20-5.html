@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Release Notes May 2020 (20.5) | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Release Notes May 2020 (20.5) | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="release-notes-may-2020-205">Release Notes May 2020 (20.5)</h1>
+
+<h2 id="editor">Editor</h2>
+<ul>
+<li>Logged errors and warnings are now displayed in the status bar for a few seconds. A button shows the number of new errors and warnings.</li>
+<li>Added live resource update to color gradient and curve assets</li>
+<li>Action tooltips now show the action shortcut</li>
+<li>Snap object position when pasting</li>
+<li>Marquee selection does not select top-level objects anymore</li>
+<li>Allow to cancel marquee selection with ESC</li>
+<li>Added preference to always enable background asset processing</li>
+<li>Asset processing and background transform is now much more reliable and faster</li>
+<li>Editor objects are not rendered in camera previews anymore</li>
+<li><a href="https://github.com/ezEngine/ezEngine/issues/144">#144</a>: The editor can now open projects provided by the command line</li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/e6b3ecb3454ee1deed4ae5f5e239d1d007d4458d">e6b3ecb</a>: Added Group attribute to allow grouping properties</li>
+</ul>
+<h2 id="runtime">Runtime</h2>
+<ul>
+<li>Performance improvement for posted messages</li>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/173">#173</a>: Refactored the task system to fix some issues</li>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/163">#163</a>: Added <code>ezSimdVec4u</code></li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/b3c25075610df3792e6207b3a30312adb9098385">b3c2507</a>: Fixed various issues pointed out by the static code analyzer 'Semmle'</li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/658e7c9a42adc3db86980d42ba88d0fca6c3fc8b">658e7c9</a>: ezWorld performance improvements</li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/d66725539d4c389eed235f18b6fb6d1d46ee0e0a">d667255</a>: Added support for long file paths on Windows</li>
+</ul>
+<h2 id="rendering">Rendering</h2>
+<ul>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/193">#193</a>: Added support for color grading</li>
+<li>Optimized vertex data by using smaller formats for normals, tangents and texcoords</li>
+</ul>
+<h2 id="particle-effects">Particle Effects</h2>
+<ul>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/188">#188</a> Several fixes for particle effects</li>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/189">#189</a> Added particle 'bounds' behavior</li>
+</ul>
+<h2 id="decals">Decals</h2>
+<ul>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/158">#158</a>: Added support for roughness, metallic and occlusion maps</li>
+</ul>
+<h2 id="components">Components</h2>
+<ul>
+<li>PlayerStartPointComponent now exposes the prefab parameters</li>
+<li>The main direction for decals and particle effects is now configurable</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/7dcc0c6e96c52cc851f4a3818b284e5cc523149a">7dcc0c6</a>: Added search to the ingame console</li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/7c71b8a5ad29ace802598a4aae4cbf14dd47405c">7c71b8a</a>: Added support for ETW profiling</li>
+</ul>
+<h2 id="third-party-integrations">Third Party Integrations</h2>
+<ul>
+<li>Upgraded PhysX to version 4.1.</li>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/185">#185</a>: Fixed PhysX crashes with high frame rates</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>Added <a href="https://ezengine.github.io/docs/">high-level documentation</a></li>
+</ul>
+<h2 id="build-system">Build System</h2>
+<ul>
+<li><a href="https://github.com/ezEngine/ezEngine/pull/165">#165</a>: ezEngine can now be integrated into other projects as a CMake sub-module</li>
+</ul>
+<h2 id="platforms">Platforms</h2>
+<ul>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/ac773803db0e9231b99a6fa2e2f756c55bc155e5">ac77380</a>: Added ability to compile for arm64 from Visual Studio open folder workflow</li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/a8f3f4acef592f1d0834da5897b2b018316027e5">a8f3f4a</a>: Added basic support for Android debugging. Note: Android support is limited to low level libraries.</li>
+<li><a href="https://github.com/ezEngine/ezEngine/commit/34ec12dfbe556c07adf4bfd95aa6820811dae365">34ec12d</a>: Added Android JNI wrappers</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="releases.html">Releases</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/releases/release-20-5.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

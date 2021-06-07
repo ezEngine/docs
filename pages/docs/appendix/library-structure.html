@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Library Structure | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Library Structure | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="library-structure">Library Structure</h1>
+
+<p>This document gives an overview of the functionality that ezEngine provides and how the most important libraries are structured.</p>
+<p>ezEngine is divided into multiple libraries that provide different functionality.</p>
+<p>The most basic and also largest library is <strong>Foundation</strong>. It contains all the basic functionality on which the rest of the engine is built. <strong>Foundation</strong> is meant to be application agnostic. All its features can be used in any kind of application. Most of the platform abstractions are implemented here.</p>
+<p>Foundation itself only depends on various third-party libraries.</p>
+<p>The <strong>Core</strong> library is built on top of Foundation. This library contains engine specific features, such as the Game Object system. <strong>Core</strong> is where most of the actual engine infrastructure is implemented.</p>
+<p><strong>System</strong> is the library that is supposed to contain all the high-level platform specific code that might be difficult to abstract. Currently this mostly contains window creation code.</p>
+<p>The <strong>TestFramework</strong> library implements code to manage our unit-tests. You can ignore this entirely.</p>
+<p><strong>GameEngine</strong> builds on top of all the other libraries, including the rendering code. It contains the most high-level code for a game engine, such as AI and Animation, <a href="../runtime/application/application.html">ezGameApplication (TODO)</a> and <a href="../runtime/application/game-state.html">ezGameState</a>, which are the basis for any game application built with EZ, the prefab system, the visual scripting and much more.</p>
+<p>In general the most interesting libraries to look at are <strong>Foundation</strong>, <strong>Core</strong> and <strong>GameEngine</strong>.</p>
+<h2 id="library-overview-foundation">Library Overview: Foundation</h2>
+<p>The Foundation library contains all the 'low-level' code that is used throughout the engine.</p>
+<p>In <strong>Foundation\Containers</strong> you will find different types of container classes. These are heavily influenced by the STL, so a lot might look familiar. The most interesting class one should have a look at is <code>ezHybridArray</code>.</p>
+<p>In <strong>Foundation\Strings</strong> you will find all the string classes and utilities. ezEngine works with Utf-8 strings everywhere, which makes some things a bit more complicated, but these string classes make it pretty easy. There are utility classes to work with raw C strings and higher-level string classes to create and store strings efficiently.</p>
+<p>In <strong>Foundation\Math</strong> you will find lots of math classes, e.g. classes to do vector arithmetic (<code>ezVec3</code>, <code>ezMat4</code>, <code>ezQuat</code>, <code>ezPlane</code>, etc.), classes to work with colors (<code>ezColor</code>, <code>ezColorGammaUB</code>, <code>ezColorLinear16f</code>), classes to work with bounding volumes (<code>ezBoundingBox</code>, <code>ezBoundingSphere</code>) and do culling (<code>ezFrustum</code>), utility functions for intersection tests (<code>ezIntersectionUtils</code>) and a class to work with angles efficiently (<code>ezAngle</code>). There is even an implementation for a fixed point type (<code>ezFixedPoint</code>).</p>
+<p>In <strong>Foundation\Time</strong> you will find <code>ezTime</code>, which handles simple time values. Using <code>ezTime::Now()</code> you can access the current application time. To handle game time (e.g. for slow-motion, etc.) use <code>ezClock</code>. For profiling or timing <code>ezStopwatch</code> is available. And finally for system-independent timestamps, which might be useful when working with file modification times, <code>ezTimestamp</code> and <code>ezDateTime</code> are provided.</p>
+<p>In <strong>Foundation\Threading</strong> you will find functionality that is useful for threading. <code>ezAtomicInteger</code> provides lock-free integer values. <code>ezLock</code> and <code>ezMutex</code> implement the standard mechanisms for working with critical sections. <code>ezThread</code> is a platform independent implementation for threads and <code>ezThreadSignal</code> allows to send signals to other threads. <code>ezThreadUtils</code> provides some of the low-level threading functions, such as <code>ezThreadUtils::Sleep()</code>.
+However, before you go ahead and create your own threads, you should have a look at <code>ezTaskSystem</code>, which is a thread-pool implementation that efficiently distributes tasks across multiple worker threads. It supports dependencies across tasks, different priorities, waiting/blocking for unfinished tasks, task canceling and load-balancing when tasks run over multiple frames. There should be only very few situations where a task is not good enough and a custom thread is necessary.</p>
+<p>In <strong>Foundation\Logging</strong> you will find <code>ezLog</code>, the central class to output log information. There are various ways logging information can be output. <code>ezLogWriter::HTML</code> allows to write the data to an HTML file, <code>ezLogWriter::Console</code> and <code>ezLogWriter::VisualStudio</code> output the data to different console windows. Additionally the <a href="../tools/inspector.html">ezInspector</a> tool will display all logged data as well. The logging system is extremely useful to get an insight into what your application is doing and what might be going wrong, so we suggest setting this up early and using it to log most of what your application is doing.</p>
+<p>In <strong>Foundation\Algorithm</strong> you will find some useful algorithms, mostly for sorting, searching and hashing.</p>
+<p>In <strong>Foundation\Basics</strong> you can find a lot of platform specific code, most of which might not be very interesting. You will also find <code>EZ_ASSERT</code> which you should be using frequently.</p>
+<p>In <strong>Foundation\Basics\Types</strong> you will find some fundamental types that are used frequently in EZ. <code>ezDelegate</code> is often used for callbacks. <code>ezEnum</code> is used for type-safe enum types and <code>ezBitflags</code> is used for type-safe and easy to use bitflags. <code>ezArrayPtr</code> is a 'fat pointer' that stores the start and length of an array. Finally <code>ezVariant</code> is a type that can store different types of data (float, int, string, vector, etc.) and knows which type it has stored. It can do conversions between related types and is often used in message passing.</p>
+<p>In <strong>Foundation\CodeUtils</strong> you can find utilities to work with code or text, such as <code>ezTokenizer</code>. You will also find a full implementation of a C preprocessor (<code>ezPreprocessor</code>).</p>
+<p>In <strong>Foundation\Communication</strong> you can find functionality to communicate with other code. <code>ezEvent</code> is a frequently used class to raise events and thus inform other code of changes. <code>ezMessage</code> is used for message passing, which is quite often used with the game object system (which you will find in the <strong>Core</strong> library). <code>ezTelemetry</code> is a system to broadcast information from the running application to other applications, usually tools for introspection, such as <a href="../tools/inspector.html">ezInspector</a>.</p>
+<p>In <strong>Foundation\Configuration</strong> you will find tools to configure the application. <code>ezStartup</code> is a system to (de-)initialize different subsystems in your code in the right order. <code>ezPlugin</code> is used when you want to extend your application using plugin DLLs dynamically at runtime. <code>ezStartup</code> helps with this as well.
+<code>ezCVar</code> is a 'configuration variable' that allows to easily change the state of the running application. Its state can be stored on disk and it can be modified either through an <code>ezConsole</code> or remotely through ezInspector. This allows to have lots of 'debug modes' that can be enabled on demand without recompilation or complicated integration into the input handling.</p>
+<p>In <strong>Foundation\Utilities</strong> you will find some utility functionality, such as <code>ezCommandLineUtils</code> for command-line argument parsing, <code>ezConversionUtils</code> for string / number conversions and <code>ezStats</code> for broadcasting the state of some internal code, which is useful for debugging game code.</p>
+<p>In <strong>Foundation\IO</strong> you will find lots of functionality for reading and writing data.</p>
+<p><code>ezStreamReader</code> and <code>ezStreamWriter</code> are the interfaces for all IO operations. Derived from these classes you will find <code>ezMemoryStreamReader</code> / <code>ezMemoryStreamWriter</code> for working with data in-memory. <code>ezCompressedStreamReaderZstd</code> and <code>ezCompressedStreamWriterZstd</code> allow to zip and unzip data and <code>ezChunkStreamWriter</code> / <code>ezChunkStreamReader</code> implement a 'chunked' format that can be used for building file formats that another application may not fully understand.</p>
+<p><code>ezOSFile</code> is the low-level file abstraction, in most cases you should not need to work with this. Instead prefer <a href="../runtime/filesystem.html">ezFileSystem</a> which adds functionality for virtual file systems through mount points. For example a compressed file or a remote folder may be mounted as a read-only directory. <code>ezFileSystem</code> is the central class to manage file accesses, but to actually read or write a file, use <code>ezFileReader</code> and <code>ezFileWriter</code>, which also implement the <code>ezStream*</code> interface.</p>
+<p>To store data in a structured way, <code>ezJSONWriter</code> and <code>ezOpenDdlWriter</code> are provided. For convenient retrieval <code>ezJSONReader</code> and <code>ezOpenDdlReader</code> are available. For less convenient but more flexible and efficient JSON/<a href="http://openddl.org/">OpenDDL</a> reading you can also use <code>ezJSONParser</code> or <code>ezOpenDdlParser</code>.</p>
+<p>In <strong>Foundation\Reflection</strong> you will find the reflection system of ezEngine. This is used by the game objects and some other high-level code for object type identification and properties. This may be used for scripting, for setting up objects from configuration files and for editors. Most notable classes are <code>ezRTTI</code> and <code>ezReflectedClass</code>.</p>
+<h2 id="library-overview-core">Library Overview: Core</h2>
+<p>In <strong>Core</strong> you will find the core engine infrastructure.</p>
+<p>In <strong>Core\Application</strong> you can find code to more easily set up your application loop in a platform independent way.</p>
+<p>In <strong>Core\Graphics</strong> you will find code commonly needed for doing graphics, such as <code>ezCamera</code> for camera controls and <code>ezGeometry</code> to create geometric objects.</p>
+<p>In <strong>Core\Input</strong> you will find <code>ezInputManager</code> which can be used for retrieving input from various different devices, e.g. mouse, keyboard, gamepad or virtual thumbstick. The system is easily extensible to include custom devices.</p>
+<p>In <strong>Core\ResourceManager</strong> you will find the static class <code>ezResourceManager</code> which is the central class for resource loading (e.g. textures, shaders, etc.). For implementing custom resource types you need to derive from <code>ezResource</code> and for customizing the loading procedure you may need to implement a custom <code>ezResourceTypeLoader</code>. All resources are referenced through <code>ezResourceHandle</code> types, which implement reference counting.</p>
+<p>In <strong>Core\Scripting</strong> you can find <code>ezLuaWrapper</code> that allows to easily work with Lua scripts.</p>
+<p>In <strong>Core\World</strong> you will find the game object system. <code>ezGameObject</code> is the class to use to manage entities, <code>ezComponent</code> is the base component class that allows to implement and attach components to your entities. All entities belong to an instance of <code>ezWorld</code>, which represents your scene graph.</p>
+<h2 id="library-overview-gameengine">Library Overview: GameEngine</h2>
+<p>In <strong>GameEngine</strong> you will find all the high-level code needed in a game engine.</p>
+<p><strong>GameEngine\Console</strong> contains code for a Quake-like in-game console that can be used for changing the game configuration (through <code>ezCVar</code> or custom functions) and to see the <code>ezLog</code> output.</p>
+<p><strong>GameEngine\GameApplication</strong> contains <a href="../runtime/application/application.html">ezGameApplication (TODO)</a>, which extends <code>ezApplication</code> with higher-level, more game specific functionality. This is one of the most important high-level classes to look at and extend when writing your own, stand-alone game application (assuming you can't do so with <code>ezGameState</code> alone).</p>
+<p>In <strong>GameEngine\GameState</strong> you find <a href="../runtime/application/game-state.html">ezGameState</a>, which is the most important class to extend when writing your own game code, especially if you want to be able to run your code within the editor.</p>
+<p><strong>GameEngine\Interfaces</strong> contains various interface definitions for instance for basic interactions with physics and audio engines.</p>
+<p><strong>GameEngine\Prefabs</strong> contains the code to work with prefabs.</p>
+<h2 id="library-overview-texture">Library Overview: Texture</h2>
+<p>In <strong>Texture</strong> you will find various things related to working with images and textures.</p>
+<p>In <strong>Texture\Image</strong> you will find <code>ezImage</code> which can be used to read, write and convert images from various formats.</p>
+<h2 id="library-overview-utilities">Library Overview: Utilities</h2>
+<p>In <strong>Utilities</strong> you will find various different things that may be useful, but are not used by the general engine runtime. They may be used by some tool or by a sample game, though.</p>
+<p><strong>Utilities\DataStructures</strong> contains data structures that are too engine specific. Here you will find things such as octree and quadtree implementations (<code>ezDynamicOctree</code>).</p>
+<p><strong>Utilities\GridAlgorithms</strong> contains functionality to rasterize circles and lines into grids. This can be extremely useful for 2D top down games, like strategy games, to do line-of-sight computations and such.</p>
+<p><strong>Utilities\PathFinding</strong> contains functionality to do path searches on graphs and simple nav-mesh generation for 2D grids.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../samples/samples-overview.html">Samples</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/appendix/library-structure.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

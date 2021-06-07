@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shader Render State | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shader Render State | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="shader-render-state">Shader Render State</h1>
+
+<p>The state of the <a href="../render-pipeline-overview.html">rendering pipeline (TODO)</a> can only be set through <a href="shaders-overview.html">shaders (TODO)</a>. There is no way to change its state other than to select a shader which includes that specific state.</p>
+<p>Use <a href="shader-permutation-variables.html">shader permutations</a> to create variants of a shader. Each variant may incorporate a different render state. By setting shader permutation variables at runtime, you select the specific shader variant (permutation) and thus also get its render state.</p>
+<p>This design follows what rendering APIs such as DirectX 12 and Vulkan require.</p>
+<h2 id="the-shader-render-state-section">The Shader Render State Section</h2>
+<p>Each shader is made up of several <strong>sections</strong>.</p>
+<pre><code class="lang-cpp">[PLATFORMS]
+
+ALL
+DEBUG
+
+[PERMUTATIONS]
+
+ALPHATEST
+WIREFRAME
+
+[RENDERSTATE]
+
+#if WIREFRAME == 1
+  WireFrame = true
+#endif
+
+[VERTEXSHADER]
+
+VS_OUT main(VS_IN Input)
+{
+  ...
+}
+
+[PIXELSHADER]
+
+...
+</code></pre>
+<p>The render pipeline state associated with the shader is defined in the <strong>[RENDERSTATE]</strong> section. It may use permutation variables just like the shader code. To have different state for different permutations, use standard C preprocessor syntax.</p>
+<h2 id="render-states">Render States</h2>
+<p>The following variables are available in the <strong>[RENDERSTATE]</strong> section. Simply overwrite them with the desired value.</p>
+<h3 id="rasterizer-states">Rasterizer States</h3>
+<ul>
+<li><p>bool <strong>DepthClip</strong> = false</p>
+</li>
+<li><p>bool <strong>FrontCounterClockwise</strong> = false</p>
+</li>
+<li><p>bool <strong>LineAA</strong> = false</p>
+</li>
+<li><p>bool <strong>MSAA</strong> = false</p>
+</li>
+<li><p>bool <strong>ScissorTest</strong> = false</p>
+</li>
+<li><p>bool <strong>WireFrame</strong> = false</p>
+</li>
+<li><p>enum <strong>CullMode</strong> = CullMode_Back</p>
+<pre><code class="lang-cpp">CullMode = CullMode_None
+CullMode = CullMode_Back
+CullMode = CullMode_Front
+</code></pre>
+</li>
+<li><p>float <strong>DepthBiasClamp</strong> = 0.0</p>
+</li>
+<li><p>float <strong>SlopeScaledDepthBias</strong> = 0.0</p>
+</li>
+<li><p>int <strong>DepthBias</strong> = 0</p>
+</li>
+</ul>
+<h3 id="depth-stencil-state">Depth-Stencil State</h3>
+<ul>
+<li><p>enum <strong>BackFaceDepthFailOp</strong> = StencilOp_Keep</p>
+<pre><code class="lang-cpp">BackFaceDepthFailOp = StencilOp_Keep
+BackFaceDepthFailOp = StencilOp_Zero
+BackFaceDepthFailOp = StencilOp_Replace
+BackFaceDepthFailOp = StencilOp_IncrementSaturated
+BackFaceDepthFailOp = StencilOp_DecrementSaturated
+BackFaceDepthFailOp = StencilOp_Invert
+BackFaceDepthFailOp = StencilOp_Increment
+BackFaceDepthFailOp = StencilOp_Decrement
+</code></pre>
+</li>
+<li><p>enum <strong>BackFaceFailOp</strong> = StencilOp_Keep</p>
+<pre><code class="lang-cpp">BackFaceFailOp = StencilOp_Keep
+BackFaceFailOp = StencilOp_Zero
+BackFaceFailOp = StencilOp_Replace
+BackFaceFailOp = StencilOp_IncrementSaturated
+BackFaceFailOp = StencilOp_DecrementSaturated
+BackFaceFailOp = StencilOp_Invert
+BackFaceFailOp = StencilOp_Increment
+BackFaceFailOp = StencilOp_Decrement
+</code></pre>
+</li>
+<li><p>enum <strong>BackFacePassOp</strong> = StencilOp_Keep</p>
+<pre><code class="lang-cpp">BackFacePassOp = StencilOp_Keep
+BackFacePassOp = StencilOp_Zero
+BackFacePassOp = StencilOp_Replace
+BackFacePassOp = StencilOp_IncrementSaturated
+BackFacePassOp = StencilOp_DecrementSaturated
+BackFacePassOp = StencilOp_Invert
+BackFacePassOp = StencilOp_Increment
+BackFacePassOp = StencilOp_Decrement
+</code></pre>
+</li>
+<li><p>enum <strong>BackFaceStencilFunc</strong> = CompareFunc_Always</p>
+<pre><code class="lang-cpp">BackFaceStencilFunc = CompareFunc_Never
+BackFaceStencilFunc = CompareFunc_Less
+BackFaceStencilFunc = CompareFunc_Equal
+BackFaceStencilFunc = CompareFunc_LessEqual
+BackFaceStencilFunc = CompareFunc_Greater
+BackFaceStencilFunc = CompareFunc_NotEqual
+BackFaceStencilFunc = CompareFunc_GreaterEqual
+BackFaceStencilFunc = CompareFunc_Always
+</code></pre>
+</li>
+<li><p>enum <strong>FrontFaceDepthFailOp</strong> = StencilOp_Keep</p>
+<pre><code class="lang-cpp">FrontFaceDepthFailOp = CompareFunc_Never
+FrontFaceDepthFailOp = CompareFunc_Less
+FrontFaceDepthFailOp = CompareFunc_Equal
+FrontFaceDepthFailOp = CompareFunc_LessEqual
+FrontFaceDepthFailOp = CompareFunc_Greater
+FrontFaceDepthFailOp = CompareFunc_NotEqual
+FrontFaceDepthFailOp = CompareFunc_GreaterEqual
+FrontFaceDepthFailOp = CompareFunc_Always
+</code></pre>
+</li>
+<li><p>enum <strong>FrontFaceFailOp</strong> = StencilOp_Keep</p>
+<pre><code class="lang-cpp">FrontFaceFailOp = CompareFunc_Never
+FrontFaceFailOp = CompareFunc_Less
+FrontFaceFailOp = CompareFunc_Equal
+FrontFaceFailOp = CompareFunc_LessEqual
+FrontFaceFailOp = CompareFunc_Greater
+FrontFaceFailOp = CompareFunc_NotEqual
+FrontFaceFailOp = CompareFunc_GreaterEqual
+FrontFaceFailOp = CompareFunc_Always
+</code></pre>
+</li>
+<li><p>enum <strong>FrontFacePassOp</strong> = StencilOp_Keep</p>
+<pre><code class="lang-cpp">FrontFacePassOp = CompareFunc_Never
+FrontFacePassOp = CompareFunc_Less
+FrontFacePassOp = CompareFunc_Equal
+FrontFacePassOp = CompareFunc_LessEqual
+FrontFacePassOp = CompareFunc_Greater
+FrontFacePassOp = CompareFunc_NotEqual
+FrontFacePassOp = CompareFunc_GreaterEqual
+FrontFacePassOp = CompareFunc_Always
+</code></pre>
+</li>
+<li><p>enum <strong>FrontFaceStencilFunc</strong> = CompareFunc_Always</p>
+<pre><code class="lang-cpp">FrontFaceStencilFunc = CompareFunc_Never
+FrontFaceStencilFunc = CompareFunc_Less
+FrontFaceStencilFunc = CompareFunc_Equal
+FrontFaceStencilFunc = CompareFunc_LessEqual
+FrontFaceStencilFunc = CompareFunc_Greater
+FrontFaceStencilFunc = CompareFunc_NotEqual
+FrontFaceStencilFunc = CompareFunc_GreaterEqual
+FrontFaceStencilFunc = CompareFunc_Always
+</code></pre>
+</li>
+<li><p>bool <strong>DepthTest</strong> = true</p>
+</li>
+<li><p>bool <strong>DepthWrite</strong> = true</p>
+</li>
+<li><p>bool <strong>SeparateFrontAndBack</strong> = false</p>
+</li>
+<li><p>bool <strong>StencilTest</strong> = false</p>
+</li>
+<li><p>enum <strong>DepthTestFunc</strong> = CompareFunc_Less</p>
+<pre><code class="lang-cpp">DepthTestFunc = CompareFunc_Never
+DepthTestFunc = CompareFunc_Less
+DepthTestFunc = CompareFunc_Equal
+DepthTestFunc = CompareFunc_LessEqual
+DepthTestFunc = CompareFunc_Greater
+DepthTestFunc = CompareFunc_NotEqual
+DepthTestFunc = CompareFunc_GreaterEqual
+DepthTestFunc = CompareFunc_Always
+</code></pre>
+</li>
+<li><p>int <strong>StencilReadMask</strong> = 255</p>
+</li>
+<li><p>int <strong>StencilWriteMask</strong> = 255</p>
+</li>
+</ul>
+<h3 id="blend-state">Blend State</h3>
+<ul>
+<li><p>bool <strong>AlphaToCoverage</strong> = false</p>
+</li>
+<li><p>bool <strong>IndependentBlend</strong> = false</p>
+</li>
+</ul>
+<p>The following variables exist with suffix 0 to 7. If <strong>IndependentBlend</strong> is disabled, only the ones with suffix 0 are used.</p>
+<ul>
+<li><p>bool <strong>BlendingEnabled0</strong> = false</p>
+</li>
+<li><p>enum <strong>BlendOp0</strong> = BlendOp_Add</p>
+<pre><code class="lang-cpp">BlendOp0 = BlendOp_Add
+BlendOp0 = BlendOp_Subtract
+BlendOp0 = BlendOp_RevSubtract
+BlendOp0 = BlendOp_Min
+BlendOp0 = BlendOp_Max
+</code></pre>
+</li>
+<li><p>enum <strong>BlendOpAlpha0</strong> = BlendOp_Add</p>
+<pre><code class="lang-cpp">BlendOpAlpha0 = BlendOp_Add
+BlendOpAlpha0 = BlendOp_Subtract
+BlendOpAlpha0 = BlendOp_RevSubtract
+BlendOpAlpha0 = BlendOp_Min
+BlendOpAlpha0 = BlendOp_Max
+</code></pre>
+</li>
+<li><p>enum <strong>DestBlend0</strong> = Blend_One</p>
+<pre><code class="lang-cpp">DestBlend0 = Blend_Zero
+DestBlend0 = Blend_One
+DestBlend0 = Blend_SrcColor
+DestBlend0 = Blend_InvSrcColor
+DestBlend0 = Blend_SrcAlpha
+DestBlend0 = Blend_InvSrcAlpha
+DestBlend0 = Blend_DestAlpha
+DestBlend0 = Blend_InvDestAlpha
+DestBlend0 = Blend_DestColor
+DestBlend0 = Blend_InvDestColor
+DestBlend0 = Blend_SrcAlphaSaturated
+DestBlend0 = Blend_BlendFactor
+DestBlend0 = Blend_InvBlendFactor
+</code></pre>
+</li>
+<li><p>enum <strong>DestBlendAlpha0</strong> = Blend_One</p>
+<pre><code class="lang-cpp">DestBlendAlpha0 = Blend_Zero
+DestBlendAlpha0 = Blend_One
+DestBlendAlpha0 = Blend_SrcColor
+DestBlendAlpha0 = Blend_InvSrcColor
+DestBlendAlpha0 = Blend_SrcAlpha
+DestBlendAlpha0 = Blend_InvSrcAlpha
+DestBlendAlpha0 = Blend_DestAlpha
+DestBlendAlpha0 = Blend_InvDestAlpha
+DestBlendAlpha0 = Blend_DestColor
+DestBlendAlpha0 = Blend_InvDestColor
+DestBlendAlpha0 = Blend_SrcAlphaSaturated
+DestBlendAlpha0 = Blend_BlendFactor
+DestBlendAlpha0 = Blend_InvBlendFactor
+</code></pre>
+</li>
+<li><p>enum <strong>SourceBlend0</strong> = Blend_One</p>
+<pre><code class="lang-cpp">SourceBlend0 = Blend_Zero
+SourceBlend0 = Blend_One
+SourceBlend0 = Blend_SrcColor
+SourceBlend0 = Blend_InvSrcColor
+SourceBlend0 = Blend_SrcAlpha
+SourceBlend0 = Blend_InvSrcAlpha
+SourceBlend0 = Blend_DestAlpha
+SourceBlend0 = Blend_InvDestAlpha
+SourceBlend0 = Blend_DestColor
+SourceBlend0 = Blend_InvDestColor
+SourceBlend0 = Blend_SrcAlphaSaturated
+SourceBlend0 = Blend_BlendFactor
+SourceBlend0 = Blend_InvBlendFactor
+</code></pre>
+</li>
+<li><p>enum <strong>SourceBlendAlpha0</strong> = Blend_One</p>
+<pre><code class="lang-cpp">SourceBlendAlpha0 = Blend_Zero
+SourceBlendAlpha0 = Blend_One
+SourceBlendAlpha0 = Blend_SrcColor
+SourceBlendAlpha0 = Blend_InvSrcColor
+SourceBlendAlpha0 = Blend_SrcAlpha
+SourceBlendAlpha0 = Blend_InvSrcAlpha
+SourceBlendAlpha0 = Blend_DestAlpha
+SourceBlendAlpha0 = Blend_InvDestAlpha
+SourceBlendAlpha0 = Blend_DestColor
+SourceBlendAlpha0 = Blend_InvDestColor
+SourceBlendAlpha0 = Blend_SrcAlphaSaturated
+SourceBlendAlpha0 = Blend_BlendFactor
+SourceBlendAlpha0 = Blend_InvBlendFactor
+</code></pre>
+</li>
+<li><p>int <strong>WriteMask</strong> = 255</p>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="shaders-overview.html">Shaders (TODO)</a></li>
+<li><a href="shader-permutation-variables.html">Shader Permutation Variables</a></li>
+<li><a href="../render-pipeline-overview.html">Render Pipeline (TODO)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-render-state.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

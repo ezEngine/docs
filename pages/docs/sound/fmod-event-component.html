@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fmod Event Component | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fmod Event Component | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fmod-event-component">Fmod Event Component</h1>
+
+<p>The <em>Fmod event component</em> creates an instance of an Fmod event. An event is usually a 2D or 3D sound, but can also be an environmental effect that changes how other sounds are perceived. Fmod events are very powerful, which is why ezEngine doesn't need to have a large feature set of audio features. No matter what you want to do, pretty much anything is available through Fmod events.</p>
+<p>A description of Fmod events is out of scope for this documentation. Please see <a href="fmod-overview.html#using-fmod-studio">Using Fmod Studio</a> for learning resources.</p>
+<p>Fmod event components reference <a href="fmod-soundevent-asset.html">sound event assets</a>. The component plays the referenced sound. If the Fmod event has looping regions, the sound will play indefinitely, until it is stopped programmatically, or the component is deleted. There is no looping option on the component, since this feature controlled through Fmod Studio.</p>
+<p>Advanced Fmod features, like <em>sound cues</em> and adjusting <em>event parameters</em> are only accessible programmatically (C++ or TypeScript). For details please see the <a href="../../getting-started/api-docs.html">API Docs</a> about <code>ezFmodEventComponent</code>.</p>
+<h2 id="sound-occlusion">Sound Occlusion</h2>
+<p>By default sounds are only attenuated by distance. Fmod doesn't have a representation of the 3D geometry and therefore can't muffle or disable sounds when they are (visually) occluded.</p>
+<p>The event component allows you to enable a simple physics raycast based heuristic to determine whether a sound source is occluded by a wall or larger obstacle. If enabled, the occlusion factor is computed and the Fmod event parameter <code>Occlusion</code> is passed into the event. It is your responsibility to set up the Fmod event such that this parameter exists and is used to adjust the event's volume.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Paused</code>: If set, the referenced sound won't start playing at start. Toggling this value programmatically will pause/resume a playing sound.</li>
+<li><code>Volume</code>: Adjusts the volume for this sound.</li>
+<li><code>Pitch</code>: Higher pitch means the sound plays faster, a lower pitch makes it play slower (and at lower frequency).</li>
+<li><code>SoundEvent</code>: The <a href="fmod-soundevent-asset.html">sound event asset</a> that will be played by this component.</li>
+<li><code>UseOcclusion</code>: If enabled, the component will use physics raycasts to determine whether the sound source is occluded by geometry. The occlusion factor is passed to the Fmod event as the event parameter <code>Occlusion</code>.</li>
+<li><code>OcclusionThreshold</code>: How strongly the sound source must be occluded, before the occlusion value will be larger than zero.</li>
+<li><code>OcclusionCollisionLayer</code>: The physics <a href="../physics/collision-shapes/collision-layers.html">collision layer</a> to use for the occlusion raycasts.</li>
+<li><code>OnFinishedAction</code>: For sounds that end by themselves, this option allows you to specify whether the component should delete itself or its entire object afterwards.</li>
+<li><code>ShowDebugInfo</code>: If enabled, the component displays some statistics about its state.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-event-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

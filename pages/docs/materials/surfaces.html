@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Surfaces | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Surfaces | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="surfaces">Surfaces</h1>
+
+<p><em>Surfaces</em> are assets that define the physical properties of objects. This includes both the actual physics parameters such as friction, but also how objects interact from a gameplay perspective. For example, surfaces define what sounds are played when objects slide or roll around and what effects should be spawned when there is an impact on an object.</p>
+<p>Surfaces and <a href="materials-overview.html">materials</a> are related. Materials are used to define the appearance, surfaces define the behavior. However, you may have hundreds of materials in a project, but typically only tens of surfaces. The main reason for this is that you may have many different wood textures that look different, but they will all behave the same way. Therefore you only need one surface defining the properties of wood, but many different materials for each wood texture.</p>
+<p><img src="media/surface-editor.png" alt="Surface Editor"></p>
+<p>The image above shows a surface for glass. Each surface stores a small number of general parameters. Additionally there is an array of <em>surface interactions</em> which may hold many entries. These are the key to configuring what effects get spawned when you shoot something, what sounds and effects are spawned when objects collide, what footstep sounds the player makes, and so on.</p>
+<h2 id="physics-properties">Physics Properties</h2>
+<p>Surfaces are used by <a href="../physics/collision-shapes/collision-meshes.html">collision meshes</a> and other physics components to look up basic physics properties.</p>
+<p><strong>Restitution:</strong> Configures how &quot;bouncy&quot; a material is. Objects with a high restitution will bounce very strongly (like rubber) and objects with a low restitution will come to rest quickly (like soft wood).</p>
+<p><strong>Friction:</strong> The friction values affect how slippery a material is and thus how much it will slide or roll. Smooth surfaces typically have lower and rough surfaces higher friction. PhysX also differentiates between <em>static</em> friction for objects that are currently standing still and <em>dynamic</em> friction for objects that are already moving. Static friction is typically higher than dynamic friction, meaning it is more difficult to get something to move, than to keep something moving.</p>
+<h2 id="surface-interactions">Surface Interactions</h2>
+<p>The main feature of surfaces are <em>surface interactions</em>. These are used to tell the engine which effects it should spawn when a surface interacts with something else. The other thing may be another surface, for example when a box slides over the ground, then both the box and the ground have a surface. However, the other thing could also be something entirely different. For example a laser beam. In this case the surface may define whether the beam should create sparks or fire or steam, etc.</p>
+<p>Every surface interaction is configured by adding an entry to the <em>Interactions</em> array (see image above). Each entry represents one way that the surface can interact with something else. To determine which interaction to use, for instance when you shoot an object, you specify a <em>Type</em> string.</p>
+<h3 id="triggering-interactions">Triggering Interactions</h3>
+<p>Interactions are triggered by different systems. The <a href="../physics/physx-overview.html">physics engine</a> triggers interactions when objects collide with enough force. Components, such as the <a href="../gameplay/projectile-component.html">projectile component</a> trigger interactions when they hit something. The <a href="../physics/special/physx-character-controller.html">character controller</a> component triggers an interaction with the ground every time the player moved a certain distance (for footsteps). There are many ways that both built in code, as well as custom code can leverage surface interactions to spawn effects. Having the configuration defined by the surfaces, and not by the components themselves, decouples and centralizes this information and makes maintaining and changing this configuration a lot easier.</p>
+<blockquote>
+<p><strong>Example:</strong></p>
+<p>If you want to shoot something in your game, you need a prefab that represents every type of projectile. You may have regular bullets and laser shots. The two types should result in different effects when hitting various surfaces, e.g. bullets create debris, lasers make burn marks. EZ comes with a <a href="../gameplay/projectile-component.html">projectile component</a> which implements the functionality to move an entity forwards each frame and check the world for collisions. When it collides with something, it will apply damage and a physical impulse. The projectile component does not, however, specify what kind of effect to play when it hits something. Instead, each type of projectile is given a string what <em>type of interaction</em> to do when it hits a surface. So our <em>bullet</em> projectile would use the <code>BulletImpact</code> interaction, and our <em>laser</em> projectile would use the <code>LaserImpact</code> interaction. Then when a projectile hits an object, it first looks up what type of <em>surface</em> it hit exactly. Then it queries that surface for an interaction entry with the desired name. If such an entry exists, it spawns the referenced prefab at the point of impact.</p>
+<p>In the image above there is an interaction with <em>Type</em> set to <code>BulletImpact</code>. This entry references a prefab which, when instantiated, will play a particle effect and a sound that looks like a bullet hit glass. Consequently, when we now shoot at such a surface with a <em>bullet</em>, it will act believable. There is no interaction set up for <code>LaserImpact</code>, so if we were to shoot a <em>laser</em> at this type of surface, the projectile would stop there and apply damage to the hit object, but it would not spawn any kind of effect.</p>
+</blockquote>
+<h3 id="spawning-prefabs">Spawning Prefabs</h3>
+<p>All surface interactions ultimately spawn <a href="../prefabs/prefabs-overview.html">prefabs</a>. So if you want to have different footstep sounds when walking over stone, sand and mud, you need three prefabs, each playing a different sound. However, since they are prefabs, your creativity is not limited to playing a sound. Your &quot;sand footstep effect&quot; may contain spawning a small dust <a href="../effects/particle-effects/particle-effects-overview.html">particle effect</a>. And the &quot;mud footstep effect&quot; could additionally spawn a footprint <a href="../effects/decals.html">decal</a>.</p>
+<p>The following options allow you to adjust how prefabs are spawned:</p>
+<p><strong>Alignment:</strong> Defines how the spawned prefab instance will be rotated. The +X axis of the prefab is considered to be 'forwards'.</p>
+<ul>
+<li><strong>Surface Normal:</strong> The 'forwards' direction (+X) of the prefab will be aligned with the normal of the object where the interaction happened. With this mode, the angle at which you shoot at a surface would not make a difference, as the effect is always spawned orthogonal to the hit geometry.</li>
+<li><strong>Incoming Direction:</strong> For things like bullets, this is the direction at which the surface was hit. So the 'forwards' direction of the spawned prefab would be directly dependent on the angle at which a shot hit the surface.</li>
+<li><strong>Reflected Direction:</strong> The <em>incoming direction</em> reflected at the normal of the geometry.</li>
+<li><strong>Reverse Normal/Direction:</strong> Same as the other three modes, just the opposite direction.</li>
+</ul>
+<p>Note that depending on which system triggers the interaction, there may or may not be a 'direction' associated with it, so the 'Incoming' and 'Reflected' mode may be identical to the 'Normal' mode.</p>
+<p><strong>Deviation:</strong> An optional amount of random deviation away from the spawn direction. This allows you to randomize the spawn direction.</p>
+<h3 id="hierarchical-surfaces">Hierarchical Surfaces</h3>
+<p>Interactions are often the same across many types of surfaces. A laser shot may leave a burn mark on pretty much any surface, except glass and water. Setting up the same effect cross many surfaces can be tedious and error prone, especially if you need to adjust it later on. Therefore surfaces allow you to configure them in a hierarchical way where you specify common behavior in <em>base surfaces</em> and either add or override specific behavior only for <em>derived</em> surfaces.</p>
+<p>In the example image above you can see that the <em>glass surface</em> has a <code>BaseSurface</code> specified, which references <em>Default.ezSurfaceAsset</em>. What this means is that if some system (let's say the <a href="../gameplay/projectile-component.html">projectile component</a>) looks up an interaction like <code>BulletImpact</code> on a surface and does not find it on the surface directly, it will then go to its <code>BaseSurface</code> and try to look up the interaction there. This can go through multiple steps until it either found the desired interaction, or it reached the last base surface and still found nothing.</p>
+<p>This way you can set up many generic interactions on a common base surface and override specific interactions only where needed. This also helps to quickly prototype for example a new gun: you add a generic interaction for the gun type to the base surface and immediately get some feedback on all surfaces. Then you can step by step flesh out how the gun will affect different surface types, by overriding the interaction type on derived surfaces one by one.</p>
+<h3 id="physics-interactions">Physics Interactions</h3>
+<p>Dynamic <a href="../physics/physx-overview.html">physics objects</a> can have three types of interactions with surfaces:</p>
+<ol>
+<li>They can <em>bump</em> into each other</li>
+<li>They can <em>slide</em> across a surface</li>
+<li>They can <em>roll</em> around</li>
+</ol>
+<p>Surface interactions enable you to let these make sounds or play effects.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>At the time of writing only the object collisions (bumping into each other) are configurable. See issue <a href="https://github.com/ezEngine/ezEngine/issues/231">#231</a>.</p>
+</blockquote>
+<h4 id="bump">Bump</h4>
+<p>Each surface has an <code>OnCollideInteraction</code> property. This string specifies which surface interaction to trigger on another surface, when two objects collide.</p>
+<p>For example the <em>wood surface</em> may set its <code>OnCollideInteraction</code> property to <code>Bump_Wood</code>. When you now have a wooden box and let that box fall onto a stone floor, the physics system will look up the <code>OnCollideInteraction</code> property from the dynamic object (the box) and use the string (&quot;Bump_Wood&quot;) to trigger this interaction from the stone surface. If the stone surface defines such an interaction, the corresponding prefab will be spawned, otherwise nothing happens.</p>
+<p>Now this behavior would trigger an interaction every single time the box touches anything and it would always be the same interaction, no matter whether it just touches something lightly, or collides with a lot of force. To fix this, each interaction additionally has an <code>ImpulseThreshold</code>. This allows you to set up multiple surface interactions of the same <em>type</em> that have different <em>thresholds</em> and reference different prefabs. If an object bumps into another object, the physics engine provides the amount of force with which the collision occurred. The system will then pick the surface interaction with the highest exceeded threshold. Thus if two objects collide with a lot of force, it may spawn a prefab with a loud sound, and if they collide with little force a quieter prefab may be spawned. And if they collide with even less force, no prefab may be spawned at all.</p>
+<p>Note that looking up surface interactions is generally <a href="#hierarchical-surfaces">hierarchical</a>, meaning that if something like <code>Bump_Wood</code> is not part of a derived surface, but part of its <em>base surface</em>, it will be found. However, regarding the <em>impulse threshold</em> property, the search is not fully hierarchical. Instead, once any interaction of the right type is found in any (base or non-base) surface, no further search is done in additional base surfaces, even if there would be a surface interaction with a better matching threshold in the base surface.</p>
+<p>Basically, once a surface overrides a surface interaction, it completely replaces all available interactions of that type and should have full control which interaction is taken at which threshold.</p>
+<!-- TODO ImpulseScale -->
+<h4 id="slide">Slide</h4>
+<p>See issue <a href="https://github.com/ezEngine/ezEngine/issues/231">#231</a>.</p>
+<h4 id="roll">Roll</h4>
+<p>See issue <a href="https://github.com/ezEngine/ezEngine/issues/231">#231</a>.</p>
+<h2 id="video">Video</h2>
+<p><a href="https://www.youtube.com/watch?v=zTKDNHpKz4o"><img src="https://img.youtube.com/vi/zTKDNHpKz4o/0.jpg" alt="video"></a></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="materials-overview.html">Materials</a></li>
+<li><a href="../physics/physx-overview.html">PhysX Integration</a></li>
+<li><a href="../sound/sound-overview.html">Sound</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/materials/surfaces.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5886 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/GitHub/docs-src",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "Readme.html",
+          "hash": "7bmau06g1KskaAEyh6vdM5lTwwK+XrnQ1kt2aBiY8+o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/EZ-logo-white.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/EZ-logo-white.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/EZ-logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/EZ-logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/EZ-text.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/EZ-text.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/favicon.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/favicon.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/logo-discord.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/logo-discord.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/logo-github-white.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/logo-github-white.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/logo-github.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/logo-github.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/logo-twitter.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/logo-twitter.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/images/logo-youtube.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/images/logo-youtube.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "aac7FRMpIXRX5SYqBWQyAUpItrTWk1U+/x+WNrljZFg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/contact.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/contact.html",
+          "hash": "kB5/LUjiDJ2Ioerqfw54yhW2jJAFs1lsm/9t2Oy+2nI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/blackboard-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/blackboard-component.html",
+          "hash": "/Gq/sE84XuNysOvtADuseYOcF7lBdefZL5/wtC78hb0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/blackboards.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/blackboards.html",
+          "hash": "Gs5/+iJRMefh28FbtJByrYli4QRnXSZ7PUmkgcXaKW8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/imagedata-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/imagedata-asset.html",
+          "hash": "rENjygMbfUlZ6MmMdkTFQ/A8PWlyiiBifpqsudB4LWE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ai/media/navmesh.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ai/media/navmesh.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/recast-navmesh-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/recast-navmesh-component.html",
+          "hash": "SPn62tj6P+V80oWW17fYpvMFjLr2YglRtSRwX6dBwUE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/recast-navmesh.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/recast-navmesh.html",
+          "hash": "P7DDKrY2kg+pIu7PlWEU4Zn0+K9+h12Gs54ZNa7UzWk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/recast.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/recast.html",
+          "hash": "/H4cZAme773n4/It1+JDXCMCjnDsvgSiJbZSozdpOQA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/common/color-gradients.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/common/color-gradients.html",
+          "hash": "85KZLaBX8L+1ocwx1pgq8Tv9bv4OUNlXNJOqM/xGW0g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/common/curves.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/common/curves.html",
+          "hash": "8ClTTLIDljjfkXFcnKy5YTbbnuaUBZDhBcn4wTXVeUc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-clip-properties.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-clip-properties.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-clip.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-clip.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-graph.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-graph.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-import.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-import.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-jump.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-jump.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-mix1d.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-mix1d.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-mix2d.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-mix2d.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-point-shoot.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-point-shoot.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/anim-setup.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/anim-setup.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/animated-mesh-asset.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/animated-mesh-asset.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/animated-mesh.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/animated-mesh.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-action-stash.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-action-stash.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-face-orientation.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-face-orientation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-ik-constraint.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-ik-constraint.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-ik-copy-constraint.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-ik-copy-constraint.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-nla-editor.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-nla-editor.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-nla-stashes.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-nla-stashes.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-orientation.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-orientation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-rig-structure.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-rig-structure.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/blender-vertex-weights.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/blender-vertex-weights.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/color-gradient.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/color-gradient.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/curve-editor-selection.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/curve-editor-selection.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/curve-editor.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/curve-editor.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/glb-export.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/glb-export.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/joint-attachment-setup.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/joint-attachment-setup.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/skeletal-anim.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/skeletal-anim.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/skeleton-asset.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/skeleton-asset.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/media/skeleton-vis.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/media/skeleton-vis.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/color-animation-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/color-animation-component.html",
+          "hash": "cKg0PzukdFLwB4Fz+qddhc09yLD2Q/tfRzAeK/1Z6Z0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/move-to-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/move-to-component.html",
+          "hash": "s3Q9jQxtzGBbqC8RIDt17BUp0oxNDsvfWyLsmsOvvDs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/property-animation-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/property-animation-asset.html",
+          "hash": "wlRmsYY/SL+6I8UDUQWgvk5jinRkeFrLG5N89/WqpD0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/property-animation-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/property-animation-component.html",
+          "hash": "cTQ3QxVD/IYlM6PGKR0jUYr9stCF2lxPNJhniIm4u4Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/property-animation-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/property-animation-overview.html",
+          "hash": "acU+3jTyLKdayoKDD00CwR8XfQ5egd6i+fITZKNzjlE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/rotor-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/rotor-component.html",
+          "hash": "eosUaolJinkJuIP0BtQWddC0OvL6EVIRtNUHxXAwRas="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/slider-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/slider-component.html",
+          "hash": "UheE9OUe2T67dIkNuo4vgaQnrjx+ZCbwW32w5SGdEzU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animated-mesh-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animated-mesh-asset.html",
+          "hash": "/6exZNWD0xZcL12U1rz0QL8M6R+jDkm0+JXu2MTDQac="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animated-mesh-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animated-mesh-component.html",
+          "hash": "v9EB/nIZMjXUIUvr6Mc+obEh4e40TQ31YbWJS11tCtk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-clip-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-clip-asset.html",
+          "hash": "F8pllXqLU/7nQguB6qqQNuM0bhkcI0ZmpZ7HNbCek8U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-blackboard.html",
+          "hash": "gcIwjGnUVnGb79bcBY9cJPrEickpXR7osWAOI9LszOI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-bone-weights.html",
+          "hash": "PMX0fBV90YiWioMrvuFd7I3cnm9SelnsyO4Ykr1w1C0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.html",
+          "hash": "C27jBEAW1j8wHazbeUtA4Fh+NTm+eWJRDkzDsMq0Pkw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-debug.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-debug.html",
+          "hash": "tL+Zb0pdtiLBYN+jVyXRZhpMoDGydgJOYXoWuRXuP5s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-events.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-events.html",
+          "hash": "sIZF7mqXPcX7FSItCFXAnLT0A8Db23PIoW8W/1aPzeE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-input.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-input.html",
+          "hash": "tqokkWWt5nLX5auyh49o6dPs2Wbb8iSyjhY+ZRo/N70="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-logic-math.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-logic-math.html",
+          "hash": "XfNR1rmx+0kDI97GHxBgXmV7gOZxvcuNy/OrrBsyyyM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-mix1d.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-mix1d.html",
+          "hash": "S9UsHaux/lBth8h/I7zcxAvgy9JZgVPi724Rc6hreAI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-mix2d.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-mix2d.html",
+          "hash": "pMXj4F2BcLzVVGQx8gRFzjEE8gvOt6kMwpwSB2ikyzw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-modelspace.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-modelspace.html",
+          "hash": "TJr7U2L9Fqj5IbgbIcZAJgnIhAtnLYbLJ1v08+q8ld8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-output.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-output.html",
+          "hash": "7QH/vQ51qNWlWoqi1oxFM1rwXeuMrUlNoxxxlck+fEU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-playclip.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-playclip.html",
+          "hash": "IGSQ8xA28xsSedq+uitFosq6BBtInADOlxTK6wJ8n2o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-sequence.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-sequence.html",
+          "hash": "Y7k4A6G302QKSiq1WK1BtNNGjFIdTUME0ARw6t5Ci5w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/animation-controller-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/animation-controller-asset.html",
+          "hash": "LZteBsIVhUtYNIa/MyaMLYsOZKFRPpJvnlHWPDRETWE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/animation-controller-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/animation-controller-component.html",
+          "hash": "Cz71HjdvVhxwW/wr/5vwThseJcdFDdSWz1AdgYnnBPc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/animation-controller-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/animation-controller-overview.html",
+          "hash": "lPq0E2WvBYv/QegTIdX2pK99oWtUaqYcp7UpPQVsdMI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/media/anim-controller-asset.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/media/anim-controller-asset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/media/anim-controller-graph.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/media/anim-controller-graph.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-controller/media/anim-graph-basic.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-controller/media/anim-graph-basic.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/animation-events.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/animation-events.html",
+          "hash": "Y2mIcf4TDmlEzKepznXfnix15mWI75vYckdJ4pzHNMU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/blender-export.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/blender-export.html",
+          "hash": "ROeVhWfQEddSJ2N32OSutjb6tA7D+UcMoAHY2Pfforw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/joint-attachment-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/joint-attachment-component.html",
+          "hash": "O7l6zM+cT8zCMfOe7hBkvDOjgmYFk8LXESjCeO0dvyI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/joint-override-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/joint-override-component.html",
+          "hash": "0us1j2cmnCOqBJaZzWokESgC3UB6jdT+XvfM4JZRd50="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/root-motion.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/root-motion.html",
+          "hash": "o7MLkaAX/TsEx4zC1Ya7KidDFRNz5rjsa/LZmfQ6WtI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/simple-animation-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/simple-animation-component.html",
+          "hash": "xsI80yyB5W9VM5omipW0FEbKX2PRUsdV9OO/EhHJSI0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/skeletal-animation-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/skeletal-animation-overview.html",
+          "hash": "/dl+82AogZvfspki6p9xB84rQAakGsniD8WlCqPRISk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/skeleton-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/skeleton-asset.html",
+          "hash": "zakQE9b3hU9pIRFSq/mjoPGLyPEXqAd17AKqfrQP/k8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/skeleton-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/skeletal-animation/skeleton-component.html",
+          "hash": "YRNuiV7Cm6EewC3jPoAjsWKJHozhYMG0PN7c9wcZcJk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/coding-guidelines.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/coding-guidelines.html",
+          "hash": "Mp9YXiPBxM+LPmh9HIKPlkTuhvnBCDGMhGUVwHs80cc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/color-spaces.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/color-spaces.html",
+          "hash": "nTKuK19Vl8FYdwpDNCVBFnZSpLbDe/bfGCEEPcDdr+c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/container-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/container-usage.html",
+          "hash": "zrKi0Jv42wIosqHBDCUjgce1/oAXEU293/FvG9LSHZo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/library-structure.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/library-structure.html",
+          "hash": "j4C53qaTdzenSefFRJbxLpRsHPsgKXJ5OggtkUOS31c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/string-formatting.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/string-formatting.html",
+          "hash": "iZmWeXnfjQu+H0I775PKAcxDtup8hgxGvyj1DmRzGik="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/string-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/string-usage.html",
+          "hash": "lUGEr+c4YnywA371k3hsD/dWMATRtnSRMp5H9n2dvq4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/appendix/third-party-code.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/appendix/third-party-code.html",
+          "hash": "id7OUxtta9IkRnDAduWejUVBmkS8tH30wFaFYux+rOU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/assets/asset-browser.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/assets/asset-browser.html",
+          "hash": "OnfP/yVytkDHQGKBBK3cBstcG/o5iWHc68ycTu6wPp8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/assets/asset-curator.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/assets/asset-curator.html",
+          "hash": "NcvEQL0It3yg9HPT8fvLpACUFwnYWz2+PQwDZXurmuw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/assets/asset-profiles.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/assets/asset-profiles.html",
+          "hash": "pBOQw+cdYtOruDD2nt8jFC2sXyHZ8exvKCGMWhGt6l4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/assets/assets-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/assets/assets-overview.html",
+          "hash": "WrduxXZyeJ6oM+GVY2KDDZyZNT70KWe+NII8tS7BLAU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/assets/import-assets.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/assets/import-assets.html",
+          "hash": "2lI1zEyXM0o4tRvLV3ruijWrpp+jYRdiCR353gHGO78="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-browser.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-browser.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-curator.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-curator.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-import.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-import.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-reference-button.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-reference-button.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/find-asset-references.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/find-asset-references.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/hidden-folders.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/hidden-folders.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/transform-asset.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/transform-asset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/transform-progress.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/transform-progress.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/build-android.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/build-android.html",
+          "hash": "9yJmzN+WAxVbUlZ30IeUQiivULJ3IxCt2gFvkNImPj4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/build-linux.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/build-linux.html",
+          "hash": "Xle7Rv7Goy7L220m2TSlZglOTFs/sU24HQ9L7OmztS0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/build-macos.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/build-macos.html",
+          "hash": "0SSxgOvjUyh+n+hU/Ot3erhvcwko/QLwvK0QIPWYWbk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/build-prerequisites.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/build-prerequisites.html",
+          "hash": "hK3TZzsj3hMQfNm2hJaQLybvVzM7/uEujxhn5ZFnewM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/build-uwp.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/build-uwp.html",
+          "hash": "yDI1sm26z6D4yWeOsrMEuRvliBQzsY2cDZL9J0L7ank="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/building-ez.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/building-ez.html",
+          "hash": "wwVhDG1w3/daD5u0XJmbFF3MTAdwXpQAcIXaGpiFhL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/clang-on-windows.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/clang-on-windows.html",
+          "hash": "hSy4ou4KQjDj28OlHxlI6o2X6qPpzrhipK24NgB8C6A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/cmake-config.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/cmake-config.html",
+          "hash": "tMOxCREEMMNJOkhWJlZ2dD110+fbCr/z4ERDOZ+dBco="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/build/media/cmake-config.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/build/media/cmake-config.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/sdk-root.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/sdk-root.html",
+          "hash": "JxAQTra9PrapCShkjZ67BS2ONc7A+fhY6fHZkn1BCZs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/submodule.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/submodule.html",
+          "hash": "uHAVW/SjOX7Je7nV9PIA73rsU35XySrEKO/e/zJrj0A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/build/supported-platforms.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/build/supported-platforms.html",
+          "hash": "fT1O+2z13ALmjYljTjvBV+TUMkpO9YBMfm1DQUzgs4g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/cpp/cpp-code-reload.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/cpp/cpp-code-reload.html",
+          "hash": "edEWM23i7u1QajoRsbPTFHIUzQEjKYTMdXkboD7fjLk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/cpp/cpp-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/cpp/cpp-overview.html",
+          "hash": "Sq6BO7dNJq3ntjaW05kyxuXDKHS97DY4q1joGwLxkFk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/cpp/custom-cpp-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/cpp/custom-cpp-component.html",
+          "hash": "pt9EEGHiEMD2PDkOGHD58trbcbjkrl6M6ECv9pILKJ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/cpp/engine-plugins.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/cpp/engine-plugins.html",
+          "hash": "GMLvfbkbBHr/KvKLNGPRaEiafsQ31vu/lABKfJgu428="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/cpp/media/cmake-external-project.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/cpp/media/cmake-external-project.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/cpp/media/engine-crash.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/cpp/media/engine-crash.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/cpp/media/load-plugin-copy.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/cpp/media/load-plugin-copy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/custom-code-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/custom-code-overview.html",
+          "hash": "EAm25qs1uKraGyMRSrEet1g2oZBh1GSnAnip+hVcC0Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/typescript/custom-ts-components.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/typescript/custom-ts-components.html",
+          "hash": "BAfC6it8uY+8dNXXin0Z/YFbGf4C+NLqbHKvg3zCSYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/typescript/media/function-docs.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/typescript/media/function-docs.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/typescript/media/ts-asset.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/typescript/media/ts-asset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/typescript/ts-api.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/typescript/ts-api.html",
+          "hash": "p9bXixaNxOJ/W+3ynjLva31J1/gh3K8OWhvzJkWOgDE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/typescript/ts-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/typescript/ts-asset.html",
+          "hash": "eBgMuDA40kSDfMqLhLhumLs+E0Nd4sjhvtltEFu3i/I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/typescript/ts-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/typescript/ts-component.html",
+          "hash": "j4Ll5PNsYmlEJM21jGb/tCWnrQpwSsw7LXayJwx84SI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/typescript/ts-messaging.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/typescript/ts-messaging.html",
+          "hash": "kkaHYSHT1ERX3leo0EVguOJ9453J1tPdIZKzDdffi4o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/typescript/typescript-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/typescript/typescript-overview.html",
+          "hash": "qfWg+qXHKbZhQcRcnJoQJ+y+bdX0dIpS1XaItbwsFro="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/visual-script/visual-script-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/visual-script/visual-script-overview.html",
+          "hash": "amCSZWY976j0PxDkoCYxxH0lSaKGRR3rKIhOojcFO4I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/components/debug-text-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/components/debug-text-component.html",
+          "hash": "UCj5n+cRj3g/uHmAC6W+xp1b1CvHN63OtddBVtgL/Jw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/components/draw-line-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/components/draw-line-component.html",
+          "hash": "vg0+gPoZqakP9H+Leh21bI9gdARWNJH/0eROdwu4+p4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/components/media/debug-text.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/components/media/debug-text.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/components/media/line-to.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/components/media/line-to.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/console.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/console.html",
+          "hash": "lbRw6Ud7PDVDJ+M6poKgD0PkSMbPE92mbGwJzByAZ3E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/cvars.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/cvars.html",
+          "hash": "DER8RcZZLj5h6+uzFG71iOO009k7oE1DffudQUDyK0I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/debug-cpp.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/debug-cpp.html",
+          "hash": "XB6o5N18bY+ywOjVvnwPlc3GFaAhTOINO49fR0QIMiE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/debug-rendering.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/debug-rendering.html",
+          "hash": "XSO+pEHqNsXaMr+laNuOU/pGlH6zusy7h8rcF47RUQY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/logging.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/logging.html",
+          "hash": "Jqo5kdWueSN5gArw9psxwtTxHXHBXqJTsmLd91klCAs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/child-debug.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/child-debug.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/console.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/console.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/debug-rendering.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/debug-rendering.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/inspector-stats.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/inspector-stats.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/renderdoc.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/renderdoc.html",
+          "hash": "6aKY+2oRbs9T6d/+QRjaclHp3NAcUDUCy+Yzo0toNss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/stats.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/stats.html",
+          "hash": "r9Xe7jJoTl06Ytznvk4syK5XygcFeA97e/kT1qya5PU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/docs-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/docs-overview.html",
+          "hash": "m0gXQm57pFhHcVjL2DbrROzBzTHTwYhrPTKJ2Kt12Mw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/dashboard.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/dashboard.html",
+          "hash": "so02drsirk4sADLA0LALIk/eHuyqeQS925GQTuXF6Qo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-bg-operations.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-bg-operations.html",
+          "hash": "5s4hJRo/F21gtT1wFawSAWhFRqf10FDVHX0xauTo93Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-documents.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-documents.html",
+          "hash": "9y+pScpAnTcE/MNuBpNNE1TkaOeIJ+fXrAHRbGMn2WQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-plugins.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-plugins.html",
+          "hash": "mlos3XP4sIotyE62KbYfFQYewVzFWcGbBmn2FFaxPMU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-settings.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-settings.html",
+          "hash": "EWQ4Ym0pcEb66nJ95grBtIiP5s5rT5tlLW2YL0ZsX3M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-template-documents.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-template-documents.html",
+          "hash": "nm3/MAhHbTQGxH6QzE23nSKUO7i2m84yDDSvj5Jil5o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-views.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-views.html",
+          "hash": "HJIXUV5JkKZGe3HrZlTt0afvMfHe/7NbUveA6rbNy7A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/background-op.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/background-op.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/dashboard-projects.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/dashboard-projects.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/dashboard-samples.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/dashboard-samples.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/editor-plugins.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/editor-plugins.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/editor-preferences.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/editor-preferences.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/editor-shortcuts.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/editor-shortcuts.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/export-and-run.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/export-and-run.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/ezEditor.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/ezEditor.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/quad-view.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/quad-view.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-ao.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-ao.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-color.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-color.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-colorcheck.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-colorcheck.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-decals.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-decals.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-default.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-default.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-depth.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-depth.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-emissive.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-emissive.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-lights.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-lights.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-lit.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-lit.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-pixelnormal.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-pixelnormal.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-roughness.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-roughness.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-specular-lit.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-specular-lit.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-specular.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-specular.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-static-dynamic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-static-dynamic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-uv0.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-uv0.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-vertexnormal.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-vertexnormal.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-vertextangent.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-vertextangent.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-wireframe-color.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-wireframe-color.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/render-mode-wireframe-mono.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/render-mode-wireframe-mono.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/scene-toolbar.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/scene-toolbar.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/toolbar-simulate-buttons.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/toolbar-simulate-buttons.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/run-scene.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/run-scene.html",
+          "hash": "7INjuaBiJdSOx6hmpj4TjE+bye71J93+IXhXReJAj0U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/beam-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/beam-component.html",
+          "hash": "epwkaVv33O6LtxPw9MJ907KxlHLCmTy4sJ/w++K5WBw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/decals.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/decals.html",
+          "hash": "6eF50ZKPobwl3Bp5RdP9dnVixB6qtgXC6r3VbNCajv0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/fog.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/fog.html",
+          "hash": "MOLAcQpLI8//71BoVWR4pSuDXrdCrJDE4HP/wOczASY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/beam.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/beam.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/decals-overview.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/decals-overview.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/fog-comparison.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/fog-comparison.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/particle-overview.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/particle-overview.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/how-particle-effects-work.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/how-particle-effects-work.html",
+          "hash": "qsWfHotO4uBCzg2hdVNQhTxs8PjzAJrnY1FsvangCnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/billboards.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/billboards.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/box-position-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/box-position-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/burst-emitter.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/burst-emitter.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/color-gradient.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/color-gradient.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/continuous-emitter.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/continuous-emitter.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/cylinder-position-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/cylinder-position-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/distance-emitter.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/distance-emitter.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/effect-renderer.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/effect-renderer.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/event-reaction-effect.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/event-reaction-effect.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/flies.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/flies.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/gravity.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/gravity.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/light-renderer.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/light-renderer.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/mesh-renderer.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/mesh-renderer.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/onevent-emitter.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/onevent-emitter.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/pull-along-behavior.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/pull-along-behavior.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/quad-axis-emdir.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/quad-axis-emdir.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/quad-fixed-emdir.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/quad-fixed-emdir.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/quad-rotating-emdir.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/quad-rotating-emdir.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/quad-rotating-ortho.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/quad-rotating-ortho.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/random-color-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/random-color-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/random-size-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/random-size-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/raycast.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/raycast.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/render-mode-distortion.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/render-mode-distortion.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/rotation-speed-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/rotation-speed-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/sim-local-space.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/sim-local-space.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/size-curve.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/size-curve.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/sphere-position-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/sphere-position-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/trail-renderer.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/trail-renderer.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/variance-value.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/variance-value.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/velocity-cone-init.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/velocity-cone-init.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/velocity.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/velocity.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-behaviors.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-behaviors.html",
+          "hash": "mPy2y1wODJwpY712yMBHICQIkEELZMyP8zbV1T/AClk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-effect-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-effect-component.html",
+          "hash": "F2x05Mzbq0tEA+d7hhSfrc/ETQLtkb/yU4VDKeMGwwA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-effects-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-effects-overview.html",
+          "hash": "O6HlX2lmxGVZ14eZiTak8KepM4/P2yuwIdWnNLVCmjU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-emitters.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-emitters.html",
+          "hash": "UVyBFWfQXgjyyIyug2pLPGo/Mn91N0knB8K6LoefXh4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-initializers.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-initializers.html",
+          "hash": "GKKAJ9NA7kFaCZC13fBM7nnNOQ5wo2GbEi+9m3jrB10="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-renderers.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-renderers.html",
+          "hash": "t03f6Zzey6xq0YpTxWziwNBE+e4ca6DPgtK3fgCmnro="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/render-target-activator-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/render-target-activator-component.html",
+          "hash": "OyhTf3CgBjy7GrTKKzUH7+q+zC/3+2i+g32GwM2AT+E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/render-to-texture.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/render-to-texture.html",
+          "hash": "sBD3TihfCJzGYmNJA51yIPSeN7CMAnKwG2J0fO/vm/E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/simple-wind-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/simple-wind-component.html",
+          "hash": "k6x7baOSDuykSTZ8B+ZqM8w/OB+W/tyj/I6IiypqRrU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/sky.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/sky.html",
+          "hash": "ds4Zm/qIz74QQj30cqEcdghX3TXUvy6F+YqcgMd9R4Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/wind.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/wind.html",
+          "hash": "W3OYNbTP2pTjUX3Nzunza3bw/uvVX2hbAGQrxNIujAg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/area-damage-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/area-damage-component.html",
+          "hash": "8aojecYrTLydxnfWbukxqcHRoq4TOreW39zC8NL9nf8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/grabbable-item-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/grabbable-item-component.html",
+          "hash": "T9VvmMMwxzi5GijawSHnivcu/kTcRzTC4Ai2CNJgtBw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/marker-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/marker-component.html",
+          "hash": "cJNWhtUrxk+OjwSjT+8883S62uka4FTyGzi+6Qr2k38="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/item-grab-point.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/item-grab-point.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/projectile-properties.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/projectile-properties.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/player-start-point.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/player-start-point.html",
+          "hash": "MgYEdjDHnck887Vf8pyL6UQZFsufydBvwdzU4pEIeAQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/projectile-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/projectile-component.html",
+          "hash": "B0bI2F4U2AuUfNoY6OCiaH7QG5CmUnKh5LgOaOTnlvI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/raycast-placement-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/raycast-placement-component.html",
+          "hash": "eWSAub5c7FTwReMm3IPp069MYV7sXgpF1kfud4WYQAI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/spawn-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/spawn-component.html",
+          "hash": "fSXt9WjjPg6UiVhCu1OrHTDIQ0onMk66pl6dq0435Zw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/timed-death-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/timed-death-component.html",
+          "hash": "0/5fq5GglOg+dKOYjsE8uXCdy9x489Fr82npNBoASE4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/always-visible-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/always-visible-component.html",
+          "hash": "lFLk654wK/llMCQ0OoZHgN64U8KT6cIg62Q2K8da6WY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/camera-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/camera-component.html",
+          "hash": "LpGhbznCcdimTDAyDLvaOfZ10fL52o6KEoQpOYHnhqU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/ambient-light-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/ambient-light-component.html",
+          "hash": "4AJYjulEtpJaZ82JZoLW3+hoV9YIw09MJTReAmAazI0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/directional-light-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/directional-light-component.html",
+          "hash": "XsGjLMXKTggrmLr+8atJeqaUwys1ySJx3tNhIXttpWE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/dynamic-shadows.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/dynamic-shadows.html",
+          "hash": "jr3cyLnFuvO7BiwMEKLh4/UwggCY6LAXsYe0BQ5jJ6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/lighting-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/lighting-overview.html",
+          "hash": "r1TGK2Kai3i7MEtuvMu71X/LHjvypbVXZx7+1mTiojs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/ambient-light.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/ambient-light.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/directional-light.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/directional-light.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/penumbra.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/penumbra.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/point-light.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/point-light.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/skylight-debug.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/skylight-debug.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/skylight-vs-ambient.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/skylight-vs-ambient.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/skylight.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/skylight.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/spot-light.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/spot-light.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/point-light-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/point-light-component.html",
+          "hash": "FGxm1wD5233rIxGcGmT45zTiSPINXU+SMd8t2j5tHNg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/sky-light-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/sky-light-component.html",
+          "hash": "SE1lHqYwdne8rP6sVOHC6guqM2y40pudyQ3Q/wIyky0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/spot-light-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/spot-light-component.html",
+          "hash": "hQkZE+5wQysohWXrlySxQh+mYvC8BWgw1pQGqfktn2g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/media/camera-component.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/media/camera-component.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/media/sprite.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/media/sprite.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/media/texture-asset.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/media/texture-asset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/media/texture-dilation.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/media/texture-dilation.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/meshes/instanced-mesh-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/meshes/instanced-mesh-component.html",
+          "hash": "OrkHbspm/b2oS3TgoNQQnxYCIuUUGuxu2LMIb+/RTB0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/meshes/media/instanced-mesh-component.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/meshes/media/instanced-mesh-component.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/meshes/media/instanced-meshes.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/meshes/media/instanced-meshes.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/meshes/media/mesh-asset.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/meshes/media/mesh-asset.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/meshes/media/mesh.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/meshes/media/mesh.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/meshes/mesh-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/meshes/mesh-asset.html",
+          "hash": "DY4sTp0rhaYbmjeL+iMvo2lmeK97kNdnj89+LumEr+Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/meshes/mesh-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/meshes/mesh-component.html",
+          "hash": "PArydohB0K0Jb4eO/8HoW1yVHVq7APgnaUjQJ3g/CCs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/meshes/meshes-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/meshes/meshes-overview.html",
+          "hash": "yxzBWh0g1JAQn1OmNzzrcCK+1DDMmSgvqh4L9ziOZyY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/render-pipeline-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/render-pipeline-overview.html",
+          "hash": "bkK0/7914naFMeYsuxM6vIR+QKlZ6+Y1HNokYvpZPkw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shader-debugging.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shader-debugging.html",
+          "hash": "aadefvWLh6SUIfaeDte7iFjwN8jxP+yd37eeWOeS2cM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shader-permutation-variables.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shader-permutation-variables.html",
+          "hash": "gqtBPiVM4qI4D6Bwf9euLe7TCeAPUUdTculpb4sIBzQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shader-render-state.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shader-render-state.html",
+          "hash": "02aON5XwIU1LesiPrXfyVehapg4tNAKnd184wOpSHDw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shaders-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shaders-overview.html",
+          "hash": "lNTGYNj+Tssa1zvtcuZPK1RudjI9C1oUTd5kGU/7+xs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/sprite-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/sprite-component.html",
+          "hash": "didP3jw91twfxDJRooUs28EBtdtR2Ui2Q38KARZGwIM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/textures-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/textures-overview.html",
+          "hash": "kkYd3m7TUE80JMZpV0KNy3Dl985pk6O8Bb+lrQdTXB8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/input/input-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/input/input-component.html",
+          "hash": "OFx8zl90xgA/fRWuUttS5rXfSblgt6SRbLaXiCW/JsI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/input/input-config.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/input/input-config.html",
+          "hash": "BOPNnv4b+fZ1b6VBm5yYu+YPXw4h9iXQyS3aaPpWojM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/input/input-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/input/input-overview.html",
+          "hash": "Yb76X8wwSNSDtguDyVJRkbYpDQ5RNQuPQG4afSlZwY0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/materials/materials-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/materials/materials-overview.html",
+          "hash": "pMrIxqqYfzkcMmTF8Q+ebK4ACR1EwtdqBJ9KtLzn87A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/materials/media/material-editor.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/materials/media/material-editor.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/materials/media/surface-editor.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/materials/media/surface-editor.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/materials/surfaces.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/materials/surfaces.html",
+          "hash": "W8a3KpwHeuQGnKKTXnRrEJe5yfMuBF/bHPsoKMSVvtw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/materials/visual-shaders.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/materials/visual-shaders.html",
+          "hash": "6zR4EKJxozAgoJz/2CFUZH+22NeYs12tF1DfLNrr/yM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/performance/asset-collections.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/performance/asset-collections.html",
+          "hash": "SIpzc4ik58+vD8BTj9oxAdj3U1XGfV3S/zVhODOG0+8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/performance/collection-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/performance/collection-component.html",
+          "hash": "hiVozG6zCcOqoHUEBUg050jrXELQOix4StZ+IlhnOUs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/performance/media/collection-asset.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/performance/media/collection-asset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/performance/media/save-profiling.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/performance/media/save-profiling.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/performance/media/tracing-vis.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/performance/media/tracing-vis.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/performance/profiling.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/performance/profiling.html",
+          "hash": "DgZSiD5Oo4qUVsjIBRdAji55UoaCa+DShGZ5OxTr/9I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/actors/media/dynamic-actor.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/actors/media/dynamic-actor.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/actors/media/kinematic-switch.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/actors/media/kinematic-switch.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/actors/media/trigger.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/actors/media/trigger.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/actors/physx-actors.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/actors/physx-actors.html",
+          "hash": "h9y90nZQ6ysTzZbDrGngwzbbKvDC7c5eXECtDSZ5s+M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/actors/physx-breakable-sheet-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/actors/physx-breakable-sheet-component.html",
+          "hash": "NzzuVIrg7yXglSdnMvHfeG7IldIonZY+MsY451U9hJI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/actors/physx-dynamic-actor-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/actors/physx-dynamic-actor-component.html",
+          "hash": "y8sl/E7bQdUxIpcxzd4X7NU2rnon24AN29Ctp9S/R/g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/actors/physx-static-actor-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/actors/physx-static-actor-component.html",
+          "hash": "yMxmFA2H5dIolTGCS3jq8YXI3HQ8gp/2wITZ6JkJhgY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/actors/physx-trigger-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/actors/physx-trigger-component.html",
+          "hash": "HzB20mwsbaynKa48Jy447OseE9Pix9cvYVNDlV+ERk0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/collision-layers.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/collision-layers.html",
+          "hash": "S9iTXq/W4Q1p6k4VkdqI0btIt6Nqsm8x7Mv7loi1wYM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/collision-meshes.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/collision-meshes.html",
+          "hash": "QHBImC0yo3lTymWVg53xoTJmnxjvpSzxX/Je0Yaqqf8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/collision-shapes/media/box-shape.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/collision-shapes/media/box-shape.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/collision-shapes/media/capsule-shape.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/collision-shapes/media/capsule-shape.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/collision-shapes/media/convex-shape.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/collision-shapes/media/convex-shape.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/collision-shapes/media/sphere-shape.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/collision-shapes/media/sphere-shape.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/physx-box-shape-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/physx-box-shape-component.html",
+          "hash": "pa57LypItH57Dz/NQOa0FOmZi0mvYMN7H+skkJn8GsA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/physx-capsule-shape-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/physx-capsule-shape-component.html",
+          "hash": "xIE4sxdkrWGQIIlWU3VwjNEKSreCxpLzG89KOixAeyU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/physx-center-of-mass-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/physx-center-of-mass-component.html",
+          "hash": "ivMFW8Vg54+OI/PtRKEZl1l1lBmUmx+nfy8KigEjIkg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/physx-convex-shape-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/physx-convex-shape-component.html",
+          "hash": "ehg9R/st6Yk7T9Uifxhje/rfl3oMal3aDgROCkgG6iY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/physx-shapes.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/physx-shapes.html",
+          "hash": "RdKu5KZXEG8lwI2F/Lq+MIGrVPTbnMxrMt/T8HMOLe4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/collision-shapes/physx-sphere-shape-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/collision-shapes/physx-sphere-shape-component.html",
+          "hash": "oRM82G+ZUnNCoQah1mnc4rJ/JR4HKRbUEpeqrylYa94="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/6dof-joint.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/6dof-joint.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/distance-joint.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/distance-joint.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/fixed-joint.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/fixed-joint.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/link-joints-hierarchy.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/link-joints-hierarchy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/link-joints.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/link-joints.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/prismatic-joint.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/prismatic-joint.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/revolute-joint.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/revolute-joint.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/joints/media/spherical-joint.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/joints/media/spherical-joint.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-6dof-joint-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-6dof-joint-component.html",
+          "hash": "0lV+2gNEoxB5rRIGvKwofJ3XbPKvfqkeMSR8OSstSEs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-distance-joint-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-distance-joint-component.html",
+          "hash": "PKyfDASYh+gjOIDWiT0OvyECQqzGYy1QVsDBtTJz+Ss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-fixed-joint-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-fixed-joint-component.html",
+          "hash": "O8lb2E85xpgh3aQJto8UOz/Cc5koV0RXi4y8PIIBIZ0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-joints.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-joints.html",
+          "hash": "9X3Gi5tDVaV9lD+Rkut945zWdSOqfIbttgO4XV29vZI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-prismatic-joint-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-prismatic-joint-component.html",
+          "hash": "1jvKR7qQntGjZyaVQe2MfmJaH3KGYBbWcxRsu2Uhp1g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-revolute-joint-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-revolute-joint-component.html",
+          "hash": "oybYyOW/55s6k9VJkHQilebscGkix7sK7BjPudIb61o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/joints/physx-spherical-joint-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/joints/physx-spherical-joint-component.html",
+          "hash": "9b3MBS+9lHQHTx5lR2WcbZERe3LCa5nO/OJcnv1/gcY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/media/colmesh-concave.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/media/colmesh-concave.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/media/colmesh-convex-decomp.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/media/colmesh-convex-decomp.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/media/colmesh-convex.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/media/colmesh-convex.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/media/physx-settings.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/media/physx-settings.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/physx-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/physx-overview.html",
+          "hash": "rgzqoEo5uL95IoILjuddVlhNWvrqgdnIcElkB/cOOXQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/physx-settings-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/physx-settings-component.html",
+          "hash": "SsR2BpAMHIv2aVgIB5Zi9WbGy5oCK4tD2PRdu1q1UCc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/physx-visual-debugger.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/physx-visual-debugger.html",
+          "hash": "griCKonYJEECAs2JJCt7aZpWWRzqwmxN0thj3d+bZL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/special/media/cc.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/special/media/cc.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/special/media/grab-items.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/special/media/grab-items.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/special/physx-character-controller.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/special/physx-character-controller.html",
+          "hash": "wtFrVcotBbMR3Js+60MdhSozlAjhPVypKzeNUCahGqY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/special/physx-grab-object-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/special/physx-grab-object-component.html",
+          "hash": "mm09lgY7aBkqvzqebpAJAVxdKA8+IrQ6KJ96qk+xL7c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/prefabs/media/prefab-types.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/prefabs/media/prefab-types.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/prefabs/prefabs-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/prefabs/prefabs-overview.html",
+          "hash": "iTv6NaHmbAjS7+ZQDu1sF3NT8mnAaMpDVl/VsdojQo4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/projects/data-directories.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/projects/data-directories.html",
+          "hash": "pOHSRFFdtZS8Lg5PbTf0moZkwaRV8j8ZUcZ4F/SegnU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-create-project.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-create-project.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-data-dir.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-data-dir.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-engine-plugins.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-engine-plugins.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-input-config.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-input-config.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-tag-example-org.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-tag-example-org.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-tag-example.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-tag-example.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-tags.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-tags.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/editor-window-config.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/editor-window-config.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/new-project-scene.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/new-project-scene.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/tag-invisible.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/tag-invisible.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/projects/project-settings.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/projects/project-settings.html",
+          "hash": "rGYroT7VEQMNperqZ6dIJXQM/HMSkoa4bBfbA+o2qNQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/projects/projects-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/projects/projects-overview.html",
+          "hash": "MxY2qaaXqyOE7RL6kveJolh9BBcC9CSNMRkaWpQ0Zis="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/projects/tags.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/projects/tags.html",
+          "hash": "XKiQzNwJWzjHSECm5f+kpFdGhH/mWQqpuEhqCgKqEpk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/application/application.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/application/application.html",
+          "hash": "mP9IWhs/ZQV3cV/u2Dzd3fKlUaINdH/x+a2l8y+Wu4o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/application/common-application-features.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/application/common-application-features.html",
+          "hash": "Ca0kxfG+iiS3SfppCPUFKG2vXn5WJ9aM5SLcHA52IRE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/application/game-state.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/application/game-state.html",
+          "hash": "l80tUsxXxbnF9CXgEyJP7PWkJu9CR7hnccl9ldUMbwM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/runtime/application/media/code-hierarchy.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/runtime/application/media/code-hierarchy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/runtime/application/media/code-hierarchy.pptx",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/runtime/application/media/code-hierarchy.pptx"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/configuration/actor-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/configuration/actor-system.html",
+          "hash": "nYyAZvjLWjuEjvo7ujY3WuGIUdKPmiu4XdVrwezfk1o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/configuration/interfaces.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/configuration/interfaces.html",
+          "hash": "KdcVR6WV41VH1cU//FPh5leIxXLFZy8sEC/V2g6j+AQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/runtime/configuration/media/inspector-subsystems.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/runtime/configuration/media/inspector-subsystems.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/configuration/startup.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/configuration/startup.html",
+          "hash": "74h1JXq346D+/wbkmGqa0Y+uC0rrwqSJSR4J6TeJ/pU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/filesystem.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/filesystem.html",
+          "hash": "qH92OfAx1USmmpPXMM21+/av4ZgFu3xkTxzJwQqviSc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/reflection-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/reflection-system.html",
+          "hash": "78U2vFhKRleKdbhl5ar6K8QBB/XUKtpLftKm9JOlhK8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/resource-management.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/resource-management.html",
+          "hash": "xp8inSkq7XtzJz/CGoA9Y2xW472JyUfxCj/514zYHDY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/component-managers.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/component-managers.html",
+          "hash": "kP+0vMbZofE19RrFkWqwSOCyxmVQJkFrZUvYrVwteAU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/components.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/components.html",
+          "hash": "g5f9HVazvztZfF6w+SPsUfjyya7HAbqNQWHQ4wo9rws="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/game-objects.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/game-objects.html",
+          "hash": "u7PGETLKP3BdY87w6XFzcgpX7wi5ypgce6jonGKd+O4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/runtime/world/media/cylinder-script.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/runtime/world/media/cylinder-script.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/runtime/world/media/edit-enum.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/runtime/world/media/edit-enum.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/runtime/world/media/gas-cylinder.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/runtime/world/media/gas-cylinder.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/object-lifetime.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/object-lifetime.html",
+          "hash": "fM7WkJPjTghxb/u8Ql3LJWAXUjBNVwUoO/B95oI7bb0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/spatial-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/spatial-system.html",
+          "hash": "wEbRQewbvwW65kx0moc0E4XxEbMehX2BEGYYBffc0JU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/world-messaging.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/world-messaging.html",
+          "hash": "E7rEhuM1zZxS+3y4fZ7s6VktIXvLYDfEjQ4U8t7L41g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/world-modules.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/world-modules.html",
+          "hash": "r8mC3dxYzyT24H4qFFkkG6fWwj40jck0Dh32cUERFso="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/world-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/world-overview.html",
+          "hash": "0M0PYNT7FMZW0PsN1zNBEAAlWbg98a1ATjG6XUjx1Qw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/world/worlds.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/world/worlds.html",
+          "hash": "umQBz357Elgys+bfh5xKqFZmY6wyVW6kW/yGAJBpXOM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/advanced-object-transform.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/advanced-object-transform.html",
+          "hash": "bQNPvRHLMsBFTmhyaDTKXNJjMthapb//iQydrEqACxs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/editor-camera.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/editor-camera.html",
+          "hash": "JL3VFx+hVXt5ELX3Fv6xWr2BjpI8TU5/JJGJsBjGOGE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/exposed-parameters.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/exposed-parameters.html",
+          "hash": "IOVC5uOoELc5hUKzz4D9EK/ghDyZODTC2CNgZRm9rLU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/gizmos.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/gizmos.html",
+          "hash": "kPJ4yVmqkghTVIK55tMp9zz31OK5d7kPMuAq3ysDl0I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/greyboxing.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/greyboxing.html",
+          "hash": "pmiIhFIyEaoMBdvwp5rzKqTJgh7tLauj4QW5wfqMlQs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-3.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-4.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-dlg-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-dlg-1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-dlg-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-dlg-2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/delta-dlg-3.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/delta-dlg-3.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/duplicate-1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/duplicate-1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/duplicate-2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/duplicate-2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/duplicate-dlg-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/duplicate-dlg-2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/duplicate-dlg.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/duplicate-dlg.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/expose-property.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/expose-property.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/exposed-parameters.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/exposed-parameters.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/exposed-prefab-params.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/exposed-prefab-params.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/gizmos.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/gizmos.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/greyboxing-1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/greyboxing-1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/greyboxing-2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/greyboxing-2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/greyboxing-3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/greyboxing-3.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/greyboxing-4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/greyboxing-4.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/greyboxing-5.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/greyboxing-5.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/greyboxing.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/greyboxing.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/grid.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/grid.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/manipulator.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/manipulator.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/object-reference-menu.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/object-reference-menu.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/object-reference.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/object-reference.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/scene-tree-filter.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/scene-tree-filter.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/selection-outline.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/selection-outline.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/snap-settings.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/snap-settings.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/visualizer-shapeicon.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/visualizer-shapeicon.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/object-references.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/object-references.html",
+          "hash": "Zhd5gALYL7WqM4EpqQ9TXQ3WmHqu00tRoX1VRU/hOVA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/procedural-generation.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/procedural-generation.html",
+          "hash": "JY0ce19LTMtAa2T3yDmyqsop03oU5BotbY5K7uKNRVM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/scene-editing.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/scene-editing.html",
+          "hash": "R7M/IBFce8X6xYOOYXosZD9wvvnDtVcG3EkFjr6DH6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/scenes/selection.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/scenes/selection.html",
+          "hash": "TtycWKk5N8zkTajcJjLyKlc85YDTNDR1QcKKdtkWOxE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/fmod-event-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/fmod-event-component.html",
+          "hash": "3EnbVhvqPAqcraUSBas3DCHoJRzpSFC5ZmIW/lm3mUI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/fmod-listener-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/fmod-listener-component.html",
+          "hash": "9GLZ6aXPtdfCKORXRFz5DYr3DCWQnvDuFh/xcdcOGUA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/fmod-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/fmod-overview.html",
+          "hash": "mkREnYJw4mi6DJOWUHlzd6iKTDK/adTFiaDe+A4drOg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/fmod-soundbank-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/fmod-soundbank-asset.html",
+          "hash": "J1+DbtoLVY+XT5aaWegXGgS5MlNzJ2EIJKQOnFJ4BeE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/fmod-soundevent-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/fmod-soundevent-asset.html",
+          "hash": "kuwm/5y8ZiF0kMG5Mlh02NLgF5Zr9Y3NDwWHkZm3ySY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/sound/media/fmod-settings.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/sound/media/fmod-settings.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/sound/media/listener.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/sound/media/listener.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/sound/media/listener.pptx",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/sound/media/listener.pptx"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/sound/media/sound-ui.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/sound/media/sound-ui.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/sound-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/sound-overview.html",
+          "hash": "zQQ0YBS16Qk1yOpRgo0sJOMgulQAKglJ0qv7CcseeWw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/heightfield-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/heightfield-component.html",
+          "hash": "ASgJm2+qRvN6NRVjzhdZfgvmcI961P3O6niyo8Rjvn4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/kraut-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/kraut-overview.html",
+          "hash": "RvJvJ4182s5xQRt4ESot3aZQji67pymy0hyeVExUzZc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/heightfield-rubble.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/heightfield-rubble.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/heightfield.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/heightfield.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-tree.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-tree.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-overview.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-overview.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-overview.html",
+          "hash": "CgZVGx3vFVCRaaAUT69/2nEhdz/pnthqoykk23kypIM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pages/docs/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/toc.html",
+          "hash": "G/CvFAwOpVBxuT+3BAVZ3bnS+UaIpeP6Y6Y+llhcA2s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/archivetool.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/archivetool.html",
+          "hash": "dnf/Vn3mmobUJG7EJPHvLWzPIdgsEhjUN9BrdcFq6ag="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/fileserve.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/fileserve.html",
+          "hash": "riuMt18qBmEFF4B7jdTZ/IbtDFB6+uy9tQDoAOzzK1M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/headercheck.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/headercheck.html",
+          "hash": "VO7J8N3AKFAd7qPtr8IdKZIV3nJwDyNMuqYCfdjvXgI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/inspector.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/inspector.html",
+          "hash": "s4cWQdGQ8nQQGw4ANLs0WpVRa+zqDP/Ft5fO/IyhcTE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/tools/media/inspector.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/tools/media/inspector.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/minidumptool.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/minidumptool.html",
+          "hash": "5LxKp3KR5dSqVokA9xKaAmGipST8+MiuKOT/GIULkgE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/player.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/player.html",
+          "hash": "rCv5iKCOnPp3qJV9NrdD9G7+4BHOeboGFqbHcQsY40A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/shadercompiler.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/shadercompiler.html",
+          "hash": "2Mbny7n7DyN0saxfrJAzWTkd/2oNL9J7TRZpLCYe9d0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/staticlinkutil.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/staticlinkutil.html",
+          "hash": "BxP9QEZ5fmLldK55VBa1IUvwntmw2H0tfP2tenNLSZY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/texconv.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/texconv.html",
+          "hash": "wan8meL+TJ70+59p3ZNtZyVkG9ShtOBdcUOuBNMSsns="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/unit-tests.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/unit-tests.html",
+          "hash": "TLWrVQvgyuYuyprQ2yhUn0s/YlAhwo+BoTlRXvdxFBA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ui/imgui.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ui/imgui.html",
+          "hash": "SgAe6ifBV6L5gUs2IhSenWjZonrG3KOr9gWTbWqk5zU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ui/media/imgui.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ui/media/imgui.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ui/media/rml-edit.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ui/media/rml-edit.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ui/media/rmlui.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ui/media/rmlui.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ui/rmlui.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ui/rmlui.html",
+          "hash": "+PhpU/fe+AKH8QeulUNVRqXXQvHZvvLqxP9OoDNhr8w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ui/ui.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ui/ui.html",
+          "hash": "fxc58O9p1seWTtows3GhJwJbD2AUmfUOzHjr1ZpJzUo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/api-docs.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/api-docs.html",
+          "hash": "UvFV77WCmslWOj3Iv2wl71DxT1evzhyD/DSVcCfLnAA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/editor-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/editor-overview.html",
+          "hash": "qvltVjoglCuz3TgGlCXlf/btAItJ5+0soFvPsGpMX08="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/faq.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/faq.html",
+          "hash": "B/f1kTsVfsjxd37JB19X5u4BtJIfMnYYo5S6GgIq/Hw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/how-to-contribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/how-to-contribute.html",
+          "hash": "ysFluUsIbFuTKLr+mY/T+zUJXZSOAj7okGVZv0NzH9A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pages/getting-started/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/toc.html",
+          "hash": "xqdKhzJyOyGOlThUTXunt15R0+YJuLT0etIhQBd/1hY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/videos.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/videos.html",
+          "hash": "q2JVHWt9tzugQNtJhFS/OiXd0YnSdVL4qkUoP8PLr9I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/releases/release-20-2.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/release-20-2.html",
+          "hash": "ZQ0zijxtg3gmAXZDZ+rgPubMrF51khul+MtVYjHNEfs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/releases/release-20-5.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/release-20-5.html",
+          "hash": "+2K8uu1ZeM7VHDyFdEtdybW+mwd8MrjOv0V94kg4Rks="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/releases/release-20-8.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/release-20-8.html",
+          "hash": "7kziVGaZz6GPrVVjEx8YkdT4fRuW65EKNARK35gaXiM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/releases/release-21-6.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/release-21-6.html",
+          "hash": "P9m7OPOR6gkEQ1VZ+p58PXvG7RZK1yJ6FWZd4UCj6HA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/releases/release-old.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/release-old.html",
+          "hash": "AXihLOAIGKFZ3XTU9jDHp8QrehtYN5DtjetmygNYQ8U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/releases/releases.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/releases.html",
+          "hash": "MrikPrL35wA2lf2HDgRhhNQsgQTiWd+Sf6mRvhpKCHE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pages/releases/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/releases/toc.html",
+          "hash": "IqJjNX3uXE7Ziaa8Ck7IEePUs/0d1JfvxCBIA5wLzD0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/asteroids.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/asteroids.html",
+          "hash": "jKqRDa3Yx5JX4xOJF8cKgJ+NPOT0q62/tncTqZ2dLy8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/cs-histogram.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/cs-histogram.html",
+          "hash": "Xn53Z5rWC3ivnnfkwtMVUHfWCg963A5qZDyeCg00Y0U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/line-count.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/line-count.html",
+          "hash": "CyJAxKqWIHQ8yF0QybYv2c3fkhkAMkONSkXiykfsgNM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/KrautWind.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/KrautWind.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/PlayerHealth.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/PlayerHealth.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/asteroids1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/asteroids1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/asteroids2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/asteroids2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/cs-histogram.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/cs-histogram.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/line-count1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/line-count1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/rts1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/rts1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/rts2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/rts2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/rts3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/rts3.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/rts4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/rts4.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/sample-game-plugin.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/sample-game-plugin.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/shader-explorer1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/shader-explorer1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/shader-explorer2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/shader-explorer2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/shader-explorer3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/shader-explorer3.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc0.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc0.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc3.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc4.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc5.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc5.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/tc6.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/tc6.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/texture-sample.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/texture-sample.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/rts.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/rts.html",
+          "hash": "V72U03DcHpq6+WNcxF/se7A8Ppytk0mS0xrPl4wQKjg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/sample-game-plugin.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/sample-game-plugin.html",
+          "hash": "zX0GbqGtYUOLMU4TC7lC9ITaTjSJitGSshkG8s/LkYs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/samples-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/samples-overview.html",
+          "hash": "/5g7UGb/3jon397xSs0Zs4THECKo6AObENJOS+vYxCk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/screenshots.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/screenshots.html",
+          "hash": "VhhOx2wDG9pEcvwHR5MY0peN4Xmg2d7PzRgfSzm89ec="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/shader-explorer.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/shader-explorer.html",
+          "hash": "AukFWeb17ElveReBtdiDT1nr3IhPjG78nYjAhYyC5pg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/testing-chambers.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/testing-chambers.html",
+          "hash": "L0FJ6+HDSITrfhW4LPADGJPFJJ00zwd1wul96DZW7LM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/texture-sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/texture-sample.html",
+          "hash": "4oFjXeM/KX25WEut8e/UPPjUPSBZJ+SZwz7GN4n40GM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pages/samples/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/toc.html",
+          "hash": "NYVqZSK1UjHusMxmHYTgitwdeOIbyRL3KiRU8nxzjdA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "If8+ZE0feugUR2jZrovI9oXupKU6laRMgNAmFhYLnLI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 251,
+          "skipped_file_count": 251
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Code with C++ | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Code with C++ | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-code-with-c">Custom Code with C++</h1>
+
+<p>To extend the engine with C++ code, you should put your code into an <a href="engine-plugins.html">engine plugin</a>. This enables both the editor as well as <a href="../../tools/player.html">ezPlayer</a> to load and execute your code.</p>
+<h2 id="build-setup">Build Setup</h2>
+<p>The first thing you need to set up is your build system, meaning you need to have a project for your plugin. The easiest way to do so, is to add your own project into the ezEngine source tree and just use EZ's CMake build setup and generated solution.</p>
+<p>A cleaner approach is to do basically the same, but to put your code outside the EZ source tree, and add a reference to that folder:</p>
+<p><img src="media/cmake-external-project.png" alt="CMake"></p>
+<p>This will integrate you source into the ezEngine solution. Make sure to use the same CMakeLists.txt files as the engine plugins in EZ do. With this option, you can have your code in a separate repository.</p>
+<p>Another way is to use your own CMake based build setup, and integrate <a href="../../build/submodule.html">ezEngine as a Submodule</a>.</p>
+<p>All three solutions give you tight integration of your code and the ezEngine code, which makes debugging more convenient. You can, of course, also build ezEngine once and just link against its libraries.</p>
+<h2 id="custom-game-code">Custom Game Code</h2>
+<p>For an example how to set up a game plugin, see the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>. It is best to start with writing a <a href="custom-cpp-component.html">custom component</a>.</p>
+<p>If you need higher level game logic, have a look at <a href="../../runtime/application/game-state.html">game states</a>. Also have a look at <a href="../../input/input-overview.html">input</a>.</p>
+<p>Once you add more complex systems, you may need the <a href="../../runtime/configuration/startup.html">startup system</a> to properly initialize them and shut them down.</p>
+<h2 id="debugging--profiling">Debugging &amp; Profiling</h2>
+<p>The chapter <a href="../../debugging/debug-cpp.html">Debugging C++ Code</a> gives some useful tips. Things you should also be aware of are the <a href="../../debugging/console.html">console</a> and <a href="../../debugging/cvars.html">CVars</a>, as well as <a href="../../debugging/stats.html">stats</a> and <a href="../../debugging/debug-rendering.html">debug rendering</a>.</p>
+<p>Finally, have a look at <a href="../../performance/profiling.html">profiling</a>, to know where your code spends most of its time.</p>
+<h2 id="standalone-app">Standalone App</h2>
+<p>If you want to write your own stand-alone application, have a look at the <a href="../../runtime/application/application.html">application (TODO)</a> chapter. However, we encourage you to have your entire game code in a plugin, otherwise you can't use any of it in the editor. You would mostly need your own application for the finishing touches of how you present the main menu, etc, and a good starting point is to just copy the <a href="../../tools/player.html">ezPlayer</a> and make adjustments.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../custom-code-overview.html">Custom Code</a></li>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
+<li><a href="engine-plugins.html">Engine Plugins</a></li>
+<li><a href="../../runtime/world/world-overview.html">The World / Scenegraph System</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/cpp/cpp-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

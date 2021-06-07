@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Editing Gizmos | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Editing Gizmos | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="editing-gizmos">Editing Gizmos</h1>
+
+<p>This page describes the most common tools to interact with objects in a scene.</p>
+<h2 id="standard-gizmos">Standard Gizmos</h2>
+<p>The standard gizmos are <strong>Translate</strong> (<code>W</code>), <strong>Rotate</strong> (<code>E</code>), <strong>Scale</strong> (<code>R</code>) and <strong>Drag-To-Position</strong> (<code>T</code>). They can be disabled using the <code>Q</code> key.</p>
+<p><img src="media/gizmos.jpg" alt="Gizmos"></p>
+<p>Click and drag a gizmo to modify the selected objects. The <em>Drag-To-Position</em> gizmo moves the selected object to the position that you point at. If you select one of the six handles, instead of its center, it will additionally align the selected axis with the surface normal of what you point at.</p>
+<p>The translate and the rotate gizmo may operate either in <strong>local space</strong> (<em>object space</em>) or in <strong>global space</strong> (<em>world space</em>). You can toggle the space either using the world icon from the toolbar, or by selecting the tool again. For instance, press <code>W</code> once to enable the translate gizmo, press <code>W</code> again to toggle the space.</p>
+<h3 id="modifiers">Modifiers</h3>
+<ul>
+<li><p>Hold <code>ALT</code> while dragging a gizmo to disable snapping.</p>
+</li>
+<li><p>Hold <code>SHIFT</code> before clicking a gizmo to duplicate the object in place. This works for all but the scale gizmo.</p>
+</li>
+<li><p>Hold <code>CTRL</code> while translating an object to move the camera in conjunction.</p>
+</li>
+</ul>
+<p>All modifiers can be combined.</p>
+<h3 id="gizmos-in-orthographic-views">Gizmos in Orthographic Views</h3>
+<p>When the <em>Translate</em>, <em>Rotate</em> or <em>Scale</em> gizmo is active, holding <code>LMB</code> and moving the mouse will modify objects. The perspective of the selected <a href="../editor/editor-views.html">view</a> (top-down, front, right) determines along which axis the object will be translated or rotated (always in global space). <em>Scale</em> will always be uniform.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>The 3D gizmos are not displayed in orthographic views, just left-clicking anywhere in the view will perform the selected action.</p>
+</blockquote>
+<h2 id="snap-settings">Snap Settings</h2>
+<p>Press <code>End</code> or the respective icon from the toolbar to open the snap settings:</p>
+<p><img src="media/snap-settings.png" alt="Snap Settings"></p>
+<p>These affect not only the gizmos, but also the positioning of <a href="../assets/assets-overview.html">assets</a> dragged from the <a href="../assets/asset-browser.html">asset browser</a> into the scene.</p>
+<h2 id="grid">Grid</h2>
+<p>The grid can be toggled with the <code>G</code> key or the grid icon from the toolbar. If enabled, the grid shows up for the <em>transform gizmo</em> and in <a href="greyboxing.html">greyboxing mode</a>. For the translate gizmo you can choose in which plane the grid is shown, by clicking one of its quads. Afterwards you can still move along the orthogonal axis by dragging the respective axis handle.</p>
+<p><img src="media/grid.jpg" alt="Grid"></p>
+<p>The density of the grid shows the current position snap value. If position snap is disabled, the grid will not show.</p>
+<h2 id="manipulators">Manipulators</h2>
+<p>Manipulators are component and property specific gizmos. Properties of a component that can be changed with a manipulator, are highlighted in blue (off) or violet (on). You can click the property label to toggle the manipulator mode. Once a manipulator is enabled, all <em>Standard Gizmos</em> are disabled. You can now also use the <code>Q</code> key to toggle manipulator mode off and on.</p>
+<p><img src="media/manipulator.jpg" alt="Manipulator"></p>
+<h3 id="manipulators-in-orthographic-views">Manipulators in Orthographic Views</h3>
+<p>Most manipulators will not be available in orthographic <a href="../editor/editor-views.html">views</a>.</p>
+<h2 id="visualizers">Visualizers</h2>
+<p>Some components use <em>visualizers</em> to make some of their aspects more obvious, such as the cone of the spotlight in the image below. These visualizers are only drawn for selected objects and can be toggled using the <code>V</code> key. When visualizers are enabled, the editor will also display a yellow <a href="selection.html#selection-bounding-box">bounding box</a> around each selected object.</p>
+<p><img src="media/visualizer-shapeicon.jpg" alt="Visualizer and Shape Icon"></p>
+<h2 id="video">Video</h2>
+<p><a href="https://www.youtube.com/watch?v=ua70HBP93co"><img src="https://img.youtube.com/vi/ua70HBP93co/0.jpg" alt="video"></a></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="selection.html">Selecting Objects</a></li>
+<li><a href="greyboxing.html">Greyboxing</a></li>
+<li><a href="scene-editing.html">Scene Editing</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/scenes/gizmos.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

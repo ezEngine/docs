@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Console | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Console | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="console">Console</h1>
+
+<p>The in-game console is a utility for inspecting the <a href="logging.html">log</a>, modifying <a href="cvars.html">CVars</a> and calling <a href="#console-functions">console functions</a>.</p>
+<p><img src="media/console.png" alt="Console"></p>
+<h2 id="key-bindings">Key bindings</h2>
+<p>The default key binding for the console is:</p>
+<ul>
+<li><strong>F1</strong> - Opens/closes the console.</li>
+<li><strong>Up / Down</strong> - Select a previously entered command from the history.</li>
+<li><strong>F2</strong> and <strong>F3</strong> - Repeat last and second-to-last commands. This works even when the console is currently closed.</li>
+<li><strong>ESC</strong> - Clears the input line.</li>
+<li><strong>Page Up / Page Down</strong> - Scrolls the log output up / down.</li>
+<li><strong>TAB</strong> - Auto-completes the current input. Also displays all available input options in the output. Ie. lists the names of CVars and console functions and prints their descriptions.</li>
+<li><strong>Enter</strong> - Executes the typed command. If the typed text is only the name of a CVar without an assignment, this will simply print the current value and the description of the CVar.</li>
+</ul>
+<h2 id="modify-cvars">Modify CVars</h2>
+<p>You can modify CVars by typing:</p>
+<pre><code class="lang-cmd">CVarName = value
+</code></pre>
+<p>See the <a href="cvars.html">CVars</a> chapter for details.</p>
+<h2 id="binding-keys">Binding Keys</h2>
+<p>To bind commands to certain keys you can call:</p>
+<pre><code class="lang-cmd">bind f g_showFPS=
+</code></pre>
+<p>This would bind the command 'g_showFPS=' (which toggles the display of the FPS counter) to the f-key. You can only bind commands to printable characters (a-z, 0-9) and the casing matters. So you can also bind another command to SHIFT+f by using <code>bind F ...</code>.</p>
+<p>To unbind a key call:</p>
+<pre><code class="lang-cmd">unbind f
+</code></pre>
+<h2 id="search">Search</h2>
+<p>You can filter the output of the console (the log messages) to only strings that contain some string by typing a <strong>*</strong> at the beginning:</p>
+<pre><code class="lang-cmd">*some text
+</code></pre>
+<p>Now the output window will only show strings that contain 'some text'.</p>
+<h2 id="console-functions">Console Functions</h2>
+<p>Console functions are an easy way to expose C++ utility functions through the console. The class <code>ezConsoleFunction</code> is used to wrap any function (static or method function) in a delegate and enable the console to call it. Of course, since the user can only input certain types of variables in the console, the argument types that you can use are very limited: strings, numbers (int / float) and boolean.</p>
+<p>This code snippet shows how to declare a console function in a class, for example inside a custom <a href="../runtime/application/game-state.html">game state</a>.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: confunc-decl -->
+<pre><code class="lang-cpp">void ConFunc_Print(ezString sText);
+ezConsoleFunction&lt;void(ezString)&gt; m_ConFunc_Print;
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>In the implementation the binding has to be completed. You need to provide a name under which to expose the function, a description (this should include the parameter list) and the actual function to forward the call to. For member functions this has to be an <code>ezDelegate</code> to also bind to the class instance (<code>this</code>).</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: confunc-impl -->
+<pre><code class="lang-cpp">SampleGameState::SampleGameState()
+  : m_ConFunc_Print(&quot;Print&quot;, &quot;(string arg1): Prints 'arg1' to the log&quot;, ezMakeDelegate(&amp;SampleGameState::ConFunc_Print, this))
+{
+}
+
+void SampleGameState::ConFunc_Print(ezString sText)
+{
+  ezLog::Info(&quot;Text: '{}'&quot;, sText);
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>When you now open the console (F1) in-game and press TAB, the 'Print' function will be among the listed functions. You can then execute it:</p>
+<pre><code class="lang-cmd">Print(&quot;Hello Console&quot;)
+</code></pre>
+<p>If you need to call a certain function repeatedly, you can <a href="#binding-keys">bind the call to a key</a> or use F2 and F3 to repeat it, as long as it is the last or second-to-last command in your history.</p>
+<h3 id="typescript">TypeScript</h3>
+<p>You can also register custom console functions through the <a href="../custom-code/typescript/ts-api.html#ezdebug">TypeScript API</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="cvars.html">CVars</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/console.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

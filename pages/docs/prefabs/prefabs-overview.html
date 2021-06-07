@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Prefabs | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Prefabs | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="prefabs">Prefabs</h1>
+
+<p>When you build a game you need many different objects that you can place in your world. The complexity of objects can range from very simple objects with just one node and component, up to thousands of nodes and components. Some will be placed in scenes, others need to be instantiated dynamically at runtime.</p>
+<p>These <em>prefabricated</em> objects are commonly referred to as <em>prefabs</em>. Generally, prefabs in EZ are the same as <a href="../scenes/scene-editing.html">scenes</a>. Therefore the workflow for creating prefabs is mostly identical.</p>
+<h2 id="templates-and-instances">Templates and Instances</h2>
+<p>When talking about prefabs, you need to distinguish between <em>prefab templates</em> and <em>prefab instances</em>.</p>
+<p>A <em>prefab template</em> is the &quot;original&quot; object. For each prefab there is always exactly one template, which is stored in a dedicated file. When you want to change a prefab, you edit the template.</p>
+<p>Once you place a prefab in a scene, that object is a <em>prefab instance</em>. You can create as many instances as you want, and they will all reference the same template.</p>
+<p>The idea of prefabs is, that when you modify the <em>template</em>, all <em>instances</em> will automatically update to reflect these changes. This way you can set up placeholder templates early in your project and start instantiating them right away. Over time you can then flesh out the prefabs, without having to manually update your scenes.</p>
+<h3 id="instantiation-process">Instantiation Process</h3>
+<p>A prefab is basically just a chunk of a level. It contains game objects (entities / nodes) with components. For example a <em>box prefab</em> would contain a single game object, a <a href="../graphics/meshes/mesh-component.html">mesh component</a>, a <a href="../physics/actors/physx-actors.html">physics actor component</a> and a <a href="../physics/collision-shapes/physx-shapes.html">physics box shape</a>. Together these make up an object that looks like a box and behaves like a box.</p>
+<p>Now if you want to have such a box in your scene, you need to add a copy of this structure in your level. To have multiple boxes in your scene you would need to copy the same structure multiple times into the scene, and you need to adjust their positions for each object to end up in the desired place.</p>
+<p>This is what <em>prefab instantiation</em> is doing for you. It integrates a copy of the prefab template into your scene. Since each object is a full copy, they can then change their state independently.</p>
+<p>When a prefab is instantiated, it is decoupled from its template, as it is now a separate copy. Therefore, changing the <em>template</em> will not affect existing <em>instances</em>. To have existing instances show the changes that were made to their template, they must be deleted and recreated from the template. For <em>engine prefabs</em> (see below) the editor does this automatically for you, so while editing a scene, changes to prefabs will always show up immediately. However, while you <a href="../editor/run-scene.html">run your scene</a>, instances cannot be replaced, as they would then lose all their simulation state.</p>
+<p>For <em>editor prefabs</em> (see below), the process of updating an instance to incorporate the latest template changes is more complicated, which is why the editor will only do this upon request.</p>
+<h2 id="prefab-types">Prefab Types</h2>
+<p>ezEngine distinguishes between two types of prefabs: <strong>Editor Prefabs</strong> and <strong>Engine Prefabs</strong>.</p>
+<p>The difference between the two types is, when and where the prefab templates get instantiated. For <em>editor prefabs</em>, the editor instantiates the prefab template and shows all the nodes and components of the prefab in its scene graph. For <em>engine prefabs</em>, the instantiation happens in the engine runtime, here all the editor sees is a single node with a <em>prefab reference component</em>. The editor has no information about the prefab, other than its position.</p>
+<p><img src="media/prefab-types.jpg" alt="Prefab Types"></p>
+<p>The image above shows the same prefab instantiated in two ways. One of the barrels is an <em>engine prefab</em>. As you can see in the scene graph, there is only a single node for this object. The other instance is an <em>editor prefab</em> and the scene graph shows the full node hierarchy for it.</p>
+<p><em>Engine prefabs</em> are by far the preferred way to use prefabs. The editor needs to handle less state, the prefabs get automatically re-instantiated every time the template is updated and even when you <a href="../editor/run-scene.html">run a scene</a> in an external application like <a href="../tools/player.html">ezPlayer</a>. Therefore, you can modify a prefab and just launch your stand-alone game, without the need to re-export any of your scenes, and the prefabs will show up in their latest state already. Since the prefab is only instantiated (ie. copied into your world) at runtime, this also takes up less space on disk and is generally more efficient.</p>
+<p><em>Editor prefabs</em> should generally be avoided, except for very rare, special cases. As you can see in the image above, the entire structure of the prefab is available in the editor scene graph. That means you can modify the instance. For example you could switch out a mesh, change a color or even add or delete nodes. Because of this extra flexibility, the editor cannot delete and re-instantiate a prefab when the template changes. Instead, it has to try to <em>merge</em> both your changes and the changes to the template. This process is much slower, and error prone, which is why the editor never does this automatically. Instead, you have to trigger this manually by selecting <em>Tools &gt; Update Prefabs</em>.</p>
+<p>The possibility to modify a prefab instance may sound appealing. However, <em>engine prefabs</em> allow you to <a href="../scenes/exposed-parameters.html">expose parameters</a>, which you can then set on the <em>prefab reference component</em>. This way you can control exactly which aspects of a prefab you want the user to be able to change.</p>
+<p>It is possible to convert back and forth between engine prefabs and editor prefabs in the editor, through the context menu entries under <em>Prefabs &gt; ...</em>. When doing so, all customizations to a prefab instance will be lost, though.</p>
+<h2 id="working-with-prefabs">Working with Prefabs</h2>
+<p>In the editor you typically instantiate a prefab by dragging and dropping it from the <a href="../assets/asset-browser.html">asset browser</a> into the scene. By default this will create an engine prefab. If you hold <code>Shift</code> before starting to drag the prefab asset, it will be instantiated as an editor prefab.</p>
+<p>If the prefab has <a href="../scenes/exposed-parameters.html">exposed parameters</a>, you can set these on the <em>prefab reference component</em>.</p>
+<h3 id="spawning-objects-at-runtime">Spawning Objects at Runtime</h3>
+<p>Much game functionality requires to spawn objects dynamically at runtime. This is only possible with <em>engine prefabs</em>. Things like the <a href="../gameplay/spawn-component.html">spawn component</a> store a reference to a prefab <a href="../assets/assets-overview.html">asset</a>. They can then be triggered at any time to create a new instance of that prefab.</p>
+<p><a href="../materials/surfaces.html">Surfaces</a> also reference prefabs, to provide dynamic effects like footsteps or bullet impacts.</p>
+<h3 id="prefab-instance-root-node">Prefab Instance Root Node</h3>
+<p>Prefab templates are allowed to have multiple top-level nodes. When a prefab is referenced in a scene, the node that holds the <em>prefab reference component</em> acts as a root node (or group node) for all nodes that will be instantiated from the template. All instantiated nodes will be attached to this parent node.</p>
+<p>This is especially important to keep in mind when writing custom (script) code that searches for a node within a hierarchy. You can give a name to the prefab reference node, and therefore find a specific instance of the prefab. From there on, you can continue searching for nodes by name, and thus find a specific sub-node from the prefab template.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../scenes/scene-editing.html">Scene Editing</a></li>
+<li><a href="../gameplay/spawn-component.html">Spawn Component</a></li>
+<li><a href="../scenes/exposed-parameters.html">Exposed Parameters</a></li>
+<li><a href="../scenes/object-references.html">Object References</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/prefabs/prefabs-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

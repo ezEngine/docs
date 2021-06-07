@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ArchiveTool | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ArchiveTool | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="archivetool">ArchiveTool</h1>
+
+<p>The ArchiveTool is used to create or extract <code>.ezArchive</code> files. Archives are similar to zip files, they contain all the files in a folder, using compression. ezArchive files can be mounted at runtime as <a href="../projects/data-directories.html">data directories</a>.</p>
+<h2 id="ezarchive-format">ezArchive Format</h2>
+<p>The internal structure of ezArchives is optimized to make mounting as a data directory extremely efficient. The files are memory mapped and file lookups are faster than for regular folders. Each file in the archive may use compression or not, depending on whether it would make sense for the particular file. Different compression algorithms are possible, though the main compression used is <a href="../appendix/third-party-code.html#zstd">zstd</a> which yields good compression and is extremely fast to decode.</p>
+<h2 id="usage">Usage</h2>
+<p>The ArchiveTool is a command line tool.</p>
+<h3 id="default-usage">Default Usage</h3>
+<p>The most convenient way to use it, is to pass a single path as the only argument:</p>
+<pre><code class="lang-cmd">ArchiveTool.exe C:/my/data
+</code></pre>
+<p>When the path points to a folder, it will compress the folder and store the ezArchive file next to it. In the example above: <code>C:/my/data.ezArchive</code></p>
+<pre><code class="lang-cmd">ArchiveTool.exe C:/your/data.ezArchive
+</code></pre>
+<p>When the path points to an existing archive, the tool will extract the data to a folder next to the file. In the example above: <code>C:/your/data</code></p>
+<h3 id="all-options">All Options</h3>
+<p>The following options allow you to be more specific:</p>
+<ul>
+<li><strong>-pack</strong> <code>&quot;path/to/folder&quot;</code> <code>&quot;path/to/another/folder&quot;</code> ...</li>
+<li><strong>-unpack</strong> <code>&quot;path/to/file.ezArchive&quot;</code> <code>&quot;another/file.ezArchive&quot;</code></li>
+<li><strong>-out</strong> <code>&quot;path/to/file/or/folder&quot;</code></li>
+</ul>
+<p><strong>-pack</strong> and <strong>-unpack</strong> can take multiple inputs to either aggregate multiple folders into one archive (pack) or to unpack multiple archives at the same time.</p>
+<p><strong>-out</strong> specifies the target to pack or unpack things to. For packing mode it has to be a file. The file will be overwritten, if it already exists.
+For unpacking the target should be a folder (may or may not exist) into which the archives get extracted.</p>
+<p>If no <em>-out</em> is specified, it is determined to be where the input file is located.</p>
+<p>If neither <em>-pack</em> nor <em>-unpack</em> is specified, the mode is detected automatically from the list of inputs:</p>
+<ul>
+<li>If all inputs are folders, mode is going to be 'pack'.</li>
+<li>If all inputs are files, mode is going to be 'unpack'.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>Pack all data in &quot;C:\Stuff&quot; into &quot;C:\Stuff.ezArchive&quot;:</p>
+<pre><code class="lang-cmd">ArchiveTool.exe &quot;C:\Stuff&quot;
+</code></pre>
+<p>Pack all data in &quot;C:\Stuff&quot; into &quot;C:\MyStuff.ezArchive&quot;:</p>
+<pre><code class="lang-cmd">ArchiveTool.exe &quot;C:\Stuff&quot; -out &quot;C:\MyStuff.ezArchive&quot;
+</code></pre>
+<p>Unpack all data from the archive into &quot;C:\Stuff&quot;</p>
+<pre><code class="lang-cmd">ArchiveTool.exe &quot;C:\Stuff.ezArchive&quot;
+</code></pre>
+<p>Unpack all data from the archive into &quot;C:\MyStuff&quot;</p>
+<pre><code class="lang-cmd">ArchiveTool.exe &quot;C:\Stuff.ezArchive&quot; -out &quot;C:\MyStuff&quot;
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../projects/data-directories.html">Data Directories</a></li>
+<li><a href="../runtime/filesystem.html">FileSystem</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/archivetool.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

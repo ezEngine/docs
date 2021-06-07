@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Projects | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Projects | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="projects">Projects</h1>
+
+<p>The term <em>project</em> refers to one game or application, its global settings, and all its data. The editor distinguishes between projects, and allows you to configure various options of each one. On the runtime side, however, the concept of a project does not exist, the current state of the runtime represents the project. Therefore, when you switch to a different project in the editor, the engine will in fact be shut down completely and restarted with different settings (editor and engine are two separate processes).</p>
+<h2 id="creating-a-project">Creating a Project</h2>
+<p>You can use ezEngine entirely without the editor. In that case, you do not need to create a project, at all. Your <a href="../runtime/application/application.html">application (TODO)</a> is your project and you set up things like the <a href="../runtime/filesystem.html">fileSystem</a>, the <a href="../custom-code/cpp/engine-plugins.html">plugins</a> and so on, entirely from code.</p>
+<p>It is more convenient, though, to maintain your project through the editor. To create a new project, open the editor's <a href="../editor/dashboard.html">dashboard</a> (<em>Editor &gt; Show Dashboard</em>) and select <strong>New</strong> from the top-right corner:</p>
+<p><img src="../editor/media/dashboard-projects.png" alt="Dashboard"></p>
+<p>The dialog will ask you to select a <strong>new folder</strong> for your project:</p>
+<p><img src="media/editor-create-project.png" alt="Create a Project"></p>
+<p>The name of the folder represents the name of your project. This name is stored nowhere else, you can rename your project later simply by renaming the folder.</p>
+<h3 id="basic-setup">Basic Setup</h3>
+<p>Now you have a new, blank project. The first thing you should do is to check the <a href="project-settings.html">project settings</a>. Specifically, if you want to share assets between multiple projects, you need to put those assets into a dedicated folder and then add that folder to your project as a <a href="data-directories.html">data directory</a>.</p>
+<p>The second thing you should check is which <a href="project-settings.html#engine-plugins">engine plugins</a> you want to use. This is not critical at this point, but if you start using features from some plugin (e.g. <a href="../physics/physx-overview.html">PhysX</a>) and then try to <a href="../editor/run-scene.html">run a scene standalone</a>, it won't work.</p>
+<p>The following engine plugins are useful to enable for most projects:</p>
+<ul>
+<li><strong>ezParticlePlugin</strong> - for <a href="../effects/particle-effects/particle-effects-overview.html">particle effects</a></li>
+<li><strong>ezTypeScriptPlugin</strong> - for <a href="../custom-code/typescript/typescript-overview.html">scripting with TypeScript</a></li>
+<li><strong>ezPhysXPlugin</strong> - for physics with <a href="../physics/physx-overview.html">PhysX</a></li>
+<li><strong>ezFmodPlugin</strong> - for sound with <a href="../sound/fmod-overview.html">FMOD</a> (requires that you have <a href="../build/build-prerequisites.html">Fmod support</a> enabled)</li>
+</ul>
+<p>If you don't use a particular feature in your project, you can of course keep the respective plugin deactivated.</p>
+<h3 id="create-a-scene">Create a Scene</h3>
+<p>Select <em>Editor &gt; Create Document...</em> and create a <a href="../editor/editor-documents.html">document</a> of type <code>ezScene</code>. The new scene will be filled with some default objects and you should see something like this:</p>
+<p><img src="media/new-project-scene.jpg" alt="New Scene"></p>
+<p>If you don't see the <a href="../assets/asset-browser.html">asset browser</a>, make sure to open it. You can now <a href="../scenes/scene-editing.html">edit your scene</a>. When you need more assets to play with, you need to <a href="../assets/import-assets.html">import them</a> into your project. Once you have something in your scene that could <em>do something</em>, you can <a href="../editor/run-scene.html">test your scene</a>. A good starting point for that is to simply attach a <code>Rotor</code> component to a mesh. A fun next step is to let objects fall down using <a href="../physics/physx-overview.html">PhysX</a> (hint: you need a <code>Dynamic Actor</code> component and a <code>Box Shape</code> component)</p>
+<h2 id="project-wide-options">Project-wide options</h2>
+<p>Plugins may add project wide options. Not all options may be exposed through editor UI, there are a few things that can (at the moment) only be configured through config files or directly from code. Most options are stored in <a href="https://openddl.org/">OpenDDL</a> format or other human-readable files, and you can edit them directly. Some options to be aware of are:</p>
+<ul>
+<li><a href="data-directories.html">Data directories</a></li>
+<li><a href="../custom-code/cpp/engine-plugins.html">Engine plugins</a></li>
+<li><a href="../physics/collision-shapes/collision-layers.html">Collision layers</a></li>
+<li><a href="project-settings.html#input-configuration">Input Configuration</a></li>
+<li><a href="tags.html">Tags</a></li>
+<li><a href="project-settings.html#window-configuration">Window Configuration</a></li>
+<li><a href="../assets/asset-profiles.html">Asset profiles (TODO)</a></li>
+</ul>
+<h2 id="see-also">See Also</h2>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/projects/projects-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

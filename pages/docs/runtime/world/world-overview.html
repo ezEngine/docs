@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The World / Scenegraph System | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The World / Scenegraph System | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-world--scenegraph-system">The World / Scenegraph System</h1>
+
+<p>When you build a scene in the editor or through code, the structure of all the objects is stored in something that is commonly referred to as a <em>scenegraph</em>. In EZ the scenegraph is implemented by the class <code>ezWorld</code>, which is why the terms <em>scenegraph</em> and <em>world</em> are used interchangeably in our documentation.</p>
+<h2 id="ecs">ECS</h2>
+<p>In EZ we use a variation of an <strong>E</strong>ntity <strong>C</strong>omponent <strong>S</strong>ystem (<a href="https://en.wikipedia.org/wiki/Entity_component_system">ECS</a>). It doesn't matter whether you are familiar with ECSs, but if you are, the main difference of our implementation to a pure ECS is, that in EZ there is always exactly one <em>system</em> to handle each <em>component type</em>. You can have additional systems (see <a href="world-modules.html">World Modules</a>), however, this is not as common as in other engines.</p>
+<p>The main classes involved are <code>ezWorld</code>, <code>ezGameObject</code>, <code>ezComponent</code> and <code>ezWorldModule</code> / <code>ezComponentManager</code>.</p>
+<h3 id="ezworld">ezWorld</h3>
+<p>Each <code>ezWorld</code> represents the entire state of a scene. Worlds hold all <a href="game-objects.html">game objects</a> and all <a href="world-modules.html">world modules</a>, which in turn hold all <a href="components.html">components</a>.</p>
+<p>Each world has its own simulation state, such as a clock and a random number generator. Through the world modules, worlds also hold their own state for other simulation aspects, such as <a href="../../physics/physx-overview.html">physics</a>.</p>
+<p>You can have multiple worlds in parallel and they will be completely separated. This is for example the case when you have multiple <a href="../../editor/editor-documents.html">documents</a> open in the editor.</p>
+<p>Worlds are described in more detail in <a href="worlds.html">this chapter</a>.</p>
+<h3 id="ezgameobject">ezGameObject</h3>
+<p><code>ezGameObject</code> is our <em>entity</em> class. The terms <em>entity</em>, <em>game object</em> and <em>node</em> are used interchangeably. Every game object has a position, rotation and scale. It may be attached to a single <em>parent</em> game object and it may have multiple game objects attached as children. The game object hierarchy is a directed acyclic graph (DAG).</p>
+<p>Game objects by themselves do not have any <em>behavior</em>. Instead, each game object can have an arbitrary number of <a href="components.html">components</a> attached.</p>
+<p>The object's <em>transform</em> (position, rotation, scale) is local to its parent node, but it also holds a <em>global</em> transform, which is computed by concatenating the transformations of all parent nodes. Every time a game object or any of its parent nodes is moved, this global transform is updated.</p>
+<p>Game objects are described in more detail in <a href="game-objects.html">this chapter</a>.</p>
+<h3 id="ezcomponent">ezComponent</h3>
+<p>Components can be attached to game objects. They bring their own data and functionality. Components are used to implement behavior. For example light source components are used to tell the renderer how to light the scene, physics components are used to make objects collide with each other and AI components let creatures run around. By attaching components to game objects, you configure how that game object behaves. Components can interact with or depend on each other. For example a physics <em>actor</em> component would make an object fall to the ground, but it also needs a physics <em>shape</em> component to know whether the object should behave like a box, a sphere or something else.</p>
+<p>Components are described in more detail in <a href="components.html">this chapter</a>.</p>
+<h3 id="ezworldmodule--ezcomponentmanager">ezWorldModule / ezComponentManager</h3>
+<p>World modules are the <em>systems</em> of the ECS pattern. Worlds are updated in multiple phases. Some phases are multi-threaded, others aren't. World modules can hook into these phases and make sure that they are called at the right time. World modules implement things like stepping third party code (e.g. physics). The most common type of world modules are <em>component managers</em>. Each component type has its own component manager, which is responsible for updating those components. The manager can leverage knowledge from other sources for determining which components need updating, and it can easily update components in a multi-threaded fashion, if it is save to do so.</p>
+<p>World modules are described in more detail in <a href="world-modules.html">this chapter</a> and component managers in <a href="component-managers.html">this chapter</a>.</p>
+<h2 id="object-lifetime">Object Lifetime</h2>
+<p>The EZ scenegraph does not use any kind of reference counting or garbage collection, however it does provide weak reference semantics through <em>handles</em>, to enable you to delete objects exactly when you need them to be removed, while still being able to detect whether an object is still alive.</p>
+<p>See the <a href="object-lifetime.html">object lifetime chapter</a> for details.</p>
+<h2 id="custom-components">Custom Components</h2>
+<p>A large part of writing your own game, is to write your own components. If you need maximum control and performance, you need to write your <a href="../../custom-code/cpp/custom-cpp-component.html">components in C++</a>.</p>
+<p>You can also write components in <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>. Their functionality is very similar but a bit more limited. It is possible to use both and communicate between Typescript and C++ components using <a href="world-messaging.html">messages</a>.</p>
+<h2 id="messaging">Messaging</h2>
+<p>When a component gets updated, it can access other components and call functions on them. Of course that requires that the other component type is known at compile time. In practice, that is often not the case.</p>
+<p>Take the <a href="../../gameplay/projectile-component.html">projectile component</a> as an example. Whenever a projectile hits something, it should apply damage to the hit object. However, what it hit was just the physical representation of an object (e.g. a <a href="../../physics/actors/physx-actors.html">physics actor</a>). The physics object doesn't have a concept of 'receiving damage' and therefore calling some 'OnDamage' function on the physics component makes no sense.</p>
+<p>Instead, on the object that has the physics component, there may be another component which knows how it would react to damage, so we want to send the information there. That component may be a custom component, though, which the projectile component knows nothing about, so there is no way to call a function on that.</p>
+<p>To solve this problem, you can send <em>messages</em> to components. A message is a class derived from <code>ezMessage</code> and it can contain arbitrary data. Each component registers <em>message handlers</em> for all the types of messages that it wants to receive.</p>
+<p>When our projectile component now hits some object, it simply sends a <em>damage message</em> to that object. The engine will then deliver that message to all components which have a matching message handler. The message can be delivered right away, in which case a result can be written back to the message, or with a delay.</p>
+<p>Using messages decouples code, as components that know nothing of each other can still communicate and interact. The message system is also highly optimized for best performance.</p>
+<p>Messages are described in more detail in <a href="world-messaging.html">this chapter</a>.</p>
+<h2 id="spatial-system">Spatial System</h2>
+<p>The world also sorts objects into a spatial system, to enable efficient queries for which objects are within a certain area. Although this is the basis for frustum culling in the renderer, it is also available to other systems.</p>
+<p>See <a href="spatial-system.html">this chapter</a> for details.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="worlds.html">Worlds</a></li>
+<li><a href="game-objects.html">Game Objects</a></li>
+<li><a href="components.html">Components</a></li>
+<li><a href="world-modules.html">World Modules</a></li>
+<li><a href="component-managers.html">Component Managers</a></li>
+<li><a href="world-messaging.html">Messaging</a></li>
+<li><a href="../../custom-code/custom-code-overview.html">Custom Code</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/world/world-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

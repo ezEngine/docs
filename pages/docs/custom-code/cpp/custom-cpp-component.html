@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Components with C++ | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Components with C++ | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-components-with-c">Custom Components with C++</h1>
+
+<p>To write a custom C++ component, the first thing you need is a custom <a href="engine-plugins.html">engine plugin</a>. Once you have that, and have it enabled in your <a href="../../projects/project-settings.html">project settings</a>, any custom component that you define in that plugin will show up in the editor and can be attached to <a href="../../runtime/world/game-objects.html">game objects</a>.</p>
+<p>The <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a> shows all the pieces that you need, including multiple components to get inspiration from. This article describes the steps to create a simple custom component.</p>
+<p>Before you continue, please read the <a href="../../runtime/world/components.html">components chapter</a>, as it already covers most things that you need to know.</p>
+<h2 id="component-manager-declaration">Component Manager Declaration</h2>
+<p>For every type of C++ component there is a corresponding <a href="../../runtime/world/component-managers.html">component manager</a>. The component manager is responsible for allocating and deallocating components and for updating them. Each component manager is tied to a single <a href="../../runtime/world/worlds.html">world</a>, so if you have multiple worlds, each world will hold its own instance of each component manager.</p>
+<p>A component manager is a <a href="../../runtime/world/world-modules.html">world module</a>, so it can register functions to be called during specific <a href="../../runtime/world/world-modules.html#update-phases">update phases</a> of the world.</p>
+<p>For the vast majority of components we only need a component manager that calls <code>Update()</code> on our component type once a frame. We can declare such a simple manager like this in the header file for our component:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: customcomp-manager -->
+<pre><code class="lang-cpp">using DemoComponentManager = ezComponentManagerSimple&lt;class DemoComponent, ezComponentUpdateType::WhenSimulating&gt;;
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="component-class-declaration">Component Class Declaration</h2>
+<p>Next, we declare our component class. All components must derive (at least indirectly) from <code>ezComponent</code>. Also vital is to insert the <code>EZ_DECLARE_COMPONENT_TYPE</code> macro, where you pass in the own component class name, the base class, and the component manager class.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: customcomp-class -->
+<pre><code class="lang-cpp">class DemoComponent : public ezComponent
+{
+  EZ_DECLARE_COMPONENT_TYPE(DemoComponent, ezComponent, DemoComponentManager);
+
+  //////////////////////////////////////////////////////////////////////////
+  // ezComponent
+
+public:
+  virtual void SerializeComponent(ezWorldWriter&amp; stream) const override;
+  virtual void DeserializeComponent(ezWorldReader&amp; stream) override;
+
+protected:
+  virtual void OnSimulationStarted() override;
+
+  //////////////////////////////////////////////////////////////////////////
+  // DemoComponent
+
+public:
+  DemoComponent();
+  ~DemoComponent();
+
+private:
+  void Update();
+
+  float m_fAmplitude = 1.0f;             // [ property ]
+  ezAngle m_Speed = ezAngle::Degree(90); // [ property ]
+};
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Here we override a couple of functions from <code>ezComponent</code>. For the binary serialization we must implement <code>ezComponent::SerializeComponent()</code>. As long as you test your component only inside the editor, you don't yet need to implement these functions, as the editor stores reflected properties automatically. However, once you want to export your scene, these functions are used, and if you forgot to properly serialize something, the exported scene will not work correctly.</p>
+<p>Note that our sample component has a (non-virtual) function called <code>Update()</code>. This is necessary because we use the <code>ezComponentManagerSimple</code> here, which expects to find such a function. If you write your own component manager, you can do this differently.</p>
+<h2 id="reflection-block">Reflection Block</h2>
+<p>In our cpp file we need to insert a <a href="../../runtime/reflection-system.html">reflection</a> block for our component type. This tells the engine all the details about our component, for instance which properties it has.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: customcomp-reflection -->
+<pre><code class="lang-cpp">// clang-format off
+EZ_BEGIN_COMPONENT_TYPE(DemoComponent, 3 /* version */, ezComponentMode::Dynamic)
+{
+  EZ_BEGIN_PROPERTIES
+  {
+    EZ_MEMBER_PROPERTY(&quot;Amplitude&quot;, m_fAmplitude)-&gt;AddAttributes(new ezDefaultValueAttribute(1), new ezClampValueAttribute(0, 10)),
+    EZ_MEMBER_PROPERTY(&quot;Speed&quot;, m_Speed)-&gt;AddAttributes(new ezDefaultValueAttribute(ezAngle::Degree(90))),
+  }
+  EZ_END_PROPERTIES;
+
+  EZ_BEGIN_ATTRIBUTES
+  {
+    new ezCategoryAttribute(&quot;SampleGamePlugin&quot;),
+  }
+  EZ_END_ATTRIBUTES;
+}
+EZ_END_COMPONENT_TYPE
+// clang-format on
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This information is used in various ways. The editor uses it for the UI. Attributes on each property allow you to configure what default values the editor should use, and whether it should clamp the range for values, etc. Bindings to other languages also use this information to generate the necessary code. Everything that is not mentioned in this block, is internal to the C++ code and hidden from the tools.</p>
+<h2 id="initialization-and-update">Initialization and Update</h2>
+<p>Next up, we implement our basic component code:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: customcomp-basics -->
+<pre><code class="lang-cpp">DemoComponent::DemoComponent() = default;
+DemoComponent::~DemoComponent() = default;
+
+void DemoComponent::OnSimulationStarted()
+{
+  SUPER::OnSimulationStarted();
+
+  // this component doesn't need to anything for initialization
+}
+
+void DemoComponent::Update()
+{
+  const ezTime curTime = GetWorld()-&gt;GetClock().GetAccumulatedTime();
+  const ezAngle curAngle = curTime.GetSeconds() * m_Speed;
+  const float curHeight = ezMath::Sin(curAngle) * m_fAmplitude;
+
+  GetOwner()-&gt;SetLocalPosition(ezVec3(0, 0, curHeight));
+}
+
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Components rarely need to do much in their constructor and destructor. Most setup should be done in <code>ezComponent::OnSimulationStarted()</code>. For components that should already have functionality in the editor, while the simulation is not yet running, you should do your setup in <code>ezComponent::OnActivated()</code> instead. There is no <code>OnSimulationStopped()</code>, as this would always be the same as <code>ezComponent::OnDeactivated()</code>.</p>
+<p>As you can see, this component modifies the position of its owner object during its update. This is why we had to use <code>ezComponentMode::Dynamic</code> in the reflection block, to tell the engine that objects with this component attached may change their position.</p>
+<h2 id="serialization">Serialization</h2>
+<p>Finally, to make our component also work in exported scenes, we need to implement serialization:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-serialize -->
+<pre><code class="lang-cpp">void DemoComponent::SerializeComponent(ezWorldWriter&amp; stream) const
+{
+  SUPER::SerializeComponent(stream);
+
+  auto&amp; s = stream.GetStream();
+
+  s &lt;&lt; m_fAmplitude;
+  s &lt;&lt; m_Speed;
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This writes out the data in the latest format. If you change the format, you should increase the version number of your component in the reflection block at the very top.</p>
+<p>Obviously, at runtime we also need to deserialize our component. This is where we implement backwards compatibility for older exported scenes:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-deserialize -->
+<pre><code class="lang-cpp">void DemoComponent::DeserializeComponent(ezWorldReader&amp; stream)
+{
+  SUPER::DeserializeComponent(stream);
+  const ezUInt32 uiVersion = stream.GetComponentTypeVersion(GetStaticRTTI());
+
+  auto&amp; s = stream.GetStream();
+
+  s &gt;&gt; m_fAmplitude;
+
+  if (uiVersion &lt;= 2)
+  {
+    // up to version 2 the angle was stored as a float in degree
+    // convert this to ezAngle
+    float fDegree;
+    s &gt;&gt; fDegree;
+    m_Speed = ezAngle::Degree(fDegree);
+  }
+  else
+  {
+    s &gt;&gt; m_Speed;
+  }
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="conclusion">Conclusion</h2>
+<p>Adding a custom component in C++ is not hard. Use the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a> as a playground to get started. Of course with C++ you have the typical restriction that you can't hot reload code, you have to close the editor, compile your plugin and reopen the editor. <a href="cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a> describes a mechanism that can basically do all that for you with a single button press, though.</p>
+<p>Armed with these basics, you should have a look at existing components to see how to solve specific issues.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../runtime/world/components.html">Components</a></li>
+<li><a href="../custom-code-overview.html">Custom Code</a></li>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
+<li><a href="cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/cpp/custom-cpp-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

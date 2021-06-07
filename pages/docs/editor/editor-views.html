@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Editing Views | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Editing Views | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="editing-views">Editing Views</h1>
+
+<p>Most documents come with at least one 3D view. The scene documents allow you to switch between single-view and quad-view mode, using the <em>Toggle Views</em> button in each view toolbar.</p>
+<p><img src="media/quad-view.jpg" alt="Quad View"></p>
+<p>Using the <em>Perspective</em> menu in the toolbar (the <em>eye</em> icon) you can switch each view to either orthographic or perspective mode.</p>
+<p><a href="../scenes/editor-camera.html">Camera controls</a> and <a href="../scenes/gizmos.html">editing gizmos</a> act differently in orthographic and perspective mode.</p>
+<h2 id="render-modes">Render Modes</h2>
+<p>Render modes are used to visualize different aspects of the scene. They can be useful for debugging rendering issues, see potential performance hotspots, or easier edit a dark scene.</p>
+<p>Most 3D viewports allow you to switch the rendering mode through a drop down menu.</p>
+<h3 id="default">Default</h3>
+<p>This mode renders the scene as it would appear in the final game.</p>
+<p><img src="media/render-mode-default.jpg" alt="Render Mode"></p>
+<h3 id="wireframe">Wireframe</h3>
+<p>In this mode the scene is rendered only as wireframe. Either monochrome or colored.</p>
+<p><img src="media/render-mode-wireframe-color.jpg" alt="Render Mode"></p>
+<!-- ![Render Mode](media/render-mode-wireframe-mono.jpg) -->
+<h3 id="diffuse-lit-only">Diffuse Lit Only</h3>
+<p>This mode visualizes only the diffuse lighting contributions.</p>
+<p><img src="media/render-mode-lit.jpg" alt="Render Mode"></p>
+<h3 id="specular-lit-only">Specular Lit Only</h3>
+<p>This mode visualizes only the specular lighting contributions, including reflections.</p>
+<p><img src="media/render-mode-specular-lit.jpg" alt="Render Mode"></p>
+<h3 id="decal-count">Decal Count</h3>
+<p>Visualizes how many decals affect each pixel. Yellow and red areas indicate high decal overdraw and will affect performance negatively.</p>
+<p><img src="media/render-mode-decals.jpg" alt="Render Mode"></p>
+<h3 id="light-count">Light Count</h3>
+<p>Visualizes how many lights affect each pixel. Yellow and red areas have many contributing lights and will affect performance negatively.</p>
+<p><img src="media/render-mode-lights.jpg" alt="Render Mode"></p>
+<h3 id="static-vs-dynamic">Static vs Dynamic</h3>
+<p>This mode visualizes which objects in the scene are <code>static</code> (green) and which ones are <code>dynamic</code> (red). Dynamic objects have a per-frame performance cost, even if they don't move. This mode allows you to find objects that are unnecessarily set to be dynamic.</p>
+<p><img src="media/render-mode-static-dynamic.jpg" alt="Render Mode"></p>
+<h3 id="texture-coordinates">Texture Coordinates</h3>
+<p>There are two modes to visualize the UV0 and UV1 texture coordinates.</p>
+<p><img src="media/render-mode-uv0.jpg" alt="Render Mode"></p>
+<h3 id="normals-and-tangents">Normals and Tangents</h3>
+<p>There are multiple modes to visualize normals and tangents, per-vertex and per-pixel.</p>
+<p><img src="media/render-mode-pixelnormal.jpg" alt="Render Mode"></p>
+<!-- ![Render Mode](media/render-mode-vertexnormal.jpg) -->
+<!-- ![Render Mode](media/render-mode-vertextangent.jpg) -->
+<h3 id="diffuse-color">Diffuse Color</h3>
+<p>This mode only shows the diffuse color. It can be very handy for editing a scene that is otherwise very dark.</p>
+<p><img src="media/render-mode-color.jpg" alt="Render Mode"></p>
+<h3 id="diffuse-color-range-check">Diffuse Color Range Check</h3>
+<p>In <code>Physically Based Rendering</code> (PBR) the diffuse color values should never be too dark or too bright, as both will not give the best possible results. This mode visualizes which areas may have non-optimal diffuse colors.</p>
+<p><img src="media/render-mode-colorcheck.jpg" alt="Render Mode"></p>
+<h3 id="emissive-color">Emissive Color</h3>
+<p>This mode visualizes which objects use emissive colors.</p>
+<p><img src="media/render-mode-emissive.jpg" alt="Render Mode"></p>
+<h3 id="specular-color">Specular Color</h3>
+<p>Visualizes the specular color.</p>
+<p><img src="media/render-mode-specular.jpg" alt="Render Mode"></p>
+<h3 id="ambient-occlusion">Ambient Occlusion</h3>
+<p>This mode shows ambient occlusion values. These come both from dedicated AO maps, as well as screen space ambient occlusion (SSAO).</p>
+<p><img src="media/render-mode-ao.jpg" alt="Render Mode"></p>
+<h3 id="depth">Depth</h3>
+<p>Visualizes the depth of all objects. Note that depending on the near and far plane settings and the camera distance to the closest object, this mode may appear nearly entirely black or white. For this screenshot the far plane had to be adjusted.</p>
+<p><img src="media/render-mode-depth.jpg" alt="Render Mode"></p>
+<h3 id="roughness">Roughness</h3>
+<p>Visualizes the roughness of objects.</p>
+<p><img src="media/render-mode-roughness.jpg" alt="Render Mode"></p>
+<h2 id="video">Video</h2>
+<p><a href="https://www.youtube.com/watch?v=2erB3AfSAJ0"><img src="https://img.youtube.com/vi/2erB3AfSAJ0/0.jpg" alt="video"></a></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../scenes/editor-camera.html">Editor Camera</a></li>
+<li><a href="../scenes/scene-editing.html">Scene Editing</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/editor-views.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Particle Emitters | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Particle Emitters | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="particle-emitters">Particle Emitters</h1>
+
+<p>This page lists and describes all <em>particle emitters</em>.</p>
+<h2 id="burst-emitter">Burst Emitter</h2>
+<p>This emitter type spawns particles either in one instantaneous burst or over a limited amount of time. It is mainly used for one-off effects like explosions, impacts, etc, which have a short lifespan. Once the burst emitter is finished, the particle effect will only continue to live until all spawned particles have reached the end of their life. For such effects the <a href="particle-effect-component.html">particle effect components</a> are typically set to auto-delete themselves after the effect is finished.</p>
+<p><strong>Duration:</strong> The timespan over which the emitter will distribute the spawning of the particles. If this is set to zero, all particles spawn at the same instant.</p>
+<p><strong>StartDelay:</strong> An optional delay from when the particle effect is created, until the emitter starts spawning particles. Useful in effects with multiple particle systems, to tweak when one type of particles becomes visible, relative to other types of particles.</p>
+<p><strong>MinSpawnCount, SpawnCountRange:</strong> A random number of particles between <code>MinSpawnCount</code> and <code>MinSpawnCount + SpawnCountRange</code> is emitted over the emitter's <em>duration</em>.</p>
+<p><strong>SpawnCountScaleParam:</strong> An optional name of an <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> that can be used to scale the number of emitted particles up or down. <em>Note:</em> At the moment this mostly allows to reduce the number of emitted particles. Increasing the amount of particles may have no visible effect.</p>
+<p><video src="media/burst-emitter.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="continuous-emitter">Continuous Emitter</h2>
+<p>This emitter type continuously spawns new particles. Effects which have at least one such emitter type will never stop, unless custom code specifically switches the effect off, or the owning <a href="particle-effect-component.html">particle effect component</a> is deleted. In both cases all spawned particles will continue to be simulated and rendered, until they reach the end of their life. This emitter type is commonly used for ambient effects such as smoke and fire. By exposing <a href="particle-effects-overview.html#effect-parameters">effect parameters</a>, continuous particle effects can be adjusted dynamically to visualize game mechanics, such as how hot something burns or how active some machine is.</p>
+<p><strong>StartDelay:</strong> See the <a href="#burst-emitter">burst emitter</a>.</p>
+<p><strong>SpawnCountPerSec, SpawnCountPerSecRange:</strong>  A random number of particles between <code>SpawnCountPerSec</code> and <code>SpawnCountPerSec + SpawnCountPerSecRange</code> is emitted every second.</p>
+<p><strong>SpawnCountScaleParam:</strong> See the <a href="#burst-emitter">burst emitter</a>.</p>
+<p><strong>CountCurve, CurveDuration:</strong> If no <em>CountCurve</em> is specified, particles are spawned in regular intervals. Only a large value for <em>SpawnCountPerSecRange</em> may introduce irregularities. Using a count curve, the distribution of how many particles are spawned at what time can be controlled. If a curve is given, <em>CurveDuration</em> specifies its timespan. For instance, a curve duration of two seconds means, that the count curve is sampled from left to right over a duration of two seconds, before it repeats again. The value of the curve at a given time determines how many particles will get spawned. The curve is only used as a scale factor between zero and one, though (its absolute values don't matter, it is normalized internally). Every time the emitter attempts to spawn particles, <em>SpawnCountPerSec</em> and <em>SpawnCountPerSecRange</em> determine the <em>maximum</em> amount of particles to spawn. Then the curve is sampled and the current value is used to scale the number of particles down. Thus count curves can be used to introduce more elaborate spawn patterns.</p>
+<p><video src="media/continuous-emitter.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="distance-emitter">Distance Emitter</h2>
+<p>This emitter type only spawns new particles when the particle effect is moved for a distance of at least <em>DistanceThreshold</em> units. This can be used when an effect should have a relatively uniform particle density when in motion, without constantly spawning large amounts of particles. When the effect stands still, this emitter will not spawn any particles, so you may want to combine this with another <a href="#continuous-emitter">continuous emitter</a>.</p>
+<p><strong>DistanceThreshold:</strong> The distance that the effect has to be moved for the emitter to spawn another set of particles.</p>
+<p><strong>MinSpawnCount, SpawnCountRange:</strong> See the <a href="#burst-emitter">burst emitter</a>.</p>
+<p><strong>SpawnCountScaleParam:</strong> See the <a href="#burst-emitter">burst emitter</a>.</p>
+<p><video src="media/distance-emitter.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="onevent-emitter">OnEvent Emitter</h2>
+<p>This emitter type spawns new particles whenever a specific <a href="particle-effects-overview.html#events-and-event-reactions">event</a> happens. It does <em>not</em> create the new particles at the position of the event. If that is desired, use an <a href="particle-effects-overview.html#event-reactions">event reaction</a> instead.</p>
+<p><strong>EventName:</strong> The name of the <a href="particle-effects-overview.html#events-and-event-reactions">event</a> which shall trigger spawning particles.</p>
+<p><strong>MinSpawnCount, SpawnCountRange:</strong> See the <a href="#burst-emitter">burst emitter</a>.</p>
+<p><strong>SpawnCountScaleParam:</strong> See the <a href="#burst-emitter">burst emitter</a>.</p>
+<p>In the animation below, the blue particles use a <a href="particle-behaviors.html#raycast-behavior">raycast behavior</a> to get removed when a collision is detected. The behavior also sends an <em>event</em>. This is picked up by a second particle system, which then spawns a number of red particles.</p>
+<p><video src="media/onevent-emitter.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="particle-effects-overview.html">Particle Effects</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-emitters.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

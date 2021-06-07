@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Play Single Clip Nodes | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Play Single Clip Nodes | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="play-single-clip-nodes">Play Single Clip Nodes</h1>
+
+<p>Animation controller graphs provide multiple node types that are used for sampling animation clips. The <em>play single clip node</em> is the most basic one. This node samples an animation clip and outputs the respective animation pose. It is thus used for typical playback of a single animation either once or in a loop. For added variety you may reference multiple animation clips, in which case the node will randomly pick one of them for playback.</p>
+<p><video src="../../media/skeletal-anim.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="common-properties">Common Properties</h2>
+<p>All animation controller nodes that sample animation clips share these properties:</p>
+<ul>
+<li><p><code>Loop</code>: If enabled the node will loop playback while its <code>Active</code> pin is triggered. Which clip exactly gets looped depends on the node. The <em>play single clip node</em> for example just loops playback in general, but randomly picks a different clip in every iteration. The <a href="anim-nodes-sequence.html">play clip sequence node</a> on the other hand will loop its middle clip instead.</p>
+</li>
+<li><p><code>ApplyRootMotion</code>: If enabled, the node will compute the <a href="../root-motion.html">root motion</a> from the sampled clips and forward this to the <a href="animation-controller-component.html">animation controller component</a>, which may apply this to the game object's position.</p>
+</li>
+<li><p><code>PlaybackSpeed</code>: Adjusts the speed with which the animations are sampled.</p>
+</li>
+<li><p><code>FadeIn</code>, <code>FadeOut</code>: The time (in seconds) that it should take to fade an animation in and out. If this is set to <code>0</code>, the animation will immediately switch on or off when the node gets (de-)activated. If the time is non-zero, the animation will gradually fade in or out over this duration. These values are very important to cross-fade from one animation to another. For example, if a character is playing an <em>idle</em> animation and then should transition to <em>walk</em>, the walk animation should have a short <em>fade in</em> duration and the idle animation should have a <em>fade out</em> duration. The shorter of the two durations determines how long the two animations are being cross-faded to transition smoothly from one state to the other.</p>
+<p>Additionally, if the fade in and out values are longer than the animation itself, the animation will be forced to play back for that amount of time, typically by extending the use of the last keyframe. This can be very useful if you use an animation that only contains a static pose, for example a pose for aiming. With a <code>FadeIn</code> of 200ms this single pose will be held for 200ms but gradually faded in. That leads to a character slowly raising their hand, instead of immediately having the hand raised. The same is true for the <code>FadeOut</code> property, which again can be used to slowly lower the hand by fading out the aim pose over a longer duration.</p>
+</li>
+<li><p><code>ImmediateFadeIn</code>, <code>ImmediateFadeOut</code>: The playback starts when the <code>Active</code> pin is triggered. If <code>ImmediateFadeOut</code> is off, the clip will be played back to its very end before it is allowed to fade out. If <code>ImmediateFadeOut</code> is on, however, the animation will be faded out right away when the <code>Active</code> pin stops being triggered. If <code>ImmediateFadeIn</code> is off, once a node starts fading out, it will continue fading out until it is fully off, no matter what the <code>Active</code> pin state is. If <code>ImmediateFadeIn</code> is on, a node that has started fading out may immediately fade in again if the <code>Active</code> pin gets triggered again.</p>
+<p>These values determine how responsive animation playback is in regards to input changes. Immediately fading in and out can drastically reduce delay between input and a visual reaction, but may also only work well with certain animations.</p>
+</li>
+</ul>
+<h2 id="properties">Properties</h2>
+<ul>
+<li><code>Clips</code>: One or multiple <a href="../animation-clip-asset.html">animation clips</a> to play. If more than one is added, the node will pick one at random in every loop iteration.</li>
+</ul>
+<h2 id="common-input-pins">Common Input Pins</h2>
+<p>Many animation controller nodes have some or all of these input pins:</p>
+<ul>
+<li><p><code>Active</code>: This pin determines whether the node samples its animation clips <em>at all</em>. Once it gets triggered in a frame, the node starts to sample its animation clips, fades them in etc. If <code>Loop</code> is enabled, the playback will repeat as long as the <code>Active</code> pin is triggered. Once the pin is not triggered anymore, the node will start to fade out its animations. Either right away (<code>ImmediateFadeOut</code> on) or when it reaches the end of the currently playing clip (<code>ImmediateFadeOut</code> off).</p>
+</li>
+<li><p><code>Weights</code>: If this pin is connected to a <a href="anim-nodes-bone-weights.html">bone weight node</a>, then the sampled animation clip is only applied to that part of the character. This is used to limit playback of an animation to selected body parts.</p>
+</li>
+<li><p><code>Speed</code>: This pin adjusts the overall playback speed.</p>
+</li>
+</ul>
+<h2 id="input-pins">Input Pins</h2>
+<ul>
+<li><code>ClipIndex</code>: If the node has multiple <code>Clips</code> set, exactly which one will be played back can be controlled through this pin. With <code>ClipIndex</code> set to <code>0</code> the first clip is used exclusively, with <code>ClipIndex</code> set to <code>1</code> only the second clip is used, and so on. If <code>ClipIndex</code> is not connected or set to a negative value, a random clip is used.</li>
+</ul>
+<h2 id="common-output-pins">Common Output Pins</h2>
+<p>Many animation controller nodes have some or all of these output pins:</p>
+<ul>
+<li><p><code>LocalPose</code>: The final pose from the sampled animation clips is output through this pin. This has to be passed to a <a href="anim-nodes-combine-poses.html">combine poses node</a> or a <a href="anim-nodes-modelspace.html">local to model pose node</a>.</p>
+</li>
+<li><p><code>OnFadeOut</code>: This pin gets triggered for a single frame once the node changes its internal state to fade out the animation (affected by <code>ImmediateFadeOut</code> and <code>FadeOut</code>). This is typically a good time to start fading in another animation to take over. This pin is guaranteed to get triggered, even if the <code>FadeOut</code> time is zero.</p>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
+<li><a href="anim-nodes-bone-weights.html">Bone Weight Nodes</a></li>
+<li><a href="anim-nodes-sequence.html">Play Clip Sequence Node</a></li>
+<li><a href="anim-nodes-mix2d.html">Mix Clips 2D Node</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-playclip.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Startup System | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Startup System | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="startup-system">Startup System</h1>
+
+<p>Initializing an engine and shutting it properly down again, is a surprisingly difficult task. There are many steps involved, some of which have hard requirements on their ordering. Also, some functionality can only be initialized when at least a window, and potentially even a graphics API is available, which is not the case for command line tools. Once <a href="../../custom-code/cpp/engine-plugins.html">plugins</a> are added to the mix, which can be loaded and unloaded at any time, it becomes impossible to manually set up this process.</p>
+<p>Therefore, EZ uses a dedicated <em>startup system</em>, to handle this complexity automatically for you.</p>
+<h2 id="startup-system-concept">Startup System Concept</h2>
+<p>The concept of the startup system is simple. For every 'thing' in the engine you write code how to initialize it and shut it down again. 'Things' in the startup system are referred to as <strong>subsystems</strong>. You then define what other subsystems you depend on, so that your startup code should run after your dependencies, and your shutdown code should run before your dependencies.</p>
+<p>All of this is then (automatically) given to the startup system, and when it comes time to fully boot up the engine, that system sorts all subsystems by their dependencies and executes them in the right order. Conversely, it executes all shutdown code in the reverse order.</p>
+<h3 id="two-phase-startup">Two Phase Startup</h3>
+<p>A lot of code can be initialized easily in all applications. However, some code strictly requires a window or graphics API to work with and could never be initialized successfully in a command line application.</p>
+<p>Therefore, the startup system splits the engine initialization into two phases: <strong>core systems startup</strong> (phase 1) and <strong>high level systems startup</strong> (phase 2).
+For command line applications, we would only ever run phase 1. In a proper game, we would first run phase 1, then create our window and rendering API and finally run phase 2. This way, when we don't need things like a renderer or the <a href="../../input/input-overview.html">input system</a>, we simply exclude all high level systems from being initialized.</p>
+<h3 id="dependencies">Dependencies</h3>
+<p>Some subsystems depend on other subsystems to be initialized. Therefore the startup system requires you to provide a <em>name</em> for every subsystem and also a <em>group</em>. The name can be arbitrary but has to be unique. The group name obviously does not need to be unique, as multiple subsystems can be part of the same group.</p>
+<p>When you declare a dependency on another subsystem, you can then either specify it by its direct name, or you can also just declare a dependency on an entire group. The latter is very common, as it is often easier, and you rarely have very strict dependencies on a single subsystem.</p>
+<h2 id="startup-system-usage">Startup System Usage</h2>
+<p>In practice, to use the startup system, you need to add a block of code to some cpp file. You can copy this code from <code>Foundation/Configuration/Startup.h</code> and then just fill out the parts that you require. An example is given in the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: startup-block -->
+<pre><code class="lang-cpp">// clang-format off
+EZ_BEGIN_SUBSYSTEM_DECLARATION(SampleGamePluginStartupGroup, SampleGamePluginMainStartup)
+
+  // list all the subsystems that we want to be initialized first
+  BEGIN_SUBSYSTEM_DEPENDENCIES
+    &quot;Foundation&quot;, // all subsystems from the 'Foundation' group (this is redundant, because `Core` already depends on `Foundation`)
+    &quot;Core&quot;        // and all subsystems from the 'Core' group
+  END_SUBSYSTEM_DEPENDENCIES
+
+  ON_CORESYSTEMS_STARTUP
+  {
+    // allocate an implementation of PrintInterface
+    s_PrintInterface = EZ_DEFAULT_NEW(PrintImplementation);
+
+    s_PrintInterface-&gt;OnCoreSystemsStartup();
+    s_PrintInterface-&gt;Print(&quot;Called ON_CORESYSTEMS_STARTUP&quot;);
+  }
+
+  ON_CORESYSTEMS_SHUTDOWN
+  {
+    s_PrintInterface-&gt;Print(&quot;Called ON_CORESYSTEMS_SHUTDOWN&quot;);
+
+    // clean up the s_PrintInterface, otherwise we would get asserts about memory leaks at shutdown
+    s_PrintInterface.Clear();
+  }
+
+  ON_HIGHLEVELSYSTEMS_STARTUP
+  {
+    // we can query 'an implementation of PrintInterface' through the ezSingletonRegistry
+    ezSingletonRegistry::GetSingletonInstance&lt;PrintInterface&gt;()-&gt;Print(&quot;Called ON_HIGHLEVELSYSTEMS_STARTUP&quot;);
+  }
+
+  ON_HIGHLEVELSYSTEMS_SHUTDOWN
+  {
+    // we could also query 'the one instance of the PrintImplementation singleton'
+    PrintImplementation::GetSingleton()-&gt;Print(&quot;Called ON_HIGHLEVELSYSTEMS_SHUTDOWN&quot;);
+  }
+
+EZ_END_SUBSYSTEM_DECLARATION;
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Here we give our subsystem the name <code>SampleGamePluginMainStartup</code> and we put it into the group <code>SampleGamePluginStartupGroup</code>. Both names could be used by other subsystems to reference this as a dependency. We then specify that this subsystem should be initialized only after all the <code>Foundation</code> and <code>Core</code> subsystems have been booted. Both groups contain many subsystems, but we don't need to care about those details.</p>
+<p>Now when the application starts running, at some point it will run all the <code>ON_CORESYSTEMS_STARTUP</code> code blocks (in a sorted order). Here, we use that hook to set up our <a href="interfaces.html">singleton</a>. Later, the game will execute the <code>ON_HIGHLEVELSYSTEMS_STARTUP</code> block, and at shutdown it will first execute <code>ON_HIGHLEVELSYSTEMS_SHUTDOWN</code> and finally <code>ON_CORESYSTEMS_SHUTDOWN</code> shortly before the application closes.</p>
+<p>Command line applications would not execute the high level startup code blocks. Also, when a <a href="../../custom-code/cpp/engine-plugins.html">plugin</a> is loaded or unloaded, the system ensures to call all the right startup and shutdown functions for subsystems from those plugins.</p>
+<h2 id="how-to-know-about-dependencies">How to know about dependencies</h2>
+<p>A practical problem you may be wondering about, is how you would know the names of potential subsystem dependencies, or how you would even know what subsystems exist.</p>
+<p>In practice, this is rarely a problem. Most subsystems only depend on the <code>Foundation</code> or the <code>Core</code> group of subsystems. If you have any other dependencies, you are typically quite aware of them, and know where in the code they are set up and thus, where you can look up their names.</p>
+<p>However, you can also use <a href="../../tools/inspector.html">ezInspector</a> to discover all the available subsystems, their names, and see what other subsystems they depend on:</p>
+<p><img src="media/inspector-subsystems.png" alt="Subsystems"></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../tools/inspector.html">ezInspector</a></li>
+<li><a href="interfaces.html">Singleton Interfaces</a></li>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/configuration/startup.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

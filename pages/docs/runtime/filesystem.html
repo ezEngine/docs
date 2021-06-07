@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FileSystem | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="FileSystem | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="filesystem">FileSystem</h1>
+
+<p>Accessing files is one of those things that you probably need to do very early in your project. Although the POSIX functions fopen, fread, etc. are available on most platforms, they are not always the best choice. ezEngine provides multiple layers of abstractions for accessing files, or more generally, data streams that look like files.</p>
+<h2 id="overview">Overview</h2>
+<p>The following is a list of abstractions that you should be aware of. Each one will be explained in more detail below.</p>
+<ul>
+<li><strong>Streams</strong> (<code>ezStreamReader</code>, <code>ezStreamWriter</code>) are the basis for all reading and writing of abstract data streams. These are the two classes that you will use whenever something that acts like a file is passed around, even though it does not need to represent an actual file.</li>
+<li><strong>Low Level File Abstraction</strong> (<code>ezOSFile</code>): This is the abstraction layer that implements reading and writing to actual files on disk in a mostly platform independent manner. This is what you typically should not need to use, at all. However, when something is not possible through the higher level abstractions, you might need to do it through this interface.</li>
+<li><strong>High Level File System</strong> (<code>ezFileSystem</code>, <code>ezFileReader</code>, <code>ezFileWriter</code>): Through <code>ezFileSystem</code> you can configure a virtual file-system. <code>ezFileReader</code> and <code>ezFileWriter</code> should be what you typically use to open 'files' in that virtual file-system. <code>ezFileReader</code> and <code>ezFileWriter</code> implement the respective stream interfaces <code>ezStreamReader</code> and <code>ezStreamWriter</code>, so once you have opened a file through these classes, you can pass them to any function that works on streams.</li>
+</ul>
+<h2 id="streams">Streams</h2>
+<p>A 'stream' is simply a series of bytes. This data stream can come from a physical file, through a network or it can be generated fully procedurally.</p>
+<p>Streams typically come in two forms: Ones that you can read from and ones that you can write to. In ezEngine those two types of streams are represented with the interface classes <code>ezStreamReader</code> and <code>ezStreamWriter</code> respectively. The stream interfaces are reduced in functionality to what all types of data streams can provide. Reading is always done from the current read position. Writing will always append data at the end of the stream. You cannot seek to an arbitrary position (when reading you can skip ahead) and you cannot re-read the same data or overwrite previously written data.
+Although this can be limiting in a few scenarios, it is absolutely sufficient for the vast majority of use cases. For the few cases where you really need to set the read or write position, you can revert to another abstraction layer, e.g. on an <code>ezOSFile</code> you have more control.</p>
+<p>Inside the core engine we typically do not care about files, at all. Therefore you will not find many functions that take a file-name string. In the few cases that this is so, those functions are usually just convenience functions that internally open a file and then pass along the file as a stream.
+Instead most engine functions work directly on streams. This decouples the engine from working on the concept of files and enables to work on data from any kind of source. For example, this makes it easy to embed a file in an archive or to read it from a network, or even both combined.</p>
+<h3 id="memory-streams">Memory Streams</h3>
+<p>A very frequently used implementation of streams is the 'memory stream'. This represents a stream of data that exists in RAM only. The data is stored in an <code>ezMemoryStreamStorage</code> object. You can have multiple readers through the <code>ezMemoryStreamReader</code> class and you could theoretically have multiple writers through the <code>ezMemoryStreamWriter</code> class (though having more than one will probably not work in any useful way).</p>
+<p>ezEngine often uses memory streams to store incoming data for fast access later. For example the <code>ezResourceManager</code> reads files from disk on a separate thread into a memory stream. This allows to do the slow file reading in parallel without blocking the main thread. Once all data is read into the memory stream, the main thread can then read the data directly from memory and have a guaranteed latency. The interface for reading from file or the memory stream is identical, so the code that actually interprets the file content does not need to know about this optimization at all.</p>
+<h3 id="other-types-of-streams">Other Types of Streams</h3>
+<p>ezEngine comes with a variety of stream implementations:</p>
+<ul>
+<li><strong>Compressed Streams</strong>: Through <code>ezCompressedStreamReaderZstd</code> and <code>ezCompressedStreamWriterZstd</code> you can easily add compression to your data streams. These classes take another stream as input or output, so you can pass it a file or memory stream to work upon.</li>
+<li><strong>Chunk Streams</strong>: A chunk stream is basically a stream that is divided into distinct parts which are fully separated from each other. This allows to handle one stream (e.g. a file) as if it were actually multiple streams, which is useful when you want to package multiple files into one. The useful feature of these streams is that code often reads a stream until it ends (e.g. nothing more can be read). When you package multiple files into one stream, this behavior can end badly. A chunk stream enables you to prevent code from reading further than a specific point (a virtual 'end-of-stream' position).
+Chunk formats are also useful when you only want to read or update certain parts of a file, without knowing how the rest of the file format works. This is possible because the size of each chunk is stored in the stream which allows to skip or read an entire chunk and pass it through.</li>
+</ul>
+<p>Please note that you can combine different types of streams. For example you can write to a file by using <code>ezFileWriter</code>, pass that stream to <code>ezChunkStreamWriter</code> and then even use <code>ezCompressedStreamWriterZstd</code> to compress individual chunks in the file.</p>
+<h3 id="using-standard-types-with-streams">Using Standard Types with Streams</h3>
+<p>The stream interfaces only provide the functions <code>ReadBytes</code> and <code>WriteBytes</code>. For most standard types ezEngine provides overloaded <code>&lt;&lt;</code> and <code>&gt;&gt;</code> operators. E.g. you can read and write <code>ints</code>, <code>floats</code>, <code>ezVec3</code>, <code>ezString</code>, etc. like this:</p>
+<pre><code class="lang-cpp">write_stream &lt;&lt; ezVec3(1, 2, 3);
+write_stream &lt;&lt; &quot;some string&quot;;
+
+ezVec3 v;
+ezString s;
+read_stream &gt;&gt; v;
+read_stream &gt;&gt; s;
+</code></pre>
+<h3 id="using-complex-types-with-streams">Using Complex Types with Streams</h3>
+<p>To serialize and deserialize data that is in EZ containers, you can also use functions like <code>ezStreamReader::ReadArray()</code>, <code>ezStreamReader::ReadMap()</code>, <code>ezStreamWriter::WriteArray()</code> and <code>ezStreamWriter::WriteMap()</code>. Those functions will try to serialize the container information and all the elements. For that to work, there must either be <code>&lt;&lt;</code> and <code>&gt;&gt;</code> operaters overloaded for the element type, or the element types must have member functions with the following signature:</p>
+<pre><code class="lang-cpp">ezResult Serialize(ezStreamWriter&amp; stream) const;
+ezResult Deserialize(ezStreamReader&amp; stream);
+</code></pre>
+<p>Using these functions allows to return success or failure, which is not possible with the shift operators. If any element fails to de-/serialize, the whole operation (e.g. <code>ezStreamWriter::WriteArray()</code>) will fail and terminate early.</p>
+<p><strong>Note:</strong> <code>ezStreamWriter::WriteArray()</code> and similar functions are provided for convenience. However, when it is important to have full control over file versioning and backwards compatibility of a file format, it may be preferable to serialize containers manually.</p>
+<h2 id="low-level-file-abstraction">Low Level File Abstraction</h2>
+<p>Reading and writing files is implemented through <code>ezOSFile</code>. This class internally uses platform specific functions such as <code>fopen</code> on Linux and <code>CreateFile</code> on Windows. You should typically NOT use this class, there are higher level abstractions built upon <code>ezOSFile</code> that you should prefer.</p>
+<p>Since <code>ezOSFile</code> provides actual file access, it also has some file specific features, for instance you can set the file read or write position back and forth and you can get the OS specific file handle, such that you can use OS specific functions on that file yourself.</p>
+<p>Additionally there are static functions for deleting files, creating directory structures, querying whether a file exists, and so on.</p>
+<p><code>ezOSFile</code> is a thin abstraction over the operating system, it does not yet implement a higher level interface. Therefore it deliberately does not implement the stream interfaces, so you cannot pass an <code>ezOSFile</code> instance to a function that takes an <code>ezStreamReader</code> or <code>ezStreamWriter</code>.</p>
+<p>Usually you only need to use <code>ezOSFile</code> for some of the static functions that implement more infrequently used features, such as <code>ezOSFile::CopyFile</code> or <code>ezOSFile::GetFileStats</code>. These might not be available in higher level abstractions.</p>
+<p>Please be aware that <code>ezOSFile</code> always requires platform specific absolute paths. There is no concept of a 'current working directory' or some root directory, to which relative paths could be used. <code>ezOSFile</code> will check all incoming paths and assert that they are absolute. Therefore, if you need to use <code>ezOSFile</code>, make sure to always convert any relative path to an absolute path before you pass it to <code>ezOSFile</code>.</p>
+<h3 id="other-low-level-file-operations">Other Low Level File Operations</h3>
+<p>Apart from <code>ezOSFile</code>, there are a few classes that implement additional file system operations that are only thin abstractions over the operating system.</p>
+<p><strong>ezFileSystemIterator</strong> is a class that allows to iterate over all files and folders in some directory. In a game this should rarely be necessary, but in tools this can be very useful. Unfortunately it is not guaranteed that this feature can be implemented on all platforms, and each platform might have different features regarding wild-card usage and so on. Therefore this class is only available when the preprocessor define <code>EZ_SUPPORTS_FILE_ITERATORS</code> is defined as <code>EZ_ON</code>.</p>
+<p><strong>ezFileStats</strong> is a struct that provides information about a file or folder. One way to retrieve file stats is through <code>ezOSFile::GetFileStats()</code>. Again, this feature cannot be implemented on all platforms, so it is only available when <code>EZ_SUPPORTS_FILE_STATS</code> is defined as <code>EZ_ON</code>.</p>
+<h2 id="high-level-file-system">High Level File System</h2>
+<p>ezEngine comes with a high level file system that is very flexible and powerful but might seem a bit confusing at first for people that are not used to working with abstractions on this level.</p>
+<p>A game engine is in many aspects simply a framework that manages resources. It ensures that resources can be found and accessed, are freed when not needed any more and otherwise are handled efficiently and often in an abstract manner that makes it easy to work with them.</p>
+<p>Working with files and everything that is similar enough so that it could be handled like a file, is the lowest level at which this 'managing of resources' begins.</p>
+<p>ezEngine does this by working with a virtual file system. The central class to configure this file system is <code>ezFileSystem</code>.</p>
+<h3 id="data-directories">Data Directories</h3>
+<p>The most important concept that you need to understand is that of 'data directories'. A data directory is basically a mount point that is added to the virtual file system. You can have an arbitrary number of those, but usually you will only need very few.</p>
+<p>A data directory is in the most common use case some folder on your harddisk. By adding it to the file system (using <code>ezFileSystem::AddDataDirectory</code>) you make that folder visible for the application.</p>
+<p>When you work with the virtual file system, you do NOT use <code>ezOSFile</code>. Instead, you will most likely use <code>ezFileReader</code> and <code>ezFileWriter</code>. Those classes represent a single open file in the virtual file system. They implement the stream interfaces mentioned above.</p>
+<p>When you open a file through these classes, you should use relative paths. Absolute paths will only work if a data directory above the given path is also mounted. When you open a file through a relative path, all data directories are searched (in the reverse order in which they were added) for the file. So as long as the file exists in one data directory, it can be opened. If it exists in multiple data directories with the same relative path, you will typically get the file from the data directory that was added last.</p>
+<p>The use case here is, that you often want to have some 'base' data directory that contains general files and than additional data directories that add project or even level specific files to the file system. You will typically add the 'base' data directory right at startup of your game. Later you add your project specific data directories. Since you often want your files in the project data directory to take precedence over the 'base' data directory, it makes sense for the file system to search the directories in the reverse order in which they were added.</p>
+<p>One use case for multiple data directories with the same files in it is localization. Suppose you have a folder with all your sounds, including speech that is recorded in English. When you want to add another language, you can just create a folder 'German' that only contains the sound files which need localization. When the user wants German language support, you simply mount the German sounds folder AFTER the other data directory. Now whenever a sound file gets loaded that is both in the German sounds data directory and the default data directory, the German sound will be preferred. Everything that is not there falls back to the default data directory. Thus when some sound file was forgotten to be included in the German localization, the game will at least play the sound in English.</p>
+<h3 id="advanced-data-directories">Advanced Data Directories</h3>
+<p>Although the most common use case is to mount folders as data directories, ezEngine's concept of data directories goes much further. Basically anything can be 'mounted' as a data directory. For example you could mount a zip file and then use it like a read-only folder. Or you could mount a folder on a remote PC and have the data sent over a network.</p>
+<p>This is possible because data directories are an abstract concept. To create your own type of data directory, you need to implement three classes, derived from <code>ezDataDirectoryType</code>, <code>ezDataDirectoryReader</code> and <code>ezDataDirectoryWriter</code> respectively.</p>
+<p>Therefore, when you add a data directory to <code>ezFileSystem</code>, the engine needs to know how exactly to mount this type. This is what 'data directory factories' are necessary for. So for example, if you want to support simple folders and zip files as data directories, you need to register one factory for 'folders' and one factory for 'zip archives'.
+Now when you mount a data directory with the name &quot;My/Test/Archive.zip&quot;, the engine will ask each factory, whether it can handle this path. The 'folder factory' will detect that this is a file and not a folder and therefore decline. The 'zip factory' detects that this is a zip file and therefore creates a data directory which provides the functionality to read files from the archive as if it were a real folder. For example you could then open a file with the path &quot;My/Test/Archive.zip/Some/Compressed/File.txt&quot; through <code>ezFileReader</code> and it would just work as if the file was located in a real folder.</p>
+<p>That is why you always need to register these factories first, before you can add any data directories to the virtual file system.</p>
+<p>If you want to implement your own data directory type, please have a look at <code>ezDataDirectory::FolderType</code>.</p>
+<h3 id="setting-up-the-file-system">Setting up the File System</h3>
+<p>Setting up the file system is very easy to do, once you know what is involved and why. The most basic configuration looks like this:</p>
+<pre><code class="lang-cpp">// register a factory that can handle simple folders
+// this is actually already done automatically through the ezStartup system
+// ezFileSystem::RegisterDataDirectoryFactory(ezDataDirectory::FolderType::Factory);
+
+// mount the application directory (where the binary is located) as a data directory
+ezFileSystem::AddDataDirectory(ezOSFile::GetApplicationDirectory());
+</code></pre>
+<p>That's all.</p>
+<p>Now you can read and write files in that folder like this:</p>
+<pre><code class="lang-cpp">ezFileWriter FileOut;
+if (FileOut.Open(&quot;SubFolder/Test.txt&quot;) == EZ_SUCCESS)
+{
+    // &quot;SubFolder&quot; will be created automatically, if it does not exist yet
+
+    FileOut &lt;&lt; &quot;This is a string&quot;;
+    FileOut.Close(); // will also be called automatically when FileOut goes out of scope
+}
+
+ezFileReader FileIn;
+if (FileIn.Open(&quot;SubFolder/Test.txt&quot;) == EZ_SUCCESS)
+{
+    ezString s;
+    FileIn &gt;&gt; s;
+    FileIn.Close(); // will also be called automatically when FileIn goes out of scope
+
+    EZ_ASSERT_DEV(s == &quot;This is a string&quot;, &quot;The read string is incorrect: '%s'&quot;, s.GetData());
+}
+</code></pre>
+<p>Obviously you can now add further data directories through <code>ezFileSystem::AddDataDirectory()</code>. There are several additional features to configure the system for your exact use case. Please have a look at the API documentation for further details.</p>
+<h3 id="resolving-paths">Resolving Paths</h3>
+<p>One thing that comes up once in a while is that you need to convert a path from relative to absolute or vice versa.</p>
+<p>For example, should you actually need to use an <code>ezOSFile</code> function and therefore you require the absolute path to a file, of which you only know the relative path (in some data directory), you need a way to query this information.</p>
+<p>This is what <code>ezFileSystem::ResolvePath()</code> is for.</p>
+<p>Basically you give it some path, and it will return under which absolute path and under which relative path the file was found. It also needs to know whether you want to read or write the file. If you want to read it, ie. the file is supposed to already exist, it will search for the file in all data directories. If you want to write it, it will return under which path the file would end up.</p>
+<h2 id="see-also">See Also</h2>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/filesystem.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

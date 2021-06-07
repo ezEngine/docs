@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lighting | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Lighting | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="lighting">Lighting</h1>
+
+<p>Lighting is the most important aspect of making a scene look good.</p>
+<h2 id="physically-based-rendering">Physically Based Rendering</h2>
+<p>There are many formulas for computing lighting on surfaces. The defacto industry standard, which is also used in ezEngine, is <strong>P</strong>hysically <strong>B</strong>ased <strong>R</strong>endering (PBR) which describes a surface in terms of <em>color</em>, the surface normals, its <em>roughness</em>, whether it is a <em>metal</em>. Using this data, very convincing lighting can be computed.</p>
+<p>Therefore the standard type of <a href="../../materials/materials-overview.html">material</a> requires you to provide such textures. Optionally an <em>occlusion texture</em> can pronounce the lighting for small crevices.</p>
+<h2 id="static-vs-dynamic-lighting">Static vs. Dynamic Lighting</h2>
+<p>Many games differentiate between <em>static</em> or <em>baked</em> lighting, and <em>dynamic</em> lighting. Static lighting is precomputed and typically stored in <em>lightmaps</em> (dedicated textures) and other data structures. Dynamic lighting does not require any preprocessing or extra data. Baked lighting typically has the advantage that it can look much better because it can simulate light bounces and thus illuminate areas that are not directly lit.</p>
+<p>Currently ezEngine <strong>only supports dynamic lighting</strong>. That means every light source that you add to the scene can be moved around and change its color or brightness. It also means that every light source has a performance cost. The renderer uses a clustered forward rendering approach which can handle a relatively large amount of light sources efficiently. The most important rule is to reduce the number of <em>overlapping</em> light sources. The editor <a href="../../editor/editor-views.html#render-modes">render modes</a> allow you to look for hotspots.</p>
+<h2 id="shadows">Shadows</h2>
+<p>Dynamic lights have the disadvantage that they don't provide shadows by default. Instead, casting shadows is a separate process, which costs a lot of performance for every light source involved. Therefore, each light source requires you to decide whether it should cast shadows or not. You can use many small fill lights, as long as they don't cast shadows, but you should keep the number of shadow casting lights as low as possible, and each light should only cover an area as small as possible.</p>
+<p>For more details see the chapter about <a href="dynamic-shadows.html">dynamic shadows</a>.</p>
+<h2 id="light-component-types">Light Component Types</h2>
+<p>There are different component types to provide different types of lighting:</p>
+<ul>
+<li><a href="ambient-light-component.html">Ambient Light Component</a>: For lighting up a scene in general.</li>
+<li><a href="directional-light-component.html">Directional Light Component</a>: For sun/moon light.</li>
+<li><a href="point-light-component.html">Point Light Component</a>: For light bulbs and overall fill lights.</li>
+<li><a href="spot-light-component.html">Spot Light Component</a>: For flashlights and directed lighting.</li>
+<li><a href="sky-light-component.html">Sky Light Component</a>: For dynamic light contribution from the sky.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../materials/materials-overview.html">Materials</a></li>
+<li><a href="dynamic-shadows.html">Dynamic Shadows</a></li>
+<li><a href="../../editor/editor-views.html#render-modes">Render Modes</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lighting/lighting-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

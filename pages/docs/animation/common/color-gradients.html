@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Color Gradients | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Color Gradients | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="color-gradients">Color Gradients</h1>
+
+<p><em>Color gradients</em> are used to color things using a 1D lookup. They are typically set up once and shared across many assets, such as <a href="../../effects/particle-effects/particle-effects-overview.html">particle effects</a>. Modifying a color gradient will affect all resources that use the gradient. Therefore it is advisable to create common gradients early during development.</p>
+<p>The color gradient can be sampled along the X-axis. This is frequently used to sample a color over time, but other parameters may be used for the lookup as well. If a gradient is supposed to be used in a looping fashion, the first and last color have to be set up to match.</p>
+<h2 id="gradient-editor">Gradient Editor</h2>
+<p>The image below shows a color gradient and its editing controls:</p>
+<p><img src="../media/color-gradient.png" alt="Color Gradient"></p>
+<p>The gradient is displayed in four different ways:</p>
+<ol>
+<li>The first row shows a black and white representation of the <strong>alpha channel</strong>.</li>
+<li>The second row shows the color values of the gradient multiplied with the alpha channel, to give an impression how the alpha channel may affect the color perception, when used for transparency.</li>
+<li>The third row uses the alpha channel to fade between the color values and the background checker pattern, to visualize the effect of the alpha channel in a different way.</li>
+<li>The fourth row only shows the <strong>color channel</strong>.</li>
+</ol>
+<p>Not all gradients use the alpha channel. For those, the first row will be entirely white and the second to fourth row will all appear identical.</p>
+<h3 id="editing-keyframes">Editing Keyframes</h3>
+<p>Above the <em>alpha channel</em> and below the <em>color channel</em> you will notice greyscale and colored circles. These are keyframes that define the value at that specific position. All values in between are interpolated. You can grab a keyframe and move it left or right. Double clicking a color keyframe will open a color picker to change its value.</p>
+<p>When you select a keyframe, its exact position and value can also be changed with the UI elements at the bottom.</p>
+<p>To <strong>create a keyframe</strong> double click either the <em>color channel bar</em> or the <em>alpha channel bar</em> (where the respective keyframes are shown as circles). A newly inserted keyframe always gets the interpolated value at that position.</p>
+<p>To <strong>delete a keyframe</strong> just select it and press the <em>Del</em> key.</p>
+<h3 id="view">View</h3>
+<p>You can scroll left and right using <em>right click and drag</em>. You can zoom in and out using the <em>mouse wheel</em>.</p>
+<p>The <em>[ Frame ]</em> button will zoom and scroll the view such that all keyframes are framed.</p>
+<h3 id="gradient-range">Gradient Range</h3>
+<p>Each keyframe has a position along the X axis. Most code that looks up a gradient doesn't actually care about the exact positions. Instead the gradient is looked up in a <em>normalized</em> way, meaning the leftmost keyframe is mapped to position <code>0</code> and the rightmost keyframe is mapped to position <code>1</code>. For instance, particle effects do all of their lookups this way. However, it is good practice to author the gradients already within this range, unless you have a use case where you indeed want keyframes outside the <code>[0; 1]</code> range.</p>
+<p>To make this easier, you can use the <em>Adjust X to [0 - 1]</em> button. This will automatically map all existing keyframes to this range for you.</p>
+<p>The dotted lines indicate which keyframe is the leftmost and which is the rightmost.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="curves.html">Curves</a></li>
+<li><a href="../property-animation/property-animation-overview.html">Property Animation (TODO)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/common/color-gradients.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

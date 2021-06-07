@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Materials | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Materials | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="materials">Materials</h1>
+
+<p><em>Materials</em> are used to define the visual properties of rendered objects. Materials specify what <a href="../graphics/shaders/shaders-overview.html">shader (TODO)</a> to use to render an object and they allow you to configure that shader. Most commonly you select which <a href="../graphics/textures-overview.html">textures</a> to use. The most common use case for materials is through <a href="../graphics/meshes/meshes-overview.html">meshes</a>. Each sub-mesh can have its own material.</p>
+<p><img src="media/material-editor.jpg" alt="Material editor"></p>
+<p>The image above shows the material asset editor. Material assets are often automatically created when you <a href="../assets/import-assets.html">import a mesh asset</a>. For example importing an <code>FBX</code> or <code>OBJ</code> file will not only create a mesh asset, but can additionally create the necessary material and texture assets for you. Unfortunately, this process is not always perfect, so you should always review which assets were created and how.</p>
+<h2 id="physical-properties">Physical Properties</h2>
+<p>Although materials are mainly used to configure the rendering, they can optionally reference a <a href="surfaces.html">surface</a>, which is used to define physical properties (e.g. friction) and gameplay relevant interactions. Whether the referenced surface is actually used depends on where the material is applied. For instance, on a <a href="../scenes/greyboxing.html">greyboxing component</a> the material sets up both the graphics and the physics properties, on a <a href="../graphics/meshes/mesh-component.html">mesh component</a> it only sets up the rendering and you would need to additionally select a surface for the corresponding <a href="../physics/collision-shapes/collision-meshes.html">collision mesh</a>.</p>
+<h2 id="selecting-a-shader">Selecting a Shader</h2>
+<p>Through the <code>ShaderMode</code> property there are three ways a material can select which shader to use:</p>
+<ul>
+<li><p><strong>From Base Material:</strong> This is the most convenient and most commonly used method. In this mode, you need to select a <code>BaseMaterial</code>, which is just another material. All the properties of that base material are copied over to your material, including the shader selection. You can then override each property as you like. This makes it easy to set up a few common base materials and then &quot;derive&quot; all other materials from this common base.</p>
+</li>
+<li><p><strong>From File:</strong> In this mode the material actually references a proper shader file. This allows you to select a custom <a href="../graphics/shaders/shaders-overview.html">shader (TODO)</a>. By default, EZ doesn't have many different shader files, as all important variations are provided by the same shader file. However, if you do decide to write a custom one, this is the way to select it for your material. The engine parses the shader file for configurable properties and displays those as UI elements in the material editor. So things like which texture you can select and what other lighting properties the material will have, are all defined by the selected shader.</p>
+</li>
+<li><p><strong>Visual Shader:</strong> In this mode the material editor will show an additional editing area beneath the 3D view, where you can create your own shader through a visual graph system. This enables you to create custom shader effects like animated textures. There is a dedicated chapter about <a href="visual-shaders.html">visual shaders (TODO)</a> that explains how to do so.</p>
+</li>
+</ul>
+<p>If you change the selected shader, you need to <em>transform</em> (<code>Ctrl+E</code>) the material <a href="../assets/assets-overview.html">asset</a> for the change to take full effect.</p>
+<h2 id="shader-properties">Shader Properties</h2>
+<p>The <code>Shader Properties</code> section lists all the properties that the selected shader exposes. The 3D viewport will live update for any change you make here.</p>
+<h3 id="defaultmaterial-properties">DefaultMaterial Properties</h3>
+<p>The <code>DefaultMaterial</code> shader that comes with EZ implements a <strong>P</strong>hysically <strong>B</strong>ased <strong>R</strong>endering model (PBR), which is the de facto industry standard these days. The details of PBR rendering are beyond the scope of this documentation, if you want to get an understanding of how <em>roughness</em> and <em>metalness</em> are use (see below), please search the internet.</p>
+<p>The <code>DefaultMaterial</code> provides these options:</p>
+<p><strong>Blend Mode:</strong> Defines whether the object will appear opaque or transparent.</p>
+<ul>
+<li><strong>Opaque:</strong> The object appears solid.</li>
+<li><strong>Masked:</strong> In this mode the object can have fully transparent (invisible) areas and fully opaque ones. <em>Blending</em> is not possible. This is commonly used for vegetation or things like chain-link fences to cut out part of the object. <em>Masked</em> geometry does not require any sorting during rendering and is therefore the most efficient and reliable mode of transparency. Which areas appear transparent are defined by the <em>alpha channel</em> of the <em>base texture</em> and the <code>MaskThreshold</code> property. Every pixel whose alpha value is above the threshold (e.g. white) will be visible (opaque) and every pixel whose value is below the threshold (e.g. black) will be invisible.</li>
+<li><strong>Transparent:</strong> In this mode geometry will appear see-through, ie. it will be blended with the geometry behind it. This mode is commonly used for things like glass or water. Again, the <em>alpha channel</em> of the <em>base texture</em> determines which areas appear more or less transparent.</li>
+<li><strong>Additive:</strong> In this mode the geometry will not be blended with the background but simply added on top of it. The <em>alpha channel</em> affects how strongly it is added.</li>
+<li><strong>Modulate:</strong> This mode allows you to darken or brighten the background. A pure white material (base texture and base color) will brighten everything that is behind the object. A pure black material will darken the background. A material that is mid grey will let the background through unmodified. This mode can be used for various special effects, especially when writing a <a href="visual-shaders.html">visual shader (TODO)</a> that animates the texture and the alpha channel with noise.</li>
+</ul>
+<p>For testing transparent materials it may be useful to create an object in a scene and observe it there, where you can place it in front of different backgrounds.</p>
+<p><strong>Shading Mode:</strong> This mode allows you to select whether objects with this material should receive realistic <em>lighting</em> or should always appear <em>fullly bright</em>. The latter is useful for 2D sprites and UI elements.</p>
+<p><strong>Two Sided:</strong> If enabled, polygons with this material can be seen from both sides. This is useful for fences, vegetation and other <em>masked</em> geometry that is often represented only by a single polygon but can be looked at from both sides.</p>
+<p><strong>MaskThreshold:</strong> Used for the <em>Masked</em> blend mode (see above).</p>
+<p><strong>UseBaseTexture:</strong> If enabled, the <em>Base Texture</em> is used to color the object. This requires proper UV coordinates on the mesh.</p>
+<p><strong>Base Color:</strong> The base color of the material. When no <em>base texture</em> is used, this is its only color, otherwise it is multiplied into the base texture color.</p>
+<p><strong>UseNormalAndRoughnessTexture:</strong> If enabled, the shader uses the <em>Normal Texture</em> to apply <em>normal mapping</em> and the <em>Roughness Texture</em> to determine how rough the surface is. These affect the quality of lighting on the objects.</p>
+<p><strong>Roughness Value:</strong> If no <em>Roughness Texture</em> is given, this is the fallback roughness value to use for lighting. The rougher a material is (value closer to one), the more <em>diffuse</em> the lighting will be (stone, cloth, etc). The smoother the material is (value closer to zero), the more pronounced specular highlights it will have (glass, ceramic).</p>
+<p><strong>UseMetallicTexture:</strong> If enabled, a dedicated <em>Metallic Texture</em> is used to specify per pixel whether it is a metal or not. In physics, a material is either a metal or not, in computer graphics values in between are allowed and used to blend between the two results.</p>
+<p><strong>Metallic Value:</strong> If no <em>Metallic Texture</em> is provided, this is the fallback value. Typically this should be <code>1</code> for metals and <code>0</code> for all other material types.</p>
+<p><strong>UseEmissiveTexture:</strong> If enabled, the <em>Emissive Texture</em> is used to define per pixel where the material will <em>glow</em>. This is multiplied with the <em>EmissiveColor</em>, so make sure that is not set to black (its default).</p>
+<p><strong>EmissiveColor:</strong> An additional overall emissive color. If an <em>Emissive Texture</em> is activated, these two colors are multiplied, so you need to set this to <em>white</em> for the texture to have an effect. This is an HDR color, so you can scale up its <em>intensity</em> and thus pronounce the glow even further.</p>
+<p><strong>UseOcclusionTexture:</strong> If enabled, an <em>OcclusionTexture</em> is used to affect lighting and to pronounce crevices. The effect of this can be very subtle.</p>
+<h2 id="render-modes">Render Modes</h2>
+<p>The 3D viewport of the material editor allows you to switch <a href="../editor/editor-views.html#render-modes">render modes</a> to inspect only specific aspects of the material.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="visual-shaders.html">Visual Shaders (TODO)</a></li>
+<li><a href="../graphics/textures-overview.html">Textures</a></li>
+<li><a href="../graphics/meshes/meshes-overview.html">Meshes</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/materials/materials-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

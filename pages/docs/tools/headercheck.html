@@ -1,0 +1,514 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HeaderCheck Tool | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="HeaderCheck Tool | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="headercheck-tool">HeaderCheck Tool</h1>
+
+<h2 id="types-of-header-files">Types of Header Files</h2>
+<p>The code in ezEngine differentiates between two types of header files:</p>
+<ul>
+<li><strong>Public Header Files</strong>: Public header files are header files that can be included by third party. These header files should not leak any implementation details like platform headers. A third party is any library or executable outside of the currently compiled library / executable. For example when ezFoundation is compiled, everything else is considered a third party.</li>
+<li><strong>Internal Header Files</strong>: Internal header files may include platform headers and leak implementation detail, but can only be used within a subcomponent of ezEngine (for example only inside ezFoundation). Using them from outside of the component will cause a compiler error.</li>
+</ul>
+<p>To mark up a header file as a internal header file, first include the component's internal.h file and then use the component specific macro. The component's internal header file is called <code>ComponentInternal.h</code> and the macro is called <code>EZ_COMPONENT_INTERNAL_HEADER</code>.</p>
+<p>The following example shows how to mark a header file as internal for ezFoundation:</p>
+<pre><code class="lang-cpp">#include &lt;Foundation/FoundationInternal.h&gt;
+EZ_FOUNDATION_INTERNAL_HEADER
+</code></pre>
+<h2 id="the-header-checker-tool">The Header Checker Tool</h2>
+<p>The header checker tool will automatically be run by the continues integration to check for leakage of implementation detail. If a leak is found the build will fail. Usually you will see an error message such as:</p>
+<pre><code class="lang-plaintext">Including 'wrl/wrappers/corewrappers.h' in ezEngine/Code/Engine/Foundation/Strings/StringConversion.h:9 leaks underlying implementation detail. Including system or thirdparty headers in public EZ header files is not allowed. Please use an interface, factory or pimpl to hide the implementation and avoid the include.
+</code></pre>
+<p>In this example including <code>wrl/wrappers/corewrappers.h</code> is illegal. This header file is included from <code>ezEngine/Code/Engine/Foundation/Strings/StringConversion.h</code> at line 9. To fix these issues follow one of the techniques below to hide implementation details.</p>
+<h2 id="hiding-implementation-detail">Hiding Implementation Detail</h2>
+<p>To consider the different options of hiding implementation detail have a look at the following example</p>
+<pre><code class="lang-cpp">#include &lt;d3d11.h&gt;
+
+class ezTexture2D
+{
+public:
+    void Bind();
+
+private:
+    ID3D11Texture2D* m_ptr;
+};
+</code></pre>
+<p>If a user includes this header file, the underlying implementation detail is leaked as the user will need the <code>d3d11.h</code> header in order to compile the code. Furthermore the user might need exactly the same version of the <code>d3d11.h</code> file in order for the code to compile. This is a leaky abstraction. Ideally classes that wrap functionality should not leak any of their implementation details to the user. The following techniques can be used to hide implementation detail.</p>
+<h3 id="forward-declarations">Forward Declarations</h3>
+<p>Forward declarations can be used to remove the need to include a header file, therefor removing the leaky abstraction. Consider the following fixed version of the <code>ezTexture2D</code> class:</p>
+<pre><code class="lang-cpp">struct ID3D11Texture2D; // Forward declare ID3D11Texture2D
+
+class ezTexture2D
+{
+public:
+    void Bind();
+
+private:
+    ID3D11Texture2D* m_ptr;
+};
+</code></pre>
+<p>This header is no longer a leaky abstraction as the user is no longer required to have a copy of <code>d3d11.h</code>.</p>
+<p>Forward declarations can be made for:</p>
+<ul>
+<li>Class or struct members if they are pointers or references.</li>
+<li>All types used as arguments to functions.</li>
+<li>Template arguments if the usage follows the two above rules.</li>
+</ul>
+<p>Forward declarations can't be made for:</p>
+<ul>
+<li>Class or struct members that are 'inline' because the compiler needs to know the size and alignment.</li>
+<li>Base classes.</li>
+</ul>
+<p>Enums can be forward declared if they are given an explicit storage type. So ideally to make enums forward declarable always manually specify a storage type.</p>
+<pre><code class="lang-cpp">enum MyEnum : int; // Forward declaration
+
+enum MyEnum : int // declaration
+{
+    One,
+    Two
+};
+</code></pre>
+<p>Nested types can never be forward declared. A nested type is a type that is inside a class or struct.</p>
+<pre><code class="lang-cpp">// does not work
+// struct Outer::Inner;
+
+struct Outer
+{
+    struct Inner
+    {
+        int i;
+    };
+};
+</code></pre>
+<p>So prefer to put nested types into namespaces instead of structs or classes:</p>
+<pre><code class="lang-cpp">// Forward declaration
+namespace Outer
+{
+    struct Inner;
+}
+
+// Declaration
+namespace Outer
+{
+    struct Inner
+    {
+        int i;
+    };
+}
+</code></pre>
+<p>Templates can also be forward declared:</p>
+<pre><code class="lang-cpp">
+// forward declaration
+template&lt;typename&gt; struct Example;
+
+// Usage of forward declaration
+void bar(const Example&lt;int&gt;&amp; arg);
+
+// declaration
+template&lt;typename T&gt;
+struct Example
+{
+    T t;
+};
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>No runtime overhead</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Forward declarations and actual declaration have to be kept in sync.</li>
+</ul>
+<h3 id="moving-implementation-details-out-of-templates">Moving Implementation Details Out Of Templates</h3>
+<p>Consider the following example which leaks implementation details:</p>
+<pre><code class="lang-cpp">// Application.h
+
+#include &lt;roapi.h&gt;
+
+template &lt;typename AppClass&gt;
+void RunApplication(AppClass&amp; app)
+{
+    RoInitialize(RO_INIT_MULTITHREADED);
+
+    app.Init();
+
+    while(!app.Run()) {}
+
+    app.DeInit();
+
+    RoUninitialize();
+}
+</code></pre>
+<p>The two functions <code>RoInitialize</code> and <code>RoUninitialize</code> are platform specific functions and require the include <code>roapi.h</code>. We can't move the function into a .cpp because the implementation for templates needs to be known when using them. As a result this template leaks its implementation detail.</p>
+<p>To fix this issue we need to wrap the leaking function calls into separate functions and forward declare these functions.</p>
+<pre><code class="lang-cpp">// Application.h
+
+void InitPlatform();
+void DeInitPlatform();
+
+template &lt;typename AppClass&gt;
+void RunApplication(AppClass&amp; app)
+{
+    InitPlatform();
+
+    app.Init();
+
+    while(!app.Run()) {}
+
+    app.DeInit();
+
+    DeInitPlatform();
+}
+</code></pre>
+<pre><code class="lang-cpp">// Application.cpp
+#include &quot;Application.h&quot;
+#include &lt;roapi.h&gt;
+
+void InitPlatform()
+{
+    RoInitialize(RO_INIT_MULTITHREADED);
+}
+
+void DeInitPlatform()
+{
+    RoUninitialize();
+}
+</code></pre>
+<p>As you can see we removed the include to <code>roapi.h</code> from the header file and moved it into the cpp file. This way our header no longer leaks underlying implementation details, as the user won't see the cpp file when using our library. If considerable parts of the template don't depend on the template arguments this pattern can also be used to reduce code bloat by moving the non dependent parts out into non-templated functions.</p>
+<h3 id="pimpl-light">Pimpl Light</h3>
+<p>The pattern that I call &quot;Pimpl light&quot; can be used to hide implementation detail at the cost of an additional allocation:</p>
+<p>Consider our original <code>ezTexture2D</code> example it would be modified like this:</p>
+<pre><code class="lang-cpp">// Texture2D.h
+class ezTexture2D
+{
+public:
+    ezTexture2D();
+    ~ezTexture2D();
+    void Bind();
+
+private:
+    struct Impl; // forward declaration
+
+    ezUniquePtr&lt;Impl&gt; m_pImpl;
+};
+</code></pre>
+<pre><code class="lang-cpp">// Texture2D.cpp
+#include &quot;Texture2D.h&quot;
+#include &lt;d3d11.h&gt;
+
+// Declaration of ezTexture2D::Impl struct
+struct ezTexture2D::Impl
+{
+    ID3D11Texture2D* m_ptr;
+};
+
+ezTexture2D::ezTexture2D()
+: m_pImpl(EZ_DEFAULT_NEW(Impl))
+{
+
+}
+
+// all constructors / destructors / assignment operators must be in .cpp file otherwise forward declaration will not work.
+ezTexture2D::~ezTexture2D()
+{
+
+}
+
+ezTexture2D::Bind()
+{
+    // Use the implementation detail
+    m_pImpl-&gt;m_ptr-&gt;Bind();
+}
+</code></pre>
+<p>This is an easy pattern to hide implementation details.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Simple to implement, hides nasty implementation details well</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Additional allocation</li>
+<li>Additional indirection</li>
+</ul>
+<h3 id="pimpl-inheritance">Pimpl Inheritance</h3>
+<p>The Pimpl pattern can also be implemented by using inheritance instead of a forward declared struct. For our <code>ezTexture2D</code> example it would look like this:</p>
+<pre><code class="lang-cpp">// Texture2D.h
+class ezTexture2D
+{
+public:
+    ezUniquePtr&lt;ezTexture2D&gt; Make(); // factory function, could also return a shared ptr.
+    virtual ~ezTexture2D();
+    void Bind();
+
+private:
+    ezTexture2D(); // All constructors must be private
+
+    friend class ezTexture2DImpl; // This is the only class allowed to derive from ezTexture2D
+};
+</code></pre>
+<pre><code class="lang-cpp">// Texture2D.cpp
+#include &quot;Texture2D.h&quot;
+#include &lt;d3d11.h&gt;
+
+// Actual implementation
+class ezTexture2DImpl : public ezTexture2D
+{
+public:
+    ezTexture2DImpl() : ezTexture2D() {}
+    ~ezTexture2DImpl(){}
+
+    ID3D11Texture2D* m_ptr;
+};
+
+
+ezTexture2D::ezTexture2D() {}
+ezTexture2D::~ezTexture2D() {}
+
+ezUniquePtr&lt;ezTexture2D&gt; ezTexture2D::Make()
+{
+    return ezUniquePtr&lt;ezTexture2D&gt;(EZ_DEFAULT_NEW(ezTexture2DImpl));
+}
+
+ezTexture2D::Bind()
+{
+    // Use the implementation detail
+    reinterpret_cast&lt;ezTexture2DImpl*&gt;(this)-&gt;m_ptr-&gt;Bind();
+}
+</code></pre>
+<p>As you see this version of pimpl hides the implementation detail similar to pimpl light.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>No additional indirection (compared to pimpl light)</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Additional allocation</li>
+<li>Can no longer inherit from <code>ezTexture2D</code></li>
+<li><code>ezTexture2D</code> can't be <code>final</code></li>
+</ul>
+<h3 id="opaque-array-of-bytes">Opaque array of bytes</h3>
+<p>We can also place an opaque array of bytes large enough to store our implementation detail. Considering our <code>ezTexture2D</code> example it would look like this:</p>
+<pre><code class="lang-cpp">// ezTexture2D.h
+
+class ezTexture2D
+{
+public:
+    void Bind();
+
+private:
+#if EZ_ENABLED(EZ_PLATFORM_32BIT)
+    struct EZ_ALIGN(Impl, 4)
+    {
+        ezUInt8 m_Data[4];
+    };
+#else
+    struct EZ_ALIGN(Impl, 8)
+    {
+        ezUInt8 m_Data[8];
+    };
+#endif
+    Impl m_impl;
+};
+</code></pre>
+<pre><code class="lang-cpp">// ezTexture2D.cpp
+#include &quot;Texture2D.h&quot;
+
+struct ezTexture2DImpl
+{
+    D3D11Texture2D* m_ptr;
+};
+
+static_assert(sizeof(ezTexture2D::Impl) == sizeof(ezTexture2DImpl), &quot;ezTexture2D::Impl has incorrect size&quot;);
+static_assert(alignof(ezTexture2D::Impl) == alignof(ezTexture2DImpl), &quot;ezTexture2D::Impl has incorrect alignment&quot;);
+
+void ezTexture2D::Bind()
+{
+    // Use implementation detail
+    reinterpret_cast&lt;ezTexture2DImpl*&gt;(&amp;m_impl)-&gt;m_ptr-&gt;Bind();
+}
+</code></pre>
+<p>This again hides the implementation details in the header file.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>No runtime overhead</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>High maintenance burden. Especially if implementation detail size varies on different platforms.</li>
+</ul>
+<h3 id="ignore-the-problem">Ignore the problem</h3>
+<p>You can choose to ignore the leaky abstraction issue and tell the header checker tool to ignore a certain file to be included or give a certain file the permission to include anything.</p>
+<p>Each module in ezEngine that uses the header checker has a headerCkeckerIgnore.json file where you can add ignores. It looks like this:</p>
+<pre><code class="lang-json">{
+    &quot;includeTarget&quot; :
+    {
+        &quot;byName&quot; : [
+            &quot;a.h&quot;
+        ]
+    },
+    &quot;includeSource&quot; :
+    {
+        &quot;byName&quot; : [
+            &quot;b.h&quot;
+            ]
+    }
+}
+</code></pre>
+<ul>
+<li>In the above file every time <code>a.h</code> is included and would generate an error in the header checker tool, that error will be ignored.</li>
+<li>Every time <code>b.h</code> includes a header file that would cause an error, this error will also be ignored.</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Less work</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Longer compile times</li>
+<li>Conflicts due to global namespace pollution</li>
+<li>Requires users to have all header files for implementation details available</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/headercheck.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

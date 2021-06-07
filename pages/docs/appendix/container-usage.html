@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Container Usage Guidelines | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Container Usage Guidelines | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="container-usage-guidelines">Container Usage Guidelines</h1>
+
+<p>ezEngine has the following container classes:</p>
+<ul>
+<li><code>ezStaticArray</code></li>
+<li><code>ezHybridArray</code></li>
+<li><code>ezDynamicArray</code></li>
+<li><code>ezStaticRingBuffer</code></li>
+<li><code>ezDeque</code></li>
+<li><code>ezList</code></li>
+<li><code>ezMap</code></li>
+<li><code>ezSet</code></li>
+<li><code>ezHashTable</code></li>
+<li><code>ezArrayMap</code></li>
+</ul>
+<p>The following containers store their data as contiguous arrays:</p>
+<ul>
+<li><code>ezStaticArray</code></li>
+<li><code>ezHybridArray</code></li>
+<li><code>ezDynamicArray</code></li>
+<li><code>ezStaticRingBuffer</code></li>
+<li><code>ezArrayMap</code></li>
+</ul>
+<p>The following containers are built on top of <code>ezDeque</code> and thus share some performance characteristics:</p>
+<ul>
+<li><code>ezList</code></li>
+<li><code>ezMap</code></li>
+<li><code>ezSet</code></li>
+</ul>
+<h2 id="when-to-use-which-container-type">When to use which Container Type</h2>
+<h3 id="arrays">Arrays</h3>
+<h4 id="general-guidelines">General Guidelines</h4>
+<p>For arrays, <code>ezHybridArray</code>, <code>ezDynamicArray</code> and <code>ezDeque</code> are the most important containers.</p>
+<p>If you know or have a guess how much data you will need, always use this information in a call to <code>Reserve</code> to ensure that the containers can allocate data once (or at least much less), and do not need to reallocate several times.</p>
+<p>Never remove an element in between (using <code>RemoveAt</code>), unless there is really no other way (and hopefully your array is small). Prefer <code>RemoveAtAndSwap</code> to replace the removed element by the last element in the array instead (this will destroy the order though).
+Similarly, never insert elements anywhere else than at the end.
+The only exception is <code>ezDeque</code>, which is very efficient at insertion and removal of elements at both ends.</p>
+<h4 id="ezhybridarray"><code>ezHybridArray</code></h4>
+<p><code>ezHybridArray</code> uses an internal fixed size cache (which you can specify as a template argument). When you create an <code>ezHybridArray</code> on the stack, that data is also allocated on the stack. This is the most important container for writing performance critical yet safe code. <code>ezHybridArray</code> allows to implement many algorithms without the need to use dynamic allocations.</p>
+<p>Prefer <code>ezHybridArray</code> when you have a use case where you typically have a small set of elements, but it might be larger in some situations. <code>ezHybridArray</code> will give you the performance of an immediately available array on the stack, combined with the safety of a dynamically allocated array on the heap, as it will reallocate data dynamically, whenever its internal storage is insufficient.</p>
+<p>However, be careful not to make the internal buffer too large. When creating <code>ezHybridArrays</code> on the stack, you should not use more than a few KB for the internal cache, as you increase the risk for stack overflows. You should usually try to stay below <code>(2KB / sizeof(Type))</code> for the number of elements in the <code>ezHybridArray</code> cache.</p>
+<p><strong>Note:</strong> <code>ezHybridArray</code> is derived from <code>ezDynamicArray</code>, that means every function that takes an <code>ezDynamicArray</code> (even for writing output to), can be given an <code>ezHybridArray</code>.</p>
+<h4 id="ezdynamicarray"><code>ezDynamicArray</code></h4>
+<p><code>ezDynamicArray</code> always allocates its data on the heap. The upside is, that it has a very low memory overhead, as long as it is empty, and it can handle any number of elements.</p>
+<p>Prefer <code>ezDynamicArray</code> if your working set is generally larger and when you know how many elements it needs to hold before you fill it up. Use <code>Reserve</code> or <code>SetCount</code> BEFORE you start adding data to it, to prevent unnecessary reallocation later, as those are very costly.</p>
+<p>Also prefer <code>ezDynamicArray</code> if the memory overhead in the empty state is of concern.</p>
+<h4 id="ezdeque"><code>ezDeque</code></h4>
+<p><code>ezDeque</code> stores its data as several chunks of contiguous arrays. An additional &quot;redirection array&quot; is used to know how to index into these chunks.
+<code>ezDeque</code> requires one pointer indirection to make a lookup into its data.</p>
+<p>The deque is the only array container that does not store its data in one contiguous block of memory. Be aware of that, you cannot <code>memcpy</code> or <code>memcmp</code> data in a deque with more than one element, as the next element might be stored somewhere completely different.</p>
+<p>However a deque NEVER relocates an existing element in memory, either. That means once an element is inserted into a deque, you can safely store pointers to it, as it will not move around in memory (unless it is deleted, of course).</p>
+<p>Deques allocate their data in chunks. So whenever the memory is insufficient, a new chunk that can hold a fixed number of elements is allocated. One chunk is typically 4 KB in size. That means if you store <code>floats</code> in a deque, one chunk can hold 1000 values. Thus this is the 'minimum' memory usage of a deque, unless it is completely empty still.</p>
+<p>As such <code>ezDeques</code> are very efficient for iteration (most of the data is contiguous) and they are very dynamic, as their size can grow dynamically without the need to reallocate and copy previous data, as the other array types would need to do.</p>
+<p>Therefore prefer <code>ezDeques</code> whenever you need to have nearly the performance of an array, but have very dynamic data sets, that are difficult to predict in size, or that vary all the time.</p>
+<p>As deques are optimized for insertion and removal at both ends, <code>ezDeques</code> are perfectly suited as fifo queues and dynamic ring-buffers.</p>
+<p>The memory overhead of <code>ezDeques</code> is rather high, so do not use it for small data-sets (here <code>ezHybridArray</code> is typically the best container).</p>
+<p><code>ezDeques</code> are also very well suited, whenever you have large objects to store that are very costly to construct or copy around, and you want to prevent those operations by all means, such that you do not want a container reallocation to trigger that.</p>
+<h4 id="ezstaticarray"><code>ezStaticArray</code></h4>
+<p>This is a container that only stores a static array internally and cannot resize itself to be larger than that. Use this in code that has a definite upper limit of elements and whenever you must prevent the usage of any allocator by all means (such as for global variables).</p>
+<p>Typically there should be no need for this container, as <code>ezHybridArray</code> delivers the same performance advantages and the safety of reallocating to the required size dynamically.</p>
+<h4 id="ezstaticringbuffer"><code>ezStaticRingBuffer</code></h4>
+<p>Use this when you need a ring-buffer that shall have a fixed size. Use <code>ezDeque</code> if you need a dynamically resizing ring-buffer.</p>
+<h3 id="lists">Lists</h3>
+<p>There is only one implementation of a doubly linked list: <code>ezList</code></p>
+<p><code>ezList</code> is internally built on top of a <code>ezDeque</code>. As such the memory requirements are the same.</p>
+<p><code>ezList</code> is optimized for inserting and removing objects frequently. Iterating over its elements might be slow due to excessive cache misses.</p>
+<p>You should typically not use <code>ezList</code> in code that is performance critical. Use it when you have data-sets of unpredictable size that need to be sorted or rearranged very dynamically. For example when you read a complex data set which then needs to be processed and sorted by different criteria, which might delete and insert elements at random positions, then prefer an <code>ezList</code>. However, once that step is finished, you should copy your sorted data into some array container for faster access.</p>
+<p>Nodes in an <code>ezList</code> are never relocated in memory, as such iterators stay valid as long as the element is still alive.</p>
+<h3 id="associative-containers">Associative Containers</h3>
+<h4 id="ezmap-and-ezset"><code>ezMap</code> and <code>ezSet</code></h4>
+<p>Both containers are basically the same, except that <code>ezMap</code> stores a 'value' for each 'key', whereas a set only stores 'keys'.</p>
+<p>Use <code>ezMap</code> whenever you need to be able to look up an entry with a key. Use <code>ezSet</code> whenever you simply need to know whether some element is present or to merge data-sets down to all the unique elements.</p>
+<p><code>ezMap</code> and <code>ezSet</code> are built on top of <code>ezDeque</code>, similar to <code>ezList</code>, that means they are quite heavy-weight in their memory consumption, however they can grow in size efficiently. As with <code>ezList</code>, iterators (and pointers) to elements stay valid, as long as the element is alive, i.e. the data is never relocated.</p>
+<p>Insertion, lookup and removal are all <code>O(log n)</code> operations, since they are red-black trees internally and thus always perfectly balanced.</p>
+<p><code>ezMap</code> and <code>ezSet</code> are well suited for very dynamic data sets (where a lot of insertions and removals are done, while also using it for lookup). If you have a use-case where you insert once and then lookup often, a sorted array, such as <code>ezArrayMap</code>, or an <code>ezHashTable</code> might be more efficient.</p>
+<p><code>ezMap</code> and <code>ezSet</code> only require a simple comparer to be able to sort elements in a strictly weak ordering. As such they are well suited to handle objects that can be difficult to be hashed.</p>
+<p>Note that the nodes in the Map/Set each contain one element of their key/value type and those are stored in an <code>ezDeque</code>. As such, when you put an <code>ezHybridArray</code> (or an <code>ezString</code>) into an <code>ezMap</code>, only one allocation is needed to allocate all the memory for a chunk (in the <code>ezDeque</code>) of data, which holds a large number of nodes, which already embed the data of their keys/values (e.g. <code>ezHybridArray</code>). Thus you can get away with very few memory allocations.
+If however you store an <code>ezDynamicArray</code> in an <code>ezMap</code>, each element still needs to allocate its own internal storage, which means you will get one additional allocation per element.</p>
+<h4 id="ezarraymap"><code>ezArrayMap</code></h4>
+<p>This container provides similar functionality as <code>ezMap</code> but should be more efficient in scenarios where elements are looked up more often than they are inserted or removed. The implementation simply uses an array that is kept sorted, such that lookups can be done in a more cache friendly manner.</p>
+<p>If all you need is an associative container and your use case consists of changing the container infrequently, but looking up elements frequently (which is very often the case), you should prefer this container.</p>
+<p>Note, however, that this container will rearrange elements in memory whenever it needs to be sorted. In contrast an <code>ezMap</code> guarantees that elements never move in memory, allowing to store pointers to the memory locations. Likewise the iterators of an <code>ezMap</code> stay valid as long as an elements resides in the map. For <code>ezArrayMap</code> this is not true, the index at which an element is stored can change whenever any element is added or removed.</p>
+<h4 id="ezhashtable"><code>ezHashTable</code></h4>
+<p>The <code>ezHashTable</code> is optimized for very fast lookup, which should typically be a <code>O(1)</code> operation. Prefer the hash table whenever you will have a data set that is modified infrequently, but lookups will be done often and need to be as fast as possible.</p>
+<p><code>ezHashTable</code> may relocate its internal memory, which means iterators to its elements may not stay valid when the table is modified.
+Make sure to <code>Reserve</code> how much elements you probably will put into the <code>ezHashTable</code>, to ensure fewer reallocations, but also to avoid hash-collisions and thus to improve overall performance.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="string-usage.html">String Usage Guidelines</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/appendix/container-usage.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

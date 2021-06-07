@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Messaging | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Messaging | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="messaging">Messaging</h1>
+
+<p>For an introduction what a message is and how it fits into the overall picture, see <a href="world-overview.html">The World / Scenegraph System</a>.</p>
+<p>This documentation focuses on the C++ <code>ezMessage</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
+<p>Messages can be sent from any code. They can only be received by <a href="components.html">components</a>, though, as the messaging system is implemented by <code>ezWorld</code>.</p>
+<h2 id="declaring-a-message">Declaring a Message</h2>
+<p>A message has to be derived from <code>ezMessage</code> and contain a helper macro that implements some message specific functionality:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: message-decl -->
+<pre><code class="lang-cpp">struct ezMsgSetText : public ezMessage
+{
+  EZ_DECLARE_MESSAGE_TYPE(ezMsgSetText, ezMessage);
+
+  ezString m_sText;
+};
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>In some cpp file you then also need to implement the message and set up basic <a href="../reflection-system.html">reflection information</a>:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: message-impl -->
+<pre><code class="lang-cpp">EZ_IMPLEMENT_MESSAGE_TYPE(ezMsgSetText);
+EZ_BEGIN_DYNAMIC_REFLECTED_TYPE(ezMsgSetText, 1, ezRTTIDefaultAllocator&lt;ezMsgSetText&gt;)
+EZ_END_DYNAMIC_REFLECTED_TYPE;
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This is all that is needed to send and receive the message in C++ code.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.</p>
+</blockquote>
+<h2 id="message-handlers">Message Handlers</h2>
+<p>For each message type that your component is supposed to receive, you need to add a function that takes the respective component types as the only argument:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: message-handler-impl -->
+<pre><code class="lang-cpp">void DisplayMsgComponent::OnSetText(ezMsgSetText&amp; msg)
+{
+  m_sCurrentText = msg.m_sText;
+}
+
+void DisplayMsgComponent::OnSetColor(ezMsgSetColor&amp; msg)
+{
+  m_TextColor = msg.m_Color;
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Finally, you also need to register these functions as message handlers, in the component's reflection information:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: message-handler-block -->
+<pre><code class="lang-cpp">EZ_BEGIN_MESSAGEHANDLERS
+{
+  EZ_MESSAGE_HANDLER(ezMsgSetText, OnSetText),
+  EZ_MESSAGE_HANDLER(ezMsgSetColor, OnSetColor)
+}
+EZ_END_MESSAGEHANDLERS;
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Now this component is ready to receive messages of those types.</p>
+<h2 id="sending-messages">Sending Messages</h2>
+<p>To send a message, first create an instance on the stack (don't heap allocate them) and then call one of the <code>SendMessage()</code> functions:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: message-send-direct -->
+<pre><code class="lang-cpp">ezMsgSetText textMsg;
+textMsg.m_sText = m_TextArray[idx];
+pGameObject-&gt;SendMessageRecursive(textMsg);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h3 id="message-routing">Message Routing</h3>
+<p>There are several ways a message can be sent. Which function you use determines which components may see the message and also how efficient the delivery will be.</p>
+<p>You can send functions either through an <code>ezGameObject</code>, through an <code>ezComponent</code> or through an <code>ezWorld</code>. It is differentiated between <em>sending</em> a message (direct) and <em>posting</em> a message (delayed).</p>
+<ul>
+<li>Messages sent through functions on <code>ezComponent</code> will always only be received by exactly that component and no one else.</li>
+<li>Messages sent through <code>ezGameObject</code> are broadcast to all components on that object. If one of the <code>Recursive</code> variants is used, the messages are additionally delivered to all components on all child objects.</li>
+<li>When sending messages through <code>ezWorld</code>, you identify the target through a handle (<code>ezGameObjectHandle</code> or <code>ezComponentHandle</code>). In this case the world takes care of resolving the handle for you. If the target object does not exist anymore, the message won't be handled by anyone.</li>
+</ul>
+<p>If you call <code>SendMessage()</code>, the message is delivered <strong>immediately</strong>. That also means that all message handlers will access the same message object. This can be used to query information, as the message handler can write data back to the message. If the message is meant to be sent to multiple receivers, the code must take care to properly append or aggregate the results. Messages are never delivered multi-threaded, though.</p>
+<p>If you call <code>PostMessage()</code>, the message is delivered <strong>delayed</strong>. These messages are queued and delivered when their time has come. If the target does not exist anymore at that time, the message is discarded with no effect. Posted messages can't be used to retrieve a result. Internally, posted messages will be copied, so you still don't need to allocate them on the heap.
+Apart from a time delay, when posting a message you also have to specify a <em>phase</em> in which to deliver the message (see <code>ezObjectMsgQueueType</code>). This is used for special cases, where you want to tightly control at what time during the world update the message should arrive. For most cases using <code>ezObjectMsgQueueType::NextFrame</code> is the right choice.</p>
+<h2 id="event-messages">Event Messages</h2>
+<p>Event messages are a special type of message with a different kind of semantic. Regular messages are used to 'instruct' components to do something. For example to switch something on, or to apply a physical force to it. These things can be implemented differently by different component types, but generally the calling code assumes them to do something. When messages are <em>broadcast</em> (instead of sending them to a single component directly), <em>all</em> targeted components get the message.</p>
+<p><em>Event messages</em> on the other hand, are used to 'inform' an object hierarchy that <em>something happened</em>. An example would be <code>ezMsgDamage</code> which is used to inform an object that it received damage. For these kind of messages you only want <em>one</em> component to handle it. This will often be a very high-level component like a custom component representing the player or an NPC.</p>
+<p>These types of components are typically attached to the very top of a <a href="../../prefabs/prefabs-overview.html">prefab</a> structure and they are supposed to manage the overall game logic for this object. Therefore the <em>message routing</em> for event messages follows a different pattern: when you call <code>ezGameObject::SendEventMessage()</code> on a node, the message is delivered to the closest <strong>parent node</strong> that has a component of type <code>ezEventMessageHandlerComponent</code>.</p>
+<p>The <code>ezEventMessageHandlerComponent</code> interface is only implemented by very few component types. Out of the box, only by <code>ezTypeScriptComponent</code> and <code>ezVisualScriptComponent</code>, meaning only components used to provide scripting functionality are currently capable of handling event messages. However, if you were to write your own NPC class, that is supposed to implement actual game logic (and not just path finding), then it makes sense to make it an <code>ezEventMessageHandlerComponent</code>.</p>
+<p>Note that once an <code>ezEventMessageHandlerComponent</code> is attached to a node, it will receive <em>all</em> event messages below that node hierarchy, no matter whether it has a message handler for it or not. It therefore prevents event messages from leaving the hierarchy by default. If an event message is supposed to 'bubble up' further, the message handler component must forward the message manually.</p>
+<h3 id="example-gas-cylinder">Example: Gas Cylinder</h3>
+<p>This prefab has two physics shapes. One for the body, one for the cap. If the body receives too much damage, the cylinder is supposed to explode. If the cap receives enough damage, the cylinder is supposed to start ventilating burning gas, fly off and explode after a while.</p>
+<p><img src="media/gas-cylinder.jpg" alt="Gas Cylinder"></p>
+<p>To implement this, we attach a script component to the very top of the hierarchy. The script contains a message handler for <code>ezMsgDamage</code>. When a <a href="../../gameplay/projectile-component.html">projectile</a> hits the cylinder, it calls <code>ezGameObject::SendEventMessage()</code> on the node whose <a href="../../physics/collision-shapes/physx-shapes.html">physics shape</a> it hit. The event message contains the information through which game object and which component it was sent.</p>
+<p>The message is then delivered to the closest parent node that handles event messages, which in this case is the <code>GasCylinder</code> node, because it has the script attached. The script can then differentiate what child node was hit and implement the desired game logic:</p>
+<p><img src="media/cylinder-script.png" alt="Gas Cylinder Script"></p>
+<h3 id="declaring-event-messages">Declaring Event Messages</h3>
+<p>The only difference between regular messages and event messages is, that event messages must be derived from <code>ezEventMessage</code>.</p>
+<h3 id="sending-event-messages">Sending Event Messages</h3>
+<p>You can send event messages to every object using <code>ezGameObject::SendEventMessage()</code>. This will determine the closest parent to handle events on the fly and deliver the message accordingly.</p>
+<p>For components that regularly raise events to the same object hierarchy (their own), such as trigger components, it is more efficient to have a member of type <code>ezEventMessageSender&lt;&gt;</code>. Sending a message through this object will cache the receiving target and be more efficient the second time.</p>
+<p>If a component that is an <code>ezEventMessageHandlerComponent</code> itself wants to send an event message further up the hierarchy, it has to send the event to its own parent node.</p>
+<blockquote>
+<p><strong>Caution:</strong></p>
+<p>Event messages are also just regular messages and <em>can</em> be sent that way using <code>SendMessage()</code> or <code>PostMessage()</code>. If you accidentally use those functions, rather than <code>SendEventMessage()</code> or <code>PostEventMessage()</code>, your message will not get delivered as intended.</p>
+</blockquote>
+<h3 id="global-event-message-handlers">Global Event Message Handlers</h3>
+<p>If an event is sent to a hierarchy that has no event handler component, it is ultimately delivered to a <em>global event handler</em>. A global event handler is simply a component that has the <code>HandleGlobalEvents</code> property enabled.</p>
+<p>A global event handler can be useful as a catch-all level scripts. This way you can place buttons around a level, and have a single script that receives the message when one of them is pressed. Each button has its own script to implement its logic (when you can press it, how it changes its appearance and so on), but the button script then just raises a generic &quot;button pressed&quot; event on its own parent node. If those buttons don't have an event handling parent node, the message is delivered to the level script, which can then handle the logic of all those buttons.</p>
+<p>Be careful though when using multiple global event handler components. Every type of message is only delivered to a single handler, so as long as each global handler takes care of a different type, it will work as expected.</p>
+<h2 id="message-serialization">Message Serialization</h2>
+<p>For regular messages you don't need to implement any serialization, as they are short lived within the same process. However, if you intend to record messages or send them across a network, you can utilize <code>ezMessage::PackageForTransfer()</code> and <code>ezMessage::ReplicatePackedMessage()</code>. To make these functions work, you need to override and implement <code>ezMessage::Serialize()</code> and <code>ezMessage::Deserialize()</code>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="world-overview.html">The World / Scenegraph System</a></li>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/world/world-messaging.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

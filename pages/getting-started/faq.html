@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Frequently Asked Questions | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Frequently Asked Questions | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+
+<h2 id="platforms">Platforms</h2>
+<p>The ezEngine base libraries (Foundation, Core) have been built to be fully cross platform. The corresponding unit tests are run on Windows, Linux, Mac and Android every day. There are some stubs for functions that are currently only needed on Windows, but implementing them is easy to do, when needed.</p>
+<p>Everything higher level (editor, tools, rendering) is <strong>only implemented for Windows 10</strong>. There is <strong>no Linux</strong>, <strong>no Mac</strong> and also <strong>no Windows 8 or lower</strong> support.</p>
+<p>The editor uses Qt, so that is generally portable, and it wouldn't even be too crazy, but also not entirely trivial. There is some Windows specific code for inter process communication (pipes), which would need to be implemented differently on other systems.</p>
+<h2 id="render-api">Render API</h2>
+<p>At the moment we only provide a <strong>DX11 renderer</strong>. We would like to switch to Vulkan at some point, but some non-trivial refactoring is needed first. This currently doesn't have a high priority for us.</p>
+<p>Obviously, this would also be a prerequisite to porting the editor to other platforms.</p>
+<h2 id="networking--multiplayer">Networking &amp; Multiplayer</h2>
+<p>The engine ships with the <a href="../docs/appendix/third-party-code.html#enet">Enet</a> networking library included. This is a great, easy to use library that was developed for an FPS game.</p>
+<p>There is <strong>no multiplayer support</strong> in EZ, whatsoever. For the foreseeable future we have no plans to add something. Multiplayer is a very complicated topic and the solutions vary drastically between genres, so providing something that &quot;just works&quot; isn't really possible.</p>
+<p>If you want to do multiplayer, you have to implement that aspect yourself. This is possible, of course, and for games with simpler networking logic (turn based, slow or simply not competitive) it may not be too hard (still lots of work, though, as all game development is).</p>
+<h2 id="visual-scripting">Visual Scripting</h2>
+<p>Yes, EZ has <a href="../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>. It's not really great, though. You can do simple level logic, like &quot;if that lever is pulled, open that door&quot;. You shouldn't really use it for anything else. We are generally not convinced that visual scripting is a great way to program (in no engine, no matter how good their tools are). Therefore we have no plans on improving our implementation at the moment, we rather improve the <a href="../docs/custom-code/typescript/typescript-overview.html">TypeScript</a> binding. Though, if you are a fan of visual scripting and want to improve it, feel free to look into it.</p>
+<h2 id="scripting-with-typescript">Scripting with TypeScript</h2>
+<p>We have a <a href="../docs/custom-code/typescript/typescript-overview.html">TypeScript</a> binding which is pretty decent. The entire game logic in the <a href="../samples/testing-chambers.html">Testing Chambers</a> project is done with this.</p>
+<p>Future work for the TypeScript binding is <a href="https://github.com/ezEngine/ezEngine/projects/2">gathered here</a>. If you have some experience working with the TypeScript compiler tools, we could use your help.</p>
+<h2 id="rendering">Rendering</h2>
+<p>We don't have occlusion culling at the moment (through a CPU rasterizer), though would like to add that at some point.</p>
+<h2 id="terrain">Terrain</h2>
+<p>We currently have <strong>no terrain system</strong>. We have several ideas how we would like to do this, but this is very low priority at the moment. If you want to do terrain, you should just import static meshes. Of course that also means you need to do terrain sculpting in a separate tool. What we do have, is a simple <a href="../docs/terrain/heightfield-component.html">heightfield component</a>. For basic scenarios this may already be sufficient.</p>
+<h2 id="skeletal-animation">Skeletal Animation</h2>
+<p>We started implementing a skeletal animation system and got the basics up an running. It's still very, very limited, though. However, a skeletal animation system does have <strong>high priority</strong> for us.</p>
+<h2 id="ai">AI</h2>
+<p>We have an integration for building <strong>nav-meshes with <a href="../docs/appendix/third-party-code.html#recast">Recast</a></strong>. We also have some really crappy components to do simple steering. Those are awful and need to be rewritten. If you have experience with AI and would like to contribute something in this regard, we would be happy to get some help. AI has low priority for us at the moment, but since this is a very isolated problem domain, you could probably improve the status quo significantly, without having to know the engine too much in detail.</p>
+<h2 id="streaming">Streaming</h2>
+<p>All our resources (textures, materials, shaders, ...) always use streaming. However, we have <strong>no level streaming</strong>. Since we also don't have a terrain system, this is currently not really needed. However, we do have <a href="../docs/performance/asset-collections.html">asset collections</a>, which can be used to load data in the background. So you could build a system that instantiates e.g. a part of a level only once the background loading is finished. The building blocks are there, but it's not working out of the box.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>We don't plan very far ahead. Here are the things we intend to work on in the near term.</p>
+<ol>
+<li>High level documentation.</li>
+<li>Small code samples, where needed for the documentation.</li>
+<li>Automated tests for some features, especially where the documentation can benefit as well.</li>
+<li>Bug fixing for issues discovered by the documentation efforts.</li>
+<li>Polish user experience, especially for first time users, where possible with little effort.</li>
+<li>Skeletal Animation System.</li>
+</ol>
+<p>&quot;Intend to work&quot; <strong>doesn't mean complete</strong>, though. We can't give estimates on that.</p>
+<h2 id="history--team">History &amp; Team</h2>
+<p>The core team is about 5 people, who work on this project in their spare time. Time is our most precious resource, which is why we focus it on aspects where the project benefits the most. Good infrastructure has always been a focus for us, as this will save so much time in the long run. The team consists of engineers who previously worked on the <a href="https://en.wikipedia.org/wiki/Vision_(game_engine)">Vision Engine</a>.</p>
+<p>We started working on ezEngine with an empty folder and a first blank .h file in November 2012. Every line of code was written from the ground up. The first project was a unit test framework. For source control we started with Mercurial. In 2013 we switched to Subversion. The history from SVN was migrated to git in 2018 (f86ff53686f839a5f729ff70b9ec09e110cbef94 is the first commit). Since then all development is done in the open through GitHub.</p>
+<p>From the start our intention was to create something that is free to use with no restrictions. An important aspect was always to not create a monolithic engine that can only be used for certain types of games, but something that is flexible and can be adapted to many different use cases. Therefore, most functionality is plugin based and it is easy to strip out things that you don't need or replace them with a custom implementation. This design philosophy is for example why things like our texture processing are stand-alone tools, instead of being integrated into the editor, so that you can utilize these tools, even when you don't want to use the editor.</p>
+<p>Consequently, good documentation both directly inside code, as well as external, is very dear to us. The best technology is worthless, if only few people know how to use it.</p>
+<p>We would love to see EZ being used by other people. We try to fix issues and help out as well as possible, but there is only so much we can do with our time. We understand that for many people other engines are a better fit. If EZ does fit your needs, that's great. And if you are able to help out make it better, that's really awesome.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="how-to-contribute.html">How to Contribute</a></li>
+<li><a href="../contact.html">Contact</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/getting-started/faq.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Android Builds | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Android Builds | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="android-builds">Android Builds</h1>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You need the following to build for Android:</p>
+<ul>
+<li>Android SDK Platform 6.0 (Marshmallow) API-Level 23</li>
+<li>Android NDK 21 or higher</li>
+<li>Android SDK Tools</li>
+<li>Android SDK Platform-Tools</li>
+<li>Java (JRE)</li>
+<li>Ninja</li>
+<li>Android Emulator (optional)</li>
+<li>Visual Studio 2019</li>
+</ul>
+<p><a href="https://ninja-build.org/">Ninja</a> is a build generator used by CMake and needs to be added to the <code>PATH</code> environment variable.<br>
+The easiest way to install the Android components is to download <a href="https://developer.android.com/studio">Android Studio</a> and then to select these from the <strong>SDK Manager</strong>.
+Once installed, the following environment variables need to be set:
+Change the version to reflect the one you are using.</p>
+<ul>
+<li><strong>ANDROID_NDK_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk\ndk-bundle</code></li>
+<li><strong>ANDROID_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk</code></li>
+<li><strong>JAVA_HOME</strong> needs to point to a java runtime. Android Studio has its own version so there is no need to download it separately: <code>C:\Program Files\Android\Android Studio\jre</code></li>
+</ul>
+<h2 id="visual-studio-open-folder">Visual Studio Open Folder</h2>
+<p>While you can manually run cmake to use the ninja generator, a more convenient solution is to use Visual Studio's open folder functionality. Go to <code>File&gt;Open&gt;Folder...</code> and select the root of the repository. The cmake settings used by this feature are stored inside the <code>CMakeSettings.json</code> file in the root folder (<code>CppProperties.json</code> contains additional information for VS). Note that if a different API level is used, the <strong>ANDROID_PLATFORM</strong> parameter in the <code>CMakeSettings.json</code> has to be changed for all configurations.</p>
+<p>If all environment variables were set correctly VS should automatically configure CMake. Once done, a drop down appears in the VS toolbar, allowing you to select the configuration, e.g. <code>Android-x86-Debug</code>. Once changed, VS will start to configure Cmake again for the new configuration.</p>
+<p>Next, select a build target, e.g. <code>libFoundationTest.so</code> which are the foundation unit tests. Note that you can only select applications, not all libraries here.</p>
+<h2 id="setting-up-an-emulator">Setting up an Emulator</h2>
+<p>Open Android Studio, go to <code>Configure&gt;AVD Manager</code> and select <code>Create Virtual Device</code>. Download the <strong>Pixel 2 x86</strong> image (or any other compatible one). Next, select <strong>Pie (API 28)</strong> (29 is broken as of writing). In <code>Advanced Settings</code> go to <code>Emulated Performance</code> and select <strong>Cold boot</strong> as the other options tend to hang and the only option then is to reset the image to factory defaults.</p>
+<h2 id="debugging-code">Debugging Code</h2>
+<p>Before debugging it should be ensured that you have a emulator setup or a device connected. There should only be every one device or emulator. Otherwise debugging is going to fail because its unkown which target to use.</p>
+<pre><code class="lang-cmd">$ adb devices
+List of devices attached
+ce11171b5298cc120c      device
+</code></pre>
+<p>If adb is not available in the command line <code>%ANDROID_HOME%\platform-tools</code> needs to be added to the <code>PATH</code> environment variable.</p>
+<p>To debug &amp; deploy select one of the launch targets which are prefixed with '&gt;'. These have been configured in the <code>launch.vs.json</code> file for debugging. By hitting the &quot;start debugging&quot; button in visual studio, as usual, the app will be installed on the connected device / emulator, started and the debugger will be attached. The app can then be debugged by using the Visual Studio UI the same way as for an windows based C++ project.</p>
+<h2 id="troubleshooting-debugging--command-line-debugging">Troubleshooting Debugging / Command Line Debugging</h2>
+<p>If debugging doesn't work or debugging from the command line is preferred, the command line debugger can be started. It gives detailed output.</p>
+<p>The debugging script is located in <code>Utilities\DbgAndroid.ps1</code></p>
+<p>The following parameters are present:</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PrintCmds</td>
+<td>Prints all commands that are run. Useful for debugging issues.</td>
+</tr>
+<tr>
+<td>packageName</td>
+<td>The name of the android package. For example &quot;com.ezengine.FoundationTest&quot;. All ezEngine package names start with &quot;com.ezengine.&quot;. If the package name is not known the .apk file can be opened with a zip tool. Then inspect the AndroidManifest.xml.</td>
+</tr>
+<tr>
+<td>originalSoDir</td>
+<td>The location where the shared object (.so) that contains all the binary code is located: Output\Lib\AndroidNinjaClang(Debug|RelWithDebInfo|Release)(arm32|arm64|x86|x64)</td>
+</tr>
+<tr>
+<td>arch</td>
+<td>The architecture of the app you want to debug usually &quot;arm&quot;,&quot;arm64&quot;,&quot;x86&quot; or &quot;x86_64&quot;</td>
+</tr>
+<tr>
+<td>apk</td>
+<td>The apk to install on the device before starting debugging. This parameter is optional. If not given no apk will be installed and it is assumed that the apk was already installed on the device</td>
+</tr>
+</tbody>
+</table>
+<p>For example command line debugging the FoundationTest:</p>
+<pre><code class="lang-cmd">Utilities\DbgAndroid.ps1 -packageName &quot;com.ezengine.FoundationTest&quot; -arch arm -apk &quot;Output\Lib\AndroidNinjaClangDebugArm32\FoundationTest.apk&quot; -originalSoDir &quot;Output\Lib\AndroidNinjaClangDebugArm32&quot;
+</code></pre>
+<h2 id="see-ezengine-log-output">See ezEngine log output</h2>
+<p>To see the ezEngine log output the following logcat filter can be used.</p>
+<pre><code class="lang-cmd">adb logcat ezEngine:D *:S
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="building-ez.html">Building ezEngine</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/build-android.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

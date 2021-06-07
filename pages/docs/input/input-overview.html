@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Input System | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Input System | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="input-system">Input System</h1>
+
+<p>All input devices, such as mouse, keyboard, controllers and other periphery are managed by the central <code>ezInputManager</code>. New devices are exposed to the system by implementing a custom <code>ezInputDevice</code>. For details, please see the <a href="../../getting-started/api-docs.html">API Docs</a> for those classes.</p>
+<h2 id="abstract-state">Abstract State</h2>
+<p>All input state is abstracted away. There are two layers of abstraction: <strong>input slots</strong> and <strong>input actions</strong>. <em>Slots</em> are the lower level hardware representation, <em>actions</em> are a higher level semantic representation of what the player can do. Actions are bound to one or multiple slots and if possible the game should allow the player to change those bindings.</p>
+<h3 id="input-slots">Input Slots</h3>
+<p>Input slots represent the state of actual device features, such as the buttons on a controller or the keys on a keyboard. Slots are already an abstraction, though. For instance for a mouse there are input slots for both the last relative movement, as well as the current absolute cursor position. Input devices are free to define arbitrary input slots, which may represent actual physical features or virtual functionality.</p>
+<p>Each input slot is a single <code>float</code> value that is typically in the range <code>[0; 1]</code> or <code>[0; inf]</code>. If a device feature has both a positive and a negative value, such as the X and Y axis of a stick, these are typically exposed as two input slots, one for the positive part of the axis, one for the negative part, and each uses an absolute value. This generalized concept makes it easier to map input slots to actions in various ways. For example, each stick on a controller is represented as four input slots (+X, -X, +Y, -Y). The same would be true for a DPad. That allows to map either the stick or the DPad to, e.g. steering a vehicle. The only difference is that the stick can report values between zero and one, whereas the DPad would only report values that are exactly zero or one.</p>
+<p>If you to allow the player to map input slots themselves, you can query <code>ezInputSlotFlags</code> for each slot, which describe how a slot can be used, to only let them map keys that make sense for a given action.</p>
+<p>In practice though, you rarely work directly with input slots. Typically the only situation where one works directly with input slots, is during the initial setup of the slot to action key binding.</p>
+<h3 id="input-actions">Input Actions</h3>
+<p>Input actions represent the features that the game exposes to the player. Actions are typically things like <em>walk forwards/backwards</em>, <em>jump</em>, <em>shoot</em> and so on. In actual game code you typically only work with input actions. Actions are bound to input slots, meaning one or multiple slots will trigger the action. This binding can be modified at any time. It is common to bind both keyboard/mouse slots to an action, as well as controller slots, such that a game can be played with either device.</p>
+<h3 id="input-sets">Input Sets</h3>
+<p>An <em>input set</em> represents a specific use case in a game. For example you might have a dedicated input set for being on foot and one for driving a vehicle. Each <em>input action</em> is associated with one <em>input set</em>. That means you can have an action for 'drive forwards' in one input set and an action for 'walk forwards' in another input set. Each input action may be triggered by any input slot, meaning that the same input slot, e.g. the <code>W</code> key, can trigger both 'walk forwards' and 'drive forwards' at the same time. The game would either query the one action or the other, depending on whether the player is currently on foot or in a vehicle.</p>
+<p>When you have multiple input sets, you can reuse the same names for actions (e.g. 'shoot') and still allow the player to bind the keys differently.</p>
+<p>In practice you may only need a single input set, and you shouldn't use more than three.</p>
+<h3 id="key-value">Key Value</h3>
+<p>Each input slot and therefore also each action has an <em>amount</em> how much it is being triggered. This is mostly of interest for analog signals such as from a stick, since buttons only report the values <code>0</code> and <code>1</code> with nothing in between. You can query these values, if an actions grants fine grained control over something.</p>
+<p>For many actions, though, you only require the <em>key state</em>.</p>
+<h3 id="key-state">Key State</h3>
+<p>Both slots and actions have a current <code>ezKeyState</code>, which describes whether the action is currently active or not, and whether the stated changed just now (between the last frame and this frame) or has been persisting. If you want to react only once to a button press, you would check for the state <code>ezKeyState::Pressed</code>, whereas if you want to do something as long as a button is held, you would react to <code>ezKeyState::Down</code>.</p>
+<p>The key state is derived from the <em>key value</em>. Once a button gets pressed, the key value jumps from <code>0</code> to <code>1</code>. As a consequence the <em>key state</em> transitions from <code>ezKeyState::Up</code> to <code>ezKeyState::Pressed</code> for this frame, and continues to <code>ezKeyState::Down</code> in the next frame. Once a button is depressed, the key value goes back to <code>0</code> and the key state transitions first to <code>ezKeyState::Released</code> for one frame, and finally back to <code>ezKeyState::Up</code> in the next frame.</p>
+<h2 id="accessing-input-state">Accessing Input State</h2>
+<p>Through <code>ezInputManager</code> all input state (both for slots and actions) is accessible by all code at all times. However, depending on the type of game you build, you may prefer to use the <a href="input-component.html">input component</a> to get a specific <em>input set</em> routed to a specific component through <code>ezMsgInputActionTriggered</code>.</p>
+<h3 id="direct-input-access">Direct Input Access</h3>
+<p>In some games the player doesn't have a physical presence, but is rather an outside observer. Examples would be an RTS or Tetris. Here you don't have a <a href="../physics/special/physx-character-controller.html">character controller</a> inside the world. Implementing the control scheme for such game logic through game objects and components can be tedious. Instead, it is much easier to write a custom <a href="../runtime/application/game-state.html">game state</a> and handle all the interaction, the camera movement and the general game logic there.</p>
+<p>In such a scenario, the game state would call <code>ezInputManager::GetInputActionState()</code> directly to retrieve the state of an action. This is also what the <code>ezFallbackGameState</code> uses to provide the most basic functionality (such as quitting when <code>ESC</code> is pressed).</p>
+<p>Therefore, if you write a custom game state to show a main menu, you would use this direct access to hook up the input system to the UI navigation.</p>
+<p>Direct access to <code>ezInputManager</code> is (currently) not possible through <a href="../custom-code/typescript/typescript-overview.html">TypeScript components</a>.</p>
+<h3 id="component-based-input-access">Component Based Input Access</h3>
+<p>In games where the player does have a physical presence, such as creatures or vehicles, and they may swap between those, it might be difficult to retrieve the input in a <a href="../runtime/application/game-state.html">game state</a> and then use it to control any one of the many vehicles.</p>
+<p>Instead, it is easier to have each vehicle fully handle its own state and therefore also retrieve the input locally. In this case each vehicle would know whether is currently 'possessed' by the player, and as long as it's not, it would just ignore all input (or generally disable receiving input notifications).</p>
+<p>If you write a <a href="../custom-code/cpp/custom-cpp-component.html">custom component</a> for your vehicle, that component could access the input state directly, during its update.</p>
+<p>Another option, though, is to use an <a href="input-component.html">input component</a>. All that this component does, is to check for state changes of input actions from a selected <em>input set</em> and send those state changes as <a href="../runtime/world/world-messaging.html">messages</a> to its sub-tree of game objects and components. Any component that handles this message type, can react to the input.</p>
+<p>This message based approach is how <a href="../custom-code/typescript/typescript-overview.html">TypeScript components</a> are able to handle input. Since the input messages are delivered to all child objects, you can have multiple scripts or other components which each react to different input. For example one script can forward movement related input to a <a href="../physics/special/physx-character-controller.html">character controller</a> and another script can handle input for weapons.</p>
+<h2 id="setting-up-input-sets">Setting Up Input Sets</h2>
+<p>Input sets can be configured either from code, or through the editor <a href="../projects/project-settings.html">project settings</a>. For details, see <a href="input-config.html">this page</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="input-config.html">Input Set Configuration</a></li>
+<li><a href="input-component.html">Input Component</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/input/input-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

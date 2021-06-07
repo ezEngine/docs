@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>How Particle Effects Work | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="How Particle Effects Work | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-particle-effects-work">How Particle Effects Work</h1>
+
+<p>This article gives a broad introduction how particle effects work. It is meant for people completely new to this topic. The information here is not very engine specific, as particle effects conceptually work the same in all engines.</p>
+<h2 id="particles">Particles</h2>
+<p>A <strong>particle</strong> is the smallest unit that a particle effect is made up of. Each particle has a small number of properties. Every particle has a position, a duration how long it lives, and typically also velocity (speed and direction), size and color. It may have additional properties, when needed, but those are the most common ones.</p>
+<p>In a particle effect we often have hundreds, sometimes even thousands of particles. Each particle is small, but by having hundreds of particles scattered throughout a volume, the end result is something that looks volumetric and behaves in complex patterns.</p>
+<p>There a multiple ways a single particle may get rendered. The most common method are so called <em>billboards</em>. A billboard is a quad which always rotates such that it faces the viewer. By using a texture with a circular image (for instance a flare) and making the quad transparent, the particle will appear volumetric (it appears circular from all directions), although it is just rendered with a simple polygon that is a flat plane. The reason this is the preferred method for rendering particles is that it is otherwise quite difficult to render volumetric, transparent objects with triangles (the only thing GPUs can render). Billboards are an effective illusion.
+Particles can represent other things, as well, for example small meshes, light sources or even sounds, but billboards are by far the most common.</p>
+<p>A large part of building a particle effect is about configuring how the different properties of all those particles evolve over time. For example, if you configure particles to have a lifespan of two seconds, rise up with medium speed, change their color from red to yellow and fade out shortly before they die, then you get an effect that looks a lot like fire.</p>
+<h2 id="particle-systems-and-effects">Particle Systems and Effects</h2>
+<p>You never work or configure individual particles. Instead, you mostly work with <strong>particle systems</strong>. A particle system represents a large amount of particles that all behave according to the same rules. A complete <strong>particle effect</strong> often consists of multiple particle systems, but always at least one. Each particle system defines different rules how the particles of that system behave.</p>
+<p>So in the fire example, you would have one particle system which is configured to spawn five particles every tenth of a second. All these particles are rendered as billboards, use the same flare texture, rise up, and change their color according to some fire gradient over their lifetime. This system represents the flames.
+To add smoke above the flame, you would add a second particle system, which may only spawn one particle every tenth of a second, use a smoke-like texture, rise up more slowly and start with a zero size at the beginning, slowly growing larger and larger, such that it becomes visible just above the flame.
+The flame particles and the smoke particles have no relation, whatsoever, but together they form a better illusion of fire.</p>
+<h2 id="evolving-properties">Evolving Properties</h2>
+<p>The code that updates a particle system mostly handles every property of the particles in isolation. And that is also how you need to think about each property, when you want to create an effect. The way a property, such as position, changes, is called the <em>behavior</em>. So for example, a particle may rise up slowly, or it may fall down according to gravity. Whether the position <em>behaves</em> one way or the other results in a drastically different effect. The same is true for all other properties. A particle may have a constant size or it may start small but grow over time. Its color may be just white, or some random blue-ish tone or it may change its color such that it appears to be burning up or fading out. Every property has its own rule, how it behaves. Put it all together and you can build an infinite amount of different effects.</p>
+<h2 id="building-blocks">Building Blocks</h2>
+<p>What the particle editor presents to you, are a number of building blocks that you choose and configure. For example, there are a few <em>behaviors</em> how the position of a particle should be calculated. There are a few building blocks for determining a particle's color, its size, and how to render it. Many behaviors are mutually exclusive. So if you already chose the &quot;gravity&quot; building block, which lets particles fall down, then you can't choose a second behavior that also affects particle positions. Most building blocks expose options for you to tweak. For example the &quot;gravity&quot; behavior allows you to tweak the strength of the applied gravity.</p>
+<p>To create an effect, you create multiple particle systems, and for each one you select and configure the desired behaviors.</p>
+<h2 id="spawning-and-lifetime">Spawning and Lifetime</h2>
+<p>We already mentioned that particles have a limited (usually very short) lifespan. Generally you can separate particle effects into two types: short <strong>one shot</strong> type of effects, and long lasting or even unending <strong>continuous</strong> effects. Explosions, water splashes and bullet impacts are all of the former type. They typically spawn all of their particles in one big burst. Those particles live for a second or so and then the effect is over. Fire, smoke and mist are of the latter type. Those effects typically spawn particles continuously. Each particle lives for several seconds and by the time it dies, many other particles have already been spawned to take its place. Continuous effects can be configured such that they are not endless, for example a smoke effect may stop by itself after 10 seconds. However, often it is more convenient to build such effects as endless effects, that never stop, and then use custom (script) code to make a particle effect stop spawning new particles at the desired time. This way the desired duration of an effect can be dynamically adjusted.</p>
+<p>Whether an effect acts one way or the other, is determined by the selected type of <strong>emitter</strong>. The emitter building block specifies how often and how many new particles get spawned. Emitters can be configured to be smooth or erratic, doing short bursts or long intervals. Most of the time one uses one of two emitter types, but there are also emitters that only spawn particles when some event happens, which can be used for even more complex effects.</p>
+<p>How long a particle will live is decided randomly when it gets spawned (within a range). How much time a particle has left to live, is often used to look up other properties. For example the color of a particle often depends on its lifetime, such that particles will fade out towards their end.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="particle-effects-overview.html">Particle Effects</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/how-particle-effects-work.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

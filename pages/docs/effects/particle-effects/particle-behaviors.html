@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Particle Behaviors | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Particle Behaviors | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="particle-behaviors">Particle Behaviors</h1>
+
+<p>This page lists and describes all <em>particle behaviors</em>.</p>
+<h2 id="bounds-behavior">Bounds Behavior</h2>
+<p>This behavior can be used for atmospheric effects that should be centered around the player, such as rain, snow or mist. The bounds behavior specifies an area in which particles are allowed. When the player moves, and thus the particle effect is moved to a new location, particles would usually stay behind although not being needed anymore. The bounds behavior can make sure to delete those particles. For some effects it is also vital to fill up the new space quickly. This can be achieved with a very high rate of spawning new particles, though this is often not feasible for atmospheric effects. Instead, the bounds behavior can also just teleport the particles that were left behind, to the new area.</p>
+<p><strong>PositionOffset, Extents:</strong> These values define the size and position of the box, relative to the origin of the particle system. With a position offset of <code>(0, 0, 0)</code>, the box will be centered around the system's origin.</p>
+<p><strong>OutOfBoundsMode:</strong> Defines what happens for particles that leave the bounding area.</p>
+<ul>
+<li><strong>Die:</strong> Particles outside the area will be killed right away.</li>
+<li><strong>Teleport:</strong> Particles leaving one side of the bounding box will be teleported to the other end of the box. This allows the effect to keep a constant density of particles and is therefore useful for effects that should happen around a player, without being simulated completely in the local space of the player, which would prevent things like using the <a href="#raycast-behavior">raycast behavior</a>. Instead, particles can simulate in global space, and only be teleported on demand. Be aware that this teleportation can still break the effect in various ways, because only the <em>position</em> and <em>last position</em> of each particle is relocated. Behaviors and <a href="particle-renderers.html">particle renderers</a> that use additional positional data may not work well with this. For example, the <a href="particle-renderers.html#trail-renderer">trail renderer's</a> position history is not relocated and therefore trails will suddenly stretch through the entire bounding area after a relocation.
+Similarly, an effect that uses the <a href="#raycast-behavior">raycast behavior</a> to prevent tunneling through geometry, may be able to tunnel through walls, if it is being relocated from an unobstructed area to a position where it should not have been able to get to without the teleportation.</li>
+</ul>
+<h2 id="color-gradient-behavior">Color Gradient Behavior</h2>
+<p>This behavior changes a particle's color during the update step. A <a href="../../animation/common/color-gradients.html">color gradient</a> is used as the color source, and a mode specifies how to look up the color from the gradient.</p>
+<p><strong>Gradient:</strong> The <a href="../../animation/common/color-gradients.html">color gradient</a> to use as the source.</p>
+<p><strong>TintColor:</strong> An additional color to be multiplied into the gradient, for tweaking the final result.</p>
+<p><strong>ColorFrom:</strong> This mode specifies how the color is looked up from the gradient:</p>
+<ul>
+<li><code>Age</code> - In this mode the particle's color depends on its age and remaining lifetime. That means it starts out with the leftmost color from the gradient and transitions towards the rightmost color. Optimally, the color gradient should include alpha values, such that the particles can fade out towards the end.</li>
+<li><code>Speed</code> - In this mode the particle's color is determined from its current speed. Slow particles are assigned colors from the left side of the gradient, fast particles that from the right side. This mode only makes sense when either every particle gets a random speed assigned, or when its speed is able to change over time, due to friction, gravity or other factors.</li>
+</ul>
+<p><strong>MaxSpeed:</strong> When using <em>ColorFrom = Speed</em>, this value specifies the maximum expected speed of any particle. That speed is then mapped to the rightmost side of the color gradient.</p>
+<p><video src="media/color-gradient.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="fade-out-behavior">Fade Out Behavior</h2>
+<p>This behavior changes a particle's alpha value to gradually fade out over its lifetime. This behavior can also be achieved using a <a href="#color-gradient-behavior">color gradient behavior</a>, however, the fade out behavior is easier to set up and more efficient at runtime.</p>
+<p><strong>StartAlpha:</strong> The alpha value to begin with when the particle has just spawned.</p>
+<p><strong>Exponent:</strong> How quickly to fade the alpha value from <code>StartAlpha</code> towards <code>0</code> over the particle's lifespan. An exponent of <code>1</code> results in a linear fade. An exponent of <code>2</code> will make it fade out much earlier, a value of <code>0.5</code> will make it fade out very slowly at first and then quite abruptly at the end.</p>
+<h2 id="flies-behavior">Flies Behavior</h2>
+<p>This behavior moves particles around the emitter center in erratic patterns, similar to a swarm of flies circling something.</p>
+<p><strong>FlySpeed:</strong> The speed with which the particles move.</p>
+<p><strong>PathLength:</strong> The distance that the particles move into some direction before making another turn. The shorter this is, the more often the particles can change direction and thus the smoother the motion becomes. They will also clump up more and stay within the <em>MaxEmitterDistance</em>, if the particles can correct their course more often. With a long <em>PathLength</em> they may spread out more.</p>
+<p><strong>MaxEmitterDistance:</strong> The maximum distance that the particles will fly away from the effect's center before turning back. If they travel further, they will always steer back towards the emitter. How quickly that is possible though, depends on <em>PathLength</em> and <em>MaxSteeringAngle</em>.</p>
+<p><strong>MaxSteeringAngle:</strong> Every time a particle has traveled a distance of <em>PathLength</em>, it will make a random turn. This value specifies how large that turn may be. A small value results in very slow and wide turns, whereas a large value results in quick and erratic behavior.</p>
+<p><video src="media/flies.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="gravity-behavior">Gravity Behavior</h2>
+<p>This behavior lets particles fall downwards.</p>
+<p><strong>GravityFactor:</strong> Scales gravity before applying it to the particles' velocity.</p>
+<p><video src="media/gravity.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="pull-along-behavior">Pull Along Behavior</h2>
+<p>Typically once a particle has been spawned, its position is unaffected by changes to the particle effect position. That means when an effect moves around quickly, it may leave a trail of particles behind it, but that trail will be very choppy, unless you have an extremely high particle spawn count and frequency. Thus making something like a rocket exhaust look convincing for a fast moving object can be difficult.</p>
+<p>The <em>pull along behavior</em> helps to solve this problem by keeping track of any position changes of the particle effect node and applying a fraction of those movements to all the particles' positions as well. This way, if the effect moves a meter, all particles may move 0.8 meters as well. One typically only applies a fraction, such that when the effect moves fast, the particles will be stretched long behind it and not move in perfect unison with the effect node, yielding a more convincing effect.</p>
+<p><strong>Strength:</strong> How much of the effect node's movement should be carried over to the particle positions.</p>
+<p>The video below shows two effects beside each other. The left one does not use the pull along behavior, the right one does. As can be seen, the particles on the right stay closer to the moving emitter position.</p>
+<p><video src="media/pull-along-behavior.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="raycast-behavior">Raycast Behavior</h2>
+<p>This behavior uses raycasts to detect collisions along the trajectory of a particle. If a particle would collide with geometry, the behavior can either adjust the its velocity, or terminate the particle early, potentially raising an <a href="particle-effects-overview.html#events-and-event-reactions">event</a>, which could in turn lead to other effects or being spawned.</p>
+<p><strong>Reaction:</strong> Specifies how the particle should react to a collision.</p>
+<ul>
+<li><em>Bounce:</em> The particle's velocity will be adjusted such that it bounces off the hit surface.</li>
+<li><em>Die:</em> The particle will be killed early.</li>
+<li><em>Stop:</em> The particle's current velocity will be set to zero, thus stopping it in its tracks. If other position affecting behaviors are active, for example the <a href="#gravity-behavior">gravity behavior</a>, it will start moving again, but without its previous momentum.</li>
+</ul>
+<p><strong>BounceFactor:</strong> How much of the current speed should be preserved after the bounce.</p>
+<p><strong>CollisionLayer:</strong> The physics collision layer to use. Affects with which geometry the particle will collide and which it will pass through.</p>
+<p><strong>OnCollideEvent:</strong> An optional name of an <a href="particle-effects-overview.html#events-and-event-reactions">event</a> to raise. If set, other effects or prefabs can be spawned at the location of impact.</p>
+<p><video src="media/raycast.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="size-curve-behavior">Size Curve Behavior</h2>
+<p>This behavior changes a particle's size over the course of its lifetime.</p>
+<p><strong>SizeCurve:</strong> A <a href="../../animation/common/curves.html">curve</a> which is used to look up the size of the particle. The current fraction of the particle's lifespan is used for the lookup along the X axis. The absolute X and Y values in the curve don't matter, the curve is normalized to <code>[0; 1]</code> range.</p>
+<p><strong>BaseSize:</strong> The particles will always have at least this size, the rest is added on top.</p>
+<p><strong>CurveScale:</strong> Specifies what value the largest value in the curve maps to. That means at the peak of a curve, the particle's size will be <code>BaseSize + CurveScale</code>.</p>
+<p><video src="media/size-curve.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="velocity-behavior">Velocity Behavior</h2>
+<p>This behavior affects particle position and velocity. It can be used to gradually dampen the starting velocity through 'friction' and it may apply a constant upwards movement. If a scene contains <a href="../wind.html">wind (TODO)</a>, this behavior can also apply a fraction of the wind force to the particle's position.</p>
+<p><strong>RiseSpeed:</strong> If non-zero, the particles will move upwards with at least this constant speed. This is added to the particle position independent from its velocity, so if the current velocity points downward, the two may cancel each other out.</p>
+<p><strong>Friction:</strong> This value imitates air friction. If it is non-zero, the particle's velocity will be dampened over time. The value's range is <code>[0; infinity]</code>. To achieve an effect as in the animation below, the particles must have a very large starting velocity (here: 10). The <em>friction</em> here is set to 6. This way the particles will appear to be quite fast, but will also get slowed down almost to a standstill within a fraction of a second.</p>
+<p><strong>WindInfluence:</strong> If the scene has wind, this value specifies how much the wind should be able to push the particles around.</p>
+<p><video src="media/velocity.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="particle-effects-overview.html">Particle Effects</a></li>
+<li><a href="particle-initializers.html">Particle Initializers</a></li>
+<li><a href="particle-renderers.html">Particle Renderers</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

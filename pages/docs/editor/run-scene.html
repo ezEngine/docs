@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Running a Scene | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Running a Scene | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="running-a-scene">Running a Scene</h1>
+
+<p>When you have a scene open in the editor, there are multiple ways how you can test it.</p>
+<h2 id="simulate-mode">Simulate Mode</h2>
+<p>The <em>Simulate Mode</em> is activated with the <em>Play</em> button in the toolbar or by pressing the <code>F5</code> key. It is deactivated with the <em>Stop</em> button or by pressing <code>Shift+F5</code>.</p>
+<p><img src="media/toolbar-simulate-buttons.png" alt="Toolbar buttons for scene simulation"></p>
+<p>This enables the simulation of all game objects inside the editor. You can still select objects, modify their properties and move and rotate most of them. However, since at that point the simulation actively modifies the state of objects, some things will not work. For example, physically simulated objects and other objects that actively modify their position may not react to transform changes as expected. Similarly, modifying properties may not have an effect, if the components in question don't reevaluate those properties during simulation.</p>
+<p>Some objects will also be spawned by the simulation, and therefore are unknown to the editor side. Those objects cannot be picked or modified.</p>
+<p>In general, modifying the scene during simulation will work for some objects, and won't work for others. The only way to find out, is to try it. Once the simulation is stopped, though, all modifications will be applied as expected, to the reset scene.</p>
+<p>This mode is useful to quickly check how some object behaves. It can also be used to simulate physical objects (e.g. boxes falling down) and then to save that simulated transform to the scene, by selecting them and pressing <code>K</code> (or <em>Scene &gt; Utilities &gt; Keep Simulation Changes</em>).</p>
+<h2 id="play-the-game-mode">Play the Game Mode</h2>
+<p>The <em>Play-the-Game Mode</em> (PTG) is activated with the <em>Controller</em> button in the toolbar or by pressing <code>CTRL+F5</code>. It is deactivated with the <em>Stop</em> button in the editor toolbar, by pressing <code>ESC</code> while the PTG window has focus.</p>
+<p><img src="media/toolbar-simulate-buttons.png" alt="Toolbar buttons for scene simulation"></p>
+<p>This enables the simulation, similar to the <em>Simulate Mode</em>. However, it additionally activates the <a href="../runtime/application/game-state.html">Game State</a>. Therefore this mode spawns a separate window and also routes all <a href="../input/input-overview.html">input</a> to the running game. If the scene contains a <a href="../gameplay/player-start-point.html">Player Start Point component</a> the game state may spawn the referenced prefab and thus enable you to properly play the game.</p>
+<p>You can <code>Alt+Tab</code> out of the PTG window, back to the editor, and modify the scene the same way as in the simulate mode, with the same restrictions.</p>
+<p>This mode is useful to quickly run the game with full input. Note that, because it is running from the editor process, its framerate is limited. For maximum performance you need to <a href="#export-and-run">Export and Run</a> the scene.</p>
+<h3 id="play-from-here">Play From Here</h3>
+<p>If the scene contains a <a href="../gameplay/player-start-point.html">Player Start Point component</a>, then you can right click in the scene and select <em>Play From Here</em>. This starts <em>Play-the-Game</em> and spawns the player prefab at the desired position. This makes it quick and easy to try out a feature in the scene, without having to move the player start position.</p>
+<h2 id="export-and-run">Export and Run</h2>
+<p>Another way to test the scene is to export it to a binary format and run it in the <a href="../tools/player.html">ezPlayer</a>. You do so using <em>Scene &gt; Export and Run...</em> or by pressing <code>CTRL+E</code>.</p>
+<p><img src="media/export-and-run.png" alt="Export and Run"></p>
+<p>If you keep <code>Transform all Assets</code> checked, all <a href="../assets/assets-overview.html">assets</a> in the project will be <em>transformed</em> first, making sure they are up-to-date. You can uncheck this, to speed up the process, if you know that all assets that you require are up-to-date already.</p>
+<p>Both <em>Simulate Mode</em> and <em>Play-the-Game Mode</em> run inside the editor process. Compared to a game running in a stand-alone process this has two drawbacks:</p>
+<ol>
+<li>The editor process limits the maximum framerate, and has some performance overhead of its own, so this is not useful for performance testing.</li>
+<li>All component properties are initialized from the values as the editor has saved them. This is not the (optimized) binary serialization that is used for a final game. Since the binary serialization code has to be written manually, it can happen that properties that are exposed in the editor and work fine there, have been forgotten to be included in the binary serialization and therefore have no effect in the final game. Therefore, always make sure to test <a href="../runtime/world/components.html">custom components</a> properly with exported scenes.</li>
+</ol>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../tools/player.html">ezPlayer</a></li>
+<li><a href="../runtime/application/game-state.html">Game States</a></li>
+<li><a href="../gameplay/player-start-point.html">Player Start Point</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/run-scene.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

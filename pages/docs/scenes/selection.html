@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Selecting Objects | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Selecting Objects | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="selecting-objects">Selecting Objects</h1>
+
+<p>This page describes everything related to object selection.</p>
+<h2 id="common">Common</h2>
+<ul>
+<li>Pressing <code>ESC</code> will clear the selection.</li>
+</ul>
+<h2 id="viewport---single-selection">Viewport - Single Selection</h2>
+<ul>
+<li><em>Left-click</em> on an object to select it.</li>
+<li>Hold <code>CTRL</code> to add or remove objects from the selection.</li>
+<li>Hold <code>CTRL</code> and <em>middle-click</em> an object to open its material document. This does not work for <a href="../prefabs/prefabs-overview.html">prefab instances</a>.</li>
+</ul>
+<h2 id="viewport---marquee-selection">Viewport - Marquee Selection</h2>
+<ul>
+<li>Hold <code>SPACE</code> to enable marquee selection</li>
+<li>Then <em>left-click</em> and drag to <em>add</em> items to the selection</li>
+<li>Additionally hold <code>CTRL</code> before the left-click to instead <em>remove</em> items from the selection</li>
+<li>Press <code>ESC</code> to cancel the marquee selection</li>
+</ul>
+<h2 id="scene-tree">Scene Tree</h2>
+<p>You can filter the scene tree with the search box at the top:</p>
+<p><img src="media/scene-tree-filter.png" alt="Scene Tree Filter"></p>
+<h2 id="selection-pivot">Selection Pivot</h2>
+<p>If you select multiple objects, then the object that you add to your selection <em>last</em> determines the position of <a href="gizmos.html">editing gizmos</a> and thus the pivot point for some operations. For example, you can rotate a group of objects around a specific point, by having a (dummy) object at that point and adding it to your selection last.</p>
+<p>To change which object is your pivot, just hold <code>CTRL</code> and click an object to remove it from you selection, then click it <em>again</em> to re-add it to the selection. This way it will become the last object in the selection and therefore the new pivot.</p>
+<h2 id="selection-outline">Selection Outline</h2>
+<p>Selected objects are highlighted with a yellow outline, which is visible through walls. This outline can be toggled with the <code>S</code> key or the respective toolbar button.</p>
+<p><img src="media/selection-outline.jpg" alt="Selection Outline"></p>
+<h2 id="shape-icons">Shape Icons</h2>
+<p>Some component types use a <em>shape icon</em> as their graphical representation. This makes it possible to select these types of objects in the viewport. Shape icons can be toggle with the <code>I</code> key.</p>
+<p><img src="media/visualizer-shapeicon.jpg" alt="Shape Icon"></p>
+<h2 id="selection-bounding-box">Selection Bounding Box</h2>
+<p>When <a href="gizmos.html#visualizers">visualizers</a> are enabled, the editor display a yellow bounding box around each selected object. Visualizers can be toggled with the <code>V</code> key.</p>
+<h2 id="select-transparent">Select Transparent</h2>
+<p>Press the <code>U</code> key to toggle whether transparent objects should be selectable. Disabling this can be very useful if you have large objects with special shaders, for instance to create atmospheric effects like volumetric lighting. Such shapes can prevent you from selecting anything else, even though they are mostly invisible.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="gizmos.html">Editing Gizmos</a></li>
+<li><a href="greyboxing.html">Greyboxing</a></li>
+<li><a href="scene-editing.html">Scene Editing</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/scenes/selection.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

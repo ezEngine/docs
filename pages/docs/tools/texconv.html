@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ezTexConv | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ezTexConv | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="eztexconv">ezTexConv</h1>
+
+<p>TexConv is a command-line tool to process textures from typical input formats like PNG, TGA, JPEG and DDS into optimized formats for runtime consumption.
+The most common scenario is to convert a single input file <code>A.xxx</code> into an optimized format <code>B.yyy</code>. However, the tool has many additional options for advanced uses.</p>
+<h2 id="command-line-help">Command-line Help</h2>
+<p>Run TexConv.exe with the <code>--help</code> parameter to list all available options. Additionally, TexConv prints the used options when it is executed, to help understand what it is doing. Consult this output for details.</p>
+<h2 id="general-usage">General Usage</h2>
+<p>TexConv always produces <strong>exactly one output</strong> file. It may use <strong>multiple input</strong> files to assemble the output from. For the assembly, it also needs a <strong>channel mapping</strong>, which tells it which channel (<em>Red, Green, Blue</em> or <em>Alpha</em>) to take from which input file and move it into which channel of the output image.</p>
+<p>The most straight forward command line is this:</p>
+<pre><code class="lang-cmd">TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
+</code></pre>
+<ul>
+<li><code>-out</code> specifies the output file and format</li>
+<li><code>-in0</code> specifies the first input image</li>
+<li><code>-rgba</code> tells it that the output image should use all four channels and that they should be taken 1:1 from the input image</li>
+</ul>
+<h2 id="multiple-input-files">Multiple Input Files</h2>
+<p>To assemble the output from multiple input files, specify each input file using the <code>-in</code> option with an increasing number:</p>
+<pre><code class="lang-cmd">-in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
+</code></pre>
+<p>When assembling a cubemap from 2D textures, one can also use <code>-right</code>, <code>-left</code>, <code>-top</code>, <code>-bottom</code>, <code>-front</code>, <code>-back</code> or <code>-px</code>, <code>-nx</code>, <code>-py</code>, <code>-ny</code>, <code>-pz</code>, <code>-nz</code>.</p>
+<p>To map these inputs to the output file, a proper channel mapping is needed.</p>
+<h2 id="channel-mappings">Channel Mappings</h2>
+<p>The channel-mapping options specify from which input to fill the given output channels. You can specify the input for each channel individually like this:</p>
+<pre><code class="lang-cmd">-r in0.b -g in0.g -b in0.r -a in1.r
+</code></pre>
+<p>Here the RGB channels of the output would be filled using the first input image, but red and blue will get swapped. The alpha channel of the output would be filled with the values from the red channel of the second input image.</p>
+<p>Specifying the mapping for each channel separately gives the greatest flexibility. For convenience the same can be written using &quot;swizzling&quot; operators:</p>
+<pre><code class="lang-cmd">-rgb in0.bgr -a in1.r
+</code></pre>
+<h3 id="output-channels">Output Channels</h3>
+<p>The following channel-mapping options are available:</p>
+<ul>
+<li><code>-r</code>, <code>-g</code>, <code>-b</code>, <code>-a</code> : These specify single channel assignments.</li>
+<li><code>-rg</code> : Specify the red and green channel assignments.</li>
+<li><code>-rgb</code> : Specify the red, green and blue channel assignments.</li>
+<li><code>-rgba</code> : Specifies all four channel assignments.</li>
+</ul>
+<p>Mentioning only the R, RG or RGB channel, instructs TexConv to create an output file with only 1, 2 or 3 channels respectively.</p>
+<h3 id="input-swizzling">Input Swizzling</h3>
+<p>When stating which input texture should fill which output channel, one can swizzle the input:</p>
+<ul>
+<li><code>-rgba in0</code> is equivalent to <code>-rgba in0.rgba</code></li>
+<li><code>-rgba in0.bgra</code> will swizzle the input channels</li>
+<li><code>-rgb in0.rrr</code> will duplicate the red channel into all channels</li>
+</ul>
+<p>One may also fill channels with either black or white:</p>
+<ul>
+<li><code>-rgb in0 -a white</code> will create a 4 channel output texture but set alpha to fully opaque</li>
+<li><code>-rg black -b white</code> will create an entirely blue texture</li>
+</ul>
+<h2 id="common-options">Common Options</h2>
+<p>The most interesting options are listed below. More options are listed by <code>TexConv --help</code>.</p>
+<h3 id="output-type">Output Type</h3>
+<ul>
+<li><code>-type 2D</code> : The output will be a regular 2D image.</li>
+<li><code>-type Cubemap</code> : The output will be a cubemap image. Only supported for DDS output files. When this is specified, one can assemble the cubemap from 6 regular 2D input images.</li>
+</ul>
+<h3 id="image-compression">Image Compression</h3>
+<ul>
+<li><code>-compression none</code> : The output image will be uncompressed.</li>
+<li><code>-compression medium</code> : If supported, the output image will use compression without sacrificing too much quality.</li>
+<li><code>-compression high</code> : If supported, the output image will use compression and sacrifice quality in favor of a smaller file.</li>
+</ul>
+<h3 id="mipmaps">Mipmaps</h3>
+<p>By default, TexConv generates mipmaps when the output format supports it.</p>
+<ul>
+<li><code>-mipmaps none</code> : Mipmaps will not be generated.</li>
+<li><code>-mipmaps Linear</code> : If supported, mipmaps will be generated using a box filter.</li>
+</ul>
+<h3 id="usage-srgb--gamma-correction">Usage (sRGB / Gamma Correction)</h3>
+<p>The <code>-usage</code> option specifies the purpose of the output and thus tells TexConv whether to apply gamma correction to the input and output files. The usage only affects the RGB channels. The alpha channel is always considered to contain 'linear' values. If usage is not specified, the 'auto' mode will try to detect the usage from the format and file-name of the first input image. For instance, single and dual channel output formats are always linear. Check the output to see what decision TexConv made.</p>
+<ul>
+<li><p><code>-usage Linear</code> : The output image contains values that do not represent colors. This is typically the case for metallic and roughness textures, as well as all kinds of masks.</p>
+</li>
+<li><p><code>-usage Color</code> : The output image represents color, such as diffuse/albedo maps. The sRGB flag will be set in the output DDS header.</p>
+</li>
+<li><p><code>-usage HDR</code> : The output file should use more than 8 bits per pixel for encoding. Consequently all values are stored in linear space. For HDR textures it does not matter whether the data represents color or other data.</p>
+</li>
+<li><p><code>-usage NormalMap</code> : The output image represents a tangent-space normal map. Values will be normalized and mipmap computation will be optimized slightly.</p>
+</li>
+<li><p><code>-usage NormalMap_Inverted</code> : The output is a tangent-space normal map with Y pointing in the opposite direction than the input.</p>
+</li>
+</ul>
+<h3 id="image-rescaling">Image Rescaling</h3>
+<ul>
+<li><code>-minRes 64</code> : Specifies the minimum resolution of the output. If the input image is smaller, it will get upscaled.</li>
+<li><code>-maxRes 1024</code> : Specifies the maximum resolution of the output. If the input image is larger, it will get downscaled.</li>
+<li><code>-downscale 1</code> : If this is larger than 0, the input images will be halved in resolution N times. Use this to apply an overall quality reduction.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<h3 id="convert-a-color-texture">Convert a Color Texture</h3>
+<pre><code class="lang-cmd">TexConv.exe -out D:/diffuse.dds -in0 D:/diffuse.jpg -rgba in0 -usage color
+</code></pre>
+<h3 id="convert-a-normal-map">Convert a Normal Map</h3>
+<pre><code class="lang-cmd">TexConv.exe -out D:/normalmap.dds -in0 D:/normalmap.png -rgb in0 -usage normalmap
+</code></pre>
+<h3 id="create-an-hdr-cubemap">Create an HDR Cubemap</h3>
+<pre><code class="lang-cmd">TexConv.exe -out &quot;D:/skybox.dds&quot; -in0 &quot;D:/skymap.hdr&quot; -rgba in0 -type cubemap -usage hdr
+</code></pre>
+<p>A great source for HDR cubemaps is <a href="https://hdrihaven.com/hdris/">hdrihaven.com</a>.</p>
+<h3 id="bake-multiple-images-into-one">Bake Multiple Images into One</h3>
+<pre><code class="lang-cmd">TexConv.exe -out &quot;D:/Baked.dds&quot; -in0 &quot;D:/metal.tga&quot; -in1 &quot;D:/roughness.png&quot; -in2 &quot;D:/DiffuseAlpha.dds&quot; -r in1.r -g in0.r -b black -a in2.a -usage linear
+</code></pre>
+<h3 id="extract-a-single-channel">Extract a Single Channel</h3>
+<pre><code class="lang-cmd">TexConv.exe -out D:/alpha-mask-only.dds -in0 D:/DiffuseAlpha.dds -r in0.a
+</code></pre>
+<h2 id="see-also">See Also</h2>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/texconv.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

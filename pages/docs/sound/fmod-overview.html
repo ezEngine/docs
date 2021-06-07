@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fmod Integration | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fmod Integration | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fmod-integration">Fmod Integration</h1>
+
+<p><a href="https://www.fmod.com">Fmod</a> is a world class sound engine used by many AAA games. <em>Fmod Studio</em> is an incredibly powerful tool to manage your sounds.</p>
+<p>ezEngine integrates Fmod with a plugin. To enable Fmod support, follow these steps:</p>
+<ol>
+<li>Create a free account at <a href="https://www.fmod.com">Fmod.com</a> and sign in</li>
+<li>Download and install the <em>Fmod Studio API SDK for Windows</em> (needed to compile the Fmod plugin)</li>
+<li>Download and install <em>Fmod Studio</em> (only needed by people who want to edit Fmod projects)</li>
+<li>Enable Fmod in the <a href="../build/cmake-config.html">CMake configuration</a></li>
+<li>Compile the engine</li>
+</ol>
+<h2 id="using-fmod-studio">Using Fmod Studio</h2>
+<p>Fmod Studio has a vast number of features. Describing how it works is out of scope for this documentation. Instead have a look at these resources:</p>
+<ul>
+<li><a href="https://www.fmod.com/learn">Fmod Learning Resources</a></li>
+<li><a href="https://www.fmod.com/resources/documentation-studio">Fmod Studio Documentation</a></li>
+</ul>
+<p>There is a set of tutorials about Fmod in Unreal, which is a very good introduction. There are also several videos about Fmod in Unity. Since most of the work is done in Fmod Studio anyway, most things that you see in those videos apply equally to EZ.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=K64sGI9cKEg">FMOD Studio for UE4 Video 1 - Getting Started</a></li>
+<li><a href="https://www.youtube.com/watch?v=KkQ89ZXv5sQ">Audio for Unity 5: Viking Village (1/5) - Getting Started</a></li>
+</ul>
+<h2 id="fmod-project-settings">Fmod Project Settings</h2>
+<p>For project wide Fmod settings, go to <em>Editor &gt; Project Settings &gt; Fmod Project Settings...</em></p>
+<p><img src="media/fmod-settings.png" alt="Fmod settings"></p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Although you can configure profiles for multiple platforms, at the moment only the <strong>Desktop</strong> profile will be used.</p>
+</blockquote>
+<p>The most important thing to configure here is to choose the <strong>Masterbank</strong> file. For what a master sound bank is, please refer to the Fmod documentation. If you haven't created any sound banks yet, you should start by creating an Fmod Studio project and come back when you have exported a master bank.</p>
+<p>The other options are best left at their default values. See the Fmod documentation for details.</p>
+<p>Once you have these things set up, you can create your first <a href="fmod-soundbank-asset.html">sound bank asset</a>, through which you get Fmod sound data into the engine.</p>
+<h2 id="sample-data">Sample Data</h2>
+<p>A sample Fmod Studio project is available under <em>Data/Content/Sound</em>, including pre-exported sound banks. These are also used by the sample projects, such as the <a href="../../samples/testing-chambers.html">Testing Chambers</a>.</p>
+<h2 id="scene-editing-settings">Scene Editing Settings</h2>
+<p>The Fmod editor plugin adds UI elements to <em>mute</em> sound entirely and to adjust the <em>master volume</em>:</p>
+<p><img src="media/sound-ui.jpg" alt="Fmod UI"></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="sound-overview.html">Sound</a></li>
+<li><a href="https://www.fmod.com">www.fmod.com</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

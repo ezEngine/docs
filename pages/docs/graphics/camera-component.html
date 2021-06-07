@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Camera Component | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Camera Component | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="camera-component">Camera Component</h1>
+
+<p>The <em>camera component</em> is used to tell the renderer from which position and with which settings to render the scene. Apart from the component that acts as the <em>main camera</em>, there can be additional cameras in active use for <a href="../effects/render-to-texture.html">render to texture (TODO)</a> effects. Additionally, camera components can be used in the editor as 'bookmarks' to be able to quickly jump to specific positions in a level.</p>
+<p><img src="media/camera-component.jpg" alt="Camera"></p>
+<p>When an object with a camera component is selected, the editor shows a preview of what the camera sees in the top left corner.</p>
+<h2 id="main-camera">Main Camera</h2>
+<p>The camera settings that are used for rendering the scene are fully under control of the <a href="../runtime/application/game-state.html">game state</a>. Every frame it decides where to place the main camera and with which settings. At this point, no camera component is involved, your game may control the main camera without having any camera component in the scene.</p>
+<p>However, the <em>default behavior</em> of the game state (see <code>ezFallbackGameState</code>), is to check the scene for a camera component that has its <code>UsageHint</code> set to <code>Main View</code>. Unless you write a custom game state and override this behavior, the game state will simply copy all the camera settings from the first camera component that it can find with this usage hint.</p>
+<p>Consequently, you can control the main camera, by placing a component and setting its <code>UsageHint</code> to <code>Main View</code>.</p>
+<p>If you want a different camera component to take over from the current one, you need to change the usage hint on those camera components.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>The <code>ezFallbackGameState</code> is mostly for development and therefore has other convenience features for cameras. For example, you can switch through cameras in the scene using <code>Page Up</code> and <code>Page Down</code>. If you release a game, you should make sure to disable this behavior.</p>
+</blockquote>
+<h2 id="other-cameras">Other Cameras</h2>
+<p>A scene can contain any number of camera components. Unless they are referenced by other systems, they won't do anything and will have no performance impact.</p>
+<h3 id="camera-bookmarks">Camera Bookmarks</h3>
+<p>Camera components can be placed as 'bookmarks', such that people working on a scene can quickly move the editor camera to areas of interest. <a href="../scenes/editor-camera.html#level-cameras">This chapter</a> describes how to do so.</p>
+<h2 id="includeexclude-tags">Include/Exclude Tags</h2>
+<p>By default a camera renders all objects in the scene. Sometimes it can be desirable, though, for a camera to render only specific objects, or to ignore those. For example you may have descriptive labels attached to some objects, which the player can display on demand.</p>
+<p>Using the inclusion and exclusion <a href="../projects/tags.html">tags</a> on the camera, you can control which objects are going to be considered for rendering from this camera view.</p>
+<ul>
+<li>If <em>any</em> inclusion tag is set, <strong>only objects with any of these tags</strong> are rendered.</li>
+<li>If an exclusion tag is set, <strong>no object with any of these tags</strong> is rendered.</li>
+</ul>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Don't forget that <a href="../projects/tags.html">tags</a> <strong>are not inherited</strong>. You can't hide an object by setting a tag on its parent node.</p>
+</blockquote>
+<p>So for the example with the object labels above, you would assign a 'label' tag to those objects and on your camera you would set 'label' as an exclusion tag. This way those objects are not rendered. When the player wants to see the labels, you would simply remove the exclusion tag from the camera, to make them appear.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Especially when using <em>include tags</em>, be aware that not only meshes, but also light sources (and everything else that's part of the rendering process) are affected by this. If you forget to set the necessary include tags on your light sources, the output will stay dark.</p>
+</blockquote>
+<h2 id="render-to-texture">Render to Texture</h2>
+<p>Camera components can be used to render their view to a texture, which can then be referenced by a <a href="../materials/materials-overview.html">material</a> and displayed on any <a href="meshes/meshes-overview.html">mesh</a>.</p>
+<p>To enable this mode, the <code>UsageHint</code> has to be set to <code>Render to Texture</code>. You also need to select a <code>CameraRenderPipeline</code>. The render pipeline defines how the scene is rendered and which rendering effects are applied. You need to configure which <a href="render-pipeline-overview.html">render pipelines (TODO)</a> are available to the cameras in the <a href="../assets/asset-profiles.html">asset profiles (TODO)</a>.</p>
+<p>The <code>RenderTargetOffset</code> and <code>RenderTargetSize</code> allow you to render only to a part of the texture.</p>
+<p>Note that rendering to a texture involves additional steps. See the chapter about <a href="../effects/render-to-texture.html">render-to-texture (TODO)</a> for full instructions.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>EditorShortcut</code>: Used to configure <a href="../scenes/editor-camera.html#level-cameras">level cameras</a>.</p>
+</li>
+<li><p><code>UsageHint</code>: A hint what the camera is supposed to be used for. Systems like the <a href="../runtime/application/game-state.html">game state</a> may use this information to use or ignore this component.</p>
+</li>
+<li><p><code>Mode</code>, <code>FOV</code>, <code>Dimensions</code>: Configure whether this is a <em>perspective</em> or an <em>orthographic</em> view and how the other options are applied. Field-of-view (FOV) is used for perspective modes, dimensions are used for orthographic modes.</p>
+</li>
+<li><p><code>NearPlane</code>, <code>FarPlane</code>: The distances for the near and far plane. For best performance keep the far plane distance as low as possible. To prevent <em>z-fighting</em> make sure that the near plane is not too close and the far plane is not too far out.</p>
+</li>
+<li><p><code>IncludeTags</code>, <code>ExcludeTags</code>: See <a href="#includeexclude-tags">Include/Exclude Tags</a> above.</p>
+</li>
+<li><p><code>CameraRenderPipeline</code>: Allows you to select a specific <a href="render-pipeline-overview.html">render pipeline (TODO)</a> that shall be used to render the output from this camera. Available render pipelines are set up in the <a href="../assets/asset-profiles.html">asset profiles (TODO)</a>.</p>
+</li>
+<li><p><code>RenderTarget</code>, <code>RenderTargetOffset</code>, <code>RenderTargetSize</code>: Only available when <code>UsageHint</code> is set to <code>Render to Texture</code>.</p>
+</li>
+<li><p><code>Aperture</code>, <code>ShutterTime</code>, <code>ISO</code>, <code>ExposureCompensation</code>: These options are currently only used for <em>tonemapping</em>. They all affect the final exposure value, which means you can adjust any one of them to change the brightness of the output. In the future these values may be used for motion blur and depth-of-field.</p>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../scenes/editor-camera.html">Editor Camera</a></li>
+<li><a href="../effects/render-to-texture.html">Render to Texture (TODO)</a></li>
+<li><a href="render-pipeline-overview.html">Render Pipeline (TODO)</a></li>
+<li><a href="../assets/asset-profiles.html">Asset Profiles (TODO)</a></li>
+<li><a href="../projects/tags.html">Tags</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/camera-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

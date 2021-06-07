@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TypeScript Asset | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="TypeScript Asset | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="typescript-asset">TypeScript Asset</h1>
+
+<p>Each <em>TypeScript asset</em> manages the script for a single <a href="custom-ts-components.html">custom TypeScript component</a>. You create a new TypeScript asset using <em>Editor &gt; Create Document...</em>.</p>
+<p><img src="media/ts-asset.png" alt="TypeScript asset"></p>
+<p>The document displays the script file contents as read-only. The document has no text editing functionality. The actual script code is stored in a separate <code>.ts</code> file, such that you can edit it with a regular text editor. After creating a new TypeScript asset, the <code>ScriptFile</code> property will have a default value for the <code>.ts</code> file. You can change this location, if you wish.</p>
+<h2 id="code-editing">Code Editing</h2>
+<p>The ezEditor assumes that you have <a href="https://code.visualstudio.com">Visual Studio Code</a> installed. When you click the VSC icon in the toolbar, it will launch Visual Studio Code with a workspace setup that includes all <a href="../../projects/data-directories.html">data directories</a> of the <a href="../../projects/projects-overview.html">project</a>. It also makes sure that the referenced <code>ScriptFile</code> is created and filled out with some template code, if the file doesn't exist yet.</p>
+<p>From there on, you can write the code in the external editor. Transforming the asset (<code>Ctrl+E</code>) will transpile the script and update the text preview.</p>
+<h2 id="script-parameters">Script Parameters</h2>
+<p>In the asset properties you can add <em>variables</em>. Each variable has a name and a default value. After changing the variables you have to <strong>transform</strong> the script (toolbar button or <code>Ctrl+E</code>). This will insert the necessary code into the script. Make sure to not touch the markers for the auto-generated code section.</p>
+<p>The variables that you add here will become <a href="../../scenes/exposed-parameters.html">exposed parameters</a> for this script. Meaning, when this asset is used through a <a href="ts-component.html">TypeScript component</a>, the component can override the values of these variables. Thus you can instantiate the same script many times with different starting parameters.</p>
+<h2 id="non-component-ts-files">Non-Component TS Files</h2>
+<p>You can split up script code into multiple files, for example to easier share code between TS components. Simply create as many <code>.ts</code> files as you need and 'include' them as needed (using <code>require</code>). Having a <em>TypeScript asset</em> is <strong>not required</strong> for such files. TypeScript assets are only needed for the main TS files that represent a proper custom component type. The TypeScript assets are needed in the editor to be able to select the desired TS component code on a <a href="ts-component.html">TypeScript component</a>, and at runtime they are used to know how to instantiate the script. The assets are not used to identify which files to transpile. Instead, the editor will simply transpile <em>all</em> <code>.ts</code> files that it finds in any data directory of the project.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="custom-ts-components.html">Custom Components with TypeScript</a></li>
+<li><a href="ts-component.html">TypeScript Component</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/typescript/ts-asset.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

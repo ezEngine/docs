@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mesh Asset | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Mesh Asset | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="mesh-asset">Mesh Asset</h1>
+
+<p>A <em>mesh asset</em> represents a mesh that can be used for rendering. In the most common case the mesh asset imports the mesh data from an external file, such as an FBX file. However, it also supports generating the mesh data for common shapes (spheres, cylinders, ...) procedurally. Mesh assets are typically added to a scene with a <a href="mesh-component.html">mesh component</a>.</p>
+<p><img src="media/mesh-asset.jpg" alt="Mesh Asset"></p>
+<p>The left hand side of the <a href="../../assets/assets-overview.html">asset document</a> shows a 3D preview of the mesh. The viewport allows to switch the <a href="../../editor/editor-views.html#render-modes">render mode</a> to inspect the mesh normals, UV coordinates and so on.</p>
+<p>On the right hand side the asset properties specify how to import or generate the mesh data.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>The mesh asset does not automatically update when you edit its properties. Instead you need to <em>transform</em> the asset (<code>Ctrl+E</code> or with the rightmost button in the toolbar).</p>
+</blockquote>
+<h2 id="asset-properties">Asset Properties</h2>
+<ul>
+<li><p><code>PrimitiveType</code>: This selects how the mesh data is generated. If <code>From File</code> is chosen, you need to also specify the <code>MeshFile</code> property. If you choose a procedural method, other configuration options appear.</p>
+</li>
+<li><p><code>ForwardDir</code>, <code>RightDir</code>, <code>UpDir</code>: With these you can change which axis is considered forward, right and up in the mesh data. For  mesh data from FBX files, this information is typically embedded in the file. For other file types, you may need to adjust these to make the imported data appear correctly upright.</p>
+</li>
+<li><p><code>UniformScaling</code>: Adjusts the size of the mesh, for example to convert a mesh from centimeter to meter scale.</p>
+</li>
+<li><p><code>RecalculateNormals</code>, <code>RecalculateTangents</code>: If enabled, information about normals or tangents in the mesh file is ignored, and is instead computed from the vertex data.</p>
+</li>
+<li><p><code>NormalPrecision</code>, <code>TexCoordPrecision</code>: These options allow you to choose how precise normals and UV coordinates are represented. Leave these at the default, unless you notice precision issues. Higher precision means the mesh takes up more RAM on the GPU and is slightly slower to render.</p>
+</li>
+<li><p><code>ImportMaterials</code>: If enabled, the mesh import automatically generates <a href="../../materials/materials-overview.html">material assets</a> for the materials that the mesh file specifies. It also tries to populate those materials with sensible values and if possible also creates <a href="../textures-overview.html">texture assets</a>. Unfortunately this rarely works perfectly, and typically requires you to fix the generated assets afterwards.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Materials are only generated when the mesh has no materials set yet. After the initial creation of these other assets, you usually need to <strong>transform the mesh a second time</strong> to make them properly show up.</p>
+</blockquote>
+</li>
+<li><p><code>Materials</code>: The list of <a href="../../materials/materials-overview.html">materials</a> to use. The mesh may have multiple <em>sub-meshes</em>, and each sub-mesh uses a different material slot. <a href="mesh-component.html">Mesh components</a> can override which material is used for which slot.</p>
+</li>
+</ul>
+<h3 id="procedural-mesh-generation">Procedural Mesh Generation</h3>
+<p>Through the <code>PrimitiveType</code> option you can choose to create a mesh procedurally. In this case object specific options appear. Note that by default objects use a <em>detail</em> level of <code>0</code> which means that the editor will pick a decent value, depending on the chosen primitive type.</p>
+<p>Be aware that some <em>detail</em> values seemingly have no effect. For instance, for cones, capsules and cylinders the <em>detail</em> represents the number of subdivisions along the circumference, and therefore can't be lower than 3. Therefore the values <code>1</code>, <code>2</code> and <code>3</code> all produce the same result.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="meshes-overview.html">Meshes</a></li>
+<li><a href="../../materials/materials-overview.html">Materials</a></li>
+<li><a href="../../assets/assets-overview.html">Assets</a></li>
+<li><a href="../../assets/import-assets.html">Asset Import</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/meshes/mesh-asset.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

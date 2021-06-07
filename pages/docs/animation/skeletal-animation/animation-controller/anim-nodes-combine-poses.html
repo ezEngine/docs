@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Combine Poses Nodes | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Combine Poses Nodes | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="combine-poses-nodes">Combine Poses Nodes</h1>
+
+<p>An animation controller typically samples more than one animation. For example you may want to play a walking animation on the lower part of a character, and an aim weapon animation on the upper part. These animations are generally independent of each other, but have to be combined at some point, to form the final single animation pose.</p>
+<p>Certain nodes in the animation controller graph allow you to accomplish this.</p>
+<h2 id="combine-poses-node">Combine Poses Node</h2>
+<p>Currently the <code>Combine Poses</code> node is the only available node to combine multiple poses in <em>local space</em> into one.</p>
+<h3 id="properties">Properties</h3>
+<ul>
+<li><strong>MaxPoses</strong>: The maximum number of <em>active</em> poses to blend. You can have more input pins connected to this node. This number just says how many of them will be blended, if more poses than this are actually active at any given time. If more poses are active, the ones with the lowest <em>weight</em> will be ignored.</li>
+</ul>
+<p>Example: Let's say this value is set to 2. You have three input poses connected. One for walking, one for aiming a gun and one as a general breathing / idle animation. If all three poses are active at the same time, one of them will be ignored. For example, if walking and aiming both have a weight of 1, but breathing has a weight of 0.5, the breathing animation will not be mixed into the final result.</p>
+<p>This is used to clamp the maximum performance cost of the animation blending.</p>
+<h3 id="input-pins">Input Pins</h3>
+<ul>
+<li><strong>LocalPoses</strong>: This is a single input pin that allows an unlimited number of connections. Each incoming pose carries not only the bone transformations, but also the <em>bone weights</em>. These are typically determined by the animation clip sampling nodes and the <a href="anim-nodes-bone-weights.html">bone weight nodes</a>. All poses are mixed together according to their overall weight.</li>
+</ul>
+<p>In practice that means that two animations that don't use custom <a href="anim-nodes-bone-weights.html">bone weights</a> will be blended 50:50.</p>
+<h3 id="output-pins">Output Pins</h3>
+<ul>
+<li><strong>LocalPose</strong>: The single combined pose in <em>local space</em>. It is common to pass this directly on to a <a href="anim-nodes-modelspace.html">Local To Model Pose node</a>.</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<p>You can use multiple nodes to combine many poses in several steps. However, for best performance prefer to use only a single node to combine many poses and make use of <a href="anim-nodes-bone-weights.html">bone weights</a> to control each ones overall influence.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

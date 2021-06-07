@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Code with TypeScript | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Code with TypeScript | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-code-with-typescript">Custom Code with TypeScript</h1>
+
+<p><a href="https://www.typescriptlang.org">TypeScript</a> (TS) is a language that is built on top of JavaScript. All JavaScript is valid TypeScript, but additionally TypeScript allows you to use strong typing to improve your coding experience. The TypeScript code itself is never executed, instead it is <em>transpiled</em> from TypeScript into pure JavaScript, and then interpreted by a regular JavaScript interpreter.</p>
+<p>The benefit of using TypeScript is mostly in ease of use. You can edit TypeScript code with any text editor. However, ezEditor assumes that you have <a href="https://code.visualstudio.com/download">Visual Studio Code</a> (VSC) installed. When you open a TS file from the editor, it will open an entire <em>workspace</em> in VSC, which contains references to all your project's <a href="../../projects/data-directories.html">data directories</a>. This enables VSC to give you full code-completion and type-checking functionality.</p>
+<h2 id="editing-typescript-code">Editing TypeScript Code</h2>
+<p>Providing a decent text editing experience for code is difficult. Therefore ezEditor doesn't even attempt to. All code editing has to be done in an external editor, usually meaning Visual Studio Code.</p>
+<p>For details see the <a href="ts-asset.html">TypeScript asset</a>.</p>
+<h2 id="extending-the-engine-with-typescript">Extending the Engine with TypeScript</h2>
+<p>The TypeScript integration allows you to create <a href="custom-ts-components.html">custom components</a>. TypeScript components can interact both with each other, as well as with C++ components. The APIs available to TypeScript code are deliberately very similar to their C++ counterparts, to make it easy to migrate a TypeScript component to C++, if the need arises.</p>
+<p>At the moment you can't use TypeScript to write things like custom <a href="../../runtime/application/game-state.html">game states</a>.</p>
+<h2 id="instantiating-typescript-components">Instantiating TypeScript Components</h2>
+<p>TypeScript code is executed through the <a href="ts-component.html">TypeScript component</a>. This is effectively a C++ component which forwards everything of relevance to script code and back. Therefore you never add a script directly to a <a href="../../runtime/world/game-objects.html">game object</a>, instead you attach a TypeScript component, which then references the desired script.</p>
+<h2 id="compiling-typescript-code">Compiling TypeScript Code</h2>
+<p>All functionality that TypeScript provides over JavaScript is technically possible to do with pure JavaScript, it is just very cumbersome. Therefore any piece of TypeScript can be transformed to (more complex) JavaScript code. This step is called <em>transpiling</em>.</p>
+<p>All script code in a project has to be fully transpiled before a scene can be simulated. Therefore <a href="../../editor/run-scene.html">running a scene</a> always triggers the transpilation step. Since the TypeScript transpiler is itself written in JavaScript and therefore executed in a JavaScript virtual machine, this step is unfortunately quite slow, especially for larger files. All results are cached, though, so only modified files ever need to be transpiled again.</p>
+<p>Note that C++ reflection information is used to expose C++ components, enums, and messages to TypeScript, meaning that certain changes of C++ code can also trigger re-transpilation of some TypeScript files.</p>
+<h2 id="messaging">Messaging</h2>
+<p>TypeScript code can use <a href="../../runtime/world/world-messaging.html">messages</a> to communicate both with other TS components as well as with C++ components. TypeScript code can <em>handle</em> any message, and it can <em>send</em> (or <em>post</em>) any message. To communicate with another TS component, you can define custom message types directly in script code. To communicate with a C++ component, only C++ messages can be used, as the C++ code has no means to know and handle a TypeScript message. If necessary to do so, the custom message type has to be defined in C++.</p>
+<p>See <a href="ts-messaging.html">Messaging in TypeScript Code</a> for details.</p>
+<h2 id="functionality-available-in-typescript">Functionality Available in TypeScript</h2>
+<p>The TypeScript binding is a mixture of auto-generated code and hand-crafted APIs specifically tailored to provide a smooth experience.</p>
+<h3 id="auto-generated-code">Auto-Generated Code</h3>
+<p>Where possible <a href="../../runtime/reflection-system.html">reflection information</a> is used to automatically generate the necessary TypeScript code to give Visual Studio Code the needed information for code-completion and error-checking. This is, for example, used to expose all C++ components, enums, flags, and messages. The generated TS code is stored in each project in the folder <code>TypeScript/ez</code> and you will notice that for instance the file <code>AllComponents.ts</code> is re-transpiled when a C++ component is added.</p>
+<p>Consequently, for things like messages and components, only reflected parts can be available to TypeScript. For components this is obvious, as only reflected parts will show up in the editor UI as well, but for messages you may come across a C++ message for which members are missing in the TS version, as reflecting message properties is technically not necessary for the message to work. If you do need that message on the TypeScript side, you need to add the proper reflection information.</p>
+<p>Additionally, not all kinds of reflected properties are currently supported for TypeScript. <em>Array</em>, <em>map</em> and <em>set</em> properties are not available, as well as <em>game object handles</em> and <em>component handles</em>. Such reflected properties are simply not included in the auto-generated TS code.</p>
+<h3 id="hand-crafted-code">Hand-Crafted Code</h3>
+<p>Although auto-generating code is the most convenient to keep large amounts of code in sync, there are limits what can be done. TypeScript and C++ are often very different and to not compromise the usability or performance of either side, the way some aspects are exposed to TypeScript has to be chosen carefully.</p>
+<p>Basic types such as the math classes (Vec2, Vec3, Mat4, Quat, ...) have been designed to be very similar to their C++ counterparts. However, a big design goal was to minimize the amount of temporaries ('garbage') produced when using them, as this has a significant impact on performance. Therefore, using those classes you will notice that their functions often work 'in place', instead of returning a modified clone. Additionally, TypeScript doesn't support function overloading, which is why the TypeScript variants of <code>ez.Vec3</code>, etc use more explicit function names for disambiguation.</p>
+<p>Finally, bindings for larger systems, such as <a href="../../runtime/world/worlds.html">worlds</a> or <a href="../../physics/physx-overview.html">physics</a> are also built by hand. Here, exposing the C++ API 1:1 to TypeScript would simply not yield a good user experience. Instead, the TypeScript binding is fine tuned to expose useful functionality, and to hide pointless complexity. If you need full control over every aspect, there is no way around using C++ anyway. Consequently, if you decide that scripting is fine for your use case, the binding tries to make this as convenient as possible.</p>
+<h2 id="video">Video</h2>
+<p><a href="https://www.youtube.com/watch?v=T1eDenHWPKc"><img src="https://img.youtube.com/vi/T1eDenHWPKc/0.jpg" alt="video"></a></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://www.typescriptlang.org">TypeScript</a></li>
+<li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>
+<li><a href="../custom-code-overview.html">Custom Code</a></li>
+<li><a href="ts-asset.html">TypeScript Asset</a></li>
+<li><a href="custom-ts-components.html">Custom Components with TypeScript</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/typescript/typescript-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

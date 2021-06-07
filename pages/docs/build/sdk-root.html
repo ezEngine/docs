@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SDK Root Folder | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SDK Root Folder | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sdk-root-folder">SDK Root Folder</h1>
+
+<p>When the engine launches, one of the first things it usually does, is to detect the exact path of the <em>SDK root folder</em>. This folder is a so called <em>special directory</em> and is mostly used when mounting <a href="../projects/data-directories.html">data directories</a>.</p>
+<p><em>Special directories</em> are referenced with a &quot;&gt;&quot; at the beginning, and are only allowed in few places, such as when adding data directories. For example, the 'base' data directory is mounted like this:</p>
+<pre><code class="lang-cpp">ezFileSystem::AddDataDirectory(&quot;&gt;sdk/Data/Base&quot;);
+</code></pre>
+<p>This adds the folder <em>&quot;Data/Base&quot;</em> that is located inside the folder where the SDK (ezEngine) is stored.</p>
+<h2 id="default-strategy-for-locating-sdk-root">Default Strategy for Locating SDK Root</h2>
+<p>The default strategy by which the engine detects the SDK root folder, is to start at the location of the application binary, and walk the file structure up, until it finds a folder, which contains the sub-folders &quot;Data/Base&quot;.</p>
+<p>So for instance, if the running application is located in <code>C:/ezEngine/Bin/MyGame.exe</code>, the search will start in <code>C:/ezEngine/Bin</code>, where no such folder is found. Then it will continue in <code>C:/ezEngine</code>. That folder does have the sub-structure <code>C:/ezEngine/Data/Base</code>, so the SDK root is determined to be <code>C:/ezEngine</code>.</p>
+<p>This strategy works, as long as the application binary is located somewhere inside the ezEngine SDK.</p>
+<h2 id="redirecting-to-sdk-root">Redirecting to SDK Root</h2>
+<p>If you use a different file structure, the default strategy won't work. This is commonly the case when integrating <a href="submodule.html">ezEngine as a Submodule</a>. For example your file structure may look like this:</p>
+<pre><code class="lang-cmd">C:/MyRepo
+C:/MyRepo/ezEngine-module/ ...
+C:/MyRepo/Bin/MyGame.exe
+C:/MyRepo/OtherData/ ...
+</code></pre>
+<p>Here ezEngine is integrated into another repository. The 'Bin' folder is top level, just as the 'ezEngine-module' folder.</p>
+<p>To enable such a pattern, you can place a 'redirection file', which points to the SDK root folder. The file has to be called <strong>ezSdkRoot.txt</strong> and it must be located somewhere along the path that the default strategy searches. In this case it would be put into <code>C:/MyRepo/ezSdkRoot.txt</code> and it would contain the string <code>ezEngine-module</code>. This way, when the engine searches for the folder that contains 'Data/Base', it will reach <code>C:/MyRepo</code>, see the <code>ezSdkRoot.txt</code> file, read its content, append the relative path inside to its current path (<code>C:/MyRepo/ezEngine-module</code>) and find <code>C:/MyRepo/ezEngine-module/Data/Base</code>, which means it determines <code>C:/MyRepo/ezEngine-module</code> to be the SDK root folder.</p>
+<p>Using a redirection file is the least invasive method and it works for all EZ applications, e.g. the editor, samples and tools.</p>
+<h2 id="custom-sdk-root">Custom SDK Root</h2>
+<p>You can fully control where the SDK root should be and how it is found, if you write your own <a href="../runtime/application/application.html">application (TODO)</a>. During early startup you can simply set the path of the SDK root folder with <code>ezFileSystem::SetSdkRootDirectory()</code>.</p>
+<p>This can be preferable when you use a very different structure.</p>
+<p>Note that this method will only work for applications that you control. Tools such as <a href="../tools/inspector.html">ezInspector</a> or the editor expect to find the SDK root through the default search strategy (or through a redirection file).</p>
+<h2 id="when-to-redirect-at-all">When to Redirect At All</h2>
+<p>The SDK root folder doesn't need to point to the folder where ezEngine is stored. This is only necessary, when you really need the data that is stored in <code>Data/Base</code>. If you only use a fraction of EZ, for example only the Foundation library, or not the editor and rendering code, then you can also use a very different folder as your root (for example <code>C:/MyRepo</code> in the example above). In such cases your application would almost certainly specify its <a href="#custom-sdk-root">custom SDK root</a> in its startup code directly.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="submodule.html">ezEngine as a Submodule</a></li>
+<li><a href="cmake-config.html">CMake Setup</a></li>
+<li><a href="building-ez.html">Building ezEngine</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/sdk-root.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

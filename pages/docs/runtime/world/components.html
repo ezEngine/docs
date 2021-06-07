@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Components | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Components | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="components">Components</h1>
+
+<p>For an introduction what a component is and how it fits into the overall picture, see <a href="world-overview.html">The World / Scenegraph System</a>.</p>
+<p>This documentation focuses on the C++ <code>ezComponent</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
+<p>Components are the fundamental building blocks with which to make the engine do things. Components act as glue between systems like the renderer and the user. They expose the available functionality to the editor and they control when and how each system is used. This document describes how components work.</p>
+<h2 id="owner">Owner</h2>
+<p>A component is always attached to a <a href="game-objects.html">game object</a>. This 'owner' can be queried with <code>ezComponent::GetOwner()</code>.</p>
+<p>There is a brief moment where a component is not attached to an owner, which is when it is being prepared for destruction. If you run into such a situation use <code>ezComponent::IsActiveAndInitialized()</code> to filter them out.</p>
+<h2 id="component-manager">Component Manager</h2>
+<p>Every component has a <a href="component-managers.html">component manager</a>. You can access it with <code>ezComponent::GetOwningManager()</code>.</p>
+<p>To get the component manager for a specific component type, you need to query the <a href="worlds.html">world</a>. See <code>ezWorld::GetOrCreateComponentManager()</code> and <code>ezWorld::GetOrCreateManagerForComponentType()</code>.</p>
+<h2 id="creating-components">Creating Components</h2>
+<p>The most convenient way to create a component of a specific type is to call the static function <code>CreateComponent()</code> on the <a href="component-managers.html">component manager</a> for that type.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: create-component -->
+<pre><code class="lang-cpp">ezMeshComponent* pMesh;
+pWorld-&gt;GetOrCreateComponentManager&lt;ezMeshComponentManager&gt;()-&gt;CreateComponent(pObject, pMesh);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="deleting-components">Deleting Components</h2>
+<p>To delete a component, just call <code>ezComponent::DeleteComponent()</code> on it. Note that deleting individual components is relatively rare, it is more common to just delete the entire object. Also be aware that deleted components are immediately deinitialized. They will still exist in a semi-usable state until the end of the frame, but if other code tries to access the component within the same frame, it may see it in an 'unexpected' state. If necessary, that code can check <code>ezComponent::IsActiveAndInitialized()</code> to prevent working with just deleted components.</p>
+<p>You can also delete a component only through its handle, if you have the corresponding <a href="component-managers.html">component manager</a>.</p>
+<h2 id="component-handles">Component Handles</h2>
+<p>When you need to reference components across frames, you should always store <em>handles</em> to them, never pointers. See the chapter about <a href="object-lifetime.html">object lifetime</a> for details.</p>
+<p>To convert a handle to a (temporary) pointer, use <code>ezWorld::TryGetComponent()</code>.</p>
+<h2 id="querying-components-from-game-objects">Querying Components from Game Objects</h2>
+<p>When you have a <a href="game-objects.html">game object</a> you can get a list of all attached components with <code>ezGameObject::GetComponents()</code>. However, typically you want to get a component of a specific type. Use <code>ezGameObject::TryGetComponentOfBaseType()</code> for that:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: find-component -->
+<pre><code class="lang-cpp">ezMeshComponent* pMesh = nullptr;
+if (pObject-&gt;TryGetComponentOfBaseType(pMesh))
+{
+  pMesh-&gt;DeleteComponent();
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="iterating-over-all-components">Iterating over all Components</h2>
+<p>You can iterate over all components of one type by calling <code>ezComponentManager::GetComponents()</code>. This returns an iterator with which you can efficiently access all components managed by that component manager. Be aware that some components may not be active, so you should skip those.</p>
+<p>You can also access all components on a game object using <code>ezGameObject::GetComponents()</code>.</p>
+<h2 id="component-reflection-block">Component Reflection Block</h2>
+<p>All component types must use <a href="../reflection-system.html">reflection</a>. Only reflected members show up as properties in the editor. An example block looks like this:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-reflection-block -->
+<pre><code class="lang-cpp">EZ_BEGIN_COMPONENT_TYPE(DebugRenderComponent, 2, ezComponentMode::Static)
+{
+  EZ_BEGIN_PROPERTIES
+  {
+    EZ_MEMBER_PROPERTY(&quot;Size&quot;, m_fSize)-&gt;AddAttributes(new ezDefaultValueAttribute(1), new ezClampValueAttribute(0, 10)),
+    EZ_MEMBER_PROPERTY(&quot;Color&quot;, m_Color)-&gt;AddAttributes(new ezDefaultValueAttribute(ezColor::White)),
+    EZ_ACCESSOR_PROPERTY(&quot;Texture&quot;, GetTextureFile, SetTextureFile)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;Texture 2D&quot;)),
+    EZ_BITFLAGS_MEMBER_PROPERTY(&quot;Render&quot;, DebugRenderComponentMask, m_RenderTypes)-&gt;AddAttributes(new ezDefaultValueAttribute(DebugRenderComponentMask::Box)),
+  }
+  EZ_END_PROPERTIES;
+
+  EZ_BEGIN_ATTRIBUTES
+  {
+    new ezCategoryAttribute(&quot;SampleGamePlugin&quot;), // Component menu group
+  }
+  EZ_END_ATTRIBUTES;
+
+  EZ_BEGIN_MESSAGEHANDLERS
+  {
+    EZ_MESSAGE_HANDLER(ezMsgSetColor, OnSetColor)
+  }
+  EZ_END_MESSAGEHANDLERS;
+
+  EZ_BEGIN_FUNCTIONS
+  {
+    EZ_SCRIPT_FUNCTION_PROPERTY(SetRandomColor)
+  }
+  EZ_END_FUNCTIONS;
+}
+EZ_END_COMPONENT_TYPE
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>The <em>properties</em> section lists all the members that should be editable. Components can have 'virtual' properties, that don't exist as members, but use <em>accessors</em> (functions). Properties can have <em>attributes</em> to configure how they show up in the editor.</p>
+<p>The <em>attributes</em> section can additionally specify type specific properties. For example, here we tell the editor where in the component menu this component should appear.</p>
+<p>The <em>message handler</em> section is important to enable <a href="world-messaging.html">messaging</a>.</p>
+<p>The <em>functions</em> section is used to expose certain member functions to the reflection system, such that script bindings, such as <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a> can call these functions.</p>
+<!-- TODO: at some point 'we' must document all the available options *sigh* -->
+<p>At the moment there is no documentation that lists all the available options. It is best to get inspiration by looking at the code for existing components.</p>
+<h2 id="component-activation">Component Activation</h2>
+<p>There are three important states for components:</p>
+<ol>
+<li>Whether they are <strong>initialized</strong></li>
+<li>Whether they are <strong>active</strong></li>
+<li>Whether they are <strong>simulating</strong></li>
+</ol>
+<p>You can hook into changes to these states by overriding <code>ezComponent::Initialize()</code> / <code>ezComponent::Deinitialize()</code>, <code>ezComponent::OnActivated()</code> / <code>ezComponent::OnDeactivated()</code> and <code>ezComponent::OnSimulationStarted()</code>.</p>
+<p>The most important function to override is <code>ezComponent::OnSimulationStarted()</code>. This is almost always the function where you want to set up your component. It is called when the component is fully initialized, active and the world is actively simulating (the game is running). In the editor, it is only called after you start <a href="../../editor/run-scene.html">running a scene</a>, not while you are editing. Since most game code should not do anything while the scene is being edited, you typically don't need to set up anything before this time.</p>
+<p>Components can be 'active' or 'inactive'. This can be used to switch them on and off at will. The <a href="game-objects.html#active-flag">active flag on game objects</a> affects this, but components can also be deactivated individually with <code>ezComponent::SetActiveFlag()</code>. When a component is not active, its component manager will typically not update it anymore. If you want to properly support switching components on and off at any time, you often need to be careful to restore state properly. <code>ezComponent::OnActivated()</code> and <code>ezComponent::OnDeactivated()</code> will be called every time a component's active state changes. Additionally, if the world is being simulated, <code>ezComponent::OnSimulationStarted()</code> will also be called after each call to <code>ezComponent::OnActivated()</code>.</p>
+<p>It should be extremely rare that you need to override <code>ezComponent::Initialize()</code> or <code>ezComponent::Deinitialize()</code>.</p>
+<p>For all the details on the activation functions, refer to the <a href="../../../getting-started/api-docs.html">API Docs</a>.</p>
+<blockquote>
+<p><strong>Caution:</strong></p>
+<p>A common mistake is to override a function like <code>ezComponent::OnActivated()</code> but to not call its base class implementation (<code>SUPER::OnActivated()</code>). It is good practice to always do so.</p>
+</blockquote>
+<h3 id="forced-activation">Forced Activation</h3>
+<p>If for some reason a component must access another component during its own setup, and requires that other component to be set up first, you can enforce this by calling <code>ezComponent::EnsureSimulationStarted()</code> on the other component.</p>
+<p>An example is a physics joint component. To set up a joint, the component needs to access two rigid body components. Both must be already set up themselves, otherwise the joint component cannot link the two. Therefore, when the joint component is being set up, it  calls <code>ezComponent::EnsureSimulationStarted()</code> on both rigid body components, to make sure it can access valid data.</p>
+<h2 id="user-flags">User Flags</h2>
+<p><code>ezComponent::SetUserFlag</code> and <code>ezComponent::GetUserFlag</code> can be used to store up to 8 bits of user flags. This should only be used internally, to reduce memory consumption.</p>
+<h2 id="dynamic-and-static-components">Dynamic and Static Components</h2>
+<p>In the component reflection block you have to specify whether a component is 'dynamic' or 'static':</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-reflection -->
+<pre><code class="lang-cpp">EZ_BEGIN_COMPONENT_TYPE(DemoComponent, 3 /* version */, ezComponentMode::Dynamic)
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>This information tells the editor whether this component type attempts to modify the owner's transformation (position, rotation, scale). If any <em>dynamic</em> component is attached to a <a href="game-objects.html">game object</a>, the entire object will be marked as dynamic and will have its transform updated every frame. If only <em>static</em> components are attached, the game object can be marked as static as well, and costs less performance.</p>
+<p>See <a href="game-objects.html#static-vs-dynamic-objects">Static vs. Dynamic Objects</a>.</p>
+<h2 id="serialization-and-versioning">Serialization and Versioning</h2>
+<p>When editing a scene or prefab, the editor will serialize components purely based on reflection information. That means only the properties that are marked up through reflection and are therefore visible to the user are serialized. This format is robust to change (and allows for patches), but is not efficient.</p>
+<p>For the runtime format, that a shipping game should use, scenes are <em>exported</em>. This is a binary serialization format and every component has full control over what data it writes and how it encodes the data. When you <a href="../../editor/run-scene.html">run a scene</a> in <a href="../../tools/player.html">ezPlayer</a> the editor will serialize the scene to the binary format, and the player will deserialize it. If a component doesn't properly serialize all its data, the results can range from misconfigured components to crashes during loading.</p>
+<p>To implement proper serialization, you need to override <code>ezComponent::SerializeComponent()</code> and <code>ezComponent::DeserializeComponent()</code>.</p>
+<p>During serialization you simply write data to a stream, as you like:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-serialize -->
+<pre><code class="lang-cpp">void DemoComponent::SerializeComponent(ezWorldWriter&amp; stream) const
+{
+  SUPER::SerializeComponent(stream);
+
+  auto&amp; s = stream.GetStream();
+
+  s &lt;&lt; m_fAmplitude;
+  s &lt;&lt; m_Speed;
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Don't forget to call <code>SUPER::SerializeComponent()</code> to include the data of the base class.</p>
+<p>When you deserialize a component, you need to handle <strong>versioning</strong>. Every component type has a version number, which is specified in the component reflection block:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-reflection -->
+<pre><code class="lang-cpp">EZ_BEGIN_COMPONENT_TYPE(DemoComponent, 3 /* version */, ezComponentMode::Dynamic)
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>The version number should be increased every time the serialization format of the component type has to change. During deserialization you can query the version number with which this component data was written. You than have to handle converting older formats as appropriate:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: component-deserialize -->
+<pre><code class="lang-cpp">void DemoComponent::DeserializeComponent(ezWorldReader&amp; stream)
+{
+  SUPER::DeserializeComponent(stream);
+  const ezUInt32 uiVersion = stream.GetComponentTypeVersion(GetStaticRTTI());
+
+  auto&amp; s = stream.GetStream();
+
+  s &gt;&gt; m_fAmplitude;
+
+  if (uiVersion &lt;= 2)
+  {
+    // up to version 2 the angle was stored as a float in degree
+    // convert this to ezAngle
+    float fDegree;
+    s &gt;&gt; fDegree;
+    m_Speed = ezAngle::Degree(fDegree);
+  }
+  else
+  {
+    s &gt;&gt; m_Speed;
+  }
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="custom-components">Custom Components</h2>
+<p>You can extend the engine with custom components:</p>
+<ul>
+<li><a href="../../custom-code/cpp/custom-cpp-component.html">Custom Components with C++</a></li>
+<li><a href="../../custom-code/typescript/custom-ts-components.html">Custom Components with TypeScript</a></li>
+</ul>
+<p>For examples, have a look at the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../custom-code/custom-code-overview.html">Custom Code</a></li>
+<li><a href="world-overview.html">The World / Scenegraph System</a></li>
+<li><a href="game-objects.html">Game Objects</a></li>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/world/components.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

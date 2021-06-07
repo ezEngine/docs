@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Spatial System | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Spatial System | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="spatial-system">Spatial System</h1>
+
+<p>Every <a href="worlds.html">world</a> has a <em>spatial system</em>. Spatial systems are responsible for sorting <a href="game-objects.html">game objects</a> by their position and size. They are utilized to efficiently find all objects within a volume, such as a box, a sphere or a view frustum. This is mainly used by the renderer to do frustum culling, but is also available to all other code. Obviously the spatial system needs to keep track of moving objects and update its index accordingly.</p>
+<h2 id="spatial-system-setup">Spatial System Setup</h2>
+<p><code>ezSpatialSystem</code> is the base class for all spatial systems. During the construction of an <code>ezWorld</code>, a custom implementation can be provided through the <code>ezWorldDesc</code>. By default <code>ezSpatialSystem_RegularGrid</code> is used, which is optimized to handle arbitrary situations with good performance.</p>
+<p>Implementing a custom spatial system can make sense when you have a highly specialized use case. For example, if you have a strictly tile-based 2D game, where you know that all sprites are below a fixed size, and you always have a dense grid without holes, you can write a spatial system that takes advantage of this knowledge and therefore outperforms the default implementation.</p>
+<p>However, unless you determine that the spatial system is a clear performance bottleneck, and you have domain specific knowledge that could be a big advantage to speed things up, there is no reason to consider writing your own.</p>
+<p>Since there is exactly one spatial system per world, it usually means that the choice of a system is made for a type of game. In theory, though, one could use different systems for different types of levels, as well.</p>
+<h2 id="accessing-the-spatial-system">Accessing the Spatial System</h2>
+<p>In C++ code you get access to the world's spatial system through <code>ezWorld::GetSpatialSystem()</code>.</p>
+<p>When using other languages bindings the spatial system may not be exposed directly. For example, when using <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, the most useful functions are exposed directly through <code>ez.World</code>, for example <code>ez.World.FindObjectsInBox()</code> and <code>ez.World.FindObjectsInSphere()</code>.</p>
+<h2 id="spatial-data-categories">Spatial Data Categories</h2>
+<p>Every piece of spatial data is associated with a <em>category</em>. For example, rendering data is either in the category &quot;RenderStatic&quot; or &quot;RenderDynamic&quot;. This is mainly used to separate spatial information into distinct groups, so that during a spatial query, data that is irrelevant can be filtered out quickly.</p>
+<p>For efficiency reasons, categories are represented with bitmasks internally, which is why there can only be up to 32 categories. You should assume that the core engine uses at least 5 categories already.</p>
+<h3 id="configuring-spatial-data-categories">Configuring Spatial Data Categories</h3>
+<p>In C++ code you register a spatial data category through <code>ezSpatialData::RegisterCategory()</code>. This will return a category object which can be used for spatial queries later:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: spatial-category-registration -->
+<pre><code class="lang-cpp">ezSpatialData::Category RtsSelectableComponent::s_SelectableCategory = ezSpatialData::RegisterCategory(&quot;Selectable&quot;);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>When using the editor, there are components, such as the <a href="../../gameplay/marker-component.html">marker component</a>, which allow you to select a category from a predefined list. This list is project specific. When you click on such a dropdown box, the last entry allows you to open an editor to configure the available categories:</p>
+<p><img src="media/edit-enum.png" alt="Edit Enum"></p>
+<h3 id="the-invalid-category">The Invalid Category</h3>
+<p>Some components 'add' their bounds to a <code>ezMsgUpdateLocalBounds</code> using <code>ezInvalidSpatialDataCategory</code>. This means that they want to specify their bounds, but do <em>not</em> want to add anything to the spatial system. This is useful for components that do have a perceived size, such as physics shapes, which should be visible when selecting these objects in the editor, but where there is no benefit of inserting this into the spatial system.</p>
+<h2 id="exposing-game-objects-to-the-spatial-system">Exposing Game Objects to the Spatial System</h2>
+<p>The spatial system only knows about <a href="game-objects.html">game objects</a>, it does not differentiate by components. However, which game objects are inserted into it and under which categories, is handled by components.</p>
+<p>The world sends the <a href="world-messaging.html">message</a> <code>ezMsgUpdateLocalBounds</code> to all components when it determines that an update is necessary. This can also be triggered manually by calling <code>ezGameObject::UpdateLocalBounds()</code> when spatial data, such as which category to use, has been modified.</p>
+<p>Components can handle this message and add spatial information to it. For 3D objects one would use something like the bounding sphere of a mesh, but it is also possible to use more abstract spatial data. For example the <a href="../../../samples/rts.html">RTS sample</a> has an <code>RtsSelectableComponent</code> which is attached to all units that should be selectable by the player. Although the <code>RtsSelectableComponent</code> doesn't have a visual representation, it reacts to <code>ezMsgUpdateLocalBounds</code> to add spatial data, which can then be used to efficiently look up units under the mouse cursor.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: spatial-bounds-update -->
+<pre><code class="lang-cpp">void RtsSelectableComponent::OnUpdateLocalBounds(ezMsgUpdateLocalBounds&amp; msg)
+{
+  ezBoundingBoxSphere bounds;
+  bounds.m_fSphereRadius = m_fSelectionRadius;
+  bounds.m_vCenter.SetZero();
+  bounds.m_vBoxHalfExtends.Set(m_fSelectionRadius);
+
+  msg.AddBounds(bounds, s_SelectableCategory);
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Don't forget to register the message handler in the <a href="../reflection-system.html">reflection block</a>:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: spatial-bounds-handler -->
+<pre><code class="lang-cpp">EZ_BEGIN_MESSAGEHANDLERS
+{
+  EZ_MESSAGE_HANDLER(ezMsgUpdateLocalBounds, OnUpdateLocalBounds)
+}
+EZ_END_MESSAGEHANDLERS;
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="querying-the-spatial-system">Querying the Spatial System</h2>
+<p>Once you have spatial data inserted into the system, you can use it to efficiently query for objects within a volume.</p>
+<p>When calling functions such as <code>ezSpatialSystem::FindObjectsInSphere()</code> you have to provide a <em>bitmask</em> of categories. That's because you can request to get objects from multiple categories at the same time. You can get this bitmask by calling <code>ezSpatialData::Category::GetBitmask()</code> on a category object.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: spatial-query -->
+<pre><code class="lang-cpp">void RtsGameState::InspectObjectsInArea(const ezVec2&amp; position, float radius, ezSpatialSystem::QueryCallback callback) const
+{
+  ezBoundingSphere sphere(position.GetAsVec3(0), radius);
+  ezUInt32 uiCategoryBitmask = RtsSelectableComponent::s_SelectableCategory.GetBitmask();
+  m_pMainWorld-&gt;GetSpatialSystem()-&gt;FindObjectsInSphere(sphere, uiCategoryBitmask, callback, nullptr);
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>In other language bindings you may instead need to pass in a list of all the desired categories by name.</p>
+<h2 id="spatial-system-vs-physics-engines">Spatial System vs. Physics Engines</h2>
+<p>Both the spatial system, as well as <a href="../../physics/physx-overview.html">physics engines</a> allow you to do spatial queries. There are cases where a problem can be solved using either system, but generally they are meant to complement each other.</p>
+<p>If you want to query for things that already need to have a physical representation, and therefore will be handled by the physics engine anyway, it is best to leverage the physics engine to query for such objects. For example a shockwave effect that is supposed to push objects away, only makes sense to be applied to physically simulated objects. Therefore, querying which objects are close-by, to figure out what objects to apply the effect to, should be done through the physics engine, and there is no reason to even have information about these objects in the spatial system.</p>
+<p>On the other hand, things like the <code>RtsSelectableComponent</code> (see above) could be achieved by setting up fake <a href="../../physics/actors/physx-actors.html">physics actors</a> so that they can be found with physics queries. The performance cost for doing so would be unnecessary high though, as the physics engine would perform additional maintenance that is ultimately not needed, and it may waste precious resources such as <a href="../../physics/collision-shapes/collision-layers.html">collision layers</a>. Here, using the spatial system makes much more sense.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>If you require doing <em>raycasts</em> or <em>queries against meshes</em>, you will need to use the physics engine, as the spatial system only works with very basic shapes.</p>
+</blockquote>
+<h2 id="spatial-system-vs-tags">Spatial System vs. Tags</h2>
+<p>The spatial data categories are very similar to <a href="../../projects/tags.html">tags</a>. The difference is, that tags are set up on <a href="game-objects.html">game objects</a> and they don't have any spatial quality. A game object can have many tags, but not be registered spatially and therefore cannot be found through spatial queries. On the other hand, because of this, tags have nearly no performance overhead, whereas spatial data must be updated whenever an object moves.</p>
+<p>Ultimately, both systems can be used to solve many of the same problems. When you need to be able to inspect an area and find all objects of a certain kind, you should use spatial data, for example through a <a href="../../gameplay/marker-component.html">marker component</a>. If, however, you need to semtantically label objects, but do not require to find them spatially, prefer tags to not waste performance.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../gameplay/marker-component.html">Marker Component</a></li>
+<li><a href="world-overview.html">The World / Scenegraph System</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/world/spatial-system.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

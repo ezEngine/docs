@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Textures | ezEngine Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Textures | ezEngine Documentation ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="textures">Textures</h1>
+
+<p>Textures come in multiple forms. Most common are 2D textures loaded from file. 2D textures can also be created as render targets for <a href="../effects/render-to-texture.html">render-to-texture (TODO)</a>. For <a href="../effects/sky.html">sky boxes</a> or special effects you can also set up cubemap textures.</p>
+<p>When the source texture comes from a file, you can create a texture <a href="../assets/assets-overview.html">asset</a> for that file by <a href="../assets/import-assets.html">importing</a> it. Otherwise you need to create the respective asset <a href="../editor/editor-documents.html">document</a> manually, for example for render targets.</p>
+<p>Textures are most often referenced by <a href="../materials/materials-overview.html">materials</a>. Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the <a href="../effects/sky.html#skybox-component">SkyBox component</a>.</p>
+<p><img src="media/texture-asset.png" alt="Texture Asset"></p>
+<p>All texture assets show a <strong>3D preview</strong>. Here you can move the camera around to observe how the texture looks. Using the <strong>Mipmap slider</strong> in the toolbar, you can inspect individual mipmaps. With the <strong>channel selection dropdown</strong> next to the slider you can choose which channels to show. In the bottom left of the viewport, some <strong>stats</strong> are displayed, for instance what compression format is used.</p>
+<p>On the right-hand side you see the property grid where you choose the <strong>texture settings</strong>. Since transforming a texture can take quite some time, these assets are not automatically updated when you change their properties or even save the asset. Instead, <strong>transform the asset manually</strong> either by clicking the transform button in the toolbar or with <code>Ctrl + E</code>.</p>
+<h2 id="2d-texture-asset">2D Texture Asset</h2>
+<p>The following properties are available:</p>
+<p><strong>Usage:</strong> Tells the texture converter what type of data the texture represents. This affects what <a href="../appendix/color-spaces.html">color space (TODO)</a> will be used, ie. whether the format uses <em>sRGB</em> or <em>Linear</em> encoding. If your color texture ends up using the incorrect color space (e.g. <em>Linear</em> when it should be <em>sRGB</em>) you will typically notice that the texture appears too bright and washed out.</p>
+<ul>
+<li><strong>Auto:</strong> In this mode the converter will guess the <em>usage</em>, utilizing file name heuristics, the source file format and sometimes even the content. If your file names use suffixes like <code>_D</code>, <code>_Normal</code>, etc. this can work pretty well.</li>
+<li><strong>Color:</strong> Use this for textures that represent color. For example diffuse textures, skyboxes and emissive color textures.</li>
+<li><strong>Linear:</strong> Use this for textures that represent 'data' that is not directly a color. For example <em>roughness</em>, <em>metallic</em>, <em>ao</em> and <em>specular</em> maps.</li>
+<li><strong>HDR:</strong> For textures that contain <em>high dynamic range</em> data. Since HDR data requires special file formats, <em>Auto</em> mode can detect this reliably.</li>
+<li><strong>Normal Map:</strong> For textures that represent normal maps.</li>
+<li><strong>Normal Map (Inverted):</strong> For normal maps that use a different convention for the direction vectors.</li>
+<li><strong>Bump Map:</strong> For greyscale textures that represent height values, which should be converted to a normal map.</li>
+</ul>
+<p><strong>Mipmaps:</strong> This property allows you to choose whether the texture should have <em>mipmaps</em> and what algorithm to use for generating them. Unless you have a very special use case, mipmaps should always be enabled. The <em>Kaiser</em> filter usually gives slightly better results than the <em>Linear</em> filter.</p>
+<p><strong>PreserveAlphaCoverage, AlphaThreshold:</strong> When you want to use a texture for vegetation, where the alpha channel is used to define transparent areas, then using this feature can improve how the vegetation looks when it is far away. The smaller a mipmap becomes, the more it represents the <em>average</em> color of the original texture. The same is true for the alpha channel. The problem then is, that if a vegetation texture is mostly transparent, the lower mipmaps will become more and more transparent. In practice that means the further you are away from a plant, the more transparent it becomes. For example all the leaves in a tree may disappear. If, on the other hand, the texture is mostly opaque, the lower mipmaps would become more and more opaque, so tree would appear much thicker when far away. <em>PreserveAlphaCoverage</em> can improve this, by making sure that the percentage of pixels with a value below and above <em>AlphaThreshold</em> stays the same throughout all mip levels. Thus, if the leaves of a tree are 70% transparent in the original texture, even when viewed from far away about 70% of its pixels will be transparent and not more. For this to work, the <em>AlphaThreshold</em> that will be used by the shader to discard pixels has to be known exactly and may not differ when the texture is used later. Computing the alpha coverage takes more time. Unless you are trying to solve the problem described above, keep this option disabled.</p>
+<p><strong>Compression:</strong> Specifies how strong the texture should be compressed. Depending on <em>Usage</em> and whether an alpha channel is present, this determines which exact file format will be used (printed in the lower left corner of the viewport). Note that for some combinations there may be no difference between <em>medium</em> and <em>strong</em> compression. Don't choose <em>Uncompressed</em> unless you actually notice compression artifacts. Texture compression saves significant amount of memory (usually a 4:1 compression, sometimes even 8:1) and has no performance overhead during rendering. The only downside is, that it takes longer to transform compressed texture assets.</p>
+<p><strong>DilateColor:</strong> For textures with an alpha mask. Will <em>dilate</em> (smear) the color channel outwards everywhere where the alpha channel is zero. Useful for example for vegetation textures, where the alpha channel defines a cutout mask. If the color channel does not contain some average color in the transparent areas, but something different, usually black, this unwanted color will <em>bleed</em> into the opaque areas in the lower mipmaps. As a result, masked objects appear to have a black edge. To fix this, either author your source textures to have a representative color in the transparent areas, or enable this option to automatically generate it. Note that this option makes texture transform slower.</p>
+<p>The image below shows the difference of a texture that is completely black in the transparent areas, versus the same texture, using color dilation. Notice how there is a black edge around the plant in the left image.</p>
+<p><img src="media/texture-dilation.jpg" alt="Color Dilation"></p>
+<p><strong>Flip Horizontal:</strong> For textures that are stored upside down.</p>
+<p><strong>HdrExposureBias:</strong> For textures that have the <em>HDR Usage</em>. Allows you to scale the brightness.</p>
+<p><strong>Filtering:</strong> Specifies with which <em>filter method</em> the texture is sampled during rendering. If you select one of the <em>Fixed</em> modes, it will be filtered exactly with that mode. Mostly useful, if you want to use <em>Nearest</em> filtering, for artistic reasons. Using one of the other modes (<em>Low Quality</em> / <em>Default Quality</em> / <em>High Quality</em>) the texture will use a filtering mode that is decided at runtime. For example, if the <em>default</em> sampling mode is set to <em>Anisotropic 2x</em>, then <em>High Quality</em> will result in <em>Anisotropic 4x</em> (one mode higher) and <em>Low Quality</em> will be result in <em>Trilinear</em> sampling (one mode lower). <em>Lowest</em> and <em>Highest</em> will use two modes lower/higher, though <em>Nearest</em> filtering will never be used.</p>
+<p><strong>AddressMode:</strong> Specifies whether a texture will be repeated when the texture coordinates used to sample the texture are outside the <code>[0; 1]</code> range. The 3D preview shows the effect of this property after you transform the asset.</p>
+<p><strong>Channel Mapping:</strong> This option allows you to choose which channels the texture will have, and from which files to take the data for each channel. <code>RGB(A) - Single Input</code> is the most common choice, but you can also combine multiple textures, e.g. take the color from one input file and the alpha channel from another.</p>
+<p><strong>Input N:</strong> Depending on the chosen <em>channel mapping</em> you need to specify one to four input textures.</p>
+<h2 id="cubemap-texture-asset">Cubemap Texture Asset</h2>
+<p>Cubemap assets have a subset of the properties that 2D textures have. Their behavior is identical, except for <strong>Channel Mapping</strong>, which allows you to build a cubemap either from one or from six input files.</p>
+<h2 id="render-target-asset">Render Target Asset</h2>
+<p>Render targets can be used like regular 2D textures. That means materials can reference them and display their content. However, they are filled by rendering to them at runtime, for example by using a camera to render the scene from a certain viewpoint. Have a look at the <a href="../effects/render-to-texture.html">render to texture (TODO)</a> article for details.</p>
+<p>Apart from some properties shared with 2D texture assets, render targets have these unique properties:</p>
+<p><strong>Format:</strong> Determines whether the texture can store HDR data (10 bit or 16 bit) and whether the texture represents colors (sRGB) or linear data.</p>
+<p><strong>Resolution:</strong> The dimensions of the texture. If set to <code>CVar RT Resolution N</code> the resolution will be read from the <a href="../debugging/cvars.html">CVar</a> <code>r_RenderTargetResolutionN</code>. This can be used to adjust the resolution dynamically.</p>
+<p><strong>CVarResScale:</strong> If the resolution is read from a CVar, this allows to scale it. For instance to create a <em>half resolution</em> render target.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../materials/materials-overview.html">Materials</a></li>
+<li><a href="../effects/render-to-texture.html">Render to Texture (TODO)</a></li>
+<li><a href="../effects/sky.html">Sky</a></li>
+<li><a href="../appendix/color-spaces.html">Color Spaces (TODO)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/textures-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
