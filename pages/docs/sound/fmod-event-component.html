@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Fmod Event Component | ezEngine Documentation </title>
+    <title>Fmod Event Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Fmod Event Component | ezEngine Documentation ">
+    <meta name="title" content="Fmod Event Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -18,7 +18,7 @@
     <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
-    
+    <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -83,7 +83,7 @@
 <p>The <em>Fmod event component</em> creates an instance of an Fmod event. An event is usually a 2D or 3D sound, but can also be an environmental effect that changes how other sounds are perceived. Fmod events are very powerful, which is why ezEngine doesn't need to have a large feature set of audio features. No matter what you want to do, pretty much anything is available through Fmod events.</p>
 <p>A description of Fmod events is out of scope for this documentation. Please see <a href="fmod-overview.html#using-fmod-studio">Using Fmod Studio</a> for learning resources.</p>
 <p>Fmod event components reference <a href="fmod-soundevent-asset.html">sound event assets</a>. The component plays the referenced sound. If the Fmod event has looping regions, the sound will play indefinitely, until it is stopped programmatically, or the component is deleted. There is no looping option on the component, since this feature controlled through Fmod Studio.</p>
-<p>Advanced Fmod features, like <em>sound cues</em> and adjusting <em>event parameters</em> are only accessible programmatically (C++ or TypeScript). For details please see the <a href="../../getting-started/api-docs.html">API Docs</a> about <code>ezFmodEventComponent</code>.</p>
+<p>Advanced Fmod features, like <em>sound cues</em> and adjusting <em>event parameters</em> are only accessible programmatically (C++ or TypeScript). For details please see the <a href="../api-docs.html">API Docs</a> about <code>ezFmodEventComponent</code>.</p>
 <h2 id="sound-occlusion">Sound Occlusion</h2>
 <p>By default sounds are only attenuated by distance. Fmod doesn't have a representation of the 3D geometry and therefore can't muffle or disable sounds when they are (visually) occluded.</p>
 <p>The event component allows you to enable a simple physics raycast based heuristic to determine whether a sound source is occluded by a wall or larger obstacle. If enabled, the occlusion factor is computed and the Fmod event parameter <code>Occlusion</code> is passed into the event. It is your responsibility to set up the Fmod event such that this parameter exists and is used to adjust the event's volume.</p>

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Game States | ezEngine Documentation </title>
+    <title>Game States | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Game States | ezEngine Documentation ">
+    <meta name="title" content="Game States | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -18,7 +18,7 @@
     <meta property="docfx:tocrel" content="../../toc.html">
     
     <meta property="docfx:rel" content="../../../../">
-    
+    <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -112,7 +112,7 @@
 <p>The idea is, that there are typically only few game states available anyway. Usually you have the built-in <code>ezFallbackGameState</code> and then you have one other game state implementation from your custom game plugin. The latter one will take precedence. You could have multiple game states, for example when you have multiple game plugins loaded simultaneously, but then they would need to somehow figure out which one should get activated (e.g. through command line arguments).</p>
 <h2 id="sample-game-state">Sample Game State</h2>
 <p>For an example game state have a look at the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>. The game state in the sample derives from <code>ezFallbackGameState</code> to benefit from its utilities, such as the default fly camera. In fact, it is a good idea to look at the source of <code>ezFallbackGameState</code> as an example, as well.</p>
-<p>For all the details, read the <a href="../../../getting-started/api-docs.html">API Docs</a> for <code>ezGameStateBase</code>.</p>
+<p>For all the details, read the <a href="../../api-docs.html">API Docs</a> for <code>ezGameStateBase</code>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../../custom-code/custom-code-overview.html">Custom Code</a></li>

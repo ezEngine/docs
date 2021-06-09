@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Components | ezEngine Documentation </title>
+    <title>Components | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Components | ezEngine Documentation ">
+    <meta name="title" content="Components | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -18,7 +18,7 @@
     <meta property="docfx:tocrel" content="../../toc.html">
     
     <meta property="docfx:rel" content="../../../../">
-    
+    <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,7 +167,7 @@ EZ_END_COMPONENT_TYPE
 <p>The most important function to override is <code>ezComponent::OnSimulationStarted()</code>. This is almost always the function where you want to set up your component. It is called when the component is fully initialized, active and the world is actively simulating (the game is running). In the editor, it is only called after you start <a href="../../editor/run-scene.html">running a scene</a>, not while you are editing. Since most game code should not do anything while the scene is being edited, you typically don't need to set up anything before this time.</p>
 <p>Components can be 'active' or 'inactive'. This can be used to switch them on and off at will. The <a href="game-objects.html#active-flag">active flag on game objects</a> affects this, but components can also be deactivated individually with <code>ezComponent::SetActiveFlag()</code>. When a component is not active, its component manager will typically not update it anymore. If you want to properly support switching components on and off at any time, you often need to be careful to restore state properly. <code>ezComponent::OnActivated()</code> and <code>ezComponent::OnDeactivated()</code> will be called every time a component's active state changes. Additionally, if the world is being simulated, <code>ezComponent::OnSimulationStarted()</code> will also be called after each call to <code>ezComponent::OnActivated()</code>.</p>
 <p>It should be extremely rare that you need to override <code>ezComponent::Initialize()</code> or <code>ezComponent::Deinitialize()</code>.</p>
-<p>For all the details on the activation functions, refer to the <a href="../../../getting-started/api-docs.html">API Docs</a>.</p>
+<p>For all the details on the activation functions, refer to the <a href="../../api-docs.html">API Docs</a>.</p>
 <blockquote>
 <p><strong>Caution:</strong></p>
 <p>A common mistake is to override a function like <code>ezComponent::OnActivated()</code> but to not call its base class implementation (<code>SUPER::OnActivated()</code>). It is good practice to always do so.</p>

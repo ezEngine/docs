@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Spawn Component | ezEngine Documentation </title>
+    <title>Spawn Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Spawn Component | ezEngine Documentation ">
+    <meta name="title" content="Spawn Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -18,7 +18,7 @@
     <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
-    
+    <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -89,7 +89,7 @@
 <p><code>MinDelay, DelayRange:</code> The minimum time that has to pass before the component will spawn another instance, plus some random delay. This not only applies to the <em>SpawnContinuously</em> case, but also to cases where the spawn may be triggered from code. Meaning, this can be used to limit how often an action is allowed. For example, a gun can use a SpawnComponent to launch projectiles, and the gun code can simply trigger the SpawnComponent every time the user clicks. However, due to the <em>MinDelay</em>, the gun will only fire every once in a while, without having to write that logic in the gun code.</p>
 <p><code>Deviation:</code> When a new prefab instance is created, it will be positioned at the location of the SpawnComponent. The <em>Deviation</em> allows you to add a random rotation away from the X axis. In EZ most components use the +X axis as their main axis of operation. For instance, projectiles fly along +X, spot lights point into +X direction, etc. Therefore the SpawnComponent tilts the new instances away from the +X axis and all prefabs should be authored to work with this accordingly.</p>
 <h2 id="details">Details</h2>
-<p>See the <a href="../../getting-started/api-docs.html">API Docs</a> for <code>ezSpawnComponent</code> for the component's interface.</p>
+<p>See the <a href="../api-docs.html">API Docs</a> for <code>ezSpawnComponent</code> for the component's interface.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../prefabs/prefabs-overview.html">Prefabs</a></li>

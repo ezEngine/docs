@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Input System | ezEngine Documentation </title>
+    <title>Input System | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Input System | ezEngine Documentation ">
+    <meta name="title" content="Input System | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -18,7 +18,7 @@
     <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
-    
+    <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -80,7 +80,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="input-system">Input System</h1>
 
-<p>All input devices, such as mouse, keyboard, controllers and other periphery are managed by the central <code>ezInputManager</code>. New devices are exposed to the system by implementing a custom <code>ezInputDevice</code>. For details, please see the <a href="../../getting-started/api-docs.html">API Docs</a> for those classes.</p>
+<p>All input devices, such as mouse, keyboard, controllers and other periphery are managed by the central <code>ezInputManager</code>. New devices are exposed to the system by implementing a custom <code>ezInputDevice</code>. For details, please see the <a href="../api-docs.html">API Docs</a> for those classes.</p>
 <h2 id="abstract-state">Abstract State</h2>
 <p>All input state is abstracted away. There are two layers of abstraction: <strong>input slots</strong> and <strong>input actions</strong>. <em>Slots</em> are the lower level hardware representation, <em>actions</em> are a higher level semantic representation of what the player can do. Actions are bound to one or multiple slots and if possible the game should allow the player to change those bindings.</p>
 <h3 id="input-slots">Input Slots</h3>
