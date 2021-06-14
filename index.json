@@ -1152,7 +1152,7 @@
   "pages/getting-started/binaries.html": {
     "href": "pages/getting-started/binaries.html",
     "title": "Prebuilt Binaries | ezEngine",
-    "keywords": "Prebuilt Binaries Packages with prebuilt binaries are published with GitHub releases . Follow @ezEngineProject for release announcements. <!-- Please be careful changing the version number below, the editor parses this page to detect new releases. --> The latest version is: <!--<VERSION>--> 21.6 <!--</VERSION>-->"
+    "keywords": "Prebuilt Binaries Packages with prebuilt binaries are published with GitHub releases . Follow @ezEngineProject for release announcements. <!-- Please be careful changing the version number below, the editor parses this page to detect new releases. --> The latest version is: <!--<VERSION>--> 21.6.1 <!--</VERSION>-->"
   },
   "pages/getting-started/editor-overview.html": {
     "href": "pages/getting-started/editor-overview.html",
@@ -1177,7 +1177,7 @@
   "pages/releases/releases.html": {
     "href": "pages/releases/releases.html",
     "title": "Releases | ezEngine",
-    "keywords": "Releases Releases can be downloaded from GitHub . Follow @ezEngineProject for release announcements. <!-- Please be careful changing the version number below, the editor parses this page to detect new releases. --> The latest version is: <!--<VERSION>--> 21.6 <!--</VERSION>-->"
+    "keywords": "Releases Releases can be downloaded from GitHub . Follow @ezEngineProject for release announcements. <!-- Please be careful changing the version number below, the editor parses this page to detect new releases. --> The latest version is: <!--<VERSION>--> 21.6.1 <!--</VERSION>-->"
   },
   "pages/samples/asteroids.html": {
     "href": "pages/samples/asteroids.html",
