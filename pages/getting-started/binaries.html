@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Release Notes June 2021 (21.6) | ezEngine </title>
+    <title>Prebuilt Binaries | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Release Notes June 2021 (21.6) | ezEngine ">
+    <meta name="title" content="Prebuilt Binaries | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../assets/images/favicon.svg">
@@ -78,76 +78,12 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="release-notes-june-2021-216">Release Notes June 2021 (21.6)</h1>
+<h1 id="prebuilt-binaries">Prebuilt Binaries</h1>
 
-<p>The release notes mention the more notable closed tickets and pull requests. See the <a href="https://github.com/ezEngine/ezEngine/milestone/6?closed=1">21.6 milestone</a> for all closed tickets and pull requests.</p>
-<h2 id="highlights--major-new-features">Highlights / Major new Features</h2>
-<p>This release contains many improvements to existing features, such as the <a href="../docs/ui/rmlui.html">RmlUi</a> integration. Additionally, with this release EZ finally has a proper <a href="../docs/animation/skeletal-animation/skeletal-animation-overview.html">skeletal animation system</a>. This is just the first version and will be expanded upon in the future.</p>
-<h2 id="editor">Editor</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/402">#402</a>: Added a splashscreen with our new logo.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/404">#404</a>: The <a href="../docs/assets/asset-browser.html">asset browser</a> can now show in which other assets an asset is referenced.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/401">#401</a>: Generalized sky light options across asset documents.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/issues/303">#303</a>: Improved mesh material assignment workflow.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/issues/304">#304</a>: Reduced screen space required by asset type filter list.</li>
-</ul>
-<h2 id="runtime">Runtime</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/378">#378</a>: Resources can now be created asynchroneously.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/373">#373</a>, <a href="https://github.com/ezEngine/ezEngine/pull/315">#315</a>: Added support for blackboards.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/372">#372</a>: Added image data resource + asset</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/370">#370</a>: Added a 'random seed' value to every game object.</li>
-<li>Added support for tracking which input device is in use (controller vs. mouse/keyboard).</li>
-</ul>
-<h2 id="infrastructure">Infrastructure</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/356">#356</a>: Added infrastructure to self-document available command line options.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/345">#345</a>: Added support for custom variant types.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/338">#338</a>: Allow using an 'ezSdkRoot.txt' redirection file to point to the SDK dir.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/316">#316</a>: Added new small array container class.</li>
-</ul>
-<h2 id="rendering">Rendering</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/407">#407</a>: Added option to modulate fog with sky color.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/401">#401</a>: Metallic materials can now reflect the skybox.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/374">#374</a>: Added a basic heightmap terrain component.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/358">#358</a>: Refactored RendererFoundation to make a Vulkan port easier.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/350">#350</a>: SPIR-V shader compiler support.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/348">#348</a>: Early draft of vulkan implementation.</li>
-</ul>
-<h2 id="physics">Physics</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/330">#330</a>: Added option to decompose collision mesh into convex pieces.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/issues/301">#301</a>: Static collision meshes can now use surfaces from the render mesh.</li>
-</ul>
-<h2 id="vr--ar--xr">VR / AR / XR</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/365">#365</a>: OpenXR Remoting support.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/332">#332</a>: OpenXR upgrade.</li>
-</ul>
-<h2 id="tools">Tools</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/389">#389</a>: Add support for .vox MagicaVoxel models.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/322">#322</a>: Rewrote the ModelImporter.</li>
-</ul>
-<h2 id="third-party-integrations">Third Party Integrations</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/398">#398</a>: Update ZStd to latest, includes the 1.5.0 release which brings speed improvements.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/396">#396</a>: Updated ads (Advanced Docking System) to version 3.7.1.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/394">#394</a>: Updated to RmlUi 4.0.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/371">#371</a>: Significant improvements to the <a href="https://github.com/jankrassnigg/Kraut">Kraut</a> integration.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/362">#362</a>: Added RmlUI blackboard binding.</li>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/320">#320</a>: Updated assimp to latest (5.0.1+).</li>
-</ul>
-<h2 id="samples">Samples</h2>
-<ul>
-<li><a href="https://github.com/ezEngine/ezEngine/pull/403">#403</a>: Added demo scene for animations.</li>
-<li>Added a sample scene for terrain and vegetation to the <a href="../samples/testing-chambers.html">Testing Chambers</a> project.</li>
-</ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="releases.html">Releases</a></li>
-</ul>
+<p>Packages with prebuilt binaries are published with <a href="https://github.com/ezEngine/ezEngine/releases">GitHub releases</a>.</p>
+<p>Follow <a href="https://twitter.com/ezEngineProject">@ezEngineProject</a> for release announcements.</p>
+<!-- Please be careful changing the version number below, the editor parses this page to detect new releases. -->
+<p><strong>The latest version is:</strong> <!--<VERSION>-->21.6<!--</VERSION>--></p>
 </article>
           </div>
           
@@ -156,7 +92,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/releases/release-21-6.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/getting-started/binaries.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

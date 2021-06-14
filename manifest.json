@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "OBakLjiTs6JpzfSsxbA4NY8f7ZDkmUO5OKXeRaGtBEw="
+          "hash": "P6NP5BW466FrK+kthPMwne+GJkMgk86/Inzp0pFbals="
         }
       },
       "is_incremental": false,
@@ -5306,6 +5306,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/binaries.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/binaries.html",
+          "hash": "2rlSSetdGh1854c4QzW3UgiwzNh5lC+QnvO6E4gJTNU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/getting-started/editor-overview.md",
       "output": {
         ".html": {
@@ -5346,7 +5358,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/getting-started/toc.html",
-          "hash": "d/Gz73zdQv4p5hV6MQsuJD4so9uAuoo5klEcsnj4H0w="
+          "hash": "OAkxrk0suYE3DnhIWSug2K+r9OpdK3pghMbZldD8FHg="
         }
       },
       "is_incremental": false,
@@ -5366,83 +5378,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/releases/release-20-2.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/releases/release-20-2.html",
-          "hash": "HIPqiJmM2eiVjPy34/wH+mz+tmvsvSXeOudWBUqoDQM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/releases/release-20-5.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/releases/release-20-5.html",
-          "hash": "xOuLQcX340lnFXRzMtbT+6fs/czYn3vxH8A57ORfnM4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/releases/release-20-8.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/releases/release-20-8.html",
-          "hash": "OZHcMo/eULdVBvGgt3hlTGdS1SRGSh2vhmDGUVLh9zM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/releases/release-21-6.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/releases/release-21-6.html",
-          "hash": "p2vj7nhDocuSGVYApl1kSC3JeF6cTbCbXgwKflzt78Y="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/releases/release-old.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/releases/release-old.html",
-          "hash": "zxWLxCg0iV/b5flP09zY8cV/p8VMgCRYTice0iZFblE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "pages/releases/releases.md",
       "output": {
         ".html": {
           "relative_path": "pages/releases/releases.html",
-          "hash": "K8P3GaeQv8Kqs1QsUi7IzHcFTM/K8VJ755pBkcRIzPg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "pages/releases/toc.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/releases/toc.html",
-          "hash": "IqJjNX3uXE7Ziaa8Ck7IEePUs/0d1JfvxCBIA5wLzD0="
+          "hash": "SWbX+/2Gt3ggZ5icUrFl1E0ypg5shYeUuEoC7XL2MKE="
         }
       },
       "is_incremental": false,
@@ -5828,7 +5768,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "RFFXFWG5YyWfXM2SOgrQTIp4EnWsqT/JohCskZdNFvk="
+          "hash": "Kx+MQYIQrsOLgZo7FSmDZxXpzuPShlTUhDBh5TxzxZc="
         }
       },
       "is_incremental": false,
@@ -5849,7 +5789,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 251,
+          "total_file_count": 247,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
