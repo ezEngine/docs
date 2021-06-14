@@ -81,6 +81,10 @@
 <h1 id="thirdparty-code-and-data">ThirdParty Code and Data</h1>
 
 <p>This page lists which third party code and data is used by EZ.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Before you distribute any project, please check the licensing conditions for all used components. The list below tries to be exhaustive and up-to-date for components directly used by EZ, but this is only provided for your convenience and we give no guarantee for correctness. It is still your responsibility to make absolutely certain that your project doesn't violate any licensing conditions from third-party components used directly or indirectly in your project.</p>
+</blockquote>
 <h2 id="assimp">Assimp</h2>
 <p>Link: <a href="http://www.assimp.org">http://www.assimp.org</a></p>
 <p>Compile switch: None (hard dependency for the asset processing)</p>
@@ -107,22 +111,26 @@ It can be used directly or through ezDuktapeWrapper. Non-essential for the engin
 <h2 id="enet">Enet</h2>
 <p>Link: <a href="http://enet.bespin.org">http://enet.bespin.org</a></p>
 <p>Compile switch: <strong>EZ_3RDPARTY_ENET_SUPPORT</strong></p>
-<p>An efficient and easy to use networking library, built on top of the UDP protocoll. It is used by ezTelemetry to interact with the ezInspector, and it is also used to implement the file serving functionality.</p>
+<p>An efficient and easy to use networking library, built on top of the UDP protocol. It is used by ezTelemetry to interact with the ezInspector, and it is also used to implement the file serving functionality.</p>
 <h2 id="fleetops">FleetOps</h2>
 <p>Link: <a href="https://www.fleetops.net">https://www.fleetops.net</a></p>
 <p>Some assets were kindly provided with permission to use and redistribute, by the awesome team behind the FleetOps project. Thanks so much guys!</p>
-<h2 id="fmod-2x">Fmod 2.x</h2>
+<h2 id="fmod-2x">FMOD 2.x</h2>
 <p>Link: <a href="https://www.fmod.com">https://www.fmod.com</a></p>
 <p>Compile switch: <strong>EZ_BUILD_FMOD</strong></p>
-<p>EZ has an integration for the Fmod sound system. However, you need to download the SDK yourself.</p>
+<p>EZ has an <a href="../sound/fmod-overview.html">integration for the FMOD sound system</a>. However, you need to download the SDK yourself.</p>
 <ol>
 <li>Go to <a href="https://www.fmod.com">fmod.com</a></li>
 <li>Sign up / log in</li>
-<li>Download and install the Fmod Studio API for the desired platforms</li>
-<li>For editing sounds you also need to download and install the Fmod Studio Tool</li>
-<li>In CMake, enable the Fmod compile switch</li>
+<li>Download and install the FMOD Studio API for the desired platforms</li>
+<li>For editing sounds you also need to download and install the FMOD Studio Tool</li>
+<li>In CMake, enable the FMOD compile switch</li>
 <li>Recompile ezEngine</li>
 </ol>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>FMOD is a commercial product and you may need to buy a license to use it in your project.</p>
+</blockquote>
 <h2 id="freesound">FreeSound</h2>
 <p>Link: <a href="https://freesound.org/">https://freesound.org</a></p>
 <p>Freesound is a collaborative database of Creative Commons Licensed sounds.</p>
@@ -160,10 +168,18 @@ It can be used directly or through ezDuktapeWrapper. Non-essential for the engin
 <li>Uwp installs are missing two include folders: <strong>PhysX/include/cudamanager</strong> and <strong>PhysX/include/gpu</strong> so copy those from <strong>physx/include</strong> to <strong>physx/install/.../PhysX/include</strong></li>
 <li>The content of the built configuration in <strong>physx/install</strong> is now ready to be consumed by ezEngine by pointing the advanced cmake var <strong>EZ_PHYSX_SDK</strong> to it.</li>
 </ol>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Depending on how you use PhysX, you may need to acquire (buy) a license for it from NVIDIA.</p>
+</blockquote>
 <h2 id="qt-5">Qt 5</h2>
 <p>Link: <a href="https://www.qt.io">https://www.qt.io</a></p>
 <p>Compile switch: <strong>EZ_ENABLE_QT_SUPPORT</strong></p>
 <p>Used for all desktop GUI code in the editor and tools.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Depending on how you use Qt, you may need to acquire (buy) a license for it. See <a href="https://www.qt.io/terms-conditions/">https://www.qt.io/terms-conditions/</a>.</p>
+</blockquote>
 <h2 id="qt-advanced-docking-system">Qt Advanced Docking System</h2>
 <p>Link <a href="https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System">https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System</a></p>
 <p>Compile switch <strong>EZ_3RDPARTY_ADS_SUPPORT</strong></p>
@@ -213,7 +229,6 @@ It can be used directly or through ezDuktapeWrapper. Non-essential for the engin
 <p>Link: <a href="https://facebook.github.io/zstd">https://facebook.github.io/zstd</a></p>
 <p>Compile switch: <strong>EZ_3RDPARTY_ZSTD_SUPPORT</strong></p>
 <p>A very fast lossless compression library. It is used by ezCompressedStreamReaderZstd and ezCompressedStreamWriterZstd and also by ezArchive.</p>
-<h2 id="see-also">See Also</h2>
 </article>
           </div>
           

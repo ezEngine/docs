@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Fmod Listener Component | ezEngine </title>
+    <title>FMOD Listener Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Fmod Listener Component | ezEngine ">
+    <meta name="title" content="FMOD Listener Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,9 +78,9 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="fmod-listener-component">Fmod Listener Component</h1>
+<h1 id="fmod-listener-component">FMOD Listener Component</h1>
 
-<p>The <em>Fmod listener component</em> represents the position and direction from where the player perceives sound. Every game must have exactly one listener component in the scene, to instruct Fmod how to compute the spatial sound.</p>
+<p>The <em>FMOD listener component</em> represents the position and direction from where the player perceives sound. Every game must have exactly one listener component in the scene, to instruct FMOD how to compute the spatial sound.</p>
 <p>For first-person and third-person games the listener component would be attached to the character controller, typically the same node where the main <a href="../graphics/camera-component.html">camera component</a> is located.</p>
 <p>For other kinds of games positioning the listener component can be more tricky. For example in a top down strategy game, or a 2D side scroller, you may move the camera very far out (to achieve the desired perspective). Though, if you were to place the listener component at the same position, you would either not hear anything (too far away), or if you adjust sound distances such that you hear something, you may hear sounds that are very far off screen.</p>
 <p>In such situations it is better to move the listener component much closer to the action. The image below shows such a setup, where the listener is much closer to the action than the camera:</p>
@@ -88,14 +88,14 @@
 <p>The red cone represents what the camera sees. The green circle visualizes the area in which sounds are audible.</p>
 <h2 id="multiple-listeners">Multiple Listeners</h2>
 <p>If you build a multi-player game, you should be careful to only instantiate a single listener component for the local player, and don't accidentally duplicate the listeners from remote players.</p>
-<p>However, Fmod also supports multiple listeners locally, in case you want to do split screen multi-player on the same machine. This is automatically enabled if multiple listeners are in the scene, with non-zero <code>ListenerIndex</code>. In multi-listener mode Fmod will deactivate many spatial audio effects and try to render the audio in the most sensible way. For details refer to the Fmod documentation.</p>
+<p>However, FMOD also supports multiple listeners locally, in case you want to do split screen multi-player on the same machine. This is automatically enabled if multiple listeners are in the scene, with non-zero <code>ListenerIndex</code>. In multi-listener mode FMOD will deactivate many spatial audio effects and try to render the audio in the most sensible way. For details refer to the FMOD documentation.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>ListenerIndex</code>: Which listener this component represents. Should always be zero, unless you do a split-screen multi-player game.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="fmod-overview.html">Fmod Integration</a></li>
+<li><a href="fmod-overview.html">FMOD Integration</a></li>
 </ul>
 </article>
           </div>
