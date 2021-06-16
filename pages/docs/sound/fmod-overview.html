@@ -81,19 +81,27 @@
 <h1 id="fmod-integration">FMOD Integration</h1>
 
 <p><a href="https://www.fmod.com">FMOD</a> is a world class sound engine used by many AAA games. <em>FMOD Studio</em> is an incredibly powerful tool to manage your sounds.</p>
-<p>ezEngine integrates FMOD with a plugin. To enable FMOD support, follow these steps:</p>
-<ol>
-<li>Create a free account at <a href="https://www.fmod.com">fmod.com</a> and sign in</li>
-<li>Download and install the <em>FMOD Studio API SDK for Windows</em> (needed to compile the FMOD plugin)</li>
-<li>Download and install <em>FMOD Studio</em> (only needed by people who want to edit FMOD projects)</li>
-<li>Enable FMOD in the <a href="../build/cmake-config.html">CMake configuration</a></li>
-<li>Compile the engine</li>
-</ol>
+<p>ezEngine integrates FMOD with a plugin.</p>
 <blockquote>
 <p><strong>Important:</strong></p>
 <p>Be aware that FMOD is a commercial product. Before you distribute a project made with EZ that includes FMOD functionality, check the <a href="https://www.fmod.com/licensing">FMOD licensing options</a>.</p>
 </blockquote>
+<h2 id="using-a-different-fmod-sdk">Using a Different FMOD SDK</h2>
+<p>To compile the FMOD plugin, parts of the official FMOD SDK are necessary. On Windows, EZ contains these files already. If you build EZ for a different platform, or want to use a newer FMOD version, follow these steps:</p>
+<ol>
+<li>Create a free account at <a href="https://www.fmod.com">fmod.com</a> and sign in.</li>
+<li>Download and install the <em>FMOD Studio API SDK for Windows</em> (or whichever platform you need).</li>
+<li>Download and install <em>FMOD Studio</em> (only needed by people who want to edit FMOD projects).</li>
+<li>Enable FMOD in the <a href="../build/cmake-config.html">CMake configuration</a>.</li>
+<li>Clean the CMake cache and regenerate. This way CMake will pick up the installed FMOD SDK rather than the built-in one.</li>
+<li>Compile the engine.</li>
+</ol>
 <h2 id="using-fmod-studio">Using FMOD Studio</h2>
+<p>FMOD Studio is the tool with which you edit the FMOD sound events. This tool is not provided with EZ and has to be installed separately:</p>
+<ol>
+<li>Create a free account at <a href="https://www.fmod.com">fmod.com</a> and sign in.</li>
+<li>Download and install <em>FMOD Studio</em>.</li>
+</ol>
 <p>FMOD Studio has a vast number of features. Describing how it works is out of scope for this documentation. Instead have a look at these resources:</p>
 <ul>
 <li><a href="https://www.fmod.com/learn">FMOD Learning Resources</a></li>
@@ -116,6 +124,10 @@
 <p>Once you have these things set up, you can create your first <a href="fmod-soundbank-asset.html">sound bank asset</a>, through which you get FMOD sound data into the engine.</p>
 <h2 id="sample-data">Sample Data</h2>
 <p>A sample FMOD Studio project is available under <em>Data/Content/Sound</em>, including pre-exported sound banks. These are also used by the sample projects, such as the <a href="../../samples/testing-chambers.html">Testing Chambers</a>.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>When opening the sample FMOD Studio projects from EZ, FMOD Studio may ask you to upgrade the project to the latest version. This should work fine.</p>
+</blockquote>
 <h2 id="scene-editing-settings">Scene Editing Settings</h2>
 <p>The FMOD editor plugin adds UI elements to <em>mute</em> sound entirely and to adjust the <em>master volume</em>:</p>
 <p><img src="media/sound-ui.jpg" alt="FMOD UI"></p>
