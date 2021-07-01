@@ -88,7 +88,7 @@
 <li>Android SDK Tools</li>
 <li>Android SDK Platform-Tools</li>
 <li>Java (JRE)</li>
-<li>Ninja</li>
+<li><a href="https://ninja-build.org">Ninja</a></li>
 <li>Android Emulator (optional)</li>
 <li>Visual Studio 2019</li>
 </ul>
@@ -97,18 +97,18 @@ The easiest way to install the Android components is to download <a href="https:
 Once installed, the following environment variables need to be set:
 Change the version to reflect the one you are using.</p>
 <ul>
-<li><strong>ANDROID_NDK_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk\ndk-bundle</code></li>
+<li><strong>ANDROID_NDK_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk\ndk\[VERSION]</code></li>
 <li><strong>ANDROID_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk</code></li>
 <li><strong>JAVA_HOME</strong> needs to point to a java runtime. Android Studio has its own version so there is no need to download it separately: <code>C:\Program Files\Android\Android Studio\jre</code></li>
 </ul>
 <h2 id="visual-studio-open-folder">Visual Studio Open Folder</h2>
-<p>While you can manually run cmake to use the ninja generator, a more convenient solution is to use Visual Studio's open folder functionality. Go to <code>File&gt;Open&gt;Folder...</code> and select the root of the repository. The cmake settings used by this feature are stored inside the <code>CMakeSettings.json</code> file in the root folder (<code>CppProperties.json</code> contains additional information for VS). Note that if a different API level is used, the <strong>ANDROID_PLATFORM</strong> parameter in the <code>CMakeSettings.json</code> has to be changed for all configurations.</p>
-<p>If all environment variables were set correctly VS should automatically configure CMake. Once done, a drop down appears in the VS toolbar, allowing you to select the configuration, e.g. <code>Android-x86-Debug</code>. Once changed, VS will start to configure Cmake again for the new configuration.</p>
+<p>While you can manually run CMake to use the ninja generator, a more convenient solution is to use Visual Studio's open folder functionality. Go to <code>File&gt;Open&gt;Folder...</code> and select the root of the repository. The CMake settings used by this feature are stored inside the <code>CMakeSettings.json</code> file in the root folder (<code>CppProperties.json</code> contains additional information for VS). Note that if a different API level is used, the <strong>ANDROID_PLATFORM</strong> parameter in the <code>CMakeSettings.json</code> has to be changed for all configurations.</p>
+<p>If all environment variables were set correctly VS should automatically configure CMake. Once done, a drop down appears in the VS toolbar, allowing you to select the configuration, e.g. <code>Android-x86-Debug</code>. Once changed, VS will start to configure CMake again for the new configuration.</p>
 <p>Next, select a build target, e.g. <code>libFoundationTest.so</code> which are the foundation unit tests. Note that you can only select applications, not all libraries here.</p>
 <h2 id="setting-up-an-emulator">Setting up an Emulator</h2>
 <p>Open Android Studio, go to <code>Configure&gt;AVD Manager</code> and select <code>Create Virtual Device</code>. Download the <strong>Pixel 2 x86</strong> image (or any other compatible one). Next, select <strong>Pie (API 28)</strong> (29 is broken as of writing). In <code>Advanced Settings</code> go to <code>Emulated Performance</code> and select <strong>Cold boot</strong> as the other options tend to hang and the only option then is to reset the image to factory defaults.</p>
 <h2 id="debugging-code">Debugging Code</h2>
-<p>Before debugging it should be ensured that you have a emulator setup or a device connected. There should only be every one device or emulator. Otherwise debugging is going to fail because its unkown which target to use.</p>
+<p>Before debugging it should be ensured that you have a emulator setup or a device connected. There should only be one device or emulator. Otherwise debugging is going to fail because it's unknown which target to use.</p>
 <pre><code class="lang-cmd">$ adb devices
 List of devices attached
 ce11171b5298cc120c      device
