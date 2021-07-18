@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PhysX Rope Component | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PhysX Rope Component | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="physx-rope-component">PhysX Rope Component</h1>
+
+<p>The <em>PhysX rope component</em> is used to physically simulate ropes, cables and chains.</p>
+<p><video src="media/rope-swing.webm" width="600" height="600" autoplay="" loop=""></video></p>
+<p>Ropes can be attached to walls as decorative elements (cables, wires), or they can even be attached to <a href="../actors/physx-dynamic-actor-component.html">dynamic physics objects</a> to link them together. This can be used as a gameplay feature.</p>
+<h2 id="setting-up-a-rope">Setting Up a Rope</h2>
+<p>A rope requires two anchor points between which it hangs. For this, one typically uses dummy game objects. The <code>AnchorA</code> and <code>AnchorB</code> <a href="../../scenes/object-references.html">object references</a> are used to configure which two objects to use.</p>
+<p>In the object hierarchy it typically looks like this:</p>
+<p><img src="media/rope-hierarchy.png" alt="Rope Objects"></p>
+<p>The position of the anchors can be moved in the 3D viewport to position the rope as desired. Additionally, the position of the rope object itself determines how much <em>slack</em> the rope will have. If the rope object is exactly on the straight line between the anchors, the rope has no slack. Otherwise, the rope becomes longer and longer, the farther its position is away from the straight line between the anchors.</p>
+<p><img src="media/rope-config.jpg" alt="Basic Rope Config"></p>
+<p>Note that the preview visualization of the rope is very simplistic and doesn't follow a <a href="https://en.wikipedia.org/wiki/Catenary">natural curve</a>. <a href="../../editor/run-scene.html">Run the scene</a> to see the final shape and behavior.</p>
+<p>If you want a rope without any slack, only use a single anchor. The position of the rope object will be used as the second anchor then, and there will be no slack whatsoever. This is easier than trying to position the rope object exactly on the line between the anchors.</p>
+<h3 id="rendering">Rendering</h3>
+<p>With just the rope simulation component, you won't be able to see the rope, at all. You also need to attach a <a href="../../effects/rope-render-component.html">rope render component</a> to the same game object.</p>
+<h3 id="examples">Examples</h3>
+<p>The <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project contains a dedicated <strong>Ropes scene</strong> with many examples.</p>
+<h2 id="simulation-stability">Simulation Stability</h2>
+<p>See <a href="../actors/physx-dynamic-actor-component.html#simulation-stability">Dynamic Actors - Simulation Stability</a>.</p>
+<p>The rope simulation uses a dedicated PhysX feature (&quot;articulations&quot;), which exhibits higher stability than regular actors with many joints. Thus it can achieve much better stability even with many linked bodies. However, overall the same guidelines to prevent stability issues  still apply.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>AnchorA</code>, <code>AnchorB</code>: <a href="../../scenes/object-references.html">References</a> to objects whose position determine where the rope will start and end. If only one anchor is used, the position of the object with the rope component is used as the other end.</p>
+</li>
+<li><p><code>AttachToA</code>, <code>AttachToB</code>: Whether the rope will be tied to the respective anchor location. If the anchor is attached to a <a href="../actors/physx-dynamic-actor-component.html">dynamic actor</a>, the rope will pull that actor. Otherwise, the rope will be fixed at that static location. If the rope is not attached to the anchor, the respective end is free to move around.</p>
+</li>
+<li><p><code>Mass</code>: The total mass of the rope. It will be distributed equally among all pieces.</p>
+</li>
+<li><p><code>Pieces</code>: Of how many individual pieces the rope is made up. More pieces look prettier, but cost more performance and may decrease the simulation stability.</p>
+</li>
+<li><p><code>Thickness</code>: How thick the simulated rope is. This may be very different from how thick it is rendered. A thinner rope will have more simulation issues, such as tunneling through other geometry.</p>
+</li>
+<li><p><code>BendStiffness</code>, <code>TwistStiffness</code>: The stiffness determines how strongly the rope wants to get back into a straight, untwisted shape. This can be used to make the rope very springy. Note that extremely large values are necessary to get a visible effect. Also note that physics engines generally don't like extremely large values and thus this can easily make the simulation unstable. If large stiffness is used, make sure to also set large damping values, that counteracts severe oscillation.</p>
+</li>
+<li><p><code>BendDamping</code>, <code>TwistDamping</code>: How strongly the rope resists to changing it's current shape. Large values can make the rope 'freeze' even in unnatural shapes, and the rope may act more like a bent wire. However, increasing the damping values also reduces the potential for oscillation when large forces act upon the rope. It is a good idea to never set these values below 50.</p>
+</li>
+<li><p><code>MaxBend</code>, <code>MaxTwist</code>: These angles restrict how much each individual pieces in the rope can bend or twist relative to its neighboring piece. Low angles mean the rope is very stiff. A very flexible rope would use values above 45 degrees. Note that this only restricts how much the rope will bend or twist. If it should additionally try to uncoil itself, also set the stiffness values.</p>
+</li>
+<li><p><code>CollisionLayer</code>: The <a href="../collision-shapes/collision-layers.html">collision layer</a> defines with which other objects the rope collides.</p>
+</li>
+<li><p><code>Surface</code>: The <a href="../../materials/surfaces.html">surface</a> defines how slippery or bouncy the rope is.</p>
+</li>
+<li><p><code>DisableGravity</code>: If set, the rope will have no gravity applied and just floats in the air.</p>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../joints/physx-joints.html">Physics Joints</a></li>
+<li><a href="../actors/physx-actors.html">PhysX Actors</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/special/physx-rope-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/channel/UCPoIG0ohCnCdIrCid00u15w" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

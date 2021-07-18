@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Screenshots | ezEngine </title>
+    <title>Rope Render Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Screenshots | ezEngine ">
+    <meta name="title" content="Rope Render Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,49 +78,13 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="screenshots">Screenshots</h1>
+<h1 id="rope-render-component">Rope Render Component</h1>
 
-<p>For tutorial videos, <a href="../getting-started/videos.html">have a look here</a>.</p>
-<h2 id="samples">Samples</h2>
-<p><img src="media/rts2.jpg" alt="RTS"></p>
-<p><img src="media/tc0.jpg" alt=""></p>
-<p><img src="media/tc2.jpg" alt=""></p>
-<h2 id="tools">Tools</h2>
-<p><img src="../docs/editor/media/ezEditor.jpg" alt=""></p>
-<p><img src="../docs/editor/media/quad-view.jpg" alt=""></p>
-<p><img src="../docs/tools/media/inspector.jpg" alt=""></p>
-<h2 id="ui">UI</h2>
-<p><img src="../docs/ui/media/imgui.jpg" alt=""></p>
-<h2 id="skeletal-animations">Skeletal Animations</h2>
-<p><video src="../docs/animation/media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p><video src="../docs/animation/media/anim-clip.webm" width="800" height="600" autoplay="" loop=""></video></p>
-<h2 id="particle-effects">Particle Effects</h2>
-<p><video src="../docs/effects/particle-effects/media/color-gradient.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p><video src="../docs/effects/particle-effects/media/flies.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p><video src="../docs/effects/particle-effects/media/size-curve.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p><video src="../docs/effects/particle-effects/media/event-reaction-effect.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p><video src="../docs/effects/particle-effects/media/trail-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p><video src="../docs/effects/particle-effects/media/effect-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<h2 id="physics">Physics</h2>
-<p><video src="../docs/physics/joints/media/fixed-joint.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<p><video src="../docs/physics/joints/media/revolute-joint.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<p><video src="../docs/physics/special/media/cc.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<p><video src="../docs/physics/special/media/grab-items.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<p><video src="../docs/physics/special/media/rope-swing.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<h2 id="terrain">Terrain</h2>
-<p><img src="../docs/terrain/media/terrain-overview.jpg" alt="Terrain"></p>
-<h2 id="vegetation">Vegetation</h2>
-<p><video src="media/KrautWind.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<h2 id="decals">Decals</h2>
-<p><img src="../docs/effects/media/decals-overview.jpg" alt="Decals"></p>
-<h2 id="ai">AI</h2>
-<p><img src="../docs/ai/media/navmesh.jpg" alt="Navmesh generation"></p>
-<h2 id="other">Other</h2>
-<p><video src="media/PlayerHealth.mp4" width="800" autoplay="" loop=""></video></p>
+<p>The <em>rope render component</em> is used to render a rope. The current implementation renders a simple, black line. More options will follow.</p>
+<p>The rope simulation is done by other components, such as the <a href="../physics/special/physx-rope-component.html">PhysX rope component</a>. The rope render component has to be attached to the same object as the simulation component.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="samples-overview.html">Samples</a></li>
-<li><a href="../getting-started/videos.html">Videos</a></li>
+<li><a href="../physics/special/physx-rope-component.html">PhysX Rope Component</a></li>
 </ul>
 </article>
           </div>
@@ -130,7 +94,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/samples/screenshots.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/rope-render-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -174,9 +138,9 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     
 
     <script>
