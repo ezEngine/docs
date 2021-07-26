@@ -83,14 +83,14 @@
 <p>The <em>PhysX rope component</em> is used to physically simulate ropes, cables and chains.</p>
 <p><video src="media/rope-swing.webm" width="600" height="600" autoplay="" loop=""></video></p>
 <p>Ropes can be attached to walls as decorative elements (cables, wires), or they can even be attached to <a href="../actors/physx-dynamic-actor-component.html">dynamic physics objects</a> to link them together. This can be used as a gameplay feature.</p>
+<p>If all you need is a decorative rope, that doesn't react to physical stimuli (except <a href="../../effects/wind.html">wind (TODO)</a>), prefer to use a <a href="../../effects/fake-rope-component.html">fake rope component</a>, as that has a much lower performance overhead.</p>
 <h2 id="setting-up-a-rope">Setting Up a Rope</h2>
-<p>A rope requires two anchor points between which it hangs. For this, one typically uses dummy game objects. The <code>AnchorA</code> and <code>AnchorB</code> <a href="../../scenes/object-references.html">object references</a> are used to configure which two objects to use.</p>
+<p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../scenes/object-references.html">object reference</a> is used to select which one to use.</p>
 <p>In the object hierarchy it typically looks like this:</p>
 <p><img src="media/rope-hierarchy.png" alt="Rope Objects"></p>
-<p>The position of the anchors can be moved in the 3D viewport to position the rope as desired. Additionally, the position of the rope object itself determines how much <em>slack</em> the rope will have. If the rope object is exactly on the straight line between the anchors, the rope has no slack. Otherwise, the rope becomes longer and longer, the farther its position is away from the straight line between the anchors.</p>
+<p>The position of the anchors can be moved in the 3D viewport to position the rope as desired. The approximate shape of the simulated rope will be shown as a preview. Use the <code>Slack</code> property to make the rope sag.</p>
 <p><img src="media/rope-config.jpg" alt="Basic Rope Config"></p>
-<p>Note that the preview visualization of the rope is very simplistic and doesn't follow a <a href="https://en.wikipedia.org/wiki/Catenary">natural curve</a>. <a href="../../editor/run-scene.html">Run the scene</a> to see the final shape and behavior.</p>
-<p>If you want a rope without any slack, only use a single anchor. The position of the rope object will be used as the second anchor then, and there will be no slack whatsoever. This is easier than trying to position the rope object exactly on the line between the anchors.</p>
+<p><a href="../../editor/run-scene.html">Run the scene</a> to see the final shape and behavior.</p>
 <h3 id="rendering">Rendering</h3>
 <p>With just the rope simulation component, you won't be able to see the rope, at all. You also need to attach a <a href="../../effects/rope-render-component.html">rope render component</a> to the same game object.</p>
 <h3 id="examples">Examples</h3>
@@ -100,13 +100,15 @@
 <p>The rope simulation uses a dedicated PhysX feature (&quot;articulations&quot;), which exhibits higher stability than regular actors with many joints. Thus it can achieve much better stability even with many linked bodies. However, overall the same guidelines to prevent stability issues  still apply.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>AnchorA</code>, <code>AnchorB</code>: <a href="../../scenes/object-references.html">References</a> to objects whose position determine where the rope will start and end. If only one anchor is used, the position of the object with the rope component is used as the other end.</p>
+<li><p><code>Anchor</code>: A <a href="../../scenes/object-references.html">reference</a> to an object whose position determines where the rope ends.</p>
 </li>
-<li><p><code>AttachToA</code>, <code>AttachToB</code>: Whether the rope will be tied to the respective anchor location. If the anchor is attached to a <a href="../actors/physx-dynamic-actor-component.html">dynamic actor</a>, the rope will pull that actor. Otherwise, the rope will be fixed at that static location. If the rope is not attached to the anchor, the respective end is free to move around.</p>
+<li><p><code>AttachToOrigin</code>, <code>AttachToAnchor</code>: Whether the rope is fixed at the origin or anchor location. If the respective object is attached to a <a href="../actors/physx-dynamic-actor-component.html">dynamic actor</a>, the rope will pull that actor. Otherwise, the rope will be fixed at that static location. If the rope is not attached at one or both ends it is free to move away from there.</p>
 </li>
 <li><p><code>Mass</code>: The total mass of the rope. It will be distributed equally among all pieces.</p>
 </li>
-<li><p><code>Pieces</code>: Of how many individual pieces the rope is made up. More pieces look prettier, but cost more performance and may decrease the simulation stability.</p>
+<li><p><code>Pieces</code>: How many individual pieces the rope is made up of. More pieces look prettier, but cost more performance and may decrease the simulation stability.</p>
+</li>
+<li><p><code>Slack</code>: How much slack the rope has. A value of zero means the rope is hung perfectly straight between its anchors. Positive values make the rope sag downwards. Negative values are also allowed, they make the rope hang upside down. This is useful to create a longer rope that shouldn't spawn inside the ground. The rope can thus be placed above the ground and it will simply fall down after creation.</p>
 </li>
 <li><p><code>Thickness</code>: How thick the simulated rope is. This may be very different from how thick it is rendered. A thinner rope will have more simulation issues, such as tunneling through other geometry.</p>
 </li>
@@ -125,6 +127,8 @@
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="../../effects/fake-rope-component.html">Fake Rope Component</a></li>
+<li><a href="../../effects/rope-render-component.html">Rope Render Component</a></li>
 <li><a href="../joints/physx-joints.html">Physics Joints</a></li>
 <li><a href="../actors/physx-actors.html">PhysX Actors</a></li>
 </ul>
