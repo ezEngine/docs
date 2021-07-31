@@ -2339,6 +2339,17 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/rope-rendering.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/rope-rendering.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/particle-effects/how-particle-effects-work.md",
       "output": {
@@ -2793,7 +2804,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/rope-render-component.html",
-          "hash": "O9J07YhgWBNFubXxd3hh/Jc70xwIQdHsxzdRo1F95/E="
+          "hash": "vGoSErRGfr9CyQuZVtmHLxF51V10Gb+3ePg3cggOc6U="
         }
       },
       "is_incremental": false,

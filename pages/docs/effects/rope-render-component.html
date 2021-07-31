@@ -80,11 +80,17 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="rope-render-component">Rope Render Component</h1>
 
-<p>The <em>rope render component</em> is used to render a rope. The current implementation renders a simple, black line. More options will follow.</p>
-<p>The rope simulation is done by other components, such as the <a href="../physics/special/physx-rope-component.html">PhysX rope component</a>. The rope render component has to be attached to the same object as the simulation component.</p>
+<p>The <em>rope render component</em> is used to render a rope or cable.</p>
+<p><img src="media/rope-rendering.jpg" alt="Rope"></p>
+<p>The rope simulation is done by other components, such as the <a href="../physics/special/physx-rope-component.html">PhysX rope component</a> or the <a href="fake-rope-component.html">fake rope component</a>. The rope render component has to be attached to the same object as the simulation component.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Color</code>: The color of the rendered lines.</li>
+<li><code>Material</code>: The <a href="../materials/materials-overview.html">material</a> to use for rendering.</li>
+<li><code>Color</code>: The object color. This is typically multiplied into the diffuse part of the material, but the shader may use the color in different ways, as well.</li>
+<li><code>Thickness</code>: The thickness of the rope mesh.</li>
+<li><code>Detail</code>: How many polygons the rope mesh uses to appear round. More detail costs more rendering performance. Note that this has no effect on how many segments the rope is made up of, that is a property of the simulation component.</li>
+<li><code>Subdivide</code>: Whether the rope mesh should have an extra segment subdivision to make it look smoother at strong bends. This doubles the amount of triangles in the mesh. Enable this for ropes that still should look as good as possible even under strong curvature.</li>
+<li><code>UScale</code>: The texture is always wrapped exactly once around the rope. Howver, along the rope's length, this option defines how often it will be repeated.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
