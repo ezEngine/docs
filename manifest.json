@@ -2227,6 +2227,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/cloth-sheet-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/cloth-sheet-component.html",
+          "hash": "yIJJXOoLBKWAQ9LeVjH/6Gzzw6uWsyMzVTIiLRMiBV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/decals.md",
       "output": {
         ".html": {
@@ -5947,7 +5959,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 251,
+          "total_file_count": 252,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
