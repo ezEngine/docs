@@ -80,7 +80,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="textures">Textures</h1>
 
-<p>Textures come in multiple forms. Most common are 2D textures loaded from file. 2D textures can also be created as render targets for <a href="../effects/render-to-texture.html">render-to-texture (TODO)</a>. For <a href="../effects/sky.html">sky boxes</a> or special effects you can also set up cubemap textures.</p>
+<p>Textures come in multiple forms. Most common are 2D textures loaded from file. 2D textures can also be created as render targets for <a href="render-to-texture/render-to-texture.html">render-to-texture (TODO)</a>. For <a href="../effects/sky.html">sky boxes</a> or special effects you can also set up cubemap textures.</p>
 <p>When the source texture comes from a file, you can create a texture <a href="../assets/assets-overview.html">asset</a> for that file by <a href="../assets/import-assets.html">importing</a> it. Otherwise you need to create the respective asset <a href="../editor/editor-documents.html">document</a> manually, for example for render targets.</p>
 <p>Textures are most often referenced by <a href="../materials/materials-overview.html">materials</a>. Texture assets only specify how source files are imported and combined, they don't define rendering behavior. Therefore most components don't use textures directly, but rather use materials, which configure the overall rendering, unless the component in question already sets up the rendering itself, such as the <a href="../effects/sky.html#skybox-component">SkyBox component</a>.</p>
 <p><img src="media/texture-asset.png" alt="Texture Asset"></p>
@@ -113,7 +113,7 @@
 <h2 id="cubemap-texture-asset">Cubemap Texture Asset</h2>
 <p>Cubemap assets have a subset of the properties that 2D textures have. Their behavior is identical, except for <strong>Channel Mapping</strong>, which allows you to build a cubemap either from one or from six input files.</p>
 <h2 id="render-target-asset">Render Target Asset</h2>
-<p>Render targets can be used like regular 2D textures. That means materials can reference them and display their content. However, they are filled by rendering to them at runtime, for example by using a camera to render the scene from a certain viewpoint. Have a look at the <a href="../effects/render-to-texture.html">render to texture (TODO)</a> article for details.</p>
+<p>Render targets can be used like regular 2D textures. That means materials can reference them and display their content. However, they are filled by rendering to them at runtime, for example by using a camera to render the scene from a certain viewpoint. Have a look at the <a href="render-to-texture/render-to-texture.html">render to texture (TODO)</a> article for details.</p>
 <p>Apart from some properties shared with 2D texture assets, render targets have these unique properties:</p>
 <p><strong>Format:</strong> Determines whether the texture can store HDR data (10 bit or 16 bit) and whether the texture represents colors (sRGB) or linear data.</p>
 <p><strong>Resolution:</strong> The dimensions of the texture. If set to <code>CVar RT Resolution N</code> the resolution will be read from the <a href="../debugging/cvars.html">CVar</a> <code>r_RenderTargetResolutionN</code>. This can be used to adjust the resolution dynamically.</p>
@@ -121,7 +121,7 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../materials/materials-overview.html">Materials</a></li>
-<li><a href="../effects/render-to-texture.html">Render to Texture (TODO)</a></li>
+<li><a href="render-to-texture/render-to-texture.html">Render to Texture (TODO)</a></li>
 <li><a href="../effects/sky.html">Sky</a></li>
 <li><a href="../appendix/color-spaces.html">Color Spaces (TODO)</a></li>
 </ul>

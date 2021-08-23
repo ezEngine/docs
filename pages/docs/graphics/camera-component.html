@@ -80,7 +80,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="camera-component">Camera Component</h1>
 
-<p>The <em>camera component</em> is used to tell the renderer from which position and with which settings to render the scene. Apart from the component that acts as the <em>main camera</em>, there can be additional cameras in active use for <a href="../effects/render-to-texture.html">render to texture (TODO)</a> effects. Additionally, camera components can be used in the editor as 'bookmarks' to be able to quickly jump to specific positions in a level.</p>
+<p>The <em>camera component</em> is used to tell the renderer from which position and with which settings to render the scene. Apart from the component that acts as the <em>main camera</em>, there can be additional cameras in active use for <a href="render-to-texture/render-to-texture.html">render to texture (TODO)</a> effects. Additionally, camera components can be used in the editor as 'bookmarks' to be able to quickly jump to specific positions in a level.</p>
 <p><img src="media/camera-component.jpg" alt="Camera"></p>
 <p>When an object with a camera component is selected, the editor shows a preview of what the camera sees in the top left corner.</p>
 <h2 id="main-camera">Main Camera</h2>
@@ -116,7 +116,7 @@
 <p>Camera components can be used to render their view to a texture, which can then be referenced by a <a href="../materials/materials-overview.html">material</a> and displayed on any <a href="meshes/meshes-overview.html">mesh</a>.</p>
 <p>To enable this mode, the <code>UsageHint</code> has to be set to <code>Render to Texture</code>. You also need to select a <code>CameraRenderPipeline</code>. The render pipeline defines how the scene is rendered and which rendering effects are applied. You need to configure which <a href="render-pipeline-overview.html">render pipelines (TODO)</a> are available to the cameras in the <a href="../assets/asset-profiles.html">asset profiles (TODO)</a>.</p>
 <p>The <code>RenderTargetOffset</code> and <code>RenderTargetSize</code> allow you to render only to a part of the texture.</p>
-<p>Note that rendering to a texture involves additional steps. See the chapter about <a href="../effects/render-to-texture.html">render-to-texture (TODO)</a> for full instructions.</p>
+<p>Note that rendering to a texture involves additional steps. See the chapter about <a href="render-to-texture/render-to-texture.html">render-to-texture (TODO)</a> for full instructions.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><p><code>EditorShortcut</code>: Used to configure <a href="../scenes/editor-camera.html#level-cameras">level cameras</a>.</p>
@@ -139,7 +139,7 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../scenes/editor-camera.html">Editor Camera</a></li>
-<li><a href="../effects/render-to-texture.html">Render to Texture (TODO)</a></li>
+<li><a href="render-to-texture/render-to-texture.html">Render to Texture (TODO)</a></li>
 <li><a href="render-pipeline-overview.html">Render Pipeline (TODO)</a></li>
 <li><a href="../assets/asset-profiles.html">Asset Profiles (TODO)</a></li>
 <li><a href="../projects/tags.html">Tags</a></li>
