@@ -111,22 +111,20 @@
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>If your plugin will be entirely on its own, you don't even need this. However, if you want to use multiple plugins and some of them should contain shared code, then others need to be able to link against the shared libraries and access classes and functions from that library. By tagging classes with these macros you can <em>export</em> symbols from a DLL and thus make those things available to other code. For examples how to use this, just search the sample plugin.</p>
 <h3 id="ezplugin-instance">ezPlugin Instance</h3>
-<p>The 'secret sauce' to EZ engine plugins can be found in <code>SampleGamePlugin.cpp</code>:</p>
+<p>EZ provides additional hooks for initialization when a plugin gets loaded or unloaded. You can find these in <code>SampleGamePlugin.cpp</code>:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: plugin-setup -->
-<pre><code class="lang-cpp">static void OnPluginLoaded(bool)
+<pre><code class="lang-cpp">EZ_PLUGIN_ON_LOADED()
 {
   // you could do something here, though this is rare
 }
 
-static void OnPluginUnloaded(bool)
+EZ_PLUGIN_ON_UNLOADED()
 {
   // you could do something here, though this is rare
 }
-
-ezPlugin s_Plugin(false, &amp;OnPluginLoaded, &amp;OnPluginUnloaded);
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
-<p>The important part here is the definition of the global variable <code>s_Plugin</code>. This injects code into the plugin DLL, that helps the engine to distinguish which plugin things like <a href="../../runtime/world/components.html">components</a> or <a href="../../runtime/configuration/startup.html">subsystems</a> belong to. You really don't have to do more than this. In the snippet above we provide callbacks that are triggered when a plugin is loaded or unloaded. These callbacks are optional, though in some cases you may want to register and unregister things here.</p>
+<p>These callbacks are optional, though in some cases you may want to register and unregister things here. However, it is way more common to rather use the <a href="../../runtime/configuration/startup.html">startup system</a> instead.</p>
 <h2 id="loading-a-plugin">Loading a Plugin</h2>
 <p>If you want to load a plugin from code, you would use <code>ezPlugin::LoadPlugin()</code> and provide only the name (no path) of your plugin. Make sure that the DLL is stored in the same directory as all other DLLs and EXEs.</p>
 <p>The more convenient way to load your game plugin, though, is to enable it in the <a href="../../projects/project-settings.html">project settings</a>. Then it will be automatically loaded by every <a href="../../runtime/application/application.html">application (TODO)</a>.</p>

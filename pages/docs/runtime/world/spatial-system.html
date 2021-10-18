@@ -95,7 +95,7 @@
 <h3 id="configuring-spatial-data-categories">Configuring Spatial Data Categories</h3>
 <p>In C++ code you register a spatial data category through <code>ezSpatialData::RegisterCategory()</code>. This will return a category object which can be used for spatial queries later:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: spatial-category-registration -->
-<pre><code class="lang-cpp">ezSpatialData::Category RtsSelectableComponent::s_SelectableCategory = ezSpatialData::RegisterCategory(&quot;Selectable&quot;);
+<pre><code class="lang-cpp">ezSpatialData::Category RtsSelectableComponent::s_SelectableCategory = ezSpatialData::RegisterCategory(&quot;Selectable&quot;, ezSpatialData::Flags::None);
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>When using the editor, there are components, such as the <a href="../../gameplay/marker-component.html">marker component</a>, which allow you to select a category from a predefined list. This list is project specific. When you click on such a dropdown box, the last entry allows you to open an editor to configure the available categories:</p>
@@ -134,8 +134,9 @@ EZ_END_MESSAGEHANDLERS;
 <pre><code class="lang-cpp">void RtsGameState::InspectObjectsInArea(const ezVec2&amp; position, float radius, ezSpatialSystem::QueryCallback callback) const
 {
   ezBoundingSphere sphere(position.GetAsVec3(0), radius);
-  ezUInt32 uiCategoryBitmask = RtsSelectableComponent::s_SelectableCategory.GetBitmask();
-  m_pMainWorld-&gt;GetSpatialSystem()-&gt;FindObjectsInSphere(sphere, uiCategoryBitmask, callback, nullptr);
+  ezSpatialSystem::QueryParams queryParams;
+  queryParams.m_uiCategoryBitmask = RtsSelectableComponent::s_SelectableCategory.GetBitmask();
+  m_pMainWorld-&gt;GetSpatialSystem()-&gt;FindObjectsInSphere(sphere, queryParams, callback);
 }
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->

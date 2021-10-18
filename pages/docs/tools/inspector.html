@@ -88,10 +88,11 @@
 <li><strong>Memory Usage</strong>: The Memory panel displays the number of allocations, the amount of memory in use (per allocator) and a time-line how memory usage changes.</li>
 <li><strong>Input</strong>: Shows which physical buttons are available and what their state is. Also displays the virtual input actions, by which keys they get triggered and what their current state is.</li>
 <li><strong>Subsystems</strong>: Displays information about all the available subsystems in the engine.</li>
-<li><strong>Plugins</strong>: Shows which plugins are loaded, which other plugins they depend on and whether they can be reloaded dynamically.</li>
+<li><strong>Plugins</strong>: Shows which plugins are loaded and which other plugins they depend on.</li>
 <li><strong>Global Events</strong>: Shows which global events are registered and how often they occur.</li>
 <li><strong>File Operations</strong>: This panel shows which files get accessed by the engine, whether they occur on the main thread, how much data is read or written per operation, how much time that takes (and thus why an application might be blocking or stuttering). Allows to sort and filter by different criteria to get a better grasp at what and how data is accessed.</li>
 <li><strong>CVars</strong>: This panel displays all CVars that are available. You can not only see their current values, but also modify them, such that you can change the behavior of the application without restarting it. This allows to quickly change parameters of things that you are trying out, such that you can see the effects immediately.</li>
+<li><strong>Console</strong>: The CVar panel also displays a console window, where you can type commands the same way as in the <a href="../debugging/console.html">in-game console</a>. Pressing <code>TAB</code> auto-completes input, arrow up/down searches the history, and so on. This can be used to modify CVar state, but also to execute <a href="../debugging/console.html#console-functions">console functions</a>.</li>
 <li><strong>Stats</strong>: Using ezStats a game can display the status of certain internals. This allows to make it easy to inspect what a game object is doing or what state some component is in. So instead of printing this debug information on screen inside the game, you can watch it with ezInspector. Additionally ezInspector allows to mark stats as 'favorites' which means you can output hundreds of stats in your game, but easily only display the subset that you are currently interested in inside ezInspector. Additionally, it is now possible to display the history of a stat variable in a separate panel as a graph. This makes it easy to observe how some stats behave over time (such as frame time, frames-per-second, etc.).</li>
 <li><strong>Time</strong>: Displays all ezClock instances that are active. Shows the raw time step and the filtered time step, which allows to see hiccups and general performance characteristics of the application.</li>
 <li><strong>Reflection</strong>: Shows all reflected types and their class hierarchy. Also shows which properties each reflected type provides.</li>
@@ -99,7 +100,9 @@
 <li><strong>Resources</strong>: This panel shows all loaded resources. You can filter by type and name and you can sort the resources by various criteria.</li>
 </ul>
 <h2 id="setting-up-your-game-to-support-ezinspector">Setting up your game to support ezInspector</h2>
+<blockquote>
 <p><strong>Note:</strong> None of this setup is required when you use <code>ezGameApplication</code> as your application base class, or even better, your game only implements an <code>ezGameState</code> and is run directly through <code>ezPlayer</code>.</p>
+</blockquote>
 <p>The inspection functionality is implemented in the <code>ezInspectorPlugin</code> plugin, so you need to have that compiled.</p>
 <p>In your application you can then either simply always link against that plugin to activate the functionality, or you can load it dynamically at runtime.
 Additionally the <code>ezInspectorPlugin</code> uses <code>ezTelemetry</code> to phone home, so you need to have that activated.</p>
@@ -118,6 +121,13 @@ Additionally you need to make sure that <code>ezTelemetry</code> is updated once
 ezTelemetry::PerFrameUpdate();
 </code></pre>
 <p>And that's it! The rest is done automatically.</p>
+<h2 id="connecting-to-a-process">Connecting to a Process</h2>
+<ol>
+<li>If you run a custom app or ezPlayer on the same machine, ezInspector should manage to automatically connect.</li>
+<li>If you are running your app on a different machine, you need the respective IP address.</li>
+<li>For <a href="player.html">ezPlayer</a> and custom apps, the <strong>default port is 1040</strong>.</li>
+<li>For <em>EditorEngineProcess.exe</em>, the <strong>default port is 1050</strong>. So if you want to connect with ezInspector to the editor, you need to provide this port instead.</li>
+</ol>
 <h2 id="how-to-get-the-best-out-of-ezinspector">How to get the best out of ezInspector</h2>
 <p>Some tips, what to do to benefit from the inspection functionality:</p>
 <ul>
