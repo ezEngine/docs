@@ -102,14 +102,15 @@
 </ol>
 <p>If all goes well, everything should work as before. The only difference is now, that you can modify the code of your plugin and compile it, while the editor is open. Of course you can't do that while being attached with a debugger, so detach your debugger, if necessary.</p>
 <h3 id="terminate-and-restart-the-engine">Terminate and Restart the Engine</h3>
-<p>Select <em>Tools &gt; Reload Engine</em> or just press <code>Ctrl+Shift+F4</code>.</p>
+<p>You can always manually restart the engine process through <em>Tools &gt; Reload Engine</em> or the hotkey <code>Ctrl+Shift+F4</code>.</p>
 <p>This instructs the editor to kill its engine process and restart it right away. This takes a few seconds, and you will see the 3D viewports flicker and notice how the new engine process loads all the data. Once that is done you can again <a href="../../editor/run-scene.html">simulate the scene</a> and will now get the latest behavior from your game plugin.</p>
+<p>Additionally, when a pluggin is set as <code>LoadCopy</code>, and it gets modified, the editor already <strong>automatically restarts the engine process</strong>, once no scene is being simulated.</p>
 <h2 id="restrictions">Restrictions</h2>
 <p>The <code>LoadCopy</code> option should only be used for select game plugins. Enabling this feature can have unintended side-effects.</p>
 <ul>
-<li>If any code links against a plugin, that plugin cannot be loaded as a copy. Therefore, if you want to put shared code into a separate library that other of your plugins link against, you can't load that shared library as a copy.</li>
-<li>You can't compile code while debugging a process. To compile your code, you first have to detach your debugger.</li>
-<li>Consequently, if you want to continue debugging after you restarted the engine process, you need to manually re-attach your debugger to <em>EditorEngineProcess.exe</em>.</li>
+<li>If any code links against a plugin, that plugin cannot be loaded as a copy. Therefore, if you want to put shared code into a separate library that other users of your plugins link against, you can't load that shared library as a copy.</li>
+<li>You can't compile code while debugging a process. To compile your code, you first have to detach your debugger. In Visual Studio that can be done via <code>Debug &gt; Detach All</code>.</li>
+<li>Consequently, if you want to continue debugging after you restarted the engine process, you need to manually re-attach your debugger to <em>EditorEngineProcess.exe</em>. In Visual Studio this is done via <code>Debug &gt; Attach to Process...</code> or even better <code>Debug &gt; Reattach to Process</code> (<code>SHIFT+ALT+P</code>) when you want to repeat the same thing a second time.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
