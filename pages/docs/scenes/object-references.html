@@ -121,7 +121,13 @@ const char* ezLineToComponent::GetLineToTargetGuid() const
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>Finally, during component serialization you just use <code>ezWorldWriter::WriteGameObjectHandle()</code> and <code>ezWorldReader::ReadGameObjectHandle()</code> to save and restore the actual game object handle.</p>
+<h2 id="limitations">Limitations</h2>
+<p>Object references are not possible across <a href="scene-layers.html">scene layers</a>.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="scene-editing.html">Scene Editing</a></li>
+<li><a href="scene-layers.html">Scene Layers</a></li>
+</ul>
 </article>
           </div>
           

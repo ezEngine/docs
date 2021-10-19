@@ -80,10 +80,60 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="scene-layers">Scene Layers</h1>
 
-<!-- PAGE IS TODO -->
+<p>By default all objects that you create in a scene end up in the same overall structure and are saved in the same <code>.ezScene</code> file. Since scenes quickly become full of objects, it can become difficult to keep things organized in a useful way. Additionally, since all objects are stored in the same file, it is not possible to have multiple people edit the same scene simultaneously. Instead, you have to make sure that each scene is always only edited by one person at a time, and then synchronized to others, before they can make a change.</p>
+<p><strong>Scene layers</strong> are a concept that is meant to help both with generally organizing a scene, as well as splitting it up in a way that enables people to collaboratively work on it to some degree.</p>
+<h2 id="managing-scene-layers">Managing Scene Layers</h2>
+<p>Scene layers are managed through the <em>Layers</em> panel:</p>
+<p><img src="media/scene-layers.png" alt="Scene Layers"></p>
+<p>Here a scene is divided up into 4 different layers. Each layer is stored on disk as a dedicated <code>.ezSceneLayer</code> file, except for the main layer, which is stored in the <code>.ezScene</code> file itself.</p>
+<p>Layers are added and deleted through the context menu:</p>
+<p><img src="media/scene-layers-contextmenu.png" alt="Scene Layers Context Menu"></p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Once a layer is created, it can't be renamed (other than renaming the file on disk manually).
+Another option is to create a new layer, and move all objects there, then delete the old one.</p>
+</blockquote>
+<h2 id="main-layer">Main Layer</h2>
+<p>Every scene has exactly one <em>main layer</em>, the one that is represented by the <code>.ezScene</code> file itself. The main layer always has the name of the scene itself. It is the only layer that can't be unloaded and it stores references to all the other layers. Thus adding or removing a layer is always a modification of the main layer as well.</p>
+<h2 id="active-layer">Active Layer</h2>
+<p>The layer that is <em>selected</em> in the <em>Layers</em> panel is considered to be the <strong>active layer</strong>. The <em>Scenegraph</em> panel displays the list of objects that are part of the active layer.</p>
+<p>When you <a href="selection.html">select an object</a> in the viewport, the active layer is automatically set to be the one that contains the selected object.</p>
+<h2 id="layer-visibility">Layer Visibility</h2>
+<p>The <em>eye icon</em> next to each layer indicates whether a layer is <em>visible</em>. Click the icon or use the context menu to toggle the layer's visibility. When a layer is set to invisible, all objects in it are hidden during editing. This is effectively the same as <a href="editor-camera.html#showhide-objects">hiding all objects</a>, though it is more convenient when you put objects that often need to be hidden, into their own layer.</p>
+<h2 id="load--unload-layers">Load / Unload Layers</h2>
+<p>Every layer is either <em>loaded</em> or <em>unloaded</em>. By default all layers are <em>loaded</em>. Layers can be unloaded through the context menu or by clicking the <em>folder icon</em> next to them in the <em>Layers</em> panel. If you unload a layer, all its objects get removed from the scene. It is then not possible to select or edit any of them, and selecting that layer won't make it <em>active</em>.</p>
+<p>Unloading layers thus can be used as a way to not only <em>hide</em> objects, but to properly remove them (temporarily). This can be beneficial in large scenes, to improve performance.</p>
+<h2 id="moving-objects-between-layers">Moving Objects between Layers</h2>
+<p>When you create a new object, it is always put into the <em>active layer</em>. To move an object to another layer, drag and drop it from the <em>Scenegraph</em> panel onto another layer in the <em>Layers</em> panel.</p>
+<h2 id="undoredo-across-layers">Undo/Redo across Layers</h2>
+<p>Every layer has its own <em>undo stack</em>, meaning the list of operations that were executed while it was active. Clicking <em>undo</em> will change only the active layer, never any other layer, and it will not switch to another layer either.</p>
+<p>Operations such as moving an object from one layer to another, are effectively two operations. A <em>delete operation</em> on the active layer, and an <em>add operation</em> on the target layer. Thus undoing the move operation right away, will only undo the delete operation, and thus you end up with a duplicate. Similarly, undoing the operation only on the target layer will only undo the add operation and thus delete the object altogether. To properly undo operations that operate across layers, you need to undo one step in all affected layers. The editor doesn't do this automatically for you, since you might have done additional operations on those other layers already and thus it can't guarantee to do the right thing.</p>
+<h2 id="exporting-scenes-with-layers">Exporting Scenes with Layers</h2>
+<p>When <a href="../editor/run-scene.html#export-and-run">exporting a scene</a> all data is exported into a single file. Currently there is no runtime concept of layers (although this may be added later, since this can be useful for streaming large worlds).</p>
+<p>However, only the objects from <em>loaded layers</em> are put into the exported scene file. <em>Unloaded layers</em> don't contribute to the result. This can be utilized to export only a part of a scene to speed up loading times during testing.</p>
+<h2 id="saving-scenes-with-layers">Saving Scenes with Layers</h2>
+<p>Since every layer is a separate file, each one also has its own modified flag (the star next to its name, indicating that it was changed). The regular <em>Save Document</em> (<code>Ctrl+S</code>) action only saves the <em>active layer</em>. You can use <em>Save All</em> (<code>Ctrl+Shift+S</code>) to save all documents. This will save all layers in a scene, but also all other documents.</p>
+<h2 id="object-references-across-layers">Object References across Layers</h2>
+<p>Creating <a href="object-references.html">object references</a> across scene layers is not possible (and also not planned to ever be allowed). Objects that should reference each other must either be in the same scene layer, or one of them has to be a <a href="../prefabs/prefabs-overview.html">prefab</a> and <a href="exposed-parameters.html">expose the reference property</a> in a useful way.</p>
+<h2 id="multi-user-editing-with-layers">Multi-User Editing with Layers</h2>
+<p>Layers don't magically solve the problem of editing the same scene concurrently with multiple people. However, they give you a tool to do so, as long as everyone involved sticks to some rules.</p>
+<p>To enable multi-user editing, you need to decide how to best split up a scene, such that everyone can work on a mutually exclusive set of layers, meaning that no layer is ever modified by two people at the same time.</p>
+<p>One option is to have one layer per person, and everyone only modifies the things that they worked on previously. Another option is to divide a level into groups of object types, such as <em>terrain</em>, <em>NPCs</em>, <em>vegetation</em> and so on, and always have only one person work on each aspect. Finally, another option is to divide the scene into areas. This may be most useful for large scenes, where one person works for example on the village, and another person on the forest around it.
+Of course all of these methods can also be mixed and matched as makes most sense in each project and scene.</p>
+<blockquote>
+<p><strong>Tip:</strong></p>
+<p>To prevent accidentally editing a layer that shouldn't be touched, it is best to either <em>unload</em> it or at least set it to <em>invisible</em>. This way you can't accidentally select and change such an object.</p>
+</blockquote>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>The main layer stores references to all other layers. Thus adding a new layer will modify the main layer. In that case, it is best to quickly synchronize this change with all other team members. In case a layer WAS modified by two people at the same time, for example because both added a new layer, such changes are possible to resolve manually or even automatically by tools like <em>git</em>, since the layer files are text based and merge-friendly, as long as there are only few changes.</p>
+</blockquote>
+<h2 id="miscellaneous-tips">Miscellaneous Tips</h2>
+<p>Some objects are more important during editing than others. For example the objects that configure the overall level <a href="../graphics/lighting/ambient-light-component.html">lighting</a>, <a href="../effects/sky.html">skybox</a>, <a href="../gameplay/player-start-point.html">player start position</a>, <a href="../physics/physx-settings-component.html">physics settings</a>, <a href="../graphics/camera-component.html">cameras</a> and so on. It is very useful to put all of these objects into a dedicated layer, because that makes finding them much easier.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="scene-editing.html">Scene Editing</a></li>
+<li><a href="../editor/editor-documents.html">Editor Documents</a></li>
 </ul>
 </article>
           </div>
