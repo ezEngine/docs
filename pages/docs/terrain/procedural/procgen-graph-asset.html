@@ -80,10 +80,57 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="procgen-graph-asset">ProcGen Graph Asset</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>ProcGen Graph Asset</em> is used to configure the rules for <a href="procedural-object-placement.html">procedural object placement</a>. In this graph structure you define which objects should be placed under which conditions.</p>
+<h2 id="editing-the-procgen-graph">Editing the ProcGen Graph</h2>
+<p>The main area of this document is used to place and connect nodes in a graph. Use the context menu to add nodes. Drag and drop pins from left to right to connect outputs to inputs. Pins usually represent single number values, such as a density value or a single channel of a color (e.g. 'red'). By connecting a pin on the right side of a node (output) to a pin on the left side of a node (input), the output value is forwarded into the other node and affects how that node operates.</p>
+<p>Nodes that only have pins on their right side, are pure <em>input nodes</em>, they only provide data for other nodes to consume. Nodes that only have pins on their left side, are <em>output nodes</em>. They consume various input values and then create some kind of result, for example they decide whether to place an object at a certain location.</p>
+<p>When you select a node, the <em>property grid</em> shows additional configuration options. The image below shows a graph with three <em>input nodes</em> and three <em>output nodes</em>. Each input node is connected to one output node and thus affects how that output node places objects.</p>
+<p><img src="media/procgen-graph-asset.png" alt="ProcGen Graph Asset"></p>
+<h3 id="interactions">Interactions</h3>
+<ul>
+<li>Right-click and drag in the view, to move it around.</li>
+<li>Mouse-wheel to zoom.</li>
+<li>Left-click to select nodes.</li>
+<li>Left-click and drag to select multiple nodes.</li>
+<li>Ctrl + left-click to add or remove a node from the selection.</li>
+<li>Right-click on a node, pin or connection for a context-menu in which you can delete the object.</li>
+<li>Click on an empty spot to open a context menu from which to create new nodes.</li>
+<li>Left-click and drag any pin to connect it to another pin. The UI will indicate which pins can be connected.</li>
+</ul>
+<h2 id="graph-output">Graph Output</h2>
+<p>What exact output the procedural rules generate depends on which <em>output nodes</em> are present in the graph. Currently these types of output are available:</p>
+<ol>
+<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output (TODO)</a></li>
+<li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
+</ol>
+<blockquote>
+<p><strong>Tip:</strong></p>
+<p>To learn the system, it is best to start with the <a href="procgen-graph-output-placement.html">placement output (TODO)</a> node and ignore the rest. The simplest possible graph only contains a single such node and nothing else.</p>
+</blockquote>
+<h2 id="using-a-procgen-graph">Using a ProcGen Graph</h2>
+<p>The ProcGen graph asset doesn't have any kind of pre-visualization. To see what effect a rule has, you need a scene in which the necessary setup is available.</p>
+<p>The scene should contain some geometry with <a href="../../physics/collision-shapes/collision-meshes.html">collision meshes</a>, such that raycasts can hit the geometry. <a href="../../scenes/greyboxing.html">Greyboxing</a> and <a href="../heightfield-component.html">heightfield components</a> work just fine for that.</p>
+<p>You also need a component that applies the ProcGen graph. Depending on the <em>output nodes</em> used in the graph this would be one of these:</p>
+<ol>
+<li><a href="procgen-placement-component.html">Procedural Placement Component (TODO)</a></li>
+<li><a href="procgen-vertex-color-component.html">Procedural Vertex Color Component (TODO)</a></li>
+</ol>
+<p>Make sure the ProcGen graph asset is <a href="../../assets/assets-overview.html">transformed</a>. Then <a href="../../editor/run-scene.html">press play to simulate it</a>. If everything is set up right, you should see objects getting placed around the camera, within the specified volume.</p>
+<h2 id="building-complex-rules">Building Complex Rules</h2>
+<p>Once you've figured out the basics, you can build more complex rules.</p>
+<ol>
+<li>Use the <a href="procgen-graph-inputs.html">ProcGen graph input nodes (TODO)</a> to receive more information about a location, such as its slope or height.</li>
+<li>Pass the data through <a href="procgen-graph-math.html">ProcGen graph math nodes</a> to adjust it as necessary.</li>
+<li>Use <a href="procgen-graph-modifies.html">ProcGen graph modifier nodes (TODO)</a> to make it possible to configure the rules locally.</li>
+</ol>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="procedural-generation.html">Procedural Object Placement (TODO)</a></li>
+<li><a href="procgen-placement-component.html">Procedural Placement Component (TODO)</a></li>
+<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output (TODO)</a></li>
+<li><a href="procgen-vertex-color-component.html">Procedural Vertex Color Component (TODO)</a></li>
+<li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
+<li><a href="procgen-volume-box-component.html">Procedural Volume Box Component (TODO)</a></li>
+<li><a href="procgen-volume-image-component.html">Procedural Volume Image Component (TODO)</a></li>
 </ul>
 </article>
           </div>

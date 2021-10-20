@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ProcGen Graph Vertex Color Output | ezEngine </title>
+    <title>ProcGen Graph Math Nodes | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ProcGen Graph Vertex Color Output | ezEngine ">
+    <meta name="title" content="ProcGen Graph Math Nodes | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,18 +78,46 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="procgen-graph-vertex-color-output">ProcGen Graph Vertex Color Output</h1>
+<h1 id="procgen-graph-math-nodes">ProcGen Graph Math Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<h2 id="node-properties">Node Properties</h2>
+<p>These node types implement math functions for <a href="procgen-graph-asset.html">ProcGen graph assets</a>.</p>
+<h2 id="blend-node">Blend Node</h2>
+<p>The <em>Blend</em> node provides the most common math expressions to combine two values.</p>
+<h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><code>Name</code>:</li>
+<li><code>Mode</code>: Determines how the two input values get combined.</li>
+<li><code>InputA</code>, <code>InputB</code>: Fallback values for pins <code>A</code> and <code>B</code> respectively, in case one of the pins isn't connected. Use this, in case you want to combine one value with a constant (e.g. to multiply <code>A</code> by two, leave <code>B</code> disconnected and set <code>InputB</code> to <code>2</code>).</li>
+<li><code>ClampOutput</code>: If this is enabled, the output value is clamped to [0;1] range.</li>
+</ul>
+<h2 id="perlin-noise-node">Perlin Noise Node</h2>
+<p>The <em>Perlin Noise</em> node outputs a <a href="https://en.wikipedia.org/wiki/Perlin_noise">Perlin Noise</a> value for the current location.</p>
+<p>This value can be used to add variety, however, not through completely random values, but rather ones that gradually change. So for instance, if the quality of soil varies, the look of vegetation may be different. However, bushes that grow next to each other are affected the same way, so their look will be similar.</p>
+<p>In the two images below, the same plants are placed. However, in the second image, Perlin noise is used to affect their color. Note how in the second image all plants in an area become darker or brighter.</p>
+<p><img src="media/proc-noise-off.jpg" alt="Perlin Noise off">
+<img src="media/proc-noise-on.jpg" alt="Perlin Noise on"></p>
+<h3 id="node-properties-1">Node Properties</h3>
+<ul>
+<li><code>Scale</code>: Over which area the noise is stretched. Large values mean that the noise value changes slowly over large distances, whereas smaller values result in higher frequency noise. If the value is too small for the used object density, the results lose their gradually changing quality.</li>
+<li><code>Offset</code>: Pushes the values along the respective axis.</li>
+<li><code>NumOctaves</code>: How many Perlin noise values to combine for the final result. More octaves give a more varied pattern and can be scaled across a larger area without showing obvious repetitions, but also cost more performance to evaluate.</li>
+<li><code>OutputMin</code>, <code>OutputMax</code>: The output value will be between these two values.</li>
+</ul>
+<h2 id="random-node">Random Node</h2>
+<p>The <em>Random</em> node outputs a random number for the current location. The result is deterministic for a given position and seed value, however, contrary to the <em>Perlin noise</em> node, the values for locations right next to each other have no correlation.</p>
+<p>This type of noise can be used to add variation between plants, where there is no shared reason for the variation (such as soil quality).</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Properties such as object scale and color variation CAN be controlled through input pins and thus random values can be passed in, however, if no such input is provided, they will already vary randomly between their allowed values. Unless more control is needed, it is therefore not necessary to add and connect a <em>Random</em> node.</p>
+</blockquote>
+<h3 id="node-properties-2">Node Properties</h3>
+<ul>
+<li><code>Seed</code>: A seed value for the random number generator. If a fixed seed is chosen, the random number output is always exactly the same.</li>
+<li><code>OutputMin</code>, <code>OutputMax</code>: The output value will be between these two values.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
-<li><a href="procgen-graph-asset.html">ProcGen Graph Asset</a></li>
+<li><a href="procgen-graph-inputs.html">ProcGen Graph Input Nodes (TODO)</a></li>
 </ul>
 </article>
           </div>
@@ -99,7 +127,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/procedural/procgen-graph-output-vertexcolor.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/procedural/procgen-graph-math.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

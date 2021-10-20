@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Procedural Object Placement | ezEngine </title>
+    <title>ProcGen Graph Input Nodes | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Procedural Object Placement | ezEngine ">
+    <meta name="title" content="ProcGen Graph Input Nodes | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,11 +78,37 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="procedural-object-placement">Procedural Object Placement</h1>
+<h1 id="procgen-graph-input-nodes">ProcGen Graph Input Nodes</h1>
 
+<p>These node types are available as <em>inputs</em> for <a href="procgen-graph-asset.html">ProcGen graph assets</a>.</p>
+<h2 id="slope-input-node">Slope Input Node</h2>
+<p>When an object gets placed at a specific location, the <em>Slope</em> node calculates the slope of the terrain at that position and determines whether it is within a desired range. The better it is within the range, the closer the output value is to <code>1</code>, and if the slope is outside the desired range, the output value is <code>0</code>.</p>
+<p>The output value of this node can be passed unchanged as <code>Density</code> into the <a href="procgen-graph-output-placement.html">placement output node (TODO)</a>. In this case the slope directly decides whether an object gets placed or not. It may, however, also be passed into other values, for instance to affect the color of an object.</p>
+<p>On the node you select a <code>MinSlope</code> and a <code>MaxSlope</code> which define the desired range. For example, if the <code>MinSlope</code> is set to <code>0</code> (flat ground) and the <code>MaxSlope</code> is set to <code>20</code> (slightly uphill), then objects will only be placed on nearly flat terrain.
+If, however, <code>MinSlope</code> is set to <code>30</code> (steep) and <code>MaxSlope</code> is set to <code>70</code> (nearly vertical), then objects will only be placed along strong slopes, for example the sides of mountains.</p>
+<p>The <code>LowerFade</code> and <code>UpperFade</code> values determine how quickly the output value fades towards zero when the slope approaches <code>MinSlope</code> or <code>MaxSlope</code> respectively. With a fade value of zero, the cut off is very abrupt, with a fade value of one, the output value declines earlier, but also more gradually.</p>
+<h3 id="node-properties">Node Properties</h3>
+<ul>
+<li><code>MinSlope</code>, <code>MaxSlope</code>: The slope range (in degree) between which the output value is non-zero.</li>
+<li><code>LowerFade</code>, <code>UpperFade</code>: How quickly to fade the output value from one towards zero, when the slope approaches the min (lower) or max (upper) value. Fade values of zero mean an abrupt change from one to zero at the boundaries, a value of one means there is always some fade out, except right at the center of the value range.</li>
+</ul>
+<h2 id="height-input-node">Height Input Node</h2>
+<p>The <em>Height</em> node works mostly the same way as the <em>Slope</em> node, except that it uses the height (z value) of the potential object position.</p>
+<p>The <em>Height</em> node determines the z value of the location where an object shall be placed. It then checks whether the value is between <code>MinHeight</code> and <code>MaxHeight</code>. If not, it outputs the value <code>0</code>. Otherwise, it outputs a non-zero value. <code>LowerFade</code> and <code>UpperFade</code> are used to decide whether, and how much, to fade the output value from <code>1</code> towards <code>0</code>.</p>
+<p>This node can be used to place objects only at specific altitudes, or to change object sizes or colors at higher elevations.</p>
+<h3 id="node-properties-1">Node Properties</h3>
+<ul>
+<li><code>MinHeight</code>, <code>MaxHeight</code>: The height range between which the output value is non-zero.</li>
+<li><code>LowerFade</code>, <code>UpperFade</code>:  How quickly to fade the output value from one towards zero, when the height approaches the min (lower) or max (upper) value. Fade values of zero mean an abrupt change from one to zero at the boundaries, a value of one means there is always some fade out, except right at the center of the value range.</li>
+</ul>
+<h2 id="mesh-vertex-color-input-node">Mesh Vertex Color Input Node</h2>
+<p>TODO</p>
 <!-- PAGE IS TODO -->
-<p>Procedural object placement is usable, but undocumented. There are still many things that could be added or improved, though. There is a sample scene in the <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project, that shows how to populate terrain with forrest through a few simple rules.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
+<li><a href="procgen-graph-math.html">ProcGen Graph Math Nodes</a></li>
+</ul>
 </article>
           </div>
           
@@ -91,7 +117,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/procedural/procedural-generation.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/procedural/procgen-graph-inputs.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

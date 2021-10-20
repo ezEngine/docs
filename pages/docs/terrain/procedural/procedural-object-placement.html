@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ProcGen Graph Vertex Color Output | ezEngine </title>
+    <title>Procedural Object Placement | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ProcGen Graph Vertex Color Output | ezEngine ">
+    <meta name="title" content="Procedural Object Placement | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,18 +78,25 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="procgen-graph-vertex-color-output">ProcGen Graph Vertex Color Output</h1>
+<h1 id="procedural-object-placement">Procedural Object Placement</h1>
 
-<!-- PAGE IS TODO -->
-<h2 id="node-properties">Node Properties</h2>
-<ul>
-<li><code>Name</code>:</li>
-</ul>
+<p><img src="../media/terrain-overview.jpg" alt="Procedural Vegetation Placement"></p>
+<p>Creating large terrain with convincing vegetation is a lot of work. Since nature generally follows certain rules, such as on which type of terrain which plant can grow, how densely they are packed and so on, it makes sense to rather build and apply such rules to automatically place objects, rather than attempting to place vegetation by hand.</p>
+<p>EZ comes with a <em>procedural generation</em> feature. This is designed specifically for decorating terrain with vegetation, but can also be used in other scenarios.</p>
+<p>The system is heavily inspired by the procedural vegetation system in <em>Horizon Zero Dawn</em>. See this GDC talk (<a href="https://www.youtube.com/watch?v=ToCozpl1sYY">video</a>, <a href="https://www.gdcvault.com/play/1024700/GPU-Based-Run-Time-Procedural">slides</a>) for reference.</p>
+<h2 id="sample-scene">Sample Scene</h2>
+<p>To get started, the <em>Vegetation</em> scene in the <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project shows a simple setup in action. You need to <a href="../../editor/run-scene.html">run the scene</a>, because the procedural system is only active during simulation.</p>
+<h2 id="technical-overview">Technical Overview</h2>
+<p>The procedural generation system is active in a scene once a <a href="procgen-placement-component.html">procedural placement component (TODO)</a> is added to it. The component defines in which area a certain rule is used to place objects. The rules are set up through <a href="procgen-graph-asset.html">ProcGen graph assets</a>. The rules specify which objects to place under which conditions and with what kind of variation.</p>
+<p>Additional components can be placed to affect the object placement in select areas, such as for clearing an area or increasing the density of a certain type of plant.</p>
+<p>The procedural placement system only places objects during scene simulation, so without pressing <em>play</em> in the editor, you won't see any placement.</p>
+<p>The system uses the position of the main <a href="../../graphics/camera-component.html">camera</a> to determine where to place objects. Object placement is distributed across frames, to prevent stutter. A grid around the camera is used to determine in which area objects have been placed already. When the camera moves, new cells will be populated, and cells that are too far away are cleared again. This way the system makes sure that there is a relatively constant performance impact.</p>
+<p>Consequently, procedurally placed objects can't have state that needs to be persistent. Each object can have state, for example you could make it place trees that can be burned down, but it must be fine for your game, that the tree will reappear, if the player gets far away and returns.</p>
+<p>Object placement is deterministic. As long as the placement rules and the conditions (terrain, materials, etc) don't change, the same object will be placed at the same position every single time.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
 <li><a href="procgen-graph-asset.html">ProcGen Graph Asset</a></li>
+<li><a href="procgen-placement-component.html">Procedural Placement Component (TODO)</a></li>
 </ul>
 </article>
           </div>
@@ -99,7 +106,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/procedural/procgen-graph-output-vertexcolor.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/procedural/procedural-object-placement.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
