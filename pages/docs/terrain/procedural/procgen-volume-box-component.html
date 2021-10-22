@@ -80,19 +80,20 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="procedural-volume-box-component">Procedural Volume Box Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>procedural volume box component</em> defines a box shaped volume in which the rules of <a href="procgen-graph-asset.html">ProcGen graphs</a> are modified. Not every graph has to make use of this information, and what the exact effect is, is up to the ProcGen graph.</p>
+<p>For more details see the chapter on <a href="procgen-graph-modifiers.html">ProcGen graph modifier nodes (TODO)</a>.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Value</code>:</li>
-<li><code>SortOrder</code>:</li>
-<li><code>BlendMode</code>:</li>
-<li><code>Extents</code>:</li>
-<li><code>FadeOutStart</code>:</li>
+<li><code>Value</code>: A single number value. This is combined with the <em>InputValue</em> from the <a href="procgen-graph-modifiers.html">modifier node (TODO)</a> in the graph, using the <code>BlendMode</code> formula.</li>
+<li><code>SortOrder</code>: If multiple modifier volumes overlap, the <code>SortOrder</code> can be used to control in which order the volumes are evaluated.</li>
+<li><code>BlendMode</code>: How to combine <code>Value</code> with the <em>InputValue</em> from the <a href="procgen-graph-modifiers.html">modifier node (TODO)</a> in the graph. The <em>Set</em> mode just sets the result to <code>Value</code> and ignores the other operand.</li>
+<li><code>Extents</code>: The size of the box volume in which the modifier is active.</li>
+<li><code>FadeOutStart</code>: The influence of the volume can fade out towards its edges, for smooth transitions. This value controls for every axis, at what distance from the center point the fade out starts. So if this is set to zero, the fade out starts immediately at the middle (towards the closest edge), whereas if it is set to one, there will be no fade out, at all, and rather the influence of the volume stops abruptly at its border.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-graph-modifies.html">ProcGen Graph Modifier Nodes (TODO)</a></li>
+<li><a href="procgen-graph-modifiers.html">ProcGen Graph Modifier Nodes (TODO)</a></li>
 </ul>
 </article>
           </div>

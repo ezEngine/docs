@@ -80,16 +80,17 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="procedural-placement-component">Procedural Placement Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>procedural placement component</em> is used to apply the rules that are defined by a <a href="procgen-graph-asset.html">ProcGen graph asset</a> within a defined volume of space. The most common use case is to procedurally place vegetation.</p>
+<p>The main purpose of the component is to define the region where the procedural rules are to be evaluated. It is not intended to move the volume around at runtime. Rather, the system already automatically takes care of only placing objects in the vicinity of the camera, and delete objects that have are too far away.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Resource</code>: The <a href="procgen-graph-asset.html">ProcGen graph asset</a> to use for deciding where to place which object type.</li>
-<li><code>Extents</code>: The size of the volume in which to evaluate the placement rules. This has to cover the terrain geometry where objects shall be placed.</li>
+<li><code>Resource</code>: The <a href="procgen-graph-asset.html">ProcGen graph asset</a> to use for deciding where to place which type of object.</li>
+<li><code>Extents</code>: The size of the volume in which to evaluate the placement rules. This has to overlap with the terrain geometry where objects shall be placed.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output (TODO)</a></li>
+<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output</a></li>
 </ul>
 </article>
           </div>

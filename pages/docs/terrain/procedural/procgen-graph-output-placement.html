@@ -80,28 +80,73 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="procgen-graph-placement-output">ProcGen Graph Placement Output</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>Placement Output</em> node is at the heart of the procedural placement system. This node specifies which <a href="../../prefabs/prefabs-overview.html">prefabs</a> to spawn, what density to use, how to position each object and how to add variety.</p>
+<p>A <a href="procgen-graph-asset.html">ProcGen graph</a> can already work, even if it contains just a single of these nodes. However, you can add as many of these nodes as you like. Every placement node represents a different type of object, with different conditions under which they are spawned.</p>
+<p>For example one node would be used to spawn stones on rocky surfaces, another node spawns bushes on grassy surfaces, a third spawns trees and so on. Every type of object has a <em>footprint</em>, meaning an certain size of area in which only one of them will be placed. The larger the footprint, the more sparse these objects are spawned.
+The node itself can already filter whether to place an object, at all, by inspecting the <a href="../../materials/surfaces.html">surface</a>. This way vegetation isn't planted on concrete or water.</p>
+<p>More elaborate filtering can be achieved with <a href="procgen-graph-modifiers.html">modifier nodes (TODO)</a>. For example an image can represent where exactly what type of object should appear.</p>
 <h2 id="node-properties">Node Properties</h2>
 <ul>
-<li><code>Name</code>:</li>
-<li><code>Objects</code>:</li>
-<li><code>Footprint</code>:</li>
-<li><code>MinOffset</code>:</li>
-<li><code>MaxOffset</code>:</li>
-<li><code>YawRotationSnap</code>:</li>
-<li><code>AlignToNormal</code>:</li>
-<li><code>MinScale</code>:</li>
-<li><code>MaxScale</code>:</li>
-<li><code>ColorGradient</code>:</li>
-<li><code>CullDistance</code>:</li>
-<li><code>CollisionLayer</code>:</li>
-<li><code>Surface</code>:</li>
-<li><code>Mode</code>:</li>
+<li><p><code>Name</code>: A custom display name that is shown in the node's title bar. This has no function other than to make it easier to find in the graph.</p>
+</li>
+<li><p><code>Objects</code>: A list of <a href="../../prefabs/prefabs-overview.html">prefabs</a>. When an object gets placed, which one to use is either chosen through the <code>ObjectIndex</code> pin, or randomly, if the pin is not connected.</p>
+</li>
+<li><p><code>Footprint</code>: The radius (in meters) of the circle in which a single object gets placed. Increase the footprint to make object placement more sparse, decrease it to make it more dense.
+<img src="media/procgen-sparse-dense.jpg" alt="Large vs. small footprint"></p>
+</li>
+<li><p><code>MinOffset</code>, <code>MaxOffset</code>: How much the position of the placed object may randomly deviate from the center position. If this is large enough and the footprint is too small, neighboring objects may end up overlapping. It is common to set <code>MinOffset</code> to <code>-MaxOffset</code>. If an object may only move upwards, but not downwards, keep <code>MinOffset.z</code> at <code>0</code> and only set <code>MaxOffset.z</code> to a positive value.
+<img src="media/procgen-offset.jpg" alt="Small and large offset"></p>
+</li>
+<li><p><code>YawRotationSnap</code>: All placed objects are rotated randomly along the up axis. If this is non-zero, the used rotation angles are always a multiple of it.</p>
+</li>
+<li><p><code>AlignToNormal</code>: How much to blend the placed object up direction towards the underlying surface's slope. If this is zero, the placed object always stands upright, regardless of the slope. If it is set to one, the placed object will fully follow the slope of the terrain. Anything in between, the object bends more or less towards the slope.</p>
+</li>
+<li><p><code>MinScale</code>, <code>MaxScale</code>: How large the placed object is at least (<code>MinScale</code>) and at most (<code>MaxScale</code>). The final scale is a blend between min and max, so if both values are uniform (x = y = z), the object's scale is also always uniform.
+<img src="media/procgen-scale.jpg" alt="Random scale"></p>
+</li>
+<li><p><code>ColorGradient</code>: An optional <a href="../../animation/common/color-gradients.html">color gradient</a> from which a random color is chosen to set the <a href="../../graphics/meshes/mesh-component.html">mesh color</a> (in fact a <code>ezMsgSetColor</code> is sent when the object is spawned, so this could also be used to implement other features). If the <code>ColorIndex</code> pin is connected, the incoming value in the [0;1] range is used instead to lookup the color from the gradient.
+<img src="media/procgen-color.jpg" alt="Random color"></p>
+</li>
+<li><p><code>CullDistance</code>: At what distance to start spawning this type of object. For large objects with a low density, this distance can be increased. Small objects with high density should use a small distance, to prevent performance issues.
+<img src="media/procgen-cull-distance.jpg" alt="Different cull distances"></p>
+</li>
+<li><p><code>PlacementMode</code>: How to determine the location where to place objects.</p>
+<ol>
+<li><p><em>Raycast:</em> In this mode a physics ray is cast downwards from the volume of the <a href="procgen-placement-component.html">placement component</a>. Using the <code>CollisionLayer</code> and <code>Surface</code> as filters, the closest intersection point is used.</p>
+<p><img src="media/procgen-placement-raycast.jpg" alt="Placement mode: raycast"></p>
+</li>
+<li><p><em>Fixed:</em> In this mode objects are always placed at the height of the <a href="procgen-placement-component.html">placement component</a>. No ray is cast, and no location is filtered out. This can be used for 2D games where no <a href="../../physics/collision-shapes/collision-meshes.html">collision geometry</a> exists. Custom filtering can still be achieved through <a href="procgen-volume-image-component.html">image volumes (TODO)</a> and other <a href="procgen-graph-modifiers.html">modifiers (TODO)</a>.</p>
+<p><img src="media/procgen-placement-fixed.jpg" alt="Placement mode: fixed"></p>
+</li>
+</ol>
+</li>
+<li><p><code>CollisionLayer</code>: The <a href="../../physics/collision-shapes/collision-layers.html">collision layer</a> to use when <code>PlacementMode</code> is set to <em>Raycast</em>. The collision layer decides which physical objects will be hit by the raycast and thus on which surfaces objects may get spawned at all. Note that in <em>Raycast</em> mode objects can only be placed, if a <a href="../../physics/collision-shapes/collision-meshes.html">collision meshes</a> exist in the scene at all (<a href="../../scenes/greyboxing.html">greyboxes</a> and <a href="../heightfield-component.html">heightfields</a> set these up automatically).</p>
+</li>
+<li><p><code>Surface</code>: An optional <a href="../../materials/surfaces.html">surface</a> that's used to filter object placement. Objects will only be placed on surfaces of this type (or derived). This is used to only plant certain vegetation on each type of ground.
+<img src="media/procgen-surface.jpg" alt="Filter by surface type"></p>
+<p>Filtering by surface can also be very useful to prevent procedural objects from getting spawned on top or inside of other procedural objects. The left image shows gras being placed on top of the procedurally placed rocks, in the right image a surface filter prevents this from happening:</p>
+<p><img src="media/procgen-surface2.jpg" alt="Filter by surface type"></p>
+</li>
+</ul>
+<h2 id="input-pins">Input Pins</h2>
+<ul>
+<li><p><code>Density</code>: A value in [0;1] range that determines how likely it is that an object gets spawned. A lower density means that fewer objects get spawned. If this pin is not connected, a default density of <code>1</code> is assumed. Connect this pin to a <a href="procgen-graph-math.html#perlin-noise-node">Perlin noise node</a> or an <a href="procgen-graph-modifiers.html">modifier node (TODO)</a> to vary density by location. The image below shows varying density using Perlin noise.</p>
+<p><img src="media/procgen-density.jpg" alt="Varying density by location using Perlin noise"></p>
+</li>
+<li><p><code>Scale</code>: A value in [0;1] range to blend between <code>MinScale</code> and <code>MaxScale</code>. This can be used to scale objects up or down by location or other environmental influences. If this pin is not connected, every object uses a random scale factor. The image below shows varying scale using Perlin noise.</p>
+<p><img src="media/procgen-varying-scale.jpg" alt="Varying scale by location using Perlin noise"></p>
+</li>
+<li><p><code>ColorIndex</code>: If a <code>ColorGradient</code> has been set, connecting this pin allows you to decide which color to use for an object. The value is in [0;1] range, with <code>0</code> selecting the left-most color from the gradient and <code>1</code> the right-most color. The image below shows varying color tint using Perlin noise.</p>
+<p><img src="media/procgen-varying-color.jpg" alt="Varying color by location using Perlin noise"></p>
+</li>
+<li><p><code>ObjectIndex</code>:  If more than one prefab is added to the object list, this pin can be used to select a specific one. The value is in normalized [0;1] range, so if two objects are in the list, the first one is selected by any value between <code>0</code> and <code>0.5</code> and the second by values between <code>0.5</code> and <code>1</code>. The image below shows how varying prefabs are picked by Perlin noise.</p>
+<p><img src="media/procgen-varying-object.jpg" alt="Varying object by location using Perlin noise"></p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-placement-component.html">Procedural Placement Component (TODO)</a></li>
+<li><a href="procgen-placement-component.html">Procedural Placement Component</a></li>
 <li><a href="procgen-graph-asset.html">ProcGen Graph Asset</a></li>
 </ul>
 </article>

@@ -100,19 +100,19 @@
 <h2 id="graph-output">Graph Output</h2>
 <p>What exact output the procedural rules generate depends on which <em>output nodes</em> are present in the graph. Currently these types of output are available:</p>
 <ol>
-<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output (TODO)</a></li>
+<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output</a></li>
 <li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
 </ol>
 <blockquote>
 <p><strong>Tip:</strong></p>
-<p>To learn the system, it is best to start with the <a href="procgen-graph-output-placement.html">placement output (TODO)</a> node and ignore the rest. The simplest possible graph only contains a single such node and nothing else.</p>
+<p>To learn the system, it is best to start with the <a href="procgen-graph-output-placement.html">placement output</a> node and ignore the rest. The simplest possible graph only contains a single such node and nothing else.</p>
 </blockquote>
 <h2 id="using-a-procgen-graph">Using a ProcGen Graph</h2>
 <p>The ProcGen graph asset doesn't have any kind of pre-visualization. To see what effect a rule has, you need a scene in which the necessary setup is available.</p>
 <p>The scene should contain some geometry with <a href="../../physics/collision-shapes/collision-meshes.html">collision meshes</a>, such that raycasts can hit the geometry. <a href="../../scenes/greyboxing.html">Greyboxing</a> and <a href="../heightfield-component.html">heightfield components</a> work just fine for that.</p>
 <p>You also need a component that applies the ProcGen graph. Depending on the <em>output nodes</em> used in the graph this would be one of these:</p>
 <ol>
-<li><a href="procgen-placement-component.html">Procedural Placement Component (TODO)</a></li>
+<li><a href="procgen-placement-component.html">Procedural Placement Component</a></li>
 <li><a href="procgen-vertex-color-component.html">Procedural Vertex Color Component (TODO)</a></li>
 </ol>
 <p>Make sure the ProcGen graph asset is <a href="../../assets/assets-overview.html">transformed</a>. Then <a href="../../editor/run-scene.html">press play to simulate it</a>. If everything is set up right, you should see objects getting placed around the camera, within the specified volume.</p>
@@ -121,15 +121,15 @@
 <ol>
 <li>Use the <a href="procgen-graph-inputs.html">ProcGen graph input nodes (TODO)</a> to receive more information about a location, such as its slope or height.</li>
 <li>Pass the data through <a href="procgen-graph-math.html">ProcGen graph math nodes</a> to adjust it as necessary.</li>
-<li>Use <a href="procgen-graph-modifies.html">ProcGen graph modifier nodes (TODO)</a> to make it possible to configure the rules locally.</li>
+<li>Use <a href="procgen-graph-modifiers.html">ProcGen graph modifier nodes (TODO)</a> to make it possible to configure the rules locally.</li>
 </ol>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="procgen-placement-component.html">Procedural Placement Component (TODO)</a></li>
-<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output (TODO)</a></li>
+<li><a href="procgen-placement-component.html">Procedural Placement Component</a></li>
+<li><a href="procgen-graph-output-placement.html">ProcGen Graph Placement Output</a></li>
 <li><a href="procgen-vertex-color-component.html">Procedural Vertex Color Component (TODO)</a></li>
 <li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
-<li><a href="procgen-volume-box-component.html">Procedural Volume Box Component (TODO)</a></li>
+<li><a href="procgen-volume-box-component.html">Procedural Volume Box Component</a></li>
 <li><a href="procgen-volume-image-component.html">Procedural Volume Image Component (TODO)</a></li>
 </ul>
 </article>
