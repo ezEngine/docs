@@ -5333,6 +5333,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/procedural/media/procgen-box.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/procedural/media/procgen-box.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/terrain/procedural/media/procgen-color.jpg",
       "output": {
         "resource": {
@@ -5370,6 +5381,17 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/terrain/procedural/media/procgen-graph-asset.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/procedural/media/procgen-image.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/procedural/media/procgen-image.jpg"
         }
       },
       "is_incremental": false,
@@ -5514,7 +5536,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-graph-asset.html",
-          "hash": "wIIIualZDIa1+klUENkZnccTFxDbFn+Wn9t+EPuPCQ4="
+          "hash": "uu83J4+wGNSDC+jc3Ma5r9T0XJs4u7E3y4xcnWG9Rmw="
         }
       },
       "is_incremental": false,
@@ -5550,7 +5572,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-graph-modifiers.html",
-          "hash": "J46YVuv8fhH4okKO0gqS4wkKnkXjTHbVncOFEBdHnN8="
+          "hash": "iIRRHH5VOVJz5q7WO3ZlaYKj6tiUkYmREAmAhBBmyyA="
         }
       },
       "is_incremental": false,
@@ -5562,7 +5584,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-graph-output-placement.html",
-          "hash": "+FnqYTeAkMhOnW8s+9FW5meM9qVBfHCA9uUZZPlh8/I="
+          "hash": "GUkbNPCDJdFYWJ9wKMiRVtg69SAIEYm1kzN57TD0vR4="
         }
       },
       "is_incremental": false,
@@ -5610,7 +5632,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-volume-box-component.html",
-          "hash": "vwKeRYam9pglX70ygyOmjkcKuyZ0LCCf4X9jZ0m2Iuk="
+          "hash": "9Evbq9on+BHucYGI4owF+dya9Jzs5zFbO6sSZ+mExo4="
         }
       },
       "is_incremental": false,
@@ -5622,7 +5644,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-volume-image-component.html",
-          "hash": "UPqdQ2NrmrqqrgRfn5fh8zucu4fK21IiR0DlZ4FWprk="
+          "hash": "Ygix3G/ye7rboO/8M7Lp9Bdk3dYWrqLhdMNq1ECKS4k="
         }
       },
       "is_incremental": false,
@@ -5658,7 +5680,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "03+xhn3IkFrtlPHcpRDUJAcC3yROfpAE7vhYHxq5Lzo="
+          "hash": "9RQbbiPbm9JjaZdoUXjRrvCmkrCj1+V7bQ/sUIe5qVw="
         }
       },
       "is_incremental": false,

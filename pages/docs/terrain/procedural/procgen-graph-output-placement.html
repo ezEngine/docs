@@ -104,26 +104,26 @@ The node itself can already filter whether to place an object, at all, by inspec
 <li><p><code>MinScale</code>, <code>MaxScale</code>: How large the placed object is at least (<code>MinScale</code>) and at most (<code>MaxScale</code>). The final scale is a blend between min and max, so if both values are uniform (x = y = z), the object's scale is also always uniform.
 <img src="media/procgen-scale.jpg" alt="Random scale"></p>
 </li>
-<li><p><code>ColorGradient</code>: An optional <a href="../../animation/common/color-gradients.html">color gradient</a> from which a random color is chosen to set the <a href="../../graphics/meshes/mesh-component.html">mesh color</a> (in fact a <code>ezMsgSetColor</code> is sent when the object is spawned, so this could also be used to implement other features). If the <code>ColorIndex</code> pin is connected, the incoming value in the [0;1] range is used instead to lookup the color from the gradient.
-<img src="media/procgen-color.jpg" alt="Random color"></p>
+<li><p><code>ColorGradient</code>: An optional <a href="../../animation/common/color-gradients.html">color gradient</a> from which a random color is chosen to set the <a href="../../graphics/meshes/mesh-component.html">mesh color</a> (in fact a <code>ezMsgSetColor</code> is sent when the object is spawned, so this could also be used to implement other features). If the <code>ColorIndex</code> pin is connected, the incoming value in the [0;1] range is used instead to lookup the color from the gradient.</p>
+<p><img src="media/procgen-color.jpg" alt="Random color"></p>
 </li>
-<li><p><code>CullDistance</code>: At what distance to start spawning this type of object. For large objects with a low density, this distance can be increased. Small objects with high density should use a small distance, to prevent performance issues.
-<img src="media/procgen-cull-distance.jpg" alt="Different cull distances"></p>
+<li><p><code>CullDistance</code>: At what distance to start spawning this type of object. For large objects with a low density, this distance can be increased. Small objects with high density should use a small distance, to prevent performance issues.</p>
+<p><img src="media/procgen-cull-distance.jpg" alt="Different cull distances"></p>
 </li>
 <li><p><code>PlacementMode</code>: How to determine the location where to place objects.</p>
 <ol>
 <li><p><em>Raycast:</em> In this mode a physics ray is cast downwards from the volume of the <a href="procgen-placement-component.html">placement component</a>. Using the <code>CollisionLayer</code> and <code>Surface</code> as filters, the closest intersection point is used.</p>
 <p><img src="media/procgen-placement-raycast.jpg" alt="Placement mode: raycast"></p>
 </li>
-<li><p><em>Fixed:</em> In this mode objects are always placed at the height of the <a href="procgen-placement-component.html">placement component</a>. No ray is cast, and no location is filtered out. This can be used for 2D games where no <a href="../../physics/collision-shapes/collision-meshes.html">collision geometry</a> exists. Custom filtering can still be achieved through <a href="procgen-volume-image-component.html">image volumes (TODO)</a> and other <a href="procgen-graph-modifiers.html">modifiers (TODO)</a>.</p>
+<li><p><em>Fixed:</em> In this mode objects are always placed at the height of the <a href="procgen-placement-component.html">placement component</a>. No ray is cast, and no location is filtered out. This can be used for 2D games where no <a href="../../physics/collision-shapes/collision-meshes.html">collision geometry</a> exists. Custom filtering can still be achieved through <a href="procgen-volume-image-component.html">image volumes</a> and other <a href="procgen-graph-modifiers.html">modifiers (TODO)</a>.</p>
 <p><img src="media/procgen-placement-fixed.jpg" alt="Placement mode: fixed"></p>
 </li>
 </ol>
 </li>
 <li><p><code>CollisionLayer</code>: The <a href="../../physics/collision-shapes/collision-layers.html">collision layer</a> to use when <code>PlacementMode</code> is set to <em>Raycast</em>. The collision layer decides which physical objects will be hit by the raycast and thus on which surfaces objects may get spawned at all. Note that in <em>Raycast</em> mode objects can only be placed, if a <a href="../../physics/collision-shapes/collision-meshes.html">collision meshes</a> exist in the scene at all (<a href="../../scenes/greyboxing.html">greyboxes</a> and <a href="../heightfield-component.html">heightfields</a> set these up automatically).</p>
 </li>
-<li><p><code>Surface</code>: An optional <a href="../../materials/surfaces.html">surface</a> that's used to filter object placement. Objects will only be placed on surfaces of this type (or derived). This is used to only plant certain vegetation on each type of ground.
-<img src="media/procgen-surface.jpg" alt="Filter by surface type"></p>
+<li><p><code>Surface</code>: An optional <a href="../../materials/surfaces.html">surface</a> that's used to filter object placement. Objects will only be placed on surfaces of this type (or derived). This is used to only plant certain vegetation on each type of ground.</p>
+<p><img src="media/procgen-surface.jpg" alt="Filter by surface type"></p>
 <p>Filtering by surface can also be very useful to prevent procedural objects from getting spawned on top or inside of other procedural objects. The left image shows gras being placed on top of the procedurally placed rocks, in the right image a surface filter prevents this from happening:</p>
 <p><img src="media/procgen-surface2.jpg" alt="Filter by surface type"></p>
 </li>
