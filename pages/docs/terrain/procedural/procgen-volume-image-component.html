@@ -81,15 +81,15 @@
 <h1 id="procedural-volume-image-component">Procedural Volume Image Component</h1>
 
 <p>The <em>procedural volume image component</em> defines a box shaped volume in which the rules of <a href="procgen-graph-asset.html">ProcGen graphs</a> are modified. Not every graph has to make use of this information, and what the exact effect is, is up to the ProcGen graph.</p>
-<p>For more details see the chapter on <a href="procgen-graph-modifiers.html">ProcGen graph modifier nodes (TODO)</a>.</p>
+<p>For more details see the chapter on <a href="procgen-graph-modifiers.html">ProcGen graph modifier nodes</a>.</p>
 <p>In contrast to the <a href="procgen-volume-box-component.html">procedural volume box component</a>, this component additionally samples an <a href="../../Miscellaneous/imagedata-asset.html">ImageData asset</a>, such that it can provide fine grained information for every location within the box. This can be utilized to, for example, use a mask of the terrain that defines where roads are, where which type of plant shall grow and so on, to describe precisely how the procedural placement shall look like.</p>
 <p>The image below shows an image volume used to only place the vegetation on the darker terrain patches.</p>
 <p><img src="media/procgen-image.jpg" alt="Image modifier volume"></p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Value</code>: A single number value. This is combined with the <em>InputValue</em> from the <a href="procgen-graph-modifiers.html">modifier node (TODO)</a> in the graph, using the <code>BlendMode</code> formula.</li>
+<li><code>Value</code>: A single number value. This is combined with the <em>InputValue</em> from the <a href="procgen-graph-modifiers.html">modifier node</a> in the graph, using the <code>BlendMode</code> formula.</li>
 <li><code>SortOrder</code>: If multiple modifier volumes overlap, the <code>SortOrder</code> can be used to control in which order the volumes are evaluated.</li>
-<li><code>BlendMode</code>: How to combine <code>Value</code> with the <em>InputValue</em> from the <a href="procgen-graph-modifiers.html">modifier node (TODO)</a> in the graph. The <em>Set</em> mode just sets the result to <code>Value</code> and ignores the other operand.</li>
+<li><code>BlendMode</code>: How to combine <code>Value</code> with the <em>InputValue</em> from the <a href="procgen-graph-modifiers.html">modifier node</a> in the graph. The <em>Set</em> mode just sets the result to <code>Value</code> and ignores the other operand.</li>
 <li><code>Extents</code>: The size of the box volume in which the modifier is active.</li>
 <li><code>FadeOutStart</code>: The influence of the volume can fade out towards its edges, for smooth transitions. This value controls for every axis, at what distance from the center point the fade out starts. So if this is set to zero, the fade out starts immediately at the middle (towards the closest edge), whereas if it is set to one, there will be no fade out, at all, and rather the influence of the volume stops abruptly at its border.</li>
 <li><code>Image</code>: The <a href="../../Miscellaneous/imagedata-asset.html">ImageData asset</a> that is used as the reference data.</li>
@@ -97,7 +97,7 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-graph-modifiers.html">ProcGen Graph Modifier Nodes (TODO)</a></li>
+<li><a href="procgen-graph-modifiers.html">ProcGen Graph Modifier Nodes</a></li>
 </ul>
 </article>
           </div>

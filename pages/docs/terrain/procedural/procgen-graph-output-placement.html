@@ -84,7 +84,7 @@
 <p>A <a href="procgen-graph-asset.html">ProcGen graph</a> can already work, even if it contains just a single of these nodes. However, you can add as many of these nodes as you like. Every placement node represents a different type of object, with different conditions under which they are spawned.</p>
 <p>For example one node would be used to spawn stones on rocky surfaces, another node spawns bushes on grassy surfaces, a third spawns trees and so on. Every type of object has a <em>footprint</em>, meaning an certain size of area in which only one of them will be placed. The larger the footprint, the more sparse these objects are spawned.
 The node itself can already filter whether to place an object, at all, by inspecting the <a href="../../materials/surfaces.html">surface</a>. This way vegetation isn't planted on concrete or water.</p>
-<p>More elaborate filtering can be achieved with <a href="procgen-graph-modifiers.html">modifier nodes (TODO)</a>. For example an image can represent where exactly what type of object should appear.</p>
+<p>More elaborate filtering can be achieved with <a href="procgen-graph-modifiers.html">modifier nodes</a>. For example an image can represent where exactly what type of object should appear.</p>
 <h2 id="node-properties">Node Properties</h2>
 <ul>
 <li><p><code>Name</code>: A custom display name that is shown in the node's title bar. This has no function other than to make it easier to find in the graph.</p>
@@ -115,7 +115,7 @@ The node itself can already filter whether to place an object, at all, by inspec
 <li><p><em>Raycast:</em> In this mode a physics ray is cast downwards from the volume of the <a href="procgen-placement-component.html">placement component</a>. Using the <code>CollisionLayer</code> and <code>Surface</code> as filters, the closest intersection point is used.</p>
 <p><img src="media/procgen-placement-raycast.jpg" alt="Placement mode: raycast"></p>
 </li>
-<li><p><em>Fixed:</em> In this mode objects are always placed at the height of the <a href="procgen-placement-component.html">placement component</a>. No ray is cast, and no location is filtered out. This can be used for 2D games where no <a href="../../physics/collision-shapes/collision-meshes.html">collision geometry</a> exists. Custom filtering can still be achieved through <a href="procgen-volume-image-component.html">image volumes</a> and other <a href="procgen-graph-modifiers.html">modifiers (TODO)</a>.</p>
+<li><p><em>Fixed:</em> In this mode objects are always placed at the height of the <a href="procgen-placement-component.html">placement component</a>. No ray is cast, and no location is filtered out. This can be used for 2D games where no <a href="../../physics/collision-shapes/collision-meshes.html">collision geometry</a> exists. Custom filtering can still be achieved through <a href="procgen-volume-image-component.html">image volumes</a> and other <a href="procgen-graph-modifiers.html">modifiers</a>.</p>
 <p><img src="media/procgen-placement-fixed.jpg" alt="Placement mode: fixed"></p>
 </li>
 </ol>
@@ -130,7 +130,7 @@ The node itself can already filter whether to place an object, at all, by inspec
 </ul>
 <h2 id="input-pins">Input Pins</h2>
 <ul>
-<li><p><code>Density</code>: A value in [0;1] range that determines how likely it is that an object gets spawned. A lower density means that fewer objects get spawned. If this pin is not connected, a default density of <code>1</code> is assumed. Connect this pin to a <a href="procgen-graph-math.html#perlin-noise-node">Perlin noise node</a> or an <a href="procgen-graph-modifiers.html">modifier node (TODO)</a> to vary density by location. The image below shows varying density using Perlin noise.</p>
+<li><p><code>Density</code>: A value in [0;1] range that determines how likely it is that an object gets spawned. A lower density means that fewer objects get spawned. If this pin is not connected, a default density of <code>1</code> is assumed. Connect this pin to a <a href="procgen-graph-math.html#perlin-noise-node">Perlin noise node</a> or an <a href="procgen-graph-modifiers.html">modifier node</a> to vary density by location. The image below shows varying density using Perlin noise.</p>
 <p><img src="media/procgen-density.jpg" alt="Varying density by location using Perlin noise"></p>
 </li>
 <li><p><code>Scale</code>: A value in [0;1] range to blend between <code>MinScale</code> and <code>MaxScale</code>. This can be used to scale objects up or down by location or other environmental influences. If this pin is not connected, every object uses a random scale factor. The image below shows varying scale using Perlin noise.</p>
