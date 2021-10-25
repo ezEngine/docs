@@ -116,6 +116,15 @@
 <li><a href="procgen-vertex-color-component.html">Procedural Vertex Color Component (TODO)</a></li>
 </ol>
 <p>Make sure the ProcGen graph asset is <a href="../../assets/assets-overview.html">transformed</a>. Then <a href="../../editor/run-scene.html">press play to simulate it</a>. If everything is set up right, you should see objects getting placed around the camera, within the specified volume.</p>
+<h2 id="live-editing">Live Editing</h2>
+<p>When you edit a ProcGen graph asset, most changes trigger a live update in any running scene. That means you can switch back and forth between the asset and a test scene, and see changes update right away.</p>
+<p>However, this is limited to certain types of changes. Changes to referenced assets (such as <a href="../../animation/common/color-gradients.html">color gradients</a> or <a href="../../prefabs/prefabs-overview.html">prefabs</a>) won't update the already placed objects.</p>
+<p>If such a change was done, you need to stop simulating a scene, and <a href="../../editor/run-scene.html">run it again</a>.</p>
+<h2 id="debug-mode">Debug Mode</h2>
+<p>It can be difficult to get an idea for the values that a rule graph produces. To visualize the values, you can right-click any pin and enable the <em>Debug</em> flag. This disables all placement output and instead switches to a mode where for every location only a sphere is rendered, and the shade of the sphere represents the value of the pin on which the debug flag is enabled. Black for <code>0</code> and white for <code>1</code>.</p>
+<p><img src="media/procgen-debug-pin.png" alt="Debug pin"></p>
+<p>When you then switch to a scene and run the simulation, you will see this pattern:</p>
+<p><img src="media/procgen-debug.jpg" alt="Debug mode"></p>
 <h2 id="building-complex-rules">Building Complex Rules</h2>
 <p>Once you've figured out the basics, you can build more complex rules.</p>
 <ol>

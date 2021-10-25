@@ -1444,7 +1444,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/cpp/engine-plugins.html",
-          "hash": "rBp7abCWcBP/nkIXUYhOp1CdtQFAzAP5slbA6APeUso="
+          "hash": "6wEWyvGNdZQ7NI6Y4IUyJY8Z9v8hH7WzlVC25vZHWcg="
         }
       },
       "is_incremental": false,
@@ -5333,6 +5333,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/procedural/media/procgen-beaty-shot.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/procedural/media/procgen-beaty-shot.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/terrain/procedural/media/procgen-box.jpg",
       "output": {
         "resource": {
@@ -5359,6 +5370,28 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/terrain/procedural/media/procgen-cull-distance.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/procedural/media/procgen-debug-pin.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/procedural/media/procgen-debug-pin.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/procedural/media/procgen-debug.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/procedural/media/procgen-debug.jpg"
         }
       },
       "is_incremental": false,
@@ -5557,7 +5590,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procedural-object-placement.html",
-          "hash": "sUFqgPnlaPKfWslY14kPBrgSevpdCZLtv6oqqyh25yw="
+          "hash": "MIGjFWXvkYgQPlJnry5SFC7Ft5RW6v7Zz+YDhL+vemQ="
         }
       },
       "is_incremental": false,
@@ -5569,7 +5602,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-graph-asset.html",
-          "hash": "Fe5LY8zY6Nwvf2heUx8qrPKaoyhIGTZO1rD+H+0I5is="
+          "hash": "FJb+F9/FnmipHGQ3kdEqq+7Si4VQ2Va/CYiWZfobWJ4="
         }
       },
       "is_incremental": false,
