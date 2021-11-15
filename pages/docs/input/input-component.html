@@ -87,12 +87,11 @@
 <p>Therefore an object should <a href="../runtime/world/components.html#component-activation">deactivate</a> its input component when the player is not controlling it.</p>
 <h2 id="input-notification-message">Input Notification Message</h2>
 <p>The message <code>ezMsgInputActionTriggered</code> contains information about a single <em>input action</em>. It passes along the current state (up, down, pressed, released) and how much the input slot got activated (for instance how far the mouse was moved).</p>
-<p>The name of the input slot is only sent as a hashed value, for performance reasons. To compare against a known input action name, compute the hash for your string and compare those values. In C++ use <code>ezTempHashedString::ComputeHash()</code> in TypeScript use <code>ez.Utils.StringToHash()</code>.</p>
-<p>In both cases, prefer to precompute the hash once.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>InputSet</code>: The name of the <em>input set</em> to use. All <em>input actions</em> that are part of this input set will be forwarded as messages.</li>
 <li><code>Granularity</code>: Configures whether the component sends messages only for certain state changes, or also continuously while a button is held down.</li>
+<li><code>ForwardToBlackboard</code>: If enabled, the input component will attempt to store input states in a nearby <a href="../Miscellaneous/blackboards.html">blackboard</a>. If it can find a blackboard on the same owner game object, or a parent game object, it will set a value with the name of the action to a float value between <code>0</code> and <code>1</code>, depending on whether the action is fully triggered (<code>1</code>), not triggered (<code>0</code>) or partially triggered (e.g. for a thumb stick). This is an quick way to forward input data to an easily accessible data structure.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
