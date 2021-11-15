@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Hot Reloading C++ Game Plugins in the Editor | ezEngine </title>
+    <title>C++ Project Generation | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Hot Reloading C++ Game Plugins in the Editor | ezEngine ">
+    <meta name="title" content="C++ Project Generation | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,49 +78,51 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="hot-reloading-c-game-plugins-in-the-editor">Hot Reloading C++ Game Plugins in the Editor</h1>
+<h1 id="c-project-generation">C++ Project Generation</h1>
 
-<p>When writing game code in C++, the most annoying aspect are the iteration times. Due to how C++ works, it is nearly impossible to swap out code and replace it with a newer version. Some engines try to do this, but there are always limitations, and the effort to get this working and keep it from breaking is quite big.</p>
-<p>ezEngine is no different here, reloading code at runtime is not possible. However, the editor is split into two processes: The actual <em>editor process</em> which displays the UI, and manages the scene state, and the <em>engine process</em> which does the scene rendering and executes the actual game code. This separation makes the editor more resilient to crashes. If the engine process crashes, the editor will typically just display this:</p>
-<p><img src="media/engine-crash.png" alt="Engine Process Crash"></p>
-<p>When you click the button, the editor launches a new engine process, synchronizes the latest scene state over and continues as if nothing happened.</p>
-<p>That of course means, that when the new engine process launches, it also loads the latest state of all plugins. So if any of the plugins was modified, we would now see these modifications. So by simply nuking and restarting the entire engine process, we can get some form of C++ code hot reloading.</p>
-<p>Unfortunately, you can't compile a plugin while a process is using it, because the process prevents other applications from writing the DLL. We can solve this problem, by making a copy of our game plugin DLL, and loading that instead. That means that the original DLL is not actually used, and our IDE can modify it further.</p>
-<p>This trick works quite well if we only do it for plugins that are loaded fully dynamic, meaning that no other plugin tries to link against it. If that were the case, both the original plugin, as well as the copied plugin would get loaded, which is not good. Therefore only select game plugins may use this copy mechanic, which is why you need to set this up manually.</p>
-<h2 id="how-to-enable-plugin-hot-reloading">How to Enable Plugin Hot Reloading</h2>
-<p>For this feature there is no UI, you need to edit a config file directly.</p>
+<p>There are multiple ways to get custom C++ code into EZ. The best way is to create an <a href="engine-plugins.html">engine plugin</a>, because this way the code can be executed directly inside the editor. Additionally such a plugins can be <a href="cpp-code-reload.html">hot reloaded</a> to some degree.</p>
+<p>EZ uses CMake for its build infrastructure. See <a href="cpp-overview.html#build-setup">this chapter</a> about different ways to integrate your own project into the EZ build.</p>
+<p>The most convenient way, however, is to let the editor create a stand-alone project for you. This way you get a CMake based project that only contains your code, but has all the necessary references set up to link against EZ and output its DLLs to the right folder.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
-<p>If you used the <a href="cpp-project-generation.html">C++ Project Generation</a> feature to create your project, the reference to your C++ plugin in your EZ project is automatically set up to use the <code>LoadCopy</code> option mentioned below.</p>
+<p>One downside with this approach is that your solution does <strong>not</strong> contain the EZ engine sources. That makes it less convenient to search for existing functionality, look up code <a href="../../api-docs.html">API docs</a> and stepping through EZ code while debugging.
+However, if you want that, you can include the generated plugin as an <a href="../../build/cmake-config.html#external-projects">external project</a> into the EZ engine solution.</p>
 </blockquote>
-<h3 id="edit-plugin-config-file">Edit Plugin Config File</h3>
+<h2 id="how-to-generate-a-new-solution">How to Generate a New Solution</h2>
 <ol>
-<li>If you have any editor open, close it.</li>
-<li>Go to the directory where your project is located, for example <code>Data/Samples/SampleGame</code>.</li>
-<li>Open the file <code>Plugins.ddl</code> in a text editor.</li>
-<li>You should see a list of all the known engine plugins. Search for the plugin for which you want to enable reloading, for example <code>ezSampleGamePlugin</code>.</li>
-<li>Change its <code>LoadCopy</code> value to <code>true</code>.
-<img src="media/load-plugin-copy.png" alt="Plugin Config"></li>
-<li>Save and close the text file.</li>
-<li>Open your project in the editor.</li>
+<li><p>Select <em>Editor &gt; Open C++ Project...</em>. The following dialog will appear:</p>
+<p><img src="media/generate-project.png" alt="Project Generation Dialog"></p>
+<p>Currently the locations for where the C++ source is stored and where the project will be built are both hard-coded to be within the project directory.</p>
+</li>
+<li><p>Choose the desired MSVC solution version.</p>
+</li>
+<li><p>Press the <strong>Generate Solution</strong> button and wait for it to finish.</p>
+<p>The CMake output is output in the <em>Output</em> window. In case of errors, please have a look here.</p>
+<p>If everything went fine, you can open the project and compile the code.</p>
+</li>
 </ol>
-<p>If all goes well, everything should work as before. The only difference is now, that you can modify the code of your plugin and compile it, while the editor is open. Of course you can't do that while being attached with a debugger, so detach your debugger, if necessary.</p>
-<h3 id="terminate-and-restart-the-engine">Terminate and Restart the Engine</h3>
-<p>You can always manually restart the engine process through <em>Tools &gt; Reload Engine</em> or the hotkey <code>Ctrl+Shift+F4</code>.</p>
-<p>This instructs the editor to kill its engine process and restart it right away. This takes a few seconds, and you will see the 3D viewports flicker and notice how the new engine process loads all the data. Once that is done you can again <a href="../../editor/run-scene.html">simulate the scene</a> and will now get the latest behavior from your game plugin.</p>
-<p>Additionally, when a pluggin is set as <code>LoadCopy</code>, and it gets modified, the editor already <strong>automatically restarts the engine process</strong>, once no scene is being simulated.</p>
-<h2 id="restrictions">Restrictions</h2>
-<p>The <code>LoadCopy</code> option should only be used for select game plugins. Enabling this feature can have unintended side-effects.</p>
-<ul>
-<li>If any code links against a plugin, that plugin cannot be loaded as a copy. Therefore, if you want to put shared code into a separate library that other users of your plugins link against, you can't load that shared library as a copy.</li>
-<li>You can't compile code while debugging a process. To compile your code, you first have to detach your debugger. In Visual Studio that can be done via <code>Debug &gt; Detach All</code>.</li>
-<li>Consequently, if you want to continue debugging after you restarted the engine process, you need to manually re-attach your debugger to <em>EditorEngineProcess.exe</em>. In Visual Studio this is done via <code>Debug &gt; Attach to Process...</code> or even better <code>Debug &gt; Reattach to Process</code> (<code>SHIFT+ALT+P</code>) when you want to repeat the same thing a second time.</li>
-</ul>
+<blockquote>
+<p><strong>Attention:</strong></p>
+<p>The code has to be built for the very same build type that the editor is running in (<em>Debug</em>, <em>Dev</em> or <em>Shipping</em>), otherwise the editor won't be able to load the DLL. If the build fails because certain EZ DLLs are missing, you are most likely building the wrong build type. The same may be true if you do code changes, but running the game from the editor doesn't reflect those changes.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>After compiling your new plugin for the very first time, you have to close the <a href="../../projects/projects-overview.html">editor project</a> and reopen it, for it to load the information properly. Due to automatic <a href="cpp-code-reload.html">hot reloading</a> this shouldn't be necessary later anymore, but it can still be necessary, for example when you add a new component type to your C++ code.</p>
+</blockquote>
+<h2 id="opening-an-existing-solution">Opening an Existing Solution</h2>
+<p>If you have generated the solution before, the <em>Open Solution</em> button will be active right away when you open this dialog. In this case you don't need to generate the solution again.</p>
+<h2 id="regenerating-a-solution">Regenerating a Solution</h2>
+<p>If you have added or removed source files on disk, you need to regenerate the solution for those changes to show up in the Visual Studio solution. You have two options to do so:</p>
+<ol>
+<li>Run CMake yourself. For example you can use the CMake GUI app, point it to the plugin's build directory, and then <em>Configure</em> and <em>Generate</em> the solution at any point you like.</li>
+<li>Rerun <em>Generate Solution</em> from the dialog above. This will <strong>clear the CMake cache</strong> and fully regenerate the solution. Be aware that this resets all CMake options to their default values and often takes longer than strictly necessary.</li>
+</ol>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../../debugging/debug-cpp.html">Debugging C++ Code</a></li>
+<li><a href="cpp-overview.html">Custom Code with C++</a></li>
+<li><a href="cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a></li>
 <li><a href="engine-plugins.html">Engine Plugins</a></li>
-<li><a href="cpp-project-generation.html">C++ Project Generation</a></li>
+<li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
 </ul>
 </article>
           </div>
@@ -130,7 +132,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/cpp/cpp-code-reload.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/cpp/cpp-project-generation.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

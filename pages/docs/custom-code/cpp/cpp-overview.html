@@ -82,10 +82,10 @@
 
 <p>To extend the engine with C++ code, you should put your code into an <a href="engine-plugins.html">engine plugin</a>. This enables both the editor as well as <a href="../../tools/player.html">ezPlayer</a> to load and execute your code.</p>
 <h2 id="build-setup">Build Setup</h2>
-<p>The first thing you need to set up is your build system, meaning you need to have a project for your plugin. The easiest way to do so, is to add your own project into the ezEngine source tree and just use EZ's CMake build setup and generated solution.</p>
+<p>The first thing you need to set up is your build system, meaning you need to have a project for your plugin. The easiest way to do so, is to use the <a href="cpp-project-generation.html">C++ Project Generation</a> functionality in the editor. Another option is to add your own project into the ezEngine source tree and just use EZ's CMake build setup and generated solution.</p>
 <p>A cleaner approach is to do basically the same, but to put your code outside the EZ source tree, and add a reference to that folder:</p>
 <p><img src="media/cmake-external-project.png" alt="CMake"></p>
-<p>This will integrate you source into the ezEngine solution. Make sure to use the same CMakeLists.txt files as the engine plugins in EZ do. With this option, you can have your code in a separate repository.</p>
+<p>This will integrate your source into the ezEngine solution. Make sure to use the same CMakeLists.txt files as the engine plugins in EZ do. With this option, you can have your code in a separate repository.</p>
 <p>Another way is to use your own CMake based build setup, and integrate <a href="../../build/submodule.html">ezEngine as a Submodule</a>.</p>
 <p>All three solutions give you tight integration of your code and the ezEngine code, which makes debugging more convenient. You can, of course, also build ezEngine once and just link against its libraries.</p>
 <h2 id="custom-game-code">Custom Game Code</h2>

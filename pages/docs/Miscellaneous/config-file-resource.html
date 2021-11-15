@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CMake Setup | ezEngine </title>
+    <title>Config File Resource | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="CMake Setup | ezEngine ">
+    <meta name="title" content="Config File Resource | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,36 +78,60 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="cmake-setup">CMake Setup</h1>
+<h1 id="config-file-resource">Config File Resource</h1>
 
-<p>To generate a solution, run the CMake GUI. Specify <em>Where is the source code</em> and <em>Where to build the binaries</em>, then run <strong>Configure</strong>. As a generator, pick <em>Visual Studio 2019 x64</em> (or one of the other <a href="supported-platforms.html">supported platforms</a>).</p>
-<p><img src="media/cmake-config.png" alt="CMake configuration"></p>
-<p>The screenshot above shows a common setup. Noteworthy are the following points:</p>
-<ul>
-<li><p><strong>EZ_ENABLE_QT_SUPPORT</strong> Disable this setting, if you want to compile EZ without Qt. This will remove all editor code and several tools from the final solution. The default is <em>on</em>. When possible the EZ CMake scripts will automatically download Qt libraries and set everything up for you. On configurations for which we do not support fully automatic setup, you need to install Qt manually and then set set <strong>EZ_QT_DIR</strong> to its installation folder.</p>
-</li>
-<li><p><strong>EZ_BUILD_FMOD</strong> Enable this, if you want to <a href="../sound/fmod-overview.html">FMOD sound</a> support in your build. The default is <em>on</em>.</p>
-</li>
-<li><p><strong>EZ_BUILD_PHYSX</strong> Enable this, if you want to add <a href="../physics/physx-overview.html">NVIDIA PhysX</a> support to your build. Once enabled, the next run of &quot;Configure&quot; will automatically download PhysX binaries and set the <strong>EZ_PHYSX_SDK</strong> variable accordingly. The default is <em>on</em>.</p>
-</li>
-<li><p><strong>EZ_BUILD_RMLUI</strong> Enable this, if you want to add support for <a href="https://github.com/mikke89/RmlUi">RmlUi</a> to your build. The default is <em>on</em>.</p>
-</li>
-</ul>
-<p>Once you have configured everything, run <strong>Generate</strong> and then <strong>Open Project</strong>.</p>
-<h2 id="adding-a-custom-project">Adding a Custom Project</h2>
-<p>The easiest way to get started with a custom project, is to use the <a href="../custom-code/cpp/cpp-project-generation.html">C++ project generation</a>.</p>
-<p>Another method is to copy an existing sample, such as the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a>. For starters, just create it in the same location, within the EZ source tree. If you want to move it into your own repository, you can then reference its location as an <em>external project</em> (see below).</p>
-<h2 id="external-projects">External Projects</h2>
-<p>The options <strong>EZ_EXTERNAL_PROJECT_1-3</strong> allow you to specify folders outside the EZ repository, which will be integrated into the solution. This is the most practical way to store your own code in a separate repository, yet have it all compiled in the same solution. This makes building, linking and debugging code as convenient as if it was stored inside the EZ file structure.</p>
-<h2 id="build-filter">Build Filter</h2>
-<p>The option <strong>EZ_BUILD_FILTER</strong> allows you to strip down the code that is included in the solution. This is mainly meant for use cases where EZ is <a href="submodule.html">integrated as a submodule</a> and you only need parts of its functionality.</p>
-<h2 id="advanced-cmake-options">Advanced CMake Options</h2>
-<p>Checking <em>Advanced</em> in the CMake GUI will show additional options to configure the EZ build. These are mostly used to remove specific 3rd party code (and all dependent features). This is particularly helpful, if you want to build EZ on a platform on which one of the dependencies may not compile.</p>
+<p>The <code>ezConfigFileResource</code> is used to load files which contain lists of variable value assignments (&quot;key/value pairs&quot;). These variables are strictly typed (<code>int</code>, <code>float</code>, <code>bool</code> or <code>string</code>) and it is very efficient to look up these values at runtime.</p>
+<p>You can use this kind of configuration files for anything in your code. From general game settings, to defining the properties of different game elements.</p>
+<p>Since all resources can be hot reloaded at runtime, using <code>ezConfigFileResource</code>s allows you to tweak values while playing to immediately see the effect.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Currently, interacting with resources is only possible from C++ code.</p>
+</blockquote>
+<h2 id="file-structure">File Structure</h2>
+<p>The layout of config files is similar to C/C++ code, including the support for the <a href="https://en.wikipedia.org/wiki/C_preprocessor">C preprocessor</a>.</p>
+<h3 id="declaring-variables">Declaring Variables</h3>
+<p>To add a <em>new</em> variable, write its type, name and initial value:</p>
+<pre><code class="lang-cpp">int i = 1
+float f = 2.3
+bool b = false
+string s = &quot;hello&quot;
+</code></pre>
+<h3 id="overriding-existing-variables">Overriding Existing Variables</h3>
+<p>Once a variable has been declared the first time, it is an error to redeclare it the same way. Instead you need to add the <code>override</code> keyword:</p>
+<pre><code class="lang-cpp">override int i = 11
+override float f = 21.3
+override bool b = true
+override string s = &quot;world&quot;
+</code></pre>
+<p>It is also an error to declare a variable for the first time <em>with</em> the override keyword. This is to ensure that you have one place where the variable name is defined clearly, and to be able to point out where variables have been misspelled later on.</p>
+<h3 id="defining-value-names">Defining Value Names</h3>
+<p>You can use <code>#define</code> to define a fixed name for a certain value:</p>
+<pre><code class="lang-cpp">#define SmallValue 3
+#define BigValue 5
+int MyValue = BigValue
+</code></pre>
+<p>This is more convenient to read and makes it easier to define and tweak values in one place.</p>
+<h3 id="hierarchical-file-structure">Hierarchical File Structure</h3>
+<p>You can <code>#include</code> other config files to pull in their variable definitions:</p>
+<pre><code class="lang-cpp">#include &quot;BaseConfig.ezConfig&quot;
+override int SomeValue = 7
+</code></pre>
+<p>Here the variable <code>SomeValue</code> must have been declared in <em>BaseConfig.ezConfig</em> (or another file included by that file). The code then overrides the existing variable with a custom value. If <em>BaseConfig.ezConfig</em> did not declare that variable, you will see an error in the <a href="../debugging/logging.html">log</a>.</p>
+<p>Using this feature, it is very convenient to define variables (and their default values) for things like units in a game (players, enemies, etc) and then override variables where needed for specific unit types.</p>
+<h3 id="conditional-evaluation">Conditional Evaluation</h3>
+<p>You can use all C preprocessor features, such as <code>#ifdef</code> to conditionally evaluate the config files:</p>
+<pre><code class="lang-cpp">#define TESTING 1
+
+#ifdef TESTING
+int PlayerHealth = 1000000
+#else
+int PlayerHealth = 100
+#endif
+</code></pre>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="supported-platforms.html">Supported Platforms</a></li>
-<li><a href="../custom-code/cpp/cpp-project-generation.html">C++ Project Generation</a></li>
-<li><a href="submodule.html">ezEngine as a Submodule</a></li>
+<li><a href="../runtime/resource-management.html">Resource Management (TODO)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/C_preprocessor">C preprocessor (Wikipedia)</a></li>
 </ul>
 </article>
           </div>
@@ -117,7 +141,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/cmake-config.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/Miscellaneous/config-file-resource.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

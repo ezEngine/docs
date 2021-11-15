@@ -87,14 +87,13 @@
 <li><a href="visual-script/visual-script-overview.html">Custom Code with Visual Scripts</a></li>
 </ol>
 <h2 id="c">C++</h2>
-<p>Extending the engine with C++ is the most versatile and efficient. With C++ you have full access to the entire engine, giving you all the power you need. Any serious project will have to use C++ code for some parts. For things like game logic you can start with script code instead, and migrate critical parts to C++ on demand. Extending the renderer and access to third party integrations is mostly only possible from C++ code.</p>
-<p>C++ obviously has the downsides of longer compilation times, and live updating code is not possible. There is a way for game plugins to be modifiable while the editor runs, and the editor can fully shut down and reload its engine process, which does enable a form of live reloading of C++ code.</p>
+<p>Extending the engine with C++ is the most versatile and efficient. With C++ you have full access to the entire engine, giving you all the power you need. Any serious project will have to use C++ code for some parts. For things like game logic you can start with script code instead, and migrate critical parts to C++ on demand. Extending the renderer and access to third party integrations is mostly only possible from C++ code. Using the <a href="cpp/cpp-project-generation.html">C++ Project Generation</a> feature, it is very quick and easy to set up a custom C++ plugin.</p>
+<p>C++ obviously has the downsides of longer compilation times, and live updating code is not possible. There is a way for game plugins to be modifiable while the editor runs, and the editor can fully shut down and reload its engine process, which does enable a form of <a href="cpp/cpp-code-reload.html">live reloading of C++ code</a>.</p>
 <h2 id="typescript">TypeScript</h2>
 <p>The TypeScript integration allows you to write custom components. The integration provides access to the most important aspects that are needed for game code. C++ components can be accessed, as long as they expose their functionality through <a href="../runtime/reflection-system.html">reflection</a>. TypeScript is very useful for game logic and allows to quickly create complex <a href="../prefabs/prefabs-overview.html">prefabs</a>. TypeScript is transpiled to JavaScript code, which is interpreted in a VM. Its performance is therefore far worse than C++. However, migrating a critical component from TypeScript to C++ at a later stage is possible.</p>
 <p>TypeScript code is updated every time you <a href="../editor/run-scene.html">run a scene</a>, which allows for quick iteration times.</p>
 <h2 id="visual-scripting">Visual Scripting</h2>
 <p>Visual script code is the most limited both in functionality and tooling. It can be used for simple if-then scripts. The visual script system is not bad, but it is very far away from what can be done with TypeScript, and due to auto-completion and type checking provided by Visual Studio Code, using TypeScript is even more convenient. Without serious investment into the visual scripting system and tools (for which the core team has no time), there is no reason to ever prefer it over the other options.</p>
-<h2 id="see-also">See Also</h2>
 </article>
           </div>
           
