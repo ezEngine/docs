@@ -3110,7 +3110,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/lighting/lighting-overview.html",
-          "hash": "jrbWbv46IBb/UqFxqB/jGU08lTV9N51ZZUm00nZOh+o="
+          "hash": "bcq+NCWAJwAdwVRi2bMfU6UQveH2LayrpTWc14WhbUA="
         }
       },
       "is_incremental": false,
@@ -3155,6 +3155,17 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/graphics/lighting/media/point-light.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/reflection-probes.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/reflection-probes.jpg"
         }
       },
       "is_incremental": false,
@@ -3218,11 +3229,23 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/reflection-probe-components.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/reflection-probe-components.html",
+          "hash": "G2fIqDwIQbacN2LJDP6h1HHo8cf8kZJfdR351qUTxQY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/lighting/sky-light-component.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/lighting/sky-light-component.html",
-          "hash": "Ztqn4Pizmv7MdkCjAOFQQPzeeo3PZUE9Lcll1PrcD3k="
+          "hash": "8MOdDz/uX1ziBFkmb/5d95QCj/5iDcSRttWxL9zK5nw="
         }
       },
       "is_incremental": false,
@@ -5793,7 +5816,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "4vuNmOH49ckoAlmm7aSsFfpdgy7f5phheD5rSgdL8c4="
+          "hash": "E9qwyr0JEkBr4d4VLwDXoK9uH0wrXD5DKBrniA/+aP0="
         }
       },
       "is_incremental": false,
@@ -6496,7 +6519,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 272,
+          "total_file_count": 273,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

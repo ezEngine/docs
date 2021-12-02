@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Lighting | ezEngine </title>
+    <title>Reflection Probe Components | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Lighting | ezEngine ">
+    <meta name="title" content="Reflection Probe Components | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,33 +78,42 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="lighting">Lighting</h1>
+<h1 id="reflection-probe-components">Reflection Probe Components</h1>
 
-<p>Lighting is the most important aspect of making a scene look good.</p>
-<h2 id="physically-based-rendering">Physically Based Rendering</h2>
-<p>There are many formulas for computing lighting on surfaces. The defacto industry standard, which is also used in ezEngine, is <strong>P</strong>hysically <strong>B</strong>ased <strong>R</strong>endering (PBR) which describes a surface in terms of <em>color</em>, the surface normals, its <em>roughness</em>, whether it is a <em>metal</em>. Using this data, very convincing lighting can be computed.</p>
-<p>Therefore the standard type of <a href="../../materials/materials-overview.html">material</a> requires you to provide such textures. Optionally an <em>occlusion texture</em> can pronounce the lighting for small crevices.</p>
-<h2 id="static-vs-dynamic-lighting">Static vs. Dynamic Lighting</h2>
-<p>Many games differentiate between <em>static</em> or <em>baked</em> lighting, and <em>dynamic</em> lighting. Static lighting is precomputed and typically stored in <em>lightmaps</em> (dedicated textures) and other data structures. Dynamic lighting does not require any preprocessing or extra data. Baked lighting typically has the advantage that it can look much better because it can simulate light bounces and thus illuminate areas that are not directly lit.</p>
-<p>Currently ezEngine <strong>only supports dynamic lighting</strong>. That means every light source that you add to the scene can be moved around and change its color or brightness. It also means that every light source has a performance cost. The renderer uses a clustered forward rendering approach which can handle a relatively large amount of light sources efficiently. The most important rule is to reduce the number of <em>overlapping</em> light sources. The editor <a href="../../editor/editor-views.html#render-modes">render modes</a> allow you to look for hotspots.</p>
-<h2 id="shadows">Shadows</h2>
-<p>Dynamic lights have the disadvantage that they don't provide shadows by default. Instead, casting shadows is a separate process, which costs a lot of performance for every light source involved. Therefore, each light source requires you to decide whether it should cast shadows or not. You can use many small fill lights, as long as they don't cast shadows, but you should keep the number of shadow casting lights as low as possible, and each light should only cover an area as small as possible.</p>
-<p>For more details see the chapter about <a href="dynamic-shadows.html">dynamic shadows</a>.</p>
-<h2 id="light-component-types">Light Component Types</h2>
-<p>There are different component types to provide different types of lighting:</p>
+<p>The two reflection probe components, <em>box reflection probe component</em> and <em>sphere reflection probe component</em> allow for localized reflections to be added to a scene. The probe makes a 360 degree screenshot of the scene to capture the overall lighting at this location into a cubemap which can be sampled at runtime to generate reflections.</p>
+<h2 id="scene-setup">Scene Setup</h2>
+<p>Sphere reflection probes project the captured cubemap to infinity, i.e. no parallax effect is observed when moving. Box reflection probes on the other hand project the cubemap to their extents, allowing for parallax correction of the reflection when moving in the scene.
+Probes take the parent game object's scale into account. Thus, sphere probes can actually be ellipsoids if scaled non-uniformly. The image below shows the difference between a box (to the left) and a sphere reflection probe (to the right). While the reflection in the metal ball both look convincing, the reflection on the floor is clearly off for the sphere reflection probe.</p>
+<p><img src="media/reflection-probes.jpg" alt="Box vs sphere reflection probe"></p>
+<p>By default, each probe captures everything in its radius. In many cases it makes sense to <a href="../../projects/tags.html">tag</a> the <code>ExcludeTags</code> with <code>SkyLight</code> though so that the resulting cubemap is transparent where no geometry was rendered. This allows for the cubemaps to be dynamically composited at runtime. The benefits of this is that the skylight can change dynamically and won't be baked into the probe and it allows for parallax between e.g. a box probe and the sky light fallback reflection.</p>
+<p>The captured reflection is only visible in the probe's influence volume. For sphere probes this is defined by their radius and for box probes by their extents.</p>
+<p>At runtime, all probes are sorted by their volume and the smallest probe is sampled first. If the reflection is transparent in the cubemap, then next bigger cubemap that influences the geometry is sampled next. This continues until we hit an opaque pixel in a cubemap or if the fallback reflection of the <a href="sky-light-component.html">sky light component</a> is reached.</p>
+<p>The probe's <code>ReflectionProbeMode</code> by default is set to <code>static</code>, in which case the captured cubemap reflection is only updated once at the start or whenever the settings change. Alternatively it can be set to <code>dynamic</code>, in which case probe is updated  continuously.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p>Sphere reflection component:</p>
 <ul>
-<li><a href="ambient-light-component.html">Ambient Light Component</a>: For lighting up a scene in general.</li>
-<li><a href="directional-light-component.html">Directional Light Component</a>: For sun/moon light.</li>
-<li><a href="point-light-component.html">Point Light Component</a>: For light bulbs and overall fill lights.</li>
-<li><a href="spot-light-component.html">Spot Light Component</a>: For flashlights and directed lighting.</li>
-<li><a href="sky-light-component.html">Sky Light Component</a>: For dynamic light contribution from the sky.</li>
-<li><a href="reflection-probe-components.html">Reflection Probe Components</a>: For localized reflection probes.</li>
+<li><code>Radius</code>: The influence range of the probe. The reflection is only visible on geometry intersecting this radius.</li>
+<li><code>Falloff</code>: Percentage of the radius that is smoothly blended into other probes.</li>
+</ul>
+<p>Box reflection component:</p>
+<ul>
+<li><code>Extents</code>: The extents of the box projection. The cubemap will be projected to this box.</li>
+<li><code>InfluenceScale</code>, <code>InfluenceShift</code>: The influence volume can be smaller than the projected volume (extents) of the probe. This can be useful if you have e.g. a long corridor that you want to place multiple probes in. Each will have the same projection but a different part of the projection volume will be set as the influence volume centred around a probe capture offset.</li>
+<li><code>PositiveFalloff</code>, <code>NegativeFalloff</code>: Percentage of the influence volume in each direction that is smoothly blended into other probes. The falloff is defined for each face of the box.</li>
+</ul>
+<p>Common properties for both sphere and box reflection probes that describe how the probe is captured:</p>
+<ul>
+<li><code>ReflectionProbeMode</code>: <code>Dynamic</code> makes the skylight update continuously. <code>Static</code> will only update once at the start.</li>
+<li><code>IncludeTags</code>, <code>ExcludeTags</code>: These <a href="../../projects/tags.html">tags</a> define which objects in the scene are used to capture the scene. This is the same mechanism as used in the <a href="../camera-component.html">camera component</a>. By default, the <code>SkyLight</code> tag is excluded to allow for dynamic composition with the <a href="sky-light-component.html">sky light component</a>.</li>
+<li><code>NearPlane</code>, <code>FarPlane</code>: Camera settings used when the lighting is captured from the scene. If <code>NearPlane</code> is set to <code>Auto</code>, a value is computed automatically from the <code>FarPlane</code>.</li>
+<li><code>CaptureOffset</code>: The capture offset allows for the capture position of the probe to be decoupled from the game object position.</li>
+<li><code>ShowDebugInfo</code>: If enabled, a sphere with a preview of the probe cubemap is rendered at the position of the capture offset. Use this to check whether all desired objects contribute to the probe. Above the sphere will be a stack of other spheres that showcase the reflection with increased roughness.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../../materials/materials-overview.html">Materials</a></li>
-<li><a href="dynamic-shadows.html">Dynamic Shadows</a></li>
-<li><a href="../../editor/editor-views.html#render-modes">Render Modes</a></li>
+<li><a href="lighting-overview.html">Lighting</a></li>
+<li><a href="ambient-light-component.html">Ambient Light Component</a></li>
+<li><a href="sky-light-component.html">Sky Light Component</a></li>
 </ul>
 </article>
           </div>
@@ -114,7 +123,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lighting/lighting-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lighting/reflection-probe-components.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
