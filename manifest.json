@@ -1165,7 +1165,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/assets-overview.html",
-          "hash": "J9yirnKDquwr5HXFrNJY8BnOQytPizHlbO9rWPt1hIE="
+          "hash": "HaN+oCocQf44Z8NovVWfG9haI9h31qvwFo/BsVwyMf4="
         }
       },
       "is_incremental": false,
@@ -3448,12 +3448,34 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/shaders/media/create-shader-template.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/shaders/media/create-shader-template.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/shaders/media/shader-template-dlg.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/shaders/media/shader-template-dlg.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/shaders/shader-debugging.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/shaders/shader-debugging.html",
-          "hash": "0ECJz+IrmQd3b4oW1STjF1KEWh2Bkd5/0uW0k+PdiyQ="
+          "hash": "Om8qWK6K+CGtuQQNoJsopim/cL3Q7YaDIPsYb1pmtYI="
         }
       },
       "is_incremental": false,
@@ -3465,7 +3487,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/shaders/shader-permutation-variables.html",
-          "hash": "+sPLna4GSsHOuw/bxGVHx4KpGtPbc5GTShGjTziNQcg="
+          "hash": "HlXmwxotfeTKP32eslepj6A97zUiMVWvlR3PPjacFMI="
         }
       },
       "is_incremental": false,
@@ -3477,7 +3499,19 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/shaders/shader-render-state.html",
-          "hash": "RU8t3pgUV05aEIfF3HYuOXlIvQORdl42H/60zDprQTA="
+          "hash": "UvqlYDO8xuUSaz8aEvkrCeE3IZx5j6VpwDC1u6Dugr4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shader-templates.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shader-templates.html",
+          "hash": "TDQyVGnKV34GMlfusBgkz07QDVKVa8vPyuFZ/X9ess0="
         }
       },
       "is_incremental": false,
@@ -3489,7 +3523,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/shaders/shaders-overview.html",
-          "hash": "Yr7TPRNjWzSU1SzwSD+lTqNHHE8HZlA53mrbJTcGTSc="
+          "hash": "AL9Q/ZNipBT5hrzWd6Y0wNRD9WhXhbyUlr4QcwxaXqA="
         }
       },
       "is_incremental": false,
@@ -3561,7 +3595,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/materials/materials-overview.html",
-          "hash": "RleYqYbljdUEO/BFc6wNmO1z8DnA32I+1FTATEzDPNc="
+          "hash": "yszQjxFwB8fLdqRF0HlFa3Cfr7gbtRrxWClUZ492nS0="
         }
       },
       "is_incremental": false,
@@ -3607,7 +3641,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/materials/visual-shaders.html",
-          "hash": "9Hb59RTAy+wUHygEyG5sP+fwGaa6suGm5vAci6v9uKQ="
+          "hash": "59hpNrDzVqS83hBMucI4EEyQmORXi7B5MT49NEZfg10="
         }
       },
       "is_incremental": false,
@@ -5816,7 +5850,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "E9qwyr0JEkBr4d4VLwDXoK9uH0wrXD5DKBrniA/+aP0="
+          "hash": "CcM7RrCMmU1EEl0KQhUAu4v4gwBLq/PAAPZJXiIBHks="
         }
       },
       "is_incremental": false,
@@ -6519,7 +6553,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 273,
+          "total_file_count": 274,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

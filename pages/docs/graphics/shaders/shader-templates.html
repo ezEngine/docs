@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Shader Permutation Variables | ezEngine </title>
+    <title>Shader Templates | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Shader Permutation Variables | ezEngine ">
+    <meta name="title" content="Shader Templates | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,98 +78,25 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="shader-permutation-variables">Shader Permutation Variables</h1>
+<h1 id="shader-templates">Shader Templates</h1>
 
-<p>Permutation variables are global variables set either through C++ code or exposed through materials. The value of a permutation variable at the time of a drawcall affects which permutation of a shader is used for rendering.</p>
-<p>Permutation variables allow to create different variants of the same shader, without creating different shader files. Since their state is global, they decouple the decision which shader to use from the code that actually has this information at hand.</p>
-<p>For instance, materials support different rendering modes. By default they use proper lighting, but for debugging purposes we might want to override this and always output unlit diffuse color (or normals, UV coordinates, etc). The information which shader to use to render a certain object is stored either in a material or directly set through code. Without permutation variables we would either need to use an entirely different shader to get our debug output, which would mean that everything would need to support this functionality, or the shader would need to decide the final output mode dynamically, adding a large performance hit for a feature that is not used in the final game.</p>
-<p>Permutation variables solve this problem by creating different variants of the shader, and letting the engine pick the correct one depending on the current values.</p>
-<p>In shader code, permutation variables are exposed as <code>#define</code>'d preprocessor variables and therefore can be evaluated like any other preprocessor directive.</p>
-<h2 id="the-shader-permutations-section">The Shader Permutations Section</h2>
-<p>Each shader is made up of several <strong>sections</strong>.</p>
-<pre><code class="lang-cpp">[PLATFORMS]
-
-ALL
-DEBUG
-
-[PERMUTATIONS]
-
-ALPHATEST
-WIREFRAME
-
-[MATERIALPARAMETER]
-
-Permutation ALPHATEST;
-
-[RENDERSTATE]
-
-#if WIREFRAME == 1
-    WireFrame = true
-#endif
-
-[VERTEXSHADER]
-
-VS_OUT main(VS_IN Input)
-{
-  ...
-}
-
-[PIXELSHADER]
-
-...
-</code></pre>
-<p>In the <strong>[PERMUTATIONS]</strong> section the shader author has to list all permutation variables that are going to be evaluated inside the shader code. If a variable is used without being mentioned in this section, your shader might compile and work, but the result will always be the same.</p>
-<h2 id="ezpermvar-files">ezPermVar Files</h2>
-<p>Every permutation variable must be defined in a file that has the exact name of the permutation variable and the <code>.ezPermVar</code> extension.</p>
-<p>All ezPermVar files must reside in a specific subfolder in any data directory. By default the subfolder is <strong>&quot;Shaders/PermutationVars&quot;</strong>.</p>
-<h2 id="bool-permutation-variables">bool Permutation variables</h2>
-<p>The definition of a boolean permutation variable in its ezPermVar file simply looks like this:</p>
-<pre><code class="lang-cpp">bool TWO_SIDED;
-</code></pre>
-<p>A boolean permutation variable is permuted over the values <strong>TRUE</strong> and <strong>FALSE</strong>. In a shader it would be evaluate like this:</p>
-<pre><code class="lang-cpp">#if defined(PIXEL_SHADER) &amp;&amp; TWO_SIDED == TRUE
-    uint FrontFace : SV_IsFrontFace;
-#endif
-</code></pre>
-<p>In C++ code the variable is set like this:</p>
-<pre><code class="lang-cpp">ezRenderContext::SetShaderPermutationVariable(&quot;TWO_SIDED&quot;, &quot;TRUE&quot;);
-</code></pre>
-<h2 id="enum-permutation-variables">enum Permutation Variables</h2>
-<p>Enum permutation variables allow you to use more than two permutation values and they can have more descriptive names.</p>
-<p>The definition of an enum variable in its ezPermVar file looks like this:</p>
-<pre><code class="lang-cpp">enum BLEND_MODE
-{
-    OPAQUE,
-    MASKED,
-    TRANSPARENT,
-    ADDITIVE,
-    MODULATE
-};
-</code></pre>
-<p><strong>Note:</strong> When evaluating an enum variable in a shader, the value must be prefixed with the name of the variable and an underscore:</p>
-<pre><code class="lang-cpp">#if BLEND_MODE == BLEND_MODE_MASKED
-    return opacity - MaskThreshold;
-#else
-    return opacity;
-#endif
-</code></pre>
-<p>As you can see, the name used for comparison is <strong>BLEND_MODE_MASKED</strong> although in the definition it was named <strong>MASKED</strong>. In C++ code we use the actual name though:</p>
-<pre><code class="lang-cpp">ezRenderContext::SetShaderPermutationVariable(&quot;BLEND_MODE&quot;, &quot;MASKED&quot;);
-</code></pre>
-<h2 id="exposing-permutations-to-materials">Exposing Permutations to materials</h2>
-<p>By default permutation variables do not show up in materials and therefore cannot be manually specified by artists. If you want a variable to show up, simply list it in the <strong>[MATERIALPARAMETER]</strong> section:</p>
-<pre><code class="lang-cpp">[MATERIALPARAMETER]
-
-Permutation ALPHATEST;
-
-</code></pre>
-<p>The type (<code>bool</code> or <code>enum</code>) and the available values are automatically read from the ezPermVar file that defines the variable and will show up in the material properties accordingly.</p>
+<p>Writing a custom shader from scratch is a rather difficult task, especially if you want a custom material shader, that has all the PBR lighting features. However, using <em>shader templates</em> this becomes quite straight forward.</p>
+<p>A shader template is simply a functioning shader file that you can edit. Shaders are generally written in <a href="https://docs.microsoft.com/windows/win32/direct3dhlsl/dx-graphics-hlsl">HLSL</a>, though EZ shader files have additional sections for configuring various other aspects. There are different templates available for common use cases.</p>
+<h2 id="creating-a-new-shader-from-a-template">Creating a New Shader from a Template</h2>
+<p>Open a <a href="../../materials/materials-overview.html">material asset</a> that should use a custom shader. As it's <code>ShaderMode</code> select <em>From File</em>. Now click the browse (<code>...</code>) button next to the <code>Shader</code> property, to open the context menu:</p>
+<p><img src="media/create-shader-template.png" alt="Menu to create a shader template"></p>
+<p>From this menu select <strong>Create Shader From Template...</strong>. The following dialog is shown:</p>
+<p><img src="media/shader-template-dlg.png" alt="Shader template editor"></p>
+<p>Select the output file name and which template to create the shader from. When you select a template, the area below shows additional options. These simply select what code from the template should be included in your new file and is purely for convenience to get started more easily. You can add and remove any feature manually afterwards as needed.</p>
+<p>Once you click <code>OK</code> the shader file is created, applied to the material and opened in a text editor for you to start editing. When you make structural changes (exposed parameters, permutation variables used and such) you need to <a href="../../assets/assets-overview.html#asset-transform">transform</a> the material for the changes to properly show up.</p>
+<p>As long as you only modify the HLSL code, you can also just press <code>F4</code> to <a href="../../runtime/application/common-application-features.html#reload-resources">reload resources</a> at any time. If there are any errors, they are shown in the <a href="../../debugging/logging.html">log</a>.</p>
+<h2 id="adding-a-shader-template">Adding a Shader Template</h2>
+<p>If you want to add another shader template itself, have a look at the folder <em>Data/Tools/ezEditor/ShaderTemplates</em>. All you need to do is add another <em>.ezShaderTemplate</em> file here. Shader templates have an additional <code>TEMPLATE_VARS</code> section at the beginning that define what options to display in the dialog.</p>
+<p>The final shader code is built by running a C preprocessor over the file, but instead of replacing <code>$if</code> / <code>$endif</code> sections, it only looks at <code>%if</code> / <code>%endif</code> (using a percentage sign rather than a dollar sign), to generate the output.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="shaders-overview.html">Shaders (TODO)</a></li>
-<li><a href="shader-templates.html">Shader Templates</a></li>
-<li><a href="shader-debugging.html">Shader Debugging</a></li>
-<li><a href="shader-render-state.html">The Shader Render State Section</a></li>
+<li><a href="../../tools/shadercompiler.html">ShaderCompiler</a></li>
 </ul>
 </article>
           </div>
@@ -179,7 +106,7 @@ Permutation ALPHATEST;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-permutation-variables.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-templates.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
