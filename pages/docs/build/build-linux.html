@@ -80,32 +80,57 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="linux-builds">Linux Builds</h1>
 
+<h2 id="supported-compilers--make-systems">Supported Compilers / Make Systems</h2>
+<p>The ezEngine CMake scripts support the following compilers when building for Linux:</p>
+<ul>
+<li>GCC</li>
+<li>Clang</li>
+</ul>
+<p>C++17 support is required, so make sure that your respective compiler supports it.</p>
+<p>The ezEngine CMake scripts support the following two generators when building for Linux:</p>
+<ul>
+<li>Unix Makefiles</li>
+<li>Ninja</li>
+</ul>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>You need to install the following libraries:</p>
 <ul>
+<li>CMake 3.20 or newer</li>
 <li>uuid-dev</li>
 <li>SFML-2.5.1</li>
 <li>Qt 5.11 (optional)</li>
 </ul>
 <p>A good way to do so is via apt-get on supported distros:</p>
-<pre><code class="lang-cmd">sudo apt-get install -y cmake uuid-dev libx11-dev qt5-default build-essential
+<pre><code class="lang-cmd">sudo apt-get install -y cmake uuid-dev libx11-dev qtbase5-dev libqt5svg5-dev build-essential
 </code></pre>
 <p>If SFML is too old in your distro you can use the following steps to install the required version:</p>
 <pre><code class="lang-cmd">wget https://www.sfml-dev.org/files/SFML-2.5.1-linux-gcc-64-bit.tar.gz
 sudo mkdir /usr/SFML
 sudo tar xf SFML-2.5.1-linux-gcc-64-bit.tar.gz -C /usr/SFML/
 </code></pre>
-<p>If the same is true for your distro's Qt version, you can either use Qt's web installer or use one of the many pre-build qt package sources, e.g. <a href="https://launchpad.net/%7Ebeineri">https://launchpad.net/~beineri</a>.</p>
+<p>If the same is true for your distro's Qt version, you can either use Qt's web installer or use one of the many pre-built Qt package sources, e.g. <a href="https://launchpad.net/%7Ebeineri">https://launchpad.net/~beineri</a>.</p>
 <pre><code class="lang-cmd">sudo add-apt-repository ppa:beineri/opt-qt-5.11.1-xenial
 sudo apt update
 sudo apt install qt511-meta-full
 </code></pre>
 <h2 id="using-the-command-line">Using the command line</h2>
-<p>Run CMake with <code>CMAKE_PREFIX_PATH</code> pointing to the dependencies listed above. In this example, a <code>build</code> folder is created under the root of the repo and cmake is executed in it:</p>
-<pre><code class="lang-cmd">cmake -DCMAKE_PREFIX_PATH=/opt/qt511/;/usr/SFML/SFML-2.5.1;/usr/SFML/SFML-2.5.1/lib/cmake/SFML -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7 -G &quot;Unix Makefiles&quot; ../
+<p>If your distribution comes with packages for SFML 2.5 and QT 5 you can directly invoke CMake.
+In this example, a <code>build</code> folder is created under the root of the repo and CMake is executed in it:</p>
+<pre><code class="lang-cmd">mkdir build
+cmake -B build -S .
 </code></pre>
+<p>If your package versions are incompatible you have to manually specify them with <code>CMAKE_PREFIX_PATH</code>. Pointing it to the dependencies listed above.</p>
+<pre><code class="lang-cmd">mkdir build
+cmake -B build -S . -DCMAKE_PREFIX_PATH=/opt/qt511/;/usr/SFML/SFML-2.5.1/lib/cmake/SFML
+</code></pre>
+<p>To use a different compiler (like Clang or different versions of GCC) specify <code>CMAKE_CXX_COMPILER</code> and <code>CMAKE_C_COMPILER</code>.</p>
+<pre><code class="lang-cmd">cmake -B build -S . -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+</code></pre>
+<p>To disable Qt support (removing the need for Qt completely) use <code>-DEZ_ENABLE_QT_SUPPORT=OFF</code>.</p>
+<p>To generate Ninja make files use <code>-G Ninja</code>.</p>
+<p>ezEngine currently builds fully statically linked by default. If you want to build shared libraries instead and make use of ezEngine's dynamic plugin system pass <code>-DEZ_COMPILE_ENGINE_AS_DLL=ON</code></p>
 <h2 id="using-qt-creator">Using Qt Creator</h2>
-<p>The root of the repository can also be opened in Qt Creator which will generally do a good job at finding the Qt location on it one but the path to SFML will probably still have to be provided manually.</p>
+<p>The root of the repository can also be opened in Qt Creator which will generally do a good job at finding the Qt location on its own but the path to SFML will probably still have to be provided manually.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="building-ez.html">Building ezEngine</a></li>
