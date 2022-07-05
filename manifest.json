@@ -1454,7 +1454,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/cpp/cpp-code-reload.html",
-          "hash": "QxOVAsqfCLiS0Pxa37bDASqruzYgNRzQPXXisetC+GU="
+          "hash": "IFNQwFO6LwPSQga7bwgmtIb20Mgghg+RyV81aOroJlI="
         }
       },
       "is_incremental": false,
@@ -1502,7 +1502,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/cpp/engine-plugins.html",
-          "hash": "6wEWyvGNdZQ7NI6Y4IUyJY8Z9v8hH7WzlVC25vZHWcg="
+          "hash": "cvmNyT7a/v9sTMkawX304O0kRfaRY1S0GdkADo2fWFI="
         }
       },
       "is_incremental": false,
@@ -1746,7 +1746,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/debugging/debug-cpp.html",
-          "hash": "V2r0xdWi1dmYuQQcfHqKeuZHxcLbwyFrX4BMO3QazZQ="
+          "hash": "IrM91vFNsvGVbhK9L3EFYEM6iJ62ZtxlkVVdtlRC7Mo="
         }
       },
       "is_incremental": false,
@@ -1910,7 +1910,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/editor/editor-settings.html",
-          "hash": "dMqaSsjSv2SQomoSullObcdI/72kpDZWIdsxjdZp1ZY="
+          "hash": "WbCEIHPREDJ2OeyNnjVSPdM7f5yQ++0wHe6MLm7+Yvk="
         }
       },
       "is_incremental": false,
@@ -1968,17 +1968,6 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/editor/media/dashboard-samples.jpg"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/docs/editor/media/editor-plugins.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/editor/media/editor-plugins.png"
         }
       },
       "is_incremental": false,
@@ -4421,17 +4410,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/projects/media/editor-engine-plugins.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/projects/media/editor-engine-plugins.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/projects/media/editor-input-config.png",
       "output": {
         "resource": {
@@ -4498,6 +4476,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/plugin-selection.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/plugin-selection.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/projects/media/tag-invisible.jpg",
       "output": {
         "resource": {
@@ -4509,11 +4498,23 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/projects/plugin-selection.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/projects/plugin-selection.html",
+          "hash": "Y7/XpLSUAlHQGFaidBNJhqL8WbLPs70ai6uYKAI/JYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/projects/project-settings.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/project-settings.html",
-          "hash": "rK9oeNuHwvQyEsGhVi5oIRqjFIi7MbZWVI8Du2Ws+dM="
+          "hash": "o5bqdfYKwBeTVOr5nujOVFnNYlLx8mUsIDzxrj3xvRc="
         }
       },
       "is_incremental": false,
@@ -4525,7 +4526,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/projects-overview.html",
-          "hash": "x8p+HqEhXntIZn5D8g2vJXM8/RnM6A6TB8nB/RRP8jc="
+          "hash": "VR8vO4f5Y6Bndz4G7Fj18qWttljXoKerF+bXaXWbCAM="
         }
       },
       "is_incremental": false,
@@ -4619,7 +4620,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/runtime/configuration/interfaces.html",
-          "hash": "2VOog5tzvTUT1YRS6MaPPM83fuHPd0htBS0RV/ZRBMk="
+          "hash": "L0rxtSf6UQ9nFZpv+SYIqydsLQSSFT5RG3qjA2oSr98="
         }
       },
       "is_incremental": false,
@@ -5884,7 +5885,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "bgn9bUZztIRUHUvlB5D/UC9UuAWI+Y08uOkKo7IVQU4="
+          "hash": "Xn4DkAGoTRyMBgsfxGR7oxueQFcl5N7eJpZH7iFaScQ="
         }
       },
       "is_incremental": false,
@@ -6587,7 +6588,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 275,
+          "total_file_count": 276,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

@@ -88,29 +88,17 @@
 <p>Unfortunately, you can't compile a plugin while a process is using it, because the process prevents other applications from writing the DLL. We can solve this problem, by making a copy of our game plugin DLL, and loading that instead. That means that the original DLL is not actually used, and our IDE can modify it further.</p>
 <p>This trick works quite well if we only do it for plugins that are loaded fully dynamic, meaning that no other plugin tries to link against it. If that were the case, both the original plugin, as well as the copied plugin would get loaded, which is not good. Therefore only select game plugins may use this copy mechanic, which is why you need to set this up manually.</p>
 <h2 id="how-to-enable-plugin-hot-reloading">How to Enable Plugin Hot Reloading</h2>
-<p>For this feature there is no UI, you need to edit a config file directly.</p>
+<p>In the <a href="../../projects/plugin-selection.html">plugin selection</a> dialog, select your custom plugin and check <strong>Enable Reload</strong>.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
-<p>If you used the <a href="cpp-project-generation.html">C++ Project Generation</a> feature to create your project, the reference to your C++ plugin in your EZ project is automatically set up to use the <code>LoadCopy</code> option mentioned below.</p>
+<p>If you used the <a href="cpp-project-generation.html">C++ Project Generation</a> feature to create your project, the reference to your C++ plugin is automatically set up this way.</p>
 </blockquote>
-<h3 id="edit-plugin-config-file">Edit Plugin Config File</h3>
-<ol>
-<li>If you have any editor open, close it.</li>
-<li>Go to the directory where your project is located, for example <code>Data/Samples/SampleGame</code>.</li>
-<li>Open the file <code>Plugins.ddl</code> in a text editor.</li>
-<li>You should see a list of all the known engine plugins. Search for the plugin for which you want to enable reloading, for example <code>ezSampleGamePlugin</code>.</li>
-<li>Change its <code>LoadCopy</code> value to <code>true</code>.
-<img src="media/load-plugin-copy.png" alt="Plugin Config"></li>
-<li>Save and close the text file.</li>
-<li>Open your project in the editor.</li>
-</ol>
-<p>If all goes well, everything should work as before. The only difference is now, that you can modify the code of your plugin and compile it, while the editor is open. Of course you can't do that while being attached with a debugger, so detach your debugger, if necessary.</p>
-<h3 id="terminate-and-restart-the-engine">Terminate and Restart the Engine</h3>
+<p>Now you can modify the code of your plugin and compile it, while the editor is open. Of course, you can't do that while being attached with a debugger.</p>
+<p>When a plugin is marked as <code>Enable Reload</code>, and it gets modified, the editor already <strong>automatically restarts the engine process</strong>, once no scene is being simulated.</p>
+<h2 id="terminate-and-restart-the-engine">Terminate and Restart the Engine</h2>
 <p>You can always manually restart the engine process through <em>Tools &gt; Reload Engine</em> or the hotkey <code>Ctrl+Shift+F4</code>.</p>
-<p>This instructs the editor to kill its engine process and restart it right away. This takes a few seconds, and you will see the 3D viewports flicker and notice how the new engine process loads all the data. Once that is done you can again <a href="../../editor/run-scene.html">simulate the scene</a> and will now get the latest behavior from your game plugin.</p>
-<p>Additionally, when a pluggin is set as <code>LoadCopy</code>, and it gets modified, the editor already <strong>automatically restarts the engine process</strong>, once no scene is being simulated.</p>
 <h2 id="restrictions">Restrictions</h2>
-<p>The <code>LoadCopy</code> option should only be used for select game plugins. Enabling this feature can have unintended side-effects.</p>
+<p>The <code>Enable Reload</code> option should only be used for select game plugins. Enabling this feature can have unintended side-effects.</p>
 <ul>
 <li>If any code links against a plugin, that plugin cannot be loaded as a copy. Therefore, if you want to put shared code into a separate library that other users of your plugins link against, you can't load that shared library as a copy.</li>
 <li>You can't compile code while debugging a process. To compile your code, you first have to detach your debugger. In Visual Studio that can be done via <code>Debug &gt; Detach All</code>.</li>

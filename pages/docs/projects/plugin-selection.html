@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Project Settings | ezEngine </title>
+    <title>Plugin Selection | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Project Settings | ezEngine ">
+    <meta name="title" content="Plugin Selection | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,41 +78,46 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="project-settings">Project Settings</h1>
+<h1 id="plugin-selection">Plugin Selection</h1>
 
-<p>Project settings are options that are configured once and affect the entire application. Most project settings can be configured from the editor, though some (currently) can only be configured by writing certain configuration files manually.</p>
-<p>In the editor you will find the project settings under <em>Editor &gt; Project Settings &gt; ...</em>.</p>
-<h2 id="data-directories">Data Directories</h2>
-<p><em>Editor &gt; Project Settings &gt; Data Directories...</em> opens a dialog to set up the <a href="data-directories.html">data directories</a>.</p>
-<h2 id="plugin-selection">Plugin Selection</h2>
-<p>Which optional functionality should be available is configured on a per-project basis. See the <a href="plugin-selection.html">plugin selection chapter</a> for details.</p>
-<h3 id="loading-plugins-from-code">Loading Plugins from Code</h3>
-<p>A custom <a href="../runtime/application/application.html">application (TODO)</a> or <a href="../runtime/application/game-state.html">game state</a> can load plugins directly from code if necessary. For example the <code>ezInspectorPlugin</code> is automatically loaded for you by stock EZ applications, when building the code for development.</p>
-<h2 id="input-configuration">Input Configuration</h2>
-<p><em>Editor &gt; Project Settings &gt; Input Configuration...</em> opens a dialog to <a href="../input/input-config.html">configure input actions</a>.</p>
-<h2 id="tags">Tags</h2>
-<p><em>Editor &gt; Project Settings &gt; Tags...</em> opens a dialog to configure which <a href="tags.html">tags</a> are available in the project.</p>
-<h2 id="window-configuration">Window Configuration</h2>
-<p><em>Editor &gt; Project Settings &gt; Window Configuration...</em> opens a dialog to configure the default window configuration when <a href="../editor/run-scene.html">running a scene</a>.</p>
-<p><img src="media/editor-window-config.png" alt="Window Configuration"></p>
-<p>These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in <a href="../tools/player.html">ezPlayer</a>. A proper game would typically implement this logic in a custom <a href="../runtime/application/application.html">application (TODO)</a> and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.</p>
-<p>There are two separately stored configurations:</p>
-<p><strong>Project Default:</strong> This configuration will be stored in the project folder and thus should be checked into source control to be shared with others.</p>
-<p><strong>User Specific:</strong> This configuration is only stored locally for the active user and not in the project directory. Therefore it cannot be checked into source control. It is meant for users who want to use settings different from the project default. For instance, when you have multiple monitors, you may want the exported scene to always appear on a specific one. This configuration must be enabled to override the default one.</p>
-<p>Apart from the window position and size, the window configuration also controls the behavior of the mouse. If <strong>Clip Mouse Cursor</strong> is enabled, the mouse won't be able to leave the window area. This should be preferred for games that hide the mouse and only use relative mouse movement.</p>
-<h2 id="asset-profiles">Asset Profiles</h2>
-<p><em>Editor &gt; Project Settings &gt; Asset Profiles...</em> opens a dialog to edit <a href="../assets/asset-profiles.html">asset profiles (TODO)</a>.</p>
-<h2 id="fmod">FMOD</h2>
-<p>If the <a href="../sound/fmod-overview.html">FMOD Integration</a> is enabled, <em>Editor &gt; Project Settings &gt; FMOD Project Settings...</em> will be available to configure the speaker mode and which master sound bank to use.</p>
-<h2 id="physx">PhysX</h2>
-<p>If the <a href="../physics/physx-overview.html">PhysX Integration</a> is enabled, <em>Editor &gt; Project Settings &gt; PhysX Project Settings...</em> will be available to configure the <a href="../physics/collision-shapes/collision-layers.html">collision layers</a>.</p>
-<h2 id="video">Video</h2>
-<p><a href="https://www.youtube.com/watch?v=ivkAIlbK5f0"><img src="https://img.youtube.com/vi/ivkAIlbK5f0/0.jpg" alt="video"></a></p>
+<p>Plugins are used to add functionality both to the runtime (the actual game) as well as to the editor. For example, sound, physics simulation, AI and GUI functionality are all added through plugins. Which of these features are required, of course, depends on the project. Therefore the set of active plugins is configured for each project.</p>
+<h2 id="modify-the-set-of-active-plugins">Modify the Set of Active Plugins</h2>
+<p>Under <em>Editor &gt; Project Settings &gt; Plugin Selection</em> you can open the <strong>plugin selection</strong> dialog:</p>
+<p><img src="media/plugin-selection.png" alt="Plugin Selection"></p>
+<p>The list on the left lists all available plugins. Using the <em>Template</em> dropdown at the top, you can choose a default selection. The right-hand side shows a short description of the selected plugin.</p>
+<p>Enable the checkmark for a plugin to make it active in this project.</p>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<p>Some plugins are mutually exclusive. In such a case, once one of them is activated, the others are greyed out.
+Similarly, some plugins depend on each other, in which case the dependent plugin is automatically enabled and can't be deselected.</p>
+</blockquote>
+<h3 id="enable-reload">'Enable Reload'</h3>
+<p>If you <em>Enable Reload</em> for a plugin, the engine will load a copy of the runtime plugin DLL, rather than the original DLL. This allows to edit and compile the DLL while the editor is running. Typically, this should only be active for a single, game-specific plugin. See <a href="../custom-code/cpp/cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a> for details.</p>
+<h2 id="custom-plugin-entries">Custom Plugin Entries</h2>
+<p>If you have a <a href="../custom-code/cpp/engine-plugins.html">custom plugin</a> that should show up in this list, you need to add an <code>ezPluginBundle</code> file.</p>
+<h3 id="ezpluginbundle-files">ezPluginBundle Files</h3>
+<p>Each ezPluginBundle file contains information for one plugin. Since the editor and the engine runtime are different processes, though, it is possible that one <em>logical</em> plugin actually consists of multiple DLLs. For example it is common that one DLL must be loaded into the runtime process (the actual game), another one into the editor process to add custom UI elements and a third one into the <em>editor engine process</em> for custom, editor-specific rendering.</p>
+<p>How ezPluginBundle files work is documented inside this file:</p>
+<blockquote>
+<p><code>Code/EditorPlugins/Assets/EditorPluginAssets/Assets.ezPluginBundle</code></p>
+</blockquote>
+<p>The editor searches for ezPluginBundle files in the binary folder where <code>Editor.exe</code> is located. All files that are found add an entry to the dialog. Typically the original ezPluginBundle file is stored next to the source code of a plugin and copied to the binary folder in a post-build step.</p>
+<p>Examples for this can be found in the <code>CMakeLists.txt</code> files of existing plugins, for example in <code>Code/EnginePlugins/XBoxControllerPlugin/CMakeLists.txt</code>:</p>
+<pre><code class="lang-cmd">add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different &quot;${CMAKE_CURRENT_SOURCE_DIR}/XBoxController.ezPluginBundle&quot; $&lt;TARGET_FILE_DIR:${PROJECT_NAME}&gt;
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
+</code></pre>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<p>An <code>ezPluginBundle</code> file is automatically created and referenced for you, when you use the <a href="../custom-code/cpp/cpp-project-generation.html">C++ Project Generation</a>.</p>
+</blockquote>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="projects-overview.html">Projects</a></li>
-<li><a href="plugin-selection.html">Plugin Selection</a></li>
-<li><a href="data-directories.html">Data Directories</a></li>
+<li><a href="../custom-code/cpp/engine-plugins.html">Engine Plugins</a></li>
+<li><a href="../custom-code/cpp/cpp-project-generation.html">C++ Project Generation</a></li>
+<li><a href="../custom-code/cpp/cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a></li>
+<li><a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
 </ul>
 </article>
           </div>
@@ -122,7 +127,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/projects/project-settings.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/projects/plugin-selection.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

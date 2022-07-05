@@ -90,15 +90,7 @@
 <p>The name of the folder represents the name of your project. This name is stored nowhere else, you can rename your project later simply by renaming the folder.</p>
 <h3 id="basic-setup">Basic Setup</h3>
 <p>Now you have a new, blank project. The first thing you should do is to check the <a href="project-settings.html">project settings</a>. Specifically, if you want to share assets between multiple projects, you need to put those assets into a dedicated folder and then add that folder to your project as a <a href="data-directories.html">data directory</a>.</p>
-<p>The second thing you should check is which <a href="project-settings.html#engine-plugins">engine plugins</a> you want to use. This is not critical at this point, but if you start using features from some plugin (e.g. <a href="../physics/physx-overview.html">PhysX</a>) and then try to <a href="../editor/run-scene.html">run a scene standalone</a>, it won't work.</p>
-<p>The following engine plugins are useful to enable for most projects:</p>
-<ul>
-<li><strong>ezParticlePlugin</strong> - for <a href="../effects/particle-effects/particle-effects-overview.html">particle effects</a></li>
-<li><strong>ezTypeScriptPlugin</strong> - for <a href="../custom-code/typescript/typescript-overview.html">scripting with TypeScript</a></li>
-<li><strong>ezPhysXPlugin</strong> - for physics with <a href="../physics/physx-overview.html">PhysX</a></li>
-<li><strong>ezFmodPlugin</strong> - for sound with <a href="../sound/fmod-overview.html">FMOD</a></li>
-</ul>
-<p>If you don't use a particular feature in your project, you can of course keep the respective plugin deactivated.</p>
+<p>The second thing you should check is which <a href="plugin-selection.html">plugins</a> you want to use, so that you have all desired features available.</p>
 <h3 id="create-a-scene">Create a Scene</h3>
 <p>Select <em>Editor &gt; Create Document...</em> and create a <a href="../editor/editor-documents.html">document</a> of type <code>ezScene</code>. The new scene will be filled with some default objects and you should see something like this:</p>
 <p><img src="media/new-project-scene.jpg" alt="New Scene"></p>
@@ -115,6 +107,10 @@
 <li><a href="../assets/asset-profiles.html">Asset profiles (TODO)</a></li>
 </ul>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="data-directories.html">Data Directories</a></li>
+<li><a href="plugin-selection.html">Plugin Selection</a></li>
+</ul>
 </article>
           </div>
           
