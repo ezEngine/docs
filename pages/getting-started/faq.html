@@ -82,11 +82,10 @@
 
 <h2 id="platforms">Platforms</h2>
 <p>The ezEngine base libraries (Foundation, Core) have been built to be fully cross platform. The corresponding unit tests are run on Windows, Linux, Mac and Android every day. There are some stubs for functions that are currently only needed on Windows, but implementing them is easy to do, when needed.</p>
-<p>Everything higher level (editor, tools, rendering) is <strong>only implemented for Windows 10</strong>. There is <strong>no Linux</strong>, <strong>no Mac</strong> and also <strong>no Windows 8 or lower</strong> support.</p>
-<p>The editor uses Qt, so that is generally portable, and it wouldn't even be too crazy, but also not entirely trivial. There is some Windows specific code for inter process communication (pipes), which would need to be implemented differently on other systems.</p>
+<p>Everything higher level (editor, tools, rendering) is <strong>currently only implemented for Windows 10</strong>. There is <strong>no (official) Linux</strong>, <strong>no Mac</strong> and also <strong>no Windows 8 or lower</strong> support.</p>
+<p>A <strong>Linux port</strong> is currently being worked on, though.</p>
 <h2 id="render-api">Render API</h2>
-<p>At the moment we only provide a <strong>DX11 renderer</strong>. We would like to switch to Vulkan at some point, but some non-trivial refactoring is needed first. This currently doesn't have a high priority for us.</p>
-<p>Obviously, this would also be a prerequisite to porting the editor to other platforms.</p>
+<p>At the moment we (officially) only provide a <strong>DX11 renderer</strong>. A <strong>Vulkan renderer</strong> is currently in development.</p>
 <h2 id="networking--multiplayer">Networking &amp; Multiplayer</h2>
 <p>The engine ships with the <a href="../docs/appendix/third-party-code.html#enet">Enet</a> networking library included. This is a great, easy to use library that was developed for an FPS game.</p>
 <p>There is <strong>no multiplayer support</strong> in EZ, whatsoever. For the foreseeable future we have no plans to add something. Multiplayer is a very complicated topic and the solutions vary drastically between genres, so providing something that &quot;just works&quot; isn't really possible.</p>
@@ -95,13 +94,10 @@
 <p>Yes, EZ has <a href="../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>. It's not really great, though. You can do simple level logic, like &quot;if that lever is pulled, open that door&quot;. You shouldn't really use it for anything else. We are generally not convinced that visual scripting is a great way to program (in no engine, no matter how good their tools are). Therefore we have no plans on improving our implementation at the moment, we rather improve the <a href="../docs/custom-code/typescript/typescript-overview.html">TypeScript</a> binding. Though, if you are a fan of visual scripting and want to improve it, feel free to look into it.</p>
 <h2 id="scripting-with-typescript">Scripting with TypeScript</h2>
 <p>We have a <a href="../docs/custom-code/typescript/typescript-overview.html">TypeScript</a> binding which is pretty decent. The entire game logic in the <a href="../samples/testing-chambers.html">Testing Chambers</a> project is done with this.</p>
-<p>Future work for the TypeScript binding is <a href="https://github.com/ezEngine/ezEngine/projects/2">gathered here</a>. If you have some experience working with the TypeScript compiler tools, we could use your help.</p>
 <h2 id="rendering">Rendering</h2>
 <p>We don't have occlusion culling at the moment (through a CPU rasterizer), though would like to add that at some point.</p>
 <h2 id="terrain">Terrain</h2>
 <p>We currently have <strong>no terrain system</strong>. We have several ideas how we would like to do this, but this is very low priority at the moment. If you want to do terrain, you should just import static meshes. Of course that also means you need to do terrain sculpting in a separate tool. What we do have, is a simple <a href="../docs/terrain/heightfield-component.html">heightfield component</a>. For basic scenarios this may already be sufficient.</p>
-<h2 id="skeletal-animation">Skeletal Animation</h2>
-<p>We started implementing a skeletal animation system and got the basics up an running. It's still very, very limited, though. However, a skeletal animation system does have <strong>high priority</strong> for us.</p>
 <h2 id="ai">AI</h2>
 <p>We have an integration for building <strong>nav-meshes with <a href="../docs/appendix/third-party-code.html#recast">Recast</a></strong>. We also have some really crappy components to do simple steering. Those are awful and need to be rewritten. If you have experience with AI and would like to contribute something in this regard, we would be happy to get some help. AI has low priority for us at the moment, but since this is a very isolated problem domain, you could probably improve the status quo significantly, without having to know the engine too much in detail.</p>
 <h2 id="streaming">Streaming</h2>
@@ -109,12 +105,12 @@
 <h2 id="roadmap">Roadmap</h2>
 <p>We don't plan very far ahead. Here are the things we intend to work on in the near term.</p>
 <ol>
-<li>High level documentation.</li>
-<li>Small code samples, where needed for the documentation.</li>
-<li>Automated tests for some features, especially where the documentation can benefit as well.</li>
-<li>Bug fixing for issues discovered by the documentation efforts.</li>
-<li>Polish user experience, especially for first time users, where possible with little effort.</li>
-<li>Skeletal Animation System.</li>
+<li>Vulkan renderer</li>
+<li>Linux port</li>
+<li>Switch from PhysX to Jolt physics</li>
+<li>Animation system improvements</li>
+<li>Better ragdoll system</li>
+<li>General usability improvements</li>
 </ol>
 <p>&quot;Intend to work&quot; <strong>doesn't mean complete</strong>, though. We can't give estimates on that.</p>
 <h2 id="history--team">History &amp; Team</h2>
