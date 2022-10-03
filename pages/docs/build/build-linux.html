@@ -80,6 +80,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="linux-builds">Linux Builds</h1>
 
+<p>Linux support for ezEngine is currently in development and still to be considered experimental and incomplete. You can try it, but don't expect to be able to work productively with it.</p>
+<p>For rendering the new Vulkan backend is used, which itself is also very much in development yet.</p>
+<p>We welcome help finding and fixing issues.</p>
 <h2 id="supported-compilers--make-systems">Supported Compilers / Make Systems</h2>
 <p>The ezEngine CMake scripts support the following compilers when building for Linux:</p>
 <ul>
@@ -87,39 +90,39 @@
 <li>Clang</li>
 </ul>
 <p>C++17 support is required, so make sure that your respective compiler supports it.</p>
-<p>The ezEngine CMake scripts support the following two generators when building for Linux:</p>
+<p>These generators are currently supported for Linux:</p>
 <ul>
 <li>Unix Makefiles</li>
 <li>Ninja</li>
 </ul>
-<h2 id="simple-setup">Simple Setup</h2>
-<p>ezEngine provides a simple <code>Generate.sh</code> script which will install all required packages for you and call cmake so you can start building right away.</p>
-<p>Currently supported distributions by this script are:</p>
+<h2 id="automatic-setup">Automatic Setup</h2>
+<p>The <code>Generate.sh</code> script in the root folder of ezEngine can be used to automatically install all required packages and run CMake, so that you can start building right away.</p>
+<p>This script currently supports these distributions:</p>
 <ul>
 <li>Ubuntu 22</li>
 <li>Linux Mint 21</li>
 </ul>
-<p>PRs to add support for more Distributions to <code>Generate.sh</code> are welcome.</p>
+<p>We welcome contributions to add support for more distributions.</p>
 <h3 id="gcc">GCC</h3>
-<p>When running the script the first time execute</p>
+<p>When running the script the first time, execute:</p>
 <p><code>./Generate.sh --setup</code></p>
 <p>This will install all required packages for your distribution and then generate the make files required to build the <code>Dev</code> version of ezEngine.</p>
-<p>To build the <code>Dev</code> build execute:</p>
+<p>To build the <code>Dev</code> build, execute:</p>
 <p><code>ninja -C build-Dev</code></p>
-<p>This build command is also given by Generate.sh as the final output.</p>
-<p>If you change any cmake files or add new source files it is sufficient to then run:</p>
+<p>This build command is also given by <code>Generate.sh</code> as the final output.</p>
+<p>If you change any CMake files or add new source files it is sufficient to run:</p>
 <p><code>./Generate.sh</code></p>
-<p>This will only invoke cmake without checking for missing packages.</p>
-<p>To build a different build type then <code>Dev</code> pass the additional <code>--build-type</code> argument:</p>
+<p>This only invokes CMake, without checking for missing packages.</p>
+<p>To build a different <a href="building-ez.html#build-types">build type</a> then <code>Dev</code>, pass the additional <code>--build-type</code> argument:</p>
 <p><code>./Generate.sh --build-type Debug</code></p>
 <h3 id="clang">Clang</h3>
-<p>If you would like to use clang instead of gcc, simply add <code>--clang</code> to all invocations of <code>Generate.sh</code></p>
+<p>If you would like to use Clang instead of GCC, simply add <code>--clang</code> to all invocations of <code>Generate.sh</code>:</p>
 <pre><code>./Generate.sh --setup --clang
 ./Generate.sh --clang
 ./Generate.sh --build-type Debug --clang
 </code></pre>
 <h2 id="manual-setup">Manual Setup</h2>
-<p>If you want to setup things manually or your Distribution is not supported by the <code>Generate.sh</code> script, you will most likely need all of the following packages:</p>
+<p>If you want to setup things manually or your distribution is not supported by the <code>Generate.sh</code> script, you will most likely need all of the following packages:</p>
 <ul>
 <li>C++17 compliant compiler (GCC or Clang)</li>
 <li>CMake 3.20 or newer</li>
@@ -132,7 +135,7 @@
 <li>libxi</li>
 <li>libfreetype</li>
 </ul>
-<p>Then invoke cmake with the following arguments</p>
+<p>Then invoke CMake with the following arguments:</p>
 <table>
 <thead>
 <tr>
@@ -143,43 +146,39 @@
 <tbody>
 <tr>
 <td><code>-B build</code></td>
-<td>path to the build directory</td>
+<td>Path to the build directory.</td>
 </tr>
 <tr>
 <td><code>-S .</code></td>
-<td>path to the ezEngine root</td>
+<td>Path to the ezEngine root.</td>
 </tr>
 <tr>
 <td><code>-G Ninja</code></td>
-<td>Choose to generate Ninja makefiles. Optional if not provided gnu-make will be used</td>
+<td>Choose to generate Ninja makefiles. Optional, if not provided gnu-make will be used.</td>
 </tr>
 <tr>
 <td><code>-DCMAKE_CXX_COMPILER=g++-12</code></td>
-<td>Specify the C++ compiler to use. Optional, if not provided the system</td>
-</tr>
-<tr>
-<td>default will be used</td>
-<td></td>
+<td>Specify the C++ compiler to use. Optional, if not provided the system default will be used.</td>
 </tr>
 <tr>
 <td><code>-DCMAKE_C_COMPILER=gcc-12</code></td>
-<td>Specify the C compiler to use. Optional, if not provided the system default will be used</td>
+<td>Specify the C compiler to use. Optional, if not provided the system default will be used.</td>
 </tr>
 <tr>
 <td><code>-DEZ_EXPERIMENTAL_EDITOR_ON_LINUX=ON</code></td>
-<td>Build the ezEngine Editor on Linux. This is currently experimental and might contain significant Bugs</td>
+<td>Build the ezEngine editor on Linux. This is currently experimental and might have significant bugs.</td>
 </tr>
 <tr>
 <td><code>-DEZ_BUILD_EXPERIMENTAL_VULKAN=ON</code></td>
-<td>Build the Vulkan Renderer. This is currently experimental and might contain significant Bugs</td>
+<td>Build the Vulkan renderer. This is currently experimental and might have significant bugs.</td>
 </tr>
 <tr>
 <td><code>-DCMAKE_BUILD_TYPE=Dev</code></td>
-<td>Specify the build type to use. <code>Debug</code>, <code>Dev</code> or <code>Release</code>. If not provided <code>Debug</code> will be used.</td>
+<td>Specify the <a href="building-ez.html#build-types">build type</a> to use.</td>
 </tr>
 <tr>
 <td><code>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code></td>
-<td>Generate a compile_commands.json file to be used for code completion in editors like Visual Studio Code</td>
+<td>Generate a <code>compile_commands.json</code> file to be used for code completion in editors like Visual Studio Code.</td>
 </tr>
 </tbody>
 </table>
@@ -188,7 +187,7 @@
 cmake -B build -S . -G Ninja -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_C_COMPILER=gcc-12 -DEZ_EXPERIMENTAL_EDITOR_ON_LINUX=ON -DEZ_BUILD_EXPERIMENTAL_VULKAN=ON -DCMAKE_BUILD_TYPE=Dev -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 </code></pre>
 <h2 id="using-qt-creator">Using Qt Creator</h2>
-<p>The root of the repository can also be opened in Qt Creator which will generally do a good job at finding the Qt location on its own.</p>
+<p>The root of the repository can also be opened in Qt Creator, which will generally do a good job at finding the Qt location on its own.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="building-ez.html">Building ezEngine</a></li>
