@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Collision Meshes | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Collision Meshes | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="collision-meshes">Collision Meshes</h1>
+
+<p>Collision meshes are special <a href="../../../graphics/meshes/meshes-overview.html">meshes</a> that are used by the physics engine to compute physical interactions. Their internal representation is optimized to speed up this task. Additionally, physics engines generally distinguish between two types of meshes: <em>convex</em> meshes and <em>concave</em> meshes. While concave meshes can represent any arbitrary geometric shape, they can only be used for static <a href="../actors/physx-actors.html">physics actors</a>, which limits them to be used for the static level geometry. Convex meshes are often an oversimplification of the original mesh. However, they can be used for all physical interactions.</p>
+<h2 id="concave-collision-meshes">Concave Collision Meshes</h2>
+<p>To create a concave collision mesh, use the asset type <em>Collision Mesh</em> when <a href="../../../assets/import-assets.html">importing an asset</a>.</p>
+<p><img src="../media/colmesh-concave.jpg" alt="Concave Collision Mesh"></p>
+<p>The image above shows a mesh imported as a concave collision mesh. As you can see it represents every detail faithfully. Due to this complexity, the model can only be used for static <a href="../actors/physx-actors.html">physics actors</a>, meaning you can place it in a level, scale and rotate it, but you may not move it dynamically during the game and it cannot be used to simulate a rigid body. The complexity of a mesh has direct impact on the performance of the game. Especially small details may result in large computational costs when dynamic objects collide with those detailed areas. If you want to optimize performance, you should author dedicated collision meshes with reduced complexity, instead of using the render mesh directly.</p>
+<p>Concave collision meshes are set directly on the <a href="../actors/physx-actors.html">static physics actor</a> component and have no dedicated <a href="physx-shapes.html">physics shape</a> component.</p>
+<h2 id="convex-collision-meshes">Convex Collision Meshes</h2>
+<p>The simulation of <a href="../actors/physx-dynamic-actor-component.html">dynamic actors</a> is only possible with convex shapes. To create a convex collision mesh, use the asset type <em>Collision Mesh (Convex)</em> (<code>ezConvexCollisionMeshAsset</code>) when <a href="../../../assets/import-assets.html">importing an asset</a>. To attach a convex mesh to an actor, use the <a href="physx-convex-shape-component.html">Convex Mesh Shape component</a>.</p>
+<p>There are multiple modes how to create the convex collision mesh:</p>
+<h3 id="convex-hull">Convex Hull</h3>
+<p><img src="../media/colmesh-convex.jpg" alt="Convex Hull Collision Mesh"></p>
+<p>In the image above the mesh import computed the <em>convex hull</em>. The number of vertices and triangles was also reduced to less than 250 (a requirement by PhysX).</p>
+<p>Obviously, the mesh lost all of its details and the object will not collide with its surroundings according to its actual geometry, but in many use cases that won't be obvious. This is the most efficient way to use an arbitrary mesh as a collision mesh, as it will always use exactly one, very low poly convex mesh for the physics calculations.</p>
+<h3 id="convex-decomposition">Convex Decomposition</h3>
+<p><img src="../media/colmesh-convex-decomp.jpg" alt="Convex Decomposition Collision Mesh"></p>
+<p>In the image above the mesh import decomposed the mesh into multiple pieces (seven pieces in this case). Each piece is a convex mesh with less than 250 vertices and triangles.</p>
+<p>This mode allows you to dictate into how many pieces to split the mesh. The more pieces, the closer the result resembles the original shape. These collision meshes can still be used for dynamic simulation, the PhysX actors simply use multiple convex shapes as their representation. Of course the more pieces such a mesh contains, the less efficient the simulation becomes.</p>
+<h3 id="cylinder">Cylinder</h3>
+<p>Cylindrical shapes are common in games, but since they are not supported as first class shapes by most physics engines, the convex mesh asset allows you to create such collision meshes procedurally.</p>
+<h2 id="visualizing-collision-meshes">Visualizing Collision Meshes</h2>
+<p>Sometimes you want to visualize the collision mesh of an object within a scene. The most powerful way to look at physics objects is to use the <a href="../physx-visual-debugger.html">PhysX Visual Debugger</a>. However, for some use cases you can also just attach a <em>Collision Mesh Visualization</em> component (<code>ezPxVisColMeshComponent</code>). This renders the collision mesh into your scene the same way as in the images above.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../physx-overview.html">PhysX Integration</a></li>
+<li><a href="physx-shapes.html">Physics Shapes</a></li>
+<li><a href="../actors/physx-actors.html">Physics Actors</a></li>
+<li><a href="physx-collision-layers.html">Collision Layers</a></li>
+<li><a href="../physx-visual-debugger.html">PhysX Visual Debugger</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/physx/collision-shapes/physx-collision-meshes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
