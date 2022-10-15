@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Jolt Integration | ezEngine </title>
+    <title>Jolt Physics Integration | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Jolt Integration | ezEngine ">
+    <meta name="title" content="Jolt Physics Integration | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,9 +78,29 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="jolt-integration">Jolt Integration</h1>
+<h1 id="jolt-physics-integration">Jolt Physics Integration</h1>
 
-<p>Coming soon...</p>
+<p><a href="https://github.com/jrouwe/JoltPhysics">Jolt Physics</a> is an open source physics engine. It computes the physical interactions between objects using <a href="https://en.wikipedia.org/wiki/Rigid_body_dynamics">rigid body dynamics</a>.</p>
+<p>Physics engines are a vital part in most 3D games, to make objects collide and interact with each other convincingly. An important feature are also <em>raycasts</em> and <em>shape queries</em> which are used to detect objects and analyze the state of the world.</p>
+<h2 id="enable-jolt-support">Enable Jolt Support</h2>
+<p>Support for Jolt is enabled by default on all platforms. It can be disabled in the <a href="../../build/cmake-config.html">CMake config</a>.</p>
+<h2 id="working-with-jolt">Working with Jolt</h2>
+<p>The most important Jolt functionality is exposed through components, as well as through <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>.</p>
+<p>When you write custom C++ code, you can access the most important functionality, like raycasts and shape queries, through the abstract <code>ezPhysicsWorldModuleInterface</code>, which is implementation independent. If you need to access Jolt features that are not exposed in EZ, you can cast that interface to <code>ezJoltWorldModule</code> and directly work with the <code>JPH::PhysicsSystem</code>. For Jolt details, refer to its <a href="https://github.com/jrouwe/JoltPhysics">documentation</a>.</p>
+<h2 id="feature-overview">Feature Overview</h2>
+<p>You use components to tell Jolt which objects should be considered for its simulation, and how. In Jolt, objects participating in the simulation are called <em>bodies</em> but in EZ they are usually referred to as <em>actors</em>.</p>
+<p>How to set up actors <a href="actors/jolt-actors.html">is described here</a>. Reading up on actors is the best starting point.</p>
+<p>Actors are made up of shapes, such as spheres, boxes, capsules and meshes. Shapes are <a href="collision-shapes/jolt-shapes.html">described here</a>.</p>
+<p>Actors can be physically linked, to constrain their movement. This is how you would set up a door hinge for example. Linking two actors is accomplished using <a href="constraints/jolt-constraints.html">constraints</a>.</p>
+<p>To make a player or NPC walk through a physically simulated scene, you need something that computes how the character collides with walls, climbs stairs, slides down slopes, and so on. This functionality is provided by a so called <a href="special/jolt-character-controller.html">character controller</a>.</p>
+<p>Often games have invisible areas that either need to be reached as a goal, or that activate something. Such areas are called <a href="actors/jolt-trigger-component.html">triggers</a>.</p>
+<p>Several non-Jolt components either use the available physics engine, or even expose new functionality. For example the <a href="../../gameplay/raycast-placement-component.html">raycast placement component</a> does a raycast (using the abstract physics interface) and exposes the hit position to the user by moving a linked object there. The <a href="../../gameplay/area-damage-component.html">area damage component</a> does a shape query and both damages and pushes the found physical objects.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/jrouwe/JoltPhysics">Jolt Physics</a></li>
+<li><a href="https://jrouwe.github.io/JoltPhysics">Jolt Architecture</a></li>
+<li><a href="actors/jolt-actors.html">Jolt Actors</a></li>
+</ul>
 </article>
           </div>
           

@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Jolt Shapes | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Jolt Shapes | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="jolt-shapes">Jolt Shapes</h1>
+
+<p>A <a href="../actors/jolt-actors.html">Jolt actor</a> configures how an object behaves in the physics simulation. However, every physical presence also requires to have a 3D shape. The shape of actors is set up using Jolt shape components.</p>
+<p><a href="../actors/jolt-dynamic-actor-component.html">Dynamic actors</a> can only be simulated with convex shapes. Therefore concave <a href="jolt-collision-meshes.html">collision meshes</a> are exclusive to <a href="../actors/jolt-static-actor-component.html">static actors</a>. All shape components represent convex geometry and work with all physics actor types.</p>
+<h2 id="shape-components">Shape Components</h2>
+<p>The following shape components are available:</p>
+<ul>
+<li><a href="jolt-sphere-shape-component.html">Jolt Sphere Shape Component</a></li>
+<li><a href="jolt-box-shape-component.html">Jolt Box Shape Component</a></li>
+<li><a href="jolt-capsule-shape-component.html">Jolt Capsule Shape Component</a></li>
+<li><a href="jolt-cylinder-shape-component.html">Jolt Cylinder Shape Component</a></li>
+<li><a href="jolt-convex-shape-component.html">Jolt Convex Shape Component</a></li>
+</ul>
+<h2 id="actor-shape-setup">Actor Shape Setup</h2>
+<p>The easiest kind of actor shape setup is to simply attach a shape component to the same <a href="../../../runtime/world/game-objects.html">game object</a> that the actor component is attached to. This way the position of the game object is also the center of the shape, which is often sufficient.</p>
+<p>For more complex shapes, you can add child nodes below the actor node, attach the shapes to those nodes, and position the nodes as needed.</p>
+<p>When an actor is initialized for the simulation, it traverses the hierarchy below its owner game object and gathers all shape components. When it encounters another actor component, all shapes below that node are ignored.</p>
+<p>All shapes that are found this way are added to the actor as one <em>compound shape</em>. This way you can build a single actor that has a complex shape, made up of many parts.</p>
+<p>You can't add or remove individual shapes during simulation. If you need pieces to be destructible, you need to turn them into separate actors. To still have those actors move in unison, you need to join them using a <a href="../constraints/jolt-fixed-constraint-component.html">fixed joint</a>.</p>
+<h2 id="friction-and-restitution">Friction and Restitution</h2>
+<p><em>Friction</em> and <em>restitution</em> are the two physical properties that affect a shape's physical behavior the most. See <a href="../../../materials/surfaces.html#physics-properties">this section</a> for details.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../actors/jolt-actors.html">Jolt Actors</a></li>
+<li><a href="jolt-collision-layers.html">Jolt Collision Layers</a></li>
+<li><a href="../../../materials/surfaces.html">Surfaces</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/collision-shapes/jolt-shapes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Jolt Constraints | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Jolt Constraints | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="jolt-constraints">Jolt Constraints</h1>
+
+<p>A <em>Jolt constraint</em> is a component that links <a href="../actors/jolt-actors.html">Jolt actors</a> to constrain their movement. Constraints are often also called <em>joints</em>. There are multiple types of constraints that each constrain the actors in different ways.</p>
+<p>Constraints can be used for simple things like door hinges, up to complex configurations like rag dolls.</p>
+<h2 id="joining-actors">Joining Actors</h2>
+<p>Constraints can be used to link:</p>
+<ul>
+<li>Two <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a>. This will create a more complex dynamic object that can still freely move throughout the scene, but has multiple parts that can wiggle around.</li>
+<li>One <a href="../actors/jolt-static-actor-component.html">static actor</a> with one <a href="../actors/jolt-dynamic-actor-component.html">dynamic actor</a>. In this case the dynamic actor is now constrained in its movement relative to the static actor. Since the static actor never moves, the dynamic actor's freedom is severely limited.</li>
+<li>One <a href="../actors/jolt-dynamic-actor-component.html">dynamic actor</a> with no second actor. This just affixes the dynamic actor with 'the world'. This is effectively the same as joining it with another static actor.</li>
+<li>One <a href="../actors/jolt-dynamic-actor-component.html">dynamic actor</a> with one <a href="../actors/jolt-dynamic-actor-component.html#kinematic-vs-simulated">kinematic actor</a>. If the kinematic actor moves, the dynamic actor is forced to follow according to the constraint between them. The dynamic actor does not affect the kinematic actor in any way. This setup is common to have full control over the movement of one part (the kinematic actor) and still get physically plausible behavior from another part.</li>
+</ul>
+<p>There are two ways that a constraint component can link actors.</p>
+<h3 id="using-object-references">Using Object References</h3>
+<p>You can use the <a href="../../../scenes/object-references.html">object references</a> on the joint component to specify both the <em>parent actor</em> and the <em>child actor</em>:</p>
+<p><img src="media/jolt-link-joints.png" alt="Linking actors via references"></p>
+<p>With this method, the <a href="../../../runtime/world/game-objects.html">game objects</a> for the actors and the joint don't need to have a specific hierarchy, they can be placed just next to each other. This also allows to create <em>loops</em> of linked actors. On the other hand, you always need to know exactly which actors shall be linked.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>The <code>Child Actor</code> of a joint always has to be specified this way.</p>
+</blockquote>
+<h3 id="using-the-object-hierarchy">Using the Object Hierarchy</h3>
+<p>To determine which <code>Parent Actor</code> to link the joint to, you can utilize the object hierarchy. If no parent actor is specified as an object reference, the joint will automatically traverse its object hierarchy upwards and search for the closest object with a static or dynamic actor. If it finds one, the joint will link to that object as the parent actor.</p>
+<p>If it does not find any such actor on a parent node, the joint will attach to 'the world', meaning it will be fixed to its current world position.</p>
+<p><img src="media/jolt-link-joints-hierarchy.png" alt="Linking actors via hierarchy"></p>
+<p>This method can be useful especially when you want to put the joint into a <a href="../../../prefabs/prefabs-overview.html">prefab</a>. For example, if you have a prefab for a chandelier that can swing around, you can set up the joint to only reference the actor that represents the chandelier, but the prefab does not contain an actor for the anchor point. If this prefab is placed into a scene, the rule that a joint <em>without</em> a parent actor just gets linked to the world, means that you can easily place these prefabs in a scene, and they will swing around the location where they have been instantiated.</p>
+<p>However, if your scene contains for example a moveable room, you can also place it there and make sure to attach the chandelier prefab as a child node of the moveable room actor. That means, the joint of the chandelier will now link the chandelier actor with the moveable room actor, and thus whenever the room moves, the chandelier will be physically dragged along as well.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>This method of linking actors only works properly, if the parent actor is either <strong>static</strong> or <strong>kinematic</strong>. It doesn't work for simulated dynamic actors, as the transform update introduces jitter.</p>
+</blockquote>
+<h2 id="constraint-position">Constraint Position</h2>
+<p>The position and rotation of a constraint specifies the pivot point. For <a href="jolt-hinge-constraint-component.html">hinge constraints</a>, <a href="jolt-point-constraint-component.html">point constraints</a>, <a href="jolt-cone-constraint-component.html">cone constraints</a> and <a href="jolt-swing-twist-constraint-component.html">swing-twist constraints</a> the position of the joint determines around which point the linked actors rotate. For <a href="jolt-fixed-constraint-component.html">fixed constraints</a> the position still affects how strong forces may become due to lever effects.</p>
+<p>For <a href="jolt-distance-constraint-component.html">distance constraints</a> the joint position determines from where the distance is computed. Only for <a href="jolt-slider-constraint-component.html">slider constraints</a> is the position of the joint less relevant, though for computational stability, it should still be somewhere in between the linked actors.</p>
+<h2 id="video-basic-setup">Video: Basic Setup</h2>
+<p><a href="https://www.youtube.com/watch?v=r3wVz3Xd8xU"><img src="https://img.youtube.com/vi/r3wVz3Xd8xU/0.jpg" alt="video"></a></p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>In the video we use PhysX joint components, but the concepts are identical for Jolt.</p>
+</blockquote>
+<h2 id="using-the-childactoranchor-property">Using the ChildActorAnchor Property</h2>
+<p>Using the <code>ChildActorAnchor</code> property is entirely optional and often not needed. Basically this option is used to reference any object, and tell the constraint that the position and orientation of that object should be the anchor point where the constraint acts upon the child actor. For most constraint types this is rarely needed. If you link two actors with a hinge constraint, the position of the constraint already defines where between the actors the hinge will be.</p>
+<p>However, this setup always assumes that the two actors should start out in the 'default configuration' of the constraint. For example, for a hinge constraint with a stiff spring, the default configuration is when it is fully relaxed, meaning you could not put them into a start configuration where the constraint is already under tension.</p>
+<p>Similarly, for a distance constraint, the child actor would always need to start out such that the constraint position is exactly at the position of the actor, where it should link to the actor. This can be problematic especially when the distance constraint uses a <em>minimum distance</em>, as the constraint would immediately push away the actor, potentially with high speed.</p>
+<p>Using a dedicated object to specify the anchor point, both situations can be fixed. The anchor point specifies the position at which the constraint affects the child actor. For most constraint types the rotation of the anchor point is important as well. If the anchor's transform is identical to the constraint's transform, it is redundant and could be left out. However, if it is different from the constraint's transform, this difference tells the constraint how much its start state deviates from the 'default configuration'. For example for a hinge constraint the position of the anchor should always be identical to the constraint's position, otherwise the child actor will jerk towards the hinge constraint at startup. However, the rotation may deviate from the constraint's rotation, which specifies how much the constraint is already rotated at startup.</p>
+<h3 id="video-how-to-use-the-anchor-property">Video: How to use the Anchor Property</h3>
+<p><a href="https://www.youtube.com/watch?v=xnQEaA8E0SM"><img src="https://img.youtube.com/vi/xnQEaA8E0SM/0.jpg" alt="video"></a></p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>In the video we use PhysX joint components, but the concepts are identical for Jolt.</p>
+</blockquote>
+<h2 id="shared-constraint-component-properties">Shared Constraint Component Properties</h2>
+<p>These properties are shared among all joint types:</p>
+<ul>
+<li><code>PairCollision</code>: If disabled, joined actors will not collide with each other. This can be preferable, because then the joined actors may overlap.</li>
+<li><code>ParentActor</code>, <code>ChildActor</code>: References to objects with <a href="../actors/jolt-actors.html">actor components</a> to link with this constraint. See <a href="#joining-actors">joining actors</a> above.</li>
+<li><code>ChildActorAnchor</code>: An optional reference to an object that tells the constraint where it should attach to the child actor. See <a href="#using-the-childactoranchor-property">using the ChildActorAnchor property</a> above.</li>
+</ul>
+<h2 id="constraint-types">Constraint Types</h2>
+<p>These types of constraints are currently available:</p>
+<ul>
+<li><a href="jolt-hinge-constraint-component.html">Jolt Hinge Constraint Component</a></li>
+<li><a href="jolt-point-constraint-component.html">Jolt Point Constraint Component</a></li>
+<li><a href="jolt-fixed-constraint-component.html">Jolt Fixed Constraint Component</a></li>
+<li><a href="jolt-slider-constraint-component.html">Jolt Slider Constraint Component</a></li>
+<li><a href="jolt-distance-constraint-component.html">Jolt Distance Constraint Component</a></li>
+<li><a href="jolt-cone-constraint-component.html">Jolt Cone Constraint Component</a></li>
+<li><a href="jolt-swing-twist-constraint-component.html">Jolt Swing-Twist Constraint Component</a></li>
+</ul>
+<h2 id="constraint-stability">Constraint Stability</h2>
+<p>Joining multiple actors in a chain can quickly result in really bad simulation results. Have a look at <a href="../actors/jolt-dynamic-actor-component.html#simulation-stability">dynamic actor simulation stability</a> for ways to improve this. When working with constraints the following aspects help a lot:</p>
+<ul>
+<li>Make sure that the involved actors are not too light. For smaller objects the automatically computed mass is often too low for the constraint to be stable.</li>
+<li>Drastically increase linear and especially angular damping on the actors (<code>0.1</code> to <code>0.8</code>).</li>
+<li>Don't create very long chains, try to achieve the desired result with as few constraints as possible.</li>
+<li>Don't use constraint limits (hinge constraint, swing-twist constraint), they can add significant instability.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../actors/jolt-actors.html">Jolt Actors</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/constraints/jolt-constraints.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
