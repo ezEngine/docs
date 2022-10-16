@@ -94,9 +94,9 @@
 <ul>
 <li><p><code>Ignore</code>: No root motion is applied, the game object will not be moved by the animation.</p>
 </li>
-<li><p><code>ApplyToOwner</code>: Any available root motion is directly applied to the game object and thus moves it without restriction. This mode is useful for objects that have to follow a fixed path. For example moving platforms (which are <em>kinematic</em> <a href="../../physics/physx/actors/physx-dynamic-actor-component.html">physics actors</a>), or objects that don't physically interact with the player. This mode is not suited for characters that should obey physical restrictions.</p>
+<li><p><code>ApplyToOwner</code>: Any available root motion is directly applied to the game object and thus moves it without restriction. This mode is useful for objects that have to follow a fixed path. For example moving platforms (which are <em>kinematic</em> <a href="../../physics/jolt/actors/jolt-dynamic-actor-component.html">physics actors</a>), or objects that don't physically interact with the player. This mode is not suited for characters that should obey physical restrictions.</p>
 </li>
-<li><p><code>SendMoveCharacterMsg</code>: If this mode is used, root motion is not applied to any object, instead the <a href="../../runtime/world/world-messaging.html">message</a> <code>ezMsgMoveCharacterController</code> is sent to the <em>top most game object</em> in the hierarchy. This way, if there is also a <a href="../../physics/physx/special/physx-character-controller.html">character controller</a> or other component that accepts this type of message, it can apply the root motion as it sees fit.</p>
+<li><p><code>SendMoveCharacterMsg</code>: If this mode is used, root motion is not applied to any object, instead the <a href="../../runtime/world/world-messaging.html">message</a> <code>ezMsgMoveCharacterController</code> is sent to the <em>top most game object</em> in the hierarchy. This way, if there is also a <a href="../../physics/jolt/special/jolt-character-controller.html">character controller</a> or other component that accepts this type of message, it can apply the root motion as it sees fit.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>

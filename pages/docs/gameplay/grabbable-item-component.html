@@ -82,16 +82,16 @@
 
 <p>The <em>Grabbable Item</em> component is used to define points on an object that are good anchor points to pick the object up. The component has no behavior by itself, it only holds data.</p>
 <p><img src="media/item-grab-point.jpg" alt="Item Grab Point"></p>
-<p>Other components, such as the <a href="../physics/physx/special/physx-grab-object-component.html">PhysX grab object component</a> can utilize this information to improve the experience of picking an object up. Or a game may even only allow objects with this component to be grabbable in the first place.</p>
+<p>Other components, such as the <a href="../physics/jolt/special/jolt-grab-object-component.html">grab object component</a> can utilize this information to improve the experience of picking an object up. Or a game may even only allow objects with this component to be grabbable in the first place.</p>
 <p>Both the position and rotation of each grab point are important. The rotation defines how the object will be oriented when it is picked up.</p>
-<p><strong>Note:</strong> The component can be attached to any object, but for example the <a href="../physics/physx/special/physx-grab-object-component.html">PhysX grab object component</a> expects it to be attached to the same object as the <a href="../physics/physx/actors/physx-dynamic-actor-component.html">dynamic actor component</a> that has been picked through its raycast.</p>
+<p><strong>Note:</strong> The component can be attached to any object, but for example the <a href="../physics/jolt/special/jolt-grab-object-component.html">grab object component</a> expects it to be attached to the same object as the <a href="../physics/jolt/actors/jolt-dynamic-actor-component.html">dynamic actor component</a> that has been picked through its raycast.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>GrabPoints</code>: An array holding all the <em>grab points</em>. Extend this array to add grab points. Use an item's <a href="../scenes/gizmos.html#manipulators">manipulators</a> to adjust the position and orientation of a grab point.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../physics/physx/special/physx-grab-object-component.html">PhysX Grab Object Component</a></li>
+<li><a href="../physics/jolt/special/jolt-grab-object-component.html">Jolt Grab Object Component</a></li>
 </ul>
 </article>
           </div>
