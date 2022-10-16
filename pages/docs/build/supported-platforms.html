@@ -80,66 +80,18 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="supported-platforms">Supported Platforms</h1>
 
-<p>ezEngine is developed primarily on Windows 10, using Visual Studio 2019, typically in 64 Bit builds. As such this is the best tested and therefore most stable platform. The code uses C++ 11, 14 and 17 features, but only where broad compiler and platform support is available.</p>
-<h2 id="windows">Windows</h2>
-<h3 id="supported-windows-versions">Supported Windows Versions</h3>
+<p>ezEngine is developed primarily on Windows 10/11, using Visual Studio 2022 in 64 Bit builds. As such platform has the largest feature set and is the best tested one.</p>
+<p>The code uses C++ 11, 14 and 17 features, but only where broad compiler support is available.</p>
+<p>The renderer currently uses DX11 on Windows and a Vulkan implementation is in progress. The editor is currently available on Windows, and being ported to Linux.</p>
+<p>On Mac, Android and Linux currently only the base libraries are fully functional. Once the Vulkan renderer is more mature, the goal is to have most features available everywhere.</p>
+<h2 id="list-of-supported-platforms">List of Supported Platforms</h2>
 <ul>
-<li>Windows 10 (Desktop)</li>
-<li>Windows 10 <a href="build-uwp.html">UWP builds</a></li>
-<li>Windows 11</li>
+<li>Windows 10/11 desktop (<a href="build-windows.html">details</a>)</li>
+<li>Windows 10/11 UWP (<a href="build-uwp.html">details</a>)</li>
+<li>OS X 10.9 (Mavericks) (<a href="build-macos.html">details</a>)</li>
+<li>Linux (<a href="build-linux.html">details</a>)</li>
+<li>Android 6.0 Marshmallow (API 23) or newer (<a href="build-android.html">details</a>)</li>
 </ul>
-<h3 id="supported-compilers-on-windows">Supported Compilers on Windows</h3>
-<ul>
-<li>Visual Studio 2019 64 Bit</li>
-<li>Visual Studio 2022 64 Bit</li>
-</ul>
-<p>You need to have these workloads installed in Visual Studio:</p>
-<ul>
-<li>Desktop Development with C++</li>
-<li>Game Development with C++</li>
-<li>.Net Desktop Development</li>
-</ul>
-<h2 id="windows-clang">Windows Clang</h2>
-<p>It is possible to <a href="clang-on-windows.html">build with Clang on Windows</a> through Visual Studio.</p>
-<h2 id="macos">MacOS</h2>
-<h3 id="supported-macos-versions">Supported MacOS Versions</h3>
-<ul>
-<li>OS X 10.9 (Mavericks)</li>
-</ul>
-<h3 id="supported-compilers-on-macos">Supported Compilers on MacOS</h3>
-<ul>
-<li>Makefiles 64 Bit</li>
-<li>XCode 5.1.1 or higher (GCC / Clang) 64 Bit</li>
-</ul>
-<h3 id="macos-dependencies">MacOS Dependencies</h3>
-<ul>
-<li>XQuartz 2.7.5 or higher</li>
-<li>SFML-2.5.1</li>
-<li>Qt 5.11 (optional)</li>
-</ul>
-<p>See <a href="build-macos.html">MacOS Builds</a> for details.</p>
-<h2 id="linux">Linux</h2>
-<h3 id="supported-linux-versions">Supported Linux Versions</h3>
-<ul>
-<li>Ubuntu 19.4</li>
-</ul>
-<h3 id="supported-compilers-on-linux">Supported Compilers on Linux</h3>
-<ul>
-<li>GCC 7 64 Bit</li>
-</ul>
-<h3 id="linux-dependencies">Linux Dependencies</h3>
-<ul>
-<li>uuid-dev</li>
-<li>SFML-2.5.1</li>
-<li>Qt 5.11 (optional)</li>
-</ul>
-<p>See <a href="build-linux.html">Linux Builds</a> for details.</p>
-<h2 id="android">Android</h2>
-<p>Versions:</p>
-<ul>
-<li>Android 6.0 Marshmallow (API 23) or newer</li>
-</ul>
-<p>See <a href="build-android.html">Android Builds</a> for details.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="building-ez.html">Building ezEngine</a></li>

@@ -86,9 +86,9 @@
 <ul>
 <li><p><strong>EZ_ENABLE_QT_SUPPORT</strong> Disable this setting, if you want to compile EZ without Qt. This will remove all editor code and several tools from the final solution. The default is <em>on</em>. When possible the EZ CMake scripts will automatically download Qt libraries and set everything up for you. On configurations for which we do not support fully automatic setup, you need to install Qt manually and then set set <strong>EZ_QT_DIR</strong> to its installation folder.</p>
 </li>
-<li><p><strong>EZ_BUILD_FMOD</strong> Enable this, if you want to <a href="../sound/fmod-overview.html">FMOD sound</a> support in your build. The default is <em>on</em>.</p>
+<li><p><strong>EZ_BUILD_FMOD</strong> Enable this, if you want to <a href="../sound/fmod-overview.html">FMOD sound</a> support in your build. One Windows and Linux the default is <em>on</em>.</p>
 </li>
-<li><p><strong>EZ_BUILD_PHYSX</strong> Enable this, if you want to add <a href="../physics/physx/physx-overview.html">NVIDIA PhysX</a> support to your build. Once enabled, the next run of &quot;Configure&quot; will automatically download PhysX binaries and set the <strong>EZ_PHYSX_SDK</strong> variable accordingly. The default is <em>on</em>.</p>
+<li><p><strong>EZ_BUILD_PHYSX</strong> Enable this, if you want to add <a href="../physics/physx/physx-overview.html">NVIDIA PhysX</a> support to your build. Once enabled, the next run of &quot;Configure&quot; will automatically download PhysX binaries (Windows only) and set the <strong>EZ_PHYSX_SDK</strong> variable accordingly. The default is <em>off</em>. Note that PhysX support has been superseded by the <a href="../physics/jolt/jolt-overview.html">Jolt Physics integration</a>.</p>
 </li>
 <li><p><strong>EZ_BUILD_RMLUI</strong> Enable this, if you want to add support for <a href="https://github.com/mikke89/RmlUi">RmlUi</a> to your build. The default is <em>on</em>.</p>
 </li>

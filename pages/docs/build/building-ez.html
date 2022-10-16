@@ -86,20 +86,14 @@
 <li>Clone a branch from <a href="https://github.com/ezEngine/ezEngine">the GitHub repository</a>.
 <ul>
 <li>If you need a good git GUI, have a look at <a href="https://git-fork.com/">Fork</a>.</li>
-<li>If you want a stable release, clone the 'release' branch.</li>
-<li>If you want the latest features, clone the 'dev' branch.</li>
+<li>Check out the 'dev' branch.</li>
 </ul>
 </li>
 <li>Unless your git client already checks out git sub-modules for you, also run <code>git submodule init</code> and <code>git submodule update</code> in your local clone. The EZ project uses submodules to deliver additional data such as <a href="https://github.com/ezEngine/content">sample content</a> and <a href="https://github.com/ezEngine/precompiled-tools">precompiled tools</a>.</li>
 </ol>
-<h2 id="regular-builds">Regular Builds</h2>
-<ol>
-<li>Obtain and install all <a href="build-prerequisites.html">prerequisites</a></li>
-<li>Run CMake and <a href="cmake-config.html">configure your build</a></li>
-<li>Open the generated solution and build. Compiling the entire solution with editor, unit tests and samples takes around 5 minutes. The dependencies are set up such that only building, e.g. the <em>Editor</em> project will include all requirements, though.</li>
-</ol>
-<h2 id="other-builds">Other Builds</h2>
+<h2 id="platform-builds">Platform Builds</h2>
 <ul>
+<li><a href="build-windows.html">Windows Builds</a></li>
 <li><a href="build-uwp.html">UWP Builds</a></li>
 <li><a href="build-linux.html">Linux Builds</a></li>
 <li><a href="build-macos.html">MacOS Builds</a></li>
@@ -116,7 +110,7 @@
 <p>While developing your game you should either use a <strong>Debug</strong> or a <strong>Dev</strong> build.</p>
 <p>The <strong>Debug</strong> build is best when you want to use a C++ debugger to investigate problems. It includes the necessary <em>debug symbols</em> and has many optimizations disabled, which makes it much easier to step through the code. Debug builds are significantly slower than the other build types.</p>
 <p>The <strong>Dev</strong> build has most of the optimizations enabled, yet still includes <em>debug symbols</em>. The <em>Dev</em> build is 3x to 10x faster than a <em>Debug</em> build in most cases and is very close to the speed of a <em>Shipping</em> build. Stepping through the C++ code with a debugger is possible, though it often behaves erratic due to the optimizations (inlining and such). For most developers the <em>Dev</em> build should be the main configuration to use.</p>
-<p>The <strong>Shipping</strong> build has all optimizations enabled. It does not include <em>debug symbols</em> anymore and it also has all the developer features disabled. That means things like <a href="../tools/inspector.html">ezInspector</a> or the <a href="../physics/physx/physx-visual-debugger.html">PhysX Visual Debugger</a> won't work here. Similarly features like <em>allocation tracking</em> (for detecting memory leaks) and <a href="../performance/profiling.html">profiling features</a> are disabled as well.</p>
+<p>The <strong>Shipping</strong> build has all optimizations enabled. It does not include <em>debug symbols</em> anymore and it also has all the developer features disabled. That means things like <a href="../tools/inspector.html">ezInspector</a> won't work here. Similarly, features like <em>allocation tracking</em> (for detecting memory leaks) and <a href="../performance/profiling.html">profiling features</a> are disabled as well.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="supported-platforms.html">Supported Platforms</a></li>

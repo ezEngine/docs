@@ -80,21 +80,36 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="uwp-builds">UWP Builds</h1>
 
-<p>To generate a solution for building for the Universal Windows Platform (UWP), you need to pass a <em>toolchain file</em> to CMake. The file is located in the EZ repository under <strong>Code/BuildSystem/CMake/toolchain-winstore.cmake</strong>.</p>
-<h2 id="using-the-cmake-gui">Using the CMake GUI</h2>
+<p>This page describes how to build EZ for the Universal Windows Platform (UWP). For desktop builds, see <a href="build-windows.html">this page</a>.</p>
+<p>Note that only a subset of EZ's functionality is officially maintained and supported on UWP. In general UWP support is not a priority for us.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Install the <a href="build-windows.html#prerequisites">desktop Windows prerequisites</a>.</p>
+<h3 id="microsoft-visual-studio">Microsoft Visual Studio</h3>
+<p>In Visual Studio, install these additional workloads:</p>
+<ul>
+<li><em>Universal Windows Platform Development</em></li>
+</ul>
+<h3 id="cmake">CMake</h3>
+<p><a href="https://cmake.org/">CMake</a> is used as the build system. For UWP you need to have a custom installation.</p>
+<h2 id="generate-the-solution">Generate the Solution</h2>
+<p>To generate a solution for UWP, you need to pass a <em>toolchain file</em> to CMake. The file is located in the EZ repository under <strong>Code/BuildSystem/CMake/toolchain-winstore.cmake</strong>.</p>
+<h3 id="using-the-cmake-gui">Using the CMake GUI</h3>
 <ol>
-<li>Create a new solution for the UWP build by pointing <em>Where to build the binaries</em> to a new location.</li>
+<li>Start the CMake GUI application.</li>
+<li>Create a new solution by pointing <em>Where to build the binaries</em> to a new location.</li>
 <li>Press <strong>Configure</strong> once, a dialog will show up to choose the generator.</li>
 <li>Choose the desired Visual Studio generator at the top.</li>
 <li>Depending on your target device, choose the platform. For instance, for HoloLens 1 select <em>Win32</em>.</li>
 <li>At the bottom select <strong>Specify toolchain file for cross-compiling</strong>.</li>
 <li>On the next screen set the toolchain file <strong><em>PathToEzRepository</em>/Code/BuildSystem/CMake/toolchain-winstore.cmake</strong></li>
 </ol>
-<h2 id="using-the-command-line">Using the command line</h2>
+<h3 id="using-the-command-line">Using the command line</h3>
 <p>Run CMake with this argument: <strong>-DCMAKE_TOOLCHAIN_FILE=<em>PathToEzRepository</em>/Code/BuildSystem/CMake/toolchain-winstore.cmake</strong></p>
+<h2 id="building-the-code">Building the Code</h2>
+<p>Open the generated solution with Visual Studio and build everything.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="building-ez.html">Building ezEngine</a></li>
+<li><a href="build-windows.html">Windows Builds</a></li>
 </ul>
 </article>
           </div>

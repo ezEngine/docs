@@ -80,6 +80,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="physx-integration">PhysX Integration</h1>
 
+<blockquote>
+<p><strong>ATTENTION:</strong></p>
+<p>The Nvidia PhysX integration has been superseded by the <a href="../jolt/jolt-overview.html">Jolt Physics integration</a>. Support for Jolt is available on all platforms, whereas PhysX was only ever available on Windows.
+All future development will focus on improving the Jolt integration. For the time being, the PhysX integration is still available, though it is disabled by default. To enable PhysX support, you have to enable <strong>EZ_BUILD_PHYSX</strong> in the <a href="../../build/cmake-config.html">CMake configuration</a>.</p>
+</blockquote>
 <p><a href="https://github.com/NVIDIAGameWorks/PhysX">NVIDIA PhysX</a> is an open source physics engine. It computes the physical interactions between objects using <a href="https://en.wikipedia.org/wiki/Rigid_body_dynamics">rigid body dynamics</a>.</p>
 <p>Physics engines are a vital part in most 3D games, to make objects collide and interact with each other convincingly. An important feature are also <em>raycasts</em> and <em>shape queries</em> which are used to detect objects and analyze the state of the world.</p>
 <h2 id="enable-physx-support">Enable PhysX Support</h2>

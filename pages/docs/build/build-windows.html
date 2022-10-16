@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Build Prerequisites | ezEngine </title>
+    <title>Windows Builds | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Build Prerequisites | ezEngine ">
+    <meta name="title" content="Windows Builds | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,19 +78,44 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="build-prerequisites">Build Prerequisites</h1>
+<h1 id="windows-builds">Windows Builds</h1>
 
-<p>We try to keep the number of prerequisites to build ezEngine as small as possible. However, the following software must be obtained and installed separately:</p>
-<h2 id="c-compiler">C++ Compiler</h2>
-<p>To build the source, you have to have a supported C++ compiler installed. See the <a href="supported-platforms.html">supported platforms</a> page for which compilers are supported on which platform.</p>
-<h2 id="c-compiler-optional">C# Compiler (optional)</h2>
-<p>If you want to build everything (including the unit tests) on Windows, you also need to have C# installed as a workload in Visual Studio.</p>
-<h2 id="cmake-optional">CMake (optional)</h2>
-<p><a href="https://cmake.org/">CMake</a> is used as the build system. Version 3.20 or newer is required.</p>
-<p>On Windows, if you run the generate scripts from the root level, it will use a <code>cmake.exe</code> that comes with the EZ repository. If you want more control over this step, you can run CMake manually, in which case the CMake GUI is very handy. You will have to install that yourself.</p>
+<p>This page describes how to build EZ for desktop Windows. For UWP builds, see <a href="build-uwp.html">this page</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This software has to be installed manually.</p>
+<h3 id="microsoft-visual-studio">Microsoft Visual Studio</h3>
+<p><a href="https://visualstudio.microsoft.com/downloads">Visual Studio</a> is the only supported IDE on Windows. It is sufficient to install the free <em>Community</em> edition.</p>
+<p>These versions are currently supported:</p>
+<ul>
+<li>Visual Studio 2019 64 Bit</li>
+<li>Visual Studio 2022 64 Bit</li>
+</ul>
+<p>These <em>workloads</em> have to be installed:</p>
+<ul>
+<li><em>Desktop Development with C++</em></li>
+<li><em>Game Development with C++</em></li>
+<li><em>.Net Desktop Development</em></li>
+</ul>
+<h3 id="cmake-optional">CMake (optional)</h3>
+<p><a href="https://cmake.org/">CMake</a> is used as the build system. On Windows you only need to install CMake, if you want to use the CMake GUI to choose custom <a href="cmake-config.html">CMake configurations</a>. If you only use the provided <code>GenerateXYZ.bat</code> scripts, those will use a <code>cmake.exe</code> that comes with the EZ repository.</p>
+<h2 id="generate-the-solution">Generate the Solution</h2>
+<h3 id="using-the-generate-scripts">Using the Generate Scripts</h3>
+<p>In the root folder of the EZ repository you will find a couple of <code>.bat</code> files, such as:</p>
+<ul>
+<li><code>GenerateWin64vs2019.bat</code></li>
+<li><code>GenerateWin64vs2022.bat</code></li>
+</ul>
+<p>Run one of them to generate a Visual Studio solution for your preferred compiler. If these scripts fail, you most likely don't have all the <a href="#prerequisites">prerequisites</a> installed. They also sometimes fail, if Visual Studio recently installed an update and you haven't rebooted your PC since.</p>
+<p>Once the script finished successfully, there will be a <strong>Workspace</strong> folder in the EZ root folder. You fill find a <code>ezEngine_***.sln</code> file in the respective folder for the Visual Studio version that you chose.</p>
+<h3 id="manually-running-cmake">Manually Running CMake</h3>
+<p>This step requires that you install <a href="#cmake-optional">CMake</a> yourself.</p>
+<p>Run the CMake GUI and <a href="cmake-config.html">configure the build options</a>.</p>
+<h2 id="building-the-code">Building the Code</h2>
+<p>Open the generated solution with Visual Studio and build everything.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="cmake-config.html">CMake Configuration</a></li>
+<li><a href="building-ez.html">Building ezEngine</a></li>
+<li><a href="clang-on-windows.html">Building with Clang on Windows</a></li>
 </ul>
 </article>
           </div>
@@ -100,7 +125,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/build-prerequisites.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/build-windows.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -81,7 +81,14 @@
 <h1 id="macos-builds">MacOS Builds</h1>
 
 <h2 id="prerequisites">Prerequisites</h2>
-<p>You need to install the following libraries:</p>
+<h3 id="supported-compilers">Supported Compilers</h3>
+<p>You can compile EZ through one of these methods:</p>
+<ul>
+<li>XCode 5.1.1 or higher (GCC / Clang) 64 Bit</li>
+<li>Makefiles 64 Bit</li>
+</ul>
+<h3 id="dependencies">Dependencies</h3>
+<p>You need to install these libraries:</p>
 <ul>
 <li>XQuartz 2.7.5</li>
 <li>SFML-2.5.1</li>
@@ -90,7 +97,7 @@
 <p>A good way to do so is via <a href="https://brew.sh/">homebrew</a>:</p>
 <pre><code class="lang-cmd">brew update
 brew install Caskroom/cask/xquartz
-brew install qt5
+brew install qt6
 brew install sfml
 </code></pre>
 <h2 id="using-the-command-line">Using the command line</h2>
