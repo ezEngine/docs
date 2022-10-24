@@ -86,8 +86,10 @@
 <p><img src="../media/jolt-colmesh-concave.jpg" alt="Concave Collision Mesh"></p>
 <p>The image above shows a mesh imported as a concave collision mesh. As you can see it represents every detail faithfully. Due to this complexity, the model can only be used for static <a href="../actors/jolt-actors.html">physics actors</a>, meaning you can place it in a level, scale and rotate it, but you may not move it dynamically during the game and it cannot be used to simulate a rigid body. The complexity of a mesh has direct impact on the performance of the game. Especially small details may result in large computational costs when dynamic objects collide with those detailed areas. If you want to optimize performance, you should author dedicated collision meshes with reduced complexity, instead of using the render mesh directly.</p>
 <p>Concave collision meshes are set directly on the <a href="../actors/jolt-actors.html">static physics actor</a> component and have no dedicated <a href="jolt-shapes.html">physics shape</a> component.</p>
+<p>Triangle meshes can use a different <a href="../../../materials/surfaces.html">surface</a> for each submesh.</p>
 <h2 id="convex-collision-meshes">Convex Collision Meshes</h2>
 <p>The simulation of <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a> is only possible with convex shapes. To create a convex collision mesh, use the asset type <em>Jolt Convex Collision Mesh</em> when <a href="../../../assets/import-assets.html">importing an asset</a>. To attach a convex mesh to an actor, use the <a href="jolt-convex-shape-component.html">convex mesh shape component</a>.</p>
+<p>Convex meshes may only use a single <a href="../../../materials/surfaces.html">surface</a>, even if the mesh is made up of multiple convex pieces.</p>
 <p>There are multiple modes how to create the convex collision mesh:</p>
 <h3 id="convex-hull">Convex Hull</h3>
 <p><img src="../media/jolt-colmesh-convex.jpg" alt="Convex Hull Collision Mesh"></p>
@@ -106,6 +108,7 @@
 <li><a href="../actors/jolt-actors.html">Jolt Physics Actors</a></li>
 <li><a href="jolt-collision-layers.html">Jolt Collision Layers</a></li>
 <li><a href="../jolt-debug-visualizations.html">Jolt Debug Visualizations</a></li>
+<li><a href="../../../materials/surfaces.html">Surfaces</a></li>
 </ul>
 </article>
           </div>

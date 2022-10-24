@@ -119,9 +119,13 @@
 <h3 id="joint-override-component">Joint Override Component</h3>
 <p>The <a href="joint-override-component.html">joint override component</a> is the opposite to the <em>joint attachment component</em>. It works similar in that it has to be attached to a child object of an animated mesh and you have to type in the name of a bone. However, it will then <em>override</em> the specified <strong>bone's local transform</strong> with its <strong>own local transform</strong>. The idea here is, that game code can use this game object as a controller to steer the animated object. So for example your turret might be one complex animated object, with many bones but somewhere in the bone hierarchy there is one bone that controls the turrets aim (up/down or left/right or both). You want cool animations to &quot;unfold&quot; the turret when it is built and all sorts of other animations that are only possible with proper skeletal animation, but once the game runs you also want to procedurally control where the turret is aiming. Using this component you can take control of certain bones and drive their animation yourself.</p>
 <p>In the sample scene there are two objects for each turret that override two bones: one for left/right rotation and one for pointing up/down. You can manually modify these values from the property grid, while the editor is in play mode, to control the turrets aim. Note how the recoil animation continues to play properly relative to the turret's main direction.</p>
-<h2 id="future-work">Future Work</h2>
-<p>Work on the animation system is ongoing. For a list of planned features, <a href="https://github.com/ezEngine/ezEngine/projects/12">have a look here</a>.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="animated-mesh-asset.html">Animated Mesh Asset</a></li>
+<li><a href="skeleton-asset.html">Skeleton Asset</a></li>
+<li><a href="animation-clip-asset.html">Animation Clip Asset</a></li>
+<li><a href="animation-controller/animation-controller-overview.html">Animation Controller</a></li>
+</ul>
 </article>
           </div>
           

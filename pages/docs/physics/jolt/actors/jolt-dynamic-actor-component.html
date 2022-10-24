@@ -116,6 +116,7 @@
 <ul>
 <li><code>CollisionLayer</code>: The <a href="../collision-shapes/jolt-collision-layers.html">collision layer</a> to use.</li>
 <li><code>Kinematic</code>: See <a href="#kinematic-vs-simulated">Kinematic vs. Simulated</a> above.</li>
+<li><code>StartAsleep</code>: If enabled, the actor starts in the 'sleeping' state and will not be physically simulated until it gets into contact with another active actor. This is a performance optimization to prevent performance spikes after loading a level. If used badly, an object can float in air and not fall down until something else touches it. Make sure to only use this on objects that are <a href="../../../editor/run-scene.html#keep-simulation-changes">convincingly placed</a> to begin with.</li>
 <li><code>Mass</code>, <code>Density</code>: See <a href="#mass-vs-density">Mass vs. Density</a> above.</li>
 <li><code>Surface</code>: The <a href="../../../materials/surfaces.html">surface</a> to use for this actor's shapes. The surface determines the friction and restitution during simulation, but also determines what effects are spawned when you interact with the object. Note that <a href="../collision-shapes/jolt-collision-meshes.html">collision meshes</a> already specify the surface to use. If a surface is selected on the actor, it overrides the mesh's surface.</li>
 <li><code>GravityFactor</code>: Adjusts the influence of gravity on this object. If set to zero, it will float in space.</li>

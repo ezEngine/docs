@@ -89,15 +89,23 @@
 <ul>
 <li><p><strong>RestoreProjectOnStartup:</strong> If enabled, the editor will load the project that was open the last time.</p>
 </li>
+<li><p><strong>ShowSpashscreen:</strong> Disable this to not have a splashscreen show up every time the editor starts.</p>
+</li>
 <li><p><strong>BackgroundAssetProcessing:</strong> If set, background <a href="../assets/assets-overview.html">assets processing</a> will be activated by default, when you open a project.</p>
 </li>
 <li><p><strong>FieldOfView:</strong> The FOV of the generic editor camera.</p>
 </li>
 <li><p><strong>GizmoScale:</strong> Allows you to change the size of the editor gizmos.</p>
 </li>
-<li><p><strong>UsePrecompiledTools:</strong> If enabled, the editor will prefer to use the tools under <code>Data\\Tools\\Precompiled</code>, rather than the ones from its own binary directory. The precompiled tools are built with maximum optimizations and are therefore typically faster, however, they only get updated infrequently and may not have all the latest features and bugfixes.</p>
+<li><p><strong>ShowInDevelopmentFeatures:</strong> Some features (mainly <a href="../runtime/world/components.html">components</a>) are hidden by default from menus. That's because those features are not considered ready to be used productively. If you do want to try them out regardless, check this option for them to show up.</p>
+</li>
+<li><p><strong>UsePrecompiledTools:</strong> If enabled, the editor will prefer to use the tools under <code>Data\Tools\Precompiled</code>, rather than the ones from its own binary directory. The precompiled tools are built with maximum optimizations and are therefore typically faster, however, they only get updated infrequently and may not have all the latest features and bugfixes.</p>
 </li>
 <li><p><strong>ExpandSceneTreeOnSelection:</strong> If enabled, selecting an object in a scene will automatically expand the corresponding item in the scene tree view. If disabled, the scene tree will not change on selection from the viewport, and jumping to the selected tree item has to be done manually using <code>CTRL+T</code>.</p>
+</li>
+<li><p><strong>ClearEditorLogsOnPlay:</strong> If enabled, the engine log gets cleared every time you <a href="run-scene.html">run a scene</a>.</p>
+</li>
+<li><p><strong>Engine View Light Settings:</strong> Many <a href="../assets/assets-overview.html">assets</a> have 3D previews that require lighting. These are the lighting settings to use.</p>
 </li>
 </ul>
 <h2 id="shortcuts">Shortcuts</h2>

@@ -88,7 +88,9 @@
 <p>Some objects will also be spawned by the simulation, and therefore are unknown to the editor side. Those objects cannot be picked or modified.</p>
 <p>In general, modifying the scene during simulation will work for some objects, and won't work for others. The only way to find out, is to try it. Once the simulation is stopped, though, all modifications will be applied as expected, to the reset scene.</p>
 <h3 id="keep-simulation-changes">Keep Simulation Changes</h3>
-<p>This mode is useful to quickly check how some object behaves. It can also be used to simulate physical objects (e.g. boxes falling down) and then to save that simulated transform to the scene, by selecting them and pressing <code>K</code> (or <em>Scene &gt; Utilities &gt; Keep Simulation Changes</em>).</p>
+<p>The <em>simulate mode</em> is useful to quickly check how some object behaves. It can also be used to simulate physical objects (e.g. boxes falling down) and then save that simulated transform to the scene.</p>
+<p>While the simulation is active, select the objects that you are interested in and press <code>K</code> (or <em>Scene &gt; Utilities &gt; Keep Simulation Changes</em>). Once you stop the simulation, an undoable action is executed that moves the selected objects to the recorded location.</p>
+<p>You can record multiple <em>keep changes</em> actions during one simulation.</p>
 <h2 id="play-the-game-mode">Play the Game Mode</h2>
 <p>The <em>Play-the-Game Mode</em> (PTG) is activated with the <em>Controller</em> button in the toolbar or by pressing <code>CTRL+F5</code>. It is deactivated with the <em>Stop</em> button in the editor toolbar, by pressing <code>ESC</code> while the PTG window has focus.</p>
 <p><img src="media/toolbar-simulate-buttons.png" alt="Toolbar buttons for scene simulation"></p>
@@ -101,6 +103,7 @@
 <p>Another way to test the scene is to export it to a binary format and run it in the <a href="../tools/player.html">ezPlayer</a>. You do so using <em>Scene &gt; Export and Run...</em> or by pressing <code>CTRL+E</code>.</p>
 <p><img src="media/export-and-run.png" alt="Export and Run"></p>
 <p>If you keep <code>Transform all Assets</code> checked, all <a href="../assets/assets-overview.html">assets</a> in the project will be <em>transformed</em> first, making sure they are up-to-date. You can uncheck this, to speed up the process, if you know that all assets that you require are up-to-date already.</p>
+<p><code>Update Thumbnail</code> will use the <a href="../graphics/camera-component.html">scene camera</a> with the <em>Thumbnail</em> usage hint, to create a scene thumbnail.</p>
 <p>Both <em>Simulate Mode</em> and <em>Play-the-Game Mode</em> run inside the editor process. Compared to a game running in a stand-alone process this has two drawbacks:</p>
 <ol>
 <li>The editor process limits the maximum framerate, and has some performance overhead of its own, so this is not useful for performance testing.</li>
@@ -110,6 +113,8 @@
 <p><strong>Important:</strong></p>
 <p>If a scene is composed of multiple <a href="../scenes/scene-layers.html">scene layers</a>, only the objects from the currently <em>loaded</em> layers are exported.</p>
 </blockquote>
+<h3 id="custom-player-executable">Custom Player Executable</h3>
+<p>In the <em>export and run</em> dialog you can add a custom executable to run instead of the default <a href="../tools/player.html">ezPlayer</a> application. Use this, if you have a custom game application. The command line used is the same as for ezPlayer as shown in the dialog.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../tools/player.html">ezPlayer</a></li>
