@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project Export | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Project Export | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="project-export">Project Export</h1>
+
+<p><em>Project Export</em> is the step to create a package that contains all the files needed to play your game, excluding the files that are only needed for development.</p>
+<p>The <a href="../projects/data-directories.html">data directories</a> of your project contain a lot of files that are only needed during development. Additionally, they are usually stored in various locations, for example the <em>Base</em> directory, which is needed by all games, is located in the SDK folder, whereas your project files probably are located somewhere entirely different. Finally, you also need various <em>binaries</em> (<em>EXE</em> and <em>DLL</em> on Windows) to launch your game, which are again located somewhere different.</p>
+<p>The project export feature consolidates all these files into a single directory, so that it is easy to distribute.</p>
+<h2 id="export-project-dialog">Export Project Dialog</h2>
+<p>To get started with generating a self-contained package of your game, use the <em>project export dialog</em> that you find in the editor under <em>Editor &gt; Export Project...</em>.</p>
+<p><img src="media/project-export-dlg.png" alt="Project Export Dialog"></p>
+<p>Select an output folder and click <strong>Export Project</strong>.</p>
+<p>Once the export is finished, it will automatically open the folder where the files have been copied to. The export also generates one <code>.bat</code> file for every scene in your project. These scripts launch the respective scene with <a href="../tools/player.html">ezPlayer</a>.</p>
+<h2 id="configuring-project-export">Configuring Project Export</h2>
+<p>When you export your project for the first time, these files are added to your project directory:</p>
+<ol>
+<li><code>ProjectBinaries.ezExportFilter</code></li>
+<li><code>ProjectData.ezExportFilter</code></li>
+</ol>
+<p>The first file is used to determine which <em>binaries</em> should get included in the package.
+The second file is used to determine which <em>data files</em> should get included.</p>
+<p>By default these files <code>#include</code> predefined export filters:</p>
+<ol>
+<li><code>Data\Base\CommonData.ezExportFilter</code></li>
+<li><code>Data\Base\CommonBinaries.ezExportFilter</code></li>
+</ol>
+<p>These files set up the rules for typical use-cases. You can extend them in your project config files, or you can remove the <code>#include</code> and fully define your own rules.</p>
+<p>The ezExportFilter files contain two sections: <strong>[EXCLUDE]</strong> and <strong>[INCLUDE]</strong>. Without any filter, all files are included in the output package.</p>
+<p>To exclude certain files or file types, a pattern has to be added to the <strong>[EXCLUDE]</strong> section. However, sometimes you want to exclude all files of a certain type (e.g. <em>exe</em>) but include a single one regardless (for example your game.exe). In this case, add it to the <strong>[INCLUDE]</strong> section, to override the exclusion filter.</p>
+<p>Each line in the file represents one file path pattern:</p>
+<ul>
+<li>If it starts with a <code>*</code>, it matches paths that end with this pattern.</li>
+<li>If it ends with a <code>*</code>, it matches paths that start with this pattern.</li>
+<li>If it starts and ends with a <code>*</code>, it matches paths that contain this pattern.</li>
+<li>At any other location, <code>*</code> is not allowed.</li>
+<li>All paths are considered to be relative to their respective data directory.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>For inspiration how to use these path patterns, see the files <code>Data\Base\CommonData.ezExportFilter</code> and <code>Data\Base\CommonBinaries.ezExportFilter</code>.</p>
+</blockquote>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>At this time it is not analyzed which plugin DLLs are actually needed, instead all DLLs are included. Edit your <code>ProjectBinaries.ezExportFilter</code> to control this.</li>
+<li>Currently the export step always creates <code>.bat</code> files to load each scene with ezPlayer. There is no way to automatically set up something different.</li>
+<li>You currently can't automatically execute custom logic (C++ code, or a script) to finalize the package.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../performance/profiling.html">Profiling</a></li>
+<li><a href="../build/supported-platforms.html">Supported Platforms</a></li>
+<li><a href="../tools/player.html">ezPlayer</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/Shipping/project-export.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
