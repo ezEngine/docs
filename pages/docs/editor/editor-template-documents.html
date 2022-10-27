@@ -80,8 +80,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="template-documents">Template Documents</h1>
 
-<!-- PAGE IS TODO -->
-<p>Editor template documents should be fully functional, though currently undocumented.</p>
+<p>When you create a new document, it is typically blank. You can change this, by saving a pre-configured <em>template document</em> in your project's directory.</p>
+<p>Every time a new document is created, the editor checks whether such a template document is present, and if so, clones that instead.</p>
+<p>For the editor to find your template document, it has to be stored in the sub-folder <code>Editor/DocumentTemplates</code> and has to have the name <code>Default</code>. The file extension of course has match the document type.</p>
+<p>So for example if your project is located under <code>C:/MyGame</code> then to create a custom scene template, you would store a scene file under <code>C:/MyGame/Editor/DocumentTemplates/Default.ezScene</code>.</p>
+<p>This can be done for any document type.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="editor-documents.html">Editor Documents</a></li>
