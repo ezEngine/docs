@@ -3208,10 +3208,65 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/reflection-avoid-mirrors.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/reflection-avoid-mirrors.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/reflection-box-placement1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/reflection-box-placement1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/reflection-box-placement2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/reflection-box-placement2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/graphics/lighting/media/reflection-probes.jpg",
       "output": {
         "resource": {
           "relative_path": "pages/docs/graphics/lighting/media/reflection-probes.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/reflection-stretching-fixed.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/reflection-stretching-fixed.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/reflection-stretching.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/reflection-stretching.jpg"
         }
       },
       "is_incremental": false,
@@ -3279,7 +3334,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/lighting/reflection-probe-components.html",
-          "hash": "G2fIqDwIQbacN2LJDP6h1HHo8cf8kZJfdR351qUTxQY="
+          "hash": "a94DeRhGT7iHodvwSxdvaxujYDonF9J6OyMDMR6lGeM="
         }
       },
       "is_incremental": false,
