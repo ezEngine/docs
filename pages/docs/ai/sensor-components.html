@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Sensor Components | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Sensor Components | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sensor-components">Sensor Components</h1>
+
+<p><em>Sensor components</em> are used to detect objects in a certain area and inform other game code about them. Contrary to <a href="../physics/jolt/actors/jolt-trigger-component.html">triggers</a>, they use the <a href="../runtime/world/spatial-system.html">spatial system</a>, so they work even without a physics engine. However, the sensor component can utilize additional physics raycasts, to determine whether something inside the volume is also visible and not occluded by walls.</p>
+<p>Sensor components are meant for AI use cases, such as determining line of sight, hearing noises or even smelling odors.</p>
+<p><img src="media/sensor-components.jpg" alt="Sensor components"></p>
+<p>Generally the sensors query the <a href="../runtime/world/spatial-system.html">spatial system</a> to detect certain objects. Use the <a href="../gameplay/marker-component.html">marker component</a> to make something detectable. For example, to make a creature able to smell the player, regularly drop markers at the player's current location, that vanish after a while, so that the creature can detect and follow these markers.</p>
+<h2 id="state-reporting">State Reporting</h2>
+<p>Sensors keep track of the objects that entered their volume. During every update they determine whether objects are still inside the volume or whether their visibility changed (line-of-sight occluded).</p>
+<p>If anything changes, a sensor <a href="../runtime/world/world-messaging.html">sends the message</a> <code>ezMsgSensorDetectedObjectsChanged</code>, which contains the full array of currently detected objects.</p>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>Sensor components poll the world in regular intervals and thus incur a performance cost. The <code>UpdateRate</code> determines how often this polling happens. Internally updates from many sensors are automatically distributed evenly across frames, to prevent performance spikes at regular intervals.</p>
+<p>Still, it is best to reduce the update rate as much as possible. For example in a game with large levels, you should check how close the player is to an NPC and dynamically adjust the update rate. At a large distance, the sensor can be set to update only every second, or you could even deactivate the sensor entirely. Similarly, you can use the 'alterness' state of an NPC to increase or decrease the sensor update rate.</p>
+<p>Finally, you should decide whether doing a visibility check is always necessary. The sensor would do this check for every possible target at every update. However, for a lot of game logic, once something has attracted attention, further visibility checks are not necessary. In such a case, it can be more efficient to do visibility raycasts only while a creature is not yet alert.</p>
+<h2 id="component-properties">Component Properties</h2>
+<h3 id="shared-component-properties">Shared Component Properties</h3>
+<ul>
+<li><code>UpdateRate</code>: How often the sensor component should query the world for changes. The higher the update rate, the more responsive it will be, and the less likely that short events are missed. However, higher update rates also require more processing time.</li>
+<li><code>SpatialCategory</code>: The <a href="../runtime/world/spatial-system.html">spatial category</a> of objects that should trigger the sensor component.</li>
+<li><code>TestVisibility</code>: If enabled, the sensor will cast additional rays using the physics engine, to determine whether the target is occluded by walls or clearly visible.</li>
+<li><code>CollisionLayer</code>: The <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for the visibility raycast.</li>
+<li><code>ShowDebugInfo</code>: If enabled, additional debug geometry is rendered to visualize the sensor volume and state.</li>
+<li><code>Color</code>: This color is used for the debug visualization. Can be used to easily distinguish what type of sensor this is.</li>
+</ul>
+<h3 id="sphere-sensor-component">Sphere Sensor Component</h3>
+<ul>
+<li><code>Radius</code>: The size of the sensor sphere.</li>
+</ul>
+<h3 id="cylinder-sensor-component">Cylinder Sensor Component</h3>
+<ul>
+<li><code>Radius</code>, <code>Height</code>: The dimensions of the sensor cylinder.</li>
+</ul>
+<h3 id="cone-sensor-component">Cone Sensor Component</h3>
+<ul>
+<li><code>NearDistance</code>, <code>FarDistance</code>, <code>Angle</code>: These all define the cone volume. Note that the cone not only has an angle and a length (<em>FarDistance</em>) but also a <em>NearDistance</em>. Enable <code>ShowDebugInfo</code> to see the exact cone shape. The near distance allows to ignore things that are up close, or to have that range covered by another sensor shape.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../gameplay/marker-component.html">Marker Component</a></li>
+<li><a href="state-machine-component.html">State Machine Component (TODO)</a></li>
+<li><a href="../custom-code/custom-code-overview.html">Custom Code</a></li>
+<li><a href="../Miscellaneous/blackboards.html">Blackboards</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/sensor-components.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
