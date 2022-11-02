@@ -94,6 +94,8 @@
 <p>Right click into the window and choose <strong>New State</strong> or <strong>New Any State</strong> to add a node. To add a transition between states, click the <strong>+</strong> on a node and drag it to another state.</p>
 <p>Select state nodes in the main window to see their <em>properties</em>. Here you can give the state a name and <strong>select the state type</strong>. Most state types have custom properties that also need to be configured here.</p>
 <p>Select transition arrows to see their <em>properties</em>. Again, you need to <strong>select the transition type</strong>. Typically you also then need to configure the transition's properties.</p>
+<h3 id="default-initial-state">Default Initial State</h3>
+<p>Right click on a state and select <strong>Set as Initial State</strong> to make a state the <em>default initial state</em>. That means, when this state machine is used in a <a href="state-machine-component.html">state machine component</a> or as a <a href="#nested-state-machine">nested state machine</a>, and no <em>initial state</em> is selected by the user, this state is used.</p>
 <h2 id="state-types">State Types</h2>
 <p>You have to select a <em>state type</em> for every node in your state machine.</p>
 <h3 id="send-message-state">Send Message State</h3>
@@ -102,6 +104,7 @@
 <h3 id="nested-state-machine">Nested State Machine</h3>
 <p>A <em>Nested State Machine</em> state references another state machine. When the state is entered, it starts executing an instance of that state machine. Messages sent from the nested state machine will be delivered to the same owner game object. As long as the surrounding state stays active, the nested state machine gets updated. Once the surrounding state is exited, execution of the nested state machine is suspended. You can choose whether it gets reset to the initial state, or stay in the last active state. This way, once the nested state machine gets activated again later, it may either start from the beginning, or resume where it left off.</p>
 <p>Nested state machines can be very useful to reuse state machines and to make editing easier. Also the fact that a state machine can be suspended and resumed at its last active state allows for more complex behavior.</p>
+<p>If no <em>initial state</em> is specified, the <a href="#default-initial-state">default initial state</a> is used.</p>
 <h2 id="transition-types">Transition Types</h2>
 <p>You have to select a <em>transition type</em> for every transition in your state machine.</p>
 <h3 id="blackboard-conditions">Blackboard Conditions</h3>
