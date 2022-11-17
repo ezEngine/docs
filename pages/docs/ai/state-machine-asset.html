@@ -101,14 +101,23 @@
 <h3 id="send-message-state">Send Message State</h3>
 <p>When the <em>Send Message State</em> gets activated (transitioned into) or deactivated (transitioned out of), it sends the <code>ezMsgStateMachineStateChanged</code> <a href="../runtime/world/world-messaging.html">event message</a> to the <a href="../runtime/world/game-objects.html">game object</a> on which the executing <a href="state-machine-component.html">state machine component</a> is attached. Thus other components, such as <a href="../custom-code/typescript/typescript-overview.html">TypeScript components</a> can listen for this message and react accordingly.</p>
 <p>The message can be sent with a delay. Also, if this state type is configured to send neither a message on enter, nor on exit, it effectively does nothing and can be used for states that don't require further action.</p>
+<p>You can also turn on logging on enter or exit, for better debugging.</p>
 <h3 id="nested-state-machine">Nested State Machine</h3>
 <p>A <em>Nested State Machine</em> state references another state machine. When the state is entered, it starts executing an instance of that state machine. Messages sent from the nested state machine will be delivered to the same owner game object. As long as the surrounding state stays active, the nested state machine gets updated. Once the surrounding state is exited, execution of the nested state machine is suspended. You can choose whether it gets reset to the initial state, or stay in the last active state. This way, once the nested state machine gets activated again later, it may either start from the beginning, or resume where it left off.</p>
 <p>Nested state machines can be very useful to reuse state machines and to make editing easier. Also the fact that a state machine can be suspended and resumed at its last active state allows for more complex behavior.</p>
 <p>If no <em>initial state</em> is specified, the <a href="#default-initial-state">default initial state</a> is used.</p>
+<h3 id="compound-state">Compound State</h3>
+<p>A <em>Compound State</em> has no functionality by itself, rather it holds an array of other state types. All events (state entered/left) are forwarded to all sub-states equally. Thus it can be used to trigger multiple reactions at the same time.</p>
 <h2 id="transition-types">Transition Types</h2>
 <p>You have to select a <em>transition type</em> for every transition in your state machine.</p>
 <h3 id="blackboard-conditions">Blackboard Conditions</h3>
-<p><em>Blackboard conditions</em> query the <a href="../Miscellaneous/blackboards.html">blackboard</a>. The transition condition is fulfilled, once all the specified blackboard entries have the desired values.</p>
+<p><em>Blackboard conditions</em> query the <a href="../Miscellaneous/blackboards.html">blackboard</a>. You can configure the transition condition to be fulfilled either when at least one or all the specified blackboard entries have the desired values.</p>
+<h3 id="timeout-transition">Timeout Transition</h3>
+<p>This transition is fulfilled after a certain amount of time has passed. This can be used to automatically transition to the next state after a fixed amount of time. Together with a <em>compound transition</em> it can also be used to prevent transitioning before a minimum of time has passed.</p>
+<h3 id="compound-transition">Compound Transition</h3>
+<p>The <em>Compound Transition</em> allows you to create complex logical conditions. It holds an array of other transition types. You can select whether either at least one of them, or all of these conditions need to be met, for the compound transition to be fulfilled.</p>
+<p>For example, you can add a blackboard condition and a timeout transition. If you set the compound transition to <code>AND</code>, both of these must be true, meaning the transition can only be taken after the blackboard values are correct and the minimum time has passed. If, however, you set it to <code>OR</code>, the transition is taken once either the timeout or the blackboard state is fulfilled.</p>
+<p>Note that you can use nested compound transitions to create even more complex logical conditions.</p>
 <h2 id="executing-state-machines">Executing State Machines</h2>
 <p>In theory state machines could be used in many contexts. In <a href="../custom-code/cpp/cpp-overview.html">custom C++ code</a> you are free to instantiate state machines directly via <code>ezStateMachineResource</code>.</p>
 <p>In a scene, you can instantiate a state machine through the <a href="state-machine-component.html">state machine component</a>.</p>
