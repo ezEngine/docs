@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Greyboxing | ezEngine </title>
+    <title>Occlusion Culling | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Greyboxing | ezEngine ">
+    <meta name="title" content="Occlusion Culling | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,44 +78,34 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="greyboxing">Greyboxing</h1>
+<h1 id="occlusion-culling">Occlusion Culling</h1>
 
-<p><em>Greyboxing</em> (or <em>whiteboxing</em>) is the process of blocking out a rough level concept to test ideas, before working on the details. The EZ editor provides a dedicated tool to quickly create the most commonly needed geometric shapes to block out a level, such as boxes, stairs, ramps and columns.</p>
-<p><img src="media/greyboxing.jpg" alt="Greyboxing"></p>
-<h2 id="creating-shapes">Creating Shapes</h2>
-<p>To activate the greyboxing tool, press the <code>B</code> key or click the brick icon in the toolbar. The statusbar will now display how to proceed.</p>
-<ol>
-<li><p>Hold <code>CTRL</code>. If the <a href="gizmos.html#grid">grid</a> is enabled, it will show in which plane you will draw. Now <em>left-click</em> and draw a rectangle.</p>
-<p><img src="media/greyboxing-1.jpg" alt="Greyboxing"></p>
-</li>
-<li><p><em>Release the left mouse button</em> to finish the rectangle. Now <em>move the mouse up and down</em> to choose the height of the box.</p>
-<p><img src="media/greyboxing-2.jpg" alt="Greyboxing"></p>
-</li>
-<li><p><em>Left-click</em> once more to finish the shape.</p>
-<p><img src="media/greyboxing-3.jpg" alt="Greyboxing"></p>
-</li>
-<li><p>From the object properties you can now select a different shape.</p>
-<p><img src="media/greyboxing-4.jpg" alt="Greyboxing"></p>
-</li>
-<li><p>Activate the <a href="gizmos.html#manipulators">manipulator</a> to easily adjust the shape.</p>
-<p><img src="media/greyboxing-5.jpg" alt="Greyboxing"></p>
-</li>
-</ol>
-<h3 id="creating-shapes-in-air">Creating Shapes in Air</h3>
-<p>By default you will draw the next shape starting at the picked position under your mouse cursor. If you want to draw a series of platforms in air, you can reuse the <em>height</em> of the previously drawn shape by holding <code>CTRL</code> and <code>SHIFT</code> before drawing the next rectangle.</p>
-<h2 id="materials">Materials</h2>
-<p>You can change the material of a greybox shape either through its properties, or by dragging and dropping a material from the <a href="../assets/asset-browser.html">asset browser</a> onto the shape. Additionally, if you have a material selected in the <a href="../assets/asset-browser.html">asset browser</a> while creating a new shape, it will automatically get that material assigned.</p>
-<h2 id="static-collision">Static Collision</h2>
-<p>As long as a greyboxing object has the <code>GenerateCollision</code> property set, it will automatically get a <a href="../physics/jolt/collision-shapes/jolt-collision-meshes.html">collision mesh</a> with the default <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> (<code>0</code>). It's assigned <a href="../materials/materials-overview.html">material</a> determines which <a href="../materials/surfaces.html">surface</a> is used for physical interactions.</p>
-<h2 id="dynamic-collision">Dynamic Collision</h2>
-<p>The greyboxing shape is not meant to be used for dynamic collisions. That means, if you attach a dynamic <a href="../physics/jolt/jolt-overview.html">Jolt</a> actor, it will not get the necessary physical setup to behave correctly. Instead, its collision mesh will simply be disabled entirely. You can therefore use greybox shapes for dynamic objects, but you need to add the required physics shapes yourself.</p>
-<h2 id="occlusion">Occlusion</h2>
-<p>Greyboxing geometry can act as occluders for <a href="../performance/occlusion-culling.html">occlusion culling</a>. By default this is enabled for all greyboxing geometry, but it should be disabled for small objects and objects that are unlikely to occlude much. Also consider disabling it for more detailed geometry. If you need an invisible occluder, use an <a href="../graphics/occluder-component.html">occluder component</a> instead.</p>
+<p><em>Occlusion Culling</em> is an optimization to speed up rendering. The general idea is to somehow determine whether an object is <em>occluded</em> by other geometry, and if so, to not render it at all, since it won't contribute to the final image anyway.</p>
+<p>There are different ways that occlusion culling can be implemented. EZ uses a <em>software rasterizer</em> to render <em>occluder geometry</em> to an offscreen buffer. For every object that is then supposed to get rendered by the GPU, it can quickly cross-check with the offscreen buffer, whether the object would be fully occluded, and if so, rendering is skipped.</p>
+<blockquote>
+<p><strong>IMPORTANT!</strong></p>
+<p>Occlusion culling is currently only available on Windows machines with CPUs that support the AVX instruction set. If not available, the occlusion culling optimization step is simply skipped.</p>
+</blockquote>
+<p>Without occlusion culling, an object that is behind a wall, will be rendered. We can observe this by making a transparent wall:</p>
+<p><img src="media/occlusion-off.jpg" alt="No occlusion culling"></p>
+<p>Now if we turn the (transparent) wall into an <em>occluder</em>, the engine is able to skip rendering of the object. Of course in practice you would not use transparent walls as occluders, for obvious reasons.</p>
+<p><img src="media/occlusion-on.jpg" alt="With occlusion culling"></p>
+<p>Here you can observe that the object isn't visible anymore, but its shadow is. That's because from the point of view of the light source, the object is visible, and in fact the shadow could be visible from the main camera position. If the object was also occluded from the light source's perspective, its shadow would also not get rendered.</p>
+<h2 id="how-to-use-occlusion-culling">How to Use Occlusion Culling</h2>
+<p>All rendered objects automatically benefit from occlusion culling. The only thing that's needed is for your level to contain occluders.</p>
+<p>The easiest way to do so, is to use <a href="../scenes/greyboxing.html">greyboxing geometry</a>. It is automatically used as occluders and all its shapes are supported. Another option is to use <a href="../graphics/occluder-component.html">occluder components</a>. These components allow you to create invisible occluder geometry, that can also be moved around dynamically.</p>
+<h3 id="visualizing-occluder-geometry">Visualizing Occluder Geometry</h3>
+<p>Use the <a href="../debugging/cvars.html">CVar</a> <code>Spatial.Occlusion.VisView</code> to enable a screen overlay that displays the main view's occlusion buffer:</p>
+<p><img src="media/occlusion-view.jpg" alt="Occlusion buffer"></p>
+<p>This allows you to inspect whether occluders are well placed.</p>
+<h3 id="best-practices">Best Practices</h3>
+<p>You should have few but large occluders. Disable the occluder flag on greybox geometry that is too small to have a significant contribution. Generally try to avoid small occluders as they can create artifacts. The occlusion buffer has a limited resolution and fine details may therefore &quot;occlude&quot; objects, even though they are not actually occluded at full resolution.</p>
+<p>Place <a href="../graphics/occluder-component.html">occluder components</a> inside large objects, such as boulders, cars or furniture. It doesn't matter whether they are static or can move around. Do not add occluder geometry to small or thin objects. If in doubt, don't add occluder geometry.</p>
+<p>Use the occlusion buffer visualization to inspect how well occluders are placed around your level. Use the CVar <code>Spatial.Culling.ShowStats</code> to see how many objects are rendered at any given time to get a feeling for how well occlusion culling works in your scene.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="scene-editing.html">Scene Editing</a></li>
-<li><a href="gizmos.html">Editing Gizmos</a></li>
-<li><a href="advanced-object-transform.html">Advanced Object Transforms</a></li>
+<li><a href="profiling.html">Profiling</a></li>
+<li><a href="../scenes/greyboxing.html">Greyboxing</a></li>
 </ul>
 </article>
           </div>
@@ -125,7 +115,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/scenes/greyboxing.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/performance/occlusion-culling.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -94,8 +94,6 @@
 <p>Yes, EZ has <a href="../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>. It's not really great, though. You can do simple level logic, like &quot;if that lever is pulled, open that door&quot;. You shouldn't really use it for anything else. We are generally not convinced that visual scripting is a great way to program (in no engine, no matter how good their tools are). Therefore we have no plans on improving our implementation at the moment, we rather improve the <a href="../docs/custom-code/typescript/typescript-overview.html">TypeScript</a> binding. Though, if you are a fan of visual scripting and want to improve it, feel free to look into it.</p>
 <h2 id="scripting-with-typescript">Scripting with TypeScript</h2>
 <p>We have a <a href="../docs/custom-code/typescript/typescript-overview.html">TypeScript</a> binding which is pretty decent. The entire game logic in the <a href="../samples/testing-chambers.html">Testing Chambers</a> project is done with this.</p>
-<h2 id="rendering">Rendering</h2>
-<p>We don't have occlusion culling at the moment (through a CPU rasterizer), though would like to add that at some point.</p>
 <h2 id="terrain">Terrain</h2>
 <p>We currently have <strong>no terrain system</strong>. We have several ideas how we would like to do this, but this is very low priority at the moment. If you want to do terrain, you should just import static meshes. Of course that also means you need to do terrain sculpting in a separate tool. What we do have, is a simple <a href="../docs/terrain/heightfield-component.html">heightfield component</a>. For basic scenarios this may already be sufficient.</p>
 <h2 id="ai">AI</h2>

@@ -3572,6 +3572,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/occluder-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/occluder-component.html",
+          "hash": "9oZOgknE3atISDk/Ds8J7+biesooQvSPSnTmyLsF7Kc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/render-pipeline-overview.md",
       "output": {
         ".html": {
@@ -3843,6 +3855,39 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/performance/media/occlusion-off.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/performance/media/occlusion-off.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/performance/media/occlusion-on.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/performance/media/occlusion-on.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/performance/media/occlusion-view.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/performance/media/occlusion-view.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/performance/media/save-profiling.png",
       "output": {
         "resource": {
@@ -3858,6 +3903,18 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/performance/media/tracing-vis.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/performance/occlusion-culling.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/performance/occlusion-culling.html",
+          "hash": "i+FhMzozbeQ5jtu8WQUz9A87dNrwM9snc4dCkz0Gd28="
         }
       },
       "is_incremental": false,
@@ -5661,7 +5718,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/scenes/greyboxing.html",
-          "hash": "sr23c2BVLXp5SijJ/DrwYOjSacJAbi/MWMS1tuNIKyo="
+          "hash": "wGIWZxqMPsdtRz1P+PjJIA2Z3EdSdlhAZX6ZLCW3cMo="
         }
       },
       "is_incremental": false,
@@ -6666,7 +6723,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "kuQDYIZBmxYxU/x+A/znMi1kGFSUiPp6oaL6DLmJRHE="
+          "hash": "4z7CuXFVulC41EnIRmIyVItWAYI0+IBNcQKwUBwI32k="
         }
       },
       "is_incremental": false,
@@ -6914,7 +6971,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/getting-started/faq.html",
-          "hash": "gj9+XtO/uG7+0h1TjZ9nwfGjaGm9ImU7FvFMQDtOn3A="
+          "hash": "pb1aqTYn+E27GdKRjX9aCZediqK5/Zn96tTogIia2f0="
         }
       },
       "is_incremental": false,
@@ -7369,7 +7426,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 309,
+          "total_file_count": 311,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

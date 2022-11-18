@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Greyboxing | ezEngine </title>
+    <title>Occluder Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Greyboxing | ezEngine ">
+    <meta name="title" content="Occluder Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,44 +78,21 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="greyboxing">Greyboxing</h1>
+<h1 id="occluder-component">Occluder Component</h1>
 
-<p><em>Greyboxing</em> (or <em>whiteboxing</em>) is the process of blocking out a rough level concept to test ideas, before working on the details. The EZ editor provides a dedicated tool to quickly create the most commonly needed geometric shapes to block out a level, such as boxes, stairs, ramps and columns.</p>
-<p><img src="media/greyboxing.jpg" alt="Greyboxing"></p>
-<h2 id="creating-shapes">Creating Shapes</h2>
-<p>To activate the greyboxing tool, press the <code>B</code> key or click the brick icon in the toolbar. The statusbar will now display how to proceed.</p>
-<ol>
-<li><p>Hold <code>CTRL</code>. If the <a href="gizmos.html#grid">grid</a> is enabled, it will show in which plane you will draw. Now <em>left-click</em> and draw a rectangle.</p>
-<p><img src="media/greyboxing-1.jpg" alt="Greyboxing"></p>
-</li>
-<li><p><em>Release the left mouse button</em> to finish the rectangle. Now <em>move the mouse up and down</em> to choose the height of the box.</p>
-<p><img src="media/greyboxing-2.jpg" alt="Greyboxing"></p>
-</li>
-<li><p><em>Left-click</em> once more to finish the shape.</p>
-<p><img src="media/greyboxing-3.jpg" alt="Greyboxing"></p>
-</li>
-<li><p>From the object properties you can now select a different shape.</p>
-<p><img src="media/greyboxing-4.jpg" alt="Greyboxing"></p>
-</li>
-<li><p>Activate the <a href="gizmos.html#manipulators">manipulator</a> to easily adjust the shape.</p>
-<p><img src="media/greyboxing-5.jpg" alt="Greyboxing"></p>
-</li>
-</ol>
-<h3 id="creating-shapes-in-air">Creating Shapes in Air</h3>
-<p>By default you will draw the next shape starting at the picked position under your mouse cursor. If you want to draw a series of platforms in air, you can reuse the <em>height</em> of the previously drawn shape by holding <code>CTRL</code> and <code>SHIFT</code> before drawing the next rectangle.</p>
-<h2 id="materials">Materials</h2>
-<p>You can change the material of a greybox shape either through its properties, or by dragging and dropping a material from the <a href="../assets/asset-browser.html">asset browser</a> onto the shape. Additionally, if you have a material selected in the <a href="../assets/asset-browser.html">asset browser</a> while creating a new shape, it will automatically get that material assigned.</p>
-<h2 id="static-collision">Static Collision</h2>
-<p>As long as a greyboxing object has the <code>GenerateCollision</code> property set, it will automatically get a <a href="../physics/jolt/collision-shapes/jolt-collision-meshes.html">collision mesh</a> with the default <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> (<code>0</code>). It's assigned <a href="../materials/materials-overview.html">material</a> determines which <a href="../materials/surfaces.html">surface</a> is used for physical interactions.</p>
-<h2 id="dynamic-collision">Dynamic Collision</h2>
-<p>The greyboxing shape is not meant to be used for dynamic collisions. That means, if you attach a dynamic <a href="../physics/jolt/jolt-overview.html">Jolt</a> actor, it will not get the necessary physical setup to behave correctly. Instead, its collision mesh will simply be disabled entirely. You can therefore use greybox shapes for dynamic objects, but you need to add the required physics shapes yourself.</p>
-<h2 id="occlusion">Occlusion</h2>
-<p>Greyboxing geometry can act as occluders for <a href="../performance/occlusion-culling.html">occlusion culling</a>. By default this is enabled for all greyboxing geometry, but it should be disabled for small objects and objects that are unlikely to occlude much. Also consider disabling it for more detailed geometry. If you need an invisible occluder, use an <a href="../graphics/occluder-component.html">occluder component</a> instead.</p>
+<p>The <em>occluder component</em> is used to add invisible geometry to a scene that is only used for <a href="../performance/occlusion-culling.html">occlusion culling</a>.</p>
+<p><img src="../performance/media/occlusion-view.jpg" alt="Occlusion buffer"></p>
+<p>Currently the occluder component always uses a box shape.</p>
+<p>Contrary to <a href="../scenes/greyboxing.html">greybox geometry</a>, the occluder component itself is invisible. Enable <a href="../performance/occlusion-culling.html#visualizing-occluder-geometry">occluder geometry visualization</a> to see it in action.</p>
+<p>Occluders can be moved around dynamically, so you can attach it to a door and it will properly occlude objects when the door closes. You can also (de-)activate the entire component programmatically. For example a breakable wall can use an occluder as long as it is intact, and deactivate it when the wall breaks.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Extents</code>: The size of the box.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="scene-editing.html">Scene Editing</a></li>
-<li><a href="gizmos.html">Editing Gizmos</a></li>
-<li><a href="advanced-object-transform.html">Advanced Object Transforms</a></li>
+<li><a href="../performance/occlusion-culling.html">Occlusion Culling</a></li>
+<li><a href="../scenes/greyboxing.html">Greyboxing</a></li>
 </ul>
 </article>
           </div>
@@ -125,7 +102,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/scenes/greyboxing.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/occluder-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
