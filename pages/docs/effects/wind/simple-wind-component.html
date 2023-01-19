@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Wind Volume Components | ezEngine </title>
+    <title>Simple Wind Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Wind Volume Components | ezEngine ">
+    <meta name="title" content="Simple Wind Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,46 +78,21 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="wind-volume-components">Wind Volume Components</h1>
+<h1 id="simple-wind-component">Simple Wind Component</h1>
 
-<p>Wind volume components are used to define areas in a scene where wind should blow in a certain way.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>On their own these components won't have any effect in a scene. A <a href="wind.html">wind system</a> additionally has to be set up. Placing a <a href="simple-wind-component.html">simple wind component</a> in a scene creates a basic wind system.</p>
-</blockquote>
-<h2 id="shared-component-properties">Shared Component Properties</h2>
-<p>All wind volume components have these properties:</p>
+<p>The <em>simple wind component</em> implements a very basic <a href="wind.html">wind system</a>. By placing a component of this type in a scene, the <em>simple wind <a href="../../runtime/world/world-modules.html">world module</a></em> is created. Things that can react to wind are then able to retrieve a wind value at any location. The simple wind system provides one global wind value, which changes randomly.</p>
+<p>Additionally, it supports <a href="wind-volume-components.html">wind volume components</a>. If any such shape is in a scene, its contribution is added to the global wind value, for objects that are inside such a volume.</p>
+<h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Strength</code>: The strength with which the wind shall blow.</li>
-<li><code>ReverseDirection</code>: If set, the wind direction is reversed. This can be used to pull things inwards, instead of pushing them.</li>
-<li><code>BurstDuration</code>: If this is set to zero, the wind blows continuously. Otherwise it blows for the specified amount of time and then stops.</li>
-<li><code>OnFinishedAction</code>: If <code>BurstDuration</code> is non-zero, the component will deactivate itself once the burst is done. Additionally, the component may delete itself or the entire object. Note that if <em>None</em> is selected, the wind burst can be restarted, simply by reactivating the component.</li>
-</ul>
-<h2 id="sphere-wind-volume-properties">Sphere Wind Volume Properties</h2>
-<ul>
-<li><code>Radius</code>: The radius of the wind volume.</li>
-</ul>
-<p><video src="media/wind-sphere.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<h2 id="cylinder-wind-volume-properties">Cylinder Wind Volume Properties</h2>
-<ul>
-<li><code>Length</code>, <code>Radius</code>: The size of the cylinder.</li>
-<li><code>Mode</code>: How the wind force is computed.
-<ul>
-<li><code>Directional</code>: The wind force is along the main cylinder axis.</li>
-<li><code>Vortex</code>: The wind whirls around the cylinder's axis. See the video below.</li>
-</ul>
+<li><p><code>MinWindStrength</code>, <code>MaxWindStrength</code>: The minimum and maximum strength with which the wind shall blow. A random value in between will be chosen every couple of seconds. To make it easier to get different things working well with each other, the wind values are hard-coded. They are inspired by the <a href="https://en.wikipedia.org/wiki/Beaufort_scale">Beaufort scale</a>. Most things that can react to wind (for example <a href="../particle-effects/particle-effects-overview.html">particle effects</a> or <a href="../ropes/fake-rope-component.html">ropes</a>) also have a <em>wind influence</em> parameter for tweaking how strongly they react to wind. The Beaufort scale enables you to get an idea what reaction to expect, e.g. you know how an effect should look under a light breeze or under storm conditions, and can then tweak the wind influence value accordingly.</p>
+</li>
+<li><p><code>MaxDeviation</code>: How much the wind direction may deviate from the local x-axis. Set this to the maximum value, if the wind is allowed to come from anywhere.</p>
 </li>
 </ul>
-<p><video src="media/wind-vortex.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<h2 id="cone-wind-volume-properties">Cone Wind Volume Properties</h2>
-<ul>
-<li><code>Angle</code>, <code>Length</code>: Angle and length of the cone shape.</li>
-</ul>
-<p><video src="media/wind-cone.webm" width="600" height="600" autoplay="" loop=""></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="wind.html">Wind</a></li>
-<li><a href="simple-wind-component.html">Simple Wind Component</a></li>
+<li><a href="wind-volume-components.html">Wind Volume Components</a></li>
 </ul>
 </article>
           </div>
@@ -127,7 +102,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/wind-volume-components.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/wind/simple-wind-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -171,9 +146,9 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>

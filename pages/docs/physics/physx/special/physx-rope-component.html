@@ -83,7 +83,7 @@
 <p>The <em>PhysX rope component</em> is used to physically simulate ropes, cables and chains.</p>
 <p><video src="media/rope-swing.webm" width="600" height="600" autoplay="" loop=""></video></p>
 <p>Ropes can be attached to walls as decorative elements (cables, wires), or they can even be attached to <a href="../actors/physx-dynamic-actor-component.html">dynamic physics objects</a> to link them together. This can be used as a gameplay feature.</p>
-<p>If all you need is a decorative rope, that doesn't react to physical stimuli (except <a href="../../../effects/wind.html">wind</a>), prefer to use a <a href="../../../effects/fake-rope-component.html">fake rope component</a>, as that has a much lower performance overhead.</p>
+<p>If all you need is a decorative rope, that doesn't react to physical stimuli (except <a href="../../../effects/wind/wind.html">wind</a>), prefer to use a <a href="../../../effects/ropes/fake-rope-component.html">fake rope component</a>, as that has a much lower performance overhead.</p>
 <h2 id="setting-up-a-rope">Setting Up a Rope</h2>
 <p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../../scenes/object-references.html">object reference</a> is used to select which one to use.</p>
 <p>In the object hierarchy it typically looks like this:</p>
@@ -92,7 +92,7 @@
 <p><img src="media/rope-config.jpg" alt="Basic Rope Config"></p>
 <p><a href="../../../editor/run-scene.html">Run the scene</a> to see the final shape and behavior.</p>
 <h3 id="rendering">Rendering</h3>
-<p>With just the rope simulation component, you won't be able to see the rope, at all. You also need to attach a <a href="../../../effects/rope-render-component.html">rope render component</a> to the same game object.</p>
+<p>With just the rope simulation component, you won't be able to see the rope, at all. You also need to attach a <a href="../../../effects/ropes/rope-render-component.html">rope render component</a> to the same game object.</p>
 <h3 id="examples">Examples</h3>
 <p>The <a href="../../../../samples/testing-chambers.html">Testing Chambers</a> project contains a dedicated <strong>Ropes scene</strong> with many examples.</p>
 <h2 id="simulation-stability">Simulation Stability</h2>
@@ -127,8 +127,8 @@
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../../../effects/fake-rope-component.html">Fake Rope Component</a></li>
-<li><a href="../../../effects/rope-render-component.html">Rope Render Component</a></li>
+<li><a href="../../../effects/ropes/fake-rope-component.html">Fake Rope Component</a></li>
+<li><a href="../../../effects/ropes/rope-render-component.html">Rope Render Component</a></li>
 <li><a href="../joints/physx-joints.html">Physics Joints</a></li>
 <li><a href="../actors/physx-actors.html">PhysX Actors</a></li>
 </ul>

@@ -10,14 +10,14 @@
     <meta name="title" content="Wind | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -80,9 +80,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="wind">Wind</h1>
 
-<p>Some components can be animated by wind. For instance <a href="particle-effects/particle-effects-overview.html">particle effects</a>, <a href="fake-rope-component.html">ropes</a> and <a href="../terrain/kraut-overview.html">Kraut trees</a> will react to wind. Usually these animations are for decorative purposes.</p>
+<p>Some components can be animated by wind. For instance <a href="../particle-effects/particle-effects-overview.html">particle effects</a>, <a href="../ropes/fake-rope-component.html">ropes</a> and <a href="../../terrain/kraut-overview.html">Kraut trees</a> will react to wind. Usually these animations are for decorative purposes.</p>
 <p><video src="media/wind-cone.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<p>Wind is implemented as a <a href="../runtime/world/world-modules.html">world module</a>. Thus, it is possible to have different wind system implementations, and choose the most suitable for each scene. For example, one system may do a full volumetric fluid simulation, whereas another does not.</p>
+<p>Wind is implemented as a <a href="../../runtime/world/world-modules.html">world module</a>. Thus, it is possible to have different wind system implementations, and choose the most suitable for each scene. For example, one system may do a full volumetric fluid simulation, whereas another does not.</p>
 <p>You instantiate a specific wind system by adding the respective component to a scene. At this time, EZ only ships with a basic implementation. You instantiate it with the <a href="simple-wind-component.html">simple wind component</a>. As long as there is no such component in a scene, there won't be any wind.</p>
 <h2 id="querying-wind-values">Querying Wind Values</h2>
 <p>At runtime you query the wind value by location. First you need to retrieve the wind world module:</p>
@@ -93,7 +93,7 @@
 <pre><code class="lang-cpp">ezVec3 wind = pWindInterface-&gt;GetWindAt(position);
 </code></pre>
 <p>This returns a vector with the direction and strength of the wind at the queried position.</p>
-<p>To react properly to wind, this value must be polled every frame. However, be careful to query only few values. Depending on the active system, this can be a very fast or a rather slow operation. However, usually wind doesn't change drastically within short distances. For example the <a href="../terrain/kraut-overview.html">Kraut</a> trees only query the wind once per tree instance, there is no need for finer detail.</p>
+<p>To react properly to wind, this value must be polled every frame. However, be careful to query only few values. Depending on the active system, this can be a very fast or a rather slow operation. However, usually wind doesn't change drastically within short distances. For example the <a href="../../terrain/kraut-overview.html">Kraut</a> trees only query the wind once per tree instance, there is no need for finer detail.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
 <p>The wind system returns a vector of wind direction and strength. This alone often does not yield a convincing wind effect though. For example a tree or a piece of cloth would only be pushed to one side, but that looks very unnatural. Instead objects should <em>flutter</em> in the wind, e.g. wildly swing up and down or sideways. Such behavior is very object specific and must be implemented on top of the general wind value. The utility function <code>ezWindWorldModuleInterface::ComputeWindFlutter()</code> might be sufficient to get you started.</p>
@@ -101,10 +101,10 @@
 <h2 id="controlling-wind">Controlling Wind</h2>
 <p>To add wind locally, have a look at the <a href="wind-volume-components.html">wind volume components</a>. These can be used both for static wind fields, for example to make a flag blow in the wind nicely, as well as for short lived dynamic effects, such as the shockwave of an explosion.</p>
 <h2 id="affecting-physics-objects">Affecting Physics Objects</h2>
-<p>Be aware that <strong>wind does not affect</strong> any <a href="../physics/jolt/actors/jolt-dynamic-actor-component.html">physics objects</a>. Such behavior could be implemented, but it would be difficult to not have a serious performance impact, since it would keep the physics engine constantly busy (usually objects <em>go to sleep</em> when no forces act upon them, but wind would be a constantly active force).</p>
-<p>Instead, explosions and such rather use a physics shape query to determine objects in range, and then apply a short impulse to only those objects once. See the <a href="../gameplay/area-damage-component.html">area damage component</a> as an example.</p>
+<p>Be aware that <strong>wind does not affect</strong> any <a href="../../physics/jolt/actors/jolt-dynamic-actor-component.html">physics objects</a>. Such behavior could be implemented, but it would be difficult to not have a serious performance impact, since it would keep the physics engine constantly busy (usually objects <em>go to sleep</em> when no forces act upon them, but wind would be a constantly active force).</p>
+<p>Instead, explosions and such rather use a physics shape query to determine objects in range, and then apply a short impulse to only those objects once. See the <a href="../../gameplay/area-damage-component.html">area damage component</a> as an example.</p>
 <h2 id="custom-wind-systems">Custom Wind Systems</h2>
-<p>It is possible to write your own wind system. Just implement a new <a href="../runtime/world/world-modules.html">world module</a>, derive it from <code>ezWindWorldModuleInterface</code> and override the <code>GetWindAt()</code> function. Put your code into a custom <a href="../custom-code/cpp/engine-plugins.html">engine plugin</a> and also add a <a href="../custom-code/cpp/custom-cpp-component.html">custom component type</a> to instantiate your wind world module, and make it configurable.</p>
+<p>It is possible to write your own wind system. Just implement a new <a href="../../runtime/world/world-modules.html">world module</a>, derive it from <code>ezWindWorldModuleInterface</code> and override the <code>GetWindAt()</code> function. Put your code into a custom <a href="../../custom-code/cpp/engine-plugins.html">engine plugin</a> and also add a <a href="../../custom-code/cpp/custom-cpp-component.html">custom component type</a> to instantiate your wind world module, and make it configurable.</p>
 <p>For inspiration, just have a look at <code>ezSimpleWindWorldModule</code> and <code>ezSimpleWindComponent</code>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -119,7 +119,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/wind.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/wind/wind.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -163,9 +163,9 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>

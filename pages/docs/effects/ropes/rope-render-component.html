@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Simple Wind Component | ezEngine </title>
+    <title>Rope Render Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Simple Wind Component | ezEngine ">
+    <meta name="title" content="Rope Render Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,21 +78,24 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="simple-wind-component">Simple Wind Component</h1>
+<h1 id="rope-render-component">Rope Render Component</h1>
 
-<p>The <em>simple wind component</em> implements a very basic <a href="wind.html">wind system</a>. By placing a component of this type in a scene, the <em>simple wind <a href="../runtime/world/world-modules.html">world module</a></em> is created. Things that can react to wind are then able to retrieve a wind value at any location. The simple wind system provides one global wind value, which changes randomly.</p>
-<p>Additionally, it supports <a href="wind-volume-components.html">wind volume components</a>. If any such shape is in a scene, its contribution is added to the global wind value, for objects that are inside such a volume.</p>
+<p>The <em>rope render component</em> is used to render a rope or cable.</p>
+<p><img src="../media/rope-rendering.jpg" alt="Rope"></p>
+<p>The rope simulation is done by other components, such as the <a href="../../physics/jolt/special/jolt-rope-component.html">rope component</a> or the <a href="fake-rope-component.html">fake rope component</a>. The rope render component has to be attached to the same object as the simulation component.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>MinWindStrength</code>, <code>MaxWindStrength</code>: The minimum and maximum strength with which the wind shall blow. A random value in between will be chosen every couple of seconds. To make it easier to get different things working well with each other, the wind values are hard-coded. They are inspired by the <a href="https://en.wikipedia.org/wiki/Beaufort_scale">Beaufort scale</a>. Most things that can react to wind (for example <a href="particle-effects/particle-effects-overview.html">particle effects</a> or <a href="fake-rope-component.html">ropes</a>) also have a <em>wind influence</em> parameter for tweaking how strongly they react to wind. The Beaufort scale enables you to get an idea what reaction to expect, e.g. you know how an effect should look under a light breeze or under storm conditions, and can then tweak the wind influence value accordingly.</p>
-</li>
-<li><p><code>MaxDeviation</code>: How much the wind direction may deviate from the local x-axis. Set this to the maximum value, if the wind is allowed to come from anywhere.</p>
-</li>
+<li><code>Material</code>: The <a href="../../materials/materials-overview.html">material</a> to use for rendering.</li>
+<li><code>Color</code>: The object color. This is typically multiplied into the diffuse part of the material, but the shader may use the color in different ways, as well.</li>
+<li><code>Thickness</code>: The thickness of the rope mesh.</li>
+<li><code>Detail</code>: How many polygons the rope mesh uses to appear round. More detail costs more rendering performance. Note that this has no effect on how many segments the rope is made up of, that is a property of the simulation component.</li>
+<li><code>Subdivide</code>: Whether the rope mesh should have an extra segment subdivision to make it look smoother at strong bends. This doubles the amount of triangles in the mesh. Enable this for ropes that still should look as good as possible even under strong curvature.</li>
+<li><code>UScale</code>: The texture is always wrapped exactly once around the rope. Howver, along the rope's length, this option defines how often it will be repeated.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="wind.html">Wind</a></li>
-<li><a href="wind-volume-components.html">Wind Volume Components</a></li>
+<li><a href="../../physics/jolt/special/jolt-rope-component.html">Jolt Rope Component</a></li>
+<li><a href="fake-rope-component.html">Fake Rope Component</a></li>
 </ul>
 </article>
           </div>
@@ -102,7 +105,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/simple-wind-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/ropes/rope-render-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -146,9 +149,9 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>

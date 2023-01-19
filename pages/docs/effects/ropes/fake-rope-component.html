@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Rope Render Component | ezEngine </title>
+    <title>Fake Rope Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Rope Render Component | ezEngine ">
+    <meta name="title" content="Fake Rope Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,24 +78,42 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="rope-render-component">Rope Render Component</h1>
+<h1 id="fake-rope-component">Fake Rope Component</h1>
 
-<p>The <em>rope render component</em> is used to render a rope or cable.</p>
-<p><img src="media/rope-rendering.jpg" alt="Rope"></p>
-<p>The rope simulation is done by other components, such as the <a href="../physics/jolt/special/jolt-rope-component.html">rope component</a> or the <a href="fake-rope-component.html">fake rope component</a>. The rope render component has to be attached to the same object as the simulation component.</p>
+<p>The <em>fake rope component</em> is used to simulate simple cables, ropes and wires for decorative purposes.</p>
+<p><img src="../media/fake-rope-component.jpg" alt="Fake Ropes"></p>
+<p>These ropes are not able to pull on another object and thus can't be used as a gameplay element. Use the <a href="../../physics/jolt/special/jolt-rope-component.html">rope component</a> for such use cases.</p>
+<p>On the other hand, the fake rope component is more lightweight to simulate and is optimized to have very little overhead when it has reached a resting state (doesn't swing anymore). Therefore it can be used in larger quantities for decorative purposes.</p>
+<h2 id="setting-up-a-rope">Setting Up a Rope</h2>
+<p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../scenes/object-references.html">object reference</a> is used to select which one to use.</p>
+<p>In the object hierarchy it typically looks like this:</p>
+<p><img src="../media/fake-rope-hierarchy.png" alt="Rope Objects"></p>
+<p>The position of the anchors can be moved in the 3D viewport to position the rope as desired. The shape of the simulated rope will be shown as a preview. Use the <code>Slack</code> property to make the rope sag.</p>
+<p><img src="../media/fake-rope-config.jpg" alt="Basic Rope Config"></p>
+<p><a href="../../editor/run-scene.html">Run the scene</a> to see the final shape and behavior.</p>
+<h3 id="rendering">Rendering</h3>
+<p>With just the rope simulation component, you won't be able to see the rope, at all. You also need to attach a <a href="rope-render-component.html">rope render component</a> to the same game object.</p>
+<h3 id="examples">Examples</h3>
+<p>The <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project contains a dedicated <strong>Ropes scene</strong> with many examples.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Material</code>: The <a href="../materials/materials-overview.html">material</a> to use for rendering.</li>
-<li><code>Color</code>: The object color. This is typically multiplied into the diffuse part of the material, but the shader may use the color in different ways, as well.</li>
-<li><code>Thickness</code>: The thickness of the rope mesh.</li>
-<li><code>Detail</code>: How many polygons the rope mesh uses to appear round. More detail costs more rendering performance. Note that this has no effect on how many segments the rope is made up of, that is a property of the simulation component.</li>
-<li><code>Subdivide</code>: Whether the rope mesh should have an extra segment subdivision to make it look smoother at strong bends. This doubles the amount of triangles in the mesh. Enable this for ropes that still should look as good as possible even under strong curvature.</li>
-<li><code>UScale</code>: The texture is always wrapped exactly once around the rope. Howver, along the rope's length, this option defines how often it will be repeated.</li>
+<li><p><code>Anchor</code>: A <a href="../../scenes/object-references.html">reference</a> to an object whose position determines where the rope ends.</p>
+</li>
+<li><p><code>AttachToOrigin</code>, <code>AttachToAnchor</code>: Whether the rope is fixed at the origin or anchor location. If the rope is not attached at one or both ends it is free to move away from there.</p>
+</li>
+<li><p><code>Pieces</code>: How many individual pieces the rope is made up of. More pieces look prettier, but cost more performance and may decrease the simulation stability.</p>
+</li>
+<li><p><code>Slack</code>: How much slack the rope has. A value of zero means the rope is hung perfectly straight between its anchors. Positive values make the rope sag downwards.</p>
+</li>
+<li><p><code>Damping</code>: How quickly the rope loses energy while swinging. Higher values make the rope come to rest more quickly, low values make the rope swing for a long time. Once a rope comes to rest, it takes significantly less processing power.</p>
+</li>
+<li><p><code>WindInfluence</code>: How strongly <a href="../wind/wind.html">wind</a> should make the rope swing. Be aware that having many swinging ropes costs a lot of performance.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../physics/jolt/special/jolt-rope-component.html">Jolt Rope Component</a></li>
-<li><a href="fake-rope-component.html">Fake Rope Component</a></li>
+<li><a href="../../physics/jolt/special/jolt-rope-component.html">Jolt Rope Component</a></li>
+<li><a href="rope-render-component.html">Rope Render Component</a></li>
 </ul>
 </article>
           </div>
@@ -105,7 +123,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/rope-render-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/ropes/fake-rope-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -149,9 +167,9 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>
