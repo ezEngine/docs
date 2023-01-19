@@ -2370,7 +2370,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/camera-shake/camera-shake-component.html",
-          "hash": "9gz4FyhSzXFcp91KrkJSvtNz82XUe+0Mprhk1wV9UG8="
+          "hash": "AOuy7xe35UfddxHpVwbCBuQoIa683Gl5empE1hcWz64="
         }
       },
       "is_incremental": false,
@@ -2430,6 +2430,17 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/media/beam.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/camera-shake.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/camera-shake.webm"
         }
       },
       "is_incremental": false,
@@ -3019,30 +3030,24 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/wind/wind-volume-components.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/wind/wind-volume-components.html",
-          "hash": "smdj/Gz0Mqsq8g3MJfxMJQfGkHAfURfvRny2T0k1Uyw="
+          "hash": "n+ZwKFqHYVpl7Tclos8blatQyDZkNzsn8BHfb5Oq1Tk="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/wind/wind.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/wind/wind.html",
-          "hash": "wLliSonER4x872yTjOLdcQBn9Ib/BStf9rEUZtrW3ZY="
+          "hash": "WuwYKIhO4QRiFH8l1rLsOoKmS5yJBmpM8W7e5dTF4Sg="
         }
       },
       "is_incremental": false,
