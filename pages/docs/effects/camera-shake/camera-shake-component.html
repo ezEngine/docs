@@ -84,6 +84,9 @@
 <p><video src="../media/camera-shake.webm" width="600" height="600" autoplay="" loop=""></video></p>
 <p>How much shake to apply is controlled through the <code>MinShake</code> and <code>MaxShake</code> properties. Typically <code>MinShake</code> is zero, meaning there is no shake, at all, but you can procedurally raise the value at any time.</p>
 <p>However, it is more convenient to instead place a <a href="camera-shake-volume-components.html">camera shake volume</a>. This allows to easily define where in a scene the camera should shake and how much.</p>
+<p>The shake is applied as a local rotation around the Y and Z axis, assuming the <a href="../../graphics/camera-component.html">camera</a> is looking along the positive X axis. Insert a dedicated shake object as a parent of your camera like this:</p>
+<p><img src="../media/camera-shake-setup.png" alt="Camera shake setup"></p>
+<p>The component could theoretically also be used to add a shake effect to other decorative objects.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>MinShake</code>: The minimum amount of shake to apply to the owner object at all times. Measured in angle, because the shake is applied as a rotation.</li>

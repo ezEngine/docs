@@ -2370,7 +2370,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/camera-shake/camera-shake-component.html",
-          "hash": "AOuy7xe35UfddxHpVwbCBuQoIa683Gl5empE1hcWz64="
+          "hash": "iEAzrGMlloAWdcmF6ucNs387Y5QTU6y9BBIbK9C3oWE="
         }
       },
       "is_incremental": false,
@@ -2430,6 +2430,17 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/media/beam.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/camera-shake-setup.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/camera-shake-setup.png"
         }
       },
       "is_incremental": false,
