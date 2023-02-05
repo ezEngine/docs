@@ -1292,7 +1292,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/import-assets.html",
-          "hash": "VTmaPJzC2ayG/RP+ZHmELdwy9OgTAjzp66PJWXBgPAs="
+          "hash": "swWQ4m09CAqd7vdzs8F3zxbCArqCbo37wVCuPlVXPEk="
         }
       },
       "is_incremental": false,
@@ -3752,7 +3752,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/sprite-component.html",
-          "hash": "/PUOKcAfqJSzdX5e6yTR2oNgLeqcYegmdBm6OerorHY="
+          "hash": "X5XP2wtVsunxoM2r99oDSOZLM3/BV/pUv7luERelvlA="
         }
       },
       "is_incremental": false,
@@ -6129,7 +6129,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/scenes/scene-editing.html",
-          "hash": "AKIl2SEgriD3lnaBxYmEjAKtGDpxMfmaVnfRrTrs1Fg="
+          "hash": "3D0LFIJPJwTqbkeuaqiVQnscSOah2nRHAZSApk3DBPk="
         }
       },
       "is_incremental": false,
