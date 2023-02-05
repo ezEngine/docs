@@ -94,6 +94,8 @@
 <p>Regular actors are used to represent all the physical objects in a world that should react realistically to external stimuli. Kinematic actors are used for everything that needs to move, and should affect the simulated objects, but should itself be under full control of the game logic. Kinematic actors will push other actors out of their way relentlessly. If a kinematic actor moves into another kinematic or static actor, the two will simply pass through each other.</p>
 <p>Whether a dynamic actor is treated as a kinematic actor or not, is an on/off switch. It is possible to switch this property back and forth at will.</p>
 <p>Dynamic actors are set up by attaching a <a href="jolt-dynamic-actor-component.html">dynamic actor component</a> to a <a href="../../../runtime/world/game-objects.html">game object</a>.</p>
+<h3 id="video-how-to-create-a-physics-object">Video: How to create a physics object</h3>
+<p><a href="https://www.youtube.com/watch?v=hlEUdO5yVig"><img src="https://img.youtube.com/vi/hlEUdO5yVig/0.jpg" alt="video"></a></p>
 <h2 id="triggers">Triggers</h2>
 <p>Triggers are a special type of actor. Triggers don't interfere with the simulation, meaning nothing ever collides with them. Instead, triggers monitor whether any other actor overlaps with their volume. If so, they raise an <a href="../../../runtime/world/world-messaging.html#event-messages">event message</a> to inform other code.</p>
 <p>Triggers are an efficient solution to detect overlaps, when it is imperative that no overlap is ever missed. If on the other hand you only want to check for overlapping objects at some time or only every couple of seconds, it can be more efficient to just do an <em>overlap check</em> through the physics API.</p>

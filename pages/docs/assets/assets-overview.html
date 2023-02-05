@@ -94,6 +94,8 @@
 <p>The editor references assets not by file path, but by <strong>GUID</strong> (<strong>G</strong>lobally <strong>U</strong>nique <strong>ID</strong>entifier). Each asset is assigned a GUID upon creation and the GUID never changes. That means an asset document can be renamed and moved to a different location on disk, and the editor will continue to find it. Similarly, the engine runtime will also locate the transformed asset files through the asset GUID (the <a href="../runtime/filesystem.html">file system</a> takes care of translating a GUID to an actual path). This makes reorganizing the file structure easy and resilient to errors.</p>
 <p>For the rare case that you need to know the actual GUID of an asset, you can right click any asset document and select <em>Copy Asset GUID</em>.</p>
 <p>The only caveat is, that you should never duplicate an asset by actually copy and pasting an asset file, as this would result in two assets with the same GUID. The editor will try to detect and fix such cases, but it may not work out the way you planned. Instead use the <em>File &gt; Save as...</em> functionality to create a copy of an asset with a different name. This will assign a new asset GUID to the new asset document.</p>
+<h3 id="video-how-to-copy-asset-documents">Video: How to copy asset documents</h3>
+<p><a href="https://www.youtube.com/watch?v=jHB6TY2FulI"><img src="https://img.youtube.com/vi/jHB6TY2FulI/0.jpg" alt="video"></a></p>
 <h2 id="asset-browser">Asset Browser</h2>
 <p>All assets are listed in the <a href="asset-browser.html">asset browser</a>.</p>
 <h2 id="asset-transform">Asset Transform</h2>
