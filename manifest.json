@@ -7175,6 +7175,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/samples/media/pacman1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/pacman1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/samples/media/rts1.jpg",
       "output": {
         "resource": {
@@ -7351,6 +7362,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/samples/pacman.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/pacman.html",
+          "hash": "l/7QuSLgSXBXKnvAyCMc+iJfTrJwy+wBTjCmpasbDyc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/samples/rts.md",
       "output": {
         ".html": {
@@ -7439,7 +7462,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/toc.html",
-          "hash": "NYVqZSK1UjHusMxmHYTgitwdeOIbyRL3KiRU8nxzjdA="
+          "hash": "5llIhvwn3dTJPQhUMfvJOg3rinOL0Y9xOuS2glXGQnI="
         }
       },
       "is_incremental": false,
@@ -7472,7 +7495,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 313,
+          "total_file_count": 314,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
