@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Animated Mesh Asset | ezEngine </title>
+    <title>Path Node Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Animated Mesh Asset | ezEngine ">
+    <meta name="title" content="Path Node Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,35 +78,29 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="animated-mesh-asset">Animated Mesh Asset</h1>
+<h1 id="path-node-component">Path Node Component</h1>
 
-<p>The animated mesh asset is very similar to the <a href="../../graphics/meshes/mesh-asset.html">mesh asset</a>. However, it adds the necessary data to a mesh such that it can be used for <a href="skeletal-animation-overview.html">skeletal animation</a>.</p>
-<p><img src="../media/animated-mesh-asset.jpg" alt="Animated Mesh Asset"></p>
-<p>Animated meshes are placed in a scene with a dedicated <a href="animated-mesh-component.html">animated mesh component</a>. Which animations are played on it can be controlled with a <a href="simple-animation-component.html">simple animation component</a> or an <a href="animation-controller/animation-controller-component.html">animation controller component</a>.</p>
-<h2 id="video-how-to-import-an-animated-mesh">Video: How to import an animated mesh</h2>
-<p><a href="https://www.youtube.com/watch?v=yT-F5d-V3HU"><img src="https://img.youtube.com/vi/yT-F5d-V3HU/0.jpg" alt="video"></a></p>
-<h2 id="asset-properties">Asset Properties</h2>
+<p>The <em>path node component</em> is used in conjunction with a <a href="path-component.html">path component</a> to build a path shape.
+It must be attached to a child object of the object where a path component is present.</p>
+<p>The path node component has no runtime functionality and mainly exists for editing paths, as it provides a shape icon in the editor for node selection, and can be moved around with the standard editing tools. At runtime, the path component stores all the important data in a more optimized data structure.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Objects that only contain a <em>path node component</em> are removed from the scene during <a href="../../editor/run-scene.html">scene export</a>. They have no use at runtime and are solely used for editing purposed. Thus in an exported scene you will neither find any path node components, nor the objects that they were attached to, unless you attach other components or child objects to them.</p>
+</blockquote>
+<h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>MeshFile</code>: The file that contains the mesh data. For animated meshes prefer to use <strong>GLB</strong> (binary GLTF) files. <strong>FBX</strong> files can be used as well, though due to FBX's complexity chances are higher that it won't work as expected. The referenced file must contain the mesh data with skinning information. It doesn't need to contain any animation clips.</p>
-</li>
-<li><p><code>DefaultSkeleton</code>: The <a href="skeleton-asset.html">skeleton asset</a> that is used to skin the animated mesh by default.</p>
-</li>
-<li><p><code>RecalculateNormals</code>, <code>RecalculateTangents</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>NormalPrecision</code>, <code>TexCoordPrecision</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>ImportMaterials</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>Materials</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
+<li><code>Roll</code>: Sets the roll angle at this node, ie. how much the path curls around its own forward direction here. This doesn't affect the path shape itself, however, components that use the path, such as the <a href="follow-path-component.html">follow path component</a>, may use this information for rotation.</li>
+<li><code>Tangent1</code>, <code>Tangent2</code>: The mode for the tangents of the incoming and outgoing path segments:
+<ul>
+<li><code>Auto</code>: The curvature at the node is automatically adjusted to be smooth.</li>
+<li><code>Linear</code>: The path takes the shortest route in or out of the node. Used to create sharp corners without any curvature.</li>
+</ul>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animated-mesh-component.html">Animated Mesh Component</a></li>
-<li><a href="skeleton-asset.html">Skeleton Asset</a></li>
-<li><a href="skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="animation-clip-asset.html">Animation Clip Asset</a></li>
-<li><a href="simple-animation-component.html">Simple Animation Component</a></li>
+<li><a href="path-component.html">Path Component</a></li>
+<li><a href="follow-path-component.html">Follow Path Component</a></li>
 </ul>
 </article>
           </div>
@@ -116,7 +110,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animated-mesh-asset.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/path-node-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

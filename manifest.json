@@ -657,6 +657,75 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/paths/follow-path-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/paths/follow-path-component.html",
+          "hash": "8sghj5WaRoBzXxSMKgXKGyYUArssGc6VHvcltFjKw34="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/path-component.webm",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/path-component.webm"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/path-hierarchy.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/path-hierarchy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/path-properties.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/path-properties.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/paths/path-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/paths/path-component.html",
+          "hash": "6U1HrjUep1Irc0PZPfZmemdSCNZjJsR1DdJLV4Ft1vE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/paths/path-node-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/paths/path-node-component.html",
+          "hash": "4F0M7x4vkWpkURrBifrvDBvKHwBT7bXsFW3aRChyCMs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/animation/property-animation/color-animation-component.md",
       "output": {
         ".html": {
@@ -745,7 +814,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/animation/skeletal-animation/animated-mesh-asset.html",
-          "hash": "56iQt90VXUbezsopufl81lbLx9cBLobH7MJKhPIES3Y="
+          "hash": "unnsprKz0gsck6MLbObtoymZB+Zmphtn/PVYy0/Ne9c="
         }
       },
       "is_incremental": false,
@@ -6769,7 +6838,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "7zBfbGoDVBomXwTw0liFBr1jhenf2963+iYqK7If+co="
+          "hash": "nVP1TsczyNvn1hielBMDdp2rUv6f/uJXGPUnTVZv/h4="
         }
       },
       "is_incremental": false,
@@ -7495,7 +7564,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 314,
+          "total_file_count": 317,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

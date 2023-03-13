@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Animated Mesh Asset | ezEngine </title>
+    <title>Path Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Animated Mesh Asset | ezEngine ">
+    <meta name="title" content="Path Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
@@ -78,35 +78,45 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="animated-mesh-asset">Animated Mesh Asset</h1>
+<h1 id="path-component">Path Component</h1>
 
-<p>The animated mesh asset is very similar to the <a href="../../graphics/meshes/mesh-asset.html">mesh asset</a>. However, it adds the necessary data to a mesh such that it can be used for <a href="skeletal-animation-overview.html">skeletal animation</a>.</p>
-<p><img src="../media/animated-mesh-asset.jpg" alt="Animated Mesh Asset"></p>
-<p>Animated meshes are placed in a scene with a dedicated <a href="animated-mesh-component.html">animated mesh component</a>. Which animations are played on it can be controlled with a <a href="simple-animation-component.html">simple animation component</a> or an <a href="animation-controller/animation-controller-component.html">animation controller component</a>.</p>
-<h2 id="video-how-to-import-an-animated-mesh">Video: How to import an animated mesh</h2>
-<p><a href="https://www.youtube.com/watch?v=yT-F5d-V3HU"><img src="https://img.youtube.com/vi/yT-F5d-V3HU/0.jpg" alt="video"></a></p>
-<h2 id="asset-properties">Asset Properties</h2>
+<p>The <em>path component</em> is used to set up path shapes. Other components, such as the <a href="follow-path-component.html">follow path component</a> can then use the path shape to animate objects or to build geometry.</p>
+<p><video src="media/path-component.webm" width="800" height="600" autoplay="" loop=""></video></p>
+<h2 id="how-to-configure-a-path">How to Configure a Path</h2>
+<ol>
+<li><p>Add a <a href="../../runtime/world/game-objects.html">game object</a> and attach a <em>path component</em> to it.</p>
+</li>
+<li><p>Add several game objects as child objects (at least three)</p>
+</li>
+<li><p>Attach a <a href="path-node-component.html">path node component</a> to each child object.</p>
+</li>
+<li><p>Give each child object a different name. It is easiest to just give them numbers in the order in which you want them to be used in the path.</p>
+<p><img src="media/path-hierarchy.png" alt="Path hierarchy config"></p>
+</li>
+<li><p>Add those names in the desired order to the <strong>Nodes</strong> property of the path component.</p>
+<p><img src="media/path-properties.png" alt="Path property config"></p>
+</li>
+<li><p>Position the child objects in the world to form a path. Make sure the <code>Visualize Path</code> flag is enabled on the path component, so that you can see a preview of the shape.</p>
+</li>
+<li><p>Additionally to the options on the path component itself, you can also edit each node's properties, to adjust the curvature, and whether the path should curl around itself.</p>
+</li>
+</ol>
+<h2 id="what-to-do-with-a-path">What to do with a Path</h2>
+<p>A path component by itself has no functionality other than to define a shape. Currently these component types can utilize path shapes:</p>
 <ul>
-<li><p><code>MeshFile</code>: The file that contains the mesh data. For animated meshes prefer to use <strong>GLB</strong> (binary GLTF) files. <strong>FBX</strong> files can be used as well, though due to FBX's complexity chances are higher that it won't work as expected. The referenced file must contain the mesh data with skinning information. It doesn't need to contain any animation clips.</p>
-</li>
-<li><p><code>DefaultSkeleton</code>: The <a href="skeleton-asset.html">skeleton asset</a> that is used to skin the animated mesh by default.</p>
-</li>
-<li><p><code>RecalculateNormals</code>, <code>RecalculateTangents</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>NormalPrecision</code>, <code>TexCoordPrecision</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>ImportMaterials</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>Materials</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
+<li><a href="follow-path-component.html">Follow Path Component</a></li>
+</ul>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Flags</code>: Preview flags for the path shape. The <em>visualize path</em> flag is enabled by default, once you are done setting up the path, you should disable it.</li>
+<li><code>Closed</code>: Whether the path should loop in on itself or not.</li>
+<li><code>Detail</code>: How detailed the path will be. A finer detail (low value) means there are fewer sharp turns along the curves, but also takes up more memory and time to compute. Unless you notice obvious problems with the path tesselation, this value should stay at its default value.</li>
+<li><code>Nodes</code>: This array needs to reference all nodes by name. If a non-existing name is used, it is ignored.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animated-mesh-component.html">Animated Mesh Component</a></li>
-<li><a href="skeleton-asset.html">Skeleton Asset</a></li>
-<li><a href="skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="animation-clip-asset.html">Animation Clip Asset</a></li>
-<li><a href="simple-animation-component.html">Simple Animation Component</a></li>
+<li><a href="path-node-component.html">Path Node Component</a></li>
+<li><a href="follow-path-component.html">Follow Path Component</a></li>
 </ul>
 </article>
           </div>
@@ -116,7 +126,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animated-mesh-asset.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/path-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
