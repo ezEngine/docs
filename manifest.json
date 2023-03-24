@@ -173,6 +173,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/components/comment-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/components/comment-component.html",
+          "hash": "Zp11pGgME/T/BRElACdh2X198lIwRS58cZoDzf9xB3Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/components/shape-icon-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/components/shape-icon-component.html",
+          "hash": "yydAcurATg9M/ZTGIHvePDJ8OW09qV029Gv8YhesUwQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/Miscellaneous/config-file-resource.md",
       "output": {
         ".html": {
@@ -1709,6 +1733,30 @@
         ".html": {
           "relative_path": "pages/docs/custom-code/custom-code-overview.html",
           "hash": "RgeHTrex3Ag4pcKcRUr2iPAYXUfEvcTD8U5uO7noFes="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/game-logic/forward-events-to-game-state-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/game-logic/forward-events-to-game-state-component.html",
+          "hash": "VPblMX5hKZB3B5iY/hBR9t/DQmNepeg9sw2D75AdlV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/game-logic/trigger-delay-modifier-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/game-logic/trigger-delay-modifier-component.html",
+          "hash": "6UDyvlJpfTjNqe+GzvFukcP1oUpGJMjTmIfLkKVpows="
         }
       },
       "is_incremental": false,
@@ -4101,7 +4149,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/actors/jolt-trigger-component.html",
-          "hash": "Xh5gWPtsfysGvCvb6igX2rQ6MMLNPTczlrhrtXLjftI="
+          "hash": "W8ZBGApqZfzXKRnxgc70y2aTNQ4mWU7vuRJmN4wO6CA="
         }
       },
       "is_incremental": false,
@@ -5737,7 +5785,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/runtime/world/world-messaging.html",
-          "hash": "cjwale7FXmsJZWmVSlLMZ7xOEwFvbXBVZZMpcTQpeBk="
+          "hash": "3a9nL2otAqLDxzdcANpFPozpMm43JedbF9dtIN5KfJk="
         }
       },
       "is_incremental": false,
@@ -6838,7 +6886,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "nVP1TsczyNvn1hielBMDdp2rUv6f/uJXGPUnTVZv/h4="
+          "hash": "fSsYqa3l/RZ/KPMwjI0vZortA8z56V9PkE6p1D+TMTA="
         }
       },
       "is_incremental": false,
@@ -7564,7 +7612,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 317,
+          "total_file_count": 321,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

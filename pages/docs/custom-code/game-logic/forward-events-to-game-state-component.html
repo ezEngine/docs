@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Jolt Trigger Component | ezEngine </title>
+    <title>Forward Events To Game State Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Jolt Trigger Component | ezEngine ">
+    <meta name="title" content="Forward Events To Game State Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../../../toc.html">
-    <meta property="docfx:tocrel" content="../../../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,32 +78,18 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="jolt-trigger-component">Jolt Trigger Component</h1>
+<h1 id="forward-events-to-game-state-component">Forward Events To Game State Component</h1>
 
-<p>The <em>Jolt trigger component</em> is a special kind of <a href="jolt-actors.html">actor</a> that determines whether other actors overlap with its volume. If so, it sends a trigger <a href="../../../runtime/world/world-messaging.html">event message</a>. Other components or script code can react to this message to implement their game logic.</p>
-<p>Triggers are often used to open and close doors, to check whether a character walked over a pickup item and to detect when the player reached some location.</p>
-<p><video src="media/trigger.webm" width="600" height="600" autoplay="" loop=""></video></p>
-<p>A trigger is set up the same way as a <a href="jolt-static-actor-component.html">static actor</a> or a <a href="jolt-dynamic-actor-component.html">dynamic actor</a>, by attaching <a href="../collision-shapes/jolt-shapes.html">collision shapes</a> to it. Which other physics objects activate the trigger is determined through the <a href="../collision-shapes/jolt-collision-layers.html">collision layers</a> on the attached shapes.</p>
-<p>Since triggers are not simulated like rigid bodies, they don't require much configuration.</p>
-<p>Triggers can be moved around at runtime and they will fire, when an object enters a trigger because the trigger moved into the object.</p>
-<p>When a trigger fires, it sends the event message <code>ezMsgTriggerTriggered</code>. The message states which other object was involved, and whether it entered or left the trigger volume. It will also pass along the <code>TriggerMessage</code> string. This can be used to identify which (kind of) trigger was just triggered.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>Physics triggers only detect overlaps with other physics objects. For such scenarios they are an efficient solution. If, however, you need to query overlaps with other kinds of objects, you should take a look at the <a href="../../../runtime/world/spatial-system.html">spatial system</a>.</p>
-</blockquote>
-<p>To achieve more complex trigger behavior, for instance to only activate something after a delay, you can utilize the <a href="../../../custom-code/game-logic/trigger-delay-modifier-component.html">trigger delay modifier component</a>.</p>
-<h2 id="component-properties">Component Properties</h2>
-<ul>
-<li><code>CollisionLayer</code>: The <a href="../collision-shapes/jolt-collision-layers.html">collision layer</a> to use.</li>
-<li><code>TriggerMessage</code>: The string that should be sent along with the <code>ezMsgTriggerTriggered</code>.</li>
-</ul>
+<p>This component forwards any message that it receives to the active <a href="../../runtime/application/game-state.html">game state</a>.</p>
+<p>Game states can have <a href="../../runtime/world/world-messaging.html">message handlers</a> just like any other reflected type.
+However, since they are not part of the <a href="../../runtime/world/worlds.html">world</a>, messages are not delivered to them. By attaching this component to a game object, all event messages that arrive here are forwarded to the active game state.</p>
+<p>This way, a game state can receive information, such as when a trigger gets activated. Multiple of these components can exist in a scene, gathering and forwarding messages from many different game objects, so that the game state can react to all of them.</p>
+<h2 id="properties">Properties</h2>
+<p>None.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../../../custom-code/game-logic/trigger-delay-modifier-component.html">Trigger Delay Modifier Component</a></li>
-<li><a href="jolt-actors.html">Jolt Actors</a></li>
-<li><a href="../collision-shapes/jolt-shapes.html">Jolt Shapes</a></li>
-<li><a href="../../../runtime/world/spatial-system.html">Spatial System</a></li>
-<li><a href="../../../gameplay/marker-component.html">Marker Component</a></li>
+<li><a href="../../runtime/application/game-state.html">Game States</a></li>
+<li><a href="../../runtime/world/world-messaging.html">Messaging</a></li>
 </ul>
 </article>
           </div>
@@ -113,7 +99,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/actors/jolt-trigger-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/game-logic/forward-events-to-game-state-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -157,9 +143,9 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>
