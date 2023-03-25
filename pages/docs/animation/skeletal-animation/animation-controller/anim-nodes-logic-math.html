@@ -83,13 +83,13 @@
 <p>The animation controller provides a couple of nodes to evaluate basic arithmatic and logic. This is meant for very simple use cases and for quick prototyping. Often animation logic requires much more complex rules than what would be feasible to express in the animation controller graph. Instead use <a href="../../../custom-code/custom-code-overview.html">custom code</a> to decide which animation should run under which circumstances, and pass the result to the animation controller via a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation controller can then simply read the state for each animation using the <a href="anim-nodes-blackboard.html">blackboard nodes</a>.</p>
 <h2 id="logic-and-node">Logic AND Node</h2>
 <p>This node sets its output pin to <em>triggered</em> when <strong>all</strong> incoming connections on the input pin are triggered at the same time. Note that even though there is only a single input pin, it can be connected to multiple sources.</p>
-<h3 id="properties">Properties</h3>
+<h3 id="node-properties">Node Properties</h3>
 <ul>
 <li><strong>NegateResult</strong>: If set, the output value will be negated. This effectively turns it into a <code>NAND</code> logic node.</li>
 </ul>
 <h2 id="logic-or-node">Logic OR Node</h2>
 <p>This node sets its output pin to <em>triggered</em> when <strong>any</strong> incoming connections on the input pin are triggered. Note that even though there is only a single input pin, it can be connected to multiple sources.</p>
-<h3 id="properties-1">Properties</h3>
+<h3 id="node-properties-1">Node Properties</h3>
 <ul>
 <li><strong>NegateResult</strong>: If set, the output value will be negated. This effectively turns it into a <code>NOR</code> logic node.</li>
 </ul>
@@ -98,7 +98,7 @@
 <p>As with the other nodes, you can connect multiple sources to this input pin. In this case, if any of those connections is triggered, the entire input pin is considered to be in the triggered state, and the output will be the opposite.</p>
 <h2 id="compare-value-node">Compare Value Node</h2>
 <p>This node can be used to check whether a number value compares in a certain way against a reference value. For example whether some input value is larger than 0.5. If this is the case, the output pin will be triggered.</p>
-<h3 id="properties-2">Properties</h3>
+<h3 id="node-properties-2">Node Properties</h3>
 <ul>
 <li><strong>ReferenceValue</strong>: The reference value to compare the incoming value against.</li>
 <li><strong>Comparison</strong>: The mathematical operation with which to compare the two values.</li>
@@ -114,7 +114,7 @@
 <h2 id="math-expression-node">Math Expression Node</h2>
 <p>The math expression node takes up to four different numbers as its input, plugs them into a user provided expression and outputs the result.</p>
 <p>The expression must be syntactically correct, otherwise the node prints an error to the <a href="../../../debugging/logging.html">log</a>.</p>
-<h3 id="properties-3">Properties</h3>
+<h3 id="node-properties-3">Node Properties</h3>
 <p><strong>Expression</strong>: The expression can use the following:</p>
 <ul>
 <li>Numbers in floating point format (e.g. <code>1</code>, <code>2.3</code>, <code>-78</code>)</li>

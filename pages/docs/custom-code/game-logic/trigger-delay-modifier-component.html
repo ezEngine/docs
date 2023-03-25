@@ -84,7 +84,7 @@
 <p>The <em>enter</em> and <em>leave</em> messages are sent only when an empty trigger is entered or when the last object leaves the trigger. While any object is already inside the trigger, no change event is sent. Therefore this component can't be used to keep track of all the objects inside a trigger.</p>
 <p>The <em>enter</em> and <em>leave</em> events can be sent with a delay. The <em>enter</em> event is only sent, if the trigger had at least one object inside it for the full duration of the delay. Which exact object may change, but once the trigger contains no object, the timer is reset.</p>
 <p>The sent <code>ezMsgTriggerTriggered</code> does not contain a reference to the <em>triggering</em> object, since there may be multiple and they may change randomly.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>ActivationDelay</code>, <code>DeactivationDelay</code>: The time that an object needs to be present inside the trigger, or have fully left the trigger area, before the trigger is considered to be activated or deactivated. Only after this delay is the <code>ezMsgTriggerTriggered</code> event sent to the parent object.</li>
 </ul>

@@ -90,7 +90,7 @@ On its own this component doesn't do anything. However, it can be set to be <em>
 <p>The component automatically connects to another object when it receives a <code>ezMsgSensorDetectedObjectsChanged</code>, so it should have a child object with a <a href="../ai/sensor-components.html">sensor</a>. The sensor should use a dedicated <a href="../runtime/world/spatial-system.html">spatial category</a> to search for <a href="marker-component.html">markers</a> where it can connect.</p>
 <p>To have a sensor (or other effects) only active when the connector is grabbed, put them in a child object with the name <em>ActiveWhenGrabbed</em> and disable the object by default. The parent power connector component will toggle the active flag of that object when it gets grabbed or let go.</p>
 <p>To build a cable, don't forget to set each end as the <em>buddy</em> of the other end.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><p><code>Output</code>: Sets how much output (of whatever kind) this connector produces.</p>
 <p>If this is zero, it is either a receiver, or a pass-through connector, e.g. a cable, or just currently inactive.</p>

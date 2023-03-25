@@ -88,7 +88,7 @@
 <p>This node is useful if you have an action that can be done at different speeds and you want to cover all possible speeds with just a few different animation clips. The most intuitive example is a walk/run motion. You only need two animation clips, one for slow walking and one for fast running, and this node allows you to generate any speed in between through interpolation.</p>
 <p>For this to work, all animation clips have to follow the rule that they do the same motion at the same relative time offset. So in the case of a walk/run motion, both clips have to start with the same foot forwards, then move the other foot and finally move the first foot again, such that the animation is looped. The clips can have different lengths, though, so the <em>run</em> clip might be shorter than the <em>walk</em> clip (and therefore faster).</p>
 <p>In the video above you can see such a transition in action. The <em>lerp</em> input value is varyied to demonstrate how the resulting interpolated animation looks. Here the node also has an <em>idle</em> and a <em>walk backward</em> clip, so it can interpolate between even more states.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="node-properties">Node Properties</h2>
 <p>See <a href="anim-nodes-playclip.html#common-properties">common properties</a>.</p>
 <ul>
 <li><code>Clips</code>: A list of animation clips between which this animation node will interpolate. The node will only ever sample the two clips whose <code>Position</code> values are closest the the value provided through the <code>Lerp</code> input pin.</li>

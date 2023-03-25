@@ -91,7 +91,7 @@
 <p>Bone weights are typically connected directly to an animation clip sampling node, and the information that this animation clip shall only influence a part of the skeleton is passed along until it reaches a <a href="anim-nodes-combine-poses.html">combine poses node</a> where the result is baked into one pose. Without such a node in the graph, the bone weights won't have an effect.</p>
 <h2 id="bone-weight-config-node">Bone Weight Config Node</h2>
 <p>This node creates a mask for every bone in the skeleton. By default, the mask is zero for every bone. You then add bones by name to the <code>RootBones</code> array. Every bone that is reachable from any of the root bones, will get a weight of one. You can specify multiple root bones, in case that an animation should for example affect both arms, but not the spine and head.</p>
-<h3 id="properties">Properties</h3>
+<h3 id="node-properties">Node Properties</h3>
 <ul>
 <li><p><strong>Weight</strong>: The overall weight for the mask. A higher weight means that animation clips that use this weight mask will have stronger influence on the final pose.</p>
 </li>

@@ -90,7 +90,7 @@
 <p>What the coordinates represent is up to you. For locomotion you could say that <code>X</code> represents left/right movement and <code>Y</code> forwards/backwards. You would then position a <em>walk left</em> clip at <code>(-1, 0)</code> a <em>walk right</em> clip at <code>(+1, 0)</code> a <em>walk forward</em> clip at <code>(0, +1)</code> and a <em>run forward</em> clip at <code>(0, +2)</code>.</p>
 <p>Through the <code>X</code> and <code>Y</code> input pins you provide a 2D coordinate. During testing you may hook this up directly to an <a href="anim-nodes-input.html">input node</a>, though later you'll probably need more control.</p>
 <p>The node will then take that input coordinate to decide which clips should be used with what influence, and mix them together to a single output pose.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="node-properties">Node Properties</h2>
 <p>See <a href="anim-nodes-playclip.html#common-properties">common properties</a>.</p>
 <ul>
 <li><p><code>InputResponse</code>: A time duration over which changes to the <code>X</code> and <code>Y</code> input values are applied. This prevents sudden extreme changes. For example when <code>X</code> and <code>Y</code> are connected to physical buttons, which are just turned <em>on</em> or <em>off</em>, the final animation would jerk between those extremes. In a finished game you may want to smooth out the input yourself, but for starters this node can do a basic smoothing of the input values for you. Thus, if an input value switches from <code>1</code> to <code>0</code>, an <code>InputResponse</code> of 50ms means that the used value will transition smoothly towards <code>0</code> over that amount of time and thus the output pose will also transition smoothly.</p>

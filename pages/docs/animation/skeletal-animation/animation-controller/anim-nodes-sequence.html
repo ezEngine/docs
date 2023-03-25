@@ -84,7 +84,7 @@
 <p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
 <p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <p>The video above shows such a sequence. Here the node uses a <em>point gun</em> animation clip for the start, middle and end clip. The <em>point gun</em> clip is only a single keyframe and just represents a static pose. Using it for the start clip, allows to slowly fade from the idle state to the pointing state, making the character raise their arm. Using it for the end state similarly allows to fade it out over a short duration, making the character lower their arm slowly as well. As the middle clip there are two options: <em>point gun</em> and <em>shoot gun</em>. Using the <code>ClipIndex</code> input pin, the game code can switch at any time whether the gun is only pointed or shot as well.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="node-properties">Node Properties</h2>
 <p>See <a href="anim-nodes-playclip.html#common-properties">common properties</a>.</p>
 <ul>
 <li><p><code>StartClip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to start with. This clip should end on a keyframe from where the <code>MiddleClips</code> can continue seemlessly.</p>
