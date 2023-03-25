@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Blackboards | ezEngine </title>
+    <title>Power Connector Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Blackboards | ezEngine ">
+    <meta name="title" content="Power Connector Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,20 +78,46 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="blackboards">Blackboards</h1>
+<h1 id="power-connector-component">Power Connector Component</h1>
 
-<p>A blackboard is a simple data structure that holds data as <em>key/value</em> pairs. Each entry in a blackboard has a name (the <em>key</em>) and a basic value type, such as <code>int</code>, <code>float</code> or <code>string</code>. Entries can be added and modified at any time.</p>
-<p>Blackboards are a convenient data structure to share information between different systems. Apart from pure data storage, the blackboard implementation in EZ may also send messages whenever a value of an entry changes. This way a system can react immediately to a change, without having to poll the blackboard regularly.</p>
-<h2 id="using-blackboards">Using Blackboards</h2>
-<p>In C++ code you can use the <code>ezBlackboard</code> data structure directly. In scenes and <a href="../prefabs/prefabs-overview.html">prefabs</a> you can attach a <a href="blackboard-component.html">blackboard component</a> to an object. Systems that require a blackboard to function, such as <a href="../animation/skeletal-animation/animation-controller/animation-controller-component.html">animation controllers</a>, will traverse the object hierarchy upwards to find a blackboard component which they can use to read and write their state.</p>
-<h2 id="global-blackboards">Global Blackboards</h2>
-<p>Through the <a href="blackboard-component.html">blackboard component</a> you create <em>local blackbards</em> that store object specific data and usually are used within that object hierarchy.</p>
-<p>However, you can also create <em>global blackboards</em>. These will exist as long as anyone references them. If, for instance, a <a href="../runtime/application/game-state.html">game state</a> holds on to a global blackboard, it will be available throughout the application lifetime, even across worlds.</p>
-<p>Global blackboards are created from C++ using <code>ezBlackboard::GetOrCreateGlobal()</code> and providing a name. All global blackboards are identified by name, meaning that you can have many different ones, for different purposes.</p>
-<p>Similarly, if <code>ezBlackboardComponent::FindBlackboard()</code> is used, and a non-empty name is provided, a global blackboard may get created, if no other matching blackboard is available.</p>
+<p>This component is for propagating the flow of power in cables or fluid in pipes and determine whether it arrives at a receiver.</p>
+<p>It is meant for building puzzles where you have to connect the right objects to power something. It uses physics constraints to physically connect two pieces and have them snap together.</p>
+<p>The component also reacts to being grabbed (<code>ezMsgObjectGrabbed</code>) to disconnect.
+On its own this component doesn't do anything. However, it can be set to be <em>connected</em> to another object with a power connector component, in which case it would propagate its own <em>output</em> as the <em>input</em> on that component.</p>
+<p>If its output is non-zero and thus the input on the connected component is also non-zero, the other component will post <code>ezEventMsgSetPowerInput</code>, to which a script can react and for example switch a light on.</p>
+<p>Connectors are bi-directional (&quot;full duplex&quot;), so they can have both an input and an output and the two values are independent of each other. That means power can flow in both or just one direction and therefore it is not important with which end a cable gets connected to something.</p>
+<p>To enable building things like cables, each power connector component can also have a <em>buddy</em>, which is an object on which another power connector component exists. If a connector gets input, that input value is propagated to the buddy as its output value. Thus when a cable gets input on one end, the other end (if it is properly set as the buddy) will output that value. So if that end is also <em>connected</em> to something, the output will be further propagated as the <em>input</em> on that object. This can go through many hops until the value reaches the final connector (if you build a circular chain it will stop when it reaches the starting point).</p>
+<p>The component automatically connects to another object when it receives a <code>ezMsgSensorDetectedObjectsChanged</code>, so it should have a child object with a <a href="../ai/sensor-components.html">sensor</a>. The sensor should use a dedicated <a href="../runtime/world/spatial-system.html">spatial category</a> to search for <a href="marker-component.html">markers</a> where it can connect.</p>
+<p>To have a sensor (or other effects) only active when the connector is grabbed, put them in a child object with the name <em>ActiveWhenGrabbed</em> and disable the object by default. The parent power connector component will toggle the active flag of that object when it gets grabbed or let go.</p>
+<p>To build a cable, don't forget to set each end as the <em>buddy</em> of the other end.</p>
+<h2 id="properties">Properties</h2>
+<ul>
+<li><p><code>Output</code>: Sets how much output (of whatever kind) this connector produces.</p>
+<p>If this is zero, it is either a receiver, or a pass-through connector, e.g. a cable, or just currently inactive.</p>
+<p>If this is non-zero, it acts like a source, and when another connector gets connected to it, that output will be propagated through the connection/buddy chain.</p>
+</li>
+<li><p><code>Buddy</code>: If this is intended to act like a cable with two ends, specify the <a href="../scenes/object-references.html">object references</a> to the other end of the cable here. This way, if this end gets power, the other end will output that power, and vice versa.</p>
+</li>
+<li><p><code>ConnectedTo</code>: If this object is supposed to start in a state connected to something else, e.g. a power socket or another cable, use this <a href="../scenes/object-references.html">object references</a> to configure it connected. Note that this will create a physics joint with between this object and the target object. If they aren't aligned already, this will make the two objects snap together during the first simulation steps.</p>
+</li>
+</ul>
+<h2 id="message-handlers">Message Handlers</h2>
+<ul>
+<li><p><code>ezMsgSensorDetectedObjectsChanged</code>: Tells the connector that it is close to another connector that it should attach to. If a <a href="../ai/sensor-components.html">sensor components</a> is active on the same object, this can automatically make the connector connect to other things that it comes close to.</p>
+</li>
+<li><p><code>ezMsgObjectGrabbed</code>: Tells the connector that it was just grabbed, e.g. by a <a href="../physics/jolt/special/jolt-grab-object-component.html">grab object component</a>. Will make it disconnect, if it is currently attached to anything.</p>
+</li>
+</ul>
+<h2 id="events">Events</h2>
+<ul>
+<li><code>ezEventMsgSetPowerInput</code>: This event is sent every time the available power input changes. This is the power that 'arrives' at the connector. Note that power is never 'used up'. It should just be seen as a threshold value to decide whether something receives enough power to be active.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="blackboard-component.html">Blackboard Component</a></li>
+<li><a href="../physics/jolt/special/jolt-rope-component.html">Jolt Rope Component</a></li>
+<li><a href="../physics/jolt/constraints/jolt-fixed-constraint-component.html">Jolt Fixed Constraint Component</a></li>
+<li><a href="../ai/sensor-components.html">Sensor Components</a></li>
+<li><a href="../runtime/world/spatial-system.html">Spatial System</a></li>
 </ul>
 </article>
           </div>
@@ -101,7 +127,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/Miscellaneous/blackboards.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/power-connector-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

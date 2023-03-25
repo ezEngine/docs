@@ -135,6 +135,7 @@
 <li><code>PairCollision</code>: If disabled, joined actors will not collide with each other. This can be preferable, because then the joined actors may overlap.</li>
 <li><code>ParentActor</code>, <code>ChildActor</code>: References to objects with <a href="../actors/jolt-actors.html">actor components</a> to link with this constraint. See <a href="#joining-actors">joining actors</a> above.</li>
 <li><code>ChildActorAnchor</code>: An optional reference to an object that tells the constraint where it should attach to the child actor. See <a href="#using-the-childactoranchor-property">using the ChildActorAnchor property</a> above.</li>
+<li><code>BreakForce</code>, <code>BreakTorque</code>: If either of these values is larger than zero, the constraint is <em>breakable</em>. That means if during the physics simulation the force or torque acting upon the constraint exceeds this threshold, the constraint will be deleted and the bodies won't be joined any longer. When this happens, <code>ezMsgPhysicsJointBroke</code> will be sent as an <a href="../../../runtime/world/world-messaging.html">event message</a>.</li>
 </ul>
 <h2 id="constraint-types">Constraint Types</h2>
 <p>These types of constraints are currently available:</p>

@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/Miscellaneous/blackboards.html",
-          "hash": "3lrjBoYbrxy8r+2DPKM5osfdvUwWYEs8A5WVgOX3H6c="
+          "hash": "tvpK7RCTWxgaPwv8F6vNl4b1a5d4JGqOhZMFiRjXV7M="
         }
       },
       "is_incremental": false,
@@ -3265,6 +3265,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/power-connector-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/power-connector-component.html",
+          "hash": "LmxsdqSj4QCk/dJLywh7gSU7iFQdyXvFi97/qGelMKA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/gameplay/projectile-component.md",
       "output": {
         ".html": {
@@ -4368,7 +4380,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/constraints/jolt-constraints.html",
-          "hash": "1fzn6J0szvHWJo5r0asx/5CHnl7hlki21CMbtE1n1Lw="
+          "hash": "G33QwK9pmUrGiyEMJKy9gNgCjNo8fEwRJBwcWR+GgBM="
         }
       },
       "is_incremental": false,
@@ -7612,7 +7624,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 321,
+          "total_file_count": 322,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
