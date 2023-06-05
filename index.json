@@ -1522,7 +1522,7 @@
   "pages/getting-started/binaries.html": {
     "href": "pages/getting-started/binaries.html",
     "title": "Prebuilt Binaries | ezEngine",
-    "keywords": "Prebuilt Binaries Packages with prebuilt binaries are published with GitHub releases . Follow @ezEngineProject for release announcements. <!-- Please be careful changing the version number below, the editor parses this page to detect new releases. --> The latest version is: <!--<VERSION>--> 21.10 <!--</VERSION>-->"
+    "keywords": "Prebuilt Binaries Packages with prebuilt binaries are published with GitHub releases . Follow @ezEngineProject for release announcements. <!-- Please be careful changing the version number below, the editor parses this page to detect new releases. --> The latest version is: <!--<VERSION>--> 23.4 <!--</VERSION>-->"
   },
   "pages/getting-started/editor-overview.html": {
     "href": "pages/getting-started/editor-overview.html",
