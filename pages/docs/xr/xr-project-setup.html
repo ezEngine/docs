@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Asset Profiles | ezEngine </title>
+    <title>XR Project Setup | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Asset Profiles | ezEngine ">
+    <meta name="title" content="XR Project Setup | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,14 +78,33 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="asset-profiles">Asset Profiles</h1>
+<h1 id="xr-project-setup">XR Project Setup</h1>
 
-<p>Asset profiles are used to make project configurations for each platform. For example, on PC a different rendering pipeline may need to be used than on Android.</p>
-<h2 id="modify-asset-profiles">Modify asset profiles</h2>
-<p>Under <em>Editor &gt; Project Settings &gt; Asset Profiles</em> you can open the <strong>asset profiles</strong> dialog. At the top you can select for which platform you want to make modifications.</p>
-<!-- PAGE IS TODO -->
-<p>Asset profiles are fully functional, but currently undocumented.</p>
+<h2 id="xr-project-config">XR Project Config</h2>
+<p>As an example, we will use the <a href="../../samples/testing-chambers.html">Testing Chambers</a> project and its <strong>Surfaces</strong> scene to set up XR rendering for desktop VR use. Start by opening the project and scene.</p>
+<p>Enable <em>Show in Development Features</em> in the <a href="..%5Ceditor%5Ceditor-settings.md">editor settings</a> and restart it to see XR features in the editor.</p>
+<p>To use XR in your project you must first load a plugin to support XR devices. In the <a href="../projects/plugin-selection.html">plugin selection</a> dialog, select your custom XR plugin. In this case, we select the <em>Open XR</em> plugin and close the dialog.</p>
+<p>Next is to enable XR rendering under <a href="asset-profiles.md">asset profiles (TODO)</a>. Select the profile you want to enable XR in and then check the <em>Enable XR</em> checkbox. You also need to select the <em>XR Render Pipeline</em> here. Currently, both the <code>MainRenderPipeline</code> and the <code>HololensRenderPipeline</code> fully support XR rendering. Let's select the <code>MainRenderPipeline</code> for this example and close the dialog.</p>
+<p>Pressing 'Play the Game' in the scene should now already start rendering on the HMD and you can look around but it will not be very interactive.</p>
+<h2 id="character-rig-setup">Character Rig Setup</h2>
+<p>To be able to move around and use our controllers, we need to modify our character rig to support XR input scenarios. As an example, we will modify the <strong>Player</strong> prefab found in the testing chambers project.</p>
+<h3 id="stage-space">Stage Space</h3>
+<p>Once a XR plugin is active it takes control of the rendering camera. This means that the transform and projection of the <a href="../graphics/camera-component.html">camera component</a> is no longer taken into account when rendering. To move the user in XR, we need to instead move the <em>stage space</em> that the XR system is using as a reference point to place the user into the scene.</p>
+<p>The <a href="xr-components.html#stage-space-component">ezStageSpaceComponent</a> does just that. In our example, add the component to the root <code>Player</code> object of the prefab as it best represents the players position in the world. If the player moves, it will also move the XR camera and controllers relative to it.</p>
+<h3 id="device-tracking">Device Tracking</h3>
+<p>As mentioned above, the XR plugin takes ownership of the rendering camera. However, in many cases you will want to reflect the HMD position and controller positions in the scene as well. A Simple way of achieving this is to add a <a href="xr-components.html#device-tracking-component">ezDeviceTrackingComponent</a> to a game object that you like to follow one of the XR input devices.</p>
+<p>Add one component to the <code>Camera</code> game object with default settings and one to the <code>Gun</code> game object with device type <code>Right Controller</code>, pose location <code>Aim</code> and <code>Global</code> transform.</p>
+<p>Safe the prefab and play the scene again. You should now be able to move the controller via a gamepad and point the gun at things using your right controller.</p>
+<h3 id="input-mapping">Input Mapping</h3>
+<p>Next, you will need to map XR controller input to input actions. Go to the <a href="../input/input-config.html">Input Set Configuration</a> dialog and change <code>Shoot</code> to <code>xr_hand_right_select_click</code>. If you play the scene again, you should be able to shoot with your right controller. More details can be found in the <a href="xr-input.html">XR Input</a> chapter.</p>
+<h3 id="rendering-multithreading">Rendering Multithreading</h3>
+<p>By default, the engine renders multithreaded. This means that one frame of delay is introduced. This will worsen the stability of the XR experience. If enough CPU headroom is available, consider disabling the cvar <code>Rendering.Multithreading</code> using the methods outlined <a href="../debugging/cvars.html">here</a>.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="xr-graphics.html">XR Graphics</a></li>
+<li><a href="xr-input.html">XR Input</a></li>
+<li><a href="xr-components.html">XR Components</a></li>
+</ul>
 </article>
           </div>
           
@@ -94,7 +113,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/assets/asset-profiles.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/xr/xr-project-setup.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

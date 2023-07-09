@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Asset Profiles | ezEngine </title>
+    <title>XR | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Asset Profiles | ezEngine ">
+    <meta name="title" content="XR | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,14 +78,32 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="asset-profiles">Asset Profiles</h1>
+<h1 id="xr">XR</h1>
 
-<p>Asset profiles are used to make project configurations for each platform. For example, on PC a different rendering pipeline may need to be used than on Android.</p>
-<h2 id="modify-asset-profiles">Modify asset profiles</h2>
-<p>Under <em>Editor &gt; Project Settings &gt; Asset Profiles</em> you can open the <strong>asset profiles</strong> dialog. At the top you can select for which platform you want to make modifications.</p>
-<!-- PAGE IS TODO -->
-<p>Asset profiles are fully functional, but currently undocumented.</p>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<p>XR support is still in development. You will need to enable <em>Show in Development Features</em> in the <a href="..%5Ceditor%5Ceditor-settings.md">editor settings</a> to use it.</p>
+</blockquote>
+<p><em>XR</em> stands for both <em>VR</em> (virtual reality) as well as <em>AR</em> (augmented reality) devices. Currently supported devices:</p>
+<ul>
+<li><strong>VR</strong>: Windows desktop VR devices that support DX11 and OpenXR.</li>
+<li><strong>AR</strong>: HoloLens 2 via Windows UWP, DX11 and OpenXR.</li>
+</ul>
+<p>Currently there are three XR implementations:</p>
+<ol>
+<li><strong>ezDummyXR</strong>: If XR is requested and no other plugin is available the dummy XR implementation is used. This one allows for stereo rendering to be tested on a PC without needing to use an actual <em>HMD</em> (head mounted device).</li>
+<li><strong>ezOpenXR</strong>: This plugin uses <em>OpenXR</em> and supports both AR and VR devices, DX11 only for now.</li>
+<li><strong>ezOpenVR</strong>: WIP, currently not functional.</li>
+</ol>
+<h2 id="getting-started">Getting started</h2>
+<p>To get started with creating an XR application, please follow the <a href="xr-project-setup.html">XR Project Setup</a> guide.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="xr-project-setup.html">XR Project Setup</a></li>
+<li><a href="xr-graphics.html">XR Graphics</a></li>
+<li><a href="xr-input.html">XR Input</a></li>
+<li><a href="xr-components.html">XR Components</a></li>
+</ul>
 </article>
           </div>
           
@@ -94,7 +112,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/assets/asset-profiles.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/xr/xr-overview.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

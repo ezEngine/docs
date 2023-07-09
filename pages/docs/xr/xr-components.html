@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Asset Profiles | ezEngine </title>
+    <title>XR Components | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Asset Profiles | ezEngine ">
+    <meta name="title" content="XR Components | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,14 +78,36 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="asset-profiles">Asset Profiles</h1>
+<h1 id="xr-components">XR Components</h1>
 
-<p>Asset profiles are used to make project configurations for each platform. For example, on PC a different rendering pipeline may need to be used than on Android.</p>
-<h2 id="modify-asset-profiles">Modify asset profiles</h2>
-<p>Under <em>Editor &gt; Project Settings &gt; Asset Profiles</em> you can open the <strong>asset profiles</strong> dialog. At the top you can select for which platform you want to make modifications.</p>
-<!-- PAGE IS TODO -->
-<p>Asset profiles are fully functional, but currently undocumented.</p>
+<h2 id="stage-space-component">Stage Space Component</h2>
+<p>The stage space defines the position, rotation and scale relative to which the user is placed in the virtual world. The <code>ezStageSpaceComponent</code> should be placed on the <a href="../runtime/world/game-objects.html">game object</a> that best represents the character's position in the world.
+By scaling the stage space, you can change the scale of the virtual user relative to the world. Turning you into a giant or a small ant. This can be very useful for physics precision for example which might not work well with very small object scales. You can compensate this by building a larger world and scaling the stage space down.</p>
+<h3 id="component-properties">Component Properties</h3>
+<ul>
+<li><code>Stage Space</code>: Can be either <code>Standing</code> or <code>Seated</code>. This defines the offset of the HMD to the stage space. In <code>Standing</code> mode, the stage space should be placed on the floor as the HMD will be placed relative to it matching the physical height of the user's head over the physical floor. In <code>Seated</code> mode, the HMD position relative to the stage space will match the users' head position relative to their head position when the app was started.</li>
+</ul>
+<h2 id="device-tracking-component">Device Tracking Component</h2>
+<p>To automatically make a game object follow the HMD or one of the controllers, you can attach a <code>ezDeviceTrackingComponent</code> to a game object.</p>
+<h3 id="component-properties-1">Component Properties</h3>
+<ul>
+<li><code>Device Type</code>: Which device we want to track. E.g. the HMD (a.k.a. your head) or one of the controllers.</li>
+<li><code>Pose Location</code>: Some input devices have different poses for <code>Grip</code> and <code>Aim</code>. E.g. your hand's grip position is in the middle of your fist pointing upwards, while the aim position is at your index finger pointing forward.</li>
+<li><code>Transform Space</code>: Whether the local or global transform should be set to the input device's transform.</li>
+<li><code>Rotation</code>: Whether to apply rotation to the game object. Translation is always applied but in some cases it might be useful to not apply rotation. E.g. for helper nodes in the scene.</li>
+<li><code>Scale</code>: Whether to apply scale to the game object. This has no affect in <code>local</code> space as no device type has scale. If <code>Transform Space</code> is set to <code>global</code>, the scale of the object will will match the scale of the stage space.</li>
+</ul>
+<h2 id="spatial-anchor-component">Spatial Anchor Component</h2>
+<p>Many AR scenarios require virtual objects to be anchored in the real world. The simplest way to achieve this is to add an <code>ezSpatialAnchorComponent</code> to the game object in question.</p>
+<p>This component does not have any properties. Persistance of anchors across sessions is not yet supported.</p>
+<p>Once the component is added, it will use <code>ezXRSpatialAnchorsInterface</code> to stabilize the object's transform in the real world.</p>
+<h2 id="visualize-hand-component">Visualize Hand Component</h2>
+<p>For debugging it can be useful to visualize tracked hands. Create a <code>ezVisualizeHandComponent</code> and attach it to a random game object to achieve this. No properties exist for this component.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="xr-overview.html">XR Overview</a></li>
+<li><a href="xr-input.html">XR Input</a></li>
+</ul>
 </article>
           </div>
           
@@ -94,7 +116,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/assets/asset-profiles.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/xr/xr-components.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

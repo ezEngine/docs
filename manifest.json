@@ -1361,7 +1361,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/asset-profiles.html",
-          "hash": "wMLlzlgjhAOE4PMI1bDPYBFz3bNkuisVI8eWtTeKWVA="
+          "hash": "Gf/0nmv292ZlqZyPaCW+rs4i/jnFwa5ELi9Jc2vStvg="
         }
       },
       "is_incremental": false,
@@ -7118,6 +7118,75 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/xr-components.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/xr-components.html",
+          "hash": "2tcOHQ5ZDV/QBQ8klo3uGfG+IKLjyhR61IqOCRsEONo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/xr-graphics.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/xr-graphics.html",
+          "hash": "aMPpPJ/xOzLycBS70hj7o+C0JpnNzyQK1BTby+1+G68="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/xr-input.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/xr-input.html",
+          "hash": "Pm56HEWZLJLq82BSuNeOmjQUUf92aWSaNu87+g0tG7w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/xr-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/xr-overview.html",
+          "hash": "W3SBvgYpr31rWDRMZAU3oFFcMiGlPYqYybCDhK2hEek="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/xr-project-setup.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/xr-project-setup.html",
+          "hash": "LnAZCgfO9ckIJ9p96CYfNyM1zTyuXoN8qJhY70fj24c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/getting-started/binaries.md",
       "output": {
         ".html": {
@@ -7624,7 +7693,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 322,
+          "total_file_count": 327,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

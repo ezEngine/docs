@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Asset Profiles | ezEngine </title>
+    <title>XR Graphics | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Asset Profiles | ezEngine ">
+    <meta name="title" content="XR Graphics | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,14 +78,75 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="asset-profiles">Asset Profiles</h1>
+<h1 id="xr-graphics">XR Graphics</h1>
 
-<p>Asset profiles are used to make project configurations for each platform. For example, on PC a different rendering pipeline may need to be used than on Android.</p>
-<h2 id="modify-asset-profiles">Modify asset profiles</h2>
-<p>Under <em>Editor &gt; Project Settings &gt; Asset Profiles</em> you can open the <strong>asset profiles</strong> dialog. At the top you can select for which platform you want to make modifications.</p>
-<!-- PAGE IS TODO -->
-<p>Asset profiles are fully functional, but currently undocumented.</p>
-<h2 id="see-also">See Also</h2>
+<p>XR needs to render two images, one for each eye. Therefore, special care needs to be taken when authoring shaders to make sure they support stereo rendering.</p>
+<h2 id="material-shaders">Material Shaders</h2>
+<p>To make a material shader work with stereo rendering, it must contain the following sections:</p>
+<pre><code class="lang-cpp">[PERMUTATIONS]
+// Will be set to CAMERA_MODE_STEREO.
+CAMERA_MODE
+
+// Defined if the GPU supports setting the render target array index in the vertex shader. If not, a geometry shader will be used.
+VERTEX_SHADER_RENDER_TARGET_ARRAY_INDEX
+
+[VERTEXSHADER]
+#include &lt;Shaders/Materials/MaterialVertexShader.h&gt;
+
+VS_OUT main(VS_IN Input)
+{
+  // FillVertexData will set s_ActiveCameraEyeIndex to either 0 or 1. s_ActiveCameraEyeIndex is used in all camera related functions to pull in the correct eye projection / transform etc.
+  VS_OUT Output = FillVertexData(Input);
+  //...
+  return Output;
+}
+
+[GEOMETRYSHADER]
+// Will only be active if VERTEX_SHADER_RENDER_TARGET_ARRAY_INDEX is not supported.
+#include &lt;Shaders/Materials/MaterialStereoGeometryShader.h&gt;
+
+[PIXELSHADER]
+// If you use the default MaterialPixelShader.h and just implement GetDiffuseColor() etc then all stereo rendering is done for you. If you write a custom pixel shader, you will need to add this at the start:
+//  #if CAMERA_MODE == CAMERA_MODE_STEREO
+//    s_ActiveCameraEyeIndex = Input.RenderTargetArrayIndex;
+//  #endif
+#include &lt;Shaders/Materials/MaterialPixelShader.h&gt;
+
+</code></pre>
+<h2 id="postprocessing-shaders">Postprocessing Shaders</h2>
+<p>Post-processing shaders are a bit more complicated than material shaders as they usually pull in data from a previous render pipeline pass which will now be an array texture as the input will be stereo as well. Here is a small example of a full-screen render pass and what it requires in order to work in stereo mode:</p>
+<pre><code class="lang-cpp">[PERMUTATIONS]
+// Will be set to CAMERA_MODE_STEREO.
+CAMERA_MODE
+
+// Defined if the GPU supports setting the render target array index in the vertex shader. If not, a geometry shader will be used.
+VERTEX_SHADER_RENDER_TARGET_ARRAY_INDEX
+
+[VERTEXSHADER]
+#include &lt;Shaders/Pipeline/FullscreenTriangleVertexShader.h&gt;
+
+[GEOMETRYSHADER]
+// Will only be active if VERTEX_SHADER_RENDER_TARGET_ARRAY_INDEX is not supported.
+#include &lt;Shaders/Pipeline/FullscreenTriangleStereoGeometryShader.h&gt;
+
+[PIXELSHADER]
+#include &lt;Shaders/Pipeline/FullscreenTriangleInterpolator.h&gt;
+
+// Note that this will work fine in non-stereo rendering as well as 2D textures are just 2D-array texture with very few slices.
+Texture2DArray Input;
+
+float4 main(PS_IN input) : SV_Target
+{
+  // To make all camera related functions work correctly, this must be called at the very start to define the right eye.
+  #if CAMERA_MODE == CAMERA_MODE_STEREO
+    s_ActiveCameraEyeIndex = Input.RenderTargetArrayIndex;
+  #endif
+
+  float4 res = Input.Sample(LinearClampSampler, float3(input.TexCoord0, s_ActiveCameraEyeIndex));
+  //...
+  return res;
+}
+</code></pre>
 </article>
           </div>
           
@@ -94,7 +155,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/assets/asset-profiles.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/xr/xr-graphics.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

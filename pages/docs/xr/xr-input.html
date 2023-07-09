@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Asset Profiles | ezEngine </title>
+    <title>XR Input | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Asset Profiles | ezEngine ">
+    <meta name="title" content="XR Input | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,14 +78,61 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="asset-profiles">Asset Profiles</h1>
+<h1 id="xr-input">XR Input</h1>
 
-<p>Asset profiles are used to make project configurations for each platform. For example, on PC a different rendering pipeline may need to be used than on Android.</p>
-<h2 id="modify-asset-profiles">Modify asset profiles</h2>
-<p>Under <em>Editor &gt; Project Settings &gt; Asset Profiles</em> you can open the <strong>asset profiles</strong> dialog. At the top you can select for which platform you want to make modifications.</p>
-<!-- PAGE IS TODO -->
-<p>Asset profiles are fully functional, but currently undocumented.</p>
+<p>XR input is not much different from regular <a href="../input/input-overview.html">input</a>. XR controllers are normal input devices that are provided by the <code>ezXRInputDevice</code> and work just like any other input device with the added feature set that the controllers can be tracked in space.</p>
+<h2 id="xr-feature-flags">XR Feature Flags</h2>
+<p>There are various kinds of XR controllers which varying feature sets. At runtime, you can query the existance of a type of device via the <code>ezXRInputDevice::GetDeviceIDByType</code> function and its supported features by using the <code>ezXRInputDevice::GetDeviceFeatures</code> function.</p>
+<pre><code class="lang-cpp">ezXRInterface* pXRInterface = ezSingletonRegistry::GetSingletonInstance&lt;ezXRInterface&gt;();
+ezXRInputDevice&amp; xrInput = pXRInterface-&gt;GetXRInput();
+ezXRDeviceID deviceID = pXRInterface-&gt;GetXRInput().GetDeviceIDByType(ezXRDeviceType::LeftController);
+if (deviceID != -1)
+{
+    ezBitflags&lt;ezXRDeviceFeatures&gt; features = pXRInterface-&gt;GetXRInput().GetDeviceFeatures(deviceID);
+    if (features.IsSet(ezXRDeviceFeatures::GripPose))
+    {
+</code></pre>
+<p>Besides using the feature flags, you can also query the name of the controller via the <code>ezXRInputDevice::GetDeviceName</code> call. This will return e.g. <strong>Mixed Reality Motion Controller</strong> or <strong>Hand Interaction</strong>.</p>
+<h2 id="xr-device-presence">XR Device Presence</h2>
+<p>The <code>ezXRDeviceType::HMD</code> represents your head and is always present. This is not true for other controller. You can either poll their state via the <code>ezXRInputDevice::GetDeviceIDByType</code> function or you can subscribe to <code>ezXRInputDevice::GetInputEvent</code> which will inform you whenever input devices are added or removed.</p>
+<h2 id="xr-input-mapping">XR Input Mapping</h2>
+<p>XR input slots are defined in <code>Code\Engine\GameEngine\XR\XRInputDevice.h</code> and all start with <strong>xr_</strong>. Use the same machanism as for other input controllers to create an <a href="../input/input-config.html">input set configuration</a>.</p>
+<h2 id="pose-tracking">Pose Tracking</h2>
+<p>XR controllers also provide positional data. You can either use the <a href="xr-components.html#device-tracking-component">ezDeviceTrackingComponent</a> to automatically make a game object follow a controller or you can manually query the controller transform using the <code>ezXRInputDevice::GetDeviceState</code> function.</p>
+<p>Many devices support two poses <code>Grip</code> and <code>Aim</code>. The difference between the two is nicely explained <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#semantic-path-standard-pose-identifiers">here</a>.</p>
+<pre><code class="lang-cpp">ezXRInterface* pXRInterface = ezSingletonRegistry::GetSingletonInstance&lt;ezXRInterface&gt;();
+ezXRInputDevice&amp; xrInput = pXRInterface-&gt;GetXRInput();
+ezXRDeviceID deviceID = pXRInterface-&gt;GetXRInput().GetDeviceIDByType(ezXRDeviceType::LeftController);
+if (deviceID != -1)
+{
+    const ezXRDeviceState&amp; state = pXRInterface-&gt;GetXRInput().GetDeviceState(deviceID);
+    if (state.m_bDeviceIsConnected &amp;&amp; state.m_bGripPoseIsValid)
+    {
+        ezVec3 vPosition = state.m_vGripPosition;
+        ezQuat qRotation = state.m_qGripRotation;
+</code></pre>
+<p>You should check for <code>m_bDeviceIsConnected</code> and either <code>m_bGripPoseIsValid</code> or <code>m_bAimPoseIsValid</code> before accessing the transform. Due to e.g. tracking loss, the controller can provide invalid poses at any point.</p>
+<h2 id="hand-tracking">Hand Tracking</h2>
+<p>Hands (if supported by the platform) are exposed as input controllers via the input system as well as via raw hand-tracked data. If basic click interaction and pose tracking is not enough, you can use the <code>ezXRHandTrackingInterface</code> if present, to query the bone positions of your hands:</p>
+<pre><code class="lang-cpp">ezXRHandTrackingInterface* pXRHand = ezSingletonRegistry::GetSingletonInstance&lt;ezXRHandTrackingInterface&gt;();
+if (!pXRHand)
+    return;
+
+ezHybridArray&lt;ezXRHandBone, 6&gt; bones;
+for (ezXRHand::Enum hand : {ezXRHand::Left, ezXRHand::Right})
+{
+    for (ezUInt32 uiPart = 0; uiPart &lt; ezXRHandPart::COUNT; ++uiPart)
+    {
+        ezXRHandPart::Enum part = static_cast&lt;ezXRHandPart::Enum&gt;(uiPart);
+        if (pXRHand-&gt;TryGetBoneTransforms(hand, part, ezXRTransformSpace::Global, bones) == ezXRHandTrackingInterface::HandPartTrackingState::Tracked)
+        {
+</code></pre>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../input/input-overview.html">Input</a></li>
+<li><a href="xr-overview.md.md">XR Overview</a></li>
+<li><a href="xr-components.html">XR Components</a></li>
+</ul>
 </article>
           </div>
           
@@ -94,7 +141,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/assets/asset-profiles.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/xr/xr-input.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
