@@ -96,44 +96,63 @@
 <li>Ninja</li>
 </ul>
 <h2 id="automatic-setup">Automatic Setup</h2>
-<p>The <code>Generate.sh</code> script in the root folder of ezEngine can be used to automatically install all required packages and run CMake, so that you can start building right away.</p>
+<p>The <code>RunCMake.sh</code> script in the root folder of ezEngine can be used to automatically install all required packages and run CMake, so that you can start building right away.</p>
 <p>This script currently supports these distributions:</p>
 <ul>
 <li>Ubuntu 22</li>
 <li>Linux Mint 21</li>
 </ul>
 <p>We welcome contributions to add support for more distributions.</p>
+<blockquote>
+<p>⚠️ If the scripts prints a warning about Qt 6.3.0 or newer not being present in your package manager, you will have to install Qt 6.3.0 or newer manually. See <a href="#installing-qt-6-manually">Installing Qt 6 Manually</a></p>
+</blockquote>
 <h3 id="gcc">GCC</h3>
 <p>When running the script the first time, execute:</p>
-<p><code>./Generate.sh --setup</code></p>
+<p><code>./RunCMake.sh --setup</code></p>
 <p>This will install all required packages for your distribution and then generate the make files required to build the <code>Dev</code> version of ezEngine.</p>
 <p>To build the <code>Dev</code> build, execute:</p>
 <p><code>ninja -C build-Dev</code></p>
-<p>This build command is also given by <code>Generate.sh</code> as the final output.</p>
+<p>This build command is also given by <code>RunCMake.sh</code> as the final output.</p>
 <p>If you change any CMake files or add new source files it is sufficient to run:</p>
-<p><code>./Generate.sh</code></p>
+<p><code>./RunCMake.sh</code></p>
 <p>This only invokes CMake, without checking for missing packages.</p>
 <p>To build a different <a href="building-ez.html#build-types">build type</a> then <code>Dev</code>, pass the additional <code>--build-type</code> argument:</p>
-<p><code>./Generate.sh --build-type Debug</code></p>
+<p><code>./RunCMake.sh --build-type Debug</code></p>
 <h3 id="clang">Clang</h3>
-<p>If you would like to use Clang instead of GCC, simply add <code>--clang</code> to all invocations of <code>Generate.sh</code>:</p>
-<pre><code class="lang-bash">./Generate.sh --setup --clang
-./Generate.sh --clang
-./Generate.sh --build-type Debug --clang
+<p>If you would like to use Clang instead of GCC, simply add <code>--clang</code> to all invocations of <code>RunCMake.sh</code>:</p>
+<pre><code class="lang-bash">./RunCMake.sh --setup --clang
+./RunCMake.sh --clang
+./RunCMake.sh --build-type Debug --clang
+</code></pre>
+<h3 id="installing-qt-6-manually">Installing Qt 6 Manually</h3>
+<p>Some distributions provide quite outdated versions of Qt 6 and the ezEngine Editor requires at least Qt 6.3.0 due to a bug that exists in previous versions of Qt and prevents the 3D viewport in the Editor from working correctly.</p>
+<p>You have the following options:</p>
+<ol>
+<li>Install through <a href="https://github.com/miurahr/aqtinstall">aqtinstall</a></li>
+<li>Install Qt 6 through the <a href="https://doc.qt.io/qt-6/get-and-install-qt.html#using-qt-online-installer">official installer</a></li>
+<li><a href="https://doc.qt.io/qt-6/linux-building.html">Build from source</a></li>
+</ol>
+<p>Once you have obtained a recent version of Qt, you have two options so that the ezEngine cmake scripts find it:</p>
+<ol>
+<li>Add the install location permantently to your <code>PATH</code> environment variable</li>
+<li>Specify the install location when calling <code>RunCMake.sh</code> like this:</li>
+</ol>
+<pre><code> &gt; PATH=/path/to/qt6/install:$PATH ./RunCMake.sh
 </code></pre>
 <h2 id="manual-setup">Manual Setup</h2>
-<p>If you want to setup things manually or your distribution is not supported by the <code>Generate.sh</code> script, you will most likely need all of the following packages:</p>
+<p>If you want to setup things manually or your distribution is not supported by the <code>RunCMake.sh</code> script, you will most likely need all of the following packages:</p>
 <ul>
 <li>C++17 compliant compiler (GCC or Clang)</li>
 <li>CMake 3.20 or newer</li>
 <li>uuid-dev</li>
-<li>Qt5</li>
+<li>Qt6 (version 6.3 or newer)</li>
 <li>ninja or gnu-make</li>
 <li>libxrandr</li>
 <li>libxinerama</li>
 <li>libxcursor</li>
 <li>libxi</li>
 <li>libfreetype</li>
+<li>libtinfo5</li>
 </ul>
 <p>Then invoke CMake with the following arguments:</p>
 <table>
@@ -179,6 +198,14 @@
 <tr>
 <td><code>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code></td>
 <td>Generate a <code>compile_commands.json</code> file to be used for code completion in editors like Visual Studio Code.</td>
+</tr>
+<tr>
+<td><code>-DEZ_QT_DIR=/path/to/qt6</code></td>
+<td>Manually specify the path cmake should look for Qt 6 in.</td>
+</tr>
+<tr>
+<td><code>-DEZ_ENABLE_FOLDER_UNITY_FILES=OFF</code></td>
+<td>Disable unity builds. This increases compile times but might help certain editors to provide better code completion.</td>
 </tr>
 </tbody>
 </table>
