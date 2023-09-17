@@ -95,7 +95,7 @@
 </ul>
 </li>
 <li>Hit <strong>Finish</strong></li>
-<li>You will now get an error from cmake <code>No CMAKE_RC_COMPILER could be found</code>. Check the <strong>Advanced</strong> checkbox to show additional options and point <code>CMAKE_RC_COMPILER</code> to <code>C:\Program Files (x86)\Windows Kits\10\bin\&lt;windows-sdk-version&gt;\x64\rc.exe</code> (for example <code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe</code>).</li>
+<li>You will now get an error from cmake <code>No CMAKE_RC_COMPILER could be found</code>. Check the <strong>Advanced</strong> checkbox to show additional options and point <code>CMAKE_RC_COMPILER</code> to <code>C:\Program Files (x86)\Windows Kits\10\bin\&lt;windows-sdk-version&gt;\x64\rc.exe</code> (for example <code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe</code>). Also set <code>CMAKE_RC_COMPILER_INIT</code> to <code>rc</code>.</li>
 <li>Hit <strong>Configure</strong></li>
 <li>Hit <strong>Generate</strong></li>
 <li><code>cd</code> into the build location and run <code>ninja</code> to build.</li>
