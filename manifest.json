@@ -7141,45 +7141,36 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "pages/docs/xr/xr-input.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/xr/xr-input.html",
-          "hash": "Pm56HEWZLJLq82BSuNeOmjQUUf92aWSaNu87+g0tG7w="
+          "hash": "3L5MalHxWO/P/LD7fMMnqNbVc1N/oKPcnkKTu8QluAk="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "pages/docs/xr/xr-overview.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/xr/xr-overview.html",
-          "hash": "W3SBvgYpr31rWDRMZAU3oFFcMiGlPYqYybCDhK2hEek="
+          "hash": "pBDffQCwvaq5BFoiOGINCqLSx/LPK8BrZ8ub41mO2YA="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "pages/docs/xr/xr-project-setup.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/xr/xr-project-setup.html",
-          "hash": "LnAZCgfO9ckIJ9p96CYfNyM1zTyuXoN8qJhY70fj24c="
+          "hash": "3eAXQr/XQEtpzK3rJjYMc57Gqzx+YpBLb225vqInnCs="
         }
       },
       "is_incremental": false,
@@ -7560,6 +7551,641 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-1.html",
+          "hash": "Po6Q+rXER2ACWT2y3hN5iVT/xeICvS9rv/MldFZ3l4E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-2.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-2.html",
+          "hash": "PshevRbKhYJQbPaiyZkL8h4JBiNLSoDhhCfu1GRZNaI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-3.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-3.html",
+          "hash": "HSA6ybONylaS+e//tR3QyjhRZLRl8B4chGR6ieAwFAk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-4.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-4.html",
+          "hash": "bcfXrrrbYTGlfEEd+gpIiv+6zfKuY4BaRH9PHFfIPQY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-5.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-5.html",
+          "hash": "L62U4U0uTqd331G72DtwbpvucQWeSeOD0+En0Sa/DhU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-6.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-6.html",
+          "hash": "Tg5UHExc5PHy1ZUHMjJ9HMgNhUVf2OTkUZ+wyDHLmNA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/devlog-7.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/devlog-7.html",
+          "hash": "z9+Dc2mlICnq74ZdRXI1bd9DZamsjJ9hLqc0ehDsE4w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/MonsterAttack-Main.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/MonsterAttack-Main.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog1/Navigation.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog1/Navigation.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog1/Shoot.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog1/Shoot.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-SpikeTrapAnim.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-SpikeTrapAnim.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-Spike_Trap.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-Spike_Trap.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image3.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image3.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image4.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image4.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image5.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image5.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image6.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image6.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image7.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image7.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image8.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog2/ma-dl2-image8.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-ArrowTrap.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-ArrowTrap.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-ArrowTrap2.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-ArrowTrap2.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-Gameplay.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-Gameplay.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-Gameplay2.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-Gameplay2.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-TrapPlacement.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-TrapPlacement.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image3.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image3.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image4.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image4.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image5.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog3/ma-dl3-image5.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/CollisionGroups.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/CollisionGroups.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/SlowDown.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/SlowDown.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/TarTrap.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/TarTrap.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image3.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image3.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image4.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog4/ma-dl4-image4.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog5/ma-dl5-image1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog5/ma-dl5-image1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog5/ma-dl5-image2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog5/ma-dl5-image2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-LevelNodes.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-LevelNodes.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-LevelStateMachine.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-LevelStateMachine.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SMAnyStateTransition.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SMAnyStateTransition.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SMStateProperty.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SMStateProperty.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SMTransitionProperty.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SMTransitionProperty.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SpawnBox.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-SpawnBox.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-VSWave.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog6/ma-dl6-VSWave.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-CeilingBars.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-CeilingBars.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-ExposedParams.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-ExposedParams.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Floor4x4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Floor4x4.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-FloorPiece.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-FloorPiece.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot3.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Screenshot4.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Wall.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-Wall.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-WallPiece.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/monster-attack/media/devlog7/ma-dl7-WallPiece.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/monster-attack/monster-attack.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/monster-attack/monster-attack.html",
+          "hash": "vahHoxLBYzn8ClThPRWSqsx6bDu5DD4f0pONwhbPhhM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/samples/pacman.md",
       "output": {
         ".html": {
@@ -7660,7 +8286,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/toc.html",
-          "hash": "5llIhvwn3dTJPQhUMfvJOg3rinOL0Y9xOuS2glXGQnI="
+          "hash": "zjh/Ag7KFhVY9UOrDIgbTqfH2VloOwiDbvijGLXqZt8="
         }
       },
       "is_incremental": false,
@@ -7693,7 +8319,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 327,
+          "total_file_count": 335,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

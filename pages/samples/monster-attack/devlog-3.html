@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MA Devlog 3 - Sound | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="MA Devlog 3 - Sound | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ma-devlog-3---sound">MA Devlog 3 - Sound</h1>
+
+<p>Today I spent some time on improving and polishing what I built so far.</p>
+<p>First I set up sound. EZ uses Fmod, so <a href="../../docs/sound/fmod-overview.html">following the documentation</a> and my own tutorial video, I created a new Fmod Studio project, downloaded a couple of sounds from &lt;freesound.org&gt; and added sounds for footsteps, the player's projectile and the trap.</p>
+<p>Footsteps for the player are quite easy, because the <a href="../../docs/physics/jolt/special/jolt-character-controller.html">character controller</a> already supports this through <a href="../../docs/materials/surfaces.html">surface interactions</a>. Basically, whenever something needs to interact with a surface, for example a bullet hitting a wall, we can easily spawn a <em>surface interaction</em>. Usually polygons are linked to a surface and the surface acts as a lookup table. So if I walk over a stone surface and I want to spawn a <em>footstep</em> interaction, the stone surface defines which prefab to use, and if I walk over a metal surface, it may define a different prefab to use.</p>
+<p><img src="media/devlog3/ma-dl3-image1.png" alt="Footstep config"></p>
+<p>Surfaces are hierarchical, so both stone and metal surfaces are built on top of the <em>Default</em> surface, and as long as they don't define an override, the value from the <em>Default</em> surface is used.</p>
+<p>Therefore, on the character controller, all that we need to define is the name of the surface interaction, and how quickly those should be spawned when walking or running.</p>
+<p><img src="media/devlog3/ma-dl3-image2.png" alt="Footstep config"></p>
+<p>The same system is used by the <a href="../../docs/gameplay/projectile-component.html">projectile</a> to spawn a prefab when it hits something.</p>
+<p>For my trap, all I needed to add was a sound event to the <em>Loaded</em> state, so that it makes a mechanical noise when it is ready.</p>
+<p><img src="media/devlog3/ma-dl3-image3.png" alt="Trap Sound"></p>
+<p>The next thing I did, was to add code to the player component, so that the player can place traps. This is all done in C++.</p>
+<p>EZ has an <a href="../../docs/runtime/configuration/interfaces.html">abstract interface</a> <code>ezPhysicsWorldModuleInterface</code> which you can query from the <a href="../../docs/runtime/world/world-overview.html">world</a>, that gives you access to things like raycasts. To get this interface, you call</p>
+<p><code>ezPhysicsWorldModuleInterface* pPhysics = GetOwner()-&gt;GetWorld()-&gt;GetModule&lt;ezPhysicsWorldModuleInterface&gt;();</code></p>
+<p>This is probably one of the most important such interfaces, since physics queries are so ubiquitously useful for all sorts of game mechanics.</p>
+<p>For now I simply use this to check where the player is looking. Meaning, I shoot a ray through the camera like this:</p>
+<pre><code class="lang-cpp">ezPhysicsCastResult result;
+pPhysics-&gt;Raycast(result, pCameraObject-&gt;GetGlobalPosition(), pCameraObject-&gt;GetGlobalDirForwards(), 10.0f, params);
+</code></pre>
+<p>Now I have the point that the player is looking at. The next step is to validate, that one can place a trap there. For now I only do very simply position snapping and some rotation, I don't yet prevent the player from placing traps where they don't belong.</p>
+<p>Of course, while in trap placement mode you want to have a preview how things would look like, so I built a copy of my trap prefab, that has no functionality, and I add that to the scene (and move it around) to show where the trap would end up. At some point this should probably also use a <a href="../../docs/graphics/shaders/shaders-overview.html">custom shader (TODO)</a> for a nice &quot;preview effect&quot;, and some sounds when placing traps for better feedback.</p>
+<p><video src="media/devlog3/ma-dl3-TrapPlacement.mp4" width="600" controls=""></video></p>
+<p>At some point I noticed that when a monster dies, it doesn't dissappear and a lot of bodies where piling up. So now the }<em>monster component</em> simply puts itself into a queue when it starts playing the <em>die</em> animation to keep track of dead bodies, and I delete the oldest one when I have more than 20.</p>
+<p>Finally, I wanted to have a second trap. My favourite trap in <em>Orcs Must Die</em> is the one that shoots arrows out of a wall. From its logic it's very similar to the spike trap, so I copied and adjusted it. This is what it looks like:</p>
+<p><img src="media/devlog3/ma-dl3-image4.png" alt="Arrow Trap"></p>
+<p>I've added a <em>Dart</em> <a href="../../docs/gameplay/projectile-component.html">projectile</a> prefab and this trap simply uses 24 <a href="../../docs/gameplay/spawn-component.html">spawn components</a> to shoot a lot of those. This is it in action:</p>
+<p><video src="media/devlog3/ma-dl3-ArrowTrap.mp4" width="600" controls=""></video></p>
+<p>However, I wanted the trap to shoot arrows three times in quick succession. Because that's way cooler. Turns out, this was absolutely trivial to do with the state machine. All I needed to do, was to copy two of the states a few times and set up a short time delay as transitions:</p>
+<p><img src="media/devlog3/ma-dl3-image5.png" alt="Arrow Trap"></p>
+<p>And now it behaves like this:</p>
+<p><video src="media/devlog3/ma-dl3-ArrowTrap2.mp4" width="600" controls=""></video></p>
+<p>And together they already create quite some mayhem:</p>
+<p><video src="media/devlog3/ma-dl3-Gameplay.mp4" width="600" controls=""></video></p>
+<p>Finally, in game,  it looks and sounds like this:</p>
+<p><video src="media/devlog3/ma-dl3-Gameplay2.mp4" width="600" controls=""></video></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="monster-attack.html">Monster Attack Sample</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/samples/monster-attack/devlog-3.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MA Devlog 2 - Spike Trap | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="MA Devlog 2 - Spike Trap | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ma-devlog-2---spike-trap">MA Devlog 2 - Spike Trap</h1>
+
+<p>So today was all about getting my first trap working. Here is the result:</p>
+<p><video src="media/devlog2/ma-dl2-Spike_Trap.mp4" width="600" controls=""></video></p>
+<p>The most flexible way to do these things, is to just use <a href="../../docs/custom-code/cpp/custom-cpp-component.html">custom C++ components</a> for everything. However, I want to test out our other infrastructure as well, for example the new <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>, the <a href="../../docs/ai/state-machine-asset.html">state machines</a>, and so on, so the goal is to prefer those, and only use C++ for the things that really need it.</p>
+<p>At the moment I only have two custom C++ components, one for the player logic and one for the monsters. The former mostly does <a href="../../docs/input/input-overview.html">input handling</a> and forwarding to the <a href="../../docs/physics/jolt/special/jolt-character-controller.html">character controller</a>, the latter mainly does the path finding and steering.</p>
+<p>So today I had to figure out how to build my first trap.</p>
+<p>If I were (or had) an artist, I would use an <a href="../../docs/animation/skeletal-animation/animated-mesh-asset.html">animated mesh</a> with multiple <a href="../../docs/animation/skeletal-animation/animation-clip-asset.html">animations</a> for the different trap states. However, I only have two <a href="../../docs/graphics/meshes/mesh-asset.html">static meshes</a>, one with spikes, one without, and I really want to make things work with the assets as I have them. So I needed a way to do the visuals without animations.</p>
+<p>Here is what it looks like in a close up:</p>
+<p><video src="media/devlog2/ma-dl2-SpikeTrapAnim.mp4" width="600" controls=""></video></p>
+<p>The trap has four states, therefore I built a <a href="../../docs/ai/state-machine-asset.html">state machine</a>.</p>
+<p><img src="media/devlog2/ma-dl2-image1.png" alt="Spike Trap States"></p>
+<p>In the <em>Dormant</em> state it does nothing. This is the state where the trap is not dangerous. It takes a second and then transitions into the <em>Loaded</em> state.</p>
+<p>In the loaded state, the spikes show up and peak through the bottom. Now when a creature walks over it, the trap enters the <em>Firing</em> state where it makes damage.</p>
+<p>After a short time, it enters the <em>Retracting</em> state, where the spikes move down and then it starts over.</p>
+<p>Again, there are different ways how you could achieve the animations and the behavior, but I wanted to use as much existing functionality as possible. For each <em>State</em> in the state machine you select what code it should run. And one existing type of state is the <strong>Switch Object</strong> state. What this will do, is it simply activates / deactivates game objects in your object structure. So you could for example use this to enable a particle effect node and thus make your object <em>burning</em> or switch to a different mesh object, so that it looks broken.</p>
+<p>For example the <em>Retracting</em> state deactivates all objects under the <em>States</em> group, but enables the <em>Retracting</em> object:</p>
+<p><img src="media/devlog2/ma-dl2-image2.png" alt="Retracting State"></p>
+<p>My trap prefab looks like this:</p>
+<p><img src="media/devlog2/ma-dl2-image3.png" alt="Trap Layout"></p>
+<p>On the root node, there is my state machine component.</p>
+<p>Directly attached to it are the base mesh (second to last node) and a trigger (last node). Inside the <em>States</em> group there are the four different groups that represent the different states. For example, the <em>Dormat</em> group is just empty.</p>
+<p>The three other groups add the spiky mesh and the <em>Firing</em> group additionally adds area damage.</p>
+<p>Now as I said, for the animation one should use a skinned mesh and just play animations, but to achieve the up/down movement without this, I used the <a href="../../docs/animation/property-animation/slider-component.html">Slider component</a>.</p>
+<p>Also I added a new <em>Reset Transform</em> component, to make the sub-objects move back into place each time. So now the <em>Retracting</em> and <em>Firing</em> group uses these components:</p>
+<p><img src="media/devlog2/ma-dl2-image4.png" alt="Components"></p>
+<p>All this gives you the visuals.</p>
+<p>Now on the state machine you have <em>transitions</em> (the arrows between the states). For each transition you again have to choose the &quot;type&quot;. The transition type determines the logic to decide whether the transition should be taken or not. So you can have complex logic here.</p>
+<p>To start, I just used the <strong>Timeout</strong> transition, which would just cycle through the states with a 1 second delay.
+This is fine for all transitions, except for the one from <em>Loaded</em> to <em>Firing</em>. Here we only want to transition when a creature walks into the trap.</p>
+<p>To detect this, I decided to use a <a href="../../docs/physics/jolt/actors/jolt-trigger-component.html">physics trigger</a>.</p>
+<p>First this meant that my creatures need to have some kind of physics representation, which the physics trigger can detect at all. So I added a kinematic capsule shape, which just moves along with my creature (they currently don't use a character controller).</p>
+<p><img src="media/devlog2/ma-dl2-image5.png" alt="Creature"></p>
+<p>Now whenever the creature walks into a trap, the trigger in my trap prefab will fire an event. However, so far this event won't have any effect.</p>
+<p>I need to hook up the event from the trigger to my state machine. And this is what <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripts</a> are really good for.</p>
+<p>On the root node of my trap, I added a <em>Script Component</em>:</p>
+<p><img src="media/devlog2/ma-dl2-image6.png" alt="Script component"></p>
+<p>The script is quite trivial:</p>
+<p><img src="media/devlog2/ma-dl2-image7.png" alt="Script"></p>
+<p>Whenever the trigger fires, the script's <em>OnMsgTriggerTriggered</em> node gets executed. We then switch over the state and only react to <em>Activated</em> events. If so, we call <em>FireTransitionEvent</em> on the sibling <a href="../../docs/ai/state-machine-component.html">StateMachineComponent</a> and tell it to <em>Fire</em>.</p>
+<p><img src="media/devlog2/ma-dl2-image8.png" alt="SM transitions"></p>
+<p>So now we have it. When a creature walks into the trigger, the visual script gets the physics trigger event, forwards that to the state machine and when the state machine happens to be in the <em>Loaded</em> state, it will transition into the <em>Firing</em> state. The state machine then changes which sub-objects in the trap are active, which in turn starts the spike movement and applies area damage to anything close by.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="monster-attack.html">Monster Attack Sample</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/samples/monster-attack/devlog-2.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>
