@@ -109,6 +109,12 @@
 </li>
 <li><p><code>BoneDirection</code>: This setting only affects the visualization of the skeleton. It has no effect on the actual mesh skinning. It is used to tell the visualizer which cardinal direction the bones should point into. You only need to change this setting, if the skeleton visualization looks all wrong (all lines point into weird directions). You need to <em>transform</em> the asset to apply the change. Just try all options until it looks right.</p>
 </li>
+<li><p><code>PreviewMesh</code>: An <a href="animated-mesh-asset.html">animated mesh</a> to render transparently over the skeleton to serve as a preview. This is especially useful when setting up collider shapes, to know how large they should be to fit nicely.</p>
+</li>
+<li><p><code>CollisionLayer</code>, <code>Surface</code>: The default <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> and <a href="../../materials/surfaces.html">surface</a> to use for all bone shapes. This can be overridden on each bone.</p>
+</li>
+<li><p><code>MaxImpulse</code>: When projectiles and other things apply impulses to ragdoll limbs, the forces can quickly add up and fling a ragdoll far away. This value is used to clamp the maximum impulse to apply to prevent that.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

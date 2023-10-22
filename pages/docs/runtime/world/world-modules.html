@@ -81,7 +81,7 @@
 <h1 id="world-modules">World Modules</h1>
 
 <p><em>World modules</em> are systems that are used to update certain aspects of a world. There can be only one instance of each world module for each <a href="worlds.html">world</a>.</p>
-<p>A good example for a world module is the <code>ezPhysXWorldModule</code>. This module is responsible for updating the physics world every frame. To do so, it hooks into two <em>update phases</em> of the world, once early in the frame, where it kicks off the physics simulation in a parallel task, and once late in the frame, where it fetches the results of the simulation and applies them to the world.</p>
+<p>A good example for a world module is the <code>ezJoltWorldModule</code>. This module is responsible for updating the physics world every frame. To do so, it hooks into two <em>update phases</em> of the world, once early in the frame, where it kicks off the physics simulation in a parallel task, and once late in the frame, where it fetches the results of the simulation and applies them to the world.</p>
 <p>Components represent individual pieces in the world. World modules represent large systems that provide the foundation for the components to work. World modules are frequently needed when integrating third party systems that require per frame updates to function.</p>
 <h2 id="creating-and-instantiating-world-modules">Creating and Instantiating World Modules</h2>
 <p>You create a new world module class by deriving from <code>ezWorldModule</code>.</p>

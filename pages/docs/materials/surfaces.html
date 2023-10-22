@@ -87,7 +87,7 @@
 <h2 id="physics-properties">Physics Properties</h2>
 <p>Surfaces are used by <a href="../physics/jolt/collision-shapes/jolt-collision-meshes.html">collision meshes</a> and other physics components to look up basic physics properties.</p>
 <p><strong>Restitution:</strong> Configures how &quot;bouncy&quot; a material is. Objects with a high restitution will bounce very strongly (like rubber) and objects with a low restitution will come to rest quickly (like soft wood).</p>
-<p><strong>Friction:</strong> The friction values affect how slippery a material is and thus how much it will slide or roll. Smooth surfaces typically have lower and rough surfaces higher friction. <a href="../physics/physx/physx-overview.html">PhysX</a> also differentiates between <em>static</em> friction for objects that are currently standing still and <em>dynamic</em> friction for objects that are already moving. Static friction is typically higher than dynamic friction, meaning it is more difficult to get something to move, than to keep something moving. Note that <a href="../physics/jolt/jolt-overview.html">Jolt</a> does not differentiate between the two, and we use an average value here.</p>
+<p><strong>Friction:</strong> The friction values affect how slippery a material is and thus how much it will slide or roll. Smooth surfaces typically have lower and rough surfaces higher friction. Some physics engines also differentiates between <em>static</em> friction for objects that are currently standing still and <em>dynamic</em> friction for objects that are already moving. Static friction is typically higher than dynamic friction, meaning it is more difficult to get something to move, than to keep something moving. Note that <a href="../physics/jolt/jolt-overview.html">Jolt</a> does not differentiate between the two, and we use an average value here.</p>
 <h2 id="surface-interactions">Surface Interactions</h2>
 <p>The main feature of surfaces are <em>surface interactions</em>. These are used to tell the engine which effects it should spawn when a surface interacts with something else. The other thing may be another surface, for example when a box slides over the ground, then both the box and the ground have a surface. However, the other thing could also be something entirely different. For example a laser beam. In this case the surface may define whether the beam should create sparks or fire or steam, etc.</p>
 <p>Every surface interaction is configured by adding an entry to the <em>Interactions</em> array (see image above). Each entry represents one way that the surface can interact with something else. To determine which interaction to use, for instance when you shoot an object, you specify a <em>Type</em> string.</p>
@@ -101,6 +101,7 @@
 <h3 id="spawning-prefabs">Spawning Prefabs</h3>
 <p>All surface interactions ultimately spawn <a href="../prefabs/prefabs-overview.html">prefabs</a>. So if you want to have different footstep sounds when walking over stone, sand and mud, you need three prefabs, each playing a different sound. However, since they are prefabs, your creativity is not limited to playing a sound. Your &quot;sand footstep effect&quot; may contain spawning a small dust <a href="../effects/particle-effects/particle-effects-overview.html">particle effect</a>. And the &quot;mud footstep effect&quot; could additionally spawn a footprint <a href="../effects/decals.html">decal</a>.</p>
 <p>The following options allow you to adjust how prefabs are spawned:</p>
+<p><strong>Parameters:</strong> <a href="../scenes/exposed-parameters.html">Exposed Parameters</a> can be used to spawn the same prefab but with different configurations.</p>
 <p><strong>Alignment:</strong> Defines how the spawned prefab instance will be rotated. The +X axis of the prefab is considered to be 'forwards'.</p>
 <ul>
 <li><strong>Surface Normal:</strong> The 'forwards' direction (+X) of the prefab will be aligned with the normal of the object where the interaction happened. With this mode, the angle at which you shoot at a surface would not make a difference, as the effect is always spawned orthogonal to the hit geometry.</li>
@@ -122,21 +123,16 @@
 <li>They can <em>roll</em> around</li>
 </ol>
 <p>Surface interactions enable you to let these make sounds or play effects.</p>
-<blockquote>
-<p><strong>Important:</strong></p>
-<p>At the time of writing only the object collisions (bumping into each other) are configurable. See issue <a href="https://github.com/ezEngine/ezEngine/issues/231">#231</a>.</p>
-</blockquote>
+<p>Which types of physics interactions an object creates is configured on each <a href="../physics/jolt/actors/jolt-dynamic-actor-component.html">dynamic actor</a> with the <code>On Contact</code> flags. Only if the respective flags are set, will the engine even attempt to spawn a prefab for a physical interaction.</p>
 <h4 id="bump">Bump</h4>
 <p>Each surface has an <code>OnCollideInteraction</code> property. This string specifies which surface interaction to trigger on another surface, when two objects collide.</p>
 <p>For example the <em>wood surface</em> may set its <code>OnCollideInteraction</code> property to <code>Bump_Wood</code>. When you now have a wooden box and let that box fall onto a stone floor, the physics system will look up the <code>OnCollideInteraction</code> property from the dynamic object (the box) and use the string (&quot;Bump_Wood&quot;) to trigger this interaction from the stone surface. If the stone surface defines such an interaction, the corresponding prefab will be spawned, otherwise nothing happens.</p>
 <p>Now this behavior would trigger an interaction every single time the box touches anything and it would always be the same interaction, no matter whether it just touches something lightly, or collides with a lot of force. To fix this, each interaction additionally has an <code>ImpulseThreshold</code>. This allows you to set up multiple surface interactions of the same <em>type</em> that have different <em>thresholds</em> and reference different prefabs. If an object bumps into another object, the physics engine provides the amount of force with which the collision occurred. The system will then pick the surface interaction with the highest exceeded threshold. Thus if two objects collide with a lot of force, it may spawn a prefab with a loud sound, and if they collide with little force a quieter prefab may be spawned. And if they collide with even less force, no prefab may be spawned at all.</p>
 <p>Note that looking up surface interactions is generally <a href="#hierarchical-surfaces">hierarchical</a>, meaning that if something like <code>Bump_Wood</code> is not part of a derived surface, but part of its <em>base surface</em>, it will be found. However, regarding the <em>impulse threshold</em> property, the search is not fully hierarchical. Instead, once any interaction of the right type is found in any (base or non-base) surface, no further search is done in additional base surfaces, even if there would be a surface interaction with a better matching threshold in the base surface.</p>
 <p>Basically, once a surface overrides a surface interaction, it completely replaces all available interactions of that type and should have full control which interaction is taken at which threshold.</p>
-<!-- TODO ImpulseScale -->
-<h4 id="slide">Slide</h4>
-<p>See issue <a href="https://github.com/ezEngine/ezEngine/issues/231">#231</a>.</p>
-<h4 id="roll">Roll</h4>
-<p>See issue <a href="https://github.com/ezEngine/ezEngine/issues/231">#231</a>.</p>
+<h4 id="slide-and-roll">Slide and Roll</h4>
+<p>Similar to the <em>Bump</em> interaction, prefabs can be spawned to deal with situations where an object slides or rolls across another object. The difference here is, that prefabs for these interactions get spawned when a slide or roll starts, and then only their (average) position gets updated, until the interaction stops, at which point the prefab gets deleted again.</p>
+<p>That means that slide and roll interaction prefabs should do things in a loop, for instance play a looped sound or contain an endless particle effect, such that the effect will last as long as the interaction is active.</p>
 <h2 id="video">Video</h2>
 <p><a href="https://www.youtube.com/watch?v=zTKDNHpKz4o"><img src="https://img.youtube.com/vi/zTKDNHpKz4o/0.jpg" alt="video"></a></p>
 <h2 id="see-also">See Also</h2>

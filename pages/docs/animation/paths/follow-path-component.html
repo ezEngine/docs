@@ -93,7 +93,16 @@
 <li><code>Speed</code>: How fast to move along the path.</li>
 <li><code>LookAhead</code>: The component will rotate the object according to the path direction. For this it samples the path some distance ahead. The farther the look-ahead the earlier the object will rotate into upcoming curves. At a very low look-ahead, it will rotate very rigidly.</li>
 <li><code>Smoothing</code>: With zero smoothing the position of the object will be exactly that of the path. With some smoothing, the position doesn't change as abruptly. For mechanical objects attached to a rail, this should be zero, for more organic movement, increase the value towards one.</li>
+<li><code>FollowMode</code>: How the transform of the owner object gets modified:
+<ul>
+<li><code>OnlyPosition</code>: Only the position gets moved along the path. The orientation of the object stays unaffected.</li>
+<li><code>AlignUpZ</code>: While moving along the path, the object rotates only around the up axis (Z) to look into the direction of the path. This is useful for moving platforms that should always stay perfectly flat.</li>
+<li><code>FullRotation</code>: The object is both moved and oriented accoring to the path.</li>
 </ul>
+</li>
+<li><code>TiltAmount</code>, <code>MaxTilt</code>: If <code>FollowMode</code> is <code>AlignUpZ</code>, <em>MaxTilt</em> defines whether the object may tilt a little when turning. <em>TiltAmount</em> specifies how much tilting will occur.</li>
+</ul>
+<p><video src="media/follow-path-mode.mp4" width="800" height="600" autoplay="" controls=""></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="path-component.html">Path Component</a></li>

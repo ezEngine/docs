@@ -236,7 +236,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/Shipping/project-export.html",
-          "hash": "576LjY1oWaMeFTxmp7jmgbFp2jlWVIxvYSE8NMy6Bvo="
+          "hash": "d/c7vBYH8ayhn6cOB+Frxys4VHzgCI6Gmqg8N0N6QkI="
         }
       },
       "is_incremental": false,
@@ -317,7 +317,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/ai/sensor-components.html",
-          "hash": "mLgxGJl46p1N6SYGUCBvGZr47+x/lN+d7GkLuxjrOpg="
+          "hash": "c64ZfFbHXEgWBhhErrSQUYb7tkKrg5ofwQcDoAWv3Fc="
         }
       },
       "is_incremental": false,
@@ -685,7 +685,18 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/animation/paths/follow-path-component.html",
-          "hash": "8sghj5WaRoBzXxSMKgXKGyYUArssGc6VHvcltFjKw34="
+          "hash": "ZjvuDE69H9srUXKlremOitY2oYiOs3zprvXEkVON/4M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/follow-path-mode.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/follow-path-mode.mp4"
         }
       },
       "is_incremental": false,
@@ -766,7 +777,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/animation/property-animation/move-to-component.html",
-          "hash": "gMKPAAGVjtKQuAZ1JYYzHsm9GZG0Iqjx0P2b7BMWDrY="
+          "hash": "slyzKNG53aHibdsrVyADQE8M1+E53vysOmJ5m8rV5F0="
         }
       },
       "is_incremental": false,
@@ -810,6 +821,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/property-animation/reset-transform-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/property-animation/reset-transform-component.html",
+          "hash": "4HyGwveM6we2Fxm1k/R5WR/v9uS2soBVF8hxURY6an0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/animation/property-animation/rotor-component.md",
       "output": {
         ".html": {
@@ -838,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/animation/skeletal-animation/animated-mesh-asset.html",
-          "hash": "unnsprKz0gsck6MLbObtoymZB+Zmphtn/PVYy0/Ne9c="
+          "hash": "Lc4wYP4qOR/6R+F8ycs9CGoDdVOsTkLYOVdxnW+BTHU="
         }
       },
       "is_incremental": false,
@@ -1205,7 +1228,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/animation/skeletal-animation/skeleton-asset.html",
-          "hash": "7HcsLHRZlJCqDtbbxKCI4djV2/hUDGnqnGY85DSsaUE="
+          "hash": "/Q/TVP8zzLPLJjlcUDjlhKwl5gSWgdqM4p2fwkzGqog="
         }
       },
       "is_incremental": false,
@@ -1325,7 +1348,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/appendix/third-party-code.html",
-          "hash": "lC056SDn9ZiB2nFeeKKetWilB5SGtypZVAjcQmnoA3g="
+          "hash": "kzBVqazNvrfq2NVdopOJAjymIHN3QM/1KGOT4U871ks="
         }
       },
       "is_incremental": false,
@@ -1337,7 +1360,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/asset-browser.html",
-          "hash": "NsT2aRdTvnIeT1JT5UDQjblnzy8Doluazbnnkaw3gNs="
+          "hash": "i15peysUJV4q9+eGTMW0dLELR/toWBwbZq6KBIFJd08="
         }
       },
       "is_incremental": false,
@@ -1361,7 +1384,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/asset-profiles.html",
-          "hash": "Gf/0nmv292ZlqZyPaCW+rs4i/jnFwa5ELi9Jc2vStvg="
+          "hash": "pw+1SQkP0eg3xf0O1MKuD33Lm+9OhbF6OTzvrUBpCGw="
         }
       },
       "is_incremental": false,
@@ -1373,7 +1396,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/assets-overview.html",
-          "hash": "aouZuEqZx//ZggmXTBSux0RI+IwPrg7kooPsSmdSWtQ="
+          "hash": "RXuYVkY5tTrTtKV5XRvyUbmzCmhRt8REcW4RmEIuoTw="
         }
       },
       "is_incremental": false,
@@ -1385,7 +1408,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/import-assets.html",
-          "hash": "swWQ4m09CAqd7vdzs8F3zxbCArqCbo37wVCuPlVXPEk="
+          "hash": "oJdrZJ96cxYO9WciQu2fB0/fePRuYls1yLReuGgjN2Y="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1592,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/build/cmake-config.html",
-          "hash": "ueuH2374lF46svIaBKwNEag6ZIpbvXdIcEcYkoBJQVM="
+          "hash": "Vk+4hFfbTwVlAmXIOTe6c9daGNNDc/66/U1ZaNGSL18="
         }
       },
       "is_incremental": false,
@@ -1652,7 +1675,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/cpp/cpp-project-generation.html",
-          "hash": "4KFt85wUnAV9KP7dHlCAtHPn6DfYOuCC8A3PHFP2EJM="
+          "hash": "MGV3iAJQJebK+Givw2QnTLqLOe/8e3Lrb8Lf+H4XURg="
         }
       },
       "is_incremental": false,
@@ -1814,7 +1837,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/typescript/ts-asset.html",
-          "hash": "ypHbpkiq3iWGebBrhbr/X11xatuy/BC6LQ1wAKz21KY="
+          "hash": "PMR1Cozc+2ee19pmXzz6LTYWAA4ysneF3fh7zUJpLvs="
         }
       },
       "is_incremental": false,
@@ -1862,7 +1885,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/visual-script/visual-script-overview.html",
-          "hash": "RdHJ0CWL7Dw0TjT7ymxN3ZHHppSV8KvuwgKCa7Y5+pI="
+          "hash": "5W6l53DlP8s+3QNt6Hg8PxbTZ5sGlrZe2Va8n3svBY4="
         }
       },
       "is_incremental": false,
@@ -1920,7 +1943,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/debugging/console.html",
-          "hash": "7Cku4AXoAIa3z2fgkzJRJXEci5Sb5Ea8wsHJObb8Bmg="
+          "hash": "RoNi9ZBk8L8utSCQ037iKaw+2hpkVm6Th9zB3HddIQI="
         }
       },
       "is_incremental": false,
@@ -2108,7 +2131,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/editor/editor-settings.html",
-          "hash": "W6KE9FzlYy8LN4Ofsa5o52cYlJweTkV0J1fY9LFDYjo="
+          "hash": "WKzBInLpeycpxlUMmd2HJtniFPTcjEstBUDSni6cIc0="
         }
       },
       "is_incremental": false,
@@ -2463,7 +2486,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/editor/run-scene.html",
-          "hash": "4SjZQIRhBcCkvHqwdD8I4hzsbEaEPuFfwwmVf/j6cvY="
+          "hash": "Q72F+esBIpVKK4bw+xHTeprQUS+NHoXI6JqHm4Awsto="
         }
       },
       "is_incremental": false,
@@ -3067,7 +3090,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/particle-effects/particle-effects-overview.html",
-          "hash": "hHRuzhelOKtgVSEr7L/dZ57/uf0qnyErd3D83p9LEt8="
+          "hash": "jB1BkPwQ+vINFMiqoviwyiAfIbtl0K5Ld8H+M5j1BGQ="
         }
       },
       "is_incremental": false,
@@ -3281,7 +3304,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/gameplay/projectile-component.html",
-          "hash": "mi713AgJQHrIROEwkB0+/hz9RyNSIFis8Lg1U4nGL6A="
+          "hash": "GJ7m1pntVbhMZbDHbjsnvuQj4W5udvlBYhjxe3sbyTU="
         }
       },
       "is_incremental": false,
@@ -3917,7 +3940,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/input/input-config.html",
-          "hash": "3V9YftK8dXb9VyVqykYdl3Rz+UQwHo9W5+iXXs9ZiV0="
+          "hash": "zQOdAXgnS78uRo7jkiGWloTakXcIvOYWvBYFxF+gPwc="
         }
       },
       "is_incremental": false,
@@ -3975,7 +3998,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/materials/surfaces.html",
-          "hash": "VlOXnB0SRAffYz0FrYM0j0DaXU2U2pICaV3OSSn8BgE="
+          "hash": "+gj0yDFNuaPhyCP/fqCHlrDBofao8EPT9bN93y9ucaQ="
         }
       },
       "is_incremental": false,
@@ -4011,7 +4034,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/performance/collection-component.html",
-          "hash": "DrwSXe2zawzB0O85S5RWRYGuCdt2eCwM8WLhv69TrZQ="
+          "hash": "wG7B609ePTAx0QXJS9ywHoPGgeVAhSv/KBav7vnBqoI="
         }
       },
       "is_incremental": false,
@@ -4241,7 +4264,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/collision-shapes/jolt-collision-layers.html",
-          "hash": "Q9afwownbPPKXk92ywToGo09vfUATbotVUJX52n+QpA="
+          "hash": "yBepWufl7Wt9zLkxmmoSRXbTkfg7bbPlSjnKox9vCL0="
         }
       },
       "is_incremental": false,
@@ -4667,7 +4690,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/special/jolt-character-controller.html",
-          "hash": "lRi0/JX/7bVerSmgYSjcZ1RG0aMlKwTiPOJz7x2grf0="
+          "hash": "SQRNqnOBU1SYjTOi2kOPgkJi8Kca2v2j4mb1fFhATy0="
         }
       },
       "is_incremental": false,
@@ -4691,7 +4714,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/special/jolt-rope-component.html",
-          "hash": "pRWoasu1EvhwLveia8JaqNbojFxbdGnMhGpckA8Iynw="
+          "hash": "6xxF+wzdiiH5AWZJTlsqdfaOAEo1/lWYUSoVWzJ/mE8="
         }
       },
       "is_incremental": false,
@@ -4943,7 +4966,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/physx/collision-shapes/physx-collision-layers.html",
-          "hash": "YekO2jAhf5fAdxvnM/WZ834genlzJfcUZp9YHPZ9J3g="
+          "hash": "r7JsK+eLeGz4LJGtDOOBmwHBsTWaFE5LOd0x+1x/LPM="
         }
       },
       "is_incremental": false,
@@ -5393,7 +5416,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/data-directories.html",
-          "hash": "Nf6u12XBjx9RaDMq/f4G/IqR5RCTy0UBWtz+UDYsZ+k="
+          "hash": "4vDjYV2h3juS5Uv+XtJ1tjiek21tvZ7kv2BP1FGmhHU="
         }
       },
       "is_incremental": false,
@@ -5515,7 +5538,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/plugin-selection.html",
-          "hash": "ZeHSrPd8e+rxoj2wArySIocN/dLM+xBV8K4IOGzm5pM="
+          "hash": "arlHPecwzEWJDCMY8fSMCNKgtPEKFglZS+jYVyIYOuI="
         }
       },
       "is_incremental": false,
@@ -5527,7 +5550,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/project-settings.html",
-          "hash": "rrbHiku9iDE3lFk/X03l+Og1lf4KqHTo6+x7sRb1xp4="
+          "hash": "OdR6D+/Sps1S8ocASwo489FENheZ04hXoCYcOFloitY="
         }
       },
       "is_incremental": false,
@@ -5539,7 +5562,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/projects-overview.html",
-          "hash": "w7KTMPGxO2KVxQgv94RFV1JQCpRyxMnX8VbKpS5FHLQ="
+          "hash": "Iv1Q0khe1iKwbJ/g9pidQXS5orb1WAPkiBH65jOZGdg="
         }
       },
       "is_incremental": false,
@@ -5551,7 +5574,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/tags.html",
-          "hash": "2iArYLaaGjRqSmb7u05Ku21oIyoj34UiyRxb26BoHck="
+          "hash": "VnywGGIIo0LfxVxf8ERjPTmA650RwdwkqxWHuOaNyo4="
         }
       },
       "is_incremental": false,
@@ -5809,7 +5832,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/runtime/world/world-modules.html",
-          "hash": "K1DFNyWahzhjcOjDmvXTFfWyX8JBWi4dRDNA6CMirM0="
+          "hash": "1X2TkPNNU89SS12P/ny7qSJYetGdrGJiLxHdy3GTcLw="
         }
       },
       "is_incremental": false,
@@ -6318,7 +6341,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/sound/fmod-overview.html",
-          "hash": "BfV5fUwVUuiXhbZXc/1IKt5bAsYM4s3B/IqmADC+Jb8="
+          "hash": "aVblldiqGgRmmsX1qlC7ODKo10cfVALQri8Yv8AeGXo="
         }
       },
       "is_incremental": false,
@@ -6898,7 +6921,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "x/QUHDpzKbdvhLwRkTxDdpQwhk0BGhLNUc+pRyjbCeo="
+          "hash": "t4+294EeJns2kswbM5dGY+ZUVogniPBFq0HkAbLlJpE="
         }
       },
       "is_incremental": false,
@@ -8190,7 +8213,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/pacman.html",
-          "hash": "+YxtJeku+ggZ+gB3JkjuQFbuPOLQvGhVBXbs+rr0rGU="
+          "hash": "ZZcTnNMoNCsN0lZSOAcvaz1G3MUXc7W3/dEiJyw3SJo="
         }
       },
       "is_incremental": false,
@@ -8214,7 +8237,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/sample-game-plugin.html",
-          "hash": "pkeT+PldIqT3jPt8HgZ/nDEc/RzDCLugi4HEpOvKkWM="
+          "hash": "4QzVUI8DxC0NMujNbzQvUP50Ow7CbSjVOWwj0fFWl6U="
         }
       },
       "is_incremental": false,
@@ -8319,7 +8342,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 335,
+          "total_file_count": 336,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

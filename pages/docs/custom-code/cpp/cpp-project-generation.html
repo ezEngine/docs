@@ -92,9 +92,11 @@ However, if you want that, you can include the generated plugin as an <a href=".
 <p><a href="https://www.youtube.com/watch?v=EGobr-BqhSI"><img src="https://img.youtube.com/vi/EGobr-BqhSI/0.jpg" alt="video"></a></p>
 <h2 id="how-to-generate-a-new-solution">How to Generate a New Solution</h2>
 <ol>
-<li><p>Select <em>Editor &gt; Open C++ Project...</em>. The following dialog will appear:</p>
+<li><p>Select <em>Project &gt; C++ Project &gt; Setup C++ Plugin...</em>. The following dialog will appear:</p>
 <p><img src="media/generate-project.png" alt="Project Generation Dialog"></p>
 <p>Currently the locations for where the C++ source is stored and where the project will be built are both hard-coded to be within the project directory.</p>
+</li>
+<li><p>Choose the desired name for the plugin or leave the default.</p>
 </li>
 <li><p>Choose the desired MSVC solution version.</p>
 </li>
@@ -107,15 +109,12 @@ However, if you want that, you can include the generated plugin as an <a href=".
 <p><strong>Attention:</strong></p>
 <p>The code has to be built for the very same build type that the editor is running in (<em>Debug</em>, <em>Dev</em> or <em>Shipping</em>), otherwise the editor won't be able to load the DLL. If the build fails because certain EZ DLLs are missing, you are most likely building the wrong build type. The same may be true if you do code changes, but running the game from the editor doesn't reflect those changes.</p>
 </blockquote>
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>After compiling your new plugin for the very first time, you have to close the <a href="../../projects/projects-overview.html">editor project</a> and reopen it, for it to load the information properly. Due to automatic <a href="cpp-code-reload.html">hot reloading</a> this shouldn't be necessary later anymore, but it can still be necessary, for example when you add a new component type to your C++ code.</p>
-</blockquote>
 <h2 id="opening-an-existing-solution">Opening an Existing Solution</h2>
-<p>If you have generated the solution before, the <em>Open Solution</em> button will be active right away when you open this dialog. In this case you don't need to generate the solution again.</p>
+<p>If you have generated the solution before, the <em>Open Solution</em> button will be active right away when you open this dialog. In this case you don't need to generate the solution again. You can also skip this dialog and use <em>Project &gt; C++ Project &gt; Open Solution</em> instead.</p>
 <h2 id="regenerating-a-solution">Regenerating a Solution</h2>
-<p>If you have added or removed source files on disk, you need to regenerate the solution for those changes to show up in the Visual Studio solution. You have two options to do so:</p>
+<p>If you have added or removed source files on disk, you need to regenerate the solution for those changes to show up in the Visual Studio solution. You have three options to do so:</p>
 <ol>
+<li>Use <em>Project &gt; C++ Project &gt; Regenerate C++ Solution</em>.</li>
 <li>Run CMake yourself. For example you can use the CMake GUI app, point it to the plugin's build directory, and then <em>Configure</em> and <em>Generate</em> the solution at any point you like.</li>
 <li>Rerun <em>Generate Solution</em> from the dialog above. This will <strong>clear the CMake cache</strong> and fully regenerate the solution. Be aware that this resets all CMake options to their default values and often takes longer than strictly necessary.</li>
 </ol>

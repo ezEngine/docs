@@ -100,9 +100,16 @@
 <p>Overall the same guidelines to prevent stability issues apply here as well.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>Anchor</code>: A <a href="../../../scenes/object-references.html">reference</a> to an object whose position determines where the rope ends.</p>
+<li><p><code>Anchor1</code>, <code>Anchor2</code>: A <a href="../../../scenes/object-references.html">reference</a> to an object whose position determines one end of the rope. If only one anchor is specified, the position of the rope component's owner object is used as the other end.</p>
 </li>
-<li><p><code>AttachToOrigin</code>, <code>AttachToAnchor</code>: Whether the rope is fixed at the origin or anchor location. If the respective object is attached to a <a href="../actors/jolt-dynamic-actor-component.html">dynamic actor</a>, the rope will pull that actor. Otherwise, the rope will be fixed at that static location. If the rope is not attached at one or both ends it is free to move away from there.</p>
+<li><p><code>Anchor1Constraint</code>, <code>Anchor2Constraint</code>: How the rope is attached to each anchor:</p>
+<ul>
+<li><code>None</code>: The rope is not attached to the object, at all, and once the simulation starts, it will fall down at that end.</li>
+<li><code>Point</code>: The rope is attached with a point constraint and thus can freely rotate around that end.</li>
+<li><code>Fixed</code>: The rope won't be able to rotate around that end point. The orientation of the anchor is used to specified the direction of the rope there.</li>
+<li><code>Cone</code>: The rope can rotate around that anchor, but only within a cone of <code>MaxBend</code> opening. Similar to <code>Fixed</code>, the orientation of the anchor defines the starting direction of the rope.</li>
+</ul>
+<p>If an anchor object is attached to a <a href="../actors/jolt-dynamic-actor-component.html">dynamic actor</a>, the rope will pull that actor. Otherwise, the rope will be fixed at that static location. If the rope is not attached at one or both ends it is free to move away from there.</p>
 </li>
 <li><p><code>Mass</code>: The total mass of the rope. It will be distributed equally among all pieces.</p>
 </li>
@@ -121,6 +128,10 @@
 <li><p><code>Surface</code>: The <a href="../../../materials/surfaces.html">surface</a> defines how slippery or bouncy the rope is.</p>
 </li>
 <li><p><code>GravityFactor</code>: How much gravity affects the rope.</p>
+</li>
+<li><p><code>SelfCollision</code>: Whether the rope should be able to collide with itself.</p>
+</li>
+<li><p><code>ContinuousCollisionDetection</code>: If enabled, the physics simulation tries harder to prevent the rope from passing through other objects. This costs additional performance.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>

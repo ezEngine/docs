@@ -87,7 +87,7 @@
 <p>Each layer can be set to collide or not collide with each other layer. Consequently, the available combinations form a matrix of 32x32 entries. Each entry is either enabled or disabled. The matrix is mirrored along the diagonal. If layer <code>A</code> is set to collide with layer <code>B</code>, then of course layer <code>B</code> has to be set to collide with layer <code>A</code>.</p>
 <p>For convenience, in the editor you can give a name to each layer. The name is irrelevant at runtime, though.</p>
 <p><img src="../media/jolt-settings.png" alt="Collision layer config"></p>
-<p>Under <em>Editor &gt; Project Settings &gt; Jolt Project Settings...</em> you can configure the Jolt collision layers, as seen above.</p>
+<p>Under <em>Project &gt; Plugin Settings &gt; Jolt Project Settings...</em> you can configure the Jolt collision layers, as seen above.</p>
 <h2 id="physics-actors-and-shapes">Physics Actors and Shapes</h2>
 <p>The collision layer is specified on each actor. All the shapes of a physics actor are in the same collision layer. When two shapes overlap, the physics engine will check their collision layers. If the pair of layers is configured to collide, the two shapes will interact. Otherwise they will pass right through each other.</p>
 <h2 id="raycasts-and-shape-queries">Raycasts and Shape Queries</h2>

@@ -80,13 +80,13 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="cmake-setup">CMake Setup</h1>
 
-<p>To generate a solution, run the CMake GUI. Specify <em>Where is the source code</em> and <em>Where to build the binaries</em>, then run <strong>Configure</strong>. As a generator, pick <em>Visual Studio 2019 x64</em> (or one of the other <a href="supported-platforms.html">supported platforms</a>).</p>
+<p>To generate a solution, run the CMake GUI. Specify <em>Where is the source code</em> and <em>Where to build the binaries</em>, then run <strong>Configure</strong>. As a generator, pick <em>Visual Studio 2022 x64</em> (or one of the other <a href="supported-platforms.html">supported platforms</a>).</p>
 <p><img src="media/cmake-config.png" alt="CMake configuration"></p>
 <p>The screenshot above shows a common setup. Noteworthy are the following points:</p>
 <ul>
 <li><p><strong>EZ_ENABLE_QT_SUPPORT</strong> Disable this setting, if you want to compile EZ without Qt. This will remove all editor code and several tools from the final solution. The default is <em>on</em>. When possible the EZ CMake scripts will automatically download Qt libraries and set everything up for you. On configurations for which we do not support fully automatic setup, you need to install Qt manually and then set set <strong>EZ_QT_DIR</strong> to its installation folder.</p>
 </li>
-<li><p><strong>EZ_BUILD_FMOD</strong> Enable this, if you want to <a href="../sound/fmod-overview.html">FMOD sound</a> support in your build. One Windows and Linux the default is <em>on</em>.</p>
+<li><p><strong>EZ_BUILD_FMOD</strong> Enable this, if you want to <a href="../sound/fmod-overview.html">FMOD sound</a> support in your build. On Windows and Linux the default is <em>on</em>.</p>
 </li>
 <li><p><strong>EZ_BUILD_PHYSX</strong> Enable this, if you want to add <a href="../physics/physx/physx-overview.html">NVIDIA PhysX</a> support to your build. Once enabled, the next run of &quot;Configure&quot; will automatically download PhysX binaries (Windows only) and set the <strong>EZ_PHYSX_SDK</strong> variable accordingly. The default is <em>off</em>. Note that PhysX support has been superseded by the <a href="../physics/jolt/jolt-overview.html">Jolt Physics integration</a>.</p>
 </li>

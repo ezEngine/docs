@@ -80,9 +80,32 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="moveto-component">MoveTo Component</h1>
 
-<!-- PAGE IS TODO -->
-<p>The state of this component is currently unclear and it needs to be revisited.</p>
+<p>A light-weight component that moves the owner object towards a single position.</p>
+<p>The functionality of this component can only be controlled through (script) code.
+The component is given a single point in global space. When it is set to <em>running</em> it will move
+the owning object towards this point. Optionally it may use acceleration or deceleration and a maximum speed
+to reach that point.</p>
+<p>Since the target position is given through code and can be modified at any time, this component can be used
+for moving objects to a point that is decided dynamically. For example an elevator can be moved to a
+specific height, depending on which floor was selected. Or an object could follow a character,
+by updating the target position regularly.</p>
+<p>The component sends the event <code>ezMsgAnimationReachedEnd</code> and resets its running state when it reaches the target position.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Running</code>: Whether the component is currently moving the owner. Has to be set to <code>true</code> to start moving towards the target position. Setting this to <code>false</code> before the target was reached will interrupt the movement immediately.</li>
+<li><code>TranslationSpeed</code>: The maximum speed at which to move towards the target.</li>
+<li><code>TranslationAcceleration</code>: The acceleration to use to reach the translation speed.</li>
+<li><code>TranslationDeceleration</code>: The deceleration to use to slow down when the target destination is being reached.</li>
+</ul>
+<h2 id="component-script-functions">Component Script Functions</h2>
+<ul>
+<li><code>SetTargetPosition(pos)</code>: Call this to change the target position. Nothing will happen, though, unless <code>Running</code> is also set to <code>true</code>.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../paths/follow-path-component.html">Follow Path Component</a></li>
+<li><a href="slider-component.html">Slider Component</a></li>
+</ul>
 </article>
           </div>
           

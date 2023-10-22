@@ -85,7 +85,7 @@
 <p>The engine only operates with relative paths, it never stores absolute file paths. Thus, the data directory can be moved to a different location. This is what makes it easily possible to copy the game to a different computer in a different location. As long as the startup code is able to locate the data directories, the rest of the engine will work without a change.</p>
 <h2 id="mounting-data-directories">Mounting Data Directories</h2>
 <h3 id="using-the-editor">Using the Editor</h3>
-<p>Typically you should use the editor to configure which folders will be accessible as data directories. Go to <em>Editor &gt; Project Settings &gt; Data Directories...</em>:</p>
+<p>Typically you should use the editor to configure which folders will be accessible as data directories. Go to <em>Project &gt; Project Settings &gt; Data Directories...</em>:</p>
 <p><img src="media/editor-data-dir.png" alt="Data directories"></p>
 <p>Here you can add, remove and reorder them. Setting up the data directories of a project should be one of the very first steps after creating a new project.</p>
 <p>You may notice the <code>&gt;sdk</code> and <code>&gt;project</code> prefixes. These are <em>special directory</em> indicators, meaning those paths are relative to the <em>SDK directory</em> (where the engine is installed) or the <em>project directory</em> (where your project is located). These indicators are automatically inserted when you browse for a folder. They enable the engine to find the same folder again, even if you move the project, or you need to stream the data using <a href="../tools/fileserve.html">FileServe (TODO)</a>.</p>
