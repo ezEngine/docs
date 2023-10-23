@@ -85,15 +85,16 @@
 <p><img src="media/state-machine.png" alt="State Machine"></p>
 <h2 id="state-machine-concept">State Machine Concept</h2>
 <p>At any time exactly one <em>state</em> is <strong>active</strong> in a state machine. The active state determines what actions an entity will do and what other states it can <em>transition</em> into. For example in the image above you can see that this state machine can only transition from the <em>Idle</em> state into the <em>Alert</em> state (and back), but it can't directly transition into the <em>Attacking</em> state.</p>
-<p>What an entity does, when a certain state is active, is usually up to <a href="../custom-code/custom-code-overview.html">other code</a>. On the state node in the state machine asset you select what <em>type of state</em> this is. Different state types can be implemented in C++. But there are also state types that can be used to trigger script code.</p>
-<p>State machines are updated regularly and during every update they may <em>transition</em> into another state. Possible transitions are represented by arrows between states. Just as with states, there are also different <em>types of transitions</em>. As with states, custom transition types can be implemented with C++.</p>
+<p>What an entity does, when a certain state is active, is usually up to <a href="../custom-code/custom-code-overview.html">other code</a>. On the state node in the state machine asset you select what <em>type of state</em> this is. Different state types can be implemented in C++ or <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a>.</p>
+<p>State machines are updated regularly and during every update they may <em>transition</em> into another state. Possible transitions are represented by arrows between states. Just as with states, there are also different <em>types of transitions</em>. As with states, custom transition types can be implemented with C++ or <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a>.</p>
 <p>During the state machine update, each transition on the active state is queried, whether its condition is met. If so, the transition is taken, and the state that it points to becomes the new active state. What it means that a transition's condition is met, is up to the transition type's implementation. For example the <em>blackboard transition</em> inspects values from a nearby <a href="../Miscellaneous/blackboards.html">blackboard</a>, allowing you to set up logical rules. Another type of transition may simply wait for a second and then allow to transition further, acting as a timer.</p>
 <p>In many state machines there are states that can be reached from pretty much every other state. For example the <em>Dead</em> state in the image above is simply reached whenever the health of a creature reaches zero, no matter which state it currently is in. In a pure state machine, one would add transitions from every node to that final state. However, since this is cumbersome, EZ also allows to set up transitions that can transition from any active state to their target state. In the state machine asset, such transitions are represented as an
 <strong>Any State</strong> (taking the place of <em>any other state</em>) from which they are drawn to the target state.</p>
 <h2 id="configuring-state-machines">Configuring State Machines</h2>
 <p>Right click into the window and choose <strong>New State</strong> or <strong>New Any State</strong> to add a node. To add a transition between states, click the <strong>+</strong> on a node and drag it to another state.</p>
 <p>Select state nodes in the main window to see their <em>properties</em>. Here you can give the state a name and <strong>select the state type</strong>. Most state types have custom properties that also need to be configured here.</p>
-<p>Select transition arrows to see their <em>properties</em>. Again, you need to <strong>select the transition type</strong>. Typically you also then need to configure the transition's properties.</p>
+<p>Select transition arrows to see their <em>properties</em>. Here you can <strong>select the transition type</strong>. Typically you also then need to configure the transition's properties.</p>
+<p>If you don't select a state type, a state simply does nothing. If you have a transition without a transition type, the transition will be taken immediately. This can be used to simply chain states. For example the <em>start state</em> is always active, even while the editor is not simulating. It is sometimes undesireable to have this state do anything. Therefore, a second state can be used as the &quot;real&quot; start state, and a transition without a type can be added between the two. This transition is only going to be taken once the scene is being simulated.</p>
 <h3 id="default-initial-state">Default Initial State</h3>
 <p>Right click on a state and select <strong>Set as Initial State</strong> to make a state the <em>default initial state</em>. That means, when this state machine is used in a <a href="state-machine-component.html">state machine component</a> or as a <a href="#nested-state-machine">nested state machine</a>, and no <em>initial state</em> is selected by the user, this state is used.</p>
 <h2 id="state-types">State Types</h2>
@@ -108,6 +109,27 @@
 <p>If no <em>initial state</em> is specified, the <a href="#default-initial-state">default initial state</a> is used.</p>
 <h3 id="compound-state">Compound State</h3>
 <p>A <em>Compound State</em> has no functionality by itself, rather it holds an array of other state types. All events (state entered/left) are forwarded to all sub-states equally. Thus it can be used to trigger multiple reactions at the same time.</p>
+<h3 id="script-state">Script State</h3>
+<p>The <em>Script State</em> runs a <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a>. It executes the <code>OnEnter</code>, <code>OnExit</code> and <code>Update</code> event handlers for state machine states.</p>
+<h3 id="switch-object-state">Switch Object State</h3>
+<p>This state sets the <em>enabled flag</em> on a game object and disables all other objects in the same group.</p>
+<p>This state allows to easily switch the representation of a game object.
+For instance you may have two objects states: <em>normal</em> and <em>burning</em>.
+You can basically just build two objects, one in the normal state, and one with all the effects needed for the fire.
+Then you group both objects under a shared parent (e.g. with name 'visuals'), give both of them a name ('normal', 'burning') and disable one of them.</p>
+<p>When the state machine transitions from the <em>normal</em> state to the <em>burning</em> state, you can then use this type of state
+to say that from the 'visuals' group you want to activate the 'burning' object and deactivate all other objects in the same group.</p>
+<p>Because the state activates one object and deactivates all others, you can have many different visuals and switch between them.
+You can also only activate an object and keep the rest in the group as they are (e.g. to enable more and more effects).
+If you only give a group path, but no object name, you can also use it to just disable all objects in a group.
+If multiple objects in the same group have the same name, they will all get activated simultaneously.</p>
+<p>Make sure that essential other objects (like the physics representation or other scripts) are located on other objects, that don't get deactivated.</p>
+<h4 id="state-properties">State Properties</h4>
+<ul>
+<li><code>PathToGroup</code>: A list of object names, separated with slashes, that forms a relative path starting at the game object on which the state machine component is located, to a game object which acts as a <em>group</em> and contains multiple sub-objects.</li>
+<li><code>ObjectToEnable</code>: The name of the sub-object in the <em>group</em> that should get <em>enabled</em>.</li>
+<li><code>DeactivateOthers</code>: If true, all other objects within the <em>group</em> get disabled. Otherwise they stay as they are.</li>
+</ul>
 <h2 id="transition-types">Transition Types</h2>
 <p>You have to select a <em>transition type</em> for every transition in your state machine.</p>
 <h3 id="blackboard-conditions">Blackboard Conditions</h3>
@@ -118,6 +140,8 @@
 <p>The <em>Compound Transition</em> allows you to create complex logical conditions. It holds an array of other transition types. You can select whether either at least one of them, or all of these conditions need to be met, for the compound transition to be fulfilled.</p>
 <p>For example, you can add a blackboard condition and a timeout transition. If you set the compound transition to <code>AND</code>, both of these must be true, meaning the transition can only be taken after the blackboard values are correct and the minimum time has passed. If, however, you set it to <code>OR</code>, the transition is taken once either the timeout or the blackboard state is fulfilled.</p>
 <p>Note that you can use nested compound transitions to create even more complex logical conditions.</p>
+<h3 id="transition-event-transition">Transition Event Transition</h3>
+<p>This type of transition is taken when a <em>transition event</em> with the expected name has been raised. Transition events can be raised from <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a> or C++ through the <a href="state-machine-component.html">state machine component</a>. This allows script code to report back, that a certain condition was met, and that the state machine may leave its current state.</p>
 <h2 id="executing-state-machines">Executing State Machines</h2>
 <p>In theory state machines could be used in many contexts. In <a href="../custom-code/cpp/cpp-overview.html">custom C++ code</a> you are free to instantiate state machines directly via <code>ezStateMachineResource</code>.</p>
 <p>In a scene, you can instantiate a state machine through the <a href="state-machine-component.html">state machine component</a>.</p>

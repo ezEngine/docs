@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Blackboard Component | ezEngine </title>
+    <title>Global Blackboard Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Blackboard Component | ezEngine ">
+    <meta name="title" content="Global Blackboard Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,25 +78,32 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="blackboard-component">Blackboard Component</h1>
+<h1 id="global-blackboard-component">Global Blackboard Component</h1>
 
-<p>The <em>blackboard component</em> contains a <a href="blackboards.html">blackboard</a>. The component itself doesn't have any notable functionality. Instead it is used as the central storage, through which other systems can share their data and communicate.</p>
-<p>If a system requires a blackboard, it will typically search for a blackboard component by traversing its own object structure upwards (in C++ you can use <code>ezBlackboardComponent::FindBlackboard()</code> to do so).</p>
-<p>For example the <a href="../animation/skeletal-animation/animation-controller/animation-controller-overview.html">animation controller</a> is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through <a href="../custom-code/custom-code-overview.html">custom code</a>. For this, the blackboard component has to be attached either to the same object, or a parent object.</p>
+<p>A <em>global blackboard component</em> is used to ensure that a <a href="blackboards.html#global-blackboards">global blackboard</a> exists and contains all the expected entries.</p>
+<p>A global blackboard is often added by a <a href="../runtime/application/game-state.html">game state</a>, but when only <a href="../editor/run-scene.html">simulating a scene</a>, no game state is active. Thus, code that relies on a global blackboard will not work as desired.</p>
+<p>By adding a global blackboard component to a scene or prefab, you can ensure that the blackboard is always set up.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>BlackboardName</code>: The <em>name</em> for the blackboard. This could be used to search for a specific blackboard (if multiple are available), however, that is rarely a problem.</p>
+<li><p><code>Template</code>: The <a href="blackboard-template-asset.html">blackboard template</a> to use for configuring the global blackboard. For global blackboards this is the only way to configure the entries.</p>
 </li>
 <li><p><code>ShowDebugInfo</code>: If enabled, the component will <a href="../debugging/debug-rendering.html">draw a debug text overlay</a> with the current entries and their values at the position of the game object.</p>
 </li>
-<li><p><code>SendEntryChangedMessage</code>: If enabled, all changes to blackboard entries will be broadcast as an <a href="../runtime/world/world-messaging.html#event-messages">event message</a> of type <code>ezMsgBlackboardEntryChanged</code>. This allows other systems to react to every change, but also has a small performance cost.</p>
+<li><p><code>BlackboardName</code>: The <em>name</em> for the blackboard. For global blackboards this is important to set.</p>
 </li>
-<li><p><code>Entries</code>: Entries that will be added at start with their initial values. Some systems will may their own entries, others expect an entry to already exist. For example the <a href="../input/input-component.html">input component</a> may write input state into a blackboard, but it will only do so for entries that already exist. Therefore, you will need to add all entries that you want to receive from the input system here.</p>
+<li><p><code>InitMode</code>: What to do when the global blackboard component gets activated.</p>
+<ul>
+<li><code>Ensure Entries Exist</code>: Only makes sure that all entries mentioned in the template exist in the global blackboard. The values are not changed for entries that already exist.</li>
+<li><code>Reset Entry Values</code>: Overwrites all entry values to the initial value from the template. If additional entries exist, they are not modified.</li>
+<li><code>Clear Entire Blackboard</code>: Clears the entire blackboard and then sets up the ones mentioned in the template. This means that additional (temporary) entries that have been stored in the global blackboard get removed.</li>
+</ul>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="blackboards.html">Blackboards</a></li>
+<li><a href="blackboard-template-asset.html">Blackboard Template Asset</a></li>
+<li><a href="local-blackboard-component.html">Local Blackboard Component</a></li>
 <li><a href="../animation/skeletal-animation/animation-controller/animation-controller-overview.html">Animation Controller</a></li>
 </ul>
 </article>
@@ -107,7 +114,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/Miscellaneous/blackboard-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/Miscellaneous/global-blackboard-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

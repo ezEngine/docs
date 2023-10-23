@@ -149,11 +149,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/Miscellaneous/blackboard-component.md",
+      "source_relative_path": "pages/docs/Miscellaneous/blackboard-template-asset.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/Miscellaneous/blackboard-component.html",
-          "hash": "BGdwurwKVfWBdiIqOWJWr/ZhVKyEu7TX1QF0nJqtU98="
+          "relative_path": "pages/docs/Miscellaneous/blackboard-template-asset.html",
+          "hash": "N97p3AgZDQoI3SOtKszcu5WC4JVzIffer0w5SW2EOk4="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/Miscellaneous/blackboards.html",
-          "hash": "tvpK7RCTWxgaPwv8F6vNl4b1a5d4JGqOhZMFiRjXV7M="
+          "hash": "Trz5cy/FaYj/aCNUT9/pHzELuB4IK9PWCp5IiY1gDjM="
         }
       },
       "is_incremental": false,
@@ -209,11 +209,35 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/global-blackboard-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/global-blackboard-component.html",
+          "hash": "scouf/RuQZQ9HxyXlltaRZj2/hJjhyJXA6XL4iaa7W0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/Miscellaneous/imagedata-asset.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/Miscellaneous/imagedata-asset.html",
           "hash": "i+SNMGX0vWGre0eJU6mlvgH2/QNwZNii14A6CuNHmbs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/Miscellaneous/local-blackboard-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/Miscellaneous/local-blackboard-component.html",
+          "hash": "ZRbBrUUqjN4chMQxzal1CmIg/QS2N77vmbCTYL4NE8I="
         }
       },
       "is_incremental": false,
@@ -329,7 +353,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/ai/state-machine-asset.html",
-          "hash": "/u8aFxJ7/J6rZ6qZH/lxZQHhKaYQWg6kcK4IQ/gLJQc="
+          "hash": "hc3FsWTGncm6HecJaAQoAKIOUVQJJ/fxG8LF/yksbhM="
         }
       },
       "is_incremental": false,
@@ -5389,6 +5413,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/prefabs/media/prefab-root.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/prefabs/media/prefab-root.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/prefabs/media/prefab-types.jpg",
       "output": {
         "resource": {
@@ -5404,7 +5439,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/prefabs/prefabs-overview.html",
-          "hash": "eNyR4w75cjhjwX2mpsEKL4iXytKa3jkPDXzfxNMT06k="
+          "hash": "5ucwNtlnOlZIl0WaAUdtvhZ5OwP/bTxnT5Va2VwwM/w="
         }
       },
       "is_incremental": false,
@@ -6921,7 +6956,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "rss30Ko+tnxMnzSGD8DooWt867tWuYLUGeEpG0CX8rQ="
+          "hash": "d3VhF+ev1gbSM5YkIvvWM9AgMcrCryywsErEnaUMZJk="
         }
       },
       "is_incremental": false,
@@ -8342,7 +8377,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 336,
+          "total_file_count": 338,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
