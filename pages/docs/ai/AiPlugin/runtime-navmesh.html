@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Runtime Navmesh | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Runtime Navmesh | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="runtime-navmesh">Runtime Navmesh</h1>
+
+<p>The <a href="ai-plugin-overview.html">AiPlugin</a> add functionality to generate navmeshes on-demand at runtime. This is a very convenient workflow, as you don't need to create and store navmeshes before.</p>
+<p><img src="media/ai-navmesh.jpg" alt="Navmesh"></p>
+<h2 id="input-data">Input Data</h2>
+<p>The runtime navmesh generation uses the <a href="../../physics/jolt/collision-shapes/jolt-collision-meshes.html">collision geometry</a> and its <a href="../../materials/surfaces.html">surfaces</a> as the input data from which to build the navmesh.</p>
+<h2 id="navigation-configuration">Navigation Configuration</h2>
+<p>In a scene document select <em>Project &gt; Plugin Settings &gt; Ai Project Settings</em> to open the configuration dialog.</p>
+<p><img src="media/navmesh-config.png" alt="Navmesh config"></p>
+<h3 id="ground-types">Ground Types</h3>
+<p>The <em>Ground Types</em> tab is used to define the types of walkable (or non-walkable) ground that appear in your game. There is a maximum of 32 ground types. In this dialog you can edit their names (double click or <code>F2</code> on an entry) and select whether an entry should generally be in use (checkmark).
+Entries that are not checked, will not show up in other places as selectable.</p>
+<p>The <code>&lt;None&gt;</code> and <code>&lt;Default&gt;</code> ground types always exist and cannot be removed or renamed.</p>
+<p>Which <em>ground type</em> a physical surface represents, is specified in the <a href="../../materials/surfaces.html#ai-properties">surfaces</a>. If a surface uses the <code>&lt;None&gt;</code> ground type, it will not be part of the navmesh, at all, meaning the navmesh will have a hole there. For surfaces that are generally not walkable, by no character, this is preferable over using a dedicated ground type that is then ignored by a <em>path search type</em>.</p>
+<h3 id="navmesh-types">Navmesh Types</h3>
+<p>The <em>Navmesh</em> tab is used to configure how a navmesh is generated. Most games only need a single navmesh type, but if you have agents of very different height or radius, you may need additional ones.</p>
+<p>Enable the <a href="#navmesh-visualization">navmesh visualization</a> and utilize the the <a href="navmesh-path-test-component.html">navmesh path test component</a> to test how these options affect the result.</p>
+<h4 id="navmesh-properties">Navmesh Properties</h4>
+<ul>
+<li><p><code>Collision Layer</code>: The <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for finding geometry from which to generate the navmesh. This is mainly used to filter out high detail geometry, to speed up navmesh generation. It can also be used to ignore ground types that are generally not traversable (such as water).</p>
+</li>
+<li><p><code>Cell Size (XY):</code> How detailed the navmesh generation shall be. This has to be less than the desired character radius, and the agent radius should be a whole multiple of this value. For example if your cell size is <code>0.2</code>, the effective agent radius can only be <code>0.2</code>, <code>0.4</code>, <code>0.6</code> and so on.</p>
+</li>
+<li><p><code>Cell Height (Z):</code> The detail along the up axis with which to generate the navmesh. This mainly affects how well <em>steps</em> are detected and dealt with. Similar to the <em>agent radius</em>, the <em>agent step height</em> should be a multiple of the cell height.</p>
+</li>
+<li><p><code>Agent Radius:</code> How wide the characters are that walk over this type of navmesh. This affects how narrow passages can be, and how far away agents stay from walls. The agent radius should be a multiple of the <em>cell size</em>. Don't use multiple navmeshes only because characters shall have a slightly different radius. Use the same radius for all agents that are more or less the same size. Only use a separate navmesh type, for characters that are extremely different in size and should be forced to take different paths throughout narrow terrain.</p>
+</li>
+<li><p><code>Agent Height:</code> Similar to <em>agent radius</em>, this defines how tall a character may be. Should be a multiple of <em>cell height</em>. The same caveats as for <em>agent radius</em> apply.</p>
+</li>
+<li><p><code>Agent Step Height:</code> The maximum height of obstacles (such as stair steps) that an agent is allowed to step up. Should be a multiple of <em>cell height</em>.</p>
+</li>
+<li><p><code>Agent Walkable Slope:</code> The maximum slope of triangles that are considered for navmesh generation. Triangles steeper than this will be discarded as non-walkable.</p>
+</li>
+</ul>
+<h3 id="path-search-types">Path Search Types</h3>
+<p>Each navmesh defines <em>where</em> an agent can walk, and which <em>ground types</em> are in which area. <em>Path search types</em> are used to configure how fast an agent can traverse each ground type and thus which areas the agent would prefer or avoid. Additionally a path search type can be used to prevent an agent from walking on certain ground types, at all.</p>
+<p>In this tab you can add different path search types, and for each one, you can configure the <em>cost</em> of traversing a ground type and whether it is allowed to be traversed at all.
+The higher the cost, the more an agent will try to avoid it and use a different route if possible. Traversal costs can't be zero or negative.</p>
+<p>Use the the <a href="navmesh-path-test-component.html">navmesh path test component</a> to see how these options affect path finding.</p>
+<h2 id="navmesh-visualization">Navmesh Visualization</h2>
+<p>To be able to see the navmesh, use the <a href="../../debugging/cvars.html">CVar</a> <code>Ai.Navmesh.Visualize</code>. There can be multiple different navmeshes for different character heights etc. This CVar enables visualization for <em>one of them</em> by index. So set it to <code>0</code> to see the first navmesh, <code>1</code> if you have a second one and so on.</p>
+<h1 id="see-also">See Also</h1>
+<ul>
+<li><a href="ai-plugin-overview.html">AiPlugin Overview</a></li>
+<li><a href="navmesh-path-test-component.html">Navmesh Path Test Component</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/runtime-navmesh.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -104,7 +104,7 @@
 <p>Finally, you certainly noticed the <em>Any State</em>. This is a convenience feature, that allows you to basically add a transition from all states to another state, without having to set all that up manually. The <em>Any State</em> itself doesn't do anything, it is a placeholder. What you do configure, is the transition:</p>
 <p><img src="media/devlog6/ma-dl6-SMAnyStateTransition.png" alt="SMAnyStateTransition"></p>
 <p>Here our simple logic just says, that if the <code>Points</code> blackboard value reaches zero, we transition into the <em>Lost</em> state. You lose points every time a monster arrives at the level end.</p>
-<p>So how do we get all this running in our game? We just add a <a href="../../docs/ai/state-machine-component.html">State Machine</a> object into our scene:</p>
+<p>So how do we get all this running in our game? We just add a <a href="../../docs/custom-code/game-logic/state-machine-component.html">State Machine</a> object into our scene:</p>
 <p><img src="media/devlog6/ma-dl6-LevelNodes.png" alt="LevelNodes"></p>
 <p>Here I also gave the object the global key <strong>LevelLogic</strong>, so that my C++ custom <a href="../../docs/runtime/application/game-state.html">game state</a> can also find it and send a message to it for the <code>G</code> input, but other than that it is self sufficient.</p>
 <p>Well, that was a long post. If you managed to read this far, here is a <a href="https://1drv.ms/v/s!Ajrhg3sdAbZvltMpVgWHMQ76muk9xw?e=NNngvl">video of it all in action</a>.</p>

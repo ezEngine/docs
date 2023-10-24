@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Recast Integration | ezEngine </title>
+    <title>Recast Navmesh | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Recast Integration | ezEngine ">
+    <meta name="title" content="Recast Navmesh | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,19 +78,24 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="recast-integration">Recast Integration</h1>
+<h1 id="recast-navmesh">Recast Navmesh</h1>
 
-<!-- PAGE IS TODO -->
-<p>The Recast integration is functional, but not yet ready to be used productively.
-Help improving it is very much appreciated.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>You have to enable <strong>ShowInDevelopmentFeatures</strong> in the <a href="../editor/editor-settings.html">editor settings</a> for this component to show up.</p>
-</blockquote>
+<p><img src="media/navmesh.jpg" alt="Navmesh"></p>
+<p>Navmeshes are special meshes that define which areas of a scene are traversable for an AI agent. Though they can also be used to restrict player movement, for example in games where falling down a ledge should not be possible.</p>
+<p>To add a navmesh to a scene, place a <a href="recast-navmesh-component.html">navmesh component</a> to it.</p>
+<p>Navmeshes are unique to each scene, therefore they are not treated as reusable assets. Instead, each navmesh component generates and holds the data directly. Since generating a navmesh can take a long time, this process is exposed as an <a href="../../editor/editor-bg-operations.html">editor background operation</a>.</p>
+<p>To update a navmesh, open the background operations panel and start the corresponding operation.</p>
+<p>To visualize the navmesh, enable the <code>ShowNavMesh</code> option on the navmesh component.</p>
+<h2 id="navmesh-generation-options">Navmesh Generation Options</h2>
+<p>The options that affect navmesh generation are available through the <a href="recast-navmesh-component.html">navmesh component</a>.</p>
+<h2 id="using-the-navmesh">Using the Navmesh</h2>
+<p>Currently the navmesh functionality is only usable directly through custom C++ code. The AI components that are available are not in a state where they are usable, but their code can be used for inspiration. You will need to write your own code and use the Recast/Detour functionality directly to implement agent steering or other features.</p>
+<p>The navmesh component registers its navmesh in the <code>ezRecastWorldModule</code>. You can then retrieve the scene's navmesh through <code>ezRecastWorldModule::GetNavMeshResource()</code>. From their on you can use Recast to plan a path, check whether a location is walkable, and so on.</p>
+<p>Be aware that the Recast integration is very basic. Any help improving it would be highly appreciated.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="recast-navmesh.html">Recast Navmesh</a></li>
 <li><a href="recast-navmesh-component.html">Recast Navmesh Component</a></li>
+<li><a href="recast.html">Recast Integration</a></li>
 </ul>
 </article>
           </div>
@@ -100,7 +105,7 @@ Help improving it is very much appreciated.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/recast.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/RecastPlugin/recast-navmesh.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -144,9 +149,9 @@ Help improving it is very much appreciated.</p>
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>

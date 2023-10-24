@@ -82,17 +82,24 @@
 
 <p>The <em>SpawnComponent</em> is frequently used to spawn instances of <a href="../prefabs/prefabs-overview.html">prefabs</a> at runtime. The component references a prefab. It can then either spawn this prefab continuously in intervals, or at will by triggering the spawn command from (script) code.</p>
 <h2 id="component-properties">Component Properties</h2>
-<p><code>Prefab:</code> The <a href="../prefabs/prefabs-overview.html">prefab</a> that will be spawned by this component.</p>
-<p><code>AttachAsChild:</code> If true, the spawned object will be attached to the owner of the SpawnComponent. In most cases this should be disabled.</p>
-<p><code>SpawnAtStart:</code> If true, the SpawnComponent will spawn the prefab immediately when it gets activated.</p>
-<p><code>SpawnContinuously:</code> If true, the component will continue to spawn more and more prefab instances. This can only be stopped either through custom (script) code or by deleting the spawn component.</p>
-<p><code>MinDelay, DelayRange:</code> The minimum time that has to pass before the component will spawn another instance, plus some random delay. This not only applies to the <em>SpawnContinuously</em> case, but also to cases where the spawn may be triggered from code. Meaning, this can be used to limit how often an action is allowed. For example, a gun can use a SpawnComponent to launch projectiles, and the gun code can simply trigger the SpawnComponent every time the user clicks. However, due to the <em>MinDelay</em>, the gun will only fire every once in a while, without having to write that logic in the gun code.</p>
-<p><code>Deviation:</code> When a new prefab instance is created, it will be positioned at the location of the SpawnComponent. The <em>Deviation</em> allows you to add a random rotation away from the X axis. In EZ most components use the +X axis as their main axis of operation. For instance, projectiles fly along +X, spot lights point into +X direction, etc. Therefore the SpawnComponent tilts the new instances away from the +X axis and all prefabs should be authored to work with this accordingly.</p>
-<h2 id="details">Details</h2>
-<p>See the <a href="../api-docs.html">API Docs</a> for <code>ezSpawnComponent</code> for the component's interface.</p>
+<ul>
+<li><p><code>Prefab:</code> The <a href="../prefabs/prefabs-overview.html">prefab</a> that will be spawned by this component.</p>
+</li>
+<li><p><code>AttachAsChild:</code> If true, the spawned object will be attached to the owner of the SpawnComponent. In most cases this should be disabled.</p>
+</li>
+<li><p><code>SpawnAtStart:</code> If true, the SpawnComponent will spawn the prefab immediately when it gets activated.</p>
+</li>
+<li><p><code>SpawnContinuously:</code> If true, the component will continue to spawn more and more prefab instances. This can only be stopped either through custom (script) code or by deleting the spawn component.</p>
+</li>
+<li><p><code>MinDelay, DelayRange:</code> The minimum time that has to pass before the component will spawn another instance, plus some random delay. This not only applies to the <em>SpawnContinuously</em> case, but also to cases where the spawn may be triggered from code. Meaning, this can be used to limit how often an action is allowed. For example, a gun can use a SpawnComponent to launch projectiles, and the gun code can simply trigger the SpawnComponent every time the user clicks. However, due to the <em>MinDelay</em>, the gun will only fire every once in a while, without having to write that logic in the gun code.</p>
+</li>
+<li><p><code>Deviation:</code> When a new prefab instance is created, it will be positioned at the location of the SpawnComponent. The <em>Deviation</em> allows you to add a random rotation away from the X axis. In EZ most components use the +X axis as their main axis of operation. For instance, projectiles fly along +X, spot lights point into +X direction, etc. Therefore the SpawnComponent tilts the new instances away from the +X axis and all prefabs should be authored to work with this accordingly.</p>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../prefabs/prefabs-overview.html">Prefabs</a></li>
+<li><a href="spawnbox-component.html">Spawnbox Component</a></li>
 </ul>
 </article>
           </div>

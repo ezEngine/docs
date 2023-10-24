@@ -267,11 +267,105 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/ai-plugin-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/ai-plugin-overview.html",
+          "hash": "6PZ4wRWbxA5OjiMn8i+PDn9vBDPTEkS/U0TOEAP+ltY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Resource",
-      "source_relative_path": "pages/docs/ai/media/navmesh.jpg",
+      "source_relative_path": "pages/docs/ai/AiPlugin/media/ai-navmesh.jpg",
       "output": {
         "resource": {
-          "relative_path": "pages/docs/ai/media/navmesh.jpg"
+          "relative_path": "pages/docs/ai/AiPlugin/media/ai-navmesh.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ai/AiPlugin/media/navmesh-config.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ai/AiPlugin/media/navmesh-config.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/navmesh-path-test-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/navmesh-path-test-component.html",
+          "hash": "qV/7FvE8ulO91HNJknQwH/AuGbW/MAIyDwcd3A0NM8I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/runtime-navmesh.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/runtime-navmesh.html",
+          "hash": "KKN0vruCUinzpFVlEsKspUr0mK30MTgy0dUX8wvBy7I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ai/RecastPlugin/media/navmesh.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ai/RecastPlugin/media/navmesh.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh-component.html",
+          "hash": "Ugok9+S7yrbl+To+ABBJy6CMtDoKGv3v27POiYkBuGM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh.html",
+          "hash": "hENCNM2qSjdX6WUjVlbv9TyDLIANT1dgytocwqunenU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/RecastPlugin/recast.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/RecastPlugin/recast.html",
+          "hash": "hatWMwL/XfF5kvHjhmPLPXo0gu7KnvWjyY+Z2z7z5WM="
         }
       },
       "is_incremental": false,
@@ -289,83 +383,12 @@
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "pages/docs/ai/media/state-machine.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/ai/media/state-machine.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/recast-navmesh-component.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/recast-navmesh-component.html",
-          "hash": "/QTO9lvSo866y/AOVX3K7VjYVORxJne5aW+7+tPvzTk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/recast-navmesh.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/recast-navmesh.html",
-          "hash": "fmCasLt6T3XDzk8YdRrvAPyAQtmdzjJsDX/fi0vbzwU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/recast.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/recast.html",
-          "hash": "1FT5RyOnMdY9aPfE9t0DQU7L3K68nET4opgsPTE3Fgs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/ai/sensor-components.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/ai/sensor-components.html",
-          "hash": "c64ZfFbHXEgWBhhErrSQUYb7tkKrg5ofwQcDoAWv3Fc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/state-machine-asset.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/state-machine-asset.html",
-          "hash": "hc3FsWTGncm6HecJaAQoAKIOUVQJJ/fxG8LF/yksbhM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/state-machine-component.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/state-machine-component.html",
-          "hash": "CFuSzcUu7ttA3JUkqh1+/xMeYp/qps0SD5e2gwlawv0="
+          "hash": "21ES4LfRnnq+XbV9mxtRH5/0tJVL6ZV+MiXrWI4pB8M="
         }
       },
       "is_incremental": false,
@@ -1779,7 +1802,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/custom-code-overview.html",
-          "hash": "8vC5/KIkRRsTnAxpAj3Hp3QCUBD/4vTdEajQvPF34c8="
+          "hash": "NSg7CQHTq0nPXGhIUagRZQ36y6D0DI4JZj48HLt1h+M="
         }
       },
       "is_incremental": false,
@@ -1792,6 +1815,41 @@
         ".html": {
           "relative_path": "pages/docs/custom-code/game-logic/forward-events-to-game-state-component.html",
           "hash": "bQyTVKcUQ7rvc1dRFW3zryuJodnEpG/9Nx/k+hA27x4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/game-logic/media/state-machine.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/game-logic/media/state-machine.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/game-logic/state-machine-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/game-logic/state-machine-asset.html",
+          "hash": "t1qSwWzfC+gP1FYarwVqHO8rwl2Kv3K8el28AKAlkSA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/game-logic/state-machine-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/game-logic/state-machine-component.html",
+          "hash": "G9iwgtfTr7Ko/XqKbuJQMDtQTm/IqrGWn7gupL1yEWI="
         }
       },
       "is_incremental": false,
@@ -1898,6 +1956,30 @@
         ".html": {
           "relative_path": "pages/docs/custom-code/typescript/typescript-overview.html",
           "hash": "reJAhVDhxV9qNwa68BdMToS3I7//3h9bww70swm6z0Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/visual-script/script-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/visual-script/script-component.html",
+          "hash": "h24s9u3zSHi3ciKXj7FtefL28G6S/2/t1DwH1eP3pi4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/visual-script/visual-script-class-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/visual-script/visual-script-class-asset.html",
+          "hash": "Q47UnKRge65KPkTL78NfHf3vz8dlIYKJuu3Px24pT2I="
         }
       },
       "is_incremental": false,
@@ -3352,7 +3434,19 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/gameplay/spawn-component.html",
-          "hash": "SSA3h1eECvi0128NQpKsAKLBnKOIybcPH2qumTFDmLs="
+          "hash": "ufrbfu3vnNOEW+VQrsWm2yI3Y5np/8Hk3ZnW4TveI9k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/spawnbox-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/spawnbox-component.html",
+          "hash": "Qfbg3mMRNQNYa8Ztd/gkld6CieW2GgR+i/NR8TZ6F1k="
         }
       },
       "is_incremental": false,
@@ -4022,7 +4116,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/materials/surfaces.html",
-          "hash": "+gj0yDFNuaPhyCP/fqCHlrDBofao8EPT9bN93y9ucaQ="
+          "hash": "mWeeCqWJHEx0N6CRqxAAVhkDhJVxbM5k7IGdpUIZ3uA="
         }
       },
       "is_incremental": false,
@@ -4196,7 +4290,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/actors/jolt-static-actor-component.html",
-          "hash": "0rXO/rX5y32bRmtEHnuwTwHC+kn+M97v6heys8mj7WY="
+          "hash": "XVMCeBglY65Czyvl08zc+L43az9jN5NOg5Jv1ad1fRw="
         }
       },
       "is_incremental": false,
@@ -4886,7 +4980,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/physx/actors/physx-static-actor-component.html",
-          "hash": "ub2Fy6aEzhlz8KWNkhGF640rkoaf8RbJFJqbd13EcFk="
+          "hash": "Vft+BxlH1zILJL0+zRgrvEuBloZq4O4lzXF4zMOGnFQ="
         }
       },
       "is_incremental": false,
@@ -6956,7 +7050,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "d3VhF+ev1gbSM5YkIvvWM9AgMcrCryywsErEnaUMZJk="
+          "hash": "uovj82FYmSX/3+AG7IsUwdJK6B8S4ymn/9DUt/AQvuM="
         }
       },
       "is_incremental": false,
@@ -7625,7 +7719,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/monster-attack/devlog-2.html",
-          "hash": "uStc56ypm7YvpYcyqlQ7zmfWXtRV3eVNj1ssrP/5j5o="
+          "hash": "gSMPt96/b2BW3zKeuJ/aLZXBWcQOQrdHfuAsvqFUEsg="
         }
       },
       "is_incremental": false,
@@ -7673,7 +7767,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/monster-attack/devlog-6.html",
-          "hash": "Tg5UHExc5PHy1ZUHMjJ9HMgNhUVf2OTkUZ+wyDHLmNA="
+          "hash": "G1TsD6GXa3FwuzAP4vfDZx4cO/fRghAy6hI2Hhqa/xs="
         }
       },
       "is_incremental": false,
@@ -8296,7 +8390,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/screenshots.html",
-          "hash": "GzLlG+YbkYrnsSARGZ+piB385LdFWJDtDqEVICGieDM="
+          "hash": "ILMR96HX4NWWZPmU0ueP7Svw7H3vqH+hPX4X8z+uKYI="
         }
       },
       "is_incremental": false,
@@ -8377,7 +8471,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 338,
+          "total_file_count": 344,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

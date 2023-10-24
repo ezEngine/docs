@@ -10,14 +10,14 @@
     <meta name="title" content="State Machine Asset | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
-    <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,9 +34,9 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html" style="padding-right: 15px;">
-                <!--<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
-                <img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -85,9 +85,9 @@
 <p><img src="media/state-machine.png" alt="State Machine"></p>
 <h2 id="state-machine-concept">State Machine Concept</h2>
 <p>At any time exactly one <em>state</em> is <strong>active</strong> in a state machine. The active state determines what actions an entity will do and what other states it can <em>transition</em> into. For example in the image above you can see that this state machine can only transition from the <em>Idle</em> state into the <em>Alert</em> state (and back), but it can't directly transition into the <em>Attacking</em> state.</p>
-<p>What an entity does, when a certain state is active, is usually up to <a href="../custom-code/custom-code-overview.html">other code</a>. On the state node in the state machine asset you select what <em>type of state</em> this is. Different state types can be implemented in C++ or <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a>.</p>
-<p>State machines are updated regularly and during every update they may <em>transition</em> into another state. Possible transitions are represented by arrows between states. Just as with states, there are also different <em>types of transitions</em>. As with states, custom transition types can be implemented with C++ or <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a>.</p>
-<p>During the state machine update, each transition on the active state is queried, whether its condition is met. If so, the transition is taken, and the state that it points to becomes the new active state. What it means that a transition's condition is met, is up to the transition type's implementation. For example the <em>blackboard transition</em> inspects values from a nearby <a href="../Miscellaneous/blackboards.html">blackboard</a>, allowing you to set up logical rules. Another type of transition may simply wait for a second and then allow to transition further, acting as a timer.</p>
+<p>What an entity does, when a certain state is active, is usually up to <a href="../custom-code-overview.html">other code</a>. On the state node in the state machine asset you select what <em>type of state</em> this is. Different state types can be implemented in C++ or <a href="../visual-script/visual-script-overview.html">visual scripts (TODO)</a>.</p>
+<p>State machines are updated regularly and during every update they may <em>transition</em> into another state. Possible transitions are represented by arrows between states. Just as with states, there are also different <em>types of transitions</em>. As with states, custom transition types can be implemented with C++ or <a href="../visual-script/visual-script-overview.html">visual scripts (TODO)</a>.</p>
+<p>During the state machine update, each transition on the active state is queried, whether its condition is met. If so, the transition is taken, and the state that it points to becomes the new active state. What it means that a transition's condition is met, is up to the transition type's implementation. For example the <em>blackboard transition</em> inspects values from a nearby <a href="../../Miscellaneous/blackboards.html">blackboard</a>, allowing you to set up logical rules. Another type of transition may simply wait for a second and then allow to transition further, acting as a timer.</p>
 <p>In many state machines there are states that can be reached from pretty much every other state. For example the <em>Dead</em> state in the image above is simply reached whenever the health of a creature reaches zero, no matter which state it currently is in. In a pure state machine, one would add transitions from every node to that final state. However, since this is cumbersome, EZ also allows to set up transitions that can transition from any active state to their target state. In the state machine asset, such transitions are represented as an
 <strong>Any State</strong> (taking the place of <em>any other state</em>) from which they are drawn to the target state.</p>
 <h2 id="configuring-state-machines">Configuring State Machines</h2>
@@ -100,7 +100,7 @@
 <h2 id="state-types">State Types</h2>
 <p>You have to select a <em>state type</em> for every node in your state machine.</p>
 <h3 id="send-message-state">Send Message State</h3>
-<p>When the <em>Send Message State</em> gets activated (transitioned into) or deactivated (transitioned out of), it sends the <code>ezMsgStateMachineStateChanged</code> <a href="../runtime/world/world-messaging.html">event message</a> to the <a href="../runtime/world/game-objects.html">game object</a> on which the executing <a href="state-machine-component.html">state machine component</a> is attached. Thus other components, such as <a href="../custom-code/typescript/typescript-overview.html">TypeScript components</a> can listen for this message and react accordingly.</p>
+<p>When the <em>Send Message State</em> gets activated (transitioned into) or deactivated (transitioned out of), it sends the <code>ezMsgStateMachineStateChanged</code> <a href="../../runtime/world/world-messaging.html">event message</a> to the <a href="../../runtime/world/game-objects.html">game object</a> on which the executing <a href="state-machine-component.html">state machine component</a> is attached. Thus other components, such as <a href="../typescript/typescript-overview.html">TypeScript components</a> can listen for this message and react accordingly.</p>
 <p>The message can be sent with a delay. Also, if this state type is configured to send neither a message on enter, nor on exit, it effectively does nothing and can be used for states that don't require further action.</p>
 <p>You can also turn on logging on enter or exit, for better debugging.</p>
 <h3 id="nested-state-machine">Nested State Machine</h3>
@@ -110,7 +110,7 @@
 <h3 id="compound-state">Compound State</h3>
 <p>A <em>Compound State</em> has no functionality by itself, rather it holds an array of other state types. All events (state entered/left) are forwarded to all sub-states equally. Thus it can be used to trigger multiple reactions at the same time.</p>
 <h3 id="script-state">Script State</h3>
-<p>The <em>Script State</em> runs a <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a>. It executes the <code>OnEnter</code>, <code>OnExit</code> and <code>Update</code> event handlers for state machine states.</p>
+<p>The <em>Script State</em> runs a <a href="../visual-script/visual-script-overview.html">visual scripts (TODO)</a>. It executes the <code>OnEnter</code>, <code>OnExit</code> and <code>Update</code> event handlers for state machine states.</p>
 <h3 id="switch-object-state">Switch Object State</h3>
 <p>This state sets the <em>enabled flag</em> on a game object and disables all other objects in the same group.</p>
 <p>This state allows to easily switch the representation of a game object.
@@ -133,7 +133,7 @@ If multiple objects in the same group have the same name, they will all get acti
 <h2 id="transition-types">Transition Types</h2>
 <p>You have to select a <em>transition type</em> for every transition in your state machine.</p>
 <h3 id="blackboard-conditions">Blackboard Conditions</h3>
-<p><em>Blackboard conditions</em> query the <a href="../Miscellaneous/blackboards.html">blackboard</a>. You can configure the transition condition to be fulfilled either when at least one or all the specified blackboard entries have the desired values.</p>
+<p><em>Blackboard conditions</em> query the <a href="../../Miscellaneous/blackboards.html">blackboard</a>. You can configure the transition condition to be fulfilled either when at least one or all the specified blackboard entries have the desired values.</p>
 <h3 id="timeout-transition">Timeout Transition</h3>
 <p>This transition is fulfilled after a certain amount of time has passed. This can be used to automatically transition to the next state after a fixed amount of time. Together with a <em>compound transition</em> it can also be used to prevent transitioning before a minimum of time has passed.</p>
 <h3 id="compound-transition">Compound Transition</h3>
@@ -141,14 +141,14 @@ If multiple objects in the same group have the same name, they will all get acti
 <p>For example, you can add a blackboard condition and a timeout transition. If you set the compound transition to <code>AND</code>, both of these must be true, meaning the transition can only be taken after the blackboard values are correct and the minimum time has passed. If, however, you set it to <code>OR</code>, the transition is taken once either the timeout or the blackboard state is fulfilled.</p>
 <p>Note that you can use nested compound transitions to create even more complex logical conditions.</p>
 <h3 id="transition-event-transition">Transition Event Transition</h3>
-<p>This type of transition is taken when a <em>transition event</em> with the expected name has been raised. Transition events can be raised from <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a> or C++ through the <a href="state-machine-component.html">state machine component</a>. This allows script code to report back, that a certain condition was met, and that the state machine may leave its current state.</p>
+<p>This type of transition is taken when a <em>transition event</em> with the expected name has been raised. Transition events can be raised from <a href="../visual-script/visual-script-overview.html">visual scripts (TODO)</a> or C++ through the <a href="state-machine-component.html">state machine component</a>. This allows script code to report back, that a certain condition was met, and that the state machine may leave its current state.</p>
 <h2 id="executing-state-machines">Executing State Machines</h2>
-<p>In theory state machines could be used in many contexts. In <a href="../custom-code/cpp/cpp-overview.html">custom C++ code</a> you are free to instantiate state machines directly via <code>ezStateMachineResource</code>.</p>
+<p>In theory state machines could be used in many contexts. In <a href="../cpp/cpp-overview.html">custom C++ code</a> you are free to instantiate state machines directly via <code>ezStateMachineResource</code>.</p>
 <p>In a scene, you can instantiate a state machine through the <a href="state-machine-component.html">state machine component</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="state-machine-component.html">State Machine Component</a></li>
-<li><a href="../custom-code/custom-code-overview.html">Custom Code</a></li>
+<li><a href="../custom-code-overview.html">Custom Code</a></li>
 </ul>
 </article>
           </div>
@@ -158,7 +158,7 @@ If multiple objects in the same group have the same name, they will all get acti
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/state-machine-asset.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/game-logic/state-machine-asset.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -202,9 +202,9 @@ If multiple objects in the same group have the same name, they will all get acti
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     
 
     <script>

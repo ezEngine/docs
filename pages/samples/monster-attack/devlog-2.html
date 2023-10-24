@@ -82,13 +82,13 @@
 
 <p>So today was all about getting my first trap working. Here is the result:</p>
 <p><video src="media/devlog2/ma-dl2-Spike_Trap.mp4" width="600" controls=""></video></p>
-<p>The most flexible way to do these things, is to just use <a href="../../docs/custom-code/cpp/custom-cpp-component.html">custom C++ components</a> for everything. However, I want to test out our other infrastructure as well, for example the new <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripting (TODO)</a>, the <a href="../../docs/ai/state-machine-asset.html">state machines</a>, and so on, so the goal is to prefer those, and only use C++ for the things that really need it.</p>
+<p>The most flexible way to do these things, is to just use <a href="../../docs/custom-code/cpp/custom-cpp-component.html">custom C++ components</a> for everything. However, I want to test out our other infrastructure as well, for example the new <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripting (TODO)</a>, the <a href="../../docs/custom-code/game-logic/state-machine-asset.html">state machines</a>, and so on, so the goal is to prefer those, and only use C++ for the things that really need it.</p>
 <p>At the moment I only have two custom C++ components, one for the player logic and one for the monsters. The former mostly does <a href="../../docs/input/input-overview.html">input handling</a> and forwarding to the <a href="../../docs/physics/jolt/special/jolt-character-controller.html">character controller</a>, the latter mainly does the path finding and steering.</p>
 <p>So today I had to figure out how to build my first trap.</p>
 <p>If I were (or had) an artist, I would use an <a href="../../docs/animation/skeletal-animation/animated-mesh-asset.html">animated mesh</a> with multiple <a href="../../docs/animation/skeletal-animation/animation-clip-asset.html">animations</a> for the different trap states. However, I only have two <a href="../../docs/graphics/meshes/mesh-asset.html">static meshes</a>, one with spikes, one without, and I really want to make things work with the assets as I have them. So I needed a way to do the visuals without animations.</p>
 <p>Here is what it looks like in a close up:</p>
 <p><video src="media/devlog2/ma-dl2-SpikeTrapAnim.mp4" width="600" controls=""></video></p>
-<p>The trap has four states, therefore I built a <a href="../../docs/ai/state-machine-asset.html">state machine</a>.</p>
+<p>The trap has four states, therefore I built a <a href="../../docs/custom-code/game-logic/state-machine-asset.html">state machine</a>.</p>
 <p><img src="media/devlog2/ma-dl2-image1.png" alt="Spike Trap States"></p>
 <p>In the <em>Dormant</em> state it does nothing. This is the state where the trap is not dangerous. It takes a second and then transitions into the <em>Loaded</em> state.</p>
 <p>In the loaded state, the spikes show up and peak through the bottom. Now when a creature walks over it, the trap enters the <em>Firing</em> state where it makes damage.</p>
@@ -117,7 +117,7 @@ This is fine for all transitions, except for the one from <em>Loaded</em> to <em
 <p><img src="media/devlog2/ma-dl2-image6.png" alt="Script component"></p>
 <p>The script is quite trivial:</p>
 <p><img src="media/devlog2/ma-dl2-image7.png" alt="Script"></p>
-<p>Whenever the trigger fires, the script's <em>OnMsgTriggerTriggered</em> node gets executed. We then switch over the state and only react to <em>Activated</em> events. If so, we call <em>FireTransitionEvent</em> on the sibling <a href="../../docs/ai/state-machine-component.html">StateMachineComponent</a> and tell it to <em>Fire</em>.</p>
+<p>Whenever the trigger fires, the script's <em>OnMsgTriggerTriggered</em> node gets executed. We then switch over the state and only react to <em>Activated</em> events. If so, we call <em>FireTransitionEvent</em> on the sibling <a href="../../docs/custom-code/game-logic/state-machine-component.html">StateMachineComponent</a> and tell it to <em>Fire</em>.</p>
 <p><img src="media/devlog2/ma-dl2-image8.png" alt="SM transitions"></p>
 <p>So now we have it. When a creature walks into the trigger, the visual script gets the physics trigger event, forwards that to the state machine and when the state machine happens to be in the <em>Loaded</em> state, it will transition into the <em>Firing</em> state. The state machine then changes which sub-objects in the trap are active, which in turn starts the spike movement and applies area damage to anything close by.</p>
 <h2 id="see-also">See Also</h2>
