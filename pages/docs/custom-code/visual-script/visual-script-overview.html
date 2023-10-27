@@ -80,11 +80,22 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="custom-code-with-visual-scripts">Custom Code with Visual Scripts</h1>
 
-<!-- PAGE IS TODO -->
-<p>A new visual scripting system was added, but is undocumented so far.</p>
+<p>The engine supports <em>visual scripting</em> as a way to execute custom logic without writing code. Visual scripting aims to be quick and easy to use, while providing a subset of the engine's features that is most useful for the intended use cases.</p>
+<p><img src="media/vs-state.png" alt="Visual Script"></p>
+<h2 id="visual-script-use-cases">Visual Script Use Cases</h2>
+<p>Visual scripting is meant for <strong>small scripts</strong> that deal with simple tasks. Often they act as glue code between other systems. For example to wait for an event from one component and then instruct another component to do something. Such logic would be overly cumbersome to set up in C++, and the performance difference is negligible.</p>
+<p>Visual script code may also be used to quickly prototype behavior to get an idea how something might work. However, dealing with edge-cases and errors typically involves a lot of complex code, and once the stage is reached where a feature should be fully fledged out and polished, it might be better to migrate to C++.</p>
+<p>In general, visual scripting is <strong>no substitue for C++</strong>. It only provides a subset of the features. A lot of functionality is deliberately left inaccessible, such as working with <a href="../../runtime/resource-management.html">resources (TODO)</a> or <a href="../../runtime/application/game-state.html">game states</a>. If you need to access them, you definitely should <a href="../cpp/cpp-overview.html">use C++</a>.</p>
+<h3 id="custom-components">Custom Components</h3>
+<p>The <a href="visual-script-class-asset.html">Visual Script Class Asset</a> allows you to write custom <a href="../../runtime/world/components.html">components</a> to interface with other components within the same object hierarchy.</p>
+<h3 id="custom-state-machine-states">Custom State Machine States</h3>
+<p>The <a href="visual-script-class-asset.html">Visual Script Class Asset</a> may also be used to write custom <a href="../game-logic/state-machine-asset.html#state-types">state machine states</a>. In this case the script code is executed by a state machine whenever the state is active.</p>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>Most visual script code actually calls existing C++ functions. A custom virtual machine ministrates those calls. The execution is relatively fast and shouldn't be a concern for the intended use cases. It is more likely that you run into the limitations of <em>editing the script</em>, than performance bottlenecks.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../custom-code-overview.html">Custom Code</a></li>
+<li><a href="visual-script-class-asset.html">Visual Script Class Asset</a></li>
 </ul>
 </article>
           </div>

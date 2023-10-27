@@ -82,7 +82,7 @@
 
 <p>So today was all about getting my first trap working. Here is the result:</p>
 <p><video src="media/devlog2/ma-dl2-Spike_Trap.mp4" width="600" controls=""></video></p>
-<p>The most flexible way to do these things, is to just use <a href="../../docs/custom-code/cpp/custom-cpp-component.html">custom C++ components</a> for everything. However, I want to test out our other infrastructure as well, for example the new <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripting (TODO)</a>, the <a href="../../docs/custom-code/game-logic/state-machine-asset.html">state machines</a>, and so on, so the goal is to prefer those, and only use C++ for the things that really need it.</p>
+<p>The most flexible way to do these things, is to just use <a href="../../docs/custom-code/cpp/custom-cpp-component.html">custom C++ components</a> for everything. However, I want to test out our other infrastructure as well, for example the new <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>, the <a href="../../docs/custom-code/game-logic/state-machine-asset.html">state machines</a>, and so on, so the goal is to prefer those, and only use C++ for the things that really need it.</p>
 <p>At the moment I only have two custom C++ components, one for the player logic and one for the monsters. The former mostly does <a href="../../docs/input/input-overview.html">input handling</a> and forwarding to the <a href="../../docs/physics/jolt/special/jolt-character-controller.html">character controller</a>, the latter mainly does the path finding and steering.</p>
 <p>So today I had to figure out how to build my first trap.</p>
 <p>If I were (or had) an artist, I would use an <a href="../../docs/animation/skeletal-animation/animated-mesh-asset.html">animated mesh</a> with multiple <a href="../../docs/animation/skeletal-animation/animation-clip-asset.html">animations</a> for the different trap states. However, I only have two <a href="../../docs/graphics/meshes/mesh-asset.html">static meshes</a>, one with spikes, one without, and I really want to make things work with the assets as I have them. So I needed a way to do the visuals without animations.</p>
@@ -112,7 +112,7 @@ This is fine for all transitions, except for the one from <em>Loaded</em> to <em
 <p>First this meant that my creatures need to have some kind of physics representation, which the physics trigger can detect at all. So I added a kinematic capsule shape, which just moves along with my creature (they currently don't use a character controller).</p>
 <p><img src="media/devlog2/ma-dl2-image5.png" alt="Creature"></p>
 <p>Now whenever the creature walks into a trap, the trigger in my trap prefab will fire an event. However, so far this event won't have any effect.</p>
-<p>I need to hook up the event from the trigger to my state machine. And this is what <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripts (TODO)</a> are really good for.</p>
+<p>I need to hook up the event from the trigger to my state machine. And this is what <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripts</a> are really good for.</p>
 <p>On the root node of my trap, I added a <em>Script Component</em>:</p>
 <p><img src="media/devlog2/ma-dl2-image6.png" alt="Script component"></p>
 <p>The script is quite trivial:</p>

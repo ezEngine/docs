@@ -80,10 +80,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="runtime-navmesh">Runtime Navmesh</h1>
 
-<p>The <a href="ai-plugin-overview.html">AiPlugin</a> add functionality to generate navmeshes on-demand at runtime. This is a very convenient workflow, as you don't need to create and store navmeshes before.</p>
+<p>The <a href="ai-plugin-overview.html">AiPlugin</a> adds functionality to generate navmeshes on-demand at runtime. This is a very convenient workflow, as the navmesh incorporates level changes every time you restart the simulation.</p>
 <p><img src="media/ai-navmesh.jpg" alt="Navmesh"></p>
 <h2 id="input-data">Input Data</h2>
-<p>The runtime navmesh generation uses the <a href="../../physics/jolt/collision-shapes/jolt-collision-meshes.html">collision geometry</a> and its <a href="../../materials/surfaces.html">surfaces</a> as the input data from which to build the navmesh.</p>
+<p>The runtime navmesh generation uses the <a href="../../physics/jolt/collision-shapes/jolt-collision-meshes.html">collision geometry</a> and its <a href="../../materials/surfaces.html">surfaces</a> as the input data from which to build the navmesh. The data is queried <em>on-demand</em> in an area around where <em>path searches</em> are done. To see the resulting navmesh, enable the <a href="#navmesh-visualization">navmesh visualization</a>.</p>
 <h2 id="navigation-configuration">Navigation Configuration</h2>
 <p>In a scene document select <em>Project &gt; Plugin Settings &gt; Ai Project Settings</em> to open the configuration dialog.</p>
 <p><img src="media/navmesh-config.png" alt="Navmesh config"></p>
@@ -119,6 +119,10 @@ The higher the cost, the more an agent will try to avoid it and use a different 
 <p>Use the the <a href="navmesh-path-test-component.html">navmesh path test component</a> to see how these options affect path finding.</p>
 <h2 id="navmesh-visualization">Navmesh Visualization</h2>
 <p>To be able to see the navmesh, use the <a href="../../debugging/cvars.html">CVar</a> <code>Ai.Navmesh.Visualize</code>. There can be multiple different navmeshes for different character heights etc. This CVar enables visualization for <em>one of them</em> by index. So set it to <code>0</code> to see the first navmesh, <code>1</code> if you have a second one and so on.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>No navmesh will be generated, as long as no path searches are done. Use the <a href="navmesh-path-test-component.html">navmesh path test component</a> to initiate a path search.</p>
+</blockquote>
 <h1 id="see-also">See Also</h1>
 <ul>
 <li><a href="ai-plugin-overview.html">AiPlugin Overview</a></li>
