@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Volume Components | ezEngine </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Volume Components | ezEngine ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html" style="padding-right: 15px;">
+                <!--<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="" >-->
+                <img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="volume-components">Volume Components</h1>
+
+<p>Volume components are used to define custom environmental conditions in areas of a level.</p>
+<p>By itself, volume components have no functionality and no noticeable effect. They only specify an area and what values to use there. Values are usually specified by referencing a <a href="../../Miscellaneous/blackboard-template-asset.html">blackboard template asset</a>. Other systems may use this information to implement behavior.</p>
+<p>One such system is the <a href="post-processing-component.html">post-processing component</a> which uses these volumes to modify parameters of the rendering pipeline, for example to have different color grading per area.</p>
+<p>A custom system could for example also use these volumes to determine whether the player is inside water.</p>
+<p>There are multiple volume components for different shapes:</p>
+<ul>
+<li><code>ezVolumeBoxComponent</code></li>
+<li><code>ezVolumeSphereComponent</code></li>
+</ul>
+<p>They only add options to define their shape, such as extents or radius, but do not differ in functionality.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p>All volume components share these properties:</p>
+<ul>
+<li><p><code>Type</code>: A <a href="../../runtime/world/spatial-system.html">spatial category</a> used for separating volumes that represent different things. This way one volume may be used to configure graphics settings, while other volumes may affect gameplay relevant functionality, and they don't accidentally interfere with each other, since the respective systems only get to see the volumes that are meant to affect them.</p>
+</li>
+<li><p><code>SortOrder</code>: In case two volumes overlap, the one with a higher sort order value has precedence.</p>
+</li>
+<li><p><code>Template</code>: A reference to a <a href="../../Miscellaneous/blackboard-template-asset.html">blackboard template asset</a> to define the key/value pairs. It is usually more convenient to use a blackboard template as a preset for values, than to specify them directly on the volume component.</p>
+</li>
+<li><p><code>Values</code>: Individually added key/value pairs. Prefer to use a <code>Template</code>, but If the same key is also added here, it overrides the value from the template.</p>
+</li>
+<li><p><code>Falloff</code>: Volumes may have a <em>soft edge</em>, meaning that the boundary of the volume is not considered to be aprubt. This is used to smoothly fade values from one value to the one inside the volume. For example if a volume represents a foggy area, where the whole color grading is supposed to change, the colors are not supposed to change exactly the moment that the camera enters the volume, but rather the colors should become stronger the farther the camera is inside the volume. The <em>falloff</em> value is a value between <code>0</code> and <code>1</code> that configures how smooth the edge of the volume is. At <code>0</code> the edge is hard and change happens immediately. This is useful for example for water, where you are either inside or outside, but not in between. Any value above <code>0</code> is meant for smoother transitions. Be aware that additional to this, some systems may also transition to new values over time. To test the falloff value, it is best to deactivate any time delay.</p>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="post-processing-component.html">Post-Processing Component</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/post-processing/volume-components.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_ez" href="https://ezEngine.net"></a>
+            </span>
+      	  <span class="footer-logo">
+              <a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+            </span>
+      	  <span class="footer-logo">
+      	    <a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+            </span>
+            <!--
+      	  
+            <span>Generated by <strong>DocFX</strong></span>
+      	  -->
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+</html>

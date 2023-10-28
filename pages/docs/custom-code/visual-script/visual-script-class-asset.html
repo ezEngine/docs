@@ -175,7 +175,7 @@
 <p>All sorts of mathematical operations for working with number types.</p>
 <h3 id="messages">Messages</h3>
 <p>While event handlers react to messages, the script can also <em>send messages</em> to other objects. Messages can be sent directly to a component, or to a game object, in which case they may be broadcast to all components on that object, or even to the whole sub-tree of objects and components. If the <code>Send Mode</code> is set to <em>Event</em>, however, they are delivered not downwards in the hierarchy, but <em>upwards</em> along the parent chain of the target object, to the closest component that handles this type of message. See <a href="../../runtime/world/world-messaging.html#event-messages">this chapter</a> for details.</p>
-<h3 id="properties">Properties</h3>
+<h3 id="property">Property</h3>
 <p>For reading and writing component properties.</p>
 <h3 id="statemachineinstance-and-statemachinestate">StateMachineInstance and StateMachineState</h3>
 <p>For interacting with <a href="../game-logic/state-machine-asset.html">state machines</a>. This is mainly necessary when the script itself is used as a <em>StateMachineState</em>. Be aware that the <em>state machine instance</em> in which the script is run, is passed into the script through the <code>OnEnter</code>, <code>OnExit</code> and <code>Update</code> nodes.</p>
