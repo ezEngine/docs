@@ -2709,7 +2709,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/lensflare-component.html",
-          "hash": "ImLEyeeheEi663qlEvQzG6Yhnh4UgPd4UGBp7JvIat4="
+          "hash": "Y07mIVMzBHWQSCPelrRT6VEu6zDz1jNWwG5dCyfkvOY="
         }
       },
       "is_incremental": false,
@@ -2798,6 +2798,28 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/media/fog-comparison.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/lensflare.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/lensflare.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/lensflare.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/lensflare.mp4"
         }
       },
       "is_incremental": false,
@@ -3333,7 +3355,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/post-processing/post-processing-component.html",
-          "hash": "Pb5/UZMt4NhqBkqvM1nPfEXwxk2+HvxavPmnAjYDqhQ="
+          "hash": "eUxa7CBmnUlo929QJeutF5ezfvjQsLc1PwTCcnbTaik="
         }
       },
       "is_incremental": false,

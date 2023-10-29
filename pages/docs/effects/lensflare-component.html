@@ -80,8 +80,42 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="lensflare-component">Lensflare Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>lensflare component</em> adds a screen-space effect for simulating <a href="https://en.wikipedia.org/wiki/Lens_flare">lens flares</a>.</p>
+<p><img src="media/lensflare.jpg" alt="Lensflare"></p>
+<p>Lens flares can be added to any light source or even to other objects. Lens flares consists of several textures that are placed along a line in screen-space that rotates around the screen center. One end of the line is at the position of the lens flare object and the other end is mirrored across the screen center.</p>
+<p>The renderer determines how much the lens flare object is occluded and scales the intensity of the effect accordingly. Thus the effect smoothly fades in when the object becomes visible around a corner.</p>
+<p><video src="media/lensflare.mp4" width="800" height="600" autoplay="" loop=""></video></p>
 <h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>LinkToLightShape</code>: Links the lens flare to the first light component on the same owner object or any of its parent objects.</p>
+<p>When a lens flare is linked it will take the light color and intensity to modulate the lens flare color and intensity for elements that have the <code>ModulateByLightColor</code> flag set.</p>
+<p>For <a href="../graphics/lighting/directional-light-component.html">directional lights</a> the lens flare is positioned at far plane and moved with the camera to simulate a light that is at infinite distance, like the sun.</p>
+<p>For <a href="../graphics/lighting/spot-light-component.html">spot lights</a> the lens flare intensity is additionally adjusted so that the it is only visible when the camera is inside the light cone.</p>
+</li>
+<li><p><code>Intensity</code>: Adjusts the overall intensity of the lens flare.</p>
+</li>
+<li><p><code>OcclusionSampleRadius</code>: Sets the world space radius in which the depth buffer is sampled to determine how much the lens flare is occluded. Typically this would be the size of the light emitting area, like a light bulb, or slightly larger.</p>
+</li>
+<li><p><code>OcclusionSampleSpread</code>: Moves the occlusion sample center towards the lens flare corner to introduce a slight gradient when the lens flare is only partially occluded. This value is relative to the sample radius (0..1 range).</p>
+</li>
+<li><p><code>OcclusionDepthOffset</code>: Adjusts the occlusion sample depth in world space. Negative values will move towards the camera. This can be used to prevent self occlusion with the light source object.</p>
+</li>
+<li><p><code>ApplyFog</code>: If enabled, fog is added on top of the flare.</p>
+</li>
+<li><p><code>Elements</code>: Array of lens flare elements.</p>
+<ul>
+<li><code>Texture</code>: The <a href="../graphics/textures-overview.html">texture</a> to use.</li>
+<li><code>GreyscaleTexture</code>: Whether the given texture is a greyscale or color texture. If enabled, the texture's alpha channel is ignored entirely and the red channel is used for all colors. Thus if you have a single-color texture, which would usually show up red, this turns it into greyscale. For color textures that are already greyscale, this will only have an effect, if their alpha channel is not entirely white. In this case choose whatever looks best.</li>
+<li><code>Color</code>: A tint color.</li>
+<li><code>ModulateByLightColor</code>: Modulates the element's color by the light color and intensity if the component is linked to a light component.</li>
+<li><code>Size</code>: The world-space size of the element. This determines the size of the flare at varying distances. Note that the final size on screen gets clamped by <code>MaxScreenSize</code>, thus you can exaggerate the size, to have the flare stay visible even at large distances, without having it exceed a maximum size on screen. That is why the default is set to a very large value, because for directional light-sources that are projected to be very far away the size needs to be extremely big.</li>
+<li><code>MaxScreenSize</code>: The maximum screen-space size in 0..1 range.</li>
+<li><code>AspectRatio</code>: The width-to-height ratio. A ratio other than one will stretch the element along the X or Y axis.</li>
+<li><code>ShiftToCenter</code>: Moves the element along the lens flare origin to screen center line. 0 is at the lens flare origin, 1 at the screen center. Values below 0 or above 1 are also possible.</li>
+<li><code>InverseTonemap</code>: Applies an inverse tonemapping operation on the final color. This can be useful if the lens flare is not linked to a light or does not use an HDR color since lens flares are rendered before tonemapping and can look washed out in this case.</li>
+</ul>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../graphics/lighting/lighting-overview.html">Lighting</a></li>
