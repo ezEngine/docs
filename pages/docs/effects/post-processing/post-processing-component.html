@@ -86,7 +86,7 @@
 <p>With post processing, the area can be made to look very different:</p>
 <p><img src="media/post-processing-on.jpg" alt="PP on"></p>
 <p>The level uses a volume component to specify that this area should have a different athmosphere and thus use different values for post processing.</p>
-<p>To enable custom post processing, attach the post processing component to the same object where the main <a href="../../graphics/camera-component.html">camera component</a> is attached to. This would typically be inside a player prefab. If, however, the post processing component is attached to an object with a camera component that is configured for <a href="../../graphics/render-to-texture/render-to-texture.html">render to texture</a>, it will only affect that.</p>
+<p>To enable custom post processing, attach the post processing component to the same object where the main <a href="../../graphics/camera-component.html">camera component</a> is attached to. This would typically be inside a player prefab. If, however, the post processing component is attached to an object with a camera component that is configured for <a href="../../graphics/render-to-texture/render-to-texture.html">render to texture (TODO)</a>, it will only affect that.</p>
 <p>It is also possible to place this component simply anywhere in a level. In this case it is always active and affects the currently active camera. This can be very useful during testing, since it also affects the editor camera and thus you can test values and volume placement just by moving the editor camera around, without even simulating the scene.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
