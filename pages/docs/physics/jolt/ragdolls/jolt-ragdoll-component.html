@@ -80,12 +80,46 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="jolt-ragdoll-component">Jolt Ragdoll Component</h1>
 
-<!-- PAGE IS TODO -->
-<p>Ragdolls are a work-in-progress feature. They are partially working, but unfinished and their functionality will change in the future.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Ragdolls are a work-in-progress feature. They are working, but the exact functionality may change in the future.</p>
+</blockquote>
+<p>The <em>Jolt ragdoll component</em> is used to physically simulate limp bodies.</p>
+<p><video src="media/ragdolls.webm" width="800" height="600" autoplay="" loop=""></video></p>
+<h2 id="ragdoll-configuration">Ragdoll Configuration</h2>
+<p>Ragdolls only work with <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeletons</a> that have a proper bone collider and joint setup. The most important bones need to have <em>collider shapes</em>. Additionally, bones that should be anatomically connected, need to have <em>joints</em> set up. Bones also must adhere to a physically plausible hierarchy, meaning that leg bones should be child bones of a hip bone, feet bones must be child bones of leg bones and so on. Unfortunately many assets don't strictly follow this rule, which often makes them unsuitable for use as a ragdoll.</p>
+<p>The ragdoll component works with <em>uniform scaling</em>, so you can create differently sized characters or objects. It does <em>not</em> work with non-uniform scaling.</p>
+<p>It is common to add a ragdoll component to a character, but set the component to <em>inactive</em>, and only activate the component when the character goes limp.</p>
+<h2 id="breakable-objects">Breakable Objects</h2>
+<p>The ragdoll component can be used for a simple breaking effect. For this you need to build a mesh out of broken pieces and give each piece a bone. In the rest pose the mesh should look like one piece. Now you can use a <a href="../../../custom-code/visual-script/visual-script-overview.html">visual script</a> to determine under what conditions the object should shatter and then activate the ragdoll component. In this case the skeleton only needs to define shapes for the bones, but no joints between them. Thus each fragment will fall individually and the object looks like it breaks apart.</p>
+<p>Use the properties <code>CenterPosition</code>, <code>CenterVelocity</code> and <code>CenterAngularVelocity</code> to make the pieces fly away more convincingly.</p>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>This feature is only experimental and very limited in functionality.</p>
+</blockquote>
+<p><video src="media/breakable.webm" width="800" height="600" autoplay="" loop=""></video></p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>SelfCollision</code>: Whether the individual bones of a ragdoll shall collide with each other. If disabled, they will pass through each other and only the joint constraints will prevent unnatural motion. Wether self collision works well or not on a given character highly depends on how the colliders for the bones are set up.</li>
+<li><code>StartMode</code>: In which <em>pose</em> the ragdall should start:
+<ul>
+<li><code>WithBindPose</code>: The ragdoll starts immediately and uses the default bind pose (or rest pose) of the skeleton.</li>
+<li><code>WithNextAnimPose</code>: The ragdoll waits for the next animation pose from and then starts from there. This requires a <a href="../../../animation/skeletal-animation/simple-animation-component.html">simple animation component</a> or <a href="../../../animation/skeletal-animation/animation-controller/animation-controller-overview.html">animation controller</a> to be active.</li>
+<li><code>WithCurrentMeshPose</code>: The ragdoll starts immediately with the current pose. This does not require another component to regularly provide new poses and thus can also be used with a <a href="../../../animation/skeletal-animation/skeleton-pose-component.html">skeleton pose component</a>.</li>
+</ul>
+</li>
+<li><code>GravityFactor</code>: How much gravity to use.</li>
+<li><code>Mass</code>: How heavy the ragdoll should be.</li>
+<li><code>StiffnessFactor</code>: The overall stiffness of the joints. Each joint has an individual stiffness as defined in the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton asset</a>, but when scaling characters up or down, it may be necessary to also scale the stiffness.</li>
+<li><code>OwnerVelocityScale</code>: A ragdoll may get enabled while a character is moving, for example while it is running. The owner object velocity is then transferred to the ragdoll to have it continue falling into the direction, rather then suddenly stop and just fall down. This factor allows to tweak how much of that momentum to keep (or even exaggerate).</li>
+<li><code>CenterPosition</code>: An experimental feature mainly meant for breakable objects (ragdolls with no joints). Specifies an offset where the <em>center</em> of the object should be, to apply an outwards force from.</li>
+<li><code>CenterVelocity</code>, <code>CenterAngularVelocity</code>: What linear and angular velocity to set at start outwards from the <code>CenterPosition</code> on each bone. This makes it possible to build <em>breakable</em> objects that break apart when the ragdall gets activated.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../../../animation/skeletal-animation/skeletal-animation-overview.html">Skeletal Animations</a></li>
 <li><a href="jolt-hitbox-component.html">Jolt Hitbox Component</a></li>
+<li><a href="../../../animation/skeletal-animation/skeleton-asset.html">Skeleton Asset</a></li>
 </ul>
 </article>
           </div>
