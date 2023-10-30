@@ -4389,7 +4389,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/actors/jolt-actors.html",
-          "hash": "8+esNpFhy00vhOqLDYQAmCCGlhwAmp6eUbOPyD2bl4k="
+          "hash": "yHBZcjgWaVngsQy2yii3+YG3Ffkpjlmvq7zW2QRUxP4="
         }
       },
       "is_incremental": false,
@@ -4413,7 +4413,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/actors/jolt-queryshape-actor-component.html",
-          "hash": "HxYTX0wNLrCHReyBlBPObqtYKCkQCuCqzWPKUuCpjls="
+          "hash": "JphnNgdqtzMbbZOlktyxU98C61eQdaIgu470yXEzPwY="
         }
       },
       "is_incremental": false,
@@ -4915,11 +4915,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/physics/jolt/ragdolls/jolt-bone-collider-component.md",
+      "source_relative_path": "pages/docs/physics/jolt/ragdolls/jolt-hitbox-component.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/physics/jolt/ragdolls/jolt-bone-collider-component.html",
-          "hash": "6Q2Tr0ghA/sqewp+APzY/RBYDHTQmfRYvvyA/Ol6pKo="
+          "relative_path": "pages/docs/physics/jolt/ragdolls/jolt-hitbox-component.html",
+          "hash": "Tc03Z2FO5iZ6hAPboCGmi7fmtfaTTAGwLQwjsDfz8w8="
         }
       },
       "is_incremental": false,
@@ -4931,7 +4931,18 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/ragdolls/jolt-ragdoll-component.html",
-          "hash": "Pbddx7eBdRIwAlOschs46ZaDE5FAcZcAgXkIEbbM9wI="
+          "hash": "zZiC5GQOpLDcQCwZTDMDahtNK9uhikoIcYq8U36Z2hg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/ragdolls/media/hitboxes.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/ragdolls/media/hitboxes.png"
         }
       },
       "is_incremental": false,
@@ -6573,7 +6584,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "WEBgBqPU9c59gIUeTK4uOLJpC/SrxA1WhyfzMjBpaMA="
+          "hash": "xEC3rCTqQXoa4m/yWLqP25/bq/X7lmxXBEosP2M6QGk="
         }
       },
       "is_incremental": false,

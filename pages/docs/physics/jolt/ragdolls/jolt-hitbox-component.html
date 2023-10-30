@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Jolt Bone Collider Component | ezEngine </title>
+    <title>Jolt Hitbox Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Jolt Bone Collider Component | ezEngine ">
+    <meta name="title" content="Jolt Hitbox Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,14 +78,24 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="jolt-bone-collider-component">Jolt Bone Collider Component</h1>
+<h1 id="jolt-hitbox-component">Jolt Hitbox Component</h1>
 
-<!-- PAGE IS TODO -->
-<p>This feature is in a usable state, but currently undocumented.</p>
+<p><img src="media/hitboxes.png" alt="Hitboxes"></p>
+<p>The <em>Jolt hitbox component</em> is used to add collider shapes to an <a href="../../../animation/skeletal-animation/animated-mesh-component.html">animated mesh</a>.</p>
+<p>The component must be attached next to another component that defines the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton</a> to use, for instance an <a href="../../../animation/skeletal-animation/animated-mesh-component.html">animated mesh component</a> or a <a href="../../../animation/skeletal-animation/skeleton-component.html">skeleton component</a>. It will then use that skeleton to create the physics shapes.</p>
+<p>Consequently, the configuration of the hitbox shapes is set up through the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton asset</a>.</p>
+<p>The hitboxes are usually used to be able to shoot an animated character. Although they share the collider setup with the <a href="jolt-ragdoll-component.html">Jolt ragdoll component (TODO)</a>, hitboxes and ragdolls are separate features that can be used independently of each other. For example, while a character is alive, it would use hitboxes, so that raycasts can determine where it would be hit, but it would not use a ragdoll component yet. Once a character dies, a ragdoll component would be activated to make it fall to the ground. The hitbox component could now be deactivated (which also makes sense for performance reasons), since it's functionality may not be needed anymore.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Query Shapes Only</code>: If true, the shapes that get created act the same way as <a href="../actors/jolt-queryshape-actor-component.html">query shape actors</a>. That means the shapes can be detected via raycasts and other shape queries (e.g. the <a href="../../../gameplay/projectile-component.html">projectile component</a> will be able to hit it), but otherwise they don't participate in the physical simulation. If set to false, full kinematic shapes are used, which means the shapes will push all <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a> aside. This is rarely desired, usually one would rather use a <a href="../special/jolt-character-controller.html">character controller</a> or a single kinematic actor in the form of a capsule to represent the animated mesh, but in some exceptional cases it might be useful.</li>
+<li><code>Update Threshold</code>: How often the hitboxes are updated to follow the animation. At 0, they are updated every frame. If perfect alignment with the animation is not necessary, it is better for performance to use a larger time step.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="jolt-ragdoll-component.html">Jolt Ragdoll Component (TODO)</a></li>
 <li><a href="../actors/jolt-queryshape-actor-component.html">Jolt Query Shape Actor Component</a></li>
+<li><a href="../../../animation/skeletal-animation/skeleton-asset.html">Skeleton Asset</a></li>
+<li><a href="../../../animation/skeletal-animation/skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 </article>
           </div>
@@ -95,7 +105,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/ragdolls/jolt-bone-collider-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/ragdolls/jolt-hitbox-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
