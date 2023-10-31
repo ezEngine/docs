@@ -1431,7 +1431,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/asset-profiles.html",
-          "hash": "pw+1SQkP0eg3xf0O1MKuD33Lm+9OhbF6OTzvrUBpCGw="
+          "hash": "wP9KH25ghCp9dCezGSsZ5Ruc0WUC0YQd7IPKnWpoa40="
         }
       },
       "is_incremental": false,
@@ -1443,7 +1443,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/assets/assets-overview.html",
-          "hash": "RXuYVkY5tTrTtKV5XRvyUbmzCmhRt8REcW4RmEIuoTw="
+          "hash": "KVNwZ7mfrdGqSgjNOP/AFW2m8Yt1IrNKj3qdm7uaG/4="
         }
       },
       "is_incremental": false,
@@ -1489,6 +1489,17 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/assets/media/asset-import.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-profiles.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-profiles.png"
         }
       },
       "is_incremental": false,
@@ -3475,7 +3486,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/gameplay/headbone-component.html",
-          "hash": "bamK4PS5pIzQL6gFqSthgbPK205GL26O/CunnDV56ms="
+          "hash": "kU+ECN2GAk6GBO+vX2W5Uq4BN6XKI4RtwB0fbc97sLc="
         }
       },
       "is_incremental": false,
@@ -3617,7 +3628,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/camera-component.html",
-          "hash": "frtsIIaTd5x74I9ATKh03BFODJ9X/MuubIupMeIboJE="
+          "hash": "rSfMV6emvJQc4pdrIiiL5IhFjr2nIIaazudwI0LOUsM="
         }
       },
       "is_incremental": false,
@@ -5235,7 +5246,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/project-settings.html",
-          "hash": "OdR6D+/Sps1S8ocASwo489FENheZ04hXoCYcOFloitY="
+          "hash": "/Li8nhhaOn2cdO4L8hiwFt0Je/ObfOAEzm7S+uOtvfM="
         }
       },
       "is_incremental": false,
@@ -5247,7 +5258,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/projects/projects-overview.html",
-          "hash": "Iv1Q0khe1iKwbJ/g9pidQXS5orb1WAPkiBH65jOZGdg="
+          "hash": "qPruWm6alwjzOtlRKOKwyBXk1rJXK5wXcdtv7Hg0M/I="
         }
       },
       "is_incremental": false,
@@ -6606,7 +6617,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "guxviac0owum3p/nu+JJXdsrbFZQEDourfLkGDMAVRw="
+          "hash": "F0gmWy1s70RtBKv7Aib/h4pC+3xY5io1yUmpCZgFx8s="
         }
       },
       "is_incremental": false,
@@ -6878,7 +6889,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/xr/xr-project-setup.html",
-          "hash": "3eAXQr/XQEtpzK3rJjYMc57Gqzx+YpBLb225vqInnCs="
+          "hash": "Bk6PbEfE+pLkWWGaVpMGNicgfGQAWCM+pkKdG4T8DJQ="
         }
       },
       "is_incremental": false,
