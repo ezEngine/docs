@@ -85,7 +85,13 @@
 <p>If the asset browser panel is not visible, select <em>Panels &gt; Asset Browser</em>. You will notice that the asset browser will show up in two modes. The <em>panel</em> is constantly visible and can be interacted with at all times, to search for assets and open them via double click, or instantiate them with drag and drop. Additionally, when an object has an <em>asset reference property</em>, choosing <em>Select Asset</em> from the button menu right next to it will open another asset browser in <em>file picker mode</em>.</p>
 <p><img src="media/asset-reference-button.png" alt="Asset Reference Property"></p>
 <p>Several other options are available, for example, <em>Open Asset</em> allows you to open the referenced asset document, which can be useful to follow a chain of asset references.</p>
-<h2 id="search">Search</h2>
+<h2 id="file-display">File Display</h2>
+<p>The asset browser can show all files that are on disk in the selected d<a href="../projects/data-directories.html">data directories</a>. It distinguishes between <em>assets</em>, <em>importable files</em> and <em>non-importable files</em>.</p>
+<p><strong>Assets</strong> are typically shown with a thumbnail or dedicated icon. These are the files you work with most.</p>
+<p><strong>Importable files</strong> are files that can be <a href="import-assets.html">imported as an asset</a>. Right click such a file and select <code>Import...</code> to do so. If an importable file is not referenced by any asset, it is color-coded orange. Otherwise it shows up white and its context menu contains the sub-menu <code>Imported via</code> which lists all the assets that reference this file.</p>
+<p><strong>Non-Importable files</strong> are all other files. The editor can't do anything with them, other than to open the default application associated with this file type.</p>
+<p>You can also move and delete files and assets. Note that deleting a file moves it to the trash folder, so you can restore the file through the operating system functionality, if necessary.</p>
+<h2 id="search-field">Search Field</h2>
 <p>The <em>Search</em> field in the top-left corner allows you to search for assets by name, path and GUID. The search by path or name is case insensitive. For paths, both slashes and backslashes are allowed. You can also input the GUID of an asset (for example <em>{ 1c47ee4c-0379-4280-85f5-b8cda61941d2 }</em>).</p>
 <h2 id="advanced-search">Advanced Search</h2>
 <p>The <em>Search</em> field supports special keywords to find assets by certain criteria.</p>
@@ -94,20 +100,20 @@
 <p>However, it is much more convenient to just <em>right-click</em> an asset and select <em>Find all references to this asset</em>. This will fill out the search field accordingly:</p>
 <p><img src="media/find-asset-references.png" alt="Find Asset References"></p>
 <h2 id="filter-by-asset-type">Filter by Asset Type</h2>
-<p>Below the search field, all available asset types are listed with checkboxes. Click the checkboxes to only display assets of those types. Click <em>&lt;All&gt;</em> or uncheck all asset types to display assets of all types.</p>
+<p>Below the search field is a combo box containing all asset types. Select one to only show assets of this type.</p>
 <h2 id="filter-by-folder">Filter by Folder</h2>
-<p>On the bottom left the asset browser displays all <a href="../projects/data-directories.html">data directories</a>. When you select a folder in this tree view, the asset browser will only display assets located below that folder.</p>
+<p>On the left the asset browser displays all <a href="../projects/data-directories.html">data directories</a>. When you select a folder in this tree view, the asset browser only displays assets located below that folder.</p>
+<h3 id="show-assets-in-sub-folders">Show Assets in Sub-Folders</h3>
+<p>Right click on a folder and toggle <strong>Show items in sub-folders</strong>. When enabled (the default) the asset browser shows <em>all</em> assets that are anywhere below a selected folder. When disabled, only the assets that are directly inside the a selected folder are shown. Assets that are in a sub-folder are not displayed. This behavior is more like a typical file explorer.</p>
 <h3 id="filter-to-this-path">Filter to this Path</h3>
 <p>You can right-click on any asset and select <strong>Filter to this Path</strong> to set the folder filter to the path in which the selected asset resides. This is useful when you already see an asset in the browser but are interested in an asset that you know is located next to that asset (same folder or sub-folder).</p>
-<h3 id="show-assets-in-sub-folders">Show Assets in Sub-Folders</h3>
-<p>Right click on a folder and toggle <strong>Show items in sub-folders</strong>. When enabled (the default) the asset browser shows <em>all</em> assets that are anywhere below a selected folder. When disabled, only the assets that are directly inside the a selected folder are shown. Assets that are in a sub-folder are not displayed.</p>
 <h3 id="hidden-folders">Hidden Folders</h3>
 <p>By default when an asset is located in a folder with a <strong>_data</strong> suffix (e.g. 'MyAssets_data'), it is not displayed in the asset browser, unless you select exactly that folder in the asset browser. This way you can easily hide assets that are rarely needed. Hidden folders are indicated with a grey font.</p>
 <p><img src="media/hidden-folders.png" alt="Hidden Folders"></p>
 <p>A common use case is to put <a href="../materials/materials-overview.html">materials</a> and textures that are very specific for a <a href="../graphics/meshes/meshes-overview.html">mesh</a> or <a href="../prefabs/prefabs-overview.html">prefab</a> into a <em>xyz_data</em> subfolder to group the data together, but prevent it from cluttering the asset browser.</p>
 <p>You can toggle this feature by right clicking any folder and selecting <strong>Show items in hidden folders</strong>.</p>
 <h2 id="create-asset-documents">Create Asset Documents</h2>
-<p>You can create new asset <a href="../editor/editor-documents.html">documents</a> by right clicking a folder on the bottom left, or an asset on the right and selecting <em>New &gt; Asset Type</em>. The advantage over creating a document via <em>File &gt; Create...</em> is that the create file dialog opens directly in the location of the selected asset or folder, which makes it easier to create a new asset next to an existing asset.</p>
+<p>You can create new asset <a href="../editor/editor-documents.html">documents</a> by right clicking a folder on the left or the empty area of a folder on the right or an existing asset on the right and then selecting <em>New &gt; Asset Type</em>. The advantage over creating a document via <em>File &gt; Create...</em> is that the create file dialog opens directly in the location of the selected asset or folder, which makes it easier to create a new asset next to an existing asset.</p>
 <h2 id="display-assets-in-recently-used-order">Display Assets in Recently Used Order</h2>
 <p>The editor remembers which assets you used recently. The asset browser can list recently used assets at the top. This option can be toggled from the context menu on the right hand side of the asset browser. Note that the state of this option is remembered separately for the asset browser <em>panel</em> and for the asset browser when used as a <em>file picker</em>. In panel mode, it is typically disabled and all assets are sorted alphabetically, in file picker mode, it typically sorts by recently used time.</p>
 <h2 id="copy-asset-guid">Copy Asset Guid</h2>
