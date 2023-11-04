@@ -80,10 +80,14 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="skeleton-asset">Skeleton Asset</h1>
 
-<p>The main function of the <em>Skeleton asset</em> is to store information about the bone hierarchy in an <a href="animated-mesh-asset.html">animated mesh</a>. Here you adjust the overall scale and rotation of imported animated meshes.</p>
+<p>The main function of the <em>Skeleton asset</em> is to store information about the bone hierarchy in an <a href="animated-mesh-asset.html">animated mesh</a>. It is a central aspect for all <a href="skeletal-animation-overview.html">skeletal animations</a>.</p>
 <p><img src="../media/skeleton-asset.jpg" alt="Skeleton Asset"></p>
-<p>In the future the skeleton asset will also be used to define physics shapes for bones for collision detection and ragdolls. This is currently not yet implemented, though.</p>
+<p>The skeleton is used to adjust the overall scale and rotation of animated meshes. It is also used to define <a href="../../physics/jolt/collision-shapes/jolt-shapes.html">collision shapes</a> for bones, which is needed for <a href="../../physics/jolt/ragdolls/jolt-hitbox-component.html">hit detection</a> and when additionally joint types and joint limits are configured, the skeleton can be used for <a href="../../physics/jolt/ragdolls/jolt-ragdoll-component.html">ragdolls</a>.</p>
+<h2 id="user-interface">User Interface</h2>
+<p>The left hand side shows a tree view with the bone hierarchy. The top most element is always the <code>ezEditableSkeleton</code> node, which represents the skeleton in general.</p>
+<p>When you select any node in this tree, the <em>Skeleton Properties</em> panel on the right displays the properties of the selected node. Select the root node (<code>ezEditableSkeleton</code>) to edit the overall properties, such as which file to import. Once a file is imported, the bones should show up as child nodes. Select any of them, to configure the properties of a bone.</p>
 <h2 id="asset-properties">Asset Properties</h2>
+<p>Select the <code>ezEditableSkeleton</code> node to edit the overall asset properties.</p>
 <ul>
 <li><p><code>File</code>: The file from which to import the skeleton information. This is typically the same file as in the <a href="animated-mesh-asset.html">animated mesh asset</a>.</p>
 </li>
@@ -114,6 +118,28 @@
 <li><p><code>CollisionLayer</code>, <code>Surface</code>: The default <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> and <a href="../../materials/surfaces.html">surface</a> to use for all bone shapes. This can be overridden on each bone.</p>
 </li>
 <li><p><code>MaxImpulse</code>: When projectiles and other things apply impulses to ragdoll limbs, the forces can quickly add up and fling a ragdoll far away. This value is used to clamp the maximum impulse to apply to prevent that.</p>
+</li>
+</ul>
+<h2 id="bone-properties">Bone Properties</h2>
+<p>Select a bone from the hierarchy to edit its properties.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p><strong>All</strong> bone properties are <em>physics properties</em> that are used for setting up <a href="../../physics/jolt/collision-shapes/jolt-shapes.html">collision shapes</a> and <a href="../../physics/jolt/constraints/jolt-constraints.html">constraints</a>. Collider shapes are needed for <a href="../../physics/jolt/ragdolls/jolt-hitbox-component.html">hit detection</a>. Colliders and constraints are only needed for <a href="../../physics/jolt/ragdolls/jolt-ragdoll-component.html">ragdolls</a>.</p>
+</blockquote>
+<ul>
+<li><p><code>Local Rotation</code>: This property only shows up on bones that have a parent bone with a collision shape. It is used to adjust the orientation of the <em>joint constraint</em>.</p>
+</li>
+<li><p><code>Joint Type</code>: Selects what kind of constraint should be between this bone and the parent bone. If it is set to <code>None</code>, the two bones are not joined. If the skeleton is not meant to be used for ragdolls, there is no reason to select anything else. If the type is set to <code>Fixed</code> the two bones are going to be joined such that they are perfectly stiff. In <code>Swing Twist</code> mode you can configure the range of motion between these bones to limit how far they can physically move when simulated as a ragdoll.</p>
+</li>
+<li><p><code>Stiffness</code>:  How easily the ragdoll joint bends.</p>
+</li>
+<li><p><code>Swing Limit Y/Z</code>, <code>Twist Limit</code>, <code>Twist Limit Center Angle</code>: All these are used to set up the swing-twist constraint. Enable the visualization of the constraint limits to see their effect. The swing limit restricts how far a bone may swing away from its parent bone. Be aware that you can only define the swing limit as a <em>half angle</em>, meaning it swings both ways. Adjust the <code>Local Rotation</code> to define what the <em>center</em> of the bone transform is, such that both extremes end up as a natural movement range. The twist limit works similar, it restricts how much the bone may twist around its main axis and the limit goes both ways.Adjust the <em>center angle</em> to be somewhere within the current limit range, otherwise the moment ragdoll mode gets activated, the bones will immediately twist to be within the limit, which ends up looking very weird.</p>
+</li>
+<li><p><code>Override Surface</code> / <code>Override Collision Layer</code>: If either of these is activated, you may specify a different <a href="../../materials/surfaces.html">surface</a> or <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use just for this bone. Note that the default is configured on the root node.</p>
+</li>
+<li><p><code>Bone Shapes</code>: An array of shapes to use for this bone. Use this to configure the approximate physical shape of the mesh, which will be used for hit detection or ragdolls.</p>
+</li>
+<li><p><code>Colliders</code>: A mesh may contain custom collider shapes, which can be extracted automatically. For this to work a mesh must use the name prefix <code>UCX_</code> to indicate that it is a convex mesh. It must then continue with the bone name to which it should be attached to. So for example, if the bone is called <code>Bone.001</code>, and the custom convex mesh is called <code>UCX_Bone.001</code> then the mesh will be used as a convex collider shape for that bone. As an example, see the <em>BreakableCube.glb</em> file in the t<a href="../../../samples/testing-chambers.html">Testing Chambers</a> project and the corresponding <em>BreakableCube</em> skeleton asset.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>

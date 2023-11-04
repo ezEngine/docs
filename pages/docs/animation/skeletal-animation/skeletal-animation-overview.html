@@ -85,13 +85,13 @@
 <p>Describing how skeletal animation works in general is out of scope for the EZ documentation, but there are a vast amount of resources about this topic online. It is assumed here, that you are familiar with the concepts and know the basics about modelling, rigging and animating a mesh with a tool such as <a href="https://www.blender.org">Blender</a>.</p>
 <p>The rest of this document gives a high-level overview, how to get started with getting animated meshes into EZ. For more in-depth descriptions of each feature, please consult the respective documentation pages.</p>
 <h2 id="sample-scene">Sample Scene</h2>
-<p>For a sample scene to look at, open the <strong>Animation</strong> scene from the <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project.</p>
+<p>For a sample scene to look at, open the <strong>Animation</strong> scene from the <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project. Additionally, the <a href="../../../samples/monster-attack/monster-attack.html">Monster Attack Sample</a> may also be a useful resource.</p>
 <h2 id="the-animation-system-pieces">The Animation System Pieces</h2>
 <p>The following elements are involved to make an animated mesh:</p>
 <h3 id="animated-mesh-asset">Animated Mesh Asset</h3>
 <p>The <a href="animated-mesh-asset.html">animated mesh</a> asset represents the mesh of the animated object. This is a special version of the <a href="../../graphics/meshes/mesh-asset.html">mesh asset</a>. It works mostly the same way, except that it adds the necessary skinning information. Consequently, only these kinds of meshes can be used for skeletal animation. An animated mesh asset requires you to specify a default <a href="skeleton-asset.html">skeleton asset</a>, otherwise it won't even transform the data.</p>
 <h3 id="skeleton-asset">Skeleton Asset</h3>
-<p>The <a href="skeleton-asset.html">skeleton asset</a> stores the bone hierarchy of the animated object. This is also where you configure the overall scaling and which direction should be the forward, right and up vector of the imported model. The skeleton asset is also where you would set up physics collision shapes.</p>
+<p>The <a href="skeleton-asset.html">skeleton asset</a> stores the bone hierarchy of the animated object. This is also where you configure the overall scaling and which direction should be the forward, right and up vector of the imported model. The skeleton asset is also where you set up physics collision shapes for <a href="../../physics/jolt/ragdolls/jolt-hitbox-component.html">hit detection</a> and <a href="../../physics/jolt/ragdolls/jolt-ragdoll-component.html">ragdolls</a>.</p>
 <h3 id="animation-clip-asset">Animation Clip Asset</h3>
 <p>The <a href="animation-clip-asset.html">animation clip asset</a> represents <strong>a single animation</strong>, such as a walk or a jump animation. You may have multiple animations stored in a single <code>.fbx</code> or <code>.glb</code> file, but you need to create one animation clip asset for each animation that you want to import into EZ. Just reference the same source file each time. The animation clip asset has a property <code>UseAnimationClip</code> through which you can choose which animation to extract from the source file. Currently you have to <strong>type</strong> the name of the animation. The <em>Available Clips</em> list just below it shows you which animations have been found in the file.</p>
 <p><img src="../media/anim-clip-properties.png" alt="Anim clip properties"></p>
@@ -110,7 +110,7 @@
 <h2 id="how-to-import-animation-data">How to Import Animation Data</h2>
 <p>To import an animated object, you need to set up multiple assets (the mesh, the skeleton, the animation clips). The easiest way is to press <strong>CTRL+I</strong> to open the <a href="../../assets/import-assets.html">asset import dialog</a>. Select your <code>.fbx</code> or <code>.glb</code> file and choose to import it as multiple asset types like so:</p>
 <p><img src="../media/anim-import.png" alt="Animation import"></p>
-<p>This will create all three necessary assets. You can repeat this process, if you want to import multiple animation clips (select <em>No Import</em> for the other asset types then). You'll need to change the filename for each additional animation clip asset.</p>
+<p>This will create all three necessary assets. To import additional animation clips, the easiest method is to just use <em>File &gt; Save As...</em> in the existing animation clip asset to duplicate it for the next clip.</p>
 <h2 id="animation-utility-components">Animation Utility Components</h2>
 <p>The following components are currently available:</p>
 <h3 id="joint-attachment-component">Joint Attachment Component</h3>
