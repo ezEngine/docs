@@ -80,20 +80,18 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="event-nodes">Event Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>Event nodes are used to broadcast <a href="../../../runtime/world/world-messaging.html#event-messages">event messages</a> on the <a href="../../../runtime/world/game-objects.html">game object</a> on which the animation controller is running. This allows other code to react at the right moment to things like an animation being finished.</p>
+<p>Event nodes are used to broadcast <a href="../../../runtime/world/world-messaging.html#event-messages">event messages</a> on the <a href="../../../runtime/world/game-objects.html">game object</a> on which the animation graph is running. This allows other code to react at the right moment to things like an animation being finished.</p>
 <p>Event nodes allow you to broadcast custom events under exactly defined conditions. Additionally, every time an <a href="../animation-clip-asset.html">animation clip</a> is played, and actively contributes to the final pose, events that are defined on that clip will automatically be broadcast on the associated game object.</p>
-<p>Note that the animation controller itself cannot <em>react</em> to events. For that purpose use <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
+<p>Note that the animation graph itself cannot <em>react</em> to events. For that purpose use <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
 <h2 id="send-event-node">Send Event Node</h2>
-<p>When this node is triggered, it broadcasts an <code>ezMsgGenericEvent</code> with <code>Message</code> set to the value of <code>EventName</code>.</p>
+<p>When this node is triggered, it broadcasts an <code>ezMsgGenericEvent</code> with <code>Message</code> set to the value of <code>Event Name</code>.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><strong>EventName</strong>: The string that is used as the <code>Message</code> property of the <code>ezMsgGenericEvent</code> that is broadcast.</li>
+<li><code>Event Name</code>: The string that is used as the <code>Message</code> property of the <code>ezMsgGenericEvent</code> that is broadcast.</li>
 </ul>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><strong>Active</strong>: While this pin is triggered, the message is sent (once every frame).</li>
+<li><code>Activate</code>: When this pin gets triggered, the message is sent.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

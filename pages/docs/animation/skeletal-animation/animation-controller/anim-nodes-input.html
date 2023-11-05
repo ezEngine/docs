@@ -80,16 +80,14 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="input-nodes">Input Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>Input nodes expose the state of input devices to the animation controller. Input nodes are mainly provided for convenience during prototyping, as they may circumvent key mappings and general game state (e.g. whether the player is even allowed to move a character at all, at the moment).</p>
-<p>For a proper game, it is better to use an <a href="../../../input/input-component.html">input component</a> to forward input state to <a href="../../../custom-code/custom-code-overview.html">custom code</a> and then decide their which animation shall get played. Then you can forward that state to the animation controller, through a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation controller itself would retrieve what it shall do through the <a href="anim-nodes-blackboard.html">blackboard nodes (TODO)</a>.</p>
-<h2 id="xbox-controller-input-node">XBox Controller Input Node</h2>
-<p>This node reads the raw state of the connected XBox controller 1. It then outputs the button states as trigger or number pins, depending on whether the respective button or stick provides an analog signal.</p>
+<p>Input nodes expose the state of input devices to the animation graph. Input nodes are mainly provided for convenience during prototyping, as they may circumvent key mappings and general game state (e.g. whether the player is even allowed to move a character at all, at the moment).</p>
+<p>For a proper game, it is better to use an <a href="../../../input/input-component.html">input component</a> to forward input state to <a href="../../../custom-code/custom-code-overview.html">custom code</a> and then decide there which animation shall get played. Then you can forward that state to the animation graph, through a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation graph itself would retrieve what it should do through the <a href="anim-nodes-blackboard.html">blackboard nodes</a>.</p>
+<h2 id="controller-node">Controller Node</h2>
+<p>This node reads the raw state of the connected controller <strong>1</strong>. It outputs the button states as data pins.</p>
 <p>This node completely ignores any kind of button mapping. It is purely meant for prototyping scenarios, where it can be very convenient.</p>
 <h3 id="output-pins">Output Pins</h3>
 <ul>
-<li>This node has one output pin for every button and stick direction. If you need to turn an analog signal into a trigger value, use the <a href="anim-nodes-logic-math.html">Compare Number node (TODO)</a>.</li>
+<li>This node has number output pins for the sticks and triggers and bool output pins for the buttons.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

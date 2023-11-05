@@ -80,56 +80,75 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="blackboard-nodes">Blackboard Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>The animation controller provides nodes to read and write values from and to a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. For this, the <a href="../../../runtime/world/game-objects.html">game object</a> on which the <a href="animation-controller-component.html">animation controller component</a> is attached, also needs to hold a blackboard component.</p>
+<p>The animation graph provides nodes to read and write values from and to a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. For this, the <a href="../../../runtime/world/game-objects.html">game object</a> on which the <a href="animation-controller-component.html">animation controller component</a> is attached, or one of its parent nodes, also needs to hold a <a href="../../../Miscellaneous/local-blackboard-component.html">blackboard component</a>.</p>
 <blockquote>
-<p><strong>Note:</strong>
-If no blackboad is available, these nodes will output a warning to the <a href="../../../debugging/logging.html">log</a>. If a blackboard is available, but the desired entry is not (yet) in the blackboard, they may add the entry or assume a default value of zero.</p>
+<p><strong>Note:</strong></p>
+<p>If no blackboad is available, these nodes will typically silently not do anything. If a blackboard is available, but the desired entry is not (yet) in the blackboard, they may add the entry or log a warning and assume a default value.</p>
 </blockquote>
-<h2 id="set-blackboard-value-node">Set Blackboard Value Node</h2>
-<p>When activated or deactivated, this node writes a given value to the blackboard.</p>
+<h2 id="set-number-node--set-bool-node">Set Number Node / Set Bool Node</h2>
+<p>When activated, this node writes a given value to the blackboard.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><p><strong>BlackboardEntry</strong>: The name of the blackboard entry (variable) to write to.</p>
+<li><p><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to write to.</p>
 </li>
-<li><p><strong>SetOnActivation</strong>: If true, <code>ActivationValue</code> will be written to the blackboard whenever the <code>Active</code> input pin changes from disabled to enabled.</p>
-</li>
-<li><p><strong>ActivationValue</strong>: The value that shall be written to the blackboard, when the <code>Active</code> pin becomes enabled.</p>
-</li>
-<li><p><strong>SetOnDeactivation</strong>: If true, <code>DeactivationValue</code> will be written to the blackboard whenever the <code>Active</code> input pin changes from enabled to disabled.</p>
-</li>
-<li><p><strong>DeactivationValue</strong>: The value that shall be written to the blackboard, when the <code>Active</code> pin becomes disabled.</p>
+<li><p><code>Number</code> / <code>Bool</code>: The value to write in case the value input pin is connected.</p>
 </li>
 </ul>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><strong>Active</strong>: The <em>active</em> state determines when either the <code>ActivationValue</code> or <code>DeactivationValue</code> shall be written to the blackbard. As long as this pin's state doesn't change, no value is written.</li>
+<li><p><code>Activate</code>: When triggered, the node changes the blackboard value.</p>
+</li>
+<li><p><code>Number</code> / <code>Bool</code>: The value to write. If not connected, the value configured on the node is used.</p>
+</li>
 </ul>
-<h2 id="check-blackboard-value-node">Check Blackboard Value Node</h2>
-<p>This node constantly monitors a blackboard value and compares it to a reference value. Whenever the comparison yields <code>true</code>, the <code>Active</code> output pin is enabled, otherwise disabled.</p>
+<h2 id="get-number-node--get-bool-node">Get Number Node / Get Bool Node</h2>
+<p>Outputs the value of a specific blackboard entry.</p>
 <h3 id="node-properties-1">Node Properties</h3>
 <ul>
-<li><p><strong>BlackboardEntry</strong>: The name of the blackboard entry (variable) to monitor.</p>
-</li>
-<li><p><strong>ReferenceValue</strong>: A reference value for the comparison.</p>
-</li>
-<li><p><strong>Comparison</strong>: The way the two values get compared.</p>
-</li>
+<li><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to read.</li>
 </ul>
 <h3 id="output-pins">Output Pins</h3>
 <ul>
-<li><strong>Active</strong>: This output pin will be triggered whenever the comparison was successful.</li>
+<li><code>Number</code> / <code>Bool</code>: The value of the entry. If the entry doesn't exist, the pin outputs zero.</li>
 </ul>
-<h2 id="get-blackboard-value-node">Get Blackboard Value Node</h2>
-<p>This node outputs the value of a specific blackboard entry. The number value can then be forwarded to other nodes.</p>
+<h2 id="check-number-node">Check Number Node</h2>
+<p>This node monitors a blackboard value and compares it to a reference value. When the result of the comparison changes, the <code>On True</code> or <code>On False</code> output pin gets triggered for one frame.</p>
 <h3 id="node-properties-2">Node Properties</h3>
 <ul>
-<li><strong>BlackboardEntry</strong>: The name of the blackboard entry (variable) to read.</li>
+<li><p><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to monitor.</p>
+</li>
+<li><p><code>Reference Value</code>: A reference value for the comparison.</p>
+</li>
+<li><p><code>Comparison</code>: The way the two values get compared.</p>
+</li>
 </ul>
 <h3 id="output-pins-1">Output Pins</h3>
 <ul>
-<li><strong>Number</strong>: The value of the blackboard entry. If the entry doesn't exist, the pin outputs zero.</li>
+<li><code>On True</code>: Gets triggered for one frame when the comparison result changes to <code>true</code>.</li>
+<li><code>On False</code>: Gets triggered for one frame when the comparison result changes to <code>false</code>.</li>
+<li><code>Is True</code>: Outputs the result of the comparison. This is a data pin that can always be read, contrary to the other two pins that are <em>event pins</em> and only get triggered when something changes.</li>
+</ul>
+<h2 id="check-bool-node">Check Bool Node</h2>
+<p>This node monitors a boolean blackboard value and compares it to <code>true</code>. When the result of the comparison changes, the <code>On True</code> or <code>On False</code> output pin gets triggered for one frame.</p>
+<h3 id="node-properties-3">Node Properties</h3>
+<ul>
+<li><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to monitor.</li>
+</ul>
+<h3 id="output-pins-2">Output Pins</h3>
+<ul>
+<li><code>On True</code>: Gets triggered for one frame when the value changes to <code>true</code>.</li>
+<li><code>On False</code>: Gets triggered for one frame when the value changes to <code>false</code>.</li>
+<li><code>Bool</code>: Outputs the blackboard value. This is a data pin that can always be read, contrary to the other two pins that are <em>event pins</em> and only get triggered when the value changes.</li>
+</ul>
+<h2 id="onchanged-node">OnChanged Node</h2>
+<p>This node monitors a blackboard value and triggers its output event node when the value changes. This should be used when <em>any</em> change to a variable is of interest.</p>
+<h3 id="node-properties-4">Node Properties</h3>
+<ul>
+<li><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to monitor.</li>
+</ul>
+<h3 id="output-pins-3">Output Pins</h3>
+<ul>
+<li><code>On Value Changed</code>: Gets triggered for one frame when the value changes somehow.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

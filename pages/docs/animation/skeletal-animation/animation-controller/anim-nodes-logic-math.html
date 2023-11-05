@@ -80,44 +80,61 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="logic-and-math-nodes">Logic and Math Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>The animation controller provides a couple of nodes to evaluate basic arithmatic and logic. This is meant for very simple use cases and for quick prototyping. Often animation logic requires much more complex rules than what would be feasible to express in the animation controller graph. Instead use <a href="../../../custom-code/custom-code-overview.html">custom code</a> to decide which animation should run under which circumstances, and pass the result to the animation controller via a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation controller can then simply read the state for each animation using the <a href="anim-nodes-blackboard.html">blackboard nodes (TODO)</a>.</p>
-<h2 id="logic-and-node">Logic AND Node</h2>
-<p>This node sets its output pin to <em>triggered</em> when <strong>all</strong> incoming connections on the input pin are triggered at the same time. Note that even though there is only a single input pin, it can be connected to multiple sources.</p>
+<p>The animation graph provides nodes to evaluate basic arithmatic and logic. This is meant for very simple use cases and for quick prototyping. Often animation logic requires much more complex rules than what would be feasible to express in the animation graph. Instead use <a href="../../../custom-code/custom-code-overview.html">custom code</a> to decide which animation should run under which circumstances, and pass the result to the animation graph via a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation graph can then simply read the state for each animation using the <a href="anim-nodes-blackboard.html">blackboard nodes</a>.</p>
+<h2 id="and-node">AND Node</h2>
+<p>This node checks whether <strong>all</strong> boolean input values are <code>true</code> and sets its own <code>Is True</code> and <code>Is False</code> output pins accordingly.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><strong>NegateResult</strong>: If set, the output value will be negated. This effectively turns it into a <code>NAND</code> logic node.</li>
+<li><code>Bool Count</code>: How many input pins the node should have.</li>
 </ul>
-<h2 id="logic-or-node">Logic OR Node</h2>
-<p>This node sets its output pin to <em>triggered</em> when <strong>any</strong> incoming connections on the input pin are triggered. Note that even though there is only a single input pin, it can be connected to multiple sources.</p>
+<h2 id="or-node">OR Node</h2>
+<p>This node checks whether <strong>any</strong> boolean input value is <code>true</code> and sets its own <code>Is True</code> and <code>Is False</code> output pins accordingly.</p>
 <h3 id="node-properties-1">Node Properties</h3>
 <ul>
-<li><strong>NegateResult</strong>: If set, the output value will be negated. This effectively turns it into a <code>NOR</code> logic node.</li>
+<li><code>Bool Count</code>: How many input pins the node should have.</li>
 </ul>
-<h2 id="logic-not-node">Logic NOT Node</h2>
-<p>This node sets its output pin to <em>triggered</em> when the input pin is not triggered and vice versa.</p>
-<p>As with the other nodes, you can connect multiple sources to this input pin. In this case, if any of those connections is triggered, the entire input pin is considered to be in the triggered state, and the output will be the opposite.</p>
-<h2 id="compare-value-node">Compare Value Node</h2>
-<p>This node can be used to check whether a number value compares in a certain way against a reference value. For example whether some input value is larger than 0.5. If this is the case, the output pin will be triggered.</p>
+<h2 id="not-node">NOT Node</h2>
+<p>Outputs the oppositve value of its input.</p>
+<h2 id="compare-number-node">Compare Number Node</h2>
+<p>This node can be used to check whether a number value compares in a certain way against a reference value. For example whether some input value is larger than 0.5.</p>
 <h3 id="node-properties-2">Node Properties</h3>
 <ul>
-<li><strong>ReferenceValue</strong>: The reference value to compare the incoming value against.</li>
-<li><strong>Comparison</strong>: The mathematical operation with which to compare the two values.</li>
+<li><code>Reference Value</code>: The reference value to compare the incoming value against.</li>
+<li><code>Comparison</code>: The mathematical operation with which to compare the two values.</li>
 </ul>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><strong>Number</strong>: The number to compare against the reference value.</li>
+<li><code>Number</code>: The number to compare against the reference value.</li>
+<li><code>Reference</code>: If connected, this acts as the reference value.</li>
 </ul>
 <h3 id="output-pins">Output Pins</h3>
 <ul>
-<li><strong>Active</strong>: The output pin is triggered whenever the comparison is successful.</li>
+<li><code>Is True</code>: A boolean output for the result of the comparison.</li>
 </ul>
-<h2 id="math-expression-node">Math Expression Node</h2>
-<p>The math expression node takes up to four different numbers as its input, plugs them into a user provided expression and outputs the result.</p>
-<p>The expression must be syntactically correct, otherwise the node prints an error to the <a href="../../../debugging/logging.html">log</a>.</p>
+<h2 id="bool-to-number-node">Bool To Number Node</h2>
+<p>Converts a boolean value (<code>true</code> or <code>false</code>) to a number. By default this node converts <code>false</code> to <code>0</code> and <code>true</code> to <code>1</code>, but you can select other numerical values to use.</p>
 <h3 id="node-properties-3">Node Properties</h3>
-<p><strong>Expression</strong>: The expression can use the following:</p>
+<ul>
+<li><code>False Value</code>, <code>True Value</code>: The <em>number value</em> to output for when the input is <code>false</code> or <code>true</code>.</li>
+</ul>
+<h2 id="event-and-node">Event AND Node</h2>
+<p>Used to filter an event pin to only activate the next node, if additionally to the event another condition is met at the same time.</p>
+<p>Event pins are triggered only infrequently. For example a button press may result in an event pin being triggered. However, you often don't want that event to immediately have an effect, because often the currently playing animations don't allow this. So you may have additional state keeping track of whether some reaction would be possible.</p>
+<p>The <em>Event AND</em> node makes it easy to listen to an event pin and forward the event only if another condition is also true.</p>
+<h3 id="input-pins-1">Input Pins</h3>
+<ul>
+<li><code>Activate</code>: An event pin that will trigger the evaluation.</li>
+<li><code>Bool</code>: A condition that must be true for the output pin to get triggered. As long as this is <code>false</code> all activations are ignored.</li>
+</ul>
+<h3 id="output-pins-1">Output Pins</h3>
+<ul>
+<li><code>On Activated</code>: If both the <code>Activate</code> and <code>Bool</code> input pins are true at the same time, this pin gets activated for one frame.</li>
+</ul>
+<h2 id="expression-node">Expression Node</h2>
+<p>The expression node takes up to four different numbers as its input, plugs them into a user provided expression and outputs the result.</p>
+<p>The expression must be syntactically correct, otherwise the node prints an error to the <a href="../../../debugging/logging.html">log</a>.</p>
+<h3 id="node-properties-4">Node Properties</h3>
+<p><code>Expression</code>: The expression can use the following:</p>
 <ul>
 <li>Numbers in floating point format (e.g. <code>1</code>, <code>2.3</code>, <code>-78</code>)</li>
 <li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (modulo)</li>
@@ -131,13 +148,13 @@
 <li><code>abs(a) + abs(b)</code></li>
 <li><code>(a + 1) % 2</code></li>
 </ul>
-<h3 id="input-pins-1">Input Pins</h3>
+<h3 id="input-pins-2">Input Pins</h3>
 <ul>
-<li><strong>a</strong>, <strong>b</strong>, <strong>c</strong> and <strong>d</strong>: Input values to the mathematical expression. Unconnected pins are treated as having the value zero.</li>
+<li><code>a</code>, <code>b</code>, <code>c</code> and <code>d</code>: Input values to the mathematical expression. Unconnected pins are treated as having the value zero.</li>
 </ul>
-<h3 id="output-pins-1">Output Pins</h3>
+<h3 id="output-pins-2">Output Pins</h3>
 <ul>
-<li><strong>Result</strong>: Outputs the result of the evaluated expression.</li>
+<li><code>Result</code>: Outputs the result of the evaluated expression.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
