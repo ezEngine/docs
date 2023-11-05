@@ -82,7 +82,7 @@
 
 <p>The <em>local blackboard component</em> contains a <a href="blackboards.html">blackboard</a>. The component itself doesn't have any notable functionality. Instead it is used as the central storage, through which other systems can share their data and communicate.</p>
 <p>If a system requires a blackboard, it will typically search for a blackboard component by traversing its own object structure upwards (in C++ you can use <code>ezBlackboardComponent::FindBlackboard()</code> to do so).</p>
-<p>For example the <a href="../animation/skeletal-animation/animation-controller/animation-controller-overview.html">animation controller</a> is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through <a href="../custom-code/custom-code-overview.html">custom code</a>. For this, the blackboard component has to be attached either to the same object, or a parent object.</p>
+<p>For example the <a href="../animation/skeletal-animation/animation-controller/animation-graph-overview.html">animation graph (TODO)</a> is controlled by modifying blackboard entries, which the controller reads. You can modify the entries through <a href="../custom-code/custom-code-overview.html">custom code</a>. For this, the blackboard component has to be attached either to the same object, or a parent object.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><p><code>Template</code>: The <a href="blackboard-template-asset.html">blackboard template</a> to use for configuring the blackboard. This is often much more convenient, than to add a all the entries one by one on each component. It also makes changing a configuration later easier.</p>
@@ -101,7 +101,7 @@
 <li><a href="blackboards.html">Blackboards</a></li>
 <li><a href="blackboard-template-asset.html">Blackboard Template Asset</a></li>
 <li><a href="global-blackboard-component.html">Global Blackboard Component</a></li>
-<li><a href="../animation/skeletal-animation/animation-controller/animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="../animation/skeletal-animation/animation-controller/animation-graph-overview.html">Animation Graph (TODO)</a></li>
 </ul>
 </article>
           </div>

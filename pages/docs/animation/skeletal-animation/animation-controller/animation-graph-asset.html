@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Local To Model Pose Node | ezEngine </title>
+    <title>Animation Graph Asset | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Local To Model Pose Node | ezEngine ">
+    <meta name="title" content="Animation Graph Asset | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,24 +78,33 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="local-to-model-pose-node">Local To Model Pose Node</h1>
+<h1 id="animation-graph-asset">Animation Graph Asset</h1>
 
-<p>The <code>Local To Model Pose</code> node is used to convert a pose from <em>local space</em> to <em>model space</em>.</p>
-<p>Animation clips store animation data in so called <em>local space</em>. That means that every bone stores its transformation (rotation, position and scale) relative to its parent bone. Therefore the actual full position of any given bone is not readily available, but instead has to be computed by concatenating the transformations of all ancestor bones.</p>
-<p>Having the data in this representation is advantageous for mixing multiple animations together, which is why this is done in local space. However, to apply a pose to a mesh, the final position and rotation has to be known for every bone. Additionally, operations like inverse kinematics (IK) also have to be done in model space.</p>
-<p>Therefore this node is necessary to convert a pose from one representation to the other, before it can be passed to an <a href="anim-nodes-output.html">output node</a>.</p>
-<h2 id="input-pins">Input Pins</h2>
-<ul>
-<li><strong>LocalPose</strong>: A single pose in local space.</li>
-</ul>
-<h2 id="output-pins">Output Pins</h2>
-<ul>
-<li><strong>ModelPose</strong>: The converted pose in model space.</li>
-</ul>
+<p>The <em>animation graph asset</em> is used to configure complex animations. See the <a href="animation-graph-overview.html">animation graph (TODO)</a> chapter for a conceptiual description.</p>
+<!-- PAGE IS TODO -->
+<!-- TODO: IMAGE IS OUTDATED -->
+<p><img src="media/anim-controller-asset.png" alt="Animation Graph Asset"></p>
+<h2 id="animation-graph">Animation Graph</h2>
+<p>In the animation graph nodes represent actions. Data flows from left to right. Nodes have <strong>input pins</strong> and <strong>output pins</strong> which represent different kinds of data, such as trigger events, number values, animation poses and bone weights.</p>
+<p>The goal of an animation graph is to sample a number of <a href="../animation-clip-asset.html">animation clips</a>, combine them together, and generate a final pose which can then be applied to an <a href="../animated-mesh-component.html">animated mesh</a>.</p>
+<h3 id="creating-nodes">Creating Nodes</h3>
+<!-- TODO: TEXT IS OUTDATED -->
+<p>Right click into the main area to open a context menu. Here you select which nodes to add to the graph. Every graph requires at least an <a href="anim-nodes-output.html">output node (TODO)</a>, a model space conversion node and a node to sample a clip, for example a <a href="anim-nodes-playclip.html">play single clip node (TODO)</a>. Once the graph samples two different clips you also need a <a href="anim-nodes-combine-poses.html">combine poses node (TODO)</a>.</p>
+<h3 id="connecting-nodes">Connecting Nodes</h3>
+<p>You connect nodes through their pins. Just left click and drag from one output pin to another input pin. The UI will display which pins can be connected once you start dragging. Since every pin represents a certain data type, only compatible pin types may get connected.</p>
+<p>Some pins allow to connect to multiple other pins, or have multiple incoming connections. If a pin does not allow this, creating a new connection removes previous connections automatically.</p>
+<p>Nodes that are not ultimately connected to the output node, will not have any effect.</p>
+<h3 id="node-properties">Node Properties</h3>
+<p>Nodes may additionally have <em>properties</em>. These are displayed in the property pane when a node is selected. See the documentation for the different node types for more detailed descriptions.</p>
+<h2 id="using-animation-graph-assets">Using Animation Graph Assets</h2>
+<p>Once an animation graph asset is set up, it can be applied to an <a href="../animated-mesh-component.html">animated mesh</a> by adding an <a href="animation-controller-component.html">animation controller component</a> to the same game object. The component will evaluate the graph in every update, and send the final animation pose to the animated mesh.</p>
+<p>To control what the animation controller does, you may also need a <a href="../../../Miscellaneous/blackboards.html">blackboard</a> for storing state, and potentially a script component to decide when which animation should be active.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-controller-overview.html">Animation Controller</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
+<li><a href="animation-controller-component.html">Animation Controller Component</a></li>
+<li><a href="../../../Miscellaneous/blackboards.html">Blackboards</a></li>
+<li><a href="../simple-animation-component.html">Simple Animation Component</a></li>
 </ul>
 </article>
           </div>
@@ -105,7 +114,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-modelspace.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/animation-graph-asset.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

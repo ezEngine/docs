@@ -80,15 +80,17 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="mix-clips-2d-node">Mix Clips 2D Node</h1>
 
+<!-- PAGE IS TODO -->
+<!-- TODO THIS PAGE IS OUTDATED -->
 <p>The <em>Mix Clips 2D</em> animation controller node is used to interpolate between a set of animations which are positioned in 2D space. You give it a 2D coordinate, and it will determine which animation clips are relevant and mix them together with proper weights depending on how close the coordinate is to each clip.</p>
 <p>The purpose of this node is to generate a continuous animation space from just a few discrete clips. This is often used for locomotion, where you only have animation clips for walking into a fixed number of directions and at certain speeds, but you'd like to be able to move a character into any direction and at any speed in between.</p>
 <p><video src="../../media/anim-mix2d.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <p>This node can generally be used to combine animations that can be thought of as having a position on a 2D plane. For example if you have animations for aiming forwards, to the left, right, up and down, you can use the mix 2D node to generate any pose in between.</p>
 <p>Be aware that the poses will be combined linearly, though. If the poses from two clips are too different, the result may not look very good. In this case it is best to create additional clips with in-between poses.</p>
 <h2 id="how-to-use">How To Use</h2>
-<p>You add multiple animation clips and give each clip a position (<code>X</code> and <code>Y</code>). As with the <a href="anim-nodes-mix1d.html">mix clips 1D node</a>, the playback of all clips is synchronized, meaning that the length of each clip may differ, but they will be played back such that they start and end in unison. That means your clips must be authored accordingly, so for example for locomotion all clips should start with the left foot forwards, then move the right foot forwards, then the left again. From that point on the clips will be looped.</p>
+<p>You add multiple animation clips and give each clip a position (<code>X</code> and <code>Y</code>). As with the <a href="anim-nodes-mix1d.html">mix clips 1D node (TODO)</a>, the playback of all clips is synchronized, meaning that the length of each clip may differ, but they will be played back such that they start and end in unison. That means your clips must be authored accordingly, so for example for locomotion all clips should start with the left foot forwards, then move the right foot forwards, then the left again. From that point on the clips will be looped.</p>
 <p>What the coordinates represent is up to you. For locomotion you could say that <code>X</code> represents left/right movement and <code>Y</code> forwards/backwards. You would then position a <em>walk left</em> clip at <code>(-1, 0)</code> a <em>walk right</em> clip at <code>(+1, 0)</code> a <em>walk forward</em> clip at <code>(0, +1)</code> and a <em>run forward</em> clip at <code>(0, +2)</code>.</p>
-<p>Through the <code>X</code> and <code>Y</code> input pins you provide a 2D coordinate. During testing you may hook this up directly to an <a href="anim-nodes-input.html">input node</a>, though later you'll probably need more control.</p>
+<p>Through the <code>X</code> and <code>Y</code> input pins you provide a 2D coordinate. During testing you may hook this up directly to an <a href="anim-nodes-input.html">input node (TODO)</a>, though later you'll probably need more control.</p>
 <p>The node will then take that input coordinate to decide which clips should be used with what influence, and mix them together to a single output pose.</p>
 <h2 id="node-properties">Node Properties</h2>
 <p>See <a href="anim-nodes-playclip.html#common-properties">common properties</a>.</p>
@@ -109,10 +111,10 @@
 <p>See <a href="anim-nodes-playclip.html#common-output-pins">common output pins</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="anim-nodes-mix1d.html">Mix Clips 1D Node</a></li>
-<li><a href="anim-nodes-playclip.html">Play Single Clip Nodes</a></li>
+<li><a href="anim-nodes-mix1d.html">Mix Clips 1D Node (TODO)</a></li>
+<li><a href="anim-nodes-playclip.html">Play Single Clip Nodes (TODO)</a></li>
 </ul>
 </article>
           </div>

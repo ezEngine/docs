@@ -80,20 +80,22 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="output-nodes">Output Nodes</h1>
 
-<p>Every <a href="animation-controller-overview.html">animation controller</a> must have exactly one <code>output</code> node. Only animation poses that are ultimately connected to an output node will affect the <a href="../animated-mesh-asset.html">animated mesh</a>.</p>
+<!-- PAGE IS TODO -->
+<!-- TODO THIS PAGE IS OUTDATED -->
+<p>Every <a href="animation-graph-overview.html">animation graph (TODO)</a> must have exactly one <code>output</code> node. Only animation poses that are ultimately connected to an output node will affect the <a href="../animated-mesh-asset.html">animated mesh</a>.</p>
 <p>This allows you to quickly deactivate an entire part of the graph simply by removing the connection to the output node. Nodes that are not connected to the output are not evaluated at runtime and therefore don't cost any performance.</p>
 <h2 id="model-pose-output-node">Model Pose Output Node</h2>
 <p>The <code>Model Pose Output</code> node is currently the only available type of output node.</p>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><p><strong>ModelPose</strong>: The one pose to use as the output. This pose has to be in model space. It is thefore quite common that the input is directly connected to a <a href="anim-nodes-modelspace.html">Local To Model Pose node</a>.</p>
+<li><p><strong>ModelPose</strong>: The one pose to use as the output. This pose has to be in model space. It is thefore quite common that the input is directly connected to a Local To Model Pose node.</p>
 </li>
 <li><p><strong>RotationZ</strong>: This <em>number value</em> adds angular <a href="../root-motion.html">root motion</a> to the final pose. This enables the animation to change the rotation of the <a href="../../../runtime/world/game-objects.html">game object</a> on which it is played. This is mainly convenient for simpler use cases and for prototyping. In more complex scenarios you may prefer control the object's orientation with <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 </article>

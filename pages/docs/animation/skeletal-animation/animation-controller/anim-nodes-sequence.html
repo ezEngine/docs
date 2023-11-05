@@ -80,7 +80,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="play-clip-sequence-node">Play Clip Sequence Node</h1>
 
-<p>The <em>play clip sequence node</em> is similar to the <a href="anim-nodes-playclip.html">play single clip node</a>, however, instead of playing just a single clip (looped), the sequence node plays at least three clips in a row. One to enter an animation state, one (looped) animation while it stays active, and one to exit the animation state.</p>
+<!-- PAGE IS TODO -->
+<!-- TODO THIS PAGE IS OUTDATED -->
+<p>The <em>play clip sequence node</em> is similar to the <a href="anim-nodes-playclip.html">play single clip node (TODO)</a>, however, instead of playing just a single clip (looped), the sequence node plays at least three clips in a row. One to enter an animation state, one (looped) animation while it stays active, and one to exit the animation state.</p>
 <p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
 <p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <p>The video above shows such a sequence. Here the node uses a <em>point gun</em> animation clip for the start, middle and end clip. The <em>point gun</em> clip is only a single keyframe and just represents a static pose. Using it for the start clip, allows to slowly fade from the idle state to the pointing state, making the character raise their arm. Using it for the end state similarly allows to fade it out over a short duration, making the character lower their arm slowly as well. As the middle clip there are two options: <em>point gun</em> and <em>shoot gun</em>. Using the <code>ClipIndex</code> input pin, the game code can switch at any time whether the gun is only pointed or shot as well.</p>
@@ -109,7 +111,7 @@
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 </article>

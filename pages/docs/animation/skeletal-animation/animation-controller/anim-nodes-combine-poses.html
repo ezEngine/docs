@@ -80,6 +80,8 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="combine-poses-nodes">Combine Poses Nodes</h1>
 
+<!-- PAGE IS TODO -->
+<!-- TODO THIS PAGE IS OUTDATED -->
 <p>An animation controller typically samples more than one animation. For example you may want to play a walking animation on the lower part of a character, and an aim weapon animation on the upper part. These animations are generally independent of each other, but have to be combined at some point, to form the final single animation pose.</p>
 <p>Certain nodes in the animation controller graph allow you to accomplish this.</p>
 <h2 id="combine-poses-node">Combine Poses Node</h2>
@@ -92,18 +94,18 @@
 <p>This is used to clamp the maximum performance cost of the animation blending.</p>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><strong>LocalPoses</strong>: This is a single input pin that allows an unlimited number of connections. Each incoming pose carries not only the bone transformations, but also the <em>bone weights</em>. These are typically determined by the animation clip sampling nodes and the <a href="anim-nodes-bone-weights.html">bone weight nodes</a>. All poses are mixed together according to their overall weight.</li>
+<li><strong>LocalPoses</strong>: This is a single input pin that allows an unlimited number of connections. Each incoming pose carries not only the bone transformations, but also the <em>bone weights</em>. These are typically determined by the animation clip sampling nodes and the <a href="anim-nodes-bone-weights.html">bone weight nodes (TODO)</a>. All poses are mixed together according to their overall weight.</li>
 </ul>
-<p>In practice that means that two animations that don't use custom <a href="anim-nodes-bone-weights.html">bone weights</a> will be blended 50:50.</p>
+<p>In practice that means that two animations that don't use custom <a href="anim-nodes-bone-weights.html">bone weights (TODO)</a> will be blended 50:50.</p>
 <h3 id="output-pins">Output Pins</h3>
 <ul>
-<li><strong>LocalPose</strong>: The single combined pose in <em>local space</em>. It is common to pass this directly on to a <a href="anim-nodes-modelspace.html">Local To Model Pose node</a>.</li>
+<li><strong>LocalPose</strong>: The single combined pose in <em>local space</em>. It is common to pass this directly on to a Local To Model Pose node.</li>
 </ul>
 <h3 id="performance-considerations">Performance Considerations</h3>
-<p>You can use multiple nodes to combine many poses in several steps. However, for best performance prefer to use only a single node to combine many poses and make use of <a href="anim-nodes-bone-weights.html">bone weights</a> to control each ones overall influence.</p>
+<p>You can use multiple nodes to combine many poses in several steps. However, for best performance prefer to use only a single node to combine many poses and make use of <a href="anim-nodes-bone-weights.html">bone weights (TODO)</a> to control each ones overall influence.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 </article>

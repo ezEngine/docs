@@ -80,12 +80,14 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="play-single-clip-nodes">Play Single Clip Nodes</h1>
 
+<!-- PAGE IS TODO -->
+<!-- TODO THIS PAGE IS OUTDATED -->
 <p>Animation controller graphs provide multiple node types that are used for sampling animation clips. The <em>play single clip node</em> is the most basic one. This node samples an animation clip and outputs the respective animation pose. It is thus used for typical playback of a single animation either once or in a loop. For added variety you may reference multiple animation clips, in which case the node will randomly pick one of them for playback.</p>
 <p><video src="../../media/skeletal-anim.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <h2 id="common-properties">Common Properties</h2>
 <p>All animation controller nodes that sample animation clips share these properties:</p>
 <ul>
-<li><p><code>Loop</code>: If enabled the node will loop playback while its <code>Active</code> pin is triggered. Which clip exactly gets looped depends on the node. The <em>play single clip node</em> for example just loops playback in general, but randomly picks a different clip in every iteration. The <a href="anim-nodes-sequence.html">play clip sequence node</a> on the other hand will loop its middle clip instead.</p>
+<li><p><code>Loop</code>: If enabled the node will loop playback while its <code>Active</code> pin is triggered. Which clip exactly gets looped depends on the node. The <em>play single clip node</em> for example just loops playback in general, but randomly picks a different clip in every iteration. The <a href="anim-nodes-sequence.html">play clip sequence node (TODO)</a> on the other hand will loop its middle clip instead.</p>
 </li>
 <li><p><code>ApplyRootMotion</code>: If enabled, the node will compute the <a href="../root-motion.html">root motion</a> from the sampled clips and forward this to the <a href="animation-controller-component.html">animation controller component</a>, which may apply this to the game object's position.</p>
 </li>
@@ -107,7 +109,7 @@
 <ul>
 <li><p><code>Active</code>: This pin determines whether the node samples its animation clips <em>at all</em>. Once it gets triggered in a frame, the node starts to sample its animation clips, fades them in etc. If <code>Loop</code> is enabled, the playback will repeat as long as the <code>Active</code> pin is triggered. Once the pin is not triggered anymore, the node will start to fade out its animations. Either right away (<code>ImmediateFadeOut</code> on) or when it reaches the end of the currently playing clip (<code>ImmediateFadeOut</code> off).</p>
 </li>
-<li><p><code>Weights</code>: If this pin is connected to a <a href="anim-nodes-bone-weights.html">bone weight node</a>, then the sampled animation clip is only applied to that part of the character. This is used to limit playback of an animation to selected body parts.</p>
+<li><p><code>Weights</code>: If this pin is connected to a <a href="anim-nodes-bone-weights.html">bone weight node (TODO)</a>, then the sampled animation clip is only applied to that part of the character. This is used to limit playback of an animation to selected body parts.</p>
 </li>
 <li><p><code>Speed</code>: This pin adjusts the overall playback speed.</p>
 </li>
@@ -119,18 +121,18 @@
 <h2 id="common-output-pins">Common Output Pins</h2>
 <p>Many animation controller nodes have some or all of these output pins:</p>
 <ul>
-<li><p><code>LocalPose</code>: The final pose from the sampled animation clips is output through this pin. This has to be passed to a <a href="anim-nodes-combine-poses.html">combine poses node</a> or a <a href="anim-nodes-modelspace.html">local to model pose node</a>.</p>
+<li><p><code>LocalPose</code>: The final pose from the sampled animation clips is output through this pin. This has to be passed to a <a href="anim-nodes-combine-poses.html">combine poses node (TODO)</a> or a local to model pose node.</p>
 </li>
 <li><p><code>OnFadeOut</code>: This pin gets triggered for a single frame once the node changes its internal state to fade out the animation (affected by <code>ImmediateFadeOut</code> and <code>FadeOut</code>). This is typically a good time to start fading in another animation to take over. This pin is guaranteed to get triggered, even if the <code>FadeOut</code> time is zero.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-controller-overview.html">Animation Controller</a></li>
+<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="anim-nodes-bone-weights.html">Bone Weight Nodes</a></li>
-<li><a href="anim-nodes-sequence.html">Play Clip Sequence Node</a></li>
-<li><a href="anim-nodes-mix2d.html">Mix Clips 2D Node</a></li>
+<li><a href="anim-nodes-bone-weights.html">Bone Weight Nodes (TODO)</a></li>
+<li><a href="anim-nodes-sequence.html">Play Clip Sequence Node (TODO)</a></li>
+<li><a href="anim-nodes-mix2d.html">Mix Clips 2D Node (TODO)</a></li>
 </ul>
 </article>
           </div>
