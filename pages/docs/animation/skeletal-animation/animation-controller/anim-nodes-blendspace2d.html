@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Animation Graph Asset | ezEngine </title>
+    <title>Sample Blendspace 2D Node | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Animation Graph Asset | ezEngine ">
+    <meta name="title" content="Sample Blendspace 2D Node | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,33 +78,43 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="animation-graph-asset">Animation Graph Asset</h1>
+<h1 id="sample-blendspace-2d-node">Sample Blendspace 2D Node</h1>
 
-<p>The <em>animation graph asset</em> is used to configure complex animations. See the <a href="animation-graph-overview.html">animation graph (TODO)</a> chapter for a conceptiual description.</p>
 <!-- PAGE IS TODO -->
-<!-- TODO: IMAGE IS OUTDATED -->
-<p><img src="media/anim-controller-asset.png" alt="Animation Graph Asset"></p>
-<h2 id="animation-graph">Animation Graph</h2>
-<p>In the animation graph nodes represent actions. Data flows from left to right. Nodes have <strong>input pins</strong> and <strong>output pins</strong> which represent different kinds of data, such as trigger events, number values, animation poses and bone weights.</p>
-<p>The goal of an animation graph is to sample a number of <a href="../animation-clip-asset.html">animation clips</a>, combine them together, and generate a final pose which can then be applied to an <a href="../animated-mesh-component.html">animated mesh</a>.</p>
-<h3 id="creating-nodes">Creating Nodes</h3>
-<!-- TODO: TEXT IS OUTDATED -->
-<p>Right click into the main area to open a context menu. Here you select which nodes to add to the graph. Every graph requires at least an <a href="anim-nodes-output.html">output node (TODO)</a>, a model space conversion node and a node to sample a clip, for example a play single clip node. Once the graph samples two different clips you also need a combine poses node.</p>
-<h3 id="connecting-nodes">Connecting Nodes</h3>
-<p>You connect nodes through their pins. Just left click and drag from one output pin to another input pin. The UI will display which pins can be connected once you start dragging. Since every pin represents a certain data type, only compatible pin types may get connected.</p>
-<p>Some pins allow to connect to multiple other pins, or have multiple incoming connections. If a pin does not allow this, creating a new connection removes previous connections automatically.</p>
-<p>Nodes that are not ultimately connected to the output node, will not have any effect.</p>
-<h3 id="node-properties">Node Properties</h3>
-<p>Nodes may additionally have <em>properties</em>. These are displayed in the property pane when a node is selected. See the documentation for the different node types for more detailed descriptions.</p>
-<h2 id="using-animation-graph-assets">Using Animation Graph Assets</h2>
-<p>Once an animation graph asset is set up, it can be applied to an <a href="../animated-mesh-component.html">animated mesh</a> by adding an <a href="animation-controller-component.html">animation controller component</a> to the same game object. The component will evaluate the graph in every update, and send the final animation pose to the animated mesh.</p>
-<p>To control what the animation controller does, you may also need a <a href="../../../Miscellaneous/blackboards.html">blackboard</a> for storing state, and potentially a script component to decide when which animation should be active.</p>
+<!-- TODO THIS PAGE IS OUTDATED -->
+<p>The <em>Mix Clips 2D</em> animation controller node is used to interpolate between a set of animations which are positioned in 2D space. You give it a 2D coordinate, and it will determine which animation clips are relevant and mix them together with proper weights depending on how close the coordinate is to each clip.</p>
+<p>The purpose of this node is to generate a continuous animation space from just a few discrete clips. This is often used for locomotion, where you only have animation clips for walking into a fixed number of directions and at certain speeds, but you'd like to be able to move a character into any direction and at any speed in between.</p>
+<p><video src="../../media/anim-mix2d.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p>This node can generally be used to combine animations that can be thought of as having a position on a 2D plane. For example if you have animations for aiming forwards, to the left, right, up and down, you can use the mix 2D node to generate any pose in between.</p>
+<p>Be aware that the poses will be combined linearly, though. If the poses from two clips are too different, the result may not look very good. In this case it is best to create additional clips with in-between poses.</p>
+<h2 id="how-to-use">How To Use</h2>
+<p>You add multiple animation clips and give each clip a position (<code>X</code> and <code>Y</code>). As with the mix clips 1D node, the playback of all clips is synchronized, meaning that the length of each clip may differ, but they will be played back such that they start and end in unison. That means your clips must be authored accordingly, so for example for locomotion all clips should start with the left foot forwards, then move the right foot forwards, then the left again. From that point on the clips will be looped.</p>
+<p>What the coordinates represent is up to you. For locomotion you could say that <code>X</code> represents left/right movement and <code>Y</code> forwards/backwards. You would then position a <em>walk left</em> clip at <code>(-1, 0)</code> a <em>walk right</em> clip at <code>(+1, 0)</code> a <em>walk forward</em> clip at <code>(0, +1)</code> and a <em>run forward</em> clip at <code>(0, +2)</code>.</p>
+<p>Through the <code>X</code> and <code>Y</code> input pins you provide a 2D coordinate. During testing you may hook this up directly to an <a href="anim-nodes-input.html">input node</a>, though later you'll probably need more control.</p>
+<p>The node will then take that input coordinate to decide which clips should be used with what influence, and mix them together to a single output pose.</p>
+<h2 id="node-properties">Node Properties</h2>
+<p>See common properties.</p>
+<ul>
+<li><p><code>InputResponse</code>: A time duration over which changes to the <code>X</code> and <code>Y</code> input values are applied. This prevents sudden extreme changes. For example when <code>X</code> and <code>Y</code> are connected to physical buttons, which are just turned <em>on</em> or <em>off</em>, the final animation would jerk between those extremes. In a finished game you may want to smooth out the input yourself, but for starters this node can do a basic smoothing of the input values for you. Thus, if an input value switches from <code>1</code> to <code>0</code>, an <code>InputResponse</code> of 50ms means that the used value will transition smoothly towards <code>0</code> over that amount of time and thus the output pose will also transition smoothly.</p>
+</li>
+<li><p><code>CenterClip</code>: An optional clip for the position <code>(0, 0)</code>. This clip is always played at its own speed and not synchronized to the other clips. It is meant for <em>idle state</em> animations. It may be much longer and contain many subtle motions for variation. If such behavior is not desired and instead you want the center clip to be synchronized with the rest, you can instead place a clip at position <code>(0, 0)</code> as well.</p>
+</li>
+<li><p><code>Clips</code>: The various clips. Each clip must have a unique 2D <code>position</code> assigned.</p>
+</li>
+</ul>
+<h2 id="input-pins">Input Pins</h2>
+<p>See common input pins.</p>
+<ul>
+<li><code>X</code>, <code>Y</code>: The input coordinate to select how to blend the <code>Clips</code>. It directly relates to the clips` positions.</li>
+</ul>
+<h2 id="output-pins">Output Pins</h2>
+<p>See common output pins.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="animation-controller-component.html">Animation Controller Component</a></li>
-<li><a href="../../../Miscellaneous/blackboards.html">Blackboards</a></li>
-<li><a href="../simple-animation-component.html">Simple Animation Component</a></li>
+<li><a href="anim-nodes-sample-clip.html">Sample Clip Node (TODO)</a></li>
+<li><a href="anim-nodes-blendspace1d.html">Sample Blendspace 1D Node (TODO)</a></li>
 </ul>
 </article>
           </div>
@@ -114,7 +124,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/animation-graph-asset.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-blendspace2d.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

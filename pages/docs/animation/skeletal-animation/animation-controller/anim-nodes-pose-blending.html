@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Combine Poses Nodes | ezEngine </title>
+    <title>Pose Blending Nodes | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Combine Poses Nodes | ezEngine ">
+    <meta name="title" content="Pose Blending Nodes | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,34 +78,52 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="combine-poses-nodes">Combine Poses Nodes</h1>
+<h1 id="pose-blending-nodes">Pose Blending Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>An animation controller typically samples more than one animation. For example you may want to play a walking animation on the lower part of a character, and an aim weapon animation on the upper part. These animations are generally independent of each other, but have to be combined at some point, to form the final single animation pose.</p>
-<p>Certain nodes in the animation controller graph allow you to accomplish this.</p>
-<h2 id="combine-poses-node">Combine Poses Node</h2>
-<p>Currently the <code>Combine Poses</code> node is the only available node to combine multiple poses in <em>local space</em> into one.</p>
+<p>An animation graph typically samples more than one animation. Sometimes these animations should be combined and sometimes you just wish to smoothly switch from one animation to another.</p>
+<h2 id="lerp-poses-node">Lerp Poses Node</h2>
+<p>The <em>lerp poses node</em> linearly interpolates between two poses. It is typically used to fade over from one pose to another and potentially to a third. Note that the node only controls the mix of the two animation poses, it is not used for synchronizing playback across clips. See the <a href="anim-nodes-blendspace1d.html">Sample Blendspace 1D Node (TODO)</a> for that.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><strong>MaxPoses</strong>: The maximum number of <em>active</em> poses to blend. You can have more input pins connected to this node. This number just says how many of them will be blended, if more poses than this are actually active at any given time. If more poses are active, the ones with the lowest <em>weight</em> will be ignored.</li>
+<li><p><code>Lerp</code>: The <em>linear interpolation</em> value that determines which clips get combined. For values between <code>0</code> and <code>1</code> the input poses <code>0</code> and <code>1</code> get combined. For example at <code>0.5</code> the two poses get combined half and half, whereas at <code>0.9</code> clip <code>0</code> is used with 10% strength and clip <code>1</code> is used with 90% strength. For <em>lerp values</em> between <code>1</code> and <code>2</code> the poses <code>1</code> and <code>2</code> get combined, for example at <code>1.5</code> the two are combined half and half.</p>
+</li>
+<li><p><code>Poses Count</code>: How many input pose pins to show.</p>
+</li>
 </ul>
-<p>Example: Let's say this value is set to 2. You have three input poses connected. One for walking, one for aiming a gun and one as a general breathing / idle animation. If all three poses are active at the same time, one of them will be ignored. For example, if walking and aiming both have a weight of 1, but breathing has a weight of 0.5, the breathing animation will not be mixed into the final result.</p>
-<p>This is used to clamp the maximum performance cost of the animation blending.</p>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><strong>LocalPoses</strong>: This is a single input pin that allows an unlimited number of connections. Each incoming pose carries not only the bone transformations, but also the <em>bone weights</em>. These are typically determined by the animation clip sampling nodes and the <a href="anim-nodes-bone-weights.html">bone weight nodes</a>. All poses are mixed together according to their overall weight.</li>
+<li><p><code>Lerp</code>: A pin to dynamically pass in the <em>linear interpolation</em> value. See the node properties above.</p>
+</li>
+<li><p><code>Poses[]</code>: The array of input poses.</p>
+</li>
 </ul>
-<p>In practice that means that two animations that don't use custom <a href="anim-nodes-bone-weights.html">bone weights</a> will be blended 50:50.</p>
 <h3 id="output-pins">Output Pins</h3>
 <ul>
-<li><strong>LocalPose</strong>: The single combined pose in <em>local space</em>. It is common to pass this directly on to a Local To Model Pose node.</li>
+<li><code>Pose</code>: The combined output pose.</li>
 </ul>
-<h3 id="performance-considerations">Performance Considerations</h3>
-<p>You can use multiple nodes to combine many poses in several steps. However, for best performance prefer to use only a single node to combine many poses and make use of <a href="anim-nodes-bone-weights.html">bone weights</a> to control each ones overall influence.</p>
+<h2 id="pose-switch-node">Pose Switch Node</h2>
+<p>The <em>Pose Switch Node</em> is used to quickly but smoothly transition from one pose to another. The incoming poses are typically different animations. Note that the pose switch has no influence over the playback position of an incoming pose, so you may need to make sure that the target animation to switch to, gets restarted from the beginning.</p>
+<h3 id="node-properties-1">Node Properties</h3>
+<ul>
+<li><p><code>Transition Duration</code>: The time to take for transitioning from the previously active pose to the now active pose.</p>
+</li>
+<li><p><code>Poses Count</code>: How many input pose pins to show.</p>
+</li>
+</ul>
+<h3 id="input-pins-1">Input Pins</h3>
+<ul>
+<li><p><code>Index</code>: Which input pose to use. If the index changes, the node will transition from the previously active pose to the new pose using linear blending. The index may switch from any value to any other value in range, it doesn't need to change only up or down.</p>
+</li>
+<li><p><code>Poses[]</code>: The array of available poses.</p>
+</li>
+</ul>
+<h3 id="output-pins-1">Output Pins</h3>
+<ul>
+<li><code>Pose</code>: The combined output pose.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
+<li><a href="animation-graph-overview.html">Animation Graphs (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 </article>
@@ -116,7 +134,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-combine-poses.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-pose-blending.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

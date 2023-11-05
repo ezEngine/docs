@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mix Clips 2D Node | ezEngine </title>
+    <title>Sample Sequence Node | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Mix Clips 2D Node | ezEngine ">
+    <meta name="title" content="Sample Sequence Node | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,43 +78,41 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="mix-clips-2d-node">Mix Clips 2D Node</h1>
+<h1 id="sample-sequence-node">Sample Sequence Node</h1>
 
 <!-- PAGE IS TODO -->
 <!-- TODO THIS PAGE IS OUTDATED -->
-<p>The <em>Mix Clips 2D</em> animation controller node is used to interpolate between a set of animations which are positioned in 2D space. You give it a 2D coordinate, and it will determine which animation clips are relevant and mix them together with proper weights depending on how close the coordinate is to each clip.</p>
-<p>The purpose of this node is to generate a continuous animation space from just a few discrete clips. This is often used for locomotion, where you only have animation clips for walking into a fixed number of directions and at certain speeds, but you'd like to be able to move a character into any direction and at any speed in between.</p>
-<p><video src="../../media/anim-mix2d.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p>This node can generally be used to combine animations that can be thought of as having a position on a 2D plane. For example if you have animations for aiming forwards, to the left, right, up and down, you can use the mix 2D node to generate any pose in between.</p>
-<p>Be aware that the poses will be combined linearly, though. If the poses from two clips are too different, the result may not look very good. In this case it is best to create additional clips with in-between poses.</p>
-<h2 id="how-to-use">How To Use</h2>
-<p>You add multiple animation clips and give each clip a position (<code>X</code> and <code>Y</code>). As with the <a href="anim-nodes-mix1d.html">mix clips 1D node (TODO)</a>, the playback of all clips is synchronized, meaning that the length of each clip may differ, but they will be played back such that they start and end in unison. That means your clips must be authored accordingly, so for example for locomotion all clips should start with the left foot forwards, then move the right foot forwards, then the left again. From that point on the clips will be looped.</p>
-<p>What the coordinates represent is up to you. For locomotion you could say that <code>X</code> represents left/right movement and <code>Y</code> forwards/backwards. You would then position a <em>walk left</em> clip at <code>(-1, 0)</code> a <em>walk right</em> clip at <code>(+1, 0)</code> a <em>walk forward</em> clip at <code>(0, +1)</code> and a <em>run forward</em> clip at <code>(0, +2)</code>.</p>
-<p>Through the <code>X</code> and <code>Y</code> input pins you provide a 2D coordinate. During testing you may hook this up directly to an <a href="anim-nodes-input.html">input node</a>, though later you'll probably need more control.</p>
-<p>The node will then take that input coordinate to decide which clips should be used with what influence, and mix them together to a single output pose.</p>
+<p>The <em>play clip sequence node</em> is similar to the play single clip node, however, instead of playing just a single clip (looped), the sequence node plays at least three clips in a row. One to enter an animation state, one (looped) animation while it stays active, and one to exit the animation state.</p>
+<p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
+<p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p>The video above shows such a sequence. Here the node uses a <em>point gun</em> animation clip for the start, middle and end clip. The <em>point gun</em> clip is only a single keyframe and just represents a static pose. Using it for the start clip, allows to slowly fade from the idle state to the pointing state, making the character raise their arm. Using it for the end state similarly allows to fade it out over a short duration, making the character lower their arm slowly as well. As the middle clip there are two options: <em>point gun</em> and <em>shoot gun</em>. Using the <code>ClipIndex</code> input pin, the game code can switch at any time whether the gun is only pointed or shot as well.</p>
 <h2 id="node-properties">Node Properties</h2>
-<p>See <a href="anim-nodes-playclip.html#common-properties">common properties</a>.</p>
+<p>See common properties.</p>
 <ul>
-<li><p><code>InputResponse</code>: A time duration over which changes to the <code>X</code> and <code>Y</code> input values are applied. This prevents sudden extreme changes. For example when <code>X</code> and <code>Y</code> are connected to physical buttons, which are just turned <em>on</em> or <em>off</em>, the final animation would jerk between those extremes. In a finished game you may want to smooth out the input yourself, but for starters this node can do a basic smoothing of the input values for you. Thus, if an input value switches from <code>1</code> to <code>0</code>, an <code>InputResponse</code> of 50ms means that the used value will transition smoothly towards <code>0</code> over that amount of time and thus the output pose will also transition smoothly.</p>
+<li><p><code>StartClip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to start with. This clip should end on a keyframe from where the <code>MiddleClips</code> can continue seemlessly.</p>
 </li>
-<li><p><code>CenterClip</code>: An optional clip for the position <code>(0, 0)</code>. This clip is always played at its own speed and not synchronized to the other clips. It is meant for <em>idle state</em> animations. It may be much longer and contain many subtle motions for variation. If such behavior is not desired and instead you want the center clip to be synchronized with the rest, you can instead place a clip at position <code>(0, 0)</code> as well.</p>
+<li><p><code>MiddleClips</code>: One or multiple animation clips to play after the <code>StartClip</code>. Typically these will get looped as long as the node is <code>Active</code>. If more than one clip is set, which one to play can be selected using the <code>MiddleClipIndex</code> pin. Otherwise a random one will be selected on every iteration.</p>
 </li>
-<li><p><code>Clips</code>: The various clips. Each clip must have a unique 2D <code>position</code> assigned.</p>
+<li><p><code>EndClip</code>: The clip to play after the middle clips are finished. If the node is <em>looped</em> this will only happen once the <code>Active</code> pin is not triggered anymore.</p>
 </li>
 </ul>
 <h2 id="input-pins">Input Pins</h2>
-<p>See <a href="anim-nodes-playclip.html#common-input-pins">common input pins</a>.</p>
+<p>See common input pins.</p>
 <ul>
-<li><code>X</code>, <code>Y</code>: The input coordinate to select how to blend the <code>Clips</code>. It directly relates to the clips` positions.</li>
+<li><code>MiddleClipIndex</code>: This pin can be used to select which of the <code>MiddleClips</code> to play next. In the video above this is used to select whether the gun should get fired or not.</li>
 </ul>
 <h2 id="output-pins">Output Pins</h2>
-<p>See <a href="anim-nodes-playclip.html#common-output-pins">common output pins</a>.</p>
+<p>See common output pins.</p>
+<ul>
+<li><p><code>OnNextClip</code>: This pin will get triggered every time a clip finishes and the next middle or end clip starts. This can be used to know for example when the start phase has finished.</p>
+</li>
+<li><p><code>PlayingClipIndex</code>: This pin outputs the index of the currently playing clip. This value is <code>0 to N-1</code> for any of the <code>N</code> middle clips. It will be <code>-1</code> when the start clip is playing and <code>-2</code> when the end clip is playing.</p>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="anim-nodes-mix1d.html">Mix Clips 1D Node (TODO)</a></li>
-<li><a href="anim-nodes-playclip.html">Play Single Clip Nodes (TODO)</a></li>
 </ul>
 </article>
           </div>
@@ -124,7 +122,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-mix2d.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-sample-sequence.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
