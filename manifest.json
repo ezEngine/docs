@@ -4176,6 +4176,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/substance-textures.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/substance-textures.html",
+          "hash": "0kr/qCwbMNuqCnvqp0IUYKNMu6C7gE3xW4EXIjDgspY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/textures-overview.md",
       "output": {
         ".html": {
@@ -6617,7 +6629,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/toc.html",
-          "hash": "F0gmWy1s70RtBKv7Aib/h4pC+3xY5io1yUmpCZgFx8s="
+          "hash": "yZK3dmY4gK3pFqAjl2r1+fVSX0zRyOIPxw1sGO8Qfcc="
         }
       },
       "is_incremental": false,
@@ -8038,7 +8050,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 318,
+          "total_file_count": 319,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
