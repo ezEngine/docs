@@ -82,7 +82,7 @@
 
 <p>An animation graph typically samples more than one animation. Sometimes these animations should be combined and sometimes you just wish to smoothly switch from one animation to another.</p>
 <h2 id="lerp-poses-node">Lerp Poses Node</h2>
-<p>The <em>lerp poses node</em> linearly interpolates between two poses. It is typically used to fade over from one pose to another and potentially to a third. Note that the node only controls the mix of the two animation poses, it is not used for synchronizing playback across clips. See the <a href="anim-nodes-blendspace1d.html">Sample Blendspace 1D Node (TODO)</a> for that.</p>
+<p>The <em>lerp poses node</em> linearly interpolates between two poses. It is typically used to fade over from one pose to another and potentially to a third. Note that the node only controls the mix of the two animation poses, it is not used for synchronizing playback across clips. See the <a href="anim-nodes-blendspace1d.html">Sample Blendspace 1D Node</a> for that.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
 <li><p><code>Lerp</code>: The <em>linear interpolation</em> value that determines which clips get combined. For values between <code>0</code> and <code>1</code> the input poses <code>0</code> and <code>1</code> get combined. For example at <code>0.5</code> the two poses get combined half and half, whereas at <code>0.9</code> clip <code>0</code> is used with 10% strength and clip <code>1</code> is used with 90% strength. For <em>lerp values</em> between <code>1</code> and <code>2</code> the poses <code>1</code> and <code>2</code> get combined, for example at <code>1.5</code> the two are combined half and half.</p>
