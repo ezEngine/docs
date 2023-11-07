@@ -80,18 +80,47 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="output-nodes">Output Nodes</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>Every <a href="animation-graph-overview.html">animation graph (TODO)</a> must have exactly one <code>output</code> node. Only animation poses that are ultimately connected to an output node will affect the <a href="../animated-mesh-asset.html">animated mesh</a>.</p>
-<p>This allows you to quickly deactivate an entire part of the graph simply by removing the connection to the output node. Nodes that are not connected to the output are not evaluated at runtime and therefore don't cost any performance.</p>
-<h2 id="model-pose-output-node">Model Pose Output Node</h2>
-<p>The <code>Model Pose Output</code> node is currently the only available type of output node.</p>
+<p>Every <a href="animation-graph-overview.html">animation graph (TODO)</a> must have at least one output node. All nodes that shall affect the result must ultimately be connected to an output node.</p>
+<p>The <em>pose result</em> nodes do not define the final result, though. Rather the final result is a mix of all poses that reach a <em>pose result</em> node. This makes it easier to set up many different animations and also split work up into several animation graphs.</p>
+<p>You can quickly deactivate an entire part of the graph by removing the connection to the output node. Nodes that are not connected to the output are not evaluated at runtime and therefore don't cost any performance.</p>
+<h2 id="pose-result-node">Pose Result Node</h2>
+<p>The <em>pose result</em> node is used to output <em>one</em> animation result. A more complex animation graph will contain many pose result nodes. All poses from <em>active</em> pose result nodes (the ones that have a non-zero <code>Target Weight</code>) will be combined according to their weight.</p>
+<p>Usually you would set up the graph such, that all actions that could overlap flow into their own pose result nodes. For example you may have one sub graph that is responsible for walk animations and another one for jump animations. When jumping, the system should fade over from walking into jumping and thus there is a short duration of overlap. To achieve this, both sub graphs would have their own <em>pose result</em> node and when the jump starts, the jump sub graph fades its output in (by setting its <code>Target Weight</code> to <code>1</code>) and the walk sub graph fades its pose out respectively. The animation system takes care of combining the output poses accoring to their current weight.</p>
+<p>Now consider that you may have two different jump animations, one for when the character is standing and one while it is walking. These cases are mutually exclusive, and thus there is no need for separate output nodes for the two jump styles. In this case one would rather use one of the <a href="anim-nodes-pose-blending.html">pose blending nodes</a> to select the desired jump animation and feed it into one output node.</p>
+<p>However, you <em>could</em> use different pose result nodes, regardless, if it is easier to set up the animation this way, there is no performance penalty for using additional nodes as long as the number of simultaneously active nodes is low.</p>
+<h3 id="node-properties">Node Properties</h3>
+<ul>
+<li><code>Fade Duration</code>: How long to fade the result pose in or out when the <code>Target Weight</code> changes.</li>
+</ul>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><p><strong>ModelPose</strong>: The one pose to use as the output. This pose has to be in model space. It is thefore quite common that the input is directly connected to a Local To Model Pose node.</p>
+<li><p><code>Pose</code>: The pose to combine with all other active pose results.</p>
 </li>
-<li><p><strong>RotationZ</strong>: This <em>number value</em> adds angular <a href="../root-motion.html">root motion</a> to the final pose. This enables the animation to change the rotation of the <a href="../../../runtime/world/game-objects.html">game object</a> on which it is played. This is mainly convenient for simpler use cases and for prototyping. In more complex scenarios you may prefer control the object's orientation with <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
+<li><p><code>Target Weight</code>: How strongly to apply the pose to the output. This should be used to signal whether the output is active, at all. Pass in <code>0</code> once an animation should be deactivated. Pass in <code>1</code> while it is active. The <code>Fade Duration</code> is used to ramp up or down the overall weight. If this pin is not connected, the node is considered to be always active and thus always combined with the other outputs, which may result in undesirable behavior, if this sub-graph sometimes doesn't actually provide a real pose.</p>
 </li>
+<li><p><code>Fade Duration</code>: When connected, overrides the <code>Fade Duration</code> property.</p>
+</li>
+<li><p><code>Weights</code>: The <a href="anim-nodes-bone-weights.html">bone weights</a> to use to apply this pose only to a subset of bones. If the pin is not connected, the pose applies to the full skeleton.</p>
+</li>
+</ul>
+<h3 id="output-pins">Output Pins</h3>
+<ul>
+<li><p><code>On Faded Out</code>: This event pin is triggered when the output node has finished fading out.</p>
+</li>
+<li><p><code>On Faded In</code>: This event pin is triggered when the output node has finished fading in.</p>
+</li>
+<li><p><code>Current Weight</code>: A data pin that outputs the currently used target weight, which changes over the fade duration.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Careful!</strong></p>
+<p>Using the output pins it is easily possible to build a <strong>circular graph</strong>, which is not allowed. Make sure that the output of this node is not fed into the input of itself. Use <a href="anim-nodes-blackboard.html">blackboard nodes</a> or <a href="anim-nodes-events.html">event nodes</a> to forward information and, if necessary, feed it back as input during the next graph update.</p>
+</blockquote>
+<h2 id="root-rotation-node">Root Rotation Node</h2>
+<p>This node is used to add angular <a href="../root-motion.html">root motion</a> to the final pose. It enables the animation to change the rotation of the <a href="../../../runtime/world/game-objects.html">game object</a> on which it is played. This is mainly convenient for simpler use cases and for prototyping. In more complex scenarios you may prefer to control the object's orientation with <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
+<h3 id="input-pins-1">Input Pins</h3>
+<ul>
+<li><code>Rotate X/Y/Z</code>: The angular rotation to add on the selected axis.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

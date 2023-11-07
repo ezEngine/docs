@@ -88,7 +88,7 @@
 <p><strong>Important:</strong></p>
 <p>Not all animations will work correctly when they are layered on top of each other. If one animation rotates a bone into one direction, and another animation rotates the same bone very differently, it is possible for the interpolation of the rotations to result in an invalid value. This will manifest as jerking or jumping bones at specific points in the animation. If that happens, you have to use an inverse bone mask to fully filter out the base animation, such that in the end only one of the animations really influences those bones.</p>
 </blockquote>
-<p>To use a bone weight mask, connect it to an <a href="anim-nodes-output.html">output node (TODO)</a>.</p>
+<p>To use a bone weight mask, connect it to an <a href="anim-nodes-output.html">output node</a>.</p>
 <h2 id="bone-weights-node">Bone Weights Node</h2>
 <p>The <em>Bone Weights</em> node creates a mask for every bone in the skeleton. By default, the mask is zero for every bone. You then add bones by name to the <code>RootBones</code> array. Every bone that is reachable from any of the root bones, will get a weight of one. You can specify multiple root bones, in case that an animation should for example affect both arms, but not the spine and head.</p>
 <h3 id="node-properties">Node Properties</h3>
