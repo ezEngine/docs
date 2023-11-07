@@ -138,6 +138,10 @@
 <p>The coroutine mode is selectable on every <em>entry point</em> node.</p>
 <h3 id="advanced-coroutine-features">Advanced Coroutine Features</h3>
 <p>Every entry point provides a coroutine ID. This can be used to cancel a specific coroutine if needed. Similarly, there are functions to stop all coroutines or start separate ones. You can also use the <code>Yield</code> node to interrupt a script at a specific point and have it continue in the next frame.</p>
+<h2 id="loops">Loops</h2>
+<p>You can execute loops to iterate over data or repeat certain actions. Several different <em>loop nodes</em> are available. They all operate in the same way, that they have two outgoing <em>execution pins</em>. One execution pin is for the <em>loop body</em>. This execution path will be executed repeatedly until the loop is finished. Finally, the <em>completed</em> execution pin is executed to continue with the code that comes after the loop.</p>
+<p>For example, the following script loops from 0 to 8 (inclusive) and for each iteration it adds the loop index to the counter variable. After the loop has been completed the execution flow continues at the <em>completed</em> pin, so a <code>SetColor</code> message is sent to the owner game object. Also note that the loop body contains a <code>Yield</code> statement so the loop is paused after every iteration and resumed the next frame (see the <em>coroutines</em> section above).</p>
+<p><img src="media/vs-loop.png" alt="Loop"></p>
 <h2 id="node-types">Node Types</h2>
 <p>The following broad categories of nodes exist:</p>
 <h3 id="event-handlers">Event Handlers</h3>
@@ -164,7 +168,7 @@
 <h3 id="log">Log</h3>
 <p>Nodes for <a href="../../debugging/logging.html">logging</a>.</p>
 <h3 id="logic">Logic</h3>
-<p>This group contains mathematical logic operators as well as conditions. Very important nodes are:</p>
+<p>This group contains mathematical logic operators as well as conditions and loops. Very important nodes are:</p>
 <ul>
 <li><code>Branch</code>: An <code>if</code> condition node with two possible outcomes.</li>
 <li><code>Switch</code>: Several variants to map one value to multiple possible outcomes.</li>
