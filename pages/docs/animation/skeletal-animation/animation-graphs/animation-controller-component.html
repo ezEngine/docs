@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Input Nodes | ezEngine </title>
+    <title>Animation Controller Component | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Input Nodes | ezEngine ">
+    <meta name="title" content="Animation Controller Component | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,21 +78,24 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="input-nodes">Input Nodes</h1>
+<h1 id="animation-controller-component">Animation Controller Component</h1>
 
-<p>Input nodes expose the state of input devices to the animation graph. Input nodes are mainly provided for convenience during prototyping, as they may circumvent key mappings and general game state (e.g. whether the player is even allowed to move a character at all, at the moment).</p>
-<p>For a proper game, it is better to use an <a href="../../../input/input-component.html">input component</a> to forward input state to <a href="../../../custom-code/custom-code-overview.html">custom code</a> and then decide there which animation shall get played. Then you can forward that state to the animation graph, through a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation graph itself would retrieve what it should do through the <a href="anim-nodes-blackboard.html">blackboard nodes</a>.</p>
-<h2 id="controller-node">Controller Node</h2>
-<p>This node reads the raw state of the connected controller <strong>1</strong>. It outputs the button states as data pins.</p>
-<p>This node completely ignores any kind of button mapping. It is purely meant for prototyping scenarios, where it can be very convenient.</p>
-<h3 id="output-pins">Output Pins</h3>
+<p>The <em>animation controller component</em> is used to apply complex animation playback and blending functionality to an <a href="../animated-mesh-component.html">animated mesh</a>. It is the big brother of the <a href="../simple-animation-component.html">simple animation component</a>. Instead of playing just a single animation clip, it uses an <a href="animation-graph-asset.html">animation graph asset</a> to determine the animation pose.</p>
+<p>The component itself doesn't do much, other than updating the animation pose and sending it to the animated mesh. For how to control the animation playback, please see the <a href="animation-graph-overview.html">Animation Graph</a> chapter.</p>
+<h2 id="component-properties">Component Properties</h2>
 <ul>
-<li>This node has number output pins for the sticks and triggers and bool output pins for the buttons.</li>
+<li><p><code>AnimGraph</code>: The <a href="animation-graph-asset.html">animation graph</a> to use.</p>
+</li>
+<li><p><code>RootMotionMode</code>: Selects how <a href="../root-motion.html">root motion</a> is applied to the owning game object.</p>
+</li>
+<li><p><code>InvisibleUpdateRate</code>: How often to update the animation when the object is not visible. For performance reasons the update rate should be very low or even paused when an object isn't visible. However, since animations may have an important impact on gameplay, it can be undesirable to have a lower update rate even when the object is not visible. Note that this affects the update rate of objects that are not visible by the main camera, but by a shadow casting light. Objects whose shadow can be seen generally get updated, but at a low rate, unless this setting forces a higher update rate.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-graph-overview.html">Animation Graph</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
+<li><a href="../simple-animation-component.html">Simple Animation Component</a></li>
+<li><a href="animation-graph-overview.html">Animation Graph</a></li>
 </ul>
 </article>
           </div>
@@ -102,7 +105,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-input.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/animation-controller-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

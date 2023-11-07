@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Sample Sequence Node | ezEngine </title>
+    <title>Bone Weight Nodes | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Sample Sequence Node | ezEngine ">
+    <meta name="title" content="Bone Weight Nodes | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,34 +78,47 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="sample-sequence-node">Sample Sequence Node</h1>
+<h1 id="bone-weight-nodes">Bone Weight Nodes</h1>
 
-<p>The <em>sample sequence node</em> plays multiple clips in a row. One clip is used to enter the animation sequence, then there can be one or multiple different clips that may be played in a loop, and once the loop is exited, another clip can be played to finish the sequence.</p>
-<p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
-<p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p>The video above shows such a sequence. Here the node uses a <em>point gun</em> and a <em>shoot gun</em> clip for the middle part of the sequence, but it doesn't use a start or end clip at all (they are optional). Using the <code>Clip Index</code> input pin, the game code can switch at any time whether the gun is pointed or shot. One of the two clips is played in a loop as long as the game code decides to keep this state active. Here raising and lowering the arm is simply a result from fading the animation in and out over a short duration, but if desired these could also be dedicated animation clips.</p>
-<h2 id="node-properties">Node Properties</h2>
-<p>Most node properties are the same as on the <a href="anim-nodes-sample-clip.html#node-properties">sample clip node</a>.</p>
+<p>Bone weight nodes are used to generate a weight mask. The mask defines how strongly an animation clip will influence different parts of the skeleton. This is frequently used to apply an animation only to certain parts of a character, for example only the upper or lower body, or even only the left or right arm.</p>
+<p>For example it is common to play a walking animation only on the bones below the hip, whereas on the spine and upwards one would want to play an attack animation.</p>
+<p>Since animations are often authored for the entire skeleton, it is therefore necessary to mask out unwanted parts.</p>
+<p>Bone weights are often in the range of zero to one, with zero meaning that that bone is entirely unaffected by an animation and one means it is fully affected. However, for convenience, weights above one are allowed as well. The system simply normalizes the weights on every bone at the very end. This way, if one animation affects a bone with a weight of one, and another animation affects the same bone with a weight of nine, the first one will only have 10% influence and the second has 90% influence. That makes it easier to layer an important animation on top of a base animation. By simply setting a very large weight (10 or more) an animation can easily override a part of the body, without having to use an inverse mask to filter out the base animation.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Not all animations will work correctly when they are layered on top of each other. If one animation rotates a bone into one direction, and another animation rotates the same bone very differently, it is possible for the interpolation of the rotations to result in an invalid value. This will manifest as jerking or jumping bones at specific points in the animation. If that happens, you have to use an inverse bone mask to fully filter out the base animation, such that in the end only one of the animations really influences those bones.</p>
+</blockquote>
+<p>To use a bone weight mask, connect it to an <a href="anim-nodes-output.html">output node</a>.</p>
+<h2 id="bone-weights-node">Bone Weights Node</h2>
+<p>The <em>Bone Weights</em> node creates a mask for every bone in the skeleton. By default, the mask is zero for every bone. You then add bones by name to the <code>RootBones</code> array. Every bone that is reachable from any of the root bones, will get a weight of one. You can specify multiple root bones, in case that an animation should for example affect both arms, but not the spine and head.</p>
+<h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><p><code>Start Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to start with. This clip should end on a keyframe from where the <code>Middle Clips</code> can continue seemlessly.</p>
+<li><p><code>Weight</code>: The overall weight for the mask. A higher weight means that animation clips that use this weight mask will have stronger influence on the final pose.</p>
 </li>
-<li><p><code>Middle Clips</code>: One or multiple animation clips to play after the <code>Start Clip</code>. These get looped as long as the <code>Loop</code> property is enabled. If more than one clip is added, which one to play can be selected using the <code>Clip Index</code> pin. Otherwise a random one will be selected on every iteration.</p>
-</li>
-<li><p><code>End Clip</code>: The clip to play when the <em>looped</em> property is disabled after the start and middle clip are finished.</p>
+<li><p><code>RootBones</code>: An array of bone names from where the weight mask should be set to one. Typically this only holds a single entry, for example the hip bone (to affect both legs) or a spine or shoulder bone (to affect the arms and head).</p>
 </li>
 </ul>
-<h2 id="input-pins">Input Pins</h2>
-<p>Most input pin properties are the same as on the <a href="anim-nodes-sample-clip.html#input-pins">sample clip node</a>.</p>
+<h3 id="output-pins">Output Pins</h3>
 <ul>
-<li><code>Clip Index</code>: This pin can be used to select which of the <code>Middle Clips</code> to play next. In the video above this is used to select whether the gun should get fired or not.</li>
+<li><p><code>Weights</code>: This represents the full bone mask and can be passed to other nodes, to make them only affect the desired bones.</p>
+</li>
+<li><p><code>InverseWeights</code>: If this pin is connected, the node generates the inverse mask as well. So for example, if the node would generate a mask that only affects the head, then the inverse mask will affect everything but the head.</p>
+</li>
 </ul>
-<h2 id="output-pins">Output Pins</h2>
-<p>Most output pin properties are the same as on the <a href="anim-nodes-sample-clip.html#output-pins">sample clip node</a>.</p>
+<h2 id="bone-weights-switch-node">Bone Weights Switch Node</h2>
+<p>This node is used to switch between different bone weight masks. For example a walk animation should be played on the whole body, but once an upper body animation becomes active, the walk animation should only be played on the lower body.</p>
+<h3 id="node-properties-1">Node Properties</h3>
 <ul>
-<li><p><code>On Middle Started</code>: This event pin is triggered every time a middle clip starts playing.</p>
-</li>
-<li><p><code>On End Started</code>: This event pin is triggered when <em>looping</em> is disabled and the <code>End Clip</code> starts playing.</p>
-</li>
+<li><code>Weights Count</code>: How many weight input pins the node should have.</li>
+</ul>
+<h3 id="input-pins">Input Pins</h3>
+<ul>
+<li><code>Index</code>: Which input weight to select as the output.</li>
+<li><code>Weights[]</code>: Array of input weights.</li>
+</ul>
+<h3 id="output-pins-1">Output Pins</h3>
+<ul>
+<li><code>Weights</code>: The output weight.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -120,7 +133,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-sample-sequence.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-bone-weights.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

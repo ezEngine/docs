@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Sample Clip Node | ezEngine </title>
+    <title>Sample Sequence Node | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Sample Clip Node | ezEngine ">
+    <meta name="title" content="Sample Sequence Node | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,45 +78,39 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="sample-clip-node">Sample Clip Node</h1>
+<h1 id="sample-sequence-node">Sample Sequence Node</h1>
 
-<p>The <em>sample clip node</em> is the most basic node to play an animation. It is used for typical playback of a single animation either once or in a loop.</p>
-<p><video src="../../media/skeletal-anim.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p>The <em>sample sequence node</em> plays multiple clips in a row. One clip is used to enter the animation sequence, then there can be one or multiple different clips that may be played in a loop, and once the loop is exited, another clip can be played to finish the sequence.</p>
+<p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
+<p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p>The video above shows such a sequence. Here the node uses a <em>point gun</em> and a <em>shoot gun</em> clip for the middle part of the sequence, but it doesn't use a start or end clip at all (they are optional). Using the <code>Clip Index</code> input pin, the game code can switch at any time whether the gun is pointed or shot. One of the two clips is played in a loop as long as the game code decides to keep this state active. Here raising and lowering the arm is simply a result from fading the animation in and out over a short duration, but if desired these could also be dedicated animation clips.</p>
 <h2 id="node-properties">Node Properties</h2>
+<p>Most node properties are the same as on the <a href="anim-nodes-sample-clip.html#node-properties">sample clip node</a>.</p>
 <ul>
-<li><p><code>Loop</code>: Whether to play the animation just once from start to finish, or loop it endlessly.</p>
+<li><p><code>Start Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to start with. This clip should end on a keyframe from where the <code>Middle Clips</code> can continue seemlessly.</p>
 </li>
-<li><p><code>Playback Speed</code>: Adjusts the speed with which the animation is sampled.</p>
+<li><p><code>Middle Clips</code>: One or multiple animation clips to play after the <code>Start Clip</code>. These get looped as long as the <code>Loop</code> property is enabled. If more than one clip is added, which one to play can be selected using the <code>Clip Index</code> pin. Otherwise a random one will be selected on every iteration.</p>
 </li>
-<li><p><code>Apply Root Motion</code>: Whether <a href="../root-motion.html">root motion</a> should be sampled and passed through.</p>
-</li>
-<li><p><code>Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to play.</p>
+<li><p><code>End Clip</code>: The clip to play when the <em>looped</em> property is disabled after the start and middle clip are finished.</p>
 </li>
 </ul>
 <h2 id="input-pins">Input Pins</h2>
+<p>Most input pin properties are the same as on the <a href="anim-nodes-sample-clip.html#input-pins">sample clip node</a>.</p>
 <ul>
-<li><p><code>Start</code>: When this pin gets triggered, the node starts playback. If it is already playing, playback is reset to the start. If this pin is not connected playback starts right away, which is useful for nodes that play in an endless loop anyway.</p>
-</li>
-<li><p><code>Loop</code>: If connected, overrides the <code>Loop</code> property. When playback reaches the end and loop is enabled, it restarts, otherwise it stops playing and the <code>On Finished</code> output pin gets triggered.</p>
-</li>
-<li><p><code>Speed</code>: If connected, overrides the <code>Playback Speed</code> property.</p>
-</li>
+<li><code>Clip Index</code>: This pin can be used to select which of the <code>Middle Clips</code> to play next. In the video above this is used to select whether the gun should get fired or not.</li>
 </ul>
 <h2 id="output-pins">Output Pins</h2>
+<p>Most output pin properties are the same as on the <a href="anim-nodes-sample-clip.html#output-pins">sample clip node</a>.</p>
 <ul>
-<li><p><code>Pose</code>: The sampled pose. A valid pose is only produced during playback, once the node is inactive, there is no pose output.</p>
+<li><p><code>On Middle Started</code>: This event pin is triggered every time a middle clip starts playing.</p>
 </li>
-<li><p><code>On Started</code>: This output pin gets triggered every time playback is started or restarted, either because of user input or because playback reached the end and was looped.</p>
-</li>
-<li><p><code>On Finished</code>: This output pin gets triggered when playback reaches the end and looping is disabled.</p>
+<li><p><code>On End Started</code>: This event pin is triggered when <em>looping</em> is disabled and the <code>End Clip</code> starts playing.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="animation-graph-overview.html">Animation Graph</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="anim-nodes-sample-sequence.html">Sample Sequence Node</a></li>
-<li><a href="anim-nodes-blendspace2d.html">Sample Blendspace 2D Node</a></li>
 </ul>
 </article>
           </div>
@@ -126,7 +120,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-sample-clip.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-sample-sequence.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

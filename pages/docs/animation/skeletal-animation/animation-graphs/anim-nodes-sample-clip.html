@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Logic and Math Nodes | ezEngine </title>
+    <title>Sample Clip Node | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Logic and Math Nodes | ezEngine ">
+    <meta name="title" content="Sample Clip Node | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,88 +78,45 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="logic-and-math-nodes">Logic and Math Nodes</h1>
+<h1 id="sample-clip-node">Sample Clip Node</h1>
 
-<p>The animation graph provides nodes to evaluate basic arithmatic and logic. This is meant for very simple use cases and for quick prototyping. Often animation logic requires much more complex rules than what would be feasible to express in the animation graph. Instead use <a href="../../../custom-code/custom-code-overview.html">custom code</a> to decide which animation should run under which circumstances, and pass the result to the animation graph via a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. The animation graph can then simply read the state for each animation using the <a href="anim-nodes-blackboard.html">blackboard nodes</a>.</p>
-<h2 id="and-node">AND Node</h2>
-<p>This node checks whether <strong>all</strong> boolean input values are <code>true</code> and sets its own <code>Is True</code> and <code>Is False</code> output pins accordingly.</p>
-<h3 id="node-properties">Node Properties</h3>
+<p>The <em>sample clip node</em> is the most basic node to play an animation. It is used for typical playback of a single animation either once or in a loop.</p>
+<p><video src="../../media/skeletal-anim.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<h2 id="node-properties">Node Properties</h2>
 <ul>
-<li><code>Bool Count</code>: How many input pins the node should have.</li>
+<li><p><code>Loop</code>: Whether to play the animation just once from start to finish, or loop it endlessly.</p>
+</li>
+<li><p><code>Playback Speed</code>: Adjusts the speed with which the animation is sampled.</p>
+</li>
+<li><p><code>Apply Root Motion</code>: Whether <a href="../root-motion.html">root motion</a> should be sampled and passed through.</p>
+</li>
+<li><p><code>Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to play.</p>
+</li>
 </ul>
-<h2 id="or-node">OR Node</h2>
-<p>This node checks whether <strong>any</strong> boolean input value is <code>true</code> and sets its own <code>Is True</code> and <code>Is False</code> output pins accordingly.</p>
-<h3 id="node-properties-1">Node Properties</h3>
+<h2 id="input-pins">Input Pins</h2>
 <ul>
-<li><code>Bool Count</code>: How many input pins the node should have.</li>
+<li><p><code>Start</code>: When this pin gets triggered, the node starts playback. If it is already playing, playback is reset to the start. If this pin is not connected playback starts right away, which is useful for nodes that play in an endless loop anyway.</p>
+</li>
+<li><p><code>Loop</code>: If connected, overrides the <code>Loop</code> property. When playback reaches the end and loop is enabled, it restarts, otherwise it stops playing and the <code>On Finished</code> output pin gets triggered.</p>
+</li>
+<li><p><code>Speed</code>: If connected, overrides the <code>Playback Speed</code> property.</p>
+</li>
 </ul>
-<h2 id="not-node">NOT Node</h2>
-<p>Outputs the oppositve value of its input.</p>
-<h2 id="compare-number-node">Compare Number Node</h2>
-<p>This node can be used to check whether a number value compares in a certain way against a reference value. For example whether some input value is larger than 0.5.</p>
-<h3 id="node-properties-2">Node Properties</h3>
+<h2 id="output-pins">Output Pins</h2>
 <ul>
-<li><code>Reference Value</code>: The reference value to compare the incoming value against.</li>
-<li><code>Comparison</code>: The mathematical operation with which to compare the two values.</li>
-</ul>
-<h3 id="input-pins">Input Pins</h3>
-<ul>
-<li><code>Number</code>: The number to compare against the reference value.</li>
-<li><code>Reference</code>: If connected, this acts as the reference value.</li>
-</ul>
-<h3 id="output-pins">Output Pins</h3>
-<ul>
-<li><code>Is True</code>: A boolean output for the result of the comparison.</li>
-</ul>
-<h2 id="bool-to-number-node">Bool To Number Node</h2>
-<p>Converts a boolean value (<code>true</code> or <code>false</code>) to a number. By default this node converts <code>false</code> to <code>0</code> and <code>true</code> to <code>1</code>, but you can select other numerical values to use.</p>
-<h3 id="node-properties-3">Node Properties</h3>
-<ul>
-<li><code>False Value</code>, <code>True Value</code>: The <em>number value</em> to output for when the input is <code>false</code> or <code>true</code>.</li>
-</ul>
-<h2 id="event-and-node">Event AND Node</h2>
-<p>Used to filter an event pin to only activate the next node, if additionally to the event another condition is met at the same time.</p>
-<p>Event pins are triggered only infrequently. For example a button press may result in an event pin being triggered. However, you often don't want that event to immediately have an effect, because often the currently playing animations don't allow this. So you may have additional state keeping track of whether some reaction would be possible.</p>
-<p>The <em>Event AND</em> node makes it easy to listen to an event pin and forward the event only if another condition is also true.</p>
-<h3 id="input-pins-1">Input Pins</h3>
-<ul>
-<li><code>Activate</code>: An event pin that will trigger the evaluation.</li>
-<li><code>Bool</code>: A condition that must be true for the output pin to get triggered. As long as this is <code>false</code> all activations are ignored.</li>
-</ul>
-<h3 id="output-pins-1">Output Pins</h3>
-<ul>
-<li><code>On Activated</code>: If both the <code>Activate</code> and <code>Bool</code> input pins are true at the same time, this pin gets activated for one frame.</li>
-</ul>
-<h2 id="expression-node">Expression Node</h2>
-<p>The expression node takes up to four different numbers as its input, plugs them into a user provided expression and outputs the result.</p>
-<p>The expression must be syntactically correct, otherwise the node prints an error to the <a href="../../../debugging/logging.html">log</a>.</p>
-<h3 id="node-properties-4">Node Properties</h3>
-<p><code>Expression</code>: The expression can use the following:</p>
-<ul>
-<li>Numbers in floating point format (e.g. <code>1</code>, <code>2.3</code>, <code>-78</code>)</li>
-<li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (modulo)</li>
-<li>Parenthesis <code>(</code> and <code>)</code> to specify precedence</li>
-<li>The variables <code>a</code>, <code>b</code>, <code>c</code> and <code>d</code> representing the input pin values</li>
-<li>The functions <code>abs</code> and <code>sqrt</code></li>
-</ul>
-<p><strong>Examples:</strong></p>
-<ul>
-<li><code>a * 0.5 - b</code></li>
-<li><code>abs(a) + abs(b)</code></li>
-<li><code>(a + 1) % 2</code></li>
-</ul>
-<h3 id="input-pins-2">Input Pins</h3>
-<ul>
-<li><code>a</code>, <code>b</code>, <code>c</code> and <code>d</code>: Input values to the mathematical expression. Unconnected pins are treated as having the value zero.</li>
-</ul>
-<h3 id="output-pins-2">Output Pins</h3>
-<ul>
-<li><code>Result</code>: Outputs the result of the evaluated expression.</li>
+<li><p><code>Pose</code>: The sampled pose. A valid pose is only produced during playback, once the node is inactive, there is no pose output.</p>
+</li>
+<li><p><code>On Started</code>: This output pin gets triggered every time playback is started or restarted, either because of user input or because playback reached the end and was looped.</p>
+</li>
+<li><p><code>On Finished</code>: This output pin gets triggered when playback reaches the end and looping is disabled.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="animation-graph-overview.html">Animation Graph</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
+<li><a href="anim-nodes-sample-sequence.html">Sample Sequence Node</a></li>
+<li><a href="anim-nodes-blendspace2d.html">Sample Blendspace 2D Node</a></li>
 </ul>
 </article>
           </div>
@@ -169,7 +126,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-logic-math.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-sample-clip.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

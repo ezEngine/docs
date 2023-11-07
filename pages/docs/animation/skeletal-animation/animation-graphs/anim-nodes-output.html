@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Blackboard Nodes | ezEngine </title>
+    <title>Output Nodes | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Blackboard Nodes | ezEngine ">
+    <meta name="title" content="Output Nodes | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,77 +78,49 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="blackboard-nodes">Blackboard Nodes</h1>
+<h1 id="output-nodes">Output Nodes</h1>
 
-<p>The animation graph provides nodes to read and write values from and to a <a href="../../../Miscellaneous/blackboards.html">blackboard</a>. For this, the <a href="../../../runtime/world/game-objects.html">game object</a> on which the <a href="animation-controller-component.html">animation controller component</a> is attached, or one of its parent nodes, also needs to hold a <a href="../../../Miscellaneous/local-blackboard-component.html">blackboard component</a>.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>If no blackboad is available, these nodes will typically silently not do anything. If a blackboard is available, but the desired entry is not (yet) in the blackboard, they may add the entry or log a warning and assume a default value.</p>
-</blockquote>
-<h2 id="set-number-node--set-bool-node">Set Number Node / Set Bool Node</h2>
-<p>When activated, this node writes a given value to the blackboard.</p>
+<p>Every <a href="animation-graph-overview.html">animation graph</a> must have at least one output node. All nodes that shall affect the result must ultimately be connected to an output node.</p>
+<p>The <em>pose result</em> nodes do not define the final result, though. Rather the final result is a mix of all poses that reach a <em>pose result</em> node. This makes it easier to set up many different animations and also split work up into several animation graphs.</p>
+<p>You can quickly deactivate an entire part of the graph by removing the connection to the output node. Nodes that are not connected to the output are not evaluated at runtime and therefore don't cost any performance.</p>
+<h2 id="pose-result-node">Pose Result Node</h2>
+<p>The <em>pose result</em> node is used to output <em>one</em> animation result. A more complex animation graph will contain many pose result nodes. All poses from <em>active</em> pose result nodes (the ones that have a non-zero <code>Target Weight</code>) will be combined according to their weight.</p>
+<p>Usually you would set up the graph such, that all actions that could overlap flow into their own pose result nodes. For example you may have one sub graph that is responsible for walk animations and another one for jump animations. When jumping, the system should fade over from walking into jumping and thus there is a short duration of overlap. To achieve this, both sub graphs would have their own <em>pose result</em> node and when the jump starts, the jump sub graph fades its output in (by setting its <code>Target Weight</code> to <code>1</code>) and the walk sub graph fades its pose out respectively. The animation system takes care of combining the output poses accoring to their current weight.</p>
+<p>Now consider that you may have two different jump animations, one for when the character is standing and one while it is walking. These cases are mutually exclusive, and thus there is no need for separate output nodes for the two jump styles. In this case one would rather use one of the <a href="anim-nodes-pose-blending.html">pose blending nodes</a> to select the desired jump animation and feed it into one output node.</p>
+<p>However, you <em>could</em> use different pose result nodes, regardless, if it is easier to set up the animation this way, there is no performance penalty for using additional nodes as long as the number of simultaneously active nodes is low.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><p><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to write to.</p>
-</li>
-<li><p><code>Number</code> / <code>Bool</code>: The value to write in case the value input pin is connected.</p>
-</li>
+<li><code>Fade Duration</code>: How long to fade the result pose in or out when the <code>Target Weight</code> changes.</li>
 </ul>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><p><code>Activate</code>: When triggered, the node changes the blackboard value.</p>
+<li><p><code>Pose</code>: The pose to combine with all other active pose results.</p>
 </li>
-<li><p><code>Number</code> / <code>Bool</code>: The value to write. If not connected, the value configured on the node is used.</p>
+<li><p><code>Target Weight</code>: How strongly to apply the pose to the output. This should be used to signal whether the output is active, at all. Pass in <code>0</code> once an animation should be deactivated. Pass in <code>1</code> while it is active. The <code>Fade Duration</code> is used to ramp up or down the overall weight. If this pin is not connected, the node is considered to be always active and thus always combined with the other outputs, which may result in undesirable behavior, if this sub-graph sometimes doesn't actually provide a real pose.</p>
 </li>
-</ul>
-<h2 id="get-number-node--get-bool-node">Get Number Node / Get Bool Node</h2>
-<p>Outputs the value of a specific blackboard entry.</p>
-<h3 id="node-properties-1">Node Properties</h3>
-<ul>
-<li><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to read.</li>
+<li><p><code>Fade Duration</code>: When connected, overrides the <code>Fade Duration</code> property.</p>
+</li>
+<li><p><code>Weights</code>: The <a href="anim-nodes-bone-weights.html">bone weights</a> to use to apply this pose only to a subset of bones. If the pin is not connected, the pose applies to the full skeleton.</p>
+</li>
 </ul>
 <h3 id="output-pins">Output Pins</h3>
 <ul>
-<li><code>Number</code> / <code>Bool</code>: The value of the entry. If the entry doesn't exist, the pin outputs zero.</li>
-</ul>
-<h2 id="check-number-node">Check Number Node</h2>
-<p>This node monitors a blackboard value and compares it to a reference value. When the result of the comparison changes, the <code>On True</code> or <code>On False</code> output pin gets triggered for one frame.</p>
-<h3 id="node-properties-2">Node Properties</h3>
-<ul>
-<li><p><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to monitor.</p>
+<li><p><code>On Faded Out</code>: This event pin is triggered when the output node has finished fading out.</p>
 </li>
-<li><p><code>Reference Value</code>: A reference value for the comparison.</p>
+<li><p><code>On Faded In</code>: This event pin is triggered when the output node has finished fading in.</p>
 </li>
-<li><p><code>Comparison</code>: The way the two values get compared.</p>
+<li><p><code>Current Weight</code>: A data pin that outputs the currently used target weight, which changes over the fade duration.</p>
 </li>
 </ul>
-<h3 id="output-pins-1">Output Pins</h3>
+<blockquote>
+<p><strong>Careful!</strong></p>
+<p>Using the output pins it is easily possible to build a <strong>circular graph</strong>, which is not allowed. Make sure that the output of this node is not fed into the input of itself. Use <a href="anim-nodes-blackboard.html">blackboard nodes</a> or <a href="anim-nodes-events.html">event nodes</a> to forward information and, if necessary, feed it back as input during the next graph update.</p>
+</blockquote>
+<h2 id="root-rotation-node">Root Rotation Node</h2>
+<p>This node is used to add angular <a href="../root-motion.html">root motion</a> to the final pose. It enables the animation to change the rotation of the <a href="../../../runtime/world/game-objects.html">game object</a> on which it is played. This is mainly convenient for simpler use cases and for prototyping. In more complex scenarios you may prefer to control the object's orientation with <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
+<h3 id="input-pins-1">Input Pins</h3>
 <ul>
-<li><code>On True</code>: Gets triggered for one frame when the comparison result changes to <code>true</code>.</li>
-<li><code>On False</code>: Gets triggered for one frame when the comparison result changes to <code>false</code>.</li>
-<li><code>Is True</code>: Outputs the result of the comparison. This is a data pin that can always be read, contrary to the other two pins that are <em>event pins</em> and only get triggered when something changes.</li>
-</ul>
-<h2 id="check-bool-node">Check Bool Node</h2>
-<p>This node monitors a boolean blackboard value and compares it to <code>true</code>. When the result of the comparison changes, the <code>On True</code> or <code>On False</code> output pin gets triggered for one frame.</p>
-<h3 id="node-properties-3">Node Properties</h3>
-<ul>
-<li><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to monitor.</li>
-</ul>
-<h3 id="output-pins-2">Output Pins</h3>
-<ul>
-<li><code>On True</code>: Gets triggered for one frame when the value changes to <code>true</code>.</li>
-<li><code>On False</code>: Gets triggered for one frame when the value changes to <code>false</code>.</li>
-<li><code>Bool</code>: Outputs the blackboard value. This is a data pin that can always be read, contrary to the other two pins that are <em>event pins</em> and only get triggered when the value changes.</li>
-</ul>
-<h2 id="onchanged-node">OnChanged Node</h2>
-<p>This node monitors a blackboard value and triggers its output event node when the value changes. This should be used when <em>any</em> change to a variable is of interest.</p>
-<h3 id="node-properties-4">Node Properties</h3>
-<ul>
-<li><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to monitor.</li>
-</ul>
-<h3 id="output-pins-3">Output Pins</h3>
-<ul>
-<li><code>On Value Changed</code>: Gets triggered for one frame when the value changes somehow.</li>
+<li><code>Rotate X/Y/Z</code>: The angular rotation to add on the selected axis.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -163,7 +135,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-blackboard.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-output.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

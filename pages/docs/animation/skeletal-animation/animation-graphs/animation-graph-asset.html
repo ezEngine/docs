@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Pose Generation Nodes | ezEngine </title>
+    <title>Animation Graph Asset | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Pose Generation Nodes | ezEngine ">
+    <meta name="title" content="Animation Graph Asset | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,47 +78,39 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="pose-generation-nodes">Pose Generation Nodes</h1>
+<h1 id="animation-graph-asset">Animation Graph Asset</h1>
 
-<p>These nodes are responsible for generating poses. They may create them procedurally, by sampling <a href="../animation-clip-asset.html">animation clips</a> or a combination of the two.</p>
-<h2 id="rest-pose-node">Rest Pose Node</h2>
-<p>This node always outputs the <em>rest pose</em> of a skeleton. It has no configuration options or input pins. It is mainly used to provide a fallback pose when nothing else is available, especially during testing.</p>
-<h2 id="sample-blendspace-1d-node">Sample Blendspace 1D Node</h2>
-<p>This node uses a 1D coordinate to select two clips for synchronized sampling and blending between them.</p>
-<p>See <a href="anim-nodes-blendspace1d.html">Sample Blendspace 1D Node</a> for details.</p>
-<h2 id="sample-blendspace-2d-node">Sample Blendspace 2D Node</h2>
-<p>This node uses a 2D coordinate to select from a range of clips which ones to sample in a synchronized fashion and blend between them.</p>
-<p>See <a href="anim-nodes-blendspace2d.html">Sample Blendspace 2D Node</a> for details.</p>
-<h2 id="sample-clip-node">Sample Clip Node</h2>
-<p>This node plays back a single animation clip.</p>
-<p>See <a href="anim-nodes-sample-clip.html">Sample Clip Node</a> for details.</p>
-<h2 id="sample-clip-sequence-node">Sample Clip Sequence Node</h2>
-<p>This node plays back multiple clips in sequence, optionally using one clip for start (fade in), one or multiple clips for the middle section (which may loop) and optionally one clip for the end (fade out).</p>
-<p>See <a href="anim-nodes-sample-sequence.html">Sample Sequence Node</a> for details.</p>
-<h2 id="sample-frame-node">Sample Frame Node</h2>
-<p>This node samples an animation clip at a specific, constant time and outputs that pose. There is no automatic playback. You can pass in the sample position to dynamically select which frame to sample, but often this is used to just sample the first or last frame of an animation clip to hold a specific pose.</p>
+<p>The <em>animation graph asset</em> is used to configure complex animations. See the <a href="animation-graph-overview.html">animation graph</a> chapter for a conceptual description.</p>
+<p><img src="media/anim-controller-asset.png" alt="Animation Graph Asset"></p>
+<h2 id="animation-graph">Animation Graph</h2>
+<p>In the animation graph nodes represent actions. Data flows from left to right. Nodes have <strong>input pins</strong> and <strong>output pins</strong> which represent different kinds of data, such as <em>trigger events</em>, <em>number values</em>, <em>animation poses</em> and <em>bone weights</em>.</p>
+<p>The goal of an animation graph is to sample a number of <a href="../animation-clip-asset.html">animation clips</a>, combine them together, and generate a final pose which can then be applied to an <a href="../animated-mesh-component.html">animated mesh</a>.</p>
+<h3 id="creating-nodes">Creating Nodes</h3>
+<p>Right click into the main area to open a context menu. Here you select which nodes to add to the graph. Every graph requires at least one <a href="anim-nodes-output.html">output node</a> and a <a href="anim-nodes-pose-generation.html">pose generation node</a>.</p>
+<h3 id="connecting-nodes">Connecting Nodes</h3>
+<p>You connect nodes through their pins. Just left click and drag from one output pin to another input pin. The UI will display which pins can be connected once you start dragging. Since every pin represents a certain data type, only compatible pin types may get connected.</p>
+<p>Some pins allow to connect to multiple other pins, or have multiple incoming connections. If a pin does not allow this, creating a new connection removes previous connections automatically.</p>
+<p>Nodes that are not ultimately connected to an <a href="anim-nodes-output.html">output node</a>, will not have any effect.</p>
 <h3 id="node-properties">Node Properties</h3>
-<ul>
-<li><p><code>Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to sample.</p>
-</li>
-<li><p><code>Norm Pos</code>: The <em>normalized</em> sample position. This is a value between <code>0</code> and <code>1</code> where zero maps to the start of the clip, <code>0.5</code> to the exact middle and one to the very last frame of the clip.</p>
-</li>
-</ul>
-<h3 id="input-pins">Input Pins</h3>
-<ul>
-<li><p><code>Norm Pos</code>: If connected, overrides the <code>Norm Pos</code> property.</p>
-</li>
-<li><p><code>Abs Pos</code>: If connected, overrides the <code>Norm Pos</code> value with an absolute playback position, which means you can pass in the actual time value where to sample a clip. Note that you could use this for proper playback of a clip, but it lacks features such as getting informed when the clip finishes, <a href="../animation-events.html">animation events</a> and so on. Prefer to use a <a href="anim-nodes-sample-clip.html">Sample Clip node</a> instead.</p>
-</li>
-</ul>
-<h3 id="output-pins">Output Pins</h3>
-<ul>
-<li><code>Pose</code>: The pose of the animation clip at the given position.</li>
-</ul>
+<p>Nodes may additionally have <em>properties</em>. These are displayed in the property pane when a node is selected. See the documentation for the different node types for more detailed descriptions.</p>
+<h2 id="animation-mapping">Animation Mapping</h2>
+<p>When no node is selected, the properties pane displays the general asset properties. Here you can edit the <code>Animation Clip Mapping</code> array.</p>
+<p><img src="media/anim-clip-mapping.png" alt="Animation clip mapping"></p>
+<p>Every array entry represents one animation. From the drop down you select the name of the animation. If the desired animation name doesn't exist yet, use the <strong><edit values...=""></edit></strong> option to add one. These names are used throughout your project to identify animations and should be chosen carefully. Select an <a href="../animation-clip-asset.html">animation clip asset</a> to map from the animation name to the clip.</p>
+<p>In the animation graph you never select animation clips directly, but rather always choose the animation by name. Because the mapping is defined in one central place in the animation graph asset, it is easy to replace an animation by another clip, simply by changing the mapping.</p>
+<p>In the future this feature is also meant to be used to switch between entirely different animation sets and be able to reuse an animation graph between different creatures and different skeletons. This is, however, not yet implemented, but if necessary, can already be emulated to some degree using graph composition (see next section).</p>
+<h2 id="compositing-animation-graphs">Compositing Animation Graphs</h2>
+<p>An animation graph may reference another animation graph, to <em>include</em> the functionality of that graph in itself. This makes it possible to define different animation setups over multiple animation graph assets, making editing easier and making it possible to share certain animations between different graphs.</p>
+<p>When one graph includes another graph, the <em>animation clip mapping</em> of the parent graph takes precedence over the included graph, which allows to override the mapping of the included graph.</p>
+<h2 id="using-animation-graph-assets">Using Animation Graph Assets</h2>
+<p>Once an animation graph asset is set up, it can be applied to an <a href="../animated-mesh-component.html">animated mesh</a> by adding an <a href="animation-controller-component.html">animation controller component</a> to the same game object. The component will evaluate the graph in every update, and send the final animation pose to the animated mesh.</p>
+<p>To control what the animation controller does, you may also need a <a href="../../../Miscellaneous/blackboards.html">blackboard</a> for storing state, and potentially a script component to decide when which animation should be active.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-graph-overview.html">Animation Graphs</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
+<li><a href="animation-controller-component.html">Animation Controller Component</a></li>
+<li><a href="../../../Miscellaneous/blackboards.html">Blackboards</a></li>
+<li><a href="../simple-animation-component.html">Simple Animation Component</a></li>
 </ul>
 </article>
           </div>
@@ -128,7 +120,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-pose-generation.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/animation-graph-asset.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

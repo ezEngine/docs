@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Event Nodes | ezEngine </title>
+    <title>Pose Generation Nodes | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Event Nodes | ezEngine ">
+    <meta name="title" content="Pose Generation Nodes | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../../../assets/images/favicon.svg">
@@ -78,24 +78,46 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="event-nodes">Event Nodes</h1>
+<h1 id="pose-generation-nodes">Pose Generation Nodes</h1>
 
-<p>Event nodes are used to broadcast <a href="../../../runtime/world/world-messaging.html#event-messages">event messages</a> on the <a href="../../../runtime/world/game-objects.html">game object</a> on which the animation graph is running. This allows other code to react at the right moment to things like an animation being finished.</p>
-<p>Event nodes allow you to broadcast custom events under exactly defined conditions. Additionally, every time an <a href="../animation-clip-asset.html">animation clip</a> is played, and actively contributes to the final pose, events that are defined on that clip will automatically be broadcast on the associated game object.</p>
-<p>Note that the animation graph itself cannot <em>react</em> to events. For that purpose use <a href="../../../custom-code/custom-code-overview.html">custom code</a>.</p>
-<h2 id="send-event-node">Send Event Node</h2>
-<p>When this node is triggered, it broadcasts an <code>ezMsgGenericEvent</code> with <code>Message</code> set to the value of <code>Event Name</code>.</p>
+<p>These nodes are responsible for generating poses. They may create them procedurally, by sampling <a href="../animation-clip-asset.html">animation clips</a> or a combination of the two.</p>
+<h2 id="rest-pose-node">Rest Pose Node</h2>
+<p>This node always outputs the <em>rest pose</em> of a skeleton. It has no configuration options or input pins. It is mainly used to provide a fallback pose when nothing else is available, especially during testing.</p>
+<h2 id="sample-blendspace-1d-node">Sample Blendspace 1D Node</h2>
+<p>This node uses a 1D coordinate to select two clips for synchronized sampling and blending between them.</p>
+<p>See <a href="anim-nodes-blendspace1d.html">Sample Blendspace 1D Node</a> for details.</p>
+<h2 id="sample-blendspace-2d-node">Sample Blendspace 2D Node</h2>
+<p>This node uses a 2D coordinate to select from a range of clips which ones to sample in a synchronized fashion and blend between them.</p>
+<p>See <a href="anim-nodes-blendspace2d.html">Sample Blendspace 2D Node</a> for details.</p>
+<h2 id="sample-clip-node">Sample Clip Node</h2>
+<p>This node plays back a single animation clip.</p>
+<p>See <a href="anim-nodes-sample-clip.html">Sample Clip Node</a> for details.</p>
+<h2 id="sample-clip-sequence-node">Sample Clip Sequence Node</h2>
+<p>This node plays back multiple clips in sequence, optionally using one clip for start (fade in), one or multiple clips for the middle section (which may loop) and optionally one clip for the end (fade out).</p>
+<p>See <a href="anim-nodes-sample-sequence.html">Sample Sequence Node</a> for details.</p>
+<h2 id="sample-frame-node">Sample Frame Node</h2>
+<p>This node samples an animation clip at a specific, constant time and outputs that pose. There is no automatic playback. You can pass in the sample position to dynamically select which frame to sample, but often this is used to just sample the first or last frame of an animation clip to hold a specific pose.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
-<li><code>Event Name</code>: The string that is used as the <code>Message</code> property of the <code>ezMsgGenericEvent</code> that is broadcast.</li>
+<li><p><code>Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to sample.</p>
+</li>
+<li><p><code>Norm Pos</code>: The <em>normalized</em> sample position. This is a value between <code>0</code> and <code>1</code> where zero maps to the start of the clip, <code>0.5</code> to the exact middle and one to the very last frame of the clip.</p>
+</li>
 </ul>
 <h3 id="input-pins">Input Pins</h3>
 <ul>
-<li><code>Activate</code>: When this pin gets triggered, the message is sent.</li>
+<li><p><code>Norm Pos</code>: If connected, overrides the <code>Norm Pos</code> property.</p>
+</li>
+<li><p><code>Abs Pos</code>: If connected, overrides the <code>Norm Pos</code> value with an absolute playback position, which means you can pass in the actual time value where to sample a clip. Note that you could use this for proper playback of a clip, but it lacks features such as getting informed when the clip finishes, <a href="../animation-events.html">animation events</a> and so on. Prefer to use a <a href="anim-nodes-sample-clip.html">Sample Clip node</a> instead.</p>
+</li>
+</ul>
+<h3 id="output-pins">Output Pins</h3>
+<ul>
+<li><code>Pose</code>: The pose of the animation clip at the given position.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animation-graph-overview.html">Animation Graph</a></li>
+<li><a href="animation-graph-overview.html">Animation Graphs</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 </article>
@@ -106,7 +128,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-controller/anim-nodes-events.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-generation.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
