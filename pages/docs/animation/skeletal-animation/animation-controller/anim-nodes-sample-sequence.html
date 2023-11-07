@@ -80,33 +80,31 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="sample-sequence-node">Sample Sequence Node</h1>
 
-<!-- PAGE IS TODO -->
-<!-- TODO THIS PAGE IS OUTDATED -->
-<p>The <em>play clip sequence node</em> is similar to the play single clip node, however, instead of playing just a single clip (looped), the sequence node plays at least three clips in a row. One to enter an animation state, one (looped) animation while it stays active, and one to exit the animation state.</p>
+<p>The <em>sample sequence node</em> plays multiple clips in a row. One clip is used to enter the animation sequence, then there can be one or multiple different clips that may be played in a loop, and once the loop is exited, another clip can be played to finish the sequence.</p>
 <p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
 <p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
-<p>The video above shows such a sequence. Here the node uses a <em>point gun</em> animation clip for the start, middle and end clip. The <em>point gun</em> clip is only a single keyframe and just represents a static pose. Using it for the start clip, allows to slowly fade from the idle state to the pointing state, making the character raise their arm. Using it for the end state similarly allows to fade it out over a short duration, making the character lower their arm slowly as well. As the middle clip there are two options: <em>point gun</em> and <em>shoot gun</em>. Using the <code>ClipIndex</code> input pin, the game code can switch at any time whether the gun is only pointed or shot as well.</p>
+<p>The video above shows such a sequence. Here the node uses a <em>point gun</em> and a <em>shoot gun</em> clip for the middle part of the sequence, but it doesn't use a start or end clip at all (they are optional). Using the <code>Clip Index</code> input pin, the game code can switch at any time whether the gun is pointed or shot. One of the two clips is played in a loop as long as the game code decides to keep this state active. Here raising and lowering the arm is simply a result from fading the animation in and out over a short duration, but if desired these could also be dedicated animation clips.</p>
 <h2 id="node-properties">Node Properties</h2>
-<p>See common properties.</p>
+<p>Most node properties are the same as on the <a href="anim-nodes-sample-clip.html#node-properties">sample clip node</a>.</p>
 <ul>
-<li><p><code>StartClip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to start with. This clip should end on a keyframe from where the <code>MiddleClips</code> can continue seemlessly.</p>
+<li><p><code>Start Clip</code>: The <a href="../animation-clip-asset.html">animation clip</a> to start with. This clip should end on a keyframe from where the <code>Middle Clips</code> can continue seemlessly.</p>
 </li>
-<li><p><code>MiddleClips</code>: One or multiple animation clips to play after the <code>StartClip</code>. Typically these will get looped as long as the node is <code>Active</code>. If more than one clip is set, which one to play can be selected using the <code>MiddleClipIndex</code> pin. Otherwise a random one will be selected on every iteration.</p>
+<li><p><code>Middle Clips</code>: One or multiple animation clips to play after the <code>Start Clip</code>. These get looped as long as the <code>Loop</code> property is enabled. If more than one clip is added, which one to play can be selected using the <code>Clip Index</code> pin. Otherwise a random one will be selected on every iteration.</p>
 </li>
-<li><p><code>EndClip</code>: The clip to play after the middle clips are finished. If the node is <em>looped</em> this will only happen once the <code>Active</code> pin is not triggered anymore.</p>
+<li><p><code>End Clip</code>: The clip to play when the <em>looped</em> property is disabled after the start and middle clip are finished.</p>
 </li>
 </ul>
 <h2 id="input-pins">Input Pins</h2>
-<p>See common input pins.</p>
+<p>Most input pin properties are the same as on the <a href="anim-nodes-sample-clip.html#input-pins">sample clip node</a>.</p>
 <ul>
-<li><code>MiddleClipIndex</code>: This pin can be used to select which of the <code>MiddleClips</code> to play next. In the video above this is used to select whether the gun should get fired or not.</li>
+<li><code>Clip Index</code>: This pin can be used to select which of the <code>Middle Clips</code> to play next. In the video above this is used to select whether the gun should get fired or not.</li>
 </ul>
 <h2 id="output-pins">Output Pins</h2>
-<p>See common output pins.</p>
+<p>Most output pin properties are the same as on the <a href="anim-nodes-sample-clip.html#output-pins">sample clip node</a>.</p>
 <ul>
-<li><p><code>OnNextClip</code>: This pin will get triggered every time a clip finishes and the next middle or end clip starts. This can be used to know for example when the start phase has finished.</p>
+<li><p><code>On Middle Started</code>: This event pin is triggered every time a middle clip starts playing.</p>
 </li>
-<li><p><code>PlayingClipIndex</code>: This pin outputs the index of the currently playing clip. This value is <code>0 to N-1</code> for any of the <code>N</code> middle clips. It will be <code>-1</code> when the start clip is playing and <code>-2</code> when the end clip is playing.</p>
+<li><p><code>On End Started</code>: This event pin is triggered when <em>looping</em> is disabled and the <code>End Clip</code> starts playing.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>

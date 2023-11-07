@@ -89,41 +89,22 @@
 <p>For this to work, all animation clips have to follow the rule that they do the same motion at the same relative time offset. So in the case of a walk/run motion, both clips have to start with the same foot forwards, then move the other foot and finally move the first foot again, such that the animation is looped. The clips can have different lengths, though, so the <em>run</em> clip might be shorter than the <em>walk</em> clip (and therefore faster).</p>
 <p>In the video above you can see such a transition in action. The <em>lerp</em> input value is varyied to demonstrate how the resulting interpolated animation looks. Here the node also has an <em>idle</em> and a <em>walk backward</em> clip, so it can interpolate between even more states.</p>
 <h2 id="node-properties">Node Properties</h2>
+<p>Most node properties are the same as on the <a href="anim-nodes-sample-clip.html#node-properties">sample clip node</a>.</p>
 <ul>
-<li><p><code>Loop</code>: Whether to play the animation just once from start to finish, or loop it endlessly.</p>
-</li>
-<li><p><code>Playback Speed</code>: An additional factor for speeding up or slowing down playback.</p>
-</li>
-<li><p><code>Apply Root Motion</code>: Whether <a href="../root-motion.html">root motion</a> should be sampled and passed through.</p>
-</li>
-<li><p><code>Clips</code>: A list of animation clips between which this animation node will interpolate. The node will only ever sample the two clips whose <code>Position</code> values are closest the the value provided through the <code>Lerp</code> input pin. Additionally, the playback speed for each clip may be tweaked.</p>
-</li>
+<li><code>Clips</code>: A list of animation clips between which this animation node will interpolate. The node will only ever sample the two clips whose <code>Position</code> values are closest the the value provided through the <code>Lerp</code> input pin. Additionally, the playback speed for each clip may be tweaked.</li>
 </ul>
 <h2 id="input-pins">Input Pins</h2>
+<p>Most input pin properties are the same as on the <a href="anim-nodes-sample-clip.html#input-pins">sample clip node</a>.</p>
 <ul>
-<li><p><code>Start</code>: When this pin gets triggered, the node starts playback. If it is already playing, playback is reset to the start. If this pin is <em>not connected</em> playback starts right away, which is useful for nodes that play in an endless loop anyway.</p>
-</li>
-<li><p><code>Loop</code>: If connected, overrides the <code>Loop</code> property. When playback reaches the end and loop is enabled, it restarts, otherwise it stops playing and the <code>On Finished</code> output pin gets triggered.</p>
-</li>
-<li><p><code>Speed</code>: If connected, overrides the <code>Playback Speed</code> property.</p>
-</li>
-<li><p><code>Lerp</code>: This value determines which animation clips get mixed together. If the <em>lerp</em> value is in between two <code>Position</code> values of two clips, the output pose will be the linear interpolation of those two clips. If the <em>lerp</em> value is lower than the lowest <code>Position</code> value or higher than the highest, the output will be exactly that animation clip (there will be no extrapolation).</p>
-</li>
+<li><code>Lerp</code>: This value determines which animation clips get mixed together. If the <em>lerp</em> value is in between two <code>Position</code> values of two clips, the output pose will be the linear interpolation of those two clips. If the <em>lerp</em> value is lower than the lowest <code>Position</code> value or higher than the highest, the output will be exactly that animation clip (there will be no extrapolation).</li>
 </ul>
 <h2 id="output-pins">Output Pins</h2>
-<ul>
-<li><p><code>Pose</code>: The resulting interpolated pose. A valid pose is only produced during playback, once the node is inactive, there is no pose output.</p>
-</li>
-<li><p><code>On Started</code>: This output pin gets triggered every time playback is started or restarted, either because of user input or because playback reached the end and was looped.</p>
-</li>
-<li><p><code>On Finished</code>: This output pin gets triggered when playback reaches the end and looping is disabled.</p>
-</li>
-</ul>
+<p>Most output pin properties are the same as on the <a href="anim-nodes-sample-clip.html#output-pins">sample clip node</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="animation-graph-overview.html">Animation Graph (TODO)</a></li>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="anim-nodes-sample-clip.html">Sample Clip Node (TODO)</a></li>
+<li><a href="anim-nodes-sample-clip.html">Sample Clip Node</a></li>
 <li><a href="anim-nodes-blendspace2d.html">Sample Blendspace 2D Node</a></li>
 </ul>
 </article>
