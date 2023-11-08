@@ -7216,6 +7216,28 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/samples/media/showcase-1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/showcase-1.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/showcase-2.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/showcase-2.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/samples/media/tc0.jpg",
       "output": {
         "resource": {
@@ -7991,7 +8013,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/screenshots.html",
-          "hash": "ILMR96HX4NWWZPmU0ueP7Svw7H3vqH+hPX4X8z+uKYI="
+          "hash": "fDPMBsNaQQuVx2w+1ZUArfeUQWthE85FPhmW1Vxzxic="
         }
       },
       "is_incremental": false,
