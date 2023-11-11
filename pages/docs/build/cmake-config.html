@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CMake Setup | ezEngine </title>
+    <title>CMake Configuration | ezEngine </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="CMake Setup | ezEngine ">
+    <meta name="title" content="CMake Configuration | ezEngine ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../../assets/images/favicon.svg">
@@ -78,8 +78,12 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="cmake-setup">CMake Setup</h1>
+<h1 id="cmake-configuration">CMake Configuration</h1>
 
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Using CMake directly is only needed, if you want to choose advanced build options. This is rarely needed. Prefer to use the provided build scripts for <a href="build-windows.html">Windows</a> or <a href="build-linux.html">Linux</a>.</p>
+</blockquote>
 <p>To generate a solution, run the CMake GUI. Specify <em>Where is the source code</em> and <em>Where to build the binaries</em>, then run <strong>Configure</strong>. As a generator, pick <em>Visual Studio 2022 x64</em> (or one of the other <a href="supported-platforms.html">supported platforms</a>).</p>
 <p><img src="media/cmake-config.png" alt="CMake configuration"></p>
 <p>The screenshot above shows a common setup. Noteworthy are the following points:</p>
