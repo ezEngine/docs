@@ -82,37 +82,46 @@
 
 <p>You can build ezEngine using Clang on Windows. This can be useful to find and fix compilation errors and warnings, that do not happen with MSVC. However, as Clang support on Windows is still experimental, you may not be able to build a working executable.</p>
 <h2 id="using-clangllvm-with-the-cmake-gui">Using Clang/LLVM with the CMake GUI</h2>
+<h3 id="prerequisites">Prerequisites</h3>
 <ol>
-<li>Get the latest clang windows distribution: <a href="https://releases.llvm.org/download.html">https://releases.llvm.org/download.html</a> (the 64-bit version is recommended)</li>
-<li>Create a new solution for the Clang build by pointing <em>Where to build the binaries</em> to a new location.</li>
-<li>Press <strong>Configure</strong> once, a dialog will show up.</li>
-<li>Choose <strong>Ninja</strong> as the generator. (Note: Get ninja from <a href="https://ninja-build.org">https://ninja-build.org</a> and put it in your <strong>PATH</strong>)</li>
-<li>Choose <em>Specify native compilers</em> then hit <strong>Finish</strong>.</li>
-<li>Specify the <em>C</em> and <em>C++</em> compiler. When using the default paths they are located at:
+<li>Install <a href="https://cmake.org/">CMake</a> (or locate <code>cmake-gui.exe</code> in the ez repository).</li>
+<li>Get a recent Clang Windows distribution: <a href="https://releases.llvm.org/download.html">https://releases.llvm.org/download.html</a> (the 64-bit version is recommended)
 <ul>
-<li>C: C:/Program Files/LLVM/bin/clang.exe</li>
-<li>C++: C:/Program Files/LLVM/bin/clang++.exe</li>
+<li><strong>Note:</strong> The binary should be called something like <code>LLVM-&lt;version&gt;-win64.exe</code></li>
+<li>A Windows binary may not be available for the latest version, use an older version, if necessary.</li>
 </ul>
 </li>
-<li>Hit <strong>Finish</strong></li>
-<li>You will now get an error from cmake <code>No CMAKE_RC_COMPILER could be found</code>. Check the <strong>Advanced</strong> checkbox to show additional options and point <code>CMAKE_RC_COMPILER</code> to <code>C:\Program Files (x86)\Windows Kits\10\bin\&lt;windows-sdk-version&gt;\x64\rc.exe</code> (for example <code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe</code>). Also set <code>CMAKE_RC_COMPILER_INIT</code> to <code>rc</code>.</li>
-<li>Hit <strong>Configure</strong></li>
-<li>Hit <strong>Generate</strong></li>
-<li><code>cd</code> into the build location and run <code>ninja</code> to build.</li>
+<li>Get <strong>ninja</strong> from <a href="https://ninja-build.org">https://ninja-build.org</a> and put it in your <code>PATH</code> environment variable.</li>
+<li>If you had to edit your <code>PATH</code> variable, restart your PC.</li>
+</ol>
+<h3 id="generate-a-solution">Generate a Solution</h3>
+<ol>
+<li>Using <code>cmake-gui.exe</code>, create a new solution for a Clang build by pointing <em>Where to build the binaries</em> to a new location.</li>
+<li>Press <em>Configure</em> once, a dialog will show up.</li>
+<li>Choose <strong>Ninja</strong> as the generator.</li>
+<li>Choose <strong>Specify native compilers</strong> then hit <em>Finish</em>.</li>
+<li>Specify the <em>C</em> and <em>C++</em> compiler. When using the default paths they are located at:
+<ul>
+<li>C: <code>C:/Program Files/LLVM/bin/clang.exe</code></li>
+<li>C++: <code>C:/Program Files/LLVM/bin/clang++.exe</code></li>
+</ul>
+</li>
+<li>Click <em>Finish</em></li>
+<li>If CMake can't find your <code>ninja.exe</code> even though it is in your <code>PATH</code> set the <code>CMAKE_MAKE_PROGRAM</code> manually to point to <code>ninja.exe</code> and click <em>Configure</em> again.</li>
+<li>You will now get an error from CMake <code>No CMAKE_RC_COMPILER could be found</code>.
+<ol>
+<li>Check the <strong>Advanced</strong> checkbox to show additional options.</li>
+<li>Point <code>CMAKE_RC_COMPILER</code> to <code>C:\Program Files (x86)\Windows Kits\10\bin\&lt;windows-sdk-version&gt;\x64\rc.exe</code> (for example <code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe</code>).</li>
+<li>Also set <code>CMAKE_RC_COMPILER_INIT</code> to <code>rc</code> (if it even shows up).</li>
+</ol>
+</li>
+<li>Click <em>Configure</em></li>
+<li>Click <em>Generate</em></li>
+<li>Open a Terminal and <code>cd</code> into the build location</li>
+<li>Run <code>ninja</code> to build.</li>
 </ol>
 <h2 id="using-the-clang-frontend-for-visual-studio-with-the-cmake-gui">Using the Clang frontend for Visual Studio with the CMake GUI</h2>
-<p>The clang frontend for the Visual Studio Compiler is no longer in development. Using the official LLVM clang is recommended.</p>
-<ol>
-<li>Create a new solution for the Clang build by pointing <em>Where to build the binaries</em> to a new location.</li>
-<li>Press <strong>Configure</strong> once, a dialog will show up.</li>
-<li>Choose the desired Visual Studio generator at the top.</li>
-<li>In the field <strong>Optional toolset to use (argument to -T)</strong> type <strong>v140_clang_c2</strong></li>
-<li>Finish the dialog and run 'Configure'.</li>
-<li>Check the <strong>Advanced</strong> checkbox to show additional options.</li>
-<li><strong>Disable EZ_USE_PCH</strong>, as the Clang build will not work with precompiled headers.</li>
-<li>You may also want to <strong>disable EZ_ENABLE_FOLDER_UNITY_FILES</strong> as that makes it easier to see from which file a compilation error originated.</li>
-<li>Finish the <a href="cmake-config.html">CMake configuration</a>, open the solution in Visual Studio and start compiling.</li>
-</ol>
+<p>The clang frontend for the Visual Studio Compiler is no longer in development. Use official LLVM Clang as described above.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="build-windows.html">Windows Builds</a></li>

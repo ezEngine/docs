@@ -1649,7 +1649,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/build/clang-on-windows.html",
-          "hash": "KyyJTm6DVhFVtTyMsW+7LBEGSSwiTsuSh0v0PowP3S4="
+          "hash": "O5H47qrswNcLb8Yt5p8aeDt5YjPG8gvRgffBaP6RJOg="
         }
       },
       "is_incremental": false,
@@ -6687,7 +6687,7 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/tools/headercheck.html",
-          "hash": "XezvyOrnqFJsTB5ERH77bKfZye4slE94WgzhhPJND8c="
+          "hash": "uUk8KMkDrlChr8294zl6axowXV7DKAuPr0qVdtAZYAE="
         }
       },
       "is_incremental": false,
