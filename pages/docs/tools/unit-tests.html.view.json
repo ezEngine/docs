@@ -4,7 +4,7 @@
   "source": {
     "remote": {
       "path": "pages/docs/tools/unit-tests.md",
-      "branch": "docfx_update",
+      "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
     "startLine": 0.0,
@@ -14,7 +14,7 @@
   "documentation": {
     "remote": {
       "path": "pages/docs/tools/unit-tests.md",
-      "branch": "docfx_update",
+      "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
     "startLine": 0.0,
