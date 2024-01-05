@@ -29,8 +29,8 @@
     },
     {
       "name": "Contact",
+      "href": "pages/contact.html",
       "topicHref": "pages/contact.html",
-      "homepage": "pages/contact.html",
       "tocHref": null,
       "level": 2.0,
       "items": [],
