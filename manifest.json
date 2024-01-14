@@ -1712,6 +1712,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/visual-script/media/vs-array.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/visual-script/media/vs-array.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/custom-code/visual-script/media/vs-context.png",
       "output": {
         "resource": {
@@ -4392,6 +4402,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/jolt/special/jolt-cloth-sheet-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/jolt/special/jolt-cloth-sheet-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/physics/jolt/special/jolt-grab-object-component.md",
       "output": {
         ".html": {
@@ -4426,6 +4446,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/physics/jolt/special/media/grab-items.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/special/media/jolt-cloth-sheet.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/special/media/jolt-cloth-sheet.jpg"
         }
       },
       "version": ""

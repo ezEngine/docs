@@ -143,11 +143,13 @@
 </ol>
 <p>Once you have obtained a recent version of Qt, you have two options so that the ezEngine cmake scripts find it:</p>
 <ol>
-<li>Add the install location permantently to your <code>PATH</code> environment variable</li>
-<li>Specify the install location when calling <code>RunCMake.sh</code> like this:</li>
-</ol>
-<pre><code> &gt; PATH=/path/to/qt6/install:$PATH ./RunCMake.sh
+<li><p>Add the install location permantently to your <code>PATH</code> environment variable</p>
+</li>
+<li><p>Specify the install location when calling <code>RunCMake.sh</code> like this:</p>
+<pre><code class="lang-bash">&gt; PATH=/path/to/qt6/install:$PATH ./RunCMake.sh
 </code></pre>
+</li>
+</ol>
 <h2 id="manual-setup">Manual Setup</h2>
 <p>If you want to setup things manually or your distribution is not supported by the <code>RunCMake.sh</code> script, you will most likely need all of the following packages:</p>
 <ul>
@@ -224,6 +226,9 @@ cmake -B build -S . -G Ninja -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_C_COMPILER=gcc-
 </code></pre>
 <h2 id="using-qt-creator">Using Qt Creator</h2>
 <p>The root of the repository can also be opened in Qt Creator, which will generally do a good job at finding the Qt location on its own.</p>
+<!-- TODO: should add something about building and setting the precompiled binaries.
+See https://github.com/ezEngine/ezEngine/pull/1152
+ -->
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="building-ez.html">Building ezEngine</a></li>
