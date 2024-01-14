@@ -1055,6 +1055,15 @@
                   "leaf": true
                 },
                 {
+                  "name": "Jolt Cloth Sheet Component",
+                  "href": "physics/jolt/special/jolt-cloth-sheet-component.html",
+                  "topicHref": "physics/jolt/special/jolt-cloth-sheet-component.html",
+                  "tocHref": null,
+                  "level": 5.0,
+                  "items": [],
+                  "leaf": true
+                },
+                {
                   "name": "Jolt Grab Object Component",
                   "href": "physics/jolt/special/jolt-grab-object-component.html",
                   "topicHref": "physics/jolt/special/jolt-grab-object-component.html",
