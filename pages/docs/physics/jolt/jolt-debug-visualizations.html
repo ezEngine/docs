@@ -89,16 +89,37 @@
         <article data-uid="">
 <h1 id="jolt-debug-visualizations">Jolt Debug Visualizations</h1>
 
-<p>To debug physics issues it can be very valuable to visualize certain aspects of the Jolt simulation.</p>
-<p>Debug visualizations are enabled through <a href="../../debugging/cvars.html">CVars</a>.</p>
-<p><img src="media/jolt-debug-vis.jpg" alt="Jolt Debug Visualization"></p>
-<p>These debug draw CVars are available:</p>
+<p>To debug physics issues it can be very valuable to visualize certain aspects of the Jolt simulation.
+Debug visualizations are enabled through <a href="../../debugging/cvars.html">CVars</a>.</p>
+<p><img src="media/jolt-debug-geo-terrain.jpg" alt="Jolt Geometry"></p>
+<h2 id="visualize-jolt-geometry">Visualize Jolt Geometry</h2>
+<p>These <a href="../../debugging/cvars.html">CVars</a> enable rendering of the Jolt collision geometry:</p>
+<ul>
+<li><code>Jolt.Visualize.Geometry</code>: Enables visualization of physics collision geometry.</li>
+<li><code>Jolt.Visualize.Exclusive</code>: Disables rendering of regular geometry.</li>
+<li><code>Jolt.Visualize.Distance</code>: Configures the distance up to which Jolt geomtry gets extracted from objects.</li>
+</ul>
+<p>The collision geometry is rendered using these color codes:</p>
+<ul>
+<li><em>light blue</em> = <a href="actors/jolt-static-actor-component.html">static geometry</a></li>
+<li><em>dark blue</em> = <a href="actors/jolt-dynamic-actor-component.html">kinematic</a></li>
+<li><em>yellow</em> = <a href="actors/jolt-dynamic-actor-component.html">dynamic bodies</a></li>
+<li><em>green</em> = <a href="actors/jolt-queryshape-actor-component.html">query shapes</a> (or <a href="ragdolls/jolt-hitbox-component.html">hitboxes</a>)</li>
+<li><em>pink</em> = <a href="ragdolls/jolt-ragdoll-component.html">ragdolls</a> and ropes<a href="special/jolt-rope-component.html">Jolt Rope Component</a></li>
+<li><em>red</em> = soft bodies</li>
+<li><em>transparent</em> = <a href="actors/jolt-trigger-component.html">triggers</a></li>
+</ul>
+<p><img src="media/jolt-debug-geo-types.jpg" alt="Color coding"></p>
+<h2 id="debug-draw-constraints">Debug Draw Constraints</h2>
+<p>The <em>debug draw</em> CVars enable wireframe overlays which are mainly useful to debug issues with constraints. This visualization has a high performance impact and thus should only be used in very small test scenes.</p>
+<p>These debug draw <a href="../../debugging/cvars.html">CVars</a> are available:</p>
 <ul>
 <li><code>Jolt.DebugDraw.Bodies</code>: Enables visualization of physics bodies.</li>
 <li><code>Jolt.DebugDraw.Constraints</code>: Enables basic visualization of <a href="constraints/jolt-constraints.html">constraints</a>.</li>
 <li><code>Jolt.DebugDraw.ConstraintFrames</code>: Enables more detailed visualization of constraints.</li>
 <li><code>Jolt.DebugDraw.ConstraintLimits</code>: Enables visualization of constraint limits.</li>
 </ul>
+<p><img src="media/jolt-debug-vis.jpg" alt="Jolt Debug Visualization"></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="jolt-overview.html">Jolt Integration</a></li>

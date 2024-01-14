@@ -4292,6 +4292,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/media/jolt-debug-geo-terrain.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/media/jolt-debug-geo-terrain.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/media/jolt-debug-geo-types.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/media/jolt-debug-geo-types.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/physics/jolt/media/jolt-debug-vis.jpg",
       "output": {
         "resource": {
