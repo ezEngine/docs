@@ -7100,6 +7100,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "privacy-policy.md",
+      "output": {
+        ".html": {
+          "relative_path": "privacy-policy.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
