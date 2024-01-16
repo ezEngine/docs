@@ -133,7 +133,7 @@ if (pObject-&gt;TryGetComponentOfBaseType(pMesh))
   {
     EZ_MEMBER_PROPERTY(&quot;Size&quot;, m_fSize)-&gt;AddAttributes(new ezDefaultValueAttribute(1), new ezClampValueAttribute(0, 10)),
     EZ_MEMBER_PROPERTY(&quot;Color&quot;, m_Color)-&gt;AddAttributes(new ezDefaultValueAttribute(ezColor::White)),
-    EZ_ACCESSOR_PROPERTY(&quot;Texture&quot;, GetTextureFile, SetTextureFile)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;Texture 2D&quot;)),
+    EZ_ACCESSOR_PROPERTY(&quot;Texture&quot;, GetTextureFile, SetTextureFile)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Texture_2D&quot;)),
     EZ_BITFLAGS_MEMBER_PROPERTY(&quot;Render&quot;, DebugRenderComponentMask, m_RenderTypes)-&gt;AddAttributes(new ezDefaultValueAttribute(DebugRenderComponentMask::Box)),
   }
   EZ_END_PROPERTIES;
@@ -200,11 +200,11 @@ EZ_END_COMPONENT_TYPE
 <p>To implement proper serialization, you need to override <code>ezComponent::SerializeComponent()</code> and <code>ezComponent::DeserializeComponent()</code>.</p>
 <p>During serialization you simply write data to a stream, as you like:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: component-serialize -->
-<pre><code class="lang-cpp">void DemoComponent::SerializeComponent(ezWorldWriter&amp; stream) const
+<pre><code class="lang-cpp">void DemoComponent::SerializeComponent(ezWorldWriter&amp; inout_stream) const
 {
-  SUPER::SerializeComponent(stream);
+  SUPER::SerializeComponent(inout_stream);
 
-  auto&amp; s = stream.GetStream();
+  auto&amp; s = inout_stream.GetStream();
 
   s &lt;&lt; m_fAmplitude;
   s &lt;&lt; m_Speed;
@@ -219,12 +219,12 @@ EZ_END_COMPONENT_TYPE
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>The version number should be increased every time the serialization format of the component type has to change. During deserialization you can query the version number with which this component data was written. You than have to handle converting older formats as appropriate:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: component-deserialize -->
-<pre><code class="lang-cpp">void DemoComponent::DeserializeComponent(ezWorldReader&amp; stream)
+<pre><code class="lang-cpp">void DemoComponent::DeserializeComponent(ezWorldReader&amp; inout_stream)
 {
-  SUPER::DeserializeComponent(stream);
-  const ezUInt32 uiVersion = stream.GetComponentTypeVersion(GetStaticRTTI());
+  SUPER::DeserializeComponent(inout_stream);
+  const ezUInt32 uiVersion = inout_stream.GetComponentTypeVersion(GetStaticRTTI());
 
-  auto&amp; s = stream.GetStream();
+  auto&amp; s = inout_stream.GetStream();
 
   s &gt;&gt; m_fAmplitude;
 
@@ -234,7 +234,7 @@ EZ_END_COMPONENT_TYPE
     // convert this to ezAngle
     float fDegree;
     s &gt;&gt; fDegree;
-    m_Speed = ezAngle::Degree(fDegree);
+    m_Speed = ezAngle::MakeFromDegree(fDegree);
   }
   else
   {

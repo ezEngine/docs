@@ -121,8 +121,7 @@
 <p>A full example for how to use the debug renderer is given in the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a>. Here, the <code>DebugRenderComponent</code> shows how to utilize the debug renderer.</p>
 <p>The following code snippet is sufficient to render a wireframe sphere at the location of the component:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: debugrender-sphere -->
-<pre><code class="lang-cpp">ezBoundingSphere sphere;
-sphere.SetElements(ezVec3::ZeroVector(), m_fSize);
+<pre><code class="lang-cpp">ezBoundingSphere sphere = ezBoundingSphere::MakeFromCenterAndRadius(ezVec3::MakeZero(), m_fSize);
 ezDebugRenderer::DrawLineSphere(GetWorld(), sphere, m_Color, ownerTransform);
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->

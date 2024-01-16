@@ -151,7 +151,7 @@ ezCVarBool cvar_DebugDisplay(&quot;Game.DebugDisplay&quot;, false, ezCVarFlags::
 <!-- BEGIN-DOCS-CODE-SNIPPET: cvar-2 -->
 <pre><code class="lang-cpp">if (cvar_DebugDisplay)
 {
-  ezDebugRenderer::DrawLineSphere(m_pMainWorld, ezBoundingSphere(ezVec3::ZeroVector(), 1.0f), ezColor::Orange);
+  ezDebugRenderer::DrawLineSphere(m_pMainWorld, ezBoundingSphere::MakeFromCenterAndRadius(ezVec3::MakeZero(), 1.0f), ezColor::Orange);
 }
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->

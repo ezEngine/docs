@@ -111,8 +111,8 @@
   // ezComponent
 
 public:
-  virtual void SerializeComponent(ezWorldWriter&amp; stream) const override;
-  virtual void DeserializeComponent(ezWorldReader&amp; stream) override;
+  virtual void SerializeComponent(ezWorldWriter&amp; inout_stream) const override;
+  virtual void DeserializeComponent(ezWorldReader&amp; inout_stream) override;
 
 protected:
   virtual void OnSimulationStarted() override;
@@ -128,7 +128,7 @@ private:
   void Update();
 
   float m_fAmplitude = 1.0f;             // [ property ]
-  ezAngle m_Speed = ezAngle::Degree(90); // [ property ]
+  ezAngle m_Speed = ezAngle::MakeFromDegree(90); // [ property ]
 };
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
@@ -143,7 +143,7 @@ EZ_BEGIN_COMPONENT_TYPE(DemoComponent, 3 /* version */, ezComponentMode::Dynamic
   EZ_BEGIN_PROPERTIES
   {
     EZ_MEMBER_PROPERTY(&quot;Amplitude&quot;, m_fAmplitude)-&gt;AddAttributes(new ezDefaultValueAttribute(1), new ezClampValueAttribute(0, 10)),
-    EZ_MEMBER_PROPERTY(&quot;Speed&quot;, m_Speed)-&gt;AddAttributes(new ezDefaultValueAttribute(ezAngle::Degree(90))),
+    EZ_MEMBER_PROPERTY(&quot;Speed&quot;, m_Speed)-&gt;AddAttributes(new ezDefaultValueAttribute(ezAngle::MakeFromDegree(90))),
   }
   EZ_END_PROPERTIES;
 
@@ -187,11 +187,11 @@ void DemoComponent::Update()
 <h2 id="serialization">Serialization</h2>
 <p>Finally, to make our component also work in exported scenes, we need to implement serialization:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: component-serialize -->
-<pre><code class="lang-cpp">void DemoComponent::SerializeComponent(ezWorldWriter&amp; stream) const
+<pre><code class="lang-cpp">void DemoComponent::SerializeComponent(ezWorldWriter&amp; inout_stream) const
 {
-  SUPER::SerializeComponent(stream);
+  SUPER::SerializeComponent(inout_stream);
 
-  auto&amp; s = stream.GetStream();
+  auto&amp; s = inout_stream.GetStream();
 
   s &lt;&lt; m_fAmplitude;
   s &lt;&lt; m_Speed;
@@ -201,12 +201,12 @@ void DemoComponent::Update()
 <p>This writes out the data in the latest format. If you change the format, you should increase the version number of your component in the reflection block at the very top.</p>
 <p>Obviously, at runtime we also need to deserialize our component. This is where we implement backwards compatibility for older exported scenes:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: component-deserialize -->
-<pre><code class="lang-cpp">void DemoComponent::DeserializeComponent(ezWorldReader&amp; stream)
+<pre><code class="lang-cpp">void DemoComponent::DeserializeComponent(ezWorldReader&amp; inout_stream)
 {
-  SUPER::DeserializeComponent(stream);
-  const ezUInt32 uiVersion = stream.GetComponentTypeVersion(GetStaticRTTI());
+  SUPER::DeserializeComponent(inout_stream);
+  const ezUInt32 uiVersion = inout_stream.GetComponentTypeVersion(GetStaticRTTI());
 
-  auto&amp; s = stream.GetStream();
+  auto&amp; s = inout_stream.GetStream();
 
   s &gt;&gt; m_fAmplitude;
 
@@ -216,7 +216,7 @@ void DemoComponent::Update()
     // convert this to ezAngle
     float fDegree;
     s &gt;&gt; fDegree;
-    m_Speed = ezAngle::Degree(fDegree);
+    m_Speed = ezAngle::MakeFromDegree(fDegree);
   }
   else
   {

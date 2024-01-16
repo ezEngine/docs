@@ -116,14 +116,14 @@
 <p>The world sends the <a href="world-messaging.html">message</a> <code>ezMsgUpdateLocalBounds</code> to all components when it determines that an update is necessary. This can also be triggered manually by calling <code>ezGameObject::UpdateLocalBounds()</code> when spatial data, such as which category to use, has been modified.</p>
 <p>Components can handle this message and add spatial information to it. For 3D objects one would use something like the bounding sphere of a mesh, but it is also possible to use more abstract spatial data. For example the <a href="../../../samples/rts.html">RTS sample</a> has an <code>RtsSelectableComponent</code> which is attached to all units that should be selectable by the player. Although the <code>RtsSelectableComponent</code> doesn't have a visual representation, it reacts to <code>ezMsgUpdateLocalBounds</code> to add spatial data, which can then be used to efficiently look up units under the mouse cursor.</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: spatial-bounds-update -->
-<pre><code class="lang-cpp">void RtsSelectableComponent::OnUpdateLocalBounds(ezMsgUpdateLocalBounds&amp; msg)
+<pre><code class="lang-cpp">void RtsSelectableComponent::OnUpdateLocalBounds(ezMsgUpdateLocalBounds&amp; ref_msg)
 {
   ezBoundingBoxSphere bounds;
   bounds.m_fSphereRadius = m_fSelectionRadius;
   bounds.m_vCenter.SetZero();
   bounds.m_vBoxHalfExtends.Set(m_fSelectionRadius);
 
-  msg.AddBounds(bounds, s_SelectableCategory);
+  ref_msg.AddBounds(bounds, s_SelectableCategory);
 }
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
@@ -140,9 +140,9 @@ EZ_END_MESSAGEHANDLERS;
 <p>Once you have spatial data inserted into the system, you can use it to efficiently query for objects within a volume.</p>
 <p>When calling functions such as <code>ezSpatialSystem::FindObjectsInSphere()</code> you have to provide a <em>bitmask</em> of categories. That's because you can request to get objects from multiple categories at the same time. You can get this bitmask by calling <code>ezSpatialData::Category::GetBitmask()</code> on a category object.</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: spatial-query -->
-<pre><code class="lang-cpp">void RtsGameState::InspectObjectsInArea(const ezVec2&amp; position, float radius, ezSpatialSystem::QueryCallback callback) const
+<pre><code class="lang-cpp">void RtsGameState::InspectObjectsInArea(const ezVec2&amp; vPosition, float fRadius, ezSpatialSystem::QueryCallback callback) const
 {
-  ezBoundingSphere sphere(position.GetAsVec3(0), radius);
+  ezBoundingSphere sphere = ezBoundingSphere::MakeFromCenterAndRadius(vPosition.GetAsVec3(0), fRadius);
   ezSpatialSystem::QueryParams queryParams;
   queryParams.m_uiCategoryBitmask = RtsSelectableComponent::s_SelectableCategory.GetBitmask();
   m_pMainWorld-&gt;GetSpatialSystem()-&gt;FindObjectsInSphere(sphere, queryParams, callback);
