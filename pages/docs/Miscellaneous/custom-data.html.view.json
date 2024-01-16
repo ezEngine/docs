@@ -1,51 +1,25 @@
 {
-  "items": [
-    {
-      "name": "Videos",
-      "href": "videos.html",
-      "topicHref": "videos.html",
-      "tocHref": null,
-      "level": 2.0,
-      "items": [],
-      "leaf": true
+  "conceptual": "\n<!-- PAGE IS TODO -->\n<h2 id=\"see-also\" sourcefile=\"pages/docs/Miscellaneous/custom-data.md\" sourcestartlinenumber=\"5\">See Also</h2>\n<ul sourcefile=\"pages/docs/Miscellaneous/custom-data.md\" sourcestartlinenumber=\"7\">\n<li sourcefile=\"pages/docs/Miscellaneous/custom-data.md\" sourcestartlinenumber=\"7\"><a href=\"~/pages/docs/Miscellaneous/config-file-resource.md\" sourcefile=\"pages/docs/Miscellaneous/custom-data.md\" sourcestartlinenumber=\"7\">Config File Resource</a></li>\n</ul>\n",
+  "type": "Conceptual",
+  "source": {
+    "remote": {
+      "path": "pages/docs/Miscellaneous/custom-data.md",
+      "branch": "main",
+      "repo": "https://github.com/ezEngine/docs-src"
     },
-    {
-      "name": "Frequently Asked Questions",
-      "href": "faq.html",
-      "topicHref": "faq.html",
-      "tocHref": null,
-      "level": 2.0,
-      "items": [],
-      "leaf": true
+    "startLine": 0.0,
+    "endLine": 0.0
+  },
+  "path": "pages/docs/Miscellaneous/custom-data.md",
+  "documentation": {
+    "remote": {
+      "path": "pages/docs/Miscellaneous/custom-data.md",
+      "branch": "main",
+      "repo": "https://github.com/ezEngine/docs-src"
     },
-    {
-      "name": "How to Contribute",
-      "href": "how-to-contribute.html",
-      "topicHref": "how-to-contribute.html",
-      "tocHref": null,
-      "level": 2.0,
-      "items": [],
-      "leaf": true
-    },
-    {
-      "name": "Prebuilt Binaries",
-      "href": "binaries.html",
-      "topicHref": "binaries.html",
-      "tocHref": null,
-      "level": 2.0,
-      "items": [],
-      "leaf": true
-    },
-    {
-      "name": "ezEditor Overview",
-      "href": "editor-overview.html",
-      "topicHref": "editor-overview.html",
-      "tocHref": null,
-      "level": 2.0,
-      "items": [],
-      "leaf": true
-    }
-  ],
+    "startLine": 0.0,
+    "endLine": 0.0
+  },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
   "_appLogoPath": "assets/images/EZ-text.svg",
@@ -58,15 +32,28 @@
     "repo": "https://github.com/ezEngine/docs-src",
     "branch": "main"
   },
-  "_key": "pages/getting-started/toc.md",
+  "_systemKeys": [
+    "conceptual",
+    "type",
+    "source",
+    "path",
+    "documentation",
+    "title",
+    "rawTitle",
+    "wordCount"
+  ],
+  "rawTitle": "<h1 id=\"custom-data\" sourcefile=\"pages/docs/Miscellaneous/custom-data.md\" sourcestartlinenumber=\"1\">Custom Data</h1>",
+  "title": "Custom Data",
+  "wordCount": 5.0,
+  "_key": "pages/docs/Miscellaneous/custom-data.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",
-  "_navRel": "../../toc.html",
-  "_path": "pages/getting-started/toc.html",
-  "_rel": "../../",
-  "_tocKey": "~/pages/getting-started/toc.md",
-  "_tocPath": "pages/getting-started/toc.html",
-  "_tocRel": "toc.html",
+  "_navRel": "../../../toc.html",
+  "_path": "pages/docs/Miscellaneous/custom-data.html",
+  "_rel": "../../../",
+  "_tocKey": "~/pages/docs/toc.md",
+  "_tocPath": "pages/docs/toc.html",
+  "_tocRel": "../toc.html",
   "__global": {
     "namespacesInSubtitle": "Namespaces",
     "classesInSubtitle": "Classes",
@@ -141,11 +128,6 @@
     "downloadPdf": "Download PDF",
     "_shared": {}
   },
-  "topicHref": null,
-  "tocHref": null,
-  "name": null,
-  "level": 1.0,
-  "leaf": false,
-  "title": "Table of Content",
-  "_disableToc": true
+  "_disableToc": false,
+  "docurl": "https://github.com/ezEngine/docs-src/blob/main/pages/docs/Miscellaneous/custom-data.md/#L1"
 }
