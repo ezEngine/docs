@@ -2211,12 +2211,101 @@
       "level": 2.0
     },
     {
-      "name": "[](./pages/docs/miscellaneous)",
+      "name": "Miscellaneous",
+      "items": [
+        {
+          "name": "Components",
+          "items": [
+            {
+              "name": "Comment Component",
+              "href": "Miscellaneous/components/comment-component.html",
+              "topicHref": "Miscellaneous/components/comment-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Shape Icon Component",
+              "href": "Miscellaneous/components/shape-icon-component.html",
+              "topicHref": "Miscellaneous/components/shape-icon-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            }
+          ],
+          "topicHref": null,
+          "tocHref": null,
+          "level": 3.0
+        },
+        {
+          "name": "Global Blackboard Component",
+          "href": "Miscellaneous/global-blackboard-component.html",
+          "topicHref": "Miscellaneous/global-blackboard-component.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Config File Resource",
+          "href": "Miscellaneous/config-file-resource.html",
+          "topicHref": "Miscellaneous/config-file-resource.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Custom Data (TODO)",
+          "href": "Miscellaneous/custom-data.html",
+          "topicHref": "Miscellaneous/custom-data.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Blackboard Template Asset",
+          "href": "Miscellaneous/blackboard-template-asset.html",
+          "topicHref": "Miscellaneous/blackboard-template-asset.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "ImageData Asset",
+          "href": "Miscellaneous/imagedata-asset.html",
+          "topicHref": "Miscellaneous/imagedata-asset.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Local Blackboard Component",
+          "href": "Miscellaneous/local-blackboard-component.html",
+          "topicHref": "Miscellaneous/local-blackboard-component.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Blackboards",
+          "href": "Miscellaneous/blackboards.html",
+          "topicHref": "Miscellaneous/blackboards.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        }
+      ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0,
-      "items": [],
-      "leaf": true
+      "level": 2.0
     },
     {
       "name": "Custom Code",
