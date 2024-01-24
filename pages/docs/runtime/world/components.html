@@ -135,6 +135,8 @@ if (pObject-&gt;TryGetComponentOfBaseType(pMesh))
     EZ_MEMBER_PROPERTY(&quot;Color&quot;, m_Color)-&gt;AddAttributes(new ezDefaultValueAttribute(ezColor::White)),
     EZ_ACCESSOR_PROPERTY(&quot;Texture&quot;, GetTextureFile, SetTextureFile)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Texture_2D&quot;)),
     EZ_BITFLAGS_MEMBER_PROPERTY(&quot;Render&quot;, DebugRenderComponentMask, m_RenderTypes)-&gt;AddAttributes(new ezDefaultValueAttribute(DebugRenderComponentMask::Box)),
+
+    EZ_ACCESSOR_PROPERTY(&quot;CustomData&quot;, GetSampleCustomDataResource, SetSampleCustomDataResource)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_CustomData&quot;)),
   }
   EZ_END_PROPERTIES;
 
