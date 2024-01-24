@@ -222,6 +222,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/Miscellaneous/media/custom-data-asset-create.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/Miscellaneous/media/custom-data-asset-create.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/Miscellaneous/media/custom-data-asset-edit.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/Miscellaneous/media/custom-data-asset-edit.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/Shipping/media/project-export-dlg.png",
       "output": {
         "resource": {

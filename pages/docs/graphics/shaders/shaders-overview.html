@@ -188,7 +188,7 @@ WireFrame = true
 <h3 id="shader-stages">*SHADER stages</h3>
 <p>Each shader stage has its own section. The following stages are supported: <code>VERTEXSHADER</code>, <code>HULLSHADER</code>, <code>DOMAINSHADER</code>, <code>GEOMETRYSHADER</code>, <code>PIXELSHADER</code> and <code>COMPUTESHADER</code>. Even if you define a shader section, you can use the preprocessor to remove its content via permutation variables, allowing you to remove stages from certain permutations.</p>
 <p>The entry point into each stage must be called <code>main</code>. The shader code supports preprocessor macros that are defined by <a href="shader-permutation-variables.html">permutation variables</a> as well as include directives.
-Beyond that, any HLSL code is fine as long as it compiles on the <a href="#platforms">platforms</a> the shader defines. However, when defining resources, special care must be taken to ensure no conflicting resource mappings are created between the stages. Please refer to the <a href="./shaders-resources.md">shader resource</a> page for further details and on how to facilitate interop with the C++ code.</p>
+Beyond that, any HLSL code is fine as long as it compiles on the <a href="#platforms">platforms</a> the shader defines. However, when defining resources, special care must be taken to ensure no conflicting resource mappings are created between the stages. Please refer to the <a href="shader-resources.html">shader resource</a> page for further details and on how to facilitate interop with the C++ code.</p>
 <h3 id="template_vars">TEMPLATE_VARS</h3>
 <p>This section is only used when <a href="shader-templates.html#adding-a-shader-template">creating a shader template</a>.</p>
 <h2 id="see-also">See Also</h2>
