@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Shaders Resources | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Shaders Resources | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-resources.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="shaders-resources">Shaders Resources</h1>
+
+<p>Shader resources are things like textures, samplers constant buffers etc. that need to be separately bound in the renderer for the shader to function. Each resource must be bound to a set and slot. Depending on the <a href="shaders-overview.html#platforms">platform</a> used, the requirements for this binding can be very different. E.g. in Vulkan slot assignments must be unique within a set across all stages while in DX11 most slots only need to be unique within a stage. Not following these rules will result in a runtime error. Manually assigning slots is an option but is very tedious. To make this easier, the shader system can automate this process provided some constraints are met how resourced are declared.</p>
+<ol>
+<li>Currently, EZ does not support arrays of resources like <code>Texture2D Diffuse[3]</code> in its shaders.</li>
+<li>Resources must have unique names across all shader stages. The same resource name can be used in multiple stages as long as the resource it maps to is exactly the same.</li>
+</ol>
+<h2 id="resource-binding">Resource Binding</h2>
+<p>The shader system only supports the DX11 / DX12 <a href="https://learn.microsoft.com/windows/win32/direct3d12/resource-binding-in-hlsl">register syntax</a> for resource binding. Both the set and slot can be bound. If no set is given, it is implicitly set 0. Here is a list of a few examples of how to bind resources properly:</p>
+<pre><code class="lang-cpp">Texture2D Diffuse : register(t3, space1); // DX12 syntax, slot 3, set 1
+SamplerState MySampler : register(s4); // DX11 syntax slot 4, set 0 (default)
+ByteAddressBuffer MyBuffer BIND_RESOURCE(SLOT_AUTO, SET_RENDER_PASS); // Slot Auto, set 1
+ByteAddressBuffer MyBuffer2 BIND_SET(SET_RENDER_PASS); // Slot Auto, set 1
+
+CONSTANT_BUFFER(ezTestPositions, 1) // Slot 1, set 0 (default)
+{
+  ...
+};
+
+CONSTANT_BUFFER2(ezTestPositions, SLOT_AUTO, SET_MATERIAL) // Slot Auto, set 2
+{
+  ...
+};
+</code></pre>
+<p>The HLSL <code>register</code> syntax is a bit impractical, so the macros <code>BIND_RESOURCE(Slot, Set)</code> and <code>BIND_SET(Set)</code> were introduced. These will generate invalid HLSL code which the shader compiler will eventually parse, organize and patch to do the correct thing on each platform. In most cases, you should only be concerned about deciding in which set a resource should reside in. Either use the macro <code>SLOT_AUTO</code> when setting a slot or just use the <code>BIND_SET</code> macro which omits the slot entirely. While you can set any integer for the set, some platforms like Vulkan have a limit on how many sets can be managed at the same time with a minimum of four. EZ defines macros for these four sets: <code>SET_FRAME</code>, <code>SET_RENDER_PASS</code>, <code>SET_MATERIAL</code> and <code>SET_DRAW_CALL</code>. Resources should ideally be bound to these sets according to their update frequency.</p>
+<h2 id="constant-buffers">Constant Buffers</h2>
+<p>Constant buffers map to <code>ezGALShaderResourceType::ConstantBuffer</code> in C++.
+To facilitate C++ interop, constant buffers should be placed into a separate header file that looks like this:</p>
+<pre><code class="lang-cpp">#pragma once
+#include &lt;Shaders/Common/ConstantBufferMacros.h&gt;
+
+CONSTANT_BUFFER(ezTestPositions, 3)
+{
+  FLOAT4(Vertex0);
+  FLOAT4(Vertex1);
+  FLOAT4(Vertex2);
+};
+</code></pre>
+<p>By using the macros defined in <strong>ConstantBufferMacros.h</strong> like <code>CONSTANT_BUFFER</code> and the data types like <code>FLOAT4</code>, the file can be included in both shader and C++ code. This makes it easy to create an instance of the constant buffer as a C++ struct in code to update it. Care must be taken to ensure that the constant buffer has the same layout in C++ and HLSL though:</p>
+<ol>
+<li>Make sure that the size of your struct is a multiple of 16 bytes. Fill out any missing bytes with dummy <code>FLOAT1</code> entries.</li>
+<li>A <code>FLOAT3</code> can't be followed by another <code>FLOAT3</code>. It should be followed by a <code>FLOAT1</code> first or some other types of the same byte counts to ensure the next <code>FLOAT3</code> starts at a 16 byte boundary. This is necessary as the layout rules are different between HLSL and C++.</li>
+</ol>
+<h2 id="push-constants">Push Constants</h2>
+<p>Push constants map to <code>ezGALShaderResourceType::PushConstants</code> in C++. Push constants allow for fast updates of a small set of bytes. Usually at least 128 bytes. You can check <code>ezGALDeviceCapabilities::m_uiMaxPushConstantsSize</code> for the max push constant buffer size. On platforms that don't support push constants like DX11, this is emulated via a constant buffer. Only one push constants block is supported across all shader stages of a shader. Like with constant buffers, special macros have to be used and the declaration should be put into a separate header so it can be included in both shader and C++ code:</p>
+<pre><code class="lang-cpp">// Header:
+#pragma once
+#include &lt;Shaders/Common/ConstantBufferMacros.h&gt;
+
+BEGIN_PUSH_CONSTANTS(ezTestData)
+{
+  FLOAT4(VertexColor);
+  FLOAT4(Vertex0);
+  FLOAT4(Vertex1);
+  FLOAT4(Vertex2);
+}
+END_PUSH_CONSTANTS(ezTestData)
+
+// Shader:
+float4 main(VS_OUT a) : SV_Target
+{
+  return GET_PUSH_CONSTANT(ezTestData, VertexColor);
+}
+
+// C++:
+ezTestData constants;
+constants.VertexColor = ...;
+pContext-&gt;SetPushConstants(&quot;ezTestData&quot;, constants);
+</code></pre>
+<p>The <code>BEGIN_PUSH_CONSTANTS</code> and <code>END_PUSH_CONSTANTS</code> macros define the struct. Unlike with constant buffers, you can't simply access the values inside a shader by just the name of the variable, e.g. <code>VertexColor</code>. This is because depending on the platform, a different syntax needs to be used to access the content. To make the same shader compile on all platforms, you need to use the <code>GET_PUSH_CONSTANT(Name, Constant)</code> macro to access a member of the push constant buffer.</p>
+<h2 id="samplers">Samplers</h2>
+<p>Samplers map to <code>ezGALShaderResourceType::Sampler</code> or <code>ezGALShaderResourceType::TextureAndSampler</code> in C++. Two types of samplers are supported: <code>SamplerState</code> and <code>SamplerComparisonState</code>. The naming of the samplers is important, as it can be used to optimize your workflow. ezEngine has a concept of immutable Samplers, these samplers are automatically bound so you can use them in the shader without needing to define them in C++. Immutable samplers are registered in code via <code>ezGALImmutableSamplers::RegisterImmutableSampler</code>. Currently, these samplers are registered: <code>LinearSampler</code>, <code>LinearClampSampler</code>, <code>PointSampler</code> and <code>PointClampSampler</code>.</p>
+<p>ezEngine does not allow for two different resources to have the same name, the only exception is textures and samplers which can have the same name by calling the sampler <em>NAME_AutoSampler</em>. The compiler will rename the sampler to <em>NAME</em> and on platforms that support combined image samplers both will be combined into a single resource of type <code>ezGALShaderResourceType::TextureAndSampler</code>. The benefit of this approach is that when binding a texture resource to a material for example, the texture resource can define both the texture as well as the sampler state, binding both to the same name.</p>
+<pre><code class="lang-cpp">SamplerState DiffuseSampler;
+SamplerComparisonState ShadowSampler;
+// Auto sampler combines with texture of the same name: 
+Texture2D BaseTexture;
+SamplerState BaseTexture_AutoSampler;
+</code></pre>
+<h2 id="textures">Textures</h2>
+<p>Textures map to <code>ezGALShaderResourceType::Texture</code> or <code>ezGALShaderResourceType::TextureAndSampler</code> in C++ (see samplers above). ezEngine supports all HLSL texture types except for 1D textures. You can work around this by creating 1xN 2DTextures.</p>
+<pre><code class="lang-cpp">Texture1D texture1D; // 1D textures currently not supported.
+Texture1DArray texture1DArray; // 1D textures currently not supported.
+Texture2D texture2D;
+Texture2DArray texture2DArray;
+Texture2DMS&lt;float4&gt; texture2DMS;
+Texture2DMSArray&lt;float4&gt; texture2DMSArray;
+Texture3D texture3D;
+TextureCube textureCube;
+TextureCubeArray textureCubeArray;
+</code></pre>
+<p>Read-write variants are also supported and map to <code>ezGALShaderResourceType::TextureRW</code> in C++.</p>
+<pre><code class="lang-cpp">RWTexture1D&lt;float&gt; rwTexture1D; // 1D textures currently not supported.
+RWTexture1DArray&lt;float2&gt; rwTexture1DArray; // 1D textures currently not supported.
+RWTexture2D&lt;float3&gt; rwTexture2D;
+RWTexture2DArray&lt;float4&gt; rwTexture2DArray;
+RWTexture3D&lt;uint&gt; rwTexture3D;
+</code></pre>
+<h2 id="buffers">Buffers</h2>
+<p>There are three types of buffers supported by EZ:</p>
+<ol>
+<li>HLSL's <code>Buffer&lt;T&gt;</code> type is very similar to a 1D texture. A buffer of the same type T needs to be bound to the resource. Maps to <code>ezGALShaderResourceType::TexelBuffer</code> in C++.</li>
+<li><code>StructuredBuffer&lt;T&gt;</code> should follow the same rules as for constant buffers: Put the declaration in a separate header file to allow access to it from C++ and ensure each struct is 16 bytes aligned. Maps to <code>ezGALShaderResourceType::StructuredBuffer</code> in C++.</li>
+<li><code>ByteAddressBuffer</code> in just an array of bytes. A raw buffer needs to be bound to the resource. With HLSL 5.1, you can cast any offset of the buffer into a struct. Maps to <code>ezGALShaderResourceType::StructuredBuffer</code> in C++.</li>
+</ol>
+<pre><code class="lang-cpp">// Header:
+#pragma once
+#include &lt;Shaders/Common/ConstantBufferMacros.h&gt;
+
+struct EZ_SHADER_STRUCT PerInstanceData
+{
+  TRANSFORM(ObjectToWorld);
+};
+
+// Shader:
+Buffer&lt;uint&gt; buffer;
+StructuredBuffer&lt;PerInstanceData&gt; structuredBuffer;
+ByteAddressBuffer byteAddressBuffer;
+</code></pre>
+<p>Read-write variants of these buffers are also supported and map to <code>ezGALShaderResourceType::TexelBufferRW</code> and <code>ezGALShaderResourceType::StructuredBufferRW</code> respectively.</p>
+<pre><code class="lang-cpp">RWBuffer&lt;uint&gt; rwBuffer;
+RWStructuredBuffer&lt;ezPerInstanceData&gt; rwStructuredBuffer;
+RWByteAddressBuffer rwByteAddressBuffer;
+</code></pre>
+<h2 id="append--consume-buffers">Append / Consume Buffers</h2>
+<p>TODO: Future work: Append / consume buffers can be defined in shaders and are correctly reflected, but EZ does not support binding resources to them right now.</p>
+<pre><code class="lang-cpp">// Header:
+#pragma once
+#include &lt;Shaders/Common/ConstantBufferMacros.h&gt;
+
+struct EZ_SHADER_STRUCT ezAppendData
+{
+  FLOAT2(Value);
+};
+
+// Shader:
+AppendStructuredBuffer&lt;ezAppendData&gt; appendStructuredBuffer;
+ConsumeStructuredBuffer&lt;ezAppendData&gt; consumeStructuredBuffer;
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="shaders-overview.html">Shaders</a></li>
+<li><a href="../../tools/shadercompiler.html">ShaderCompiler</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-resources.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

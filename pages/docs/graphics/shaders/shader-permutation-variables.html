@@ -95,7 +95,7 @@
 <p>Permutation variables solve this problem by creating different variants of the shader, and letting the engine pick the correct one depending on the current values.</p>
 <p>In shader code, permutation variables are exposed as <code>#define</code>'d preprocessor variables and therefore can be evaluated like any other preprocessor directive.</p>
 <h2 id="the-shader-permutations-section">The Shader Permutations Section</h2>
-<p>Each shader is made up of several <strong>sections</strong>.</p>
+<p>Each shader is made up of several <a href="shaders-overview.html#shader-sections">sections</a>:</p>
 <pre><code class="lang-cpp">[PLATFORMS]
 
 ALL
@@ -175,7 +175,7 @@ Permutation ALPHATEST;
 <p>The type (<code>bool</code> or <code>enum</code>) and the available values are automatically read from the ezPermVar file that defines the variable and will show up in the material properties accordingly.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="shaders-overview.html">Shaders (TODO)</a></li>
+<li><a href="shaders-overview.html">Shaders</a></li>
 <li><a href="shader-templates.html">Shader Templates</a></li>
 <li><a href="shader-debugging.html">Shader Debugging</a></li>
 <li><a href="shader-render-state.html">The Shader Render State Section</a></li>

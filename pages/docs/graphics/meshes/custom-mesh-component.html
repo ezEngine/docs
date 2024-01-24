@@ -99,11 +99,11 @@
 <p>Each component only uses a single <a href="../../materials/materials-overview.html">material</a> for rendering, but if you want to use multiple materials to render different pieces of the geometry, you can use multiple custom mesh components, and have each one render a different part of the geometry by giving it a limited <em>primitive range</em>.</p>
 <h2 id="vertex-colors">Vertex Colors</h2>
 <p>Custom mesh components use <em>vertex colors</em>, meaning every vertex stores its own color information. This is different to typical mesh data in EZ, where per-vertex colors are usually not used. If you do not require vertex colors, this is fine and you can use any default <a href="../../materials/materials-overview.html">material</a> (and thus shader). The extra information will simply be ignored.</p>
-<p>However, if you do need the vertex color information, for instance to precisely control transparency, then you also need to set a material, which uses a <a href="../shaders/shaders-overview.html">shader (TODO)</a> that actually reads the vertex color value and uses it in the way that you desire. You may need to write a custom shader for that.</p>
+<p>However, if you do need the vertex color information, for instance to precisely control transparency, then you also need to set a material, which uses a <a href="../shaders/shaders-overview.html">shader</a> that actually reads the vertex color value and uses it in the way that you desire. You may need to write a custom shader for that.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="meshes-overview.html">Meshes</a></li>
-<li><a href="../shaders/shaders-overview.html">Shaders (TODO)</a></li>
+<li><a href="../shaders/shaders-overview.html">Shaders</a></li>
 </ul>
 
 </article>

@@ -1,5 +1,5 @@
 {
-  "conceptual": "\n<!-- PAGE IS TODO -->\n<p sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"5\">Visual Shaders are fully functional (except for several known limitations), but currently undocumented.</p>\n<p sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"7\">An alternative to using visual shaders is to write a custom shader based off of a <a href=\"~/pages/docs/graphics/shaders/shader-templates.md\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"7\">shader template</a>.</p>\n<h2 id=\"see-also\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"9\">See Also</h2>\n<ul sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"11\">\n<li sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"11\"><a href=\"~/pages/docs/graphics/shaders/shaders-overview.md\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"11\">Shaders (TODO)</a></li>\n<li sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"12\"><a href=\"~/pages/docs/graphics/shaders/shader-templates.md\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"12\">Shader Templates</a></li>\n</ul>\n",
+  "conceptual": "\n<!-- PAGE IS TODO -->\n<p sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"5\">Visual Shaders are fully functional (except for several known limitations), but currently undocumented.</p>\n<p sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"7\">An alternative to using visual shaders is to write a custom shader based off of a <a href=\"~/pages/docs/graphics/shaders/shader-templates.md\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"7\">shader template</a>.</p>\n<h2 id=\"see-also\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"9\">See Also</h2>\n<ul sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"11\">\n<li sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"11\"><a href=\"~/pages/docs/graphics/shaders/shaders-overview.md\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"11\">Shaders</a></li>\n<li sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"12\"><a href=\"~/pages/docs/graphics/shaders/shader-templates.md\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"12\">Shader Templates</a></li>\n</ul>\n",
   "type": "Conceptual",
   "source": {
     "remote": {
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"visual-shaders\" sourcefile=\"pages/docs/materials/visual-shaders.md\" sourcestartlinenumber=\"1\">Visual Shaders</h1>",
   "title": "Visual Shaders",
-  "wordCount": 37.0,
+  "wordCount": 36.0,
   "_key": "pages/docs/materials/visual-shaders.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

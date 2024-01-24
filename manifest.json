@@ -3642,6 +3642,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shader-resources.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shader-resources.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/shaders/shader-templates.md",
       "output": {
         ".html": {

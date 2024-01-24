@@ -487,6 +487,15 @@
               "leaf": true
             },
             {
+              "name": "Shaders Resources",
+              "href": "graphics/shaders/shader-resources.html",
+              "topicHref": "graphics/shaders/shader-resources.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Shader Permutation Variables",
               "href": "graphics/shaders/shader-permutation-variables.html",
               "topicHref": "graphics/shaders/shader-permutation-variables.html",
@@ -514,7 +523,7 @@
               "leaf": true
             },
             {
-              "name": "Shaders (TODO)",
+              "name": "Shaders",
               "href": "graphics/shaders/shaders-overview.html",
               "topicHref": "graphics/shaders/shaders-overview.html",
               "tocHref": null,
