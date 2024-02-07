@@ -1,5 +1,5 @@
 {
-  "conceptual": "\n<p sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"3\">The <em sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"3\">always visible component</em> makes the renderer consider the object that this component is attached to as always in view. This effectively disables culling optimizations.</p>\n<p sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"5\">This can be used to enforce rendering of an object at all times, even when it is outside the view. The need for this is extremely rare, though.</p>\n<h2 id=\"see-also\" sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"7\">See Also</h2>\n",
+  "conceptual": "\n<p sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"3\">The <em sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"3\">always visible component</em> makes the renderer consider the object that this component is attached to as always in view. This effectively disables culling optimizations.</p>\n<p sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"5\">This can be used to enforce rendering of an object at all times, even when it is outside the view. The need for this is extremely rare, though.</p>\n<h2 id=\"see-also\" sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"7\">See Also</h2>\n<ul sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"9\">\n<li sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"9\"><a href=\"~/pages/docs/graphics/lod-component.md\" sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"9\">LOD Component</a></li>\n</ul>\n",
   "type": "Conceptual",
   "source": {
     "remote": {
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"always-visible-component\" sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"1\">Always Visible Component</h1>",
   "title": "Always Visible Component",
-  "wordCount": 55.0,
+  "wordCount": 57.0,
   "_key": "pages/docs/graphics/always-visible-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

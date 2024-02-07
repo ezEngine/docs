@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>LOD Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="LOD Component | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lod-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="lod-component">LOD Component</h1>
+
+<p>The <em>Level-of-Detail (LOD) component</em> switches child objects named <code>LODn</code> (with <code>n</code> from 0 to 4) on and off, depending on how close this object is to the main camera.</p>
+<p><img src="media/lod.jpg" alt="LOD"></p>
+<p>The LOD component is used to reduce the performance impact of complex objects when they are far away.
+To do so, a <em>LOD object</em> consists of multiple states, from highly detailed to very coarse.
+By convention the highly detailed object is called <code>LOD0</code> and the lesser detailed objects are called <code>LOD1</code>, <code>LOD2</code>, <code>LOD3</code> and finally <code>LOD4</code>.</p>
+<p>This component calculates how large it roughly appears on screen at it's current distance. This is called the <em>coverage</em> value.
+Using user defined coverage thresholds, it then selects which LOD child object to activate. All others get deactivated.
+The LODs have to be direct child objects called <code>LOD0</code> to <code>LOD4</code>. Other child objects are not affected.</p>
+<p>How many LODs are used depends on the number of elements in the <code>LodThresholds</code> array.
+The array describes up to which coverage value each LOD is used.
+Thus if it contains one value, two LODs will be used, <code>LOD0</code> for coverage values above the specified threshold, and <code>LOD1</code> at lower coverage values.</p>
+<p>To see the current coverage, enable the debug drawing.</p>
+<p>The coverage calculation uses spherical bounds. It should be configured to encompass the geometry of all LODs.</p>
+<p>To prevent LODs switching back and forth at one exact boundary, the LOD ranges may overlap by a fixed percentage.
+This way once one LOD gets activated, the coverage value has to change back quite a bit, before the previous LOD gets activated.
+Since this behavior can make it harder to set up the LOD thresholds, it can be deactivated, but in practice it should stay enabled.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>BoundsOffset</code>, <code>BoundsRadius</code>: Define the bounding sphere for the LOD object. This should be setup such that it surrounds all visible child geometry of all LODs, otherwise the component may not properly switch states when the object is partially visible. These bounds are also used to compute the on-screen coverage.</p>
+</li>
+<li><p><code>ShowDebugInfo</code>: If enabled, the LOD component draws information about the current screen coverage, selected LOD and coverage ranges. This should be used to determine at which coverage values a LOD switch should happen.</p>
+</li>
+<li><p><code>OverlapRanges</code>: Disable this to have the LOD switch take places exactly at the configured thresholds. This helps during setup. Keep this enabled during normal operation. It means that the LOD threshold ranges overlap, so that once the component switches from LOD <code>n</code> to <code>n+1</code>, it won't immediately switch back to <code>n</code> when the camera takes a small step back. This is to prevent obvious back and forth.</p>
+</li>
+<li><p><code>LodThresholds</code>: An array of up to 4 threshold values. Each value is the coverage threshold up until which the LODn is used. So if element <code>0</code> is set to 0.2, that means <code>LOD0</code> will be used up to a coverage value of <code>0.2</code> and at <code>0.199</code> it will switch to <code>LOD1</code>. Up to five different LODs are allowed. If there is a LOD threshold, but no child node with the corresponding name, this disable all LODs, which can be used to hide the object entirely.</p>
+</li>
+</ul>
+<h2 id="sample">Sample</h2>
+<p>The <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a> contains prefabs that demonstrate how to use the LOD component. More complex setups are possible.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="always-visible-component.html">Always Visible Component</a></li>
+<li><a href="../performance/profiling.html">Profiling</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lod-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
