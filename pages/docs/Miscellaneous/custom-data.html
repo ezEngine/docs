@@ -102,17 +102,15 @@
 <p>To create a new custom data type, derive from the <code>ezCustomData</code> base class and add reflection capabilities. Then add all the properties that you need. Additionally we need to declare a dedicated <a href="../runtime/resource-management.html">resource (TODO)</a> for your data type.</p>
 <p>The code snippet below shows what should be added to a <em>header file (.h)</em>:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: customdata-decl -->
-<pre><code class="lang-cpp">class SampleCustomData : public ezCustomData
+<pre><code class="lang-cpp">class SampleCustomData2 : public ezCustomData
 {
-  EZ_ADD_DYNAMIC_REFLECTION(SampleCustomData, ezCustomData);
+  EZ_ADD_DYNAMIC_REFLECTION(SampleCustomData2, ezCustomData);
 
 public:
   ezString m_sText;
-  ezInt32 m_iSize = 42;
-  ezColor m_Color;
 };
 
-EZ_DECLARE_CUSTOM_DATA_RESOURCE(SampleCustomData);
+EZ_DECLARE_CUSTOM_DATA_RESOURCE(SampleCustomData2);
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>Now in a corresponding <em>source file (.cpp)</em> add the <a href="../runtime/reflection-system.html">reflection block</a> that enables the engine to know about the properties. Additionally we use a macro to finish the definition of our resource type.</p>
@@ -172,7 +170,7 @@ const char* GetSampleCustomDataResource() const
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>Then, in the source file of your component, add the property to the component's reflection block:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: customdata-property -->
-<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;CustomData&quot;, GetSampleCustomDataResource, SetSampleCustomDataResource)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_CustomData&quot;)),
+<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;CustomData&quot;, GetSampleCustomDataResource, SetSampleCustomDataResource)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_CustomData&quot;, &quot;SampleCustomData&quot;)),
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>Make sure to add the necessary asset browser attribute, otherwise it only shows up as an ordinary string property.</p>
@@ -187,11 +185,14 @@ const char* GetSampleCustomDataResource() const
 </blockquote>
 <p>Finally, to actually access your custom data inside your game code, you have to get a <em>resource lock</em> using your <em>resource handle</em>:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: customdata-access -->
-<pre><code class="lang-cpp">ezResourceLock&lt;SampleCustomDataResource&gt; pCustomDataResource(m_hCustomData, ezResourceAcquireMode::BlockTillLoaded);
+<pre><code class="lang-cpp">ezResourceLock&lt;SampleCustomDataResource&gt; pCustomDataResource(m_hCustomData, ezResourceAcquireMode::AllowLoadingFallback_NeverFail);
 
-const SampleCustomData* pCustomData = pCustomDataResource-&gt;GetData();
+if (pCustomDataResource.GetAcquireResult() == ezResourceAcquireResult::Final)
+{
+  const SampleCustomData* pCustomData = pCustomDataResource-&gt;GetData();
 
-ezDebugRenderer::Draw3DText(GetWorld(), ezFmt(pCustomData-&gt;m_sText), GetOwner()-&gt;GetGlobalPosition(), pCustomData-&gt;m_Color, pCustomData-&gt;m_iSize);
+  ezDebugRenderer::Draw3DText(GetWorld(), ezFmt(pCustomData-&gt;m_sText), GetOwner()-&gt;GetGlobalPosition(), pCustomData-&gt;m_Color, pCustomData-&gt;m_iSize);
+}
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>As you can see in the snippet above, once you have a <em>resource lock</em> you can access your custom data type like a regular C++ class. Make sure not to hold direct pointers to the data struct, but always go through the resource lock and keep the resource handle around for the entire duration that you potentially want to access the resource, as it determines the resource's lifetime.</p>
