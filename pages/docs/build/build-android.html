@@ -92,79 +92,133 @@
 <h2 id="prerequisites">Prerequisites</h2>
 <p>You need the following to build for Android:</p>
 <ul>
-<li>Android SDK Platform 6.0 (Marshmallow) API-Level 23</li>
-<li>Android NDK 21 or higher</li>
-<li>Android SDK Tools</li>
+<li>Android SDK Platform 10.0 (&quot;Q&quot;) API-Level 29</li>
+<li>Android NDK 26.1 or higher (older should work as well, but untested)</li>
+<li>Android SDK Build Tools</li>
 <li>Android SDK Platform-Tools</li>
-<li>Java (JRE)</li>
-<li><a href="https://ninja-build.org">Ninja</a></li>
 <li>Android Emulator (optional)</li>
-<li>Visual Studio 2019</li>
+<li>Java (JRE)</li>
+<li>Cmake</li>
+<li>Vulkan SDK 1.3.275 or newer</li>
+<li><a href="https://ninja-build.org">Ninja</a></li>
+<li>Powershell 7 (for debugging in VSCode or running convenience scripts)</li>
+<li>Visual Studio 2022 or Linux</li>
 </ul>
-<p><a href="https://ninja-build.org/">Ninja</a> is a build generator used by CMake and needs to be added to the <code>PATH</code> environment variable.<br>
-The easiest way to install the Android components is to download <a href="https://developer.android.com/studio">Android Studio</a> and then to select these from the <strong>SDK Manager</strong>.
-Once installed, the following environment variables need to be set:
+<p><a href="https://ninja-build.org/">Ninja</a> is a build generator used by CMake and needs to be added to the <code>PATH</code> environment variable.</p>
+<p>The easiest way to install the Android components is to download <a href="https://developer.android.com/studio">Android Studio</a> and then to select these from the <strong>SDK Manager</strong>.</p>
+<p>Alternatively, you can also install these via the command line tool located in <code>C:\Users\[USER]\AppData\Local\Android\Sdk\cmdline-tools\latest\bin</code>:</p>
+<pre><code class="lang-pwsh"># From the root of the EZ checkout, run:
+.\Utilities\Android\AndroidEmulator.ps1 -installBuildDependencies
+# Or run these manually from the ...\cmdline-tools\latest\bin folder:
+./sdkmanager &quot;build-tools;34.0.0&quot;
+./sdkmanager &quot;cmdline-tools;latest&quot;
+./sdkmanager &quot;ndk;26.1.10909125&quot;
+./sdkmanager &quot;platform-tools&quot;
+./sdkmanager &quot;platforms;android-29&quot;
+# Optional for emulator:
+./sdkmanager &quot;emulator&quot;
+./sdkmanager &quot;extras;google;Android_Emulator_Hypervisor_Driver&quot;
+./sdkmanager &quot;system-images;android-29;google_apis;x86_64&quot;
+# Accept licenses for the above
+./sdkmanager --licenses
+</code></pre>
+<p>Once installed, the following environment variables need to be set:
 Change the version to reflect the one you are using.</p>
 <ul>
 <li><strong>ANDROID_NDK_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk\ndk\[VERSION]</code></li>
 <li><strong>ANDROID_HOME</strong> needs to point to your installed version, by default this is: <code>C:\Users\[USERNAME]\AppData\Local\Android\Sdk</code></li>
-<li><strong>JAVA_HOME</strong> needs to point to a java runtime. Android Studio has its own version so there is no need to download it separately: <code>C:\Program Files\Android\Android Studio\jre</code></li>
+<li><strong>JAVA_HOME</strong> needs to point to a java runtime. Android Studio has its own version so there is no need to download it separately: <code>C:\Program Files\Android\Android Studio\jbr</code></li>
+<li><strong>ANDROID_STUDIO</strong> (Optional for debugging). Needs to point to the root of Android Studio, e.g. <code>C:\Program Files\Android\Android Studio</code>. We currently rely on the <code>lldb-server</code> that ships with Android Studio. Alternatively, you can also debug any app with Android Studio once at which point the required files are on the device and this env var is no longer needed.</li>
 </ul>
-<h2 id="visual-studio-open-folder">Visual Studio Open Folder</h2>
-<p>While you can manually run CMake to use the ninja generator, a more convenient solution is to use Visual Studio's open folder functionality. Go to <code>File&gt;Open&gt;Folder...</code> and select the root of the repository. The CMake settings used by this feature are stored inside the <code>CMakeSettings.json</code> file in the root folder (<code>CppProperties.json</code> contains additional information for VS). Note that if a different API level is used, the <strong>ANDROID_PLATFORM</strong> parameter in the <code>CMakeSettings.json</code> has to be changed for all configurations.</p>
-<p>If all environment variables were set correctly VS should automatically configure CMake. Once done, a drop down appears in the VS toolbar, allowing you to select the configuration, e.g. <code>Android-x86-Debug</code>. Once changed, VS will start to configure CMake again for the new configuration.</p>
-<p>Next, select a build target, e.g. <code>libFoundationTest.so</code> which are the foundation unit tests. Note that you can only select applications, not all libraries here.</p>
-<h2 id="setting-up-an-emulator">Setting up an Emulator</h2>
-<p>Open Android Studio, go to <code>Configure&gt;AVD Manager</code> and select <code>Create Virtual Device</code>. Download the <strong>Pixel 2 x86</strong> image (or any other compatible one). Next, select <strong>Pie (API 28)</strong> (29 is broken as of writing). In <code>Advanced Settings</code> go to <code>Emulated Performance</code> and select <strong>Cold boot</strong> as the other options tend to hang and the only option then is to reset the image to factory defaults.</p>
+<h2 id="visual-studio--vscode--clion">Visual Studio / VSCode / CLion</h2>
+<p>While you can manually run CMake to use the ninja generator, a more convenient solution is to use CMake's <code>CMakePresets.json</code> which is already configured for Android arm64 and x64 builds.</p>
+<ul>
+<li><strong>Visual Studio</strong>: Use Visual Studio's open folder functionality. Go to <code>File &gt; Open &gt; Folder...</code> and select the root of the repository. If all environment variables were set correctly VS should automatically configure CMake. Once done, a drop down appears in the VS toolbar, allowing you to select the configuration, e.g. <code>android-arm64-debug</code>. Once changed, VS will start to configure CMake again for the new configuration. Next, select a build target, e.g. <code>libFoundationTest.so</code> which are the foundation unit tests. Note that you can only select applications, not all libraries here.</li>
+<li><strong>VSCode</strong>: Make sure you have the <code>C/C++</code>, <code>C/C++ Extension Pack</code>, <code>CMake</code> and <code>CMake Tools</code> plugins installed. Select <code>File &gt; Open Folder...</code> and select the root of the repository. Execute <code>CMake: Select Configure Preset</code> to select the config you wish to use. Make sure CMake runs through without errors. On failure fix any errors and execute  <code>CMake: Configure</code> until successful. Finally, execute <code>CMake: Build Target</code> to build the project you want.</li>
+<li><strong>CLion</strong>: Open settings, go to <code>Build, Execution, Deployment &gt; CMake</code>, select the profile you wish to use and enable it. Make sure CMake configure runs through without errors. Finally, select the build target of choice in the toolbar and press the build button next to it.</li>
+</ul>
+<h2 id="setting-up-an-emulator-avd">Setting up an Emulator AVD</h2>
+<p>You can either use the Android Studio GUI or the command line to setup the emulator. For the command line option, the <code>avdmanager</code> is usually located in the <code>C:\[USERNAME]\admin\AppData\Local\Android\Sdk\cmdline-tools\latest\bin</code> folder. The following powershell command will create a device that can run EZ generated apks:</p>
+<pre><code class="lang-pwsh"># From the root of the EZ checkout, run:
+./Utilities/Android/AndroidEmulator.ps1 -installEmulator
+# Or run this manually from the ...\cmdline-tools\latest\bin folder:
+./avdmanager create avd --force --name &quot;Pixel7&quot; --abi &quot;google_apis/x86_64&quot; --package &quot;system-images;android-29;google_apis;x86_64&quot; --device &quot;pixel_7&quot;
+</code></pre>
+<h2 id="starting-the-emulator">Starting the Emulator</h2>
+<p>The emulator can be comfortably started from within Android Studio or via the <code>emulator</code> application located in <code>C:\[USERNAME]\admin\AppData\Local\Android\Sdk\emulator</code> via these powershell commands:</p>
+<pre><code class="lang-pwsh"># From the root of the EZ checkout, run:
+./Utilities/Android/AndroidEmulator.ps1 -startEmulator
+# Or run this manually from the ...\Sdk\emulator folder:
+./emulator -avd &quot;Pixel7&quot; -wipe-data -no-snapshot -no-audio -port 5555 -gpu swiftshader_indirect
+</code></pre>
+<p>For better performance, the <code>-gpu host</code> option can be used but it may cause crashes or graphical artifacts. For more information on the available options, see <a href="https://developer.android.com/studio/run/emulator-acceleration">the official emulator hardware acceleration</a> page.
+The options <code>-wipe-data -no-snapshot -no-audio</code> are not strictly necessary but will provide the same environment our unit tests are run under.</p>
+<p>To use the GUI instead, open Android Studio, go to <code>Configure&gt;AVD Manager</code> and select <code>Create Virtual Device</code>. Select the <code>Pixel 7</code> hardware profile. Next, select <code>x86 Images</code>, then select <code>Q (API 29), x86_64</code>.</p>
+<blockquote>
+<p><strong>NOTE:</strong>
+If the emulator hangs on start, go to the AVD's <code>Advanced Settings</code> -&gt; <code>Emulated Performance</code> and select <strong>Cold boot</strong> or reset the image to factory defaults.</p>
+</blockquote>
 <h2 id="debugging-code">Debugging Code</h2>
-<p>Before debugging it should be ensured that you have a emulator setup or a device connected. There should only be one device or emulator. Otherwise debugging is going to fail because it's unknown which target to use.</p>
-<pre><code class="lang-cmd">$ adb devices
+<p>You can use Android Studio by using the <code>Profile or Debug APK</code> option and selecting your APK. Before you can start debugging, open the <code>Project Structure...</code> dialog and make the following changes:</p>
+<ol>
+<li>Project -&gt; SDK: Select one of the installed Android SDKs.</li>
+<li>Modules -&gt; Dependencies Tab -&gt; Module SDK: Select one of the installed Android SDKs.
+Afterwards, just select your target device and press <code>Debug</code>.</li>
+</ol>
+<p>If you want to use VSCode instead, you can follow the rest of the guide. Otherwise this section can be skipped.</p>
+<p>Before debugging it should be ensured that you have an emulator set up or a device connected. There should only be one device or emulator. Otherwise debugging is going to fail because it's unknown which target to use.</p>
+<pre><code class="lang-pwsh">$ adb devices
 List of devices attached
 ce11171b5298cc120c      device
 </code></pre>
-<p>If adb is not available in the command line <code>%ANDROID_HOME%\platform-tools</code> needs to be added to the <code>PATH</code> environment variable.</p>
-<p>To debug &amp; deploy select one of the launch targets which are prefixed with '&gt;'. These have been configured in the <code>launch.vs.json</code> file for debugging. By hitting the &quot;start debugging&quot; button in visual studio, as usual, the app will be installed on the connected device / emulator, started and the debugger will be attached. The app can then be debugged by using the Visual Studio UI the same way as for an windows based C++ project.</p>
-<h2 id="troubleshooting-debugging--command-line-debugging">Troubleshooting Debugging / Command Line Debugging</h2>
-<p>If debugging doesn't work or debugging from the command line is preferred, the command line debugger can be started. It gives detailed output.</p>
-<p>The debugging script is located in <code>Utilities\DbgAndroid.ps1</code></p>
-<p>The following parameters are present:</p>
-<table>
-<thead>
-<tr>
-<th>parameter</th>
-<th>meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PrintCmds</td>
-<td>Prints all commands that are run. Useful for debugging issues.</td>
-</tr>
-<tr>
-<td>packageName</td>
-<td>The name of the android package. For example &quot;com.ezengine.FoundationTest&quot;. All ezEngine package names start with &quot;com.ezengine.&quot;. If the package name is not known the .apk file can be opened with a zip tool. Then inspect the AndroidManifest.xml.</td>
-</tr>
-<tr>
-<td>originalSoDir</td>
-<td>The location where the shared object (.so) that contains all the binary code is located: Output\Lib\AndroidNinjaClang(Debug|RelWithDebInfo|Release)(arm32|arm64|x86|x64)</td>
-</tr>
-<tr>
-<td>arch</td>
-<td>The architecture of the app you want to debug usually &quot;arm&quot;,&quot;arm64&quot;,&quot;x86&quot; or &quot;x86_64&quot;</td>
-</tr>
-<tr>
-<td>apk</td>
-<td>The apk to install on the device before starting debugging. This parameter is optional. If not given no apk will be installed and it is assumed that the apk was already installed on the device</td>
-</tr>
-</tbody>
-</table>
-<p>For example command line debugging the FoundationTest:</p>
-<pre><code class="lang-cmd">Utilities\DbgAndroid.ps1 -packageName &quot;com.ezengine.FoundationTest&quot; -arch arm -apk &quot;Output\Lib\AndroidNinjaClangDebugArm32\FoundationTest.apk&quot; -originalSoDir &quot;Output\Lib\AndroidNinjaClangDebugArm32&quot;
+<p>If adb is not available in the command line, <code>%ANDROID_HOME%\platform-tools</code> needs to be added to the <code>PATH</code> environment variable.</p>
+<p>You will need to install the <code>CodeLLDB</code> VSCode extension and then create or modify the <code>.vscode/launch.json</code> file in your checkout and add a launch config. There are a few examples in the <code>launch.json</code> file in the root of the repo.
+What you need to change is the following:</p>
+<ol>
+<li><strong>PackageName</strong>: This is the package name of the app you want to run, e.g. <code>com.ezengine.RendererTest</code>.</li>
+<li><strong>apk (optional)</strong>: If set, the app will be installed first before starting. This should point to the output directory of your configuration. E.g. <code>${workspaceFolder}/Output/Bin/[BUILD_CONFIG]/RendererTest.apk</code>.</li>
+</ol>
+<pre><code class="lang-VSCode">{
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Android RendererTest&quot;,
+            &quot;type&quot;: &quot;lldb&quot;,
+            &quot;request&quot;: &quot;custom&quot;,
+            &quot;targetCreateCommands&quot;: [
+                &quot;shell pwsh \&quot;${workspaceFolder}/Utilities/DbgAndroidLldb.ps1\&quot; -PackageName \&quot;com.ezengine.RendererTest\&quot; -debugTemp \&quot;${workspaceFolder}/debugtemp\&quot; -apk \&quot;${workspaceFolder}/Output/Bin/AndroidNinjaClangDebug64/RendererTest.apk\&quot; -MessageBoxOnError&quot;,
+                &quot;command source ${workspaceFolder}/debugtemp/lldb.setup&quot;
+            ],
+            &quot;processCreateCommands&quot;: [
+                &quot;shell pwsh \&quot;${workspaceFolder}/Utilities/DbgAndroidJdb.ps1\&quot; &amp;&quot;,
+                &quot;continue&quot;
+            ]
+        }
+    ]
+}
 </code></pre>
+<p>In VSCode you can now select the debug config from the <code>Run and Debug</code> menu and start debugging. Note, if something goes wrong on Windows, a message box will pop up which might not be in the foreground. On Linux, inspect the LLDB log. You can also follow the detailed debugging guide in the FAQ section below.</p>
 <h2 id="see-ezengine-log-output">See ezEngine log output</h2>
 <p>To see the ezEngine log output the following logcat filter can be used.</p>
 <pre><code class="lang-cmd">adb logcat ezEngine:D *:S
 </code></pre>
+<h2 id="faq">FAQ</h2>
+<h3 id="no-debugging-visualizers-loaded">No debugging visualizers loaded</h3>
+<p>You need to ensure that the <code>.lldbinit</code> in the root of the repo can be loaded. Under Linux, add or change the following line in the home <code>~/.lldbinit</code> file:</p>
+<pre><code class="lang-sh">settings set target.load-cwd-lldbinit true
+</code></pre>
+<h3 id="vscode-debugger-does-not-start--command-line-debugging">VSCode Debugger does not start / command line debugging</h3>
+<p>If debugging doesn't work or debugging from the command line is preferred, the command line debugger can be started. It gives detailed output.</p>
+<p><strong>Step 1</strong>: The debugging script is located in <code>Utilities/DbgAndroidLldb.ps1</code>. To run it manually you will need to run the following in powershell:</p>
+<pre><code class="lang-pwsh">./home/[USERNAME]/Code/ezEngine/Utilities/DbgAndroidLldb.ps1 -PackageName &quot;com.ezengine.ShaderExplorer&quot; -debugTemp &quot;/home/[USERNAME]/Code/ezEngine/debugtemp&quot; -apk &quot;/home/[USERNAME]/Code/ezEngine/Output/Bin/AndroidNinjaClangDebugArm64/ShaderExplorer.apk&quot;
+</code></pre>
+<p>Of course, adjust the paths so they match your local ezEngine checkout location and Android build config. This will either fail with an error message or should start the apk on your device, showing the wait for debugger prompt.</p>
+<p><strong>Step 2</strong>: Start the <code>lldb</code> shell from any LLDB installation of your choosing and run the following commands in the shell:</p>
+<pre><code class="lang-sh">command source /home/[USERNAME]/Code/ezEngine/debugtemp/lldb.setup
+shell pwsh &quot;/home/[USERNAME]/Code/ezEngine/Utilities/DbgAndroidJdb.ps1&quot; &amp;
+continue
+</code></pre>
+<p>Run each line at a time. No errors should show up. <code>command source</code> is written by <code>DbgAndroidLldb.ps1</code> and contains the commands to connect to the device and running process. <code>DbgAndroidJdb.ps1</code> connects the java debugger in a fire and forget fashion to close the <em>Waiting for debugger</em> prompt on the device. Finally <code>continue</code> will start running the paused application.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="building-ez.html">Building ezEngine</a></li>
