@@ -10,18 +10,18 @@
       "leaf": true
     },
     {
-      "name": "Videos",
-      "href": "videos.html",
-      "topicHref": "videos.html",
+      "name": "Prebuilt Binaries",
+      "href": "binaries.html",
+      "topicHref": "binaries.html",
       "tocHref": null,
       "level": 2.0,
       "items": [],
       "leaf": true
     },
     {
-      "name": "Prebuilt Binaries",
-      "href": "binaries.html",
-      "topicHref": "binaries.html",
+      "name": "Frequently Asked Questions",
+      "href": "faq.html",
+      "topicHref": "faq.html",
       "tocHref": null,
       "level": 2.0,
       "items": [],
@@ -37,9 +37,9 @@
       "leaf": true
     },
     {
-      "name": "Frequently Asked Questions",
-      "href": "faq.html",
-      "topicHref": "faq.html",
+      "name": "Videos",
+      "href": "videos.html",
+      "topicHref": "videos.html",
       "tocHref": null,
       "level": 2.0,
       "items": [],
