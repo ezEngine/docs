@@ -94,7 +94,7 @@ The most common scenario is to convert a single input file <code>A.xxx</code> in
 <h2 id="command-line-help">Command-line Help</h2>
 <p>Run TexConv.exe with the <code>--help</code> parameter to list all available options. Additionally, TexConv prints the used options when it is executed, to help understand what it is doing. Consult this output for details.</p>
 <h2 id="general-usage">General Usage</h2>
-<p>TexConv always produces <strong>exactly one output</strong> file. It may use <strong>multiple input</strong> files to assemble the output from. For the assembly, it also needs a <strong>channel mapping</strong>, which tells it which channel (<em>Red, Green, Blue</em> or <em>Alpha</em>) to take from which input file and move it into which channel of the output image.</p>
+<p>TexConv typically produces <strong>one output</strong> file. It may use <strong>multiple input</strong> files to assemble the output from. For the assembly, it also needs a <strong>channel mapping</strong>, which tells it which channel (<em>Red, Green, Blue</em> or <em>Alpha</em>) to take from which input file and move it into which channel of the output image.</p>
 <p>The most straight forward command line is this:</p>
 <pre><code class="lang-cmd">TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 </code></pre>
@@ -177,6 +177,9 @@ The most common scenario is to convert a single input file <code>A.xxx</code> in
 <li><code>-maxRes 1024</code> : Specifies the maximum resolution of the output. If the input image is larger, it will get downscaled.</li>
 <li><code>-downscale 1</code> : If this is larger than 0, the input images will be halved in resolution N times. Use this to apply an overall quality reduction.</li>
 </ul>
+<h3 id="image-comparison">Image Comparison</h3>
+<p>TexConv can also compare two images and generate difference images and an HTML page with embedded images for easy inspection.</p>
+<p>Use <code>-mode Compare</code> to enable comparison mode, and the <code>-cmpXYZ</code> options to configure which images to compare and what outputs to generate. Console the <code>--help</code> for details.</p>
 <h2 id="examples">Examples</h2>
 <h3 id="convert-a-color-texture">Convert a Color Texture</h3>
 <pre><code class="lang-cmd">TexConv.exe -out D:/diffuse.dds -in0 D:/diffuse.jpg -rgba in0 -usage color
@@ -195,6 +198,9 @@ The most common scenario is to convert a single input file <code>A.xxx</code> in
 <pre><code class="lang-cmd">TexConv.exe -out D:/alpha-mask-only.dds -in0 D:/DiffuseAlpha.dds -r in0.a
 </code></pre>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../graphics/textures-overview.html">Textures</a></li>
+</ul>
 
 </article>
 

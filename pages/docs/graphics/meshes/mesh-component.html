@@ -96,6 +96,7 @@
 <ul>
 <li><code>Mesh</code>: The <a href="mesh-asset.html">mesh asset</a> to render.</li>
 <li><code>Color</code>: A tint color for the mesh instance. Typically this is just multiplied into the diffuse color of the mesh <a href="../../materials/materials-overview.html">materials</a>, though if the material uses a <a href="../../materials/visual-shaders.html">visual shader (TODO)</a>, the mesh color can be used to represent arbitrary input data, for example to blend between material states.</li>
+<li><code>CustomData</code>: A 4-component vector to pass in arbitrary values. By default, this data is not used, at all, but custom shaders are free to use it in any way they like.</li>
 <li><code>Materials</code>: By default the referenced mesh is rendered with the materials that are set up inside the mesh asset. However, the mesh component can override the materials. Each mesh has one or many <em>sub-meshes</em>, meaning mesh parts that use different materials. This array allows to set an override for each of those sub-meshes.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
