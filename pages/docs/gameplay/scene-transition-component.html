@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Scene Transition Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Scene Transition Component | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/scene-transition-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="scene-transition-component">Scene Transition Component</h1>
+
+<p>The <em>Scene Transition Component</em> is used to load another level. It can be triggered via script code or through a <a href="../physics/jolt/actors/jolt-trigger-component.html">Trigger Component</a>.</p>
+<h2 id="seamless-transitions">Seamless Transitions</h2>
+<p>To make a transition from one level to another as seamless as possible, two things need to happen:</p>
+<ol>
+<li>There should be no visual difference between the exit and entrance of two consecutive levels.</li>
+<li>There should be as little delay when transitioning.</li>
+</ol>
+<p>For the first criterium you mainly need to build the exit and entrance of two levels identically. The easiest way to achieve this, is to make a prefab for a piece of corridor, which you then reuse in both levels. Typically such connecting pieces have a zig-zag shape, such that the visible distance is severly limited into both directions.</p>
+<p>Additionally, for such scenarios you should enable <code>RelativeSpawnPosition</code>, such that the player object in the target scene appears in the same spot as it was in the previous scene.</p>
+<p>For the second criterium you need to make sure that the scene is already loaded when the transition happens. To achieve this, you should first place one trigger that starts the scene preload, and a bit further away you place the trigger that does the transition. Make sure that the distance is large enough such that the target scene is likely loaded before the player can reach the second trigger. If everything goes well, the transition will be nearly instant.</p>
+<p>If the player is able to enter a preload area, but then leave it again, put another trigger in front of the preload trigger, which cancels the preloading, such that when the player turns around and does not proceed to the next level, the preloaded data gets freed.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Mode</code>: What the component should do, if it gets triggered through a <a href="../physics/jolt/actors/jolt-trigger-component.html">Trigger Component</a>.
+<ul>
+<li><code>None</code>: Do nothing.</li>
+<li><code>Load And Switch</code>: Immediately transition to the target scene. If necessary, show a loading screen until the target scene is finished loading.</li>
+<li><code>Preload</code>: Start loading the target scene in the background. The active level stays active.</li>
+<li><code>Cancel Preload</code>: Cancel any background preloads and free up the memory.</li>
+</ul>
+</li>
+<li><code>TargetScene</code>: The scene that this component should load or preload.</li>
+<li><code>PreloadCollection</code>: An optional <a href="../performance/asset-collections.html">asset collection</a> that should be used for preloading data before switching to the target scene. This is necessary for proper progress calculation and helps to make scene transitions smoother.</li>
+<li><code>SpawnPoint</code>: An optional name for the spawn point in the target scene. If the scene has multiple <a href="player-start-point.html">player start points</a>, the one with this name will be used to spawn the player.</li>
+<li><code>RelativeSpawnPosition</code>: If enabled, the relative position to this object is calculated and used to spawn the player with the same offset in the target scene. This is useful when one scene is supposed to continue a level seamlessly. You can build the exit of one level identical to the entrance of the next level, such that the transition looks natural. By applying the relative position to the spawn position, a player that is walking on the left or right side of a corridor will then also spawn in the next level on the left or right side, instead of at a fixed center position.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../runtime/application/game-state.html">Game States</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/scene-transition-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

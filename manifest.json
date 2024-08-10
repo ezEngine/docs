@@ -3172,6 +3172,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/scene-transition-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/scene-transition-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/gameplay/spawn-component.md",
       "output": {
         ".html": {
