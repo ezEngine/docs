@@ -2830,6 +2830,15 @@
           "level": 3.0,
           "items": [],
           "leaf": true
+        },
+        {
+          "name": "Live++ Integration",
+          "href": "debugging/livepp.html",
+          "topicHref": "debugging/livepp.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
         }
       ],
       "topicHref": null,

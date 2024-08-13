@@ -108,6 +108,10 @@ Entries that are not checked, will not show up in other places as selectable.</p
 <ul>
 <li><p><code>Collision Layer</code>: The <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for finding geometry from which to generate the navmesh. This is mainly used to filter out high detail geometry, to speed up navmesh generation. It can also be used to ignore ground types that are generally not traversable (such as water).</p>
 </li>
+<li><p><code>Num Sectors (XY)</code>: How many sectors are generally available in the scene. Note that sectors are centered around the origin. Navmesh generation is done on-demand for every sector.</p>
+</li>
+<li><p><code>Sector Size in Meters</code>: How wide each sector is. You may need to adjust the sector size in case your game has very large or very small scenes. If your scenes are very detailed, prefer smaller sectors, if your levels are nearly empty (for example in a space game), use large sectors, since the navmesh generation for each sector has a certain lag, because the engine never updates more than one sector per frame.</p>
+</li>
 <li><p><code>Cell Size (XY):</code> How detailed the navmesh generation shall be. This has to be less than the desired character radius, and the agent radius should be a whole multiple of this value. For example if your cell size is <code>0.2</code>, the effective agent radius can only be <code>0.2</code>, <code>0.4</code>, <code>0.6</code> and so on.</p>
 </li>
 <li><p><code>Cell Height (Z):</code> The detail along the up axis with which to generate the navmesh. This mainly affects how well <em>steps</em> are detected and dealt with. Similar to the <em>agent radius</em>, the <em>agent step height</em> should be a multiple of the cell height.</p>

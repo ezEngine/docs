@@ -117,6 +117,8 @@
 </ul>
 <h3 id="shading">Shading</h3>
 <p>The debug renderer always uses a fullbright shading model. No lighting is ever applied to debug geometry. In fact, most geometry simply has a color, and only some functions allow you to choose a texture.</p>
+<h3 id="text-size">Text Size</h3>
+<p>Text size is given in pixels, which means text will appear very small or very large on displays with different resolutions. The <a href="cvars.html">CVar</a> <code>cvar_DebugTextScale</code> is used to scale debug text sizes. The same can be done through <code>ezDebugRenderer::SetTextScale()</code>. Use this to adjust debug text sizes as needed. The editor automatically sets this value to adjust for different resolutions.</p>
 <h2 id="example">Example</h2>
 <p>A full example for how to use the debug renderer is given in the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a>. Here, the <code>DebugRenderComponent</code> shows how to utilize the debug renderer.</p>
 <p>The following code snippet is sufficient to render a wireframe sphere at the location of the component:</p>

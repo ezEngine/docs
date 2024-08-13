@@ -101,6 +101,15 @@
 <p>All shadow casting light sources share a single shadow texture atlas. Every frame the engine determines the on-screen size of each light source and then allocates some area of the texture atlas to each light source. That means lights that are farther away will use a lower resolution shadow map than close up lights.</p>
 <h2 id="shadow-quality">Shadow Quality</h2>
 <p>Shadow maps are prone to artifacts called <em>shadow acne</em>. Either light leaks through objects where there should be shadows, or shadows leak through objects where there should be light. This happens due to precision issues, especially when a shadow is cast nearly perpendicular to a surface. The <code>SlopeBias</code> and <code>ConstantBias</code> properties (see below) allow to tweak the shadows to reduce this issue in specific places, but there is no solution that will always work.</p>
+<h2 id="global-shadow-settings">Global Shadow Settings</h2>
+<p>You can adjust global settings for shadows in the platform-specific <a href="../../assets/asset-profiles.html">asset profile</a>.</p>
+<ul>
+<li><p><code>Shadow Atlas Texture Size</code>: How large the texture atlas should be that is used for all shadow rendering. This is a single texture, where all shadow maps are stored. For many shadow casting lights with high quality shadows, this texture has to be reasonably large.</p>
+</li>
+<li><p><code>Min/Max Shadow Map Size</code>: The minimum and maximum space that a single shadow map should take up inside the shadow map atlas. The minimum size determines how bad the shadow quality can get, ie a very low value means that far away light sources can look very blurry. The maximum size determines how good the quality can get, ie with a large value, close up shadows are very crisp whereas with a low value, even close shadows are very blurry. If these values are low and only few dynamic lights are used, the shadow atlas size can also be reduced.</p>
+</li>
+</ul>
+<p><strong>Note:</strong> These values can also be adjusted at runtime using the <a href="../../debugging/cvars.html">CVars</a> <code>cvar_RenderingShadowsAtlasSize</code>, <code>cvar_RenderingShadowsMaxShadowMapSize</code> and <code>cvar_RenderingShadowsMinShadowMapSize</code>.</p>
 <h2 id="shadow-component-properties">Shadow Component Properties</h2>
 <p>Dynamic light sources such as <a href="directional-light-component.html">directional lights</a>, <a href="point-light-component.html">point lights</a> and <a href="spot-light-component.html">spot lights</a> can cast dynamic shadows. These components all have properties to tweak the shadows for quality. The following properties are common to these component types:</p>
 <ul>

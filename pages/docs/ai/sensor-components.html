@@ -106,6 +106,8 @@
 <ul>
 <li><code>UpdateRate</code>: How often the sensor component should query the world for changes. The higher the update rate, the more responsive it will be, and the less likely that short events are missed. However, higher update rates also require more processing time.</li>
 <li><code>SpatialCategory</code>: The <a href="../runtime/world/spatial-system.html">spatial category</a> of objects that should trigger the sensor component.</li>
+<li><code>IncludeTags</code>: If not empty, only objects with these tags are considered.</li>
+<li><code>ExcludeTags</code>: If not empty, objects with these tags are ignored.</li>
 <li><code>TestVisibility</code>: If enabled, the sensor will cast additional rays using the physics engine, to determine whether the target is occluded by walls or clearly visible.</li>
 <li><code>CollisionLayer</code>: The <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for the visibility raycast.</li>
 <li><code>ShowDebugInfo</code>: If enabled, additional debug geometry is rendered to visualize the sensor volume and state.</li>

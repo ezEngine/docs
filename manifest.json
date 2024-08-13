@@ -1762,6 +1762,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/visual-script/media/vs-expression.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/visual-script/media/vs-expression.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/custom-code/visual-script/media/vs-layout.png",
       "output": {
         "resource": {
@@ -1902,6 +1912,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/livepp.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/livepp.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/debugging/logging.md",
       "output": {
         ".html": {
@@ -1946,6 +1966,26 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/debugging/media/inspector-stats.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/livepp-broker.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/livepp-broker.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/livepp-compile.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/livepp-compile.png"
         }
       },
       "version": ""
@@ -2692,6 +2732,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/light-directionality.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/light-directionality.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/effects/particle-effects/media/light-renderer.webm",
       "output": {
         "resource": {
@@ -2706,6 +2756,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/particle-effects/media/mesh-renderer.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/normal-curvature.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/normal-curvature.png"
         }
       },
       "version": ""
@@ -3126,6 +3186,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/gameplay/media/projectile-properties.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/scene-transition.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/scene-transition.mp4"
         }
       },
       "version": ""
@@ -4136,6 +4206,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/physics/jolt/collision-shapes/media/jolt-cylinder-shape.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/collision-shapes/media/jolt-simplified.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/collision-shapes/media/jolt-simplified.jpg"
         }
       },
       "version": ""

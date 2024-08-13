@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Animated Mesh Asset | ezEngine </title>
+      <title>Live++ Integration | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Animated Mesh Asset | ezEngine ">
+      <meta name="title" content="Live++ Integration | ezEngine ">
       
-      <link rel="icon" href="../../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
       
-      <meta name="docfx:rel" content="../../../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animated-mesh-asset.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/livepp.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../../index.html">
+          <a class="navbar-brand" href="../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,47 +87,33 @@
         </div>
 
         <article data-uid="">
-<h1 id="animated-mesh-asset">Animated Mesh Asset</h1>
+<h1 id="live-integration">Live++ Integration</h1>
 
-<p>The animated mesh asset is very similar to the <a href="../../graphics/meshes/mesh-asset.html">mesh asset</a>. However, it adds the necessary data to a mesh such that it can be used for <a href="skeletal-animation-overview.html">skeletal animation</a>.</p>
-<p><img src="../media/animated-mesh-asset.jpg" alt="Animated Mesh Asset"></p>
-<p>Animated meshes are placed in a scene with a dedicated <a href="animated-mesh-component.html">animated mesh component</a>. Which animations are played on it can be controlled with a <a href="simple-animation-component.html">simple animation component</a> or an <a href="animation-graphs/animation-controller-component.html">animation controller component</a>.</p>
-<h2 id="video-how-to-import-an-animated-mesh">Video: How to import an animated mesh</h2>
-<p><a href="https://www.youtube.com/watch?v=yT-F5d-V3HU"><img src="https://img.youtube.com/vi/yT-F5d-V3HU/0.jpg" alt="video"></a></p>
-<h2 id="asset-properties">Asset Properties</h2>
-<ul>
-<li><p><code>MeshFile</code>: The file that contains the mesh data. For animated meshes prefer to use <strong>GLB</strong> (binary GLTF) files. <strong>FBX</strong> files can be used as well, though due to FBX's complexity chances are higher that it won't work as expected. The referenced file must contain the mesh data with skinning information. It doesn't need to contain any animation clips.</p>
-</li>
-<li><p><code>DefaultSkeleton</code>: The <a href="skeleton-asset.html">skeleton asset</a> that is used to skin the animated mesh by default.</p>
-</li>
-<li><p><code>RecalculateNormals</code>, <code>RecalculateTangents</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>NormalPrecision</code>, <code>TexCoordPrecision</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>BoneWeightPrecision</code>: How precisely to store the bone weights. For highly detailed regions, such as character faces, it may be necessary to increase the precision, to prevent artifacts.</p>
-</li>
-<li><p><code>NormalizeWeights</code>: Usually all bone weights should add up to 1 on each vertex. To enforce this, bone weights are usually normalized. However, some meshes violate this rule and normalizing the weights introduces artifacts. Only disable this, option, if it very obviously fixes artifacts.</p>
-</li>
-<li><p><code>ImportMaterials</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>Materials</code>: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-<li><p><code>Simplify Mesh</code> and related options: See the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a>.</p>
-</li>
-</ul>
+<p>Live++ is a commercial hot-reloading middleware for C++ applications. Live++ makes it possible to edit code while it is running, which can significantly reduce iteration times. Visit the <a href="https://liveplusplus.tech">Live++ website</a> for details.</p>
+<blockquote>
+<p><strong>Important!</strong></p>
+<p>There is a 30-day trial version for Live++, but after that you'll need to pay for a license.</p>
+</blockquote>
+<h2 id="how-to-enable-live">How to enable Live++</h2>
+<p>Visit the <a href="https://liveplusplus.tech">Live++ website</a> and download the free-trial package. This should include the Live++ API and tools. Copy the contents into <code>Code/ThirdParty/LivePP</code> in the EZ repository.</p>
+<p>Use the <a href="https://cmake.org/">CMake GUI</a> to adjust the <a href="../build/cmake-config.html">CMake configuration</a>. Enable <code>EZ_3RDPARTY_LIVEPP_SUPPORT</code> then click <em>Configure</em> and <em>Generate</em>.</p>
+<p>Compile EZ and run the editor. Now the Live++ Broker app should show up:</p>
+<p><img src="media/livepp-broker.png" alt="Live++ Broker"></p>
+<p>Verify in the <em>Processes Section</em> that <code>ezEditor.exe</code>, and <code>ezEditorEngineProcess.exe</code> are shown in the Live++ Broker.</p>
+<p>Now to try Live++ out, edit some source file, save it, and press <code>CTRL + ALT + F11</code>. After a second you should see this:</p>
+<p><img src="media/livepp-compile.png" alt="Live++ update"></p>
+<p>Once this dissapears, another message should show up, stating that hot-reloading was successful.</p>
+<h2 id="alternatives">Alternatives</h2>
+<p>Live++ can hot reload most code changes and it works even while running the game. However, even without Live++, EZ can hot reload the engine inside the editor, which means you can rapidly iterate between <a href="../editor/run-scene.html">playing the game</a> without closing the editor. See <a href="../custom-code/cpp/cpp-code-reload.html">this chapter</a> for details.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="animated-mesh-component.html">Animated Mesh Component</a></li>
-<li><a href="skeleton-asset.html">Skeleton Asset</a></li>
-<li><a href="skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="animation-clip-asset.html">Animation Clip Asset</a></li>
-<li><a href="simple-animation-component.html">Simple Animation Component</a></li>
+<li><a href="../custom-code/cpp/cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animated-mesh-asset.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/livepp.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

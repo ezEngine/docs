@@ -131,6 +131,13 @@
 <p><video src="media/render-mode-distortion.webm" width="500" height="500" autoplay="" loop=""></video></p>
 </li>
 </ul>
+<p><strong>Lighting Mode:</strong> Controls whether the particles receive dynamic lighting.
+* <code>Fullbright</code>: Particles will not be lit dynamically.
+* <code>Vertex Lit</code>: Lighting will be calculated at each vertex and interpolated across the particle.</p>
+<p><strong>Normal Curvature:</strong> For particle lighting, how round the particle appears. At <code>0</code> the particles are treated like flat pieces, at <code>1</code> they are lit more like spheres. The image below shows a curvature of <code>0</code>, <code>0.5</code> and <code>1.0</code>.</p>
+<p><img src="media/normal-curvature.png" alt="Particle Curvature"></p>
+<p><strong>Light Directionality:</strong> For particle lighting, how much the light wraps around the particle. At <code>0</code> the direction of incoming light is completely ignored, whereas at <code>1</code> particles will be clearly lit from the side from which a light source shines at it. Note that the directionality somewhat depends on the camera direction. The image below shows smoke lit with light directionality of <code>0</code>, <code>0.5</code> and <code>1.0</code>.</p>
+<p><img src="media/light-directionality.png" alt="Light Directionality"></p>
 <p><strong>Texture:</strong> The texture used for rendering. May be a texture atlas or contain flipbook animations.</p>
 <p><strong>Texture Atlas:</strong> Specifies how to interpret the content in <em>Texture</em>:</p>
 <ul>
@@ -143,32 +150,32 @@
 <li><p><em>Random Row, Animated Column</em> - The texture contains <em>NumSpritesY</em> animations, each with <em>NumSpritesX</em> frames. Each particle plays one random animation over its lifetime.</p>
 </li>
 </ul>
-<p><strong>TintColorParam:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the final color of the particle.</p>
+<p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the final color of the particle.</p>
 <p><strong>Particle Stretch:</strong> Only available in the 'axis' render modes. Allows to stretch the particles along their fixed axis. Useful to create sparks.</p>
 <h2 id="mesh-renderer">Mesh Renderer</h2>
 <p>This renderer visualizes each particle using a <a href="../../graphics/meshes/mesh-asset.html">mesh</a>.</p>
 <p><strong>Mesh:</strong> The mesh to use for rendering.</p>
 <p><strong>Material:</strong> The material to use on the mesh.</p>
-<p><strong>TintColorParam:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the meshes.</p>
+<p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the meshes.</p>
 <p><video src="media/mesh-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <h2 id="light-renderer">Light Renderer</h2>
 <p>The light renderer treats each particle as a light source and thus illuminates the scene around it. Usually one would add this renderer as a second renderer to a particle system, such that one can easily reuse the behavior and color of for example billboards. Since light sources have a very high performance overhead, and adding as many lights into a scene as billboards would often be way too much, this renderer may visualize only a fraction of all particles in the system.</p>
-<p><strong>SizeFactor:</strong> A factor to scale the particle's size with to determine the light influence radius. If the particles are also visualized as, for instance, billboards, the light source around the billboard should often be three to five times bigger.</p>
+<p><strong>Size Factor:</strong> A factor to scale the particle's size with to determine the light influence radius. If the particles are also visualized as, for instance, billboards, the light source around the billboard should often be three to five times bigger.</p>
 <p><strong>Intensity:</strong> The light intensity.</p>
 <p><strong>Percentage:</strong> How many of the particles in the system should also be used as light sources. Typically you should only use 10% or so of the particles. Fewer lights is not only better for performance, it often also looks better, as there will be more contrast and flickering. Too many lights will result in constant brightness, making the effect less interesting.</p>
-<p><strong>TintColorParam:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the lights.</p>
-<p><strong>IntensityScaleParam:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to scale the intensity of the lights.</p>
-<p><strong>SizeScaleParam:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to scale the light influence radius.</p>
+<p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the lights.</p>
+<p><strong>Intensity Scale Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to scale the intensity of the lights.</p>
+<p><strong>Size Scale Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to scale the light influence radius.</p>
 <p><video src="media/light-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <h2 id="trail-renderer">Trail Renderer</h2>
 <p>This renderer visualizes particles as long lines that draw the path that the particle took. Trail particles are made up of a fixed number of segments. The more segments the renderer uses, the longer the trails will be. Also the faster a particle moves, the longer the trail will stretch. More segments cost more performance to update and render. For very short sparks that should just stretch a little, it is better to use billboards with <em>Orientation</em> set the <em>Axis: Particle Dir</em> and <em>StretchFactor</em> set to some value between 2 and 5.</p>
-<p><strong>Render Mode, Texture, Texture Atlas, TintColorParam:</strong> These options are identical to the <a href="#quad-renderer">quad renderer</a>.</p>
+<p><strong>Render Mode, Texture, Texture Atlas, TintColorParam, Lighting Mode:</strong> These options are identical to the <a href="#quad-renderer">quad renderer</a>.</p>
 <p><strong>Segments:</strong> The number of segments to use for each particle. More segments cost more performance but also result in longer and more detailed trails.</p>
 <p><video src="media/trail-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <h2 id="effect-renderer">Effect Renderer</h2>
 <p>This renderer visualizes each particle using another particle effect. The referenced effect is spawned at the position of each particle and then moved along as the particle moves. This allows you to create effects like fireworks, where each 'rocket' is represented by a single particle flying into the sky, but visualizes as a complete burning particle effect.</p>
 <p><strong>Effect:</strong> The particle effect to spawn and move along for each particle in this system. Usually the other particle system would use at least one continuous emitter, such that the effect will be active for the whole lifetime of the particle that references it.</p>
-<p><strong>RandomSeeed:</strong> An optional random seed to pass into the spawned effect.</p>
+<p><strong>Random Seeed:</strong> An optional random seed to pass into the spawned effect.</p>
 <p><video src="media/effect-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
