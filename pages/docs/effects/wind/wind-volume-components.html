@@ -98,7 +98,7 @@
 <p>All wind volume components have these properties:</p>
 <ul>
 <li><code>Strength</code>: The strength with which the wind shall blow.</li>
-<li><code>ReverseDirection</code>: If set, the wind direction is reversed. This can be used to pull things inwards, instead of pushing them.</li>
+<li><code>StrengthFactor</code>: An additional multiplier for the wind strength. Can be adjusted dynamically and may be set to a negative value to reverse the wind direction. This can be used to pull things inwards, instead of pushing them away.</li>
 <li><code>BurstDuration</code>: If this is set to zero, the wind blows continuously. Otherwise it blows for the specified amount of time and then stops.</li>
 <li><code>OnFinishedAction</code>: If <code>BurstDuration</code> is non-zero, the component will deactivate itself once the burst is done. Additionally, the component may delete itself or the entire object. Note that if <em>None</em> is selected, the wind burst can be restarted, simply by reactivating the component.</li>
 </ul>
@@ -110,6 +110,7 @@
 <h2 id="cylinder-wind-volume-properties">Cylinder Wind Volume Properties</h2>
 <ul>
 <li><code>Length</code>, <code>Radius</code>: The size of the cylinder.</li>
+<li><code>RadiusFalloff</code>, <code>PositiveFalloff</code>, <code>NegativeFalloff</code>: An optional falloff for the wind strength, such that it smoothly ramps up when getting close to the cylinder. The <em>radius falloff</em> is used along the radial directions, the other two falloff values are used along the main axis of the cylinder either in the <em>positive</em> or <em>negative</em> direction from the center.</li>
 <li><code>Mode</code>: How the wind force is computed.
 <ul>
 <li><code>Directional</code>: The wind force is along the main cylinder axis.</li>

@@ -113,7 +113,7 @@
 </ul>
 <h2 id="output-pins">Output Pins</h2>
 <ul>
-<li><p><code>Pose</code>: The sampled pose. A valid pose is only produced during playback, once the node is inactive, there is no pose output.</p>
+<li><p><code>Pose</code>: The sampled pose. Once playback reaches the end of the clip and is not set to loop, the last frame is output indefinitely.</p>
 </li>
 <li><p><code>On Started</code>: This output pin gets triggered every time playback is started or restarted, either because of user input or because playback reached the end and was looped.</p>
 </li>

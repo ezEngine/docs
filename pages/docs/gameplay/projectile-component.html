@@ -92,18 +92,30 @@
 <p>The <em>projectile component</em> makes an object move along a straight line (with optional gravity), checks for collisions and triggers <a href="../materials/surfaces.html#surface-interactions">surface interactions</a>. It also applies <em>damage</em> and a <em>physical impulse</em> when it hits something.</p>
 <p>There are many ways projectiles may work in different games. The projectile component only implements the most commonly needed functionality. For some games this may already be sufficient. For more creative games you most certainly need to implement your own component. The built-in projectile component is mostly meant as a showcase and demonstration, how you can generally implement such functionality, especially how to interact with <a href="../materials/surfaces.html">surfaces</a>.</p>
 <h2 id="component-properties">Component Properties</h2>
-<p><code>Speed</code>: The speed (m/sec) at which the projectile will fly along the +X axis. For dramatic effect it is often more interesting for bullets to fly much slower than is realistic, so that one can see them.</p>
-<p><code>GravityMultiplier</code>: How strong gravity should affect the bullet. If set to 0, the projectile will fly straight ahead. With values &gt; 0, it will fall downwards.</p>
-<p><code>MaxLifetime</code>: If the projectile lives longer than this, it will destroy itself.</p>
-<p><code>OnTimeoutSpawn</code>: If the projectile destroys itself because it didn't hit anything before <code>MaxLifetime</code> ended, it will spawn this prefab. Can be used to let rockets 'explode' after a while.</p>
-<p><code>CollisionLayer</code>: The physics <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for raycasting whether the projectile hit something.</p>
-<p><code>ShapeTypesToHit</code>: Specifies what types of physics geometry to hit, at all.</p>
-<p><code>FallbackSurface</code>: If the projectile hits something that has no <a href="../materials/surfaces.html">surface</a> assigned, it will assume that this type of surface was hit. This just guarantees that you always get any kind of hit response, even when the hit geometry is just dummy or placeholder geometry.</p>
-<p><code>Interactions</code>: This array allows you to specify exactly what the projectile will do, when it hits different types of surfaces. Each entry is used to configure the action of the projectile if a certain type of surface is hit. Note that surfaces and surface interactions already work hierarchically. That means for most types of projectiles this array only needs to contain a single entry, with a base surface, and all it needs to specify is what 'interaction' to trigger. The exact type of surface that is hit, will then decide what prefabs to spawn for that kind of interaction.</p>
+<ul>
+<li><p><code>Speed</code>: The speed (m/sec) at which the projectile will fly along the +X axis. For dramatic effect it is often more interesting for bullets to fly much slower than is realistic, so that one can see them.</p>
+</li>
+<li><p><code>GravityMultiplier</code>: How strong gravity should affect the bullet. If set to 0, the projectile will fly straight ahead. With values &gt; 0, it will fall downwards.</p>
+</li>
+<li><p><code>MaxLifetime</code>: If the projectile lives longer than this, it will destroy itself.</p>
+</li>
+<li><p><code>SpawnPrefabOnStatic</code>: If enabled, the <code>OnDeathPrefab</code> will be spawned when the projectile lost so much speed that it is nearly static (not moving anymore). Only useful in combination with the <em>bounce</em> behavior.</p>
+</li>
+<li><p><code>OnDeathPrefab</code>: If the projectile destroys itself because it didn't hit anything before <code>MaxLifetime</code> ended or it slowed to a halt and <code>SpawnPrefabOnStatic</code> is enabled, it will spawn this prefab. Can be used to let rockets 'explode' after a while.</p>
+</li>
+<li><p><code>CollisionLayer</code>: The physics <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for raycasting whether the projectile hit something.</p>
+</li>
+<li><p><code>ShapeTypesToHit</code>: Specifies what types of physics geometry to hit, at all.</p>
+</li>
+<li><p><code>FallbackSurface</code>: If the projectile hits something that has no <a href="../materials/surfaces.html">surface</a> assigned, it will assume that this type of surface was hit. This just guarantees that you always get any kind of hit response, even when the hit geometry is just dummy or placeholder geometry.</p>
+</li>
+<li><p><code>Interactions</code>: This array allows you to specify exactly what the projectile will do, when it hits different types of surfaces. Each entry is used to configure the action of the projectile if a certain type of surface is hit. Note that surfaces and surface interactions already work hierarchically. That means for most types of projectiles this array only needs to contain a single entry, with a base surface, and all it needs to specify is what 'interaction' to trigger. The exact type of surface that is hit, will then decide what prefabs to spawn for that kind of interaction.</p>
+</li>
+</ul>
 <h3 id="interaction-properties">Interaction Properties</h3>
 <ul>
 <li><code>Surface</code>: The (base) type of surface for which this array element applies.</li>
-<li><code>Reaction</code>: How the projectile itself should react. <code>Absorb</code> means it will stop there, <code>Reflect</code> means the bullet will bounce off, <code>Attach</code> means the bullet will stop but attach itself to the target object and <code>Pass Through</code> means it will continue on its path.</li>
+<li><code>Reaction</code>: How the projectile itself should react. <code>Absorb</code> means it will stop there, <code>Reflect</code> means the bullet will bounce off without speed loss, <code>Bounce</code> means it will bounce off with a loss in speed depending on the restitutation of the hit surface, <code>Attach</code> means the bullet will stop but attach itself to the target object and <code>Pass Through</code> means it will continue on its path.</li>
 <li><code>Interaction</code>: The <a href="../materials/surfaces.html#surface-interactions">surface interaction</a> to trigger when the projectile hits this type of surface.</li>
 <li><code>Impulse</code>: The amount of physical impulse to exert on the hit object.</li>
 <li><code>Damage</code>: The amount of damage to apply to the hit object.</li>
