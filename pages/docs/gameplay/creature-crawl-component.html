@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>ShaderCompiler | ezEngine </title>
+      <title>Creature Crawl Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="ShaderCompiler | ezEngine ">
+      <meta name="title" content="Creature Crawl Component | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/shadercompiler.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/creature-crawl-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,37 +87,19 @@
         </div>
 
         <article data-uid="">
-<h1 id="shadercompiler">ShaderCompiler</h1>
+<h1 id="creature-crawl-component">Creature Crawl Component</h1>
 
-<p>The <em>ezShaderCompiler</em> is a command-line application to precompile shader permutations.</p>
-<p>This tool can be used to prepare shaders and shader permutations before they are needed at runtime. On platforms where runtime shader compilation is possible, EZ will compile shader permutations on demand. This leads to a small delay when a new permutation is encountered, but is very convenient during development.</p>
-<p>By precompiling all necessary permutations, it is possible to prevent this delay. On platforms that do not allow runtime shader compilation this is even necessary for the shaders to be available, at all.</p>
-<h2 id="command-line-options">Command Line Options</h2>
-<p>For the full list of available command line options, run</p>
-<pre><code class="lang-cmd">ShaderCompiler.exe -help
-</code></pre>
-<ul>
-<li><p><code>-project &lt;path&gt;</code>: The compiler takes a path to a <a href="../projects/projects-overview.html">project</a> to resolve paths relative to the project directory.</p>
-</li>
-<li><p><code>-platform &lt;name&gt;</code>: The name of the target platform for which to compile the shaders. For example <code>DX11_SM50</code>. See the command line help for all options.</p>
-</li>
-<li><p><code>-shader &lt;path1;path2&gt;</code>: Semicolon separated list of paths to shader files or folders containing shaders. Paths may be absolute or relative to the <em>-project</em> directory. If a path to a folder is specified, all .ezShader files in that folder are compiled.</p>
-</li>
-<li><p><code>-perm &lt;PERM1=TRUE PERM2=11&gt;</code>: List of permutation variables to set to fixed values. For all other permutation variables, all possible combinations are used to compile the shaders. Spaces are used to separate multiple arguments.</p>
-</li>
-</ul>
-<h2 id="example">Example</h2>
-<pre><code class="lang-cmd">ShaderCompiler.exe -project &quot;C:\ez\Data\Base&quot; -platform DX11_SM50 -shader &quot;Shaders\Debug&quot; -perm TOPOLOGY=TOPOLOGY_LINES CAMERA_MODE=CAMERA_MODE_PERSPECTIVE
-</code></pre>
+<!-- PAGE IS TODO -->
+<h2 id="component-properties">Component Properties</h2>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../graphics/shaders/shaders-overview.html">Shaders</a></li>
+<li><a href="../animation/skeletal-animation/skeletal-animation-overview.html">Skeletal Animations</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/shadercompiler.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/creature-crawl-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

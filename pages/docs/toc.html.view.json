@@ -707,6 +707,15 @@
               "level": 4.0,
               "items": [],
               "leaf": true
+            },
+            {
+              "name": "LOD Mesh Component (TODO)",
+              "href": "graphics/meshes/lod-mesh-component.html",
+              "topicHref": "graphics/meshes/lod-mesh-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
             }
           ],
           "topicHref": null,
@@ -1535,6 +1544,15 @@
               "leaf": true
             },
             {
+              "name": "LOD Animated Mesh Component (TODO)",
+              "href": "animation/skeletal-animation/lod-animated-mesh-component.html",
+              "topicHref": "animation/skeletal-animation/lod-animated-mesh-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Skeleton Asset",
               "href": "animation/skeletal-animation/skeleton-asset.html",
               "topicHref": "animation/skeletal-animation/skeleton-asset.html",
@@ -1775,6 +1793,32 @@
               "level": 4.0,
               "items": [],
               "leaf": true
+            },
+            {
+              "name": "Ik",
+              "items": [
+                {
+                  "name": "Two Bone IK Component (TODO)",
+                  "href": "animation/skeletal-animation/ik/two-bone-ik-component.html",
+                  "topicHref": "animation/skeletal-animation/ik/two-bone-ik-component.html",
+                  "tocHref": null,
+                  "level": 5.0,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Aim IK Component (TODO)",
+                  "href": "animation/skeletal-animation/ik/aim-ik-component.html",
+                  "topicHref": "animation/skeletal-animation/ik/aim-ik-component.html",
+                  "tocHref": null,
+                  "level": 5.0,
+                  "items": [],
+                  "leaf": true
+                }
+              ],
+              "topicHref": null,
+              "tocHref": null,
+              "level": 4.0
             }
           ],
           "topicHref": null,
@@ -2068,6 +2112,24 @@
               "leaf": true
             },
             {
+              "name": "Navmesh Obstacle Component (TODO)",
+              "href": "ai/AiPlugin/navmesh-obstacle-component.html",
+              "topicHref": "ai/AiPlugin/navmesh-obstacle-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "AI Navigation Component (TODO)",
+              "href": "ai/AiPlugin/navigation-component.html",
+              "topicHref": "ai/AiPlugin/navigation-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "AiPlugin Overview",
               "href": "ai/AiPlugin/ai-plugin-overview.html",
               "topicHref": "ai/AiPlugin/ai-plugin-overview.html",
@@ -2124,6 +2186,15 @@
     {
       "name": "Gameplay",
       "items": [
+        {
+          "name": "Creature Crawl Component (TODO)",
+          "href": "gameplay/creature-crawl-component.html",
+          "topicHref": "gameplay/creature-crawl-component.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
         {
           "name": "Spawn Component",
           "href": "gameplay/spawn-component.html",

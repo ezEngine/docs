@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>ShaderCompiler | ezEngine </title>
+      <title>Fill Light Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="ShaderCompiler | ezEngine ">
+      <meta name="title" content="Fill Light Component | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/shadercompiler.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lighting/fill-light-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,37 +87,39 @@
         </div>
 
         <article data-uid="">
-<h1 id="shadercompiler">ShaderCompiler</h1>
+<h1 id="fill-light-component">Fill Light Component</h1>
 
-<p>The <em>ezShaderCompiler</em> is a command-line application to precompile shader permutations.</p>
-<p>This tool can be used to prepare shaders and shader permutations before they are needed at runtime. On platforms where runtime shader compilation is possible, EZ will compile shader permutations on demand. This leads to a small delay when a new permutation is encountered, but is very convenient during development.</p>
-<p>By precompiling all necessary permutations, it is possible to prevent this delay. On platforms that do not allow runtime shader compilation this is even necessary for the shaders to be available, at all.</p>
-<h2 id="command-line-options">Command Line Options</h2>
-<p>For the full list of available command line options, run</p>
-<pre><code class="lang-cmd">ShaderCompiler.exe -help
-</code></pre>
+<p>Fill lights are non physically based light sources that can be used to fake global illumination (GI) or modulate ambient light. They have a customizable falloff exponent and use wrapped diffuse lighting with a configurable factor. They also allow negative intensity.</p>
+<p>Fill lights are placed to brighten or darken areas in more subtle ways than a regular light source would do. They don't use specular lighting or shadows.</p>
+<p><img src="media/fill-light.jpg" alt="Fill Lights"></p>
+<p>The image above shows a scene without (left) and with (right) fill lights placed behind the columns. Here the fill lights are used to darken the scene to create fake shadowed areas.</p>
+<p>Similar to all other dynamic light types, fill lights cost performance, although slightly less than a regular <a href="point-light-component.html">point light</a>.</p>
+<h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>-project &lt;path&gt;</code>: The compiler takes a path to a <a href="../projects/projects-overview.html">project</a> to resolve paths relative to the project directory.</p>
-</li>
-<li><p><code>-platform &lt;name&gt;</code>: The name of the target platform for which to compile the shaders. For example <code>DX11_SM50</code>. See the command line help for all options.</p>
-</li>
-<li><p><code>-shader &lt;path1;path2&gt;</code>: Semicolon separated list of paths to shader files or folders containing shaders. Paths may be absolute or relative to the <em>-project</em> directory. If a path to a folder is specified, all .ezShader files in that folder are compiled.</p>
-</li>
-<li><p><code>-perm &lt;PERM1=TRUE PERM2=11&gt;</code>: List of permutation variables to set to fixed values. For all other permutation variables, all possible combinations are used to compile the shaders. Spaces are used to separate multiple arguments.</p>
-</li>
+<li><code>Light Mode</code>: How the light is combined with the other scene lighting.
+<ul>
+<li><code>Additive</code>: The light is added to all other lighting. This is how typical light sources work. Note that to darken the scene with this mode, set a negative <code>Intensity</code> on it, then it is simply a subtractive light source.</li>
+<li><code>Modulate Indirect</code>: Multiplies the <a href="ambient-light-component.html">ambient light</a> (but not the direct light). This is typically used to introduce fake shadows. Since the direct light is not affected, the fill light darkens an area that is lit by ambient light, but doesn't  affect it when a proper light source illuminates the area.</li>
 </ul>
-<h2 id="example">Example</h2>
-<pre><code class="lang-cmd">ShaderCompiler.exe -project &quot;C:\ez\Data\Base&quot; -platform DX11_SM50 -shader &quot;Shaders\Debug&quot; -perm TOPOLOGY=TOPOLOGY_LINES CAMERA_MODE=CAMERA_MODE_PERSPECTIVE
-</code></pre>
+</li>
+<li><code>Use Color Temperature</code>: If enabled, the light color is defined through a temperature value. This makes it easier to set up physically accurate lighting conditions.</li>
+<li><code>Light Color</code>: The color of the light.</li>
+<li><code>Intensity</code>: The brightness. Note that fill lights may use negative intensity values.</li>
+<li><code>Range</code>: The distance over which the light affects geometry.</li>
+<li><code>Falloff Exponent</code>: How rapidly the light strength changes from its center to its edge. Values below <code>1</code> mean that the lighting changes very slowly from the center outwards, but then very suddenly at the outer edge. Values above <code>1</code> are the opposite, the effect reduces quickly at the center and then gradually fades out at the edge.</li>
+<li><code>Directionality</code>: How much the light wraps around the geometry. A value of <code>0</code> means that it fully wraps around geometry, as if it comes from all directions. A value of <code>1</code> means it doesn't wrap around geometry, at all, behaving more like a traditional light source.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../graphics/shaders/shaders-overview.html">Shaders</a></li>
+<li><a href="lighting-overview.html">Lighting</a></li>
+<li><a href="ambient-light-component.html">Ambient Light Component</a></li>
+<li><a href="point-light-component.html">Point Light Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/shadercompiler.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/lighting/fill-light-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
