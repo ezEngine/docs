@@ -89,24 +89,56 @@
         <article data-uid="">
 <h1 id="aim-ik-component">Aim IK Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>Aim IK component</em> adds procedural animation to an <a href="../animated-mesh-component.html">animated mesh</a> through <em>inverse kinematics</em>.</p>
+<p>The aim IK component rotates a bone of the <a href="../skeleton-asset.html">skeleton</a> such that it points towards a target position. Optionally, this rotation can be distributed over multiple bones in a chain, to make the result more natural.</p>
+<p>Typical use cases for this are for characters to look at objects, guns to point correctly at a target or align feet with the ground slope.</p>
+<p>In the video below, this is used to rotate the head such that it looks at the stone. The rotation is distributed over three bones, such that the upper body, neck and head each contribute a part of the motion.</p>
+<p><video src="media/lookat-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p>This video shows a common problem, an <em>aim animation</em> is used to have the gun point at something, but the animation doesn't let the character point precisely forwards. Once multiple animations are combined for movement, such as walking sideways, the direction that the character points into is completely off target.</p>
+<p><video src="media/no-aim-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p>In the video below, aim IK is used to correct both the right arm, as well as the head, such that the character precisely points and looks at the target. Here the IK component is also only active (and its weight is gradually faded in and out) when the player actually wants to aim.</p>
+<p><video src="media/aim-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<h2 id="how-to-set-up-aim-ik">How to Set Up Aim IK</h2>
+<p>The <em>Aim IK component</em> has to be attached to a child node of the <a href="../animated-mesh-component.html">animated mesh</a> that it is supposed to affect. The position of that game object is where the target bones will point at. Add one or more entries to the <code>Joints</code> array. Each entry identifies a bone to control from the <a href="../skeleton-asset.html">skeleton</a>. The <code>Weight</code> of each entry defines how much of the necessary IK to apply. At a value of 1, the bone would be rotated to fully point at the target. With a weight of 0.5, only half the rotation would be applied. This is used to distribute the rotation piece-wise over multiple bones.</p>
+<p><img src="media/aimik-settings.png" alt="Aim IK Settings"></p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>The order of the bones in the array is important. Aim IK is applied once for each entry, in the order in which they are listed. Each entry affects the next one. So in this example first the upper arm will be rotated some amount, then from that result the necessary rotation for the lower arm will be computed and applied, and finally from that result, the necessary rotation for the hand is computed and applied.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>The <em>weight</em> for each entry is relative only for that step. Thus the value doesn't have to be increasing like in this example. For instance, you could have three bones that each have a weight of 0.5, so that they gradually come closer to the desired result. However, usually the last step uses a weight of 1, to finally reach the target. You may also need to correct multiple bones at the end of the chain with a weight of 1.</p>
+</blockquote>
+<p>As the next step, you need to specify which axis of the target bones to align with the target direction. This is set with the <code>Forward Vector</code> property and depends both on how your skeleton is built, and what effect you want to achieve. Often you literally just need to try out, which of the 6 cardinal directions gives the desired result. You also need to set an (orthogonal) <code>Up Vector</code>. Again, this is mostly trial and error, to find the best axis.</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>The skeleton of your animated mesh must be authored such that the bones have the proper direction and <em>roll</em>, for this to work. If, for instance, your hand bone doesn't point straight into the direction into which the hand mesh points, you cannot get the aim to work right. Similarly, if your bone has some <em>roll</em> (relative to the visual mesh), you may not be able to find an up vector that gives good results.</p>
+</blockquote>
+<h3 id="pole-vector">Pole Vector</h3>
+<p>When rotating a bone towards a target, there is not only the main direction to consider, but also the <em>roll</em> around that direction.</p>
+<p>The <em>pole vector</em> is an optional object to use as a secondary target, that the <code>Up Vector</code> should point towards. In the case of pointing an arm, this is typically used to specify into which direction the elbow should point (for instance to the left, right, downwards, etc). Usually the pole vector object would be another child object of the animated mesh and thus move along with it.</p>
+<p>Again, for this to work, your skeleton needs to be build such, that the bones have the proper <em>roll</em>, such that their orthogonal directions point into a useful direction. For example an elbow joint should be built such, that the <em>forward</em> direction (for example <code>+Y</code>) goes straight along the forearm, and its <em>roll</em> should be such, that the sidewards direction (<code>+X</code> or <code>+Z</code>) points into the direction of the elbow.</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>Often aim IK already works good enough without a dedicated pole vector, so only set it up, when the result doesn't look convincing enough without it.</p>
+</blockquote>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>ForwardVector</code>:</li>
-<li><code>UpVector</code>:</li>
-<li><code>PoleVector</code>:</li>
-<li><code>Weight</code>:</li>
-<li><code>Joints</code>:
-<ul>
-<li><code>Joint</code>:</li>
-<li><code>Weight</code>:</li>
-</ul>
+<li><p><code>Forward Vector</code>: The cardinal axis of the bones to align with the aim direction. Usually found by the scientific method of trying all possible options.</p>
+</li>
+<li><p><code>Up Vector</code>: The orthogonal cardinal axis of the bone to use as the <em>up vector</em>. If available, the bone will be rotated such that the <code>Up Vector</code> points towards the <code>Pole Vector</code> object.</p>
+</li>
+<li><p><code>Pole Vector</code>: An optional object to use as a secondary target, to have the <code>Up Vector</code> point towards. See details above.</p>
+</li>
+<li><p><code>Weight</code>: The overall weight to use to apply the IK. This is typically used at runtime to gradually fade the IK in and out.</p>
+</li>
+<li><p><code>Joints</code>: An array of bones to apply IK to. Order matters. Unrelated bones can be listed, for example you can let both the left and right arm point at the same thing. However, be careful to always list parent bones first. The <code>Weight</code> defines how much of the necessary rotation to apply to a bone.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="two-bone-ik-component.html">Two Bone IK Component (TODO)</a></li>
+<li><a href="two-bone-ik-component.html">Two Bone IK Component</a></li>
 </ul>
 
 </article>

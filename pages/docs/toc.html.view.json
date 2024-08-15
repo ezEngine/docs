@@ -1807,7 +1807,7 @@
               "name": "Ik",
               "items": [
                 {
-                  "name": "Two Bone IK Component (TODO)",
+                  "name": "Two Bone IK Component",
                   "href": "animation/skeletal-animation/ik/two-bone-ik-component.html",
                   "topicHref": "animation/skeletal-animation/ik/two-bone-ik-component.html",
                   "tocHref": null,
@@ -1816,7 +1816,7 @@
                   "leaf": true
                 },
                 {
-                  "name": "Aim IK Component (TODO)",
+                  "name": "Aim IK Component",
                   "href": "animation/skeletal-animation/ik/aim-ik-component.html",
                   "topicHref": "animation/skeletal-animation/ik/aim-ik-component.html",
                   "tocHref": null,

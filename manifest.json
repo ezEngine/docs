@@ -1111,6 +1111,66 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/ik/media/aim-ik.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/ik/media/aim-ik.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/ik/media/aimik-settings.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/ik/media/aimik-settings.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/ik/media/lookat-ik.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/ik/media/lookat-ik.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/ik/media/no-aim-ik.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/ik/media/no-aim-ik.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/ik/media/two-bone-ik.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/ik/media/two-bone-ik.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/skeletal-animation/ik/media/twoboneik-settings.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/skeletal-animation/ik/media/twoboneik-settings.png"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/animation/skeletal-animation/ik/two-bone-ik-component.md",
       "output": {
