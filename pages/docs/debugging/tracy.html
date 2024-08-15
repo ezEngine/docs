@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Navmesh Obstacle Component | ezEngine </title>
+      <title>Tracy Integration | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Navmesh Obstacle Component | ezEngine ">
+      <meta name="title" content="Tracy Integration | ezEngine ">
       
-      <link rel="icon" href="../../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
       
-      <meta name="docfx:rel" content="../../../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/navmesh-obstacle-component.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/tracy.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../../index.html">
+          <a class="navbar-brand" href="../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,25 +87,29 @@
         </div>
 
         <article data-uid="">
-<h1 id="navmesh-obstacle-component">Navmesh Obstacle Component</h1>
+<h1 id="tracy-integration">Tracy Integration</h1>
 
-<p>The <em>navmesh obstacle component</em> is used to inform the navmesh system, that a certain area has changed (blocked or unblocked) and needs to be regenerated.</p>
-<p>This is mainly intended for large objects that either appear or disappear (for example when a player places a building) or that move only infrequently, such as a city gate opening after some quest got completed. It will not work for freely moving obstacles that would require <em>avoidance</em> by NPCs.</p>
-<p>The obstacle must have a physical <a href="../../physics/jolt/collision-shapes/jolt-shapes.html">collider</a> to represent its shape. The obstacle component automatically informs the navmesh that a <em>navmesh sector</em> is outdated when the component becomes active and inactive. If necessary, it can also be triggered externally to invalidate the sector again, for example when it moved.</p>
-<h2 id="exposed-functions">Exposed Functions</h2>
-<ul>
-<li><code>InvalidateSectors</code>: Triggers a rebuild of the navmesh sectors that the obstacle overlaps with.</li>
-</ul>
+<p>EZ has an integration for <a href="https://github.com/wolfpld/tracy">Tracy</a>, a popular tool for doing performance measurements, logging and memory inspection.</p>
+<p>To get the latest version of Tracy, see their <a href="https://github.com/wolfpld/tracy/releases">releases</a>.</p>
+<h2 id="building-with-tracy-support">Building with Tracy Support</h2>
+<p>Unfortunately, when Tracy support is enabled, it hooks into the PDB files (debug symbols) in such a way, that it breaks <a href="../custom-code/cpp/cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a>.</p>
+<p>Therefore, Tracy support is currently disabled by default.</p>
+<p>Use the <a href="https://cmake.org/">CMake GUI</a> to adjust the <a href="../build/cmake-config.html">CMake configuration</a>. Enable <code>EZ_3RDPARTY_TRACY_SUPPORT</code> then click <em>Configure</em> and <em>Generate</em>.</p>
+<p>If you want to use Tracy to inspect memory usage, you should also enable <code>EZ_3RDPARTY_TRACY_TRACK_ALLOCATIONS</code>. Note that this adds additional performance overhead.</p>
+<h2 id="using-tracy">Using Tracy</h2>
+<p>Once Tracy support is enabled, you can run <code>Tracy.exe</code> and connect to any EZ process, such as <code>ezEditor</code>, <code>ezEditorEngineProcess</code> or <code>ezPlayer</code>. Be aware that the editor uses multiple processes.</p>
+<p>For more information about how to use Tracy, please consult <a href="https://github.com/wolfpld/tracy">their documentation</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="runtime-navmesh.html">Runtime Navmesh</a></li>
-<li><a href="navigation-component.html">AI Navigation Component</a></li>
+<li><a href="../tools/inspector.html">ezInspector</a></li>
+<li><a href="../performance/profiling.html">Profiling</a></li>
+<li><a href="debug-cpp.html">Debugging C++ Code</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/navmesh-obstacle-component.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/tracy.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -89,9 +89,21 @@
         <article data-uid="">
 <h1 id="lod-animated-mesh-component">LOD Animated Mesh Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>This component is functionally identical to the <a href="../../graphics/lod-component.html">LOD component</a>, except that it switches only between <a href="animated-mesh-asset.html">animated meshes</a> rather than entire objects. It is thus both easier to set up and more efficient in these more limited use cases. For details how to use this component, please consult the <a href="../../graphics/lod-component.html">LOD component</a> documentation.</p>
 <h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>Color</code>, <code>CustomData</code>, <code>SortingDepthOffset</code>: See the <a href="../../graphics/meshes/mesh-component.html">mesh component</a> for details.</p>
+</li>
+<li><p><code>BoundsOffset</code>, <code>BoundsRadius</code>, <code>ShowDebugInfo</code>, <code>OverlapRanges</code>: See the <a href="../../graphics/lod-component.html">LOD component</a> for details.</p>
+</li>
+<li><p><code>Meshes</code>: An array that lists the different level-of-detail meshes to switch between. Each entry names one <code>Mesh</code> and a <code>Threshold</code>. The first mesh is used for coverage values from 1 down to the given threshold. Then the next mesh is used from that coverage value down to the next threshold and so on. If the last mesh uses a threshold larger than 0, then nothing gets rendered when the coverage value is lower than that.</p>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="animated-mesh-asset.html">Animated Mesh Asset</a></li>
+<li><a href="../../graphics/lod-component.html">LOD Component</a></li>
+</ul>
 
 </article>
 

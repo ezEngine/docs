@@ -89,11 +89,31 @@
         <article data-uid="">
 <h1 id="ai-navigation-component">AI Navigation Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>AI navigation component</em> is used to make an NPC move towards a destination, using the <a href="runtime-navmesh.html">navmesh</a> to move around obstacles.</p>
+<p>The component has to be instructed via <a href="../../custom-code/custom-code-overview.html">code</a> what to do. The <code>SetDestination()</code> function is used to make it move the parent game object along a path towards the goal. <code>GetState()</code> can be called to query whether it is moving and how.</p>
+<p>The component uses physics queries to place the NPC on solid ground. It uses the navmesh information only for the general direction. The <em>foot radius</em> determines the width for this query. It should be wide enough, so that the NPC cannot fall through small holes in the ground, but narrow enough, so that it can't stand far away in the air on a ledge. As long as the &quot;feet&quot; touch any solid ground, the NPC will hang there, it will not slide down.</p>
+<p><video src="media/crawl.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p>This component demonstrates how navigation for an NPC can be implemented. It is not meant to be a solution for every game, though. In many cases you may want to implement your own, so that you can handle your game specific needs as desired. Don't hesitate to copy the implementation of this component and just use it as a starting point.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>So far this component does not implement any dynamic <em>obstacle avoidance</em>. It is also not very robust, in case external influences push the character off the navmesh. These issues may be addressed in the future.</p>
+</blockquote>
 <h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Navmesh Config</code>: Which <a href="runtime-navmesh.html#navmesh-types">navmesh type</a> to do the search on.</li>
+<li><code>Path Search Config</code>: Which <a href="runtime-navmesh.html#path-search-types">path search type</a> to use for the path search.</li>
+<li><code>Speed</code>: The target speed to reach.</li>
+<li><code>Acceleration</code>, <code>Deceleration</code>: How quickly to accelerate and decelerate.</li>
+<li><code>Foot Radius</code>: The footprint to determine whether the character is standing on solid ground.</li>
+<li><code>Reached Distance</code>: The distance at which the destination is considered to be reached.</li>
+<li><code>Collision Layer</code>: The physics collision layer for determining what ground one can stand on.</li>
+<li><code>Fall Height</code>: If there is more distance below the character than this, it is considered to be falling.</li>
+<li><code>Debug Flags</code>: What aspects of the navigation to visualize.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../../animation/skeletal-animation/skeletal-animation-overview.html">Skeletal Animations</a></li>
+<li><a href="runtime-navmesh.html">Runtime Navmesh</a></li>
+<li><a href="navmesh-path-test-component.html">Navmesh Path Test Component</a></li>
 </ul>
 
 </article>

@@ -282,6 +282,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/ai/AiPlugin/media/crawl.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ai/AiPlugin/media/crawl.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/ai/AiPlugin/media/navmesh-config.png",
       "output": {
         "resource": {
@@ -2056,6 +2066,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/debugging/stats.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/debugging/tracy.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/debugging/tracy.html"
         }
       },
       "version": ""

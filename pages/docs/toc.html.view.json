@@ -585,6 +585,15 @@
               "leaf": true
             },
             {
+              "name": "Fill Light Component",
+              "href": "graphics/lighting/fill-light-component.html",
+              "topicHref": "graphics/lighting/fill-light-component.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Skylight Component",
               "href": "graphics/lighting/sky-light-component.html",
               "topicHref": "graphics/lighting/sky-light-component.html",
@@ -709,7 +718,7 @@
               "leaf": true
             },
             {
-              "name": "LOD Mesh Component (TODO)",
+              "name": "LOD Mesh Component",
               "href": "graphics/meshes/lod-mesh-component.html",
               "topicHref": "graphics/meshes/lod-mesh-component.html",
               "tocHref": null,
@@ -1544,7 +1553,7 @@
               "leaf": true
             },
             {
-              "name": "LOD Animated Mesh Component (TODO)",
+              "name": "LOD Animated Mesh Component",
               "href": "animation/skeletal-animation/lod-animated-mesh-component.html",
               "topicHref": "animation/skeletal-animation/lod-animated-mesh-component.html",
               "tocHref": null,
@@ -2112,7 +2121,7 @@
               "leaf": true
             },
             {
-              "name": "Navmesh Obstacle Component (TODO)",
+              "name": "Navmesh Obstacle Component",
               "href": "ai/AiPlugin/navmesh-obstacle-component.html",
               "topicHref": "ai/AiPlugin/navmesh-obstacle-component.html",
               "tocHref": null,
@@ -2121,7 +2130,7 @@
               "leaf": true
             },
             {
-              "name": "AI Navigation Component (TODO)",
+              "name": "AI Navigation Component",
               "href": "ai/AiPlugin/navigation-component.html",
               "topicHref": "ai/AiPlugin/navigation-component.html",
               "tocHref": null,
@@ -2826,6 +2835,15 @@
           "name": "Logging",
           "href": "debugging/logging.html",
           "topicHref": "debugging/logging.html",
+          "tocHref": null,
+          "level": 3.0,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Tracy Integration",
+          "href": "debugging/tracy.html",
+          "topicHref": "debugging/tracy.html",
           "tocHref": null,
           "level": 3.0,
           "items": [],
