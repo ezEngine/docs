@@ -89,18 +89,39 @@
         <article data-uid="">
 <h1 id="creature-crawl-component">Creature Crawl Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>creature crawl component</em> is used to procedurally animate legged creatures using <em>inverse kinematics</em>. It gives convincing leg movement without the use of any <a href="../animation/skeletal-animation/animation-clip-asset.html">animation clips</a>.</p>
+<p><video src="media/crawl.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>This component is only meant as a starting point for people to build their own game specific functionality. Thus it may not cover all use cases. If you need more control, copy the code and change it how you need it.</p>
+</blockquote>
+<h2 id="how-to-set-up-a-crawling-creature">How to Set Up a Crawling Creature</h2>
+<p>For an example how to set up such a creature, look at the <em>SpotBot prefab</em> in the <a href="../../samples/testing-chambers.html">Testing Chambers</a> sample project.</p>
+<p>The first thing you need is an object that actually moves around. You can use a <a href="../physics/jolt/special/jolt-character-controller.html">character controller</a> to set this up. If you want to control it yourself, you also need an <a href="../input/input-component.html">input component</a> and a <a href="../custom-code/visual-script/visual-script-class-asset.html">visual script</a> to hook things up.</p>
+<p>Next, you need an <a href="../animation/skeletal-animation/animated-mesh-component.html">animated mesh</a> that represents your creature and that contains properly rigged legs. Add this as a child object to your overall creature (below the character controller).</p>
+<p>Now set up <a href="../animation/skeletal-animation/ik/two-bone-ik-component.html">two bone IK</a> for each leg. You can test the IK by running the simulation in the editor and manually dragging the IK target node around, to see how the leg behaves. Now give each leg IK target a unique name.</p>
+<p><img src="media/creature-setup.png" alt="Creature Setup"></p>
+<p>In the example above, the <a href="../physics/jolt/special/jolt-character-controller.html">character controller</a>, <a href="../input/input-component.html">input component</a>, <a href="../custom-code/visual-script/visual-script-class-asset.html">visual script</a> and <em>creature crawl component</em> are all located on the <code>&lt;Prefab-Root&gt;</code>. Whereas the <a href="../animation/skeletal-animation/animated-mesh-component.html">animated mesh</a> is added to the <code>Body</code> node, so that it can be tilted freely. The IK targets for each leg are below the body. Each leg uses <a href="../animation/skeletal-animation/ik/two-bone-ik-component.html">two bone IK</a>.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>The current implementation requires that an animation is played on the animated mesh, otherwise IK is never applied. That is why we also apply a dummy idle animation loop on the body through a <a href="../animation/skeletal-animation/simple-animation-component.html">simple animation component</a>. Additionally, you have to check <strong>Enable IK</strong> on the animation component.</p>
+</blockquote>
+<p>Finally the <em>creature crawl component</em> needs to know which legs to move and what body object to tilt:</p>
+<p><img src="media/creature-setup2.png" alt="Creature Setup 2"></p>
+<p>Here we add all the leg references, set up the <code>Step Groups</code> and define how high and low the legs can be moved. For more details see the component properties section below.</p>
+<p>Now when you move the object that has the creature crawl component attached, it tries to find a good spot for each leg, and moves the IK target there. If you specified a <code>Body</code> object, then the body will also tilt depending on the height of the legs.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Body</code>:</li>
-<li><code>CastUp</code>, <code>CastDown</code>:</li>
-<li><code>StepDistance</code>:</li>
-<li><code>MinLegDistance</code>:</li>
-<li><code>Legs</code>:
-<ul>
-<li><code>LegName</code>:</li>
-<li><code>StepGroup</code>:</li>
-</ul>
+<li><p><code>Body</code>: An optional reference to a child object that represents the main body of the creature. If set, this object will be tilted to accomodate the ground slope.</p>
+</li>
+<li><p><code>Cast Up</code>, <code>Cast Down</code>: The target position for each leg is determined using physics raycasts. <code>Cast Up</code> defines how much higher (than the default leg position) the raycast starts, and <code>Cast Down</code> says how far downwards to cast. Thus these values affect how high up the creature tries to place its legs and how far downwards it will attempt to reach.</p>
+</li>
+<li><p><code>Step Distance</code>: The maximum distance between the current leg position and the desired leg position, before the creature takes a step.</p>
+</li>
+<li><p><code>Min Leg Distance</code>: If the creature is close to an edge or a wall, where it can't place the leg at the desired distance away from its body, it may need to pull the legs closer towards the center of its body. This distance value describes how close it could pull the leg. Be aware that the shape of the body and the legs puts a physical limit on how close a leg could be placed. The image below shows that the leg on the right back is pulled in closer than the legs on the left. On the other hand the leg on the right front is too close to the edge and thus it lifted up. How much it is lifted up is defined by the <code>Cast Up</code> value.</p>
+<p><img src="media/creature-leg-up.jpg" alt="Leg distance"></p>
+</li>
+<li><p><code>Legs</code>: This array specifies which child objects to use as <em>legs</em>. <code>Leg Name</code> is the unique name of the child object. It is assumed that each leg contains an <a href="../animation/skeletal-animation/ik/two-bone-ik-component.html">IK component</a> that will ultimately control the leg. This component only moves the leg object towards the target position. The <code>Step Group</code> is a value of typically 0, 1 or 2. All legs with the same group index will move in sync.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>

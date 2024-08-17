@@ -99,6 +99,8 @@
 </li>
 <li><p><code>InvisibleUpdateRate</code>: How often to update the animation when the object is not visible. For performance reasons the update rate should be very low or even paused when an object isn't visible. However, since animations may have an important impact on gameplay, it can be undesirable to have a lower update rate even when the object is not visible. Note that this affects the update rate of objects that are not visible by the main camera, but by a shadow casting light. Objects whose shadow can be seen generally get updated, but at a low rate, unless this setting forces a higher update rate.</p>
 </li>
+<li><p><code>Enable IK</code>: If <em>inverse kinematics</em>, such as <a href="../ik/aim-ik-component.html">aim IK</a> or <a href="../ik/two-bone-ik-component.html">two bone IK</a> shall affect the animated mesh, this option needs to be enabled.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

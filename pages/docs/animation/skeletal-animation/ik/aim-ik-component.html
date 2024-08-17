@@ -98,6 +98,10 @@
 <p><video src="media/no-aim-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
 <p>In the video below, aim IK is used to correct both the right arm, as well as the head, such that the character precisely points and looks at the target. Here the IK component is also only active (and its weight is gradually faded in and out) when the player actually wants to aim.</p>
 <p><video src="media/aim-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p><em>Inverse kinematics</em> is currently only applied when an animated mesh receives a new animation pose. Thus, to actually see the result of IK, you need to have a <a href="../simple-animation-component.html">simple animation component</a> or an <a href="../animation-graphs/animation-controller-component.html">animation controller component</a> attached, and check the option <strong>Enable IK</strong> on it. It also has to play some animation in a loop, such as an idle animation or literally a single keyframe pose.</p>
+</blockquote>
 <h2 id="how-to-set-up-aim-ik">How to Set Up Aim IK</h2>
 <p>The <em>Aim IK component</em> has to be attached to a child node of the <a href="../animated-mesh-component.html">animated mesh</a> that it is supposed to affect. The position of that game object is where the target bones will point at. Add one or more entries to the <code>Joints</code> array. Each entry identifies a bone to control from the <a href="../skeleton-asset.html">skeleton</a>. The <code>Weight</code> of each entry defines how much of the necessary IK to apply. At a value of 1, the bone would be rotated to fully point at the target. With a weight of 0.5, only half the rotation would be applied. This is used to distribute the rotation piece-wise over multiple bones.</p>
 <p><img src="media/aimik-settings.png" alt="Aim IK Settings"></p>

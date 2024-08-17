@@ -3312,6 +3312,46 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/crawl.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/crawl.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/creature-leg-up.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/creature-leg-up.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/creature-setup.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/creature-setup.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/media/creature-setup2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/media/creature-setup2.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/gameplay/media/item-grab-point.jpg",
       "output": {
         "resource": {

@@ -2196,7 +2196,7 @@
       "name": "Gameplay",
       "items": [
         {
-          "name": "Creature Crawl Component (TODO)",
+          "name": "Creature Crawl Component",
           "href": "gameplay/creature-crawl-component.html",
           "topicHref": "gameplay/creature-crawl-component.html",
           "tocHref": null,
