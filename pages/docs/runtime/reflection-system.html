@@ -207,13 +207,27 @@ Direct member properties are declared via <code>EZ_MEMBER_PROPERTY(PropertyName,
 <pre><code class="lang-cpp">Type GetterFunc() const;
 void SetterFunc(Type value);
 </code></pre>
-<p>Type can be decorated with const and reference but must be consistent between get and set function. The available macros are the following:</p>
+<p>Type can be decorated with const and reference, but must be consistent between the get and set function. The available macros are the following:</p>
 <pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Member&quot;, m_fFloat1),
 EZ_MEMBER_PROPERTY_READ_ONLY(&quot;MemberRO&quot;, m_vProperty3),
 EZ_ACCESSOR_PROPERTY(&quot;MemberAccessor&quot;, GetInt, SetInt),
 EZ_ACCESSOR_PROPERTY_READ_ONLY(&quot;MemberAccessorRO&quot;, GetInt),
 </code></pre>
 <p>To access an instance's member variable value, cast the property to <code>ezAbstractMemberProperty</code> and call <code>ezAbstractMemberProperty::GetPropertyType()</code> to determine the member type. Then either cast to <code>ezTypedMemberProperty</code> of the matching type, or if the type is not known to you at compile time, use <code>ezAbstractMemberProperty::GetPropertyPointer()</code> or <code>ezAbstractMemberProperty::GetValuePtr()</code> and <code>ezAbstractMemberProperty::SetValuePtr()</code> to access its data. The first solution will only return a valid pointer if the property is a direct member property.</p>
+<h3 id="resource-handles">Resource Handles</h3>
+<p>Similar to regular members (see above), resource handles can be exposed either directly or through accessor functions:</p>
+<pre><code class="lang-cpp">EZ_RESOURCE_MEMBER_PROPERTY(&quot;Texture1&quot;, m_hTexture1)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Texture_2D&quot;)),
+EZ_RESOURCE_ACCESSOR_PROPERTY(&quot;Texture2&quot;, GetTexture2, SetTexture2)-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Texture_2D&quot;)),
+</code></pre>
+<p>Here <code>Texture1</code> is exposed directly, whereas all accesses for <code>Texture2</code> go through dedicated getters and setters.</p>
+<p>The function signatures for the accessors should look like this:</p>
+<pre><code class="lang-cpp">void SetTexture2(const ezTexture2DResourceHandle&amp; hResource);
+const ezTexture2DResourceHandle&amp; GetTexture2() const;
+</code></pre>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>The reflection system treats resource handles like strings. The macros above just automatically generate the necessary boilerplate code for this. It is the <code>ezAssetBrowserAttribute</code> which makes the editor treat such a string differently.</p>
+</blockquote>
 <h3 id="arrays">Arrays</h3>
 <p>Array properties are very similar to member properties, they just handle arrays instead of single values. Direct array properties are declared via <code>EZ_ARRAY_MEMBER_PROPERTY(PropertyName, MemberName)</code> while accessor array properties are declared via <code>EZ_ARRAY_ACCESSOR_PROPERTY(PropertyName, GetCount, Getter, Setter, Insert, Remove)</code>. The accessor interface functions must have the following signature:</p>
 <pre><code class="lang-cpp">ezUInt32 GetCount() const;

@@ -111,7 +111,7 @@
 <h2 id="shader-properties">Shader Properties</h2>
 <p>The <code>Shader Properties</code> section lists all the properties that the selected shader exposes. The 3D viewport will live update for any change you make here.</p>
 <h3 id="defaultmaterial-properties">DefaultMaterial Properties</h3>
-<p>The <code>DefaultMaterial</code> shader that comes with EZ implements a <strong>P</strong>hysically <strong>B</strong>ased <strong>R</strong>endering model (PBR), which is the de facto industry standard these days. The details of PBR rendering are beyond the scope of this documentation, if you want to get an understanding of how <em>roughness</em> and <em>metalness</em> are use (see below), please search the internet.</p>
+<p>The <code>DefaultMaterial</code> shader that comes with EZ implements a <strong>P</strong>hysically <strong>B</strong>ased <strong>R</strong>endering model (PBR), which is the de facto industry standard these days. The details of PBR rendering are beyond the scope of this documentation, if you want to get an understanding of how <em>roughness</em> and <em>metalness</em> are used (see below), please search the internet.</p>
 <p>The <code>DefaultMaterial</code> provides these options:</p>
 <p><strong>Blend Mode:</strong> Defines whether the object will appear opaque or transparent.</p>
 <ul>
@@ -139,6 +139,15 @@
 <h2 id="material-preview">Material Preview</h2>
 <p>The 3D viewport of the material editor allows you to switch the <a href="../editor/editor-views.html#render-modes">render mode</a> to inspect only specific aspects of the material.</p>
 <p>Using the <em>eye dropdown menu</em> you can also select different meshes for previewing the material on.</p>
+<h2 id="filtering-materials-for-special-use-cases">Filtering Materials for Special Use Cases</h2>
+<p>Most materials will be applied to standard meshes and thus use shaders that work with them. However, some materials are meant for meshes that have non-standard data. For example the <a href="../terrain/kraut-overview.html">Kraut</a> tree meshes are not compatible with the standard materials.</p>
+<p>This means that materials authored for these trees should not be used on standard meshes, and vice versa. Thus when picking a material for a mesh (or a tree) the editor should only show the compatible materials for each situation.</p>
+<p>To set this up, two things are necessary:</p>
+<ol>
+<li>The C++ code has to specify which materials are compatible for each resource slot. This is defined through the <code>ezAssetBrowserAttribute</code>, using the <em>tag</em> argument (the second string). Setting this, for example, to <code>&quot;Kraut&quot;</code> makes the editor only show materials that have this tag.</li>
+<li>In the material, use the <code>Asset Filter Tags</code> option to configure what the material is compatible with. You can add multiple tags, separated by semicolon.</li>
+</ol>
+<p>For standard materials none of this is necessary, and for non-standard materials it is only a usability improvement.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="visual-shaders.html">Visual Shaders (TODO)</a></li>
