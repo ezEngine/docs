@@ -131,9 +131,11 @@
 <p><video src="media/render-mode-distortion.webm" width="500" height="500" autoplay="" loop=""></video></p>
 </li>
 </ul>
-<p><strong>Lighting Mode:</strong> Controls whether the particles receive dynamic lighting.
-* <code>Fullbright</code>: Particles will not be lit dynamically.
-* <code>Vertex Lit</code>: Lighting will be calculated at each vertex and interpolated across the particle.</p>
+<p><strong>Lighting Mode:</strong> Controls whether the particles receive dynamic lighting.</p>
+<ul>
+<li><code>Fullbright</code>: Particles will not be lit dynamically.</li>
+<li><code>Vertex Lit</code>: Lighting will be calculated at each vertex and interpolated across the particle.</li>
+</ul>
 <p><strong>Normal Curvature:</strong> For particle lighting, how round the particle appears. At <code>0</code> the particles are treated like flat pieces, at <code>1</code> they are lit more like spheres. The image below shows a curvature of <code>0</code>, <code>0.5</code> and <code>1.0</code>.</p>
 <p><img src="media/normal-curvature.png" alt="Particle Curvature"></p>
 <p><strong>Light Directionality:</strong> For particle lighting, how much the light wraps around the particle. At <code>0</code> the direction of incoming light is completely ignored, whereas at <code>1</code> particles will be clearly lit from the side from which a light source shines at it. Note that the directionality somewhat depends on the camera direction. The image below shows smoke lit with light directionality of <code>0</code>, <code>0.5</code> and <code>1.0</code>.</p>
