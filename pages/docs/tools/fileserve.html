@@ -89,12 +89,98 @@
         <article data-uid="">
 <h1 id="fileserve">FileServe</h1>
 
-<!-- PAGE IS TODO -->
 <p>This is the GUI front-end and the server of the file-serving functionality. It is used to stream project data over a network to a connected (mobile) device.</p>
-<p>This feature is fully functional, but currently undocumented.</p>
+<p><img src="media/fileserve-app.png" alt="FileServe application"></p>
+<h2 id="introduction">Introduction</h2>
+<p>On PCs there are no restrictions for file access and there is no deployment step required when you modify data or your application, which is why it is the most convenient platform to work with.</p>
+<p>However, many other platforms have very strict rules how to <em>deploy</em> an application and which files they can access. Often you need to build a package that contains all the data, that your app may need to access. If you want to iterate on things, such as shaders, particle effects or level design, you have to repeat this lengthy process every single time, even though you only touch a few files.</p>
+<p>Additionally, you may only work with a small test level, but if you also want to test with larger amounts of data every once in a while, your package needs to include all of this data, which can make the deployment step quite slow.</p>
+<p>To solve this issue, the EZ <a href="../runtime/filesystem.html">fileSystem</a> makes it possible to get its files not from the device itself, but instead streamed over a network connection, from a development PC. You then deploy a much smaller package, that contains nearly no data files, and have all files sent over on demand. Files are cached on the device, such that repeated accesses don't need to re-send unchanged files.</p>
+<p>This means creating and deploying app packages becomes much faster. Additionally, you can now utilize the <a href="../runtime/resource-management.html">resource manager's (TODO)</a> functionality to <em>reload modified resources</em>. Therefore, you can modify any file on the development PC, and then hot-reload that data onto the device, without even restarting the app. And even in situations where you need to restart the app on the device, this is still much faster than having to do a full re-deployment.</p>
+<p>Note that there is also <a href="inspector.html">ezInspector</a>, that you can also connect to your remote app, so that you can get additional insights, such as the log output.</p>
+<h2 id="how-to-enable-fileserve-functionality">How to Enable Fileserve Functionality</h2>
+<p>Generally the fileserve functionality is added to the engine through the <code>ezFileservePlugin</code>. Enabling it is thus just a matter of loading that plugin during engine initialization. If your game is built on top of <code>ezGameApplication</code> (such as <a href="player.html">ezPlayer</a>), it is automatically enabled in development builds for platforms that have file access restrictions (see <code>ezGameApplication::Init_LoadRequiredPlugins()</code> for details). This is also true for <a href="inspector.html">ezInspector</a> support.</p>
+<p>If your game is <a href="../runtime/application/application.html">using a custom application class (TODO)</a>, make sure this is set up in your code. The <a href="../../samples/shader-explorer.html">Shader Explorer Sample</a> is such an application and should be used as reference.</p>
+<p>If you want more control over the fileserve connection in your application, have a look at <code>ezFileserveClient</code>.</p>
+<h2 id="shader-explorer-sample">Shader Explorer Sample</h2>
+<p>The <a href="../../samples/shader-explorer.html">Shader Explorer Sample</a> is great to try out the fileserve functionality. In <code>ShaderExplorer.h</code> you can find the <code>#define USE_FILESERVE</code>, which is <code>OFF</code> by default, but can be easily forced to <code>ON</code> even when running on a PC. This is useful to try out fileserve on the same machine, and verify that it works in general.</p>
+<h2 id="the-ezfileserve-application">The ezFileServe Application</h2>
+<p><em>ezFileServe</em> is the GUI application that provides the <em>server</em> functionality. It has to run on the PC that has access to the game's data.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>ezFileServe needs to know where the <em>project specific</em> data for your game is, ie where the main project folder is. Thus it can only serve data for one specific project at a time. If this path is not provided through a command line argument, it will ask for it right at startup. If you cancel this, or select the wrong folder, clients can connect, but will fail to find their files.</p>
+</blockquote>
+<h3 id="ezfileserve-ui">ezFileserve UI</h3>
+<p>At the very top it displays the detected network adaptors. This may be important to know, if you need to configure firewalls to let traffic through to this device.</p>
+<p>Below that, it lists the <em>special directories</em>. Some of these are automatically set. The <strong>project</strong> special directory is the most important one for the client to find its files. If you try different apps on a device, be certain that you restart ezFileserve and set the correct project path each time. Special directories are typically provided through the command line <code>-specialdirs</code>. If you launch ezFileserve from the editor (<em>Tools &gt; Launch Fileserve...</em>) it automatically sets this. If it is not provided, ezFileserve will ask for a project folder at startup.</p>
+<p>Further down there are three tabs:</p>
+<ul>
+<li><strong>Activity</strong>: This is a log of all activity. Some entries have tooltips with explanations.</li>
+<li><strong>Files</strong>: A list of all the files that were accessed and how often.</li>
+<li><strong>Clients</strong>: Information about clients and which data directories they mounted. It is possible to connect with multiple clients to a single file server at the same time.</li>
+</ul>
+<h3 id="shader-compilation">Shader Compilation</h3>
+<p>ezFileserve loads the <a href="shadercompiler.html">shader compiler plugins</a>. This enables shader compilation on the host PC, for platforms that do not support shader compilation on device.</p>
+<h3 id="reloading-resources">Reloading Resources</h3>
+<p>In the <em>Activity</em> tab there is a button <strong>Trigger Reload Resources</strong>. This instructs the connected clients to reload all changed resources. Use this, if you modified a file on the PC, such as a shader, and want to see the change on device without restarting the app.</p>
+<h3 id="connect-to-client">Connect To Client</h3>
+<p>The button at the bottom shows a dialog that asks you for the IP address of a device that you want to connect to. Try this out, if you have issues getting a network connection between your devices. Often devices have multiple different IP addresses, depending through which network adapters they are reachable. If in doubt, try all of them.</p>
+<p>For more information, see <a href="#connecting-to-ezfileserve">Connecting to ezFileServe</a>.</p>
+<h3 id="ezfileserve-command-line-arguments">ezFileserve Command Line Arguments</h3>
+<ul>
+<li><p><code>-fs_port XYZ</code>: By default ezFileserve uses <strong>port 1042</strong>. This command line argument overrides this value. In this case, the client has to be adjusted to know about the different port. use <code>ezFileserveClient::AddServerAddressToTry(&quot;ip:port&quot;)</code> to do so.</p>
+</li>
+<li><p><code>-specialdirs Name Path Name Path ...</code> Adds special directories. Each one has to be a pair of a &quot;name&quot; and a &quot;path&quot;. The path should be an absolute path to an existing folder on disk. This is used for when clients need to mount data directories. They can use <em>special directories</em> to have them redirected to the correct path on different devices. The most common use case is that games mount the <code>&gt;project</code> folder and the <code>&gt;sdk/Data/Base</code> folder, using <code>&gt;project</code> and <code>&gt;sdk</code> as the respective <em>special directories</em>.</p>
+</li>
+<li><p><code>-fs_close_timeout seconds</code>: If given, the application automatically shuts down when no client is connected anymore and a certain timeout is reached. Once a client connects, the timeout is reset. This timeout has no effect as long as no client has connected.</p>
+</li>
+<li><p><code>-fs_wait_timeout seconds</code>: If given, the server waits for a limited time for any client to connect and closes automatically, if no connection is established. Once a client connects, this timeout becomes irrelevant.</p>
+</li>
+</ul>
+<h2 id="connecting-to-ezfileserve">Connecting to ezFileServe</h2>
+<p>Connecting from a device to the host PC isn't always straight forward, for several reasons.</p>
+<ol>
+<li>The client doesn't know the IP of the server.</li>
+<li>Firewalls may block communication between devices.</li>
+</ol>
+<p>Unfortunately it isn't possible to solve these issues fully automatically, but there are different approaches.</p>
+<h3 id="ezfileservetxt">ezFileserve.txt</h3>
+<p>To tell the client (your game) the IP to connect to, create a file called <code>ezFileserve.txt</code> and put it into the folder next to the game's binary. This file should contain only a single line, with IP and port information:</p>
+<pre><code class="lang-cmd">192.168.0.11:1042
+</code></pre>
+<p>This needs to be deployed to your device and you must redeploy your app if you change the file. If this doesn't work, check that you put in the correct IP of your development PC, often PCs have multiple network adapters and thus multiple different IPs.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>Make sure you get the casing of <code>ezFileserve.txt</code> right, otherwise it may simply not get found.</p>
+</blockquote>
+<h3 id="injected-command-line">Injected Command Line</h3>
+<p>You can get the same data into the system using the <code>-fs_server</code> command line (see below). If you have a way to start your app with custom command line arguments, this may be quicker to do, than to redeploy with a different ezFileserve.txt file.</p>
+<h3 id="attempt-to-reach-from-ezfileserve">Attempt to Reach from ezFileserve</h3>
+<p>Instead of the above methods, you can also try to connect from the host PC to the client device using the <strong>Connect To Client</strong> button. Launch the app on the device, then enter the IP of the device on the host PC. If all goes well, the PC will then send its own connection information to the device, which then in turn uses that information to connect to the file server. In case of success, the device stores this information, such that the next time it starts, it can already connect without further help.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>If you attempt to connect from a device to a PC for the first time, you may need to try different methods, before one of them succeeds. This is often due to</p>
+<ol>
+<li>not knowing which IP of server and client to use and</li>
+<li>the firewall actively blocking communication.</li>
+</ol>
+<p>The former is basically trial and error. For the server, ezFileserve displays its own IPs at the top. Only one of them will work, though. Put the different IPs into <code>ezFileserve.txt</code>, redeploy and see if that works.</p>
+<p>However, due to firewalls, you may <em>also</em> try to connect from ezFileserve using the <strong>Connect To Client</strong> feature, if you know the IP of your device. This can also help to tell the firewall that you indeed want to talk to that device, and that it should not block incoming connection attempts from that device.</p>
+<p>Try these methods in different orders and do repeat failed methods. Also check your firewall settings and logs, it may show you blocked activities. Once you manage to get through <em>once</em>, it's usually going to work without problems from then on, since that means the firewall now accepts this network traffic, and the EZ application caches the IP that it successfully connected with.</p>
+<h2 id="client-command-line-arguments">Client Command Line Arguments</h2>
+<p>Be aware that command line arguments don't need to be set on the command line. You can hard code arguments in your application using <code>ezCommandLineUtils::InjectCustomArgument()</code> at application startup.</p>
+<ul>
+<li><p><code>-fs_off</code>: Overrides the use of fileserving to be off, even if the plugin is loaded.</p>
+</li>
+<li><p><code>-fs_server ip:port</code> The address to the server to connect to. The default is <code>localhost:1042</code>, which means connections only work on the same PC. For more information, see <a href="#connecting-to-ezfileserve">Connecting to ezFileServe</a>.</p>
+</li>
+<li><p><code>-fs_timeout seconds</code>: How long the client will wait for a connection. A zero timeout means the application will wait indefinitely.</p>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../runtime/filesystem.html">FileSystem</a></li>
+<li><a href="inspector.html">ezInspector</a></li>
+<li><a href="../build/supported-platforms.html">Supported Platforms</a></li>
 </ul>
 
 </article>

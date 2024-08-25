@@ -6255,6 +6255,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/tools/media/fileserve-app.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/tools/media/fileserve-app.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/tools/media/inspector.jpg",
       "output": {
         "resource": {

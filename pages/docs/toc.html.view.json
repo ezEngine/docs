@@ -3008,7 +3008,7 @@
           "leaf": true
         },
         {
-          "name": "FileServe (TODO)",
+          "name": "FileServe",
           "href": "tools/fileserve.html",
           "topicHref": "tools/fileserve.html",
           "tocHref": null,

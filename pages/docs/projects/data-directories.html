@@ -97,13 +97,13 @@
 <p>Typically you should use the editor to configure which folders will be accessible as data directories. Go to <em>Project &gt; Project Settings &gt; Data Directories...</em>:</p>
 <p><img src="media/editor-data-dir.png" alt="Data directories"></p>
 <p>Here you can add, remove and reorder them. Setting up the data directories of a project should be one of the very first steps after creating a new project.</p>
-<p>You may notice the <code>&gt;sdk</code> and <code>&gt;project</code> prefixes. These are <em>special directory</em> indicators, meaning those paths are relative to the <em>SDK directory</em> (where the engine is installed) or the <em>project directory</em> (where your project is located). These indicators are automatically inserted when you browse for a folder. They enable the engine to find the same folder again, even if you move the project, or you need to stream the data using <a href="../tools/fileserve.html">FileServe (TODO)</a>.</p>
+<p>You may notice the <code>&gt;sdk</code> and <code>&gt;project</code> prefixes. These are <em>special directory</em> indicators, meaning those paths are relative to the <em>SDK directory</em> (where the engine is installed) or the <em>project directory</em> (where your project is located). These indicators are automatically inserted when you browse for a folder. They enable the engine to find the same folder again, even if you move the project, or you need to stream the data using <a href="../tools/fileserve.html">FileServe</a>.</p>
 <h3 id="from-custom-code">From Custom Code</h3>
 <p>You can also mount data directories from code. Usually you would do this either in a custom <a href="../runtime/application/application.html">application (TODO)</a> class or in a <a href="../runtime/application/game-state.html">game state</a>. Either way, you should do this early at game startup. For more more information, see the <a href="../runtime/filesystem.html#data-directories">filesystem documentation</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../runtime/filesystem.html">FileSystem</a></li>
-<li><a href="../tools/fileserve.html">FileServe (TODO)</a></li>
+<li><a href="../tools/fileserve.html">FileServe</a></li>
 <li><a href="projects-overview.html">Projects</a></li>
 <li><a href="../runtime/application/application.html">Application (TODO)</a></li>
 <li><a href="../runtime/application/game-state.html">Game States</a></li>
