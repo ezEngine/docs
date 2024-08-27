@@ -2492,16 +2492,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/editor/media/scene-toolbar.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/editor/media/scene-toolbar.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/editor/media/toolbar-simulate-buttons.png",
       "output": {
         "resource": {
