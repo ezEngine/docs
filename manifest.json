@@ -6658,16 +6658,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/samples/media/sample-game-plugin.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/sample-game-plugin.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/samples/media/shader-explorer1.jpg",
       "output": {
         "resource": {

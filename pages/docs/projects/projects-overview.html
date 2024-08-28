@@ -106,6 +106,10 @@
 <p>Select <em>File &gt; Create...</em> and create a <a href="../editor/editor-documents.html">document</a> of type <code>ezScene</code>. The new scene will be filled with some default objects and you should see something like this:</p>
 <p><img src="media/new-project-scene.jpg" alt="New Scene"></p>
 <p>If you don't see the <a href="../assets/asset-browser.html">asset browser</a>, make sure to open it. You can now <a href="../scenes/scene-editing.html">edit your scene</a>. When you need more assets to play with, you need to <a href="../assets/import-assets.html">import them</a> into your project. Once you have something in your scene that could <em>do something</em>, you can <a href="../editor/run-scene.html">test your scene</a>. A good starting point for that is to simply attach a <code>Rotor</code> component to a mesh. A fun next step is to let objects fall down using <a href="../physics/jolt/jolt-overview.html">physics</a> (hint: you need a <code>Dynamic Actor</code> component and a <code>Box Shape</code> component)</p>
+<blockquote>
+<p><strong>TIP</strong></p>
+<p>If you want new documents to always be populated with some default state, have a look at <a href="../editor/editor-template-documents.html">template documents</a>.</p>
+</blockquote>
 <h2 id="project-wide-options">Project-wide options</h2>
 <p>Plugins may add project wide options. Not all options may be exposed through editor UI, there are a few things that can (at the moment) only be configured through config files or directly from code. Most options are stored in <a href="https://openddl.org/">OpenDDL</a> format or other human-readable files, and you can edit them directly. Some options to be aware of are:</p>
 <ul>
