@@ -4912,16 +4912,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/projects/media/editor-tag-example-org.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/projects/media/editor-tag-example-org.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/projects/media/editor-tag-example.png",
       "output": {
         "resource": {
