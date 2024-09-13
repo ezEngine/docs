@@ -12,7 +12,7 @@
   "pages/contact.html": {
     "href": "pages/contact.html",
     "title": "Contact | ezEngine",
-    "keywords": "Contact Questions and Discussions For questions that are not covered by the documentation, please see the forum. We will try to answer as quickly as possible, but be aware that we don't always have the time to answer right away, and that we may be in a different time-zone than you (GMT+1). We are also reachable via Discord. Use this link to join the server: https://discord.gg/rfJewc5khZ NOTE: Our community is very small at the moment and many questions can only reasonably be answered by the EZ developers. Please don't spam the Discord channel with general C++ or build setup questions that could be answered with a web search or by reading the available documentation. Bugs If you find a bug, please file an issue. Announcements Sometimes we announce things on Twitter. E-Mail If you prefer to ask a question in private, you can try to contact us via ezengineproject@gmail.com. See Also How to Contribute"
+    "keywords": "Contact Questions and Discussions For questions that are not covered by the documentation, please see the forum. We will try to answer as quickly as possible, but be aware that we don't always have the time to answer right away, and that we may be in a different time-zone than you (GMT+1). We are also reachable via Discord. Use this link to join the server: https://discord.gg/rfJewc5khZ NOTE: Our community is very small at the moment and many questions can only reasonably be answered by the EZ developers. Please don't spam the Discord channel with general C++ or build setup questions that could be answered with a web search or by reading the available documentation. Bugs If you find a bug, please file an issue. Announcements Sometimes we announce things on Bluesky or Twitter. E-Mail If you prefer to ask a question in private, you can try to contact us via ezengineproject@gmail.com. See Also How to Contribute"
   },
   "pages/docs/Miscellaneous/blackboard-template-asset.html": {
     "href": "pages/docs/Miscellaneous/blackboard-template-asset.html",
@@ -1547,7 +1547,7 @@
   "pages/getting-started/binaries.html": {
     "href": "pages/getting-started/binaries.html",
     "title": "Prebuilt Binaries | ezEngine",
-    "keywords": "Prebuilt Binaries Packages with prebuilt binaries are published with GitHub releases. Follow @ezEngineProject for release announcements. The latest version is: 24.09.0"
+    "keywords": "Prebuilt Binaries Packages with prebuilt binaries are published with GitHub releases. Follow use on Bluesky or Twitter for release announcements. The latest version is: 24.09.0"
   },
   "pages/getting-started/editor-overview.html": {
     "href": "pages/getting-started/editor-overview.html",
@@ -1572,7 +1572,7 @@
   "pages/releases/releases.html": {
     "href": "pages/releases/releases.html",
     "title": "Releases | ezEngine",
-    "keywords": "Releases Releases can be downloaded from GitHub. Follow @ezEngineProject for release announcements. The latest version is: 21.6.1"
+    "keywords": "Releases Releases can be downloaded from GitHub. Follow us on Bluesky or Twitter for release announcements. The latest version is: 21.6.1"
   },
   "pages/samples/asteroids.html": {
     "href": "pages/samples/asteroids.html",

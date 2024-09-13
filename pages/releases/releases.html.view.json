@@ -1,5 +1,5 @@
 {
-  "conceptual": "\n<p sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"3\">Releases can be downloaded <a href=\"https://github.com/ezEngine/ezEngine/releases\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"3\">from GitHub</a>.</p>\n<p sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"5\">Follow <a href=\"https://twitter.com/ezEngineProject\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"5\"><xref href=\"ezEngineProject\" data-throw-if-not-resolved=\"False\" data-raw-source=\"@ezEngineProject\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"5\"></xref></a> for release announcements.</p>\n<!-- Please be careful changing the version number below, the editor parses this page to detect new releases. -->\n<p sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"8\"><strong sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"8\">The latest version is:</strong> <!--<VERSION>-->21.6.1<!--</VERSION>--></p>\n",
+  "conceptual": "\n<p sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"3\">Releases can be downloaded <a href=\"https://github.com/ezEngine/ezEngine/releases\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"3\">from GitHub</a>.</p>\n<p sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"5\">Follow us on <a href=\"https://bsky.app/profile/ezengine.bsky.social\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"5\">Bluesky</a> or <a href=\"https://twitter.com/ezengineproject\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"5\">Twitter</a> for release announcements.</p>\n<!-- Please be careful changing the version number below, the editor parses this page to detect new releases. -->\n<p sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"8\"><strong sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"8\">The latest version is:</strong> <!--<VERSION>-->21.6.1<!--</VERSION>--></p>\n",
   "type": "Conceptual",
   "source": {
     "remote": {
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"releases\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"1\">Releases</h1>",
   "title": "Releases",
-  "wordCount": 15.0,
+  "wordCount": 20.0,
   "_key": "pages/releases/releases.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

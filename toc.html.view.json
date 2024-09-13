@@ -2,9 +2,9 @@
   "items": [
     {
       "name": "Getting Started",
-      "href": "pages/getting-started/binaries.html",
+      "href": "pages/getting-started/editor-overview.html",
       "tocHref": "pages/getting-started/toc.html",
-      "topicHref": "pages/getting-started/binaries.html",
+      "topicHref": "pages/getting-started/editor-overview.html",
       "level": 2.0,
       "items": [],
       "leaf": true
