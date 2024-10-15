@@ -128,15 +128,18 @@
 EZ_APPLICATION_ENTRY_POINT(ezPlayerApplication);
 </code></pre>
 <p>Some platforms (mainly Windows) differentiate between <em>console apps</em> and <em>window apps</em>. Console apps are executed inside a command prompt and typically do not have graphical output, whereas <em>window apps</em> create their own window to display output and interact with.</p>
-<p>By default, applications are treated as <em>console apps</em> and thus show a command prompt on these platforms. This can be convenient for debugging, as you see the <a href="../../debugging/logging.html">log output</a> there. To remove the command prompt, you need to configure you application as a <em>window app</em>. To do so, the <em>CMakeLists.txt</em> file for your application has to call <code>ez_make_windowapp</code>:</p>
+<p>By default, applications are treated as <em>console apps</em> and thus show a command prompt on these platforms. This can be convenient for debugging, as you see the <a href="../../debugging/logging.html">log output</a> there. To remove the command prompt, you need to configure your application as a <em>window app</em>. To do so, the <em>CMakeLists.txt</em> file for your application has to call <code>ez_make_windowapp</code>:</p>
 <pre><code class="lang-cmake">ez_create_target(APPLICATION ${PROJECT_NAME})
 ez_make_windowapp(${PROJECT_NAME})
 </code></pre>
+<h3 id="injecting-custom-code">Injecting Custom Code</h3>
+<p>The preprocessor define <code>EZ_APPLICATION_ENTRY_POINT_CODE_INJECTION</code> can be used to insert additional code before the generated C++ <em>main</em> function. By default this is defined to be empty, but you can change this in your <em>UserConfig.h</em> file.</p>
+<p>The main use case for this is to declare additional global functions or variables in your binary, which may modify how the OS or certain drivers treat your application. For example on Windows <code>EZ_WINDOWAPP_ENTRY_POINT</code> already adds <code>NvOptimusEnablement</code> and <code>AmdPowerXpressRequestHighPerformance</code>, which tell graphics drivers to prefer dedicated GPUs over onboard GPUs.</p>
 <h2 id="ezapplication-based-apps">ezApplication Based Apps</h2>
-<p>If you are building an application that doesn't need the full engine, derive you application class directly from <code>ezApplication</code>.</p>
+<p>If you are building an application that doesn't need the full engine, derive your application class directly from <code>ezApplication</code>.</p>
 <p>The most important functions to override are the following:</p>
 <ul>
-<li><code>ezApplication::AfterCoreSystemsStartup()</code> - to set configure systems.</li>
+<li><code>ezApplication::AfterCoreSystemsStartup()</code> - to configure systems</li>
 <li><code>ezApplication::Run()</code> - the main loop</li>
 </ul>
 <p>Note that <code>Run</code> will be called repeatedly until you call <code>RequestApplicationQuit()</code>.</p>
@@ -167,6 +170,7 @@ ez_make_windowapp(${PROJECT_NAME})
 <ul>
 <li><a href="common-application-features.html">Common Application Features</a></li>
 <li><a href="game-state.html">Game States</a></li>
+<li><a href="../configuration/startup.html">Startup System</a></li>
 </ul>
 
 </article>
