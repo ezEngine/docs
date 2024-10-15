@@ -90,7 +90,7 @@
 <h1 id="engine-plugins">Engine Plugins</h1>
 
 <p>Engine plugins are the best way to get your custom code into the engine, such that it is accessible by the editor and also <a href="../../tools/player.html">ezPlayer</a>.</p>
-<p>Contrary to using a plugin, you could also build your own <a href="../../runtime/application/application.html">application (TODO)</a>, which may link to static libraries that contain your code. However, that approach means that your code cannot be loaded into the editor process and therefore you won't be able to leverage those tools to their full extent. We strongly advise against that.</p>
+<p>Contrary to using a plugin, you could also build your own <a href="../../runtime/application/application.html">application</a>, which may link to static libraries that contain your code. However, that approach means that your code cannot be loaded into the editor process and therefore you won't be able to leverage those tools to their full extent. We strongly advise against that.</p>
 <h2 id="creating-a-plugin">Creating a Plugin</h2>
 <p>The easiest way to create a custom plugin is to use the <a href="cpp-project-generation.html">C++ Project Generation</a>. This will create a template project for you, set up the CMake files for your build and configure the <a href="../../projects/plugin-selection.html">plugin selection</a>.</p>
 <h3 id="creating-a-plugin-manually">Creating a Plugin Manually</h3>
@@ -136,7 +136,7 @@ EZ_PLUGIN_ON_UNLOADED()
 <p>These callbacks are optional, though in some cases you may want to register and unregister things here. However, it is way more common to rather use the <a href="../../runtime/configuration/startup.html">startup system</a> instead.</p>
 <h2 id="loading-a-plugin">Loading a Plugin</h2>
 <p>If you want to load a plugin from code, you would use <code>ezPlugin::LoadPlugin()</code> and provide only the name (no path) of your plugin. Make sure that the DLL is stored in the same directory as all other DLLs and EXEs.</p>
-<p>The more convenient way to load your game plugin, though, is to enable it in the <a href="../../projects/plugin-selection.html">project settings</a>. Then it will be automatically loaded by every <a href="../../runtime/application/application.html">application (TODO)</a>.</p>
+<p>The more convenient way to load your game plugin, though, is to enable it in the <a href="../../projects/plugin-selection.html">project settings</a>. Then it will be automatically loaded by every <a href="../../runtime/application/application.html">application</a>.</p>
 <h2 id="add-custom-code">Add Custom Code</h2>
 <p>Once you have your basic plugin set up and can load it into your project, you can start adding custom code. The easiest way to get started is to write a <a href="custom-cpp-component.html">custom component</a>. Once you need control over higher level game logic, you can add your own <a href="../../runtime/application/game-state.html">game state</a>. And if you need to initialize and shut down certain systems, you should utilize the <a href="../../runtime/configuration/startup.html">startup system</a>.</p>
 <h2 id="utility-plugins">Utility Plugins</h2>

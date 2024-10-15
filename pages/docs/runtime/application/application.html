@@ -89,9 +89,80 @@
         <article data-uid="">
 <h1 id="application">Application</h1>
 
-<p>See <a href="game-state.html">Game States</a></p>
-<!-- PAGE IS TODO -->
-<p>The classes <code>ezApplication</code>, <code>ezGameApplicationBase</code> and <code>ezGameApplication</code> are fully functional, but currently undocumented.</p>
+<p>Every C++ application has one function that is the entry point for running the application. The name, signature and behavior of this function can differ across platforms. As a game developer you rarely care about interacting with the system on the lowest level. However, depending on what kind of application you write (for example a tool, rather than a game), you may either want to get a fully setup engine where all you add is your custom game code, or you may prefer to have a rather bare bones application, where you have full control.</p>
+<p>Therefore EZ uses a number of abstraction layers, where each layer adds some functionality, and thus convenience for making a game. You build your application by overriding the layer that makes most sense for the intended use case.</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>This is an <em>advanced</em> topic for people who are either building custom tools, using a completely custom renderer or are close to shipping and want a custom binary (rather than using <a href="../../tools/player.html">ezPlayer</a>). As long as you only want to write  game code, add a <a href="game-state.html">custom game state</a> inside an <a href="../../custom-code/cpp/engine-plugins.html">engine plugin</a>. See <a href="../../custom-code/cpp/cpp-project-generation.html">C++ Project Generation</a> for the most convenient way to get started with this.</p>
+</blockquote>
+<h2 id="custom-application-use-cases">Custom Application Use Cases</h2>
+<blockquote>
+<p><strong>ATTENTION</strong></p>
+<p>Don't put game functionality into a custom application. If you do so, you'll lose the ability to test your game logic inside the editor. Only use a custom application to polish the overall game presentation.</p>
+</blockquote>
+<p>There are two main situations in which you'll need to write your own application:</p>
+<ol>
+<li>You want to write a custom tool. Usually a command line application to process some data.</li>
+<li>You are preparing you game for shipping and don't want to run it through <a href="../../tools/player.html">ezPlayer</a> anymore.</li>
+</ol>
+<p>In the first case, you'll typically build your application on top of <code>ezApplication</code> which gives you a streamlined entry point similar to to a regular C++ <code>main</code> function.</p>
+<p>In the second case you usually build your application on top of <code>ezGameApplication</code>. It is assumed that you already have a custom <a href="game-state.html">Game State</a> anyway. The easiest way to get started, is simply to copy the <a href="../../tools/player.html">ezPlayer</a> application and modify it to suit your needs, such as:</p>
+<ul>
+<li>Custom binary name</li>
+<li>Custom icon</li>
+<li>Startup videos</li>
+<li>Way to select graphics and other options</li>
+<li>Pause / mute game when it doesn't have focus</li>
+</ul>
+<h2 id="application-structure-diagram">Application Structure Diagram</h2>
+<p>The diagram below shows the structure that ezEngine uses. The chapters below describe each aspect in detail.</p>
+<p><img src="media/application.png" alt="Application Structure Diagram"></p>
+<h2 id="application-entry-point-macro">Application Entry Point Macro</h2>
+<p>On the lowest C++ level platforms differ significantly how they execute an application. Therefore EZ uses the macro <code>EZ_APPLICATION_ENTRY_POINT</code> to generate the necessary, platform-specific code. This needs to be put into some cpp file of your application and you have to pass in the class name of your custom application. This class must be derived from <code>ezApplication</code> or <code>ezGameApplication</code>.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-cpp">class ezPlayerApplication : public ezGameApplication
+{
+  // ...
+};
+
+EZ_APPLICATION_ENTRY_POINT(ezPlayerApplication);
+</code></pre>
+<p>Some platforms (mainly Windows) differentiate between <em>console apps</em> and <em>window apps</em>. Console apps are executed inside a command prompt and typically do not have graphical output, whereas <em>window apps</em> create their own window to display output and interact with.</p>
+<p>By default, applications are treated as <em>console apps</em> and thus show a command prompt on these platforms. This can be convenient for debugging, as you see the <a href="../../debugging/logging.html">log output</a> there. To remove the command prompt, you need to configure you application as a <em>window app</em>. To do so, the <em>CMakeLists.txt</em> file for your application has to call <code>ez_make_windowapp</code>:</p>
+<pre><code class="lang-cmake">ez_create_target(APPLICATION ${PROJECT_NAME})
+ez_make_windowapp(${PROJECT_NAME})
+</code></pre>
+<h2 id="ezapplication-based-apps">ezApplication Based Apps</h2>
+<p>If you are building an application that doesn't need the full engine, derive you application class directly from <code>ezApplication</code>.</p>
+<p>The most important functions to override are the following:</p>
+<ul>
+<li><code>ezApplication::AfterCoreSystemsStartup()</code> - to set configure systems.</li>
+<li><code>ezApplication::Run()</code> - the main loop</li>
+</ul>
+<p>Note that <code>Run</code> will be called repeatedly until you call <code>RequestApplicationQuit()</code>.</p>
+<p>For applications that process data and may be integrated into automatic build chains, it is also useful to use:</p>
+<ul>
+<li><code>ezApplication::SetReturnCode()</code> - to set the return code passed to the operating system</li>
+<li><code>ezApplication::TranslateReturnCode()</code> - to provide a human readable string for each return code</li>
+</ul>
+<h2 id="ezgameapplication-based-apps">ezGameApplication Based Apps</h2>
+<p><code>ezGameApplicationBase</code> is built on top of <code>ezApplication</code> and implements the actual setup of the engine. It also adds the <a href="game-state.html">Game State</a> functionality and other <a href="common-application-features.html">common application features</a>. <code>ezGameApplication</code> further adds functionality to setup the EZ renderer. In theory you can build a game that doesn't use the EZ renderer, by deriving from <code>ezGameApplicationBase</code>, but this is a very advanced topic and only makes sense in very specific circumstances.</p>
+<p>In practice you should derive your game class from <code>ezGameApplication</code>, but be aware that there are additional virtual functions in <code>ezGameApplicationBase</code> that you can (and may need to) override.</p>
+<p>These functions are of particular interest:</p>
+<ul>
+<li><code>ezGameApplicationBase::CreateGameState()</code> - to hardcode which game state to use for your game</li>
+<li><code>ezGameApplicationBase::FindProjectDirectory()</code> - to adjust where your project data is located</li>
+<li><code>ezGameApplicationBase::Init_...()</code> - these init functions configure all sorts of aspects of the engine</li>
+<li><code>ezGameApplicationBase::Init_ConfigureInput()</code> - you may need to set up input mappings for the main menu and closing the app</li>
+<li><code>ezGameApplicationBase::Run_ProcessApplicationInput()</code> - handle input for the application</li>
+</ul>
+<p>The best way to go about writing your own game application, is to copy the <a href="../../tools/player.html">ezPlayer</a> code and adjust it to fit your needs.</p>
+<p>If all you have is a game state, but you want to build a dedicated binary for your game, you can also do it like the <a href="../../../samples/asteroids.html">Asteroids sample</a> which simply uses <code>ezGameApplication</code> directly to create an application instance with  a single line of code:</p>
+<pre><code class="lang-cpp">EZ_APPLICATION_ENTRY_POINT(ezGameApplication, &quot;Asteroids&quot;, &quot;Data/Samples/Asteroids&quot;);
+</code></pre>
+<h2 id="game-state-vs-application">Game State vs. Application</h2>
+<p><a href="game-state.html">Game States</a> play the role of encapsulating all of your game logic. Application classes are used to define how your app behaves within the operating system environment. The two are very clearly separated in what they are meant to do, thus there should never be the question whether you use a custom game state or a custom application. Everything that relates to the game logic should go into the game state. Only the few things that cannot be done there, should go into the application class.</p>
+<p>The intended effect is, that you can <a href="../../editor/run-scene.html">run your game</a> in the editor or through <a href="../../tools/player.html">ezPlayer</a> and thus have multiple convenient ways to test it.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="common-application-features.html">Common Application Features</a></li>

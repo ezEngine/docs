@@ -91,7 +91,7 @@
 
 <p>Most game code is implemented by writing custom <a href="../world/components.html">components</a>. However, components always work in the context of an object, be it a single <a href="../world/game-objects.html">game object</a> or an entire <a href="../../prefabs/prefabs-overview.html">prefab</a>. The most that a single component can be responsible for, is to do high level logic for a level, by acting as a <a href="../world/world-messaging.html#global-event-message-handlers">global message handler</a>.</p>
 <p>However, for a full game you need a layer of control that is outside the world, where you can do logic like what level to load, what to do when the player dies or reaches their goal, how to display a main menu for the game settings and level selection, and so on. Most of these things would be possible with world components alone, but it would be cumbersome. Especially switching from one level to another is difficult, if some of your overall game logic has to be transitioned as well.</p>
-<p><em>Game States</em> are this extra layer. A game state sits between the <a href="application.html">application (TODO)</a> layer and the <a href="../world/worlds.html">world</a>.</p>
+<p><em>Game States</em> are this extra layer. A game state sits between the <a href="application.html">application</a> layer and the <a href="../world/worlds.html">world</a>.</p>
 <p><img src="media/code-hierarchy.png" alt="Code Hierarchy"></p>
 <p>A game state is in so far optional, in that the engine will create an instance of <code>ezFallbackGameState</code>, if no custom game state is available. The diagram above shows, that the editor skips the game state in <em>simulate mode</em>. In practice that means that the editor will not allocate any game state when the scene is being edited or only simulated. Only when you enter <em>play-the-game mode</em>, will it create a game state, which can then take over full control for the windows, input and the main camera.</p>
 <h2 id="game-state-responsibilities">Game State Responsibilities</h2>
@@ -117,7 +117,7 @@
 <p>Similarly, most scenes have a camera component whose usage hint is set to 'Main Camera' (this may be part of the player prefab). This camera defines what part of the scene will be shown on screen. At least that's how it appears. In reality it is the game state that controls the camera for the main render target. It's simply a feature of the game state, that it searches the world for an appropriate camera component and applies that to the main camera. If it doesn't find any such camera component, it may not do anything. Though the <code>ezFallbackGameState</code> provides simple WASD fly-camera controls and lets you cycle through the different camera components in a scene using <code>Page Up</code> and <code>Page Down</code>.</p>
 <p>As you can see, by implementing a custom game state, you can gain control over many things that otherwise appear to be built-in.</p>
 <h2 id="game-state-instantiation">Game State Instantiation</h2>
-<p>It is the responsibility of the <code>ezGameApplication</code> to instantiate a game state. By default this is done right at application startup, but if you write your own <a href="application.html">application (TODO)</a> you could handle this differently. For example the editor only instantiates the game state for play-the-game mode.</p>
+<p>It is the responsibility of the <code>ezGameApplication</code> to instantiate a game state. By default this is done right at application startup, but if you write your own <a href="application.html">application</a> you could handle this differently. For example the editor only instantiates the game state for play-the-game mode.</p>
 <p>The application knows what game states are available through the <a href="../reflection-system.html">reflection information</a>. When a game state is needed, it instantiates either your custom game state, or a fallback one. So your game plugin should only contain a single custom game state.</p>
 <h2 id="sample-game-state">Sample Game State</h2>
 <p>For an example game state have a look at the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>. The game state in the sample derives from <code>ezFallbackGameState</code> to benefit from its utilities, such as the default fly camera. In fact, it is a good idea to look at the source of <code>ezFallbackGameState</code> as an example, as well.</p>
@@ -125,7 +125,7 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../../custom-code/custom-code-overview.html">Custom Code</a></li>
-<li><a href="application.html">Application (TODO)</a></li>
+<li><a href="application.html">Application</a></li>
 </ul>
 
 </article>

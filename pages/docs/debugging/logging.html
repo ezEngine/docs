@@ -109,7 +109,7 @@
 <li>In the <a href="../../getting-started/editor-overview.html">ezEditor</a> you can open <em>Panels &gt; Log</em> to see two logs, the one for the editor and the one from the engine process.</li>
 <li><a href="../tools/inspector.html">ezInspector</a> shows the log of the connected process.</li>
 <li>The in-game <a href="console.html">console</a> outputs the log messages.</li>
-<li>By default all EZ <a href="../runtime/application/application.html">applications (TODO)</a> also write the log output to a <code>Log.htm</code> file in the application's <em>appdata</em> folder.</li>
+<li>By default all EZ <a href="../runtime/application/application.html">applications</a> also write the log output to a <code>Log.htm</code> file in the application's <em>appdata</em> folder.</li>
 </ul>
 <h2 id="thread-local-logging">Thread-local logging</h2>
 <p>The logging system uses a thread-local variable to store the <em>active</em> logging system, through which to route all messages that originate on that thread. This can be used to easily replace the entire logging backend on a thread and capture all log messages in a custom backend. See <code>ezLogSystemScope</code> and <code>ezLogInterface</code>, if you want to write a custom backend. This can be used to, for example, capture all output from some subsystem and prevent the messages from reaching the regular outputs.</p>

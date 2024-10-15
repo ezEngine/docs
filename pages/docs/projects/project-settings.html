@@ -100,7 +100,7 @@
 <h2 id="window-configuration">Window Configuration</h2>
 <p><em>Project &gt; Project Settings &gt; Window Configuration...</em> opens a dialog to configure the default window configuration when <a href="../editor/run-scene.html">running a scene</a>.</p>
 <p><img src="media/editor-window-config.png" alt="Window Configuration"></p>
-<p>These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in <a href="../tools/player.html">ezPlayer</a>. A proper game would typically implement this logic in a custom <a href="../runtime/application/application.html">application (TODO)</a> and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.</p>
+<p>These settings allow you to configure basic window settings for Play-the-Game mode and when running an exported scene in <a href="../tools/player.html">ezPlayer</a>. A proper game would typically implement this logic in a custom <a href="../runtime/application/application.html">application</a> and should allow the user to choose settings such as the resolution. The window configuration dialog is mainly for use during development.</p>
 <p>There are two separately stored configurations:</p>
 <p><strong>Project Default:</strong> This configuration will be stored in the project folder and thus should be checked into source control to be shared with others.</p>
 <p><strong>User Specific:</strong> This configuration is only stored locally for the active user and not in the project directory. Therefore it cannot be checked into source control. It is meant for users who want to use settings different from the project default. For instance, when you have multiple monitors, you may want the exported scene to always appear on a specific one. This configuration must be enabled to override the default one.</p>
@@ -111,7 +111,7 @@
 <p>Which optional functionality should be available is configured on a per-project basis. See the <a href="plugin-selection.html">plugin selection chapter</a> for details.</p>
 <p>If plugins provide additional editor options, they are typically found under <em>Project &gt; Plugin Settings &gt; ...</em>.</p>
 <h3 id="loading-plugins-from-code">Loading Plugins from Code</h3>
-<p>A custom <a href="../runtime/application/application.html">application (TODO)</a> or <a href="../runtime/application/game-state.html">game state</a> can load plugins directly from code if necessary. For example the <code>ezInspectorPlugin</code> is automatically loaded for you by stock EZ applications, when building the code for development.</p>
+<p>A custom <a href="../runtime/application/application.html">application</a> or <a href="../runtime/application/game-state.html">game state</a> can load plugins directly from code if necessary. For example the <code>ezInspectorPlugin</code> is automatically loaded for you by stock EZ applications, when building the code for development.</p>
 <h2 id="fmod">FMOD</h2>
 <p>If the <a href="../sound/fmod-overview.html">FMOD Integration</a> is enabled, <em>Project &gt; Plugin Settings &gt; FMOD Project Settings...</em> will be available to configure the speaker mode and which master sound bank to use.</p>
 <h2 id="jolt">Jolt</h2>
