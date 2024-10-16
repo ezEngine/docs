@@ -2272,6 +2272,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/editor-processes.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/editor-processes.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/editor/media/editor-processes.pptx",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/editor/media/editor-processes.pptx"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/editor/media/editor-shortcuts.png",
       "output": {
         "resource": {

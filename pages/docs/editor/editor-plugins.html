@@ -89,11 +89,146 @@
         <article data-uid="">
 <h1 id="editor-plugins">Editor Plugins</h1>
 
-<!-- PAGE IS TODO -->
-<p>Editor plugins are fully functional, but currently undocumented.</p>
+<p>The functionality of ezEditor can be extended through plugins. However, the editor actually uses multiple processes to make it more resilient to crashes and also to be able to multi-thread asset processing. Therefore, some operations are executed in one process and some in another process, which means that depending on what functionality you want to add, you may need one, two or three different plugins.</p>
+<h2 id="process-structure">Process Structure</h2>
+<p>The diagram below shows the different processes involved and which plugins they load.</p>
+<p><img src="media/editor-processes.png" alt="Editor Process Structure"></p>
+<p>Running ezEditor generally involves three different processes:</p>
+<ol>
+<li>ezEditor.exe</li>
+<li>ezEditorEngineProcess.exe</li>
+<li>ezEditorProcessor.exe</li>
+</ol>
+<h3 id="ezeditorexe">ezEditor.exe</h3>
+<p><em>ezEditor.exe</em> is the main application binary. This shows all of the windows with the 2D UI elements. If this process crashes, the entire editor crashes and unsaved work is lost. This process <strong>doesn't run the 3D engine</strong>, at all. It works on an abstract representation of asset data, that automatically handles serialization, undo/redo and versioning. This process never loads game code. As such it is much less likely to run into issues that lead to a crash.</p>
+<p><em>ezEditor.exe</em> launches an instance of <em>ezEditorEngineProcess.exe</em> to handle all of the 3D viewport rendering and also execute the game simulation.</p>
+<p>It may launch multiple instances of <em>ezEditorProcessor.exe</em> to process multiple assets in parallel in the background. When necessary, it may also do asset processing itself.</p>
+<p><em>ezEditor.exe</em> links against <em>EditorFramework</em>, which is the central library where all of the shared editing functionality resides.</p>
+<h3 id="ezeditorengineprocessexe">ezEditorEngineProcess.exe</h3>
+<p><em>ezEditorEngineProcess.exe</em> is the process that actually loads the engine and game code. One such process always exists to render to the 3D viewports of <em>ezEditor.exe</em>. These two processes communicate closely with each other, where the <em>ezEditor</em> process synchronizes all state changes to the <em>ezEditorEngineProcess</em> and the engine process sends back information about picking (object selection) and such.</p>
+<p>In case of a crash of <em>ezEditorEngineProcess</em>, usually <em>ezEditor.exe</em> can continue unharmed. It displays a button to restart the engine process, and then simply synchronizes the scene state over to the engine process again. It is even possible to save files and do more scene modifications (like undo/redo) while the engine process doesn't run. This is especially useful in case a problematic change was made to an asset, that keeps crashing the engine process.</p>
+<p>Some assets can only be <a href="../assets/assets-overview.html#asset-transform">transformed</a> by an engine process, because they need access to runtime code. For example, scene export needs to call the overridden <code>ezComponent::Serialize()</code> functions. Therefore these types of asset documents are transformed by an engine process, whereas other <a href="../assets/assets-overview.html">assets</a> can be transformed by <em>ezEditor.exe</em> or <code>ezEditorProcessor.exe</code>.</p>
+<p>Because of the split into multiple processes, <em>ezEditor.exe</em> cannot simply read and modify arbitrary data, which often makes it more complicated to implement editing functionality, that would be quite trivial in other engines, where the editor is just a single process. Some functionality has to be implemented across both processes, in which case they need to send messages back and forth to communicate.</p>
+<h3 id="ezeditorprocessorexe">ezEditorProcessor.exe</h3>
+<p><em>ezEditorProcessor.exe</em> is a trimmed down version of <em>ezEditor.exe</em> which is only used to <a href="../assets/assets-overview.html#asset-transform">transform assets</a> in the background. Consequently it loads the same editor plugins and also launches its own engine process. In case an <em>ezEditorProcessor</em> crashes, a new one may be launched. Asset transform activity is shown in the <a href="../assets/asset-curator.html">asset curator panel</a>.</p>
+<p><em>ezEditorProcessor.exe</em> doesn't show any UI. It can be launched manually, to transform all assets for a project. This is utilized, for example, by the <em>GameEngineTests</em>.</p>
+<h2 id="plugin-types">Plugin Types</h2>
+<p>As the diagram above shows, there are three types of plugins. Most plugins use a specific naming scheme, though it is not a requirement. <strong>Every</strong> type of plugin is optional, depending on what functionality you want to add. However, if you need a plugin for the <em>ezEditorEngineProcess</em> then you typically also need a plugin for the <em>ezEditor</em> process, to expose the functionality to the user (e.g. through a new asset type).</p>
+<p>These plugin types exist:</p>
+<ol>
+<li><p>The plugin that extends the engine runtime. Typically called <em>ez<strong>X</strong>Plugin.dll</em> (with <strong>X</strong> being the feature name). This plugin is needed, if the <em>feature</em> adds any custom <a href="../runtime/world/components.html">component type</a>. If you add <em>only</em> component types, and don't need any custom editing functionality, you don't need to add the other plugin types.</p>
+</li>
+<li><p>The plugin that extends the ezEditor process. Typically called <em>ezEditorPlugin<strong>X</strong>.dll</em>. This plugin is needed, if you want to add new <a href="editor-documents.html">document types</a> such as new <a href="../assets/assets-overview.html">assets</a>.</p>
+</li>
+<li><p>The plugin that extends the editor engine process. Typically called <em>ezEnginePlugin<strong>X</strong>.dll</em>. This plugin is needed, if you add a new asset or document type that needs the engine either for a custom 3D visualization or to transform data. This plugin may link directly against the runtime plugin to get access to those data structures.</p>
+</li>
+</ol>
+<p>In rare cases you may have code or data structures that need to be used across these plugins, in which case it can be useful to put it into a separate library that the other plugins link against. For example the project <em>SharedPluginAssets</em> is used both by <em>EnginePluginAssets</em> and <em>EditorPluginAssets</em>.</p>
+<h3 id="ezpluginbundle">ezPluginBundle</h3>
+<p>The editor needs to know which plugins exist, which DLLs they are made up of and what dependencies they have. For this, <em>ezPluginBundle</em> files are used.</p>
+<p>The files need to be located in the same directory as <em>ezEditor.exe</em>. Use the CMake command <code>ez_copy_plugin_bundle</code> to automatically copy such a file from a plugin source directory into the output directory:</p>
+<pre><code class="lang-cmake">ez_create_target(LIBRARY ${PROJECT_NAME})
+ez_copy_plugin_bundle(${PROJECT_NAME} &quot;GameComponents&quot;) # copies GameComponents.ezPluginBundle into the output directory
+</code></pre>
+<p>If you have multiple DLLs that make up your plugin, only add this copy step to one of them.</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>The copy step is only executed when compiling the library. So if you make changes to the original file, you need to make sure that it actually gets copied, otherwise the editor may only see an outdated copy.</p>
+</blockquote>
+<p>At startup the editor finds all plugin bundle files. It then lists them in the <a href="../projects/plugin-selection.html">plugin selection dialog</a>, which is where you enable the usage of a plugin for your project.</p>
+<h4 id="plugin-bundle-file-format">Plugin Bundle File Format</h4>
+<p>The plugin bundle files use the <a href="https://openddl.org/">OpenDDL</a> format.</p>
+<pre><code class="lang-cpp">PluginInfo
+{
+	// The name with which the bundle appears in the UI.
+	string %DisplayName{&quot;Pretzel Plugin&quot;}
+
+	// A description of what functionality this bundle adds.
+	string %Description{&quot;Procedural mesh generation.&quot;}
+	
+	// List of plugins (without path or extension) to load into the editor process.
+	string %EditorPlugins{&quot;ezEditorPluginPretzel&quot;}
+
+	// List of plugins (without path or extension) to load into the editor engine process.
+	string %EditorEnginePlugins{&quot;ezEnginePluginPretzel&quot;}
+
+	// List of plugins (without path or extension) to load into the engine process (e.g. also ezPlayer.exe and stand-alone apps).
+	string %RuntimePlugins{&quot;ezPretzelPlugin&quot;}
+	
+	// List of bundles (without path or extension) that are always needed for this bundle to work.
+	string %RequiredPlugins{}
+
+	// List of additional files that need to be shipped for the plugin to work right (usually other DLLs).
+	string %PackageDependencies{}
+	
+	// List of tags for &quot;features&quot; that this bundle provides. 
+	// Only one bundle with each feature may be selected.
+	// Typically used to prevent multiple physics or sound engines to be in use at the same time.
+	string %ExclusiveFeatures{}
+
+	// List of 'template' names in which this bundle should be selected.
+	// All used template names appear in the UI for the user to choose from.
+	// For a bundle to be active by default in new projects, include the &quot;General3D&quot; template here.
+	string %EnabledInTemplates{}
+
+	// if true, the plugin is not shown in the UI and always loaded
+	// only used for system functionality
+	bool %Mandatory{false}
+}
+</code></pre>
+<h2 id="editor-process-plugins">Editor Process Plugins</h2>
+<p>Plugins that are loaded into <em>ezEditor.exe</em> are typically called <em>ezEditorPluginX.dll</em>, however, this is just a convention, the actual DLL names are specified in the plugin bundle file.</p>
+<p>These plugins contain the following functionality:</p>
+<ul>
+<li>Asset type definitions and their window code (2D UI only, 3D viewports go into the engine process plugin)</li>
+<li>Asset transform code, if the asset type can be transformed without the 3D engine</li>
+<li><em>Actions</em> that are added to the UI (buttons, menu entries, etc) and their default <a href="editor-settings.html#shortcuts">shortcuts</a>.</li>
+<li>Qt UI functionality (dialogs, widgets)</li>
+<li>2D Icons (also for custom components)</li>
+<li>Drag and drop handlers</li>
+<li>Definitions for new <a href="editor-settings.html#preferences">preferences</a> (plugin specific editor settings)</li>
+</ul>
+<p>Editor process plugins need to <strong>link</strong> against the <strong>EditorFramework</strong> library.</p>
+<h2 id="engine-process-plugins">Engine Process Plugins</h2>
+<p>Plugins that are loaded into <em>ezEditorEngineProcess.exe</em> are typically called <em>ezEnginePluginX.dll</em>, however, this is just a convention, the actual DLL names are specified in the plugin bundle file.</p>
+<p>These plugins contain the following functionality:</p>
+<ul>
+<li>engine side asset type support (see <code>ezEngineProcessDocumentContext</code>)</li>
+<li>asset type thumbnail generation (see <code>ezEngineProcessDocumentContext::ExportDocument()</code>)</li>
+<li>asset type 3D visualization support (see <code>ezEngineProcessViewContext</code>)</li>
+<li>Asset transform code, if the asset type cannot be transformed without the 3D engine</li>
+<li>scene export modifiers (see <code>ezSceneExportModifier</code>)</li>
+</ul>
+<p>Editor engine process plugins need to <strong>link</strong> against the <strong>EditorEngineProcessFramework</strong> library.</p>
+<h2 id="game-engine-plugins">Game Engine Plugins</h2>
+<p>Plugins that are loaded into the actual game (either a custom <a href="../runtime/application/application.html">application</a> or <a href="../tools/player.html">ezPlayer</a> but also the <em>ezEditorEngineProcess</em>) are typically called <em>ezXPlugin.dll</em>, however, this is just a convention, the actual DLL names are specified in the plugin bundle file.</p>
+<p>These plugins contain the following functionality:</p>
+<ul>
+<li><a href="../runtime/world/components.html">component</a> types</li>
+<li><a href="../runtime/resource-management.html">resource (TODO)</a> types</li>
+<li><a href="../runtime/world/world-modules.html">world modules</a></li>
+<li><a href="../runtime/application/game-state.html">game states</a></li>
+<li><a href="../debugging/cvars.html">CVars</a></li>
+<li>custom rendering code (see <code>ezRenderer</code>)</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<p>The best way to get started, is to copy a entire library. Delete all files that are unnecessary, strip the code down to the bare minimum and then rename files and classes and make this bare bones plugin compile.</p>
+<p>In most cases there will be some runtime functionality (through new component types). So the first thing to start with, is to add an <a href="../custom-code/cpp/engine-plugins.html">engine plugin</a>. As an example, have a look at the <em>JoltPlugin</em> or the <em>AiPlugin</em>.</p>
+<p>Add an <a href="#ezpluginbundle">ezPluginBundle</a> to that library, so that it shows up in the <a href="../projects/plugin-selection.html">plugin selection dialog</a>.</p>
+<p>New component types will already show up in the scene editor.</p>
+<p>If you need a custom <a href="../assets/assets-overview.html">asset type</a>, the next step is to create an <em>editor plugin</em>. See the <em>EditorPluginJolt</em> or <em>EditorPluginFmod</em> as an example. Make sure to adjust your plugin bundle file and also that the copied file gets overwritten.</p>
+<p>If the editor process loads your editor plugin correctly, the new asset type will show up.</p>
+<p>If you then also want to have 3D visualization inside your asset document, add an editor engine process plugin, see for example <em>EnginePluginJolt</em>.</p>
+<h2 id="data-for-plugins">Data for Plugins</h2>
+<p>If your plugin requires additional files, put them into <code>Data/Plugins/YourPluginName</code>. The folder <code>Data/Plugins</code> is always mounted as a <a href="../projects/data-directories.html">data directory</a> so you can read files from there using the relative path <code>YourPluginName/MyFile.data</code>.</p>
+<p>This is a stopgap solution and will be improved in the future.</p>
+<h2 id="distributing-plugins">Distributing Plugins</h2>
+<p>There is currently no way to easily distribute and install compiled plugins. You can write a script (PowerShell, Python) to copy the necessary files into an EZ installation, but be aware that your DLLs may not be compatible with their installation, if the user compiled it themselves and there are differences in their version and the one that you used.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../custom-code/cpp/engine-plugins.html">Engine Plugins</a></li>
+<li><a href="../tools/player.html">ezPlayer</a></li>
+<li><a href="../runtime/application/application.html">Application</a></li>
 </ul>
 
 </article>

@@ -183,7 +183,7 @@
           "leaf": true
         },
         {
-          "name": "Editor Plugins (TODO)",
+          "name": "Editor Plugins",
           "href": "editor/editor-plugins.html",
           "topicHref": "editor/editor-plugins.html",
           "tocHref": null,
