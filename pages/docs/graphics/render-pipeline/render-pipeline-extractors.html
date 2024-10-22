@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Render Pipeline | ezEngine </title>
+      <title>Render Pipeline Extractors | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Render Pipeline | ezEngine ">
+      <meta name="title" content="Render Pipeline Extractors | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline/render-pipeline-extractors.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,19 +87,53 @@
         </div>
 
         <article data-uid="">
-<h1 id="render-pipeline">Render Pipeline</h1>
+<h1 id="render-pipeline-extractors">Render Pipeline Extractors</h1>
 
-<!-- PAGE IS TODO -->
-<p>Render pipelines are fully functional, but currently undocumented.</p>
+<p>This page lists all render pipeline <em>extractors</em> and their functionality.</p>
+<h2 id="clustered-data-extractor">Clustered Data Extractor</h2>
+<p>Gathers information about</p>
+<ul>
+<li>light sources</li>
+<li>decals</li>
+<li>reflection probes</li>
+<li>fog</li>
+</ul>
+<p>Required by the forward rendering passes, for lighting and other things to work.</p>
+<p><strong>Properties:</strong> <em>none</em></p>
+<h2 id="editor-grid-extractor">Editor Grid Extractor</h2>
+<p>Used in the editor to extract render data for the editor grid.</p>
+<p><strong>Properties:</strong> <em>none</em></p>
+<p><strong>Required Renderpass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
+<h2 id="editor-selected-objects-extractor">Editor Selected Objects Extractor</h2>
+<p><strong>Properties:</strong> <em>none</em></p>
+<h2 id="editor-shape-icons-extractor">Editor Shape Icons Extractor</h2>
+<p>Used in the editor to extract render data for all 3D icons used for selecting objects.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>Size</code>:</li>
+<li><code>Max Screen Size</code>:</li>
+</ul>
+<p><strong>Required Renderpass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
+<h2 id="imgui-extractor">ImGUI Extractor</h2>
+<p>Prepares rendering of <a href="../../ui/imgui.html">ImGui</a> UI. The <em>simple render pass</em> must be part of the render pipeline to render the data.</p>
+<p><strong>Properties:</strong> <em>none</em></p>
+<p><strong>Required Renderpass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
+<h2 id="selected-objects-extractor">Selected Objects Extractor</h2>
+<p><strong>Properties:</strong> <em>none</em></p>
+<h2 id="simplified-data-extractor">Simplified Data Extractor</h2>
+<p><strong>Properties:</strong> <em>none</em></p>
+<h2 id="visible-objects-extractor">Visible Objects Extractor</h2>
+<p><strong>Properties:</strong> <em>none</em></p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="shaders/shaders-overview.html">Shaders</a></li>
+<li><a href="render-pipeline-overview.html">Render Pipeline</a></li>
+<li><a href="render-pipeline-passes.html">Render Pipeline Passes</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline/render-pipeline-extractors.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

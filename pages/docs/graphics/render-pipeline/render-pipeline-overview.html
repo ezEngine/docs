@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Render Pipeline | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Render Pipeline | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline/render-pipeline-overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="render-pipeline">Render Pipeline</h1>
+
+<p>A render pipeline defines the steps that the renderer should take to generate the final image. In EZ the render pipeline is fully configurable. Which render pipeline your project uses is configured per platform in the <a href="../../assets/asset-profiles.html#render-pipelines">asset profiles</a>.</p>
+<p>Projects may also use multiple different render pipelines, for example when doing <a href="../render-to-texture/render-to-texture.html">render to texture (TODO)</a>.</p>
+<p><img src="../media/render-pipeline.png" alt="Render Pipeline"></p>
+<h2 id="render-pipeline-asset">Render Pipeline Asset</h2>
+<p>The render pipeline asset is used to create configurations in a visual way. A pipeline generally <em>flows</em> from left to right. There are two different types of <em>nodes</em> in the graph. Violet nodes are <strong>render passes</strong>, red nodes are <strong>extractors</strong>.</p>
+<h3 id="extractors">Extractors</h3>
+<p>Some extractor nodes have configuration properties, but they usually don't have any input or output pins. When an extractor is present in a pipeline, it gets executed every frame and is responsible for finding objects to render. Most pipelines need at least one type of extractor, such that the render pipeline has something to do, at all. Only few pipelines don't need extractors, for instance ones that operate only on images, for example to downscale or blur an image.</p>
+<p>For a list of all available extractor nodes, see <a href="render-pipeline-extractors.html">this page</a>.</p>
+<h4 id="programming-details-c">Programming Details (C++)</h4>
+<p>All extractor nodes are C++ classes that derive from <code>ezExtractor</code>. When an extractor finds an object to render, it records this <em>render data</em> in the <code>ezExtractedRenderData</code> object that it is given. The render data to record differs, depending on the type of object to render. For example to render a mesh, different data has to be recorded, than when rendering a particle effect. Render data is stored in objects which derive from <code>ezRenderData</code>.</p>
+<p>After extraction, all render data is sorted according to various criteria (distance to camera, transparency settings and such) and then <em>may</em> get rendered by a <em>render pass node</em>. It may also get picked up multiple times, for example first by a depth pre-pass and then by an opaque render pass.</p>
+<p>To actually render an object, a matching <code>ezRenderer</code> instance is used. Classes derived from <code>ezRenderer</code> specify which types of <code>ezRenderData</code> they can handle and which <code>ezRenderData::Category</code> they implement. So when a render pass attempts to render the <em>SimpleTransparent</em> category and there is render data of type <code>ezGridRenderData</code> then the <code>ezGridRenderer</code> will be used.</p>
+<p>Extractors have to be part of a render pipeline configuration, so that one can control which kind of objects get rendered. <em>Renderers</em> are automatically instantiated through <a href="../../runtime/reflection-system.html">code reflection</a>.</p>
+<h3 id="render-passes">Render Passes</h3>
+<p>Broadly speaking, render pass nodes modify render targets. Usually they are handed one or multiple render targets through the input pins. They may use some inputs only for reading and others for writing. Opertions can be pure image manipulations, like downscaling or blurring, or they may use renderers (see <code>ezRenderer</code>) to draw <em>render data</em> that was prepared by <em>extractors</em>.</p>
+<p>The input and output pins are used to connect which render target a render pass works on. In some cases a pass generates a completely new image, in other cases it forwards an input as its output.</p>
+<p><img src="../media/render-pipeline-bloom-pass.png" alt="Bloom Pass"></p>
+<p>In the image above the <em>TonemapPass</em> takes two inputs, one for the general image to tonemap, and one (optionally) to composite bloom on top of. There are different ways how the bloom image could be generated. In this case, the output from the <em>AntialiasingPass</em> is used both for the tonemapping, as well as for generating bloom. So the output is fed into two render passes. The <em>BloomPass</em> extracts overbright areas and creates a new (temporary) image with the result, which is then given to the <em>TonemapPass</em> as well.</p>
+<p>Note that, although the <em>BloomPass</em> does create a new image, you do not need to give it an input image to write to. It automatically retrieves a <em>scratch texture</em> internally.</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>All render passes have an 'active' flag, with which they can be deactivated. Depending on what the pass is supposed to do when active, a deactivated pass may do nothing and also output nothing, or it may pass input render targets through as outputs, or it may do a copy of a texture (but nothing else). Some passes also may not support being deactivated.</p>
+</blockquote>
+<p>Be aware that <em>render pass nodes</em> are a high level functional unit. They don't map directly to render passes in graphics APIs like Vulkan or D3D12 even though there are definitely similarities.</p>
+<p>For a list of all available pass nodes, see <a href="render-pipeline-passes.html">this page</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="render-pipeline-passes.html">Render Pipeline Passes</a></li>
+<li><a href="render-pipeline-extractors.html">Render Pipeline Extractors</a></li>
+<li><a href="../shaders/shaders-overview.html">Shaders</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline/render-pipeline-overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

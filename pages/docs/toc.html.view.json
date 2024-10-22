@@ -421,15 +421,6 @@
       "name": "Graphics",
       "items": [
         {
-          "name": "Render Pipeline (TODO)",
-          "href": "graphics/render-pipeline-overview.html",
-          "topicHref": "graphics/render-pipeline-overview.html",
-          "tocHref": null,
-          "level": 3.0,
-          "items": [],
-          "leaf": true
-        },
-        {
           "name": "Textures",
           "href": "graphics/textures-overview.html",
           "topicHref": "graphics/textures-overview.html",
@@ -437,6 +428,41 @@
           "level": 3.0,
           "items": [],
           "leaf": true
+        },
+        {
+          "name": "Render Pipeline",
+          "items": [
+            {
+              "name": "Render Pipeline",
+              "href": "graphics/render-pipeline/render-pipeline-overview.html",
+              "topicHref": "graphics/render-pipeline/render-pipeline-overview.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Render Pipeline Extractors",
+              "href": "graphics/render-pipeline/render-pipeline-extractors.html",
+              "topicHref": "graphics/render-pipeline/render-pipeline-extractors.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Render Pipeline Passes",
+              "href": "graphics/render-pipeline/render-pipeline-passes.html",
+              "topicHref": "graphics/render-pipeline/render-pipeline-passes.html",
+              "tocHref": null,
+              "level": 4.0,
+              "items": [],
+              "leaf": true
+            }
+          ],
+          "topicHref": null,
+          "tocHref": null,
+          "level": 3.0
         },
         {
           "name": "Meshes",

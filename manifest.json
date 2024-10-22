@@ -3772,6 +3772,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/media/render-pipeline-bloom-pass.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/media/render-pipeline-bloom-pass.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/media/render-pipeline.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/media/render-pipeline.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/graphics/media/sprite.jpg",
       "output": {
         "resource": {
@@ -3912,10 +3932,30 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/graphics/render-pipeline-overview.md",
+      "source_relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-extractors.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/graphics/render-pipeline-overview.html"
+          "relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-extractors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-passes.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-passes.html"
         }
       },
       "version": ""

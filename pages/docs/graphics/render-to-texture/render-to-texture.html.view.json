@@ -1,5 +1,5 @@
 {
-  "conceptual": "\n<!-- PAGE IS TODO -->\n<p sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"5\">Render to texture functionality is working, but needs a rewrite, which is why this feature is currently undocumented.</p>\n<h2 id=\"see-also\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"7\">See Also</h2>\n<ul sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"9\">\n<li sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"9\"><a href=\"~/pages/docs/graphics/render-to-texture/render-target-activator-component.md\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"9\">Render Target Activator Component (TODO)</a></li>\n<li sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"10\"><a href=\"~/pages/docs/graphics/render-pipeline-overview.md\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"10\">Render Pipeline (TODO)</a></li>\n</ul>\n",
+  "conceptual": "\n<!-- PAGE IS TODO -->\n<p sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"5\">Render to texture functionality is working, but needs a rewrite, which is why this feature is currently undocumented.</p>\n<h2 id=\"see-also\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"7\">See Also</h2>\n<ul sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"9\">\n<li sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"9\"><a href=\"~/pages/docs/graphics/render-to-texture/render-target-activator-component.md\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"9\">Render Target Activator Component (TODO)</a></li>\n<li sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"10\"><a href=\"~/pages/docs/graphics/render-pipeline/render-pipeline-overview.md\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"10\">Render Pipeline</a></li>\n</ul>\n",
   "type": "Conceptual",
   "source": {
     "remote": {
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"render-to-texture\" sourcefile=\"pages/docs/graphics/render-to-texture/render-to-texture.md\" sourcestartlinenumber=\"1\">Render to Texture</h1>",
   "title": "Render to Texture",
-  "wordCount": 28.0,
+  "wordCount": 27.0,
   "_key": "pages/docs/graphics/render-to-texture/render-to-texture.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

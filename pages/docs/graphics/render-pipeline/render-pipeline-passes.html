@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Post-Processing Component | ezEngine </title>
+      <title>Render Pipeline Passes | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Post-Processing Component | ezEngine ">
+      <meta name="title" content="Render Pipeline Passes | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/post-processing/post-processing-component.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline/render-pipeline-passes.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,48 +87,56 @@
         </div>
 
         <article data-uid="">
-<h1 id="post-processing-component">Post-Processing Component</h1>
+<h1 id="render-pipeline-passes">Render Pipeline Passes</h1>
 
-<p>The post processing component is used to dynamically modify settings of the <a href="../../graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a>.</p>
-<p>The component relies on <a href="volume-components.html">volume components</a> to define where in a level which values shall be used. The following image shows a scene without custom post processing values:</p>
-<p><img src="media/post-processing-off.jpg" alt="PP off"></p>
-<p>With post processing, the area can be made to look very different:</p>
-<p><img src="media/post-processing-on.jpg" alt="PP on"></p>
-<p>The level uses a volume component to specify that this area should have a different athmosphere and thus use different values for post processing.</p>
-<p>To enable custom post processing, attach the post processing component to the same object where the main <a href="../../graphics/camera-component.html">camera component</a> is attached to. This would typically be inside a player prefab. If, however, the post processing component is attached to an object with a camera component that is configured for <a href="../../graphics/render-to-texture/render-to-texture.html">render to texture (TODO)</a>, it will only affect that.</p>
-<p>It is also possible to place this component simply anywhere in a level. In this case it is always active and affects the currently active camera. This can be very useful during testing, since it also affects the editor camera and thus you can test values and volume placement just by moving the editor camera around, without even simulating the scene.</p>
-<h2 id="component-properties">Component Properties</h2>
+<p>This page lists all render pipeline <em>passes</em> and their functionality.</p>
+<h2 id="ao-pass">AO Pass</h2>
+<h2 id="antialiasing-pass">Antialiasing Pass</h2>
+<h2 id="blend-pass">Blend Pass</h2>
+<h2 id="bloom-pass">Bloom Pass</h2>
+<h2 id="blur-pass">Blur Pass</h2>
+<h2 id="copy-texture-pass">Copy Texture Pass</h2>
+<h2 id="depth-only-pass">Depth Only Pass</h2>
+<h2 id="history-source-pass">History Source Pass</h2>
+<h2 id="history-target-pass">History Target Pass</h2>
+<h2 id="lsao-pass">LSAO Pass</h2>
+<h2 id="msaa-resolve-pass">MSAA Resolve Pass</h2>
+<h2 id="msaa-upscale-pass">MSAA Upscale Pass</h2>
+<h2 id="opaque-forward-render-pass">Opaque Forward Render Pass</h2>
+<p><strong>Required Extractor:</strong> <a href="render-pipeline-extractors.html#clustered-data-extractor">Clustered Data Extractor</a></p>
+<h2 id="picking-render-pass">Picking Render Pass</h2>
+<h2 id="reflection-filter-pass">Reflection Filter Pass</h2>
+<h2 id="selection-highlight-pass">Selection Highlight Pass</h2>
+<h2 id="separated-bilateral-blur-pass">Separated Bilateral Blur Pass</h2>
+<h2 id="simple-render-pass">Simple Render Pass</h2>
+<p>Takes care of rendering simple data, for example:</p>
 <ul>
-<li><code>Volume Type</code>: A <a href="../../runtime/world/spatial-system.html">spatial category</a> that is used as a filter to determine which <a href="volume-components.html">volume components</a> to use for looking up values.</li>
-<li><code>Mappings</code>: An array of mappings from that configure which values in a <a href="../../graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a> to modify. See the images below for an example.
-<ul>
-<li><code>Render Pass</code>: The <em>name</em> of the render pass in the pipeline to change.</li>
-<li><code>Property</code>: The name of the <em>property</em> to change.</li>
-<li><code>Volume Value</code>: The name of the value to use from the <a href="volume-components.html">volume</a>.</li>
-<li><code>Default Value</code>: The value to use for <code>Property</code> if the camera is currently in no volume.</li>
-<li><code>Interpolation Duration</code>: The property is interpolated towards the target value over this time. A duration of <code>0</code> means the value changes immediately, anything larger means the change happens more smoothly.</li>
+<li><a href="../../ui/imgui.html">ImGui</a></li>
+<li><a href="../../ui/rmlui.html">RmlUi</a></li>
+<li>The editor grid.</li>
+<li><a href="../sprite-component.html">Sprites</a> and <a href="../../Miscellaneous/components/shape-icon-component.html">editor shape icons</a>.</li>
+<li><a href="../../scenes/gizmos.html">Editing Gizmos</a>.</li>
+<li>Unlit meshes.</li>
 </ul>
-</li>
-</ul>
-<h2 id="example">Example</h2>
-<p>In this example, the post processing component is used to alter the <em>Mood Color</em>:</p>
-<p><img src="media/post-process-component.png" alt="Component properties"></p>
-<p>The image below shows the <em>Tonemapping</em> render pass from the game's <a href="../../graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a>. On the right are it's properties that get modified.</p>
-<p><img src="media/tonemap-pass.png" alt="Render Pass"></p>
-<p>Be aware that once post processing component is used, the values for these properties on the render pipeline have no effect anymore, since they are always being overwritten anyway.</p>
-<h2 id="constant-overrides">Constant Overrides</h2>
-<p>If you leave the <code>Volume Value</code> property for a mapping empty, the component overrides the render pipeline with the default value, but never reads a value from a volume. This can be used to just set a value to a different value in a level. This way you can also use this component just to have different values per level. In this case the component should not exist on the player object, but just be added to each level.</p>
+<p>Different extractors generate data for the simple render pass.</p>
+<h2 id="sky-render-pass">Sky Render Pass</h2>
+<p><strong>Required Extractor:</strong> <a href="render-pipeline-extractors.html#clustered-data-extractor">Clustered Data Extractor</a></p>
+<h2 id="source-pass">Source Pass</h2>
+<h2 id="stereo-test-pass">Stereo Test Pass</h2>
+<h2 id="target-pass">Target Pass</h2>
+<h2 id="tonemap-pass">Tonemap Pass</h2>
+<h2 id="transparent-forward-render-pass">Transparent Forward Render Pass</h2>
+<p><strong>Required Extractor:</strong> <a href="render-pipeline-extractors.html#clustered-data-extractor">Clustered Data Extractor</a></p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="volume-components.html">Volume Components</a></li>
-<li><a href="../../graphics/lighting/lighting-overview.html">Lighting</a></li>
-<li><a href="../fog.html">Fog</a></li>
+<li><a href="render-pipeline-overview.html">Render Pipeline</a></li>
+<li><a href="render-pipeline-extractors.html">Render Pipeline Extractors</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/post-processing/post-processing-component.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-pipeline/render-pipeline-passes.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
