@@ -120,10 +120,14 @@
 <p>The <strong>Debug</strong> build is best when you want to use a C++ debugger to investigate problems. It includes the necessary <em>debug symbols</em> and has many optimizations disabled, which makes it much easier to step through the code. Debug builds are significantly slower than the other build types.</p>
 <p>The <strong>Dev</strong> build has most of the optimizations enabled, yet still includes <em>debug symbols</em>. The <em>Dev</em> build is 3x to 10x faster than a <em>Debug</em> build in most cases and is very close to the speed of a <em>Shipping</em> build. Stepping through the C++ code with a debugger is possible, though it often behaves erratic due to the optimizations (inlining and such). For most developers the <em>Dev</em> build should be the main configuration to use.</p>
 <p>The <strong>Shipping</strong> build has all optimizations enabled. It does not include <em>debug symbols</em> anymore and it also has all the developer features disabled. That means things like <a href="../tools/inspector.html">ezInspector</a> won't work here. Similarly, features like <em>allocation tracking</em> (for detecting memory leaks) and <a href="../performance/profiling.html">profiling features</a> are disabled as well.</p>
+<h2 id="static-linking">Static Linking</h2>
+<p>On some platforms, such as <em>Android</em>, all code needs to be statically linked. In this case some of the automatisms used to load and configure the engine may not work correctly, because the linker optimizes away code that it deems unreferenced.</p>
+<p>See the <a href="../tools/staticlinkutil.html">StaticLinkUtil</a> for how to fix this.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="supported-platforms.html">Supported Platforms</a></li>
 <li><a href="submodule.html">ezEngine as a Submodule</a></li>
+<li><a href="../tools/staticlinkutil.html">StaticLinkUtil</a></li>
 </ul>
 
 </article>

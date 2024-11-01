@@ -142,6 +142,9 @@ EZ_PLUGIN_ON_UNLOADED()
 <h2 id="utility-plugins">Utility Plugins</h2>
 <p>If you want to write a plugin that provides some functionality for shared access, like some integration of a third-party library, the process is exactly the same. The only difference is, that such libraries would never contain a <a href="../../runtime/application/game-state.html">game state</a>.</p>
 <p>Also, have a look at <a href="../../runtime/configuration/interfaces.html">singletons</a> if your plugin is supposed to provide an implementation of some abstract interface.</p>
+<h2 id="statically-linking-plugins">Statically Linking Plugins</h2>
+<p>On platforms where you need to statically link all libraries, some of the automatisms used to load and configure the engine may not work correctly, because the linker optimizes away code that it deems unreferenced.</p>
+<p>See the <a href="../../tools/staticlinkutil.html">StaticLinkUtil</a> for how to fix this.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a></li>
@@ -149,6 +152,7 @@ EZ_PLUGIN_ON_UNLOADED()
 <li><a href="custom-cpp-component.html">Custom Components with C++</a></li>
 <li><a href="../../runtime/configuration/startup.html">Startup System</a></li>
 <li><a href="../../runtime/configuration/interfaces.html">Singleton Interfaces</a></li>
+<li><a href="../../tools/staticlinkutil.html">StaticLinkUtil</a></li>
 </ul>
 
 </article>
