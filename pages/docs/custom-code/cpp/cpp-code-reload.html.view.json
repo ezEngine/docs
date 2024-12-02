@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/custom-code/cpp/cpp-code-reload.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"hot-reloading-c-game-plugins-in-the-editor\" sourcefile=\"pages/docs/custom-code/cpp/cpp-code-reload.md\" sourcestartlinenumber=\"1\">Hot Reloading C++ Game Plugins in the Editor</h1>",
   "title": "Hot Reloading C++ Game Plugins in the Editor",
-  "wordCount": 621.0,
+  "wordCount": 621,
   "_key": "pages/docs/custom-code/cpp/cpp-code-reload.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

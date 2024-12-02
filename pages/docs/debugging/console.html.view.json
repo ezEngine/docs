@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/debugging/console.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"console\" sourcefile=\"pages/docs/debugging/console.md\" sourcestartlinenumber=\"1\">Console</h1>",
   "title": "Console",
-  "wordCount": 535.0,
+  "wordCount": 535,
   "_key": "pages/docs/debugging/console.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

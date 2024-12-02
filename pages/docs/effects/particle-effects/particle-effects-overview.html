@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -135,7 +135,7 @@
 <h2 id="events-and-event-reactions">Events and Event Reactions</h2>
 <p>Particles may raise <em>events</em>. The most common one is when a particle dies, but different particle behaviors can raise other events as well. For example when a particle collides with the environment (see <a href="particle-behaviors.html#raycast-behavior">raycast behavior</a>).</p>
 <p>The <strong>Event Reactions</strong> tab allows you to configure what happens for a specific event. This is mostly used to chain effects. For example the fireworks effect below has particles that represent the rockets flying up, and when one 'dies', an explosion is spawned at that position, using event reactions.</p>
-<p><video src="media/event-reaction-effect.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/event-reaction-effect.webm" width="500" height="500" autoplay loop></video></p>
 <p>Instead of spawning other particle effects, you can also spawn entire prefabs, which enables even more complex effects.</p>
 <p>Every <em>event reaction</em> has a <em>Probability</em> value which should be between 1 and 100. For example, if one reaction has a probability of 50, then for half of all events, that event reaction will be spawned. If there is no other event reaction for the same event type, then nothing is spawned. If however, another event reaction exists, say with a probability value of 30, then it also gets a chance to be spawned. Since 20 probability points are still not assigned, there is an overall 20 percent chance that no reaction is spawned.</p>
 <p>Be aware that probabilities are not normalized across event reactions. If you have two reactions for the same event type, both with a probability of 100, then in practice the first event reaction will always be spawned, and the second one will never be spawned.</p>
@@ -156,7 +156,7 @@
 <h3 id="local-space-simulation">Local Space Simulation</h3>
 <p>Some effects should always behave the same, no matter how the owning game object is rotated, or how fast it moves. This is often the case for rocket exhaust effects, for example. Such behavior is hard to achieve with the way particle effects typically work, though, as each particle would need to have an extremely short life span and move very fast.</p>
 <p>When enabling <strong>SimulateInLocalSpace</strong> in the <em>Effect tab</em>, the effect is simulated as if it was positioned at the world origin and with the default orientation. This removes any influence that the effects position, orientation and movement would otherwise have on the effect, as shown below:</p>
-<p><video src="media/sim-local-space.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/sim-local-space.webm" width="500" height="500" autoplay loop></video></p>
 <p>Some behaviors won't properly work for effects that are simulated in local space. For example the <a href="particle-behaviors.html#raycast-behavior">raycast behavior</a> will do it's raycasts at the origin of the scene, rendering it pointless.</p>
 <p>There is no performance benefit to using local space simulation. However, when using <a href="#shared-effects">shared effects</a>, the shared state must be simulated in local space.</p>
 <p>Other options to keep particles closer to the owning object are to use the <a href="particle-behaviors.html#pull-along-behavior">pull along behavior</a> or to <a href="#owner-velocity-inheritance">inherit the owner velocity</a>.</p>

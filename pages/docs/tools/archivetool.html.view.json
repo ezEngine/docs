@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/tools/archivetool.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"archivetool\" sourcefile=\"pages/docs/tools/archivetool.md\" sourcestartlinenumber=\"1\">ArchiveTool</h1>",
   "title": "ArchiveTool",
-  "wordCount": 387.0,
+  "wordCount": 387,
   "_key": "pages/docs/tools/archivetool.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

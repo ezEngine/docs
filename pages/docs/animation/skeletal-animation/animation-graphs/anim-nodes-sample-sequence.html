@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -91,7 +91,7 @@
 
 <p>The <em>sample sequence node</em> plays multiple clips in a row. One clip is used to enter the animation sequence, then there can be one or multiple different clips that may be played in a loop, and once the loop is exited, another clip can be played to finish the sequence.</p>
 <p>Such sequences are common for actions such as jumping or climbing a ladder. The start clip transitions the character from a start state, such as idle or walking into the new state, such as <em>jumping</em>. The middle clip is then played as long as the jumping state needs to continue, and once the character hits the ground again, the end clip is played to transition back.</p>
-<p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="../../media/anim-point-shoot.webm" width="500" height="500" autoplay loop></video></p>
 <p>The video above shows such a sequence. Here the node uses a <em>point gun</em> and a <em>shoot gun</em> clip for the middle part of the sequence, but it doesn't use a start or end clip at all (they are optional). Using the <code>Clip Index</code> input pin, the game code can switch at any time whether the gun is pointed or shot. One of the two clips is played in a loop as long as the game code decides to keep this state active. Here raising and lowering the arm is simply a result from fading the animation in and out over a short duration, but if desired these could also be dedicated animation clips.</p>
 <h2 id="node-properties">Node Properties</h2>
 <p>Most node properties are the same as on the <a href="anim-nodes-sample-clip.html#node-properties">sample clip node</a>.</p>

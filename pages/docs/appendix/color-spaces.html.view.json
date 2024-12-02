@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/appendix/color-spaces.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"color-spaces\" sourcefile=\"pages/docs/appendix/color-spaces.md\" sourcestartlinenumber=\"1\">Color Spaces</h1>",
   "title": "Color Spaces",
-  "wordCount": 2.0,
+  "wordCount": 2,
   "_key": "pages/docs/appendix/color-spaces.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

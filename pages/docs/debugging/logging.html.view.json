@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/debugging/logging.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"logging\" sourcefile=\"pages/docs/debugging/logging.md\" sourcestartlinenumber=\"1\">Logging</h1>",
   "title": "Logging",
-  "wordCount": 400.0,
+  "wordCount": 400,
   "_key": "pages/docs/debugging/logging.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

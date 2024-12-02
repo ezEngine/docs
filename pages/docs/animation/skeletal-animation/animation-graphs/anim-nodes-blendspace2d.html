@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -91,7 +91,7 @@
 
 <p>The <em>Sample Blendspace 2D</em> node is used to interpolate between a set of animations which are positioned in 2D space. You give it a 2D coordinate, and it will determine which <a href="../animation-clip-asset.html">animation clips</a> are relevant and mix them together with proper weights depending on how close the coordinate is to each clip.</p>
 <p>The purpose of this node is to generate a continuous animation space from just a few discrete clips. This is often used for locomotion, where you only have animation clips for walking into a fixed number of directions and at certain speeds, but you'd like to be able to move a character into any direction and at any speed in between.</p>
-<p><video src="../../media/anim-mix2d.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="../../media/anim-mix2d.webm" width="500" height="500" autoplay loop></video></p>
 <p>This node can generally be used to combine animations that can be thought of as having a position on a 2D plane. For example if you have animations for aiming forwards, to the left, right, up and down, you can use the blendspace 2D node to generate any pose in between.</p>
 <p>Be aware that the poses will be combined linearly, though. If the poses from two clips are too different, the result may not look very good. In this case it is best to create additional clips with in-between poses.</p>
 <h2 id="how-to-use">How To Use</h2>

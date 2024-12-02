@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/ai/AiPlugin/ai-plugin-overview.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"aiplugin-overview\" sourcefile=\"pages/docs/ai/AiPlugin/ai-plugin-overview.md\" sourcestartlinenumber=\"1\">AiPlugin Overview</h1>",
   "title": "AiPlugin Overview",
-  "wordCount": 129.0,
+  "wordCount": 129,
   "_key": "pages/docs/ai/AiPlugin/ai-plugin-overview.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

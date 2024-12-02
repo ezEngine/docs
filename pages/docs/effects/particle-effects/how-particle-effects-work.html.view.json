@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/effects/particle-effects/how-particle-effects-work.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"how-particle-effects-work\" sourcefile=\"pages/docs/effects/particle-effects/how-particle-effects-work.md\" sourcestartlinenumber=\"1\">How Particle Effects Work</h1>",
   "title": "How Particle Effects Work",
-  "wordCount": 1131.0,
+  "wordCount": 1131,
   "_key": "pages/docs/effects/particle-effects/how-particle-effects-work.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

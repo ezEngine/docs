@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/terrain/procedural/procgen-placement-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"procedural-placement-component\" sourcefile=\"pages/docs/terrain/procedural/procgen-placement-component.md\" sourcestartlinenumber=\"1\">Procedural Placement Component</h1>",
   "title": "Procedural Placement Component",
-  "wordCount": 143.0,
+  "wordCount": 143,
   "_key": "pages/docs/terrain/procedural/procgen-placement-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

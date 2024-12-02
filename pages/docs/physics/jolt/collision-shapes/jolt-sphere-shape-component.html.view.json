@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/physics/jolt/collision-shapes/jolt-sphere-shape-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"jolt-sphere-shape-component\" sourcefile=\"pages/docs/physics/jolt/collision-shapes/jolt-sphere-shape-component.md\" sourcestartlinenumber=\"1\">Jolt Sphere Shape Component</h1>",
   "title": "Jolt Sphere Shape Component",
-  "wordCount": 113.0,
+  "wordCount": 113,
   "_key": "pages/docs/physics/jolt/collision-shapes/jolt-sphere-shape-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

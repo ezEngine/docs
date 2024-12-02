@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/build/supported-platforms.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"supported-platforms\" sourcefile=\"pages/docs/build/supported-platforms.md\" sourcestartlinenumber=\"1\">Supported Platforms</h1>",
   "title": "Supported Platforms",
-  "wordCount": 262.0,
+  "wordCount": 262,
   "_key": "pages/docs/build/supported-platforms.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

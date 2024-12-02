@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/texture-sample.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"texture-sample\" sourcefile=\"pages/samples/texture-sample.md\" sourcestartlinenumber=\"1\">Texture Sample</h1>",
   "title": "Texture Sample",
-  "wordCount": 111.0,
+  "wordCount": 111,
   "_key": "pages/samples/texture-sample.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/debugging/cvars.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"cvars\" sourcefile=\"pages/docs/debugging/cvars.md\" sourcestartlinenumber=\"1\">CVars</h1>",
   "title": "CVars",
-  "wordCount": 437.0,
+  "wordCount": 437,
   "_key": "pages/docs/debugging/cvars.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

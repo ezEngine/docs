@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -109,20 +109,20 @@ pPhysics-&gt;Raycast(result, pCameraObject-&gt;GetGlobalPosition(), pCameraObjec
 </code></pre>
 <p>Now I have the point that the player is looking at. The next step is to validate, that one can place a trap there. For now I only do very simply position snapping and some rotation, I don't yet prevent the player from placing traps where they don't belong.</p>
 <p>Of course, while in trap placement mode you want to have a preview how things would look like, so I built a copy of my trap prefab, that has no functionality, and I add that to the scene (and move it around) to show where the trap would end up. At some point this should probably also use a <a href="../../docs/graphics/shaders/shaders-overview.html">custom shader</a> for a nice &quot;preview effect&quot;, and some sounds when placing traps for better feedback.</p>
-<p><video src="media/devlog3/ma-dl3-TrapPlacement.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog3/ma-dl3-TrapPlacement.mp4" width=600 controls></video></p>
 <p>At some point I noticed that when a monster dies, it doesn't dissappear and a lot of bodies where piling up. So now the }<em>monster component</em> simply puts itself into a queue when it starts playing the <em>die</em> animation to keep track of dead bodies, and I delete the oldest one when I have more than 20.</p>
 <p>Finally, I wanted to have a second trap. My favourite trap in <em>Orcs Must Die</em> is the one that shoots arrows out of a wall. From its logic it's very similar to the spike trap, so I copied and adjusted it. This is what it looks like:</p>
 <p><img src="media/devlog3/ma-dl3-image4.png" alt="Arrow Trap"></p>
 <p>I've added a <em>Dart</em> <a href="../../docs/gameplay/projectile-component.html">projectile</a> prefab and this trap simply uses 24 <a href="../../docs/gameplay/spawn-component.html">spawn components</a> to shoot a lot of those. This is it in action:</p>
-<p><video src="media/devlog3/ma-dl3-ArrowTrap.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog3/ma-dl3-ArrowTrap.mp4" width=600 controls></video></p>
 <p>However, I wanted the trap to shoot arrows three times in quick succession. Because that's way cooler. Turns out, this was absolutely trivial to do with the state machine. All I needed to do, was to copy two of the states a few times and set up a short time delay as transitions:</p>
 <p><img src="media/devlog3/ma-dl3-image5.png" alt="Arrow Trap"></p>
 <p>And now it behaves like this:</p>
-<p><video src="media/devlog3/ma-dl3-ArrowTrap2.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog3/ma-dl3-ArrowTrap2.mp4" width=600 controls></video></p>
 <p>And together they already create quite some mayhem:</p>
-<p><video src="media/devlog3/ma-dl3-Gameplay.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog3/ma-dl3-Gameplay.mp4" width=600 controls></video></p>
 <p>Finally, in game,  it looks and sounds like this:</p>
-<p><video src="media/devlog3/ma-dl3-Gameplay2.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog3/ma-dl3-Gameplay2.mp4" width=600 controls></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="monster-attack.html">Monster Attack Sample</a></li>

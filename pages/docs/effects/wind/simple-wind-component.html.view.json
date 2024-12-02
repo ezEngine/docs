@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/effects/wind/simple-wind-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"simple-wind-component\" sourcefile=\"pages/docs/effects/wind/simple-wind-component.md\" sourcestartlinenumber=\"1\">Simple Wind Component</h1>",
   "title": "Simple Wind Component",
-  "wordCount": 237.0,
+  "wordCount": 237,
   "_key": "pages/docs/effects/wind/simple-wind-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

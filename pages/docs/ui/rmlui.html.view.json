@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/ui/rmlui.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"rmlui\" sourcefile=\"pages/docs/ui/rmlui.md\" sourcestartlinenumber=\"1\">RmlUi</h1>",
   "title": "RmlUi",
-  "wordCount": 305.0,
+  "wordCount": 305,
   "_key": "pages/docs/ui/rmlui.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

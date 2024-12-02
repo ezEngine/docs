@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -109,7 +109,7 @@ Similarly, an effect that uses the <a href="#raycast-behavior">raycast behavior<
 <li><code>Speed</code> - In this mode the particle's color is determined from its current speed. Slow particles are assigned colors from the left side of the gradient, fast particles that from the right side. This mode only makes sense when either every particle gets a random speed assigned, or when its speed is able to change over time, due to friction, gravity or other factors.</li>
 </ul>
 <p><strong>MaxSpeed:</strong> When using <em>ColorFrom = Speed</em>, this value specifies the maximum expected speed of any particle. That speed is then mapped to the rightmost side of the color gradient.</p>
-<p><video src="media/color-gradient.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/color-gradient.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="fade-out-behavior">Fade Out Behavior</h2>
 <p>This behavior changes a particle's alpha value to gradually fade out over its lifetime. This behavior can also be achieved using a <a href="#color-gradient-behavior">color gradient behavior</a>, however, the fade out behavior is easier to set up and more efficient at runtime.</p>
 <p><strong>StartAlpha:</strong> The alpha value to begin with when the particle has just spawned.</p>
@@ -120,17 +120,17 @@ Similarly, an effect that uses the <a href="#raycast-behavior">raycast behavior<
 <p><strong>PathLength:</strong> The distance that the particles move into some direction before making another turn. The shorter this is, the more often the particles can change direction and thus the smoother the motion becomes. They will also clump up more and stay within the <em>MaxEmitterDistance</em>, if the particles can correct their course more often. With a long <em>PathLength</em> they may spread out more.</p>
 <p><strong>MaxEmitterDistance:</strong> The maximum distance that the particles will fly away from the effect's center before turning back. If they travel further, they will always steer back towards the emitter. How quickly that is possible though, depends on <em>PathLength</em> and <em>MaxSteeringAngle</em>.</p>
 <p><strong>MaxSteeringAngle:</strong> Every time a particle has traveled a distance of <em>PathLength</em>, it will make a random turn. This value specifies how large that turn may be. A small value results in very slow and wide turns, whereas a large value results in quick and erratic behavior.</p>
-<p><video src="media/flies.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/flies.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="gravity-behavior">Gravity Behavior</h2>
 <p>This behavior lets particles fall downwards.</p>
 <p><strong>GravityFactor:</strong> Scales gravity before applying it to the particles' velocity.</p>
-<p><video src="media/gravity.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/gravity.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="pull-along-behavior">Pull Along Behavior</h2>
 <p>Typically once a particle has been spawned, its position is unaffected by changes to the particle effect position. That means when an effect moves around quickly, it may leave a trail of particles behind it, but that trail will be very choppy, unless you have an extremely high particle spawn count and frequency. Thus making something like a rocket exhaust look convincing for a fast moving object can be difficult.</p>
 <p>The <em>pull along behavior</em> helps to solve this problem by keeping track of any position changes of the particle effect node and applying a fraction of those movements to all the particles' positions as well. This way, if the effect moves a meter, all particles may move 0.8 meters as well. One typically only applies a fraction, such that when the effect moves fast, the particles will be stretched long behind it and not move in perfect unison with the effect node, yielding a more convincing effect.</p>
 <p><strong>Strength:</strong> How much of the effect node's movement should be carried over to the particle positions.</p>
 <p>The video below shows two effects beside each other. The left one does not use the pull along behavior, the right one does. As can be seen, the particles on the right stay closer to the moving emitter position.</p>
-<p><video src="media/pull-along-behavior.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/pull-along-behavior.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="raycast-behavior">Raycast Behavior</h2>
 <p>This behavior uses raycasts to detect collisions along the trajectory of a particle. If a particle would collide with geometry, the behavior can either adjust the its velocity, or terminate the particle early, potentially raising an <a href="particle-effects-overview.html#events-and-event-reactions">event</a>, which could in turn lead to other effects or being spawned.</p>
 <p><strong>Reaction:</strong> Specifies how the particle should react to a collision.</p>
@@ -142,19 +142,19 @@ Similarly, an effect that uses the <a href="#raycast-behavior">raycast behavior<
 <p><strong>BounceFactor:</strong> How much of the current speed should be preserved after the bounce.</p>
 <p><strong>CollisionLayer:</strong> The physics collision layer to use. Affects with which geometry the particle will collide and which it will pass through.</p>
 <p><strong>OnCollideEvent:</strong> An optional name of an <a href="particle-effects-overview.html#events-and-event-reactions">event</a> to raise. If set, other effects or prefabs can be spawned at the location of impact.</p>
-<p><video src="media/raycast.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/raycast.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="size-curve-behavior">Size Curve Behavior</h2>
 <p>This behavior changes a particle's size over the course of its lifetime.</p>
 <p><strong>SizeCurve:</strong> A <a href="../../animation/common/curves.html">curve</a> which is used to look up the size of the particle. The current fraction of the particle's lifespan is used for the lookup along the X axis. The absolute X and Y values in the curve don't matter, the curve is normalized to <code>[0; 1]</code> range.</p>
 <p><strong>BaseSize:</strong> The particles will always have at least this size, the rest is added on top.</p>
 <p><strong>CurveScale:</strong> Specifies what value the largest value in the curve maps to. That means at the peak of a curve, the particle's size will be <code>BaseSize + CurveScale</code>.</p>
-<p><video src="media/size-curve.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/size-curve.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="velocity-behavior">Velocity Behavior</h2>
 <p>This behavior affects particle position and velocity. It can be used to gradually dampen the starting velocity through 'friction' and it may apply a constant upwards movement. If a scene contains <a href="../wind/wind.html">wind</a>, this behavior can also apply a fraction of the wind force to the particle's position.</p>
 <p><strong>RiseSpeed:</strong> If non-zero, the particles will move upwards with at least this constant speed. This is added to the particle position independent from its velocity, so if the current velocity points downward, the two may cancel each other out.</p>
 <p><strong>Friction:</strong> This value imitates air friction. If it is non-zero, the particle's velocity will be dampened over time. The value's range is <code>[0; infinity]</code>. To achieve an effect as in the animation below, the particles must have a very large starting velocity (here: 10). The <em>friction</em> here is set to 6. This way the particles will appear to be quite fast, but will also get slowed down almost to a standstill within a fraction of a second.</p>
 <p><strong>WindInfluence:</strong> If the scene has wind, this value specifies how much the wind should be able to push the particles around.</p>
-<p><video src="media/velocity.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/velocity.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="particle-effects-overview.html">Particle Effects</a></li>

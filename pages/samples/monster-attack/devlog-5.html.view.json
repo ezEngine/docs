@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/monster-attack/devlog-5.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"ma-devlog-5---level-logic\" sourcefile=\"pages/samples/monster-attack/devlog-5.md\" sourcestartlinenumber=\"1\">MA Devlog 5 - Level Logic</h1>",
   "title": "MA Devlog 5 - Level Logic",
-  "wordCount": 196.0,
+  "wordCount": 196,
   "_key": "pages/samples/monster-attack/devlog-5.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

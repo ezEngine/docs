@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -95,7 +95,7 @@
 <p><strong>PositionOffset, Size:</strong> These values define the size and position of the box, relative to the origin of the particle system. With a position offset of <code>(0, 0, 0)</code>, the box will be centered around the system's origin.</p>
 <p><strong>ScaleXParam, ScaleYParam, ScaleZParam:</strong> Optional names of <a href="particle-effects-overview.html#effect-parameters">effect parameters</a>. This allows to scale the volume in which particles spawn.</p>
 <p><strong>Note:</strong> Scaling the volume will change particle density. To compensate, the particle system will automatically spawn more or fewer particles. Thus you can author an effect as a 1x1x0 meter sized patch and then let the user decide how large a patch she needs by exposing these parameters. If your 1x1x0 patch requires roughly 100 particles at all times, then scaling it to a 10x5x0 patch will require 5000 particles.</p>
-<p><video src="media/box-position-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/box-position-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="cylinder-position-initializer">Cylinder Position Initializer</h2>
 <p>Initializes a particle's position to a random point either within a cylinder or on its surface. A cylinder of height <code>0</code> initializes the position to a random point on a circle or its circumference.</p>
 <p><strong>PositionOffset, Radius, Height:</strong> These values define the size and position of the cylinder, relative to the origin of the particle system. With a position offset of <code>(0, 0, 0)</code>, the cylinder will be centered around the system's origin. A height of <code>0</code> turns the cylinder into a circle.</p>
@@ -104,7 +104,7 @@
 <p><strong>ScaleRadiusParam, ScaleHeightParam:</strong></p>
 <p>Optional names of <a href="particle-effects-overview.html#effect-parameters">effect parameters</a>. This allows to scale the volume in which particles spawn.</p>
 <p><strong>Note:</strong> Scaling the volume will change particle density. See the <a href="#box-position-initializer">box position initializer</a> for details.</p>
-<p><video src="media/cylinder-position-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/cylinder-position-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="sphere-position-initializer">Sphere Position Initializer</h2>
 <p>Initializes a particle's position to a random point within a sphere shape.</p>
 <p><strong>PositionOffset, Radius:</strong> These values define the size and position of the sphere, relative to the origin of the particle system. With a position offset of <code>(0, 0, 0)</code>, the sphere will be centered around the system's origin.</p>
@@ -113,27 +113,27 @@
 <p><strong>ScaleRadiusParam:</strong></p>
 <p>Optional name of an <a href="particle-effects-overview.html#effect-parameters">effect parameter</a>. This allows to scale the volume in which particles spawn.</p>
 <p><strong>Note:</strong> Scaling the volume will change particle density. See the <a href="#box-position-initializer">box position initializer</a> for details.</p>
-<p><video src="media/sphere-position-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/sphere-position-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="random-color-initializer">Random Color Initializer</h2>
 <p>Initializes a particle's color to a random color.</p>
 <p><strong>Gradient:</strong> If specified, the random color will be picked from the given <a href="../../animation/common/color-gradients.html">color gradient</a>.</p>
 <p><strong>Color1, Color2:</strong> A random interpolated color between the two given colors is used. So if one color is white and the other is black, particles will get a random grey value as their color. If a <em>gradient</em> is set as well, the two colors are combined.</p>
-<p><video src="media/random-color-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/random-color-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="random-size-initializer">Random Size Initializer</h2>
 <p>Initializes a particle's size to a random value.</p>
 <p><strong>Size:</strong> The base size for the particles to start with. To initialize all particles to have a fixed size, set the variance to zero.</p>
 <p><strong>SizeCurve:</strong> If specified, the <a href="../../animation/common/curves.html">curve</a> is sampled at a random location and the normalized value (always between <code>0</code> and <code>1</code>) is used to scale the randomly chosen base size. The shape of the curve has no meaning for this use case, it only provides a way to affect the distribution of the random sizes. For example, you could have a curve that sets exactly half of all particles to exactly a tenth of the base size. If you want exactly the same distribution as the curve has, you should set the variance of the <em>base size</em> to zero.</p>
-<p><video src="media/random-size-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/random-size-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="rotation-speed-initializer">Rotation Speed Initializer</h2>
 <p>Initializes a particle's rotation and rotation speed to a random value.</p>
 <p><strong>RandomStartAngle:</strong> If enabled, the particle will start out with a random rotation. For particles with a distinct texture or shape, this can make the effect look significantly more natural.</p>
 <p><strong>DegreesPerSecond:</strong> If set to a non-zero value, particles will rotate with a constant speed. Each particle gets its own random speed assigned. With a low variance all particles will rotate similarly fast, with a high variance you will see some particles rotate very fast and some very slowly. Half of the particles rotate clockwise, the other half counter-clockwise.</p>
-<p><video src="media/rotation-speed-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/rotation-speed-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="velocity-cone-initializer">Velocity Cone Initializer</h2>
 <p>Initializes a particle's velocity to a random up vector.</p>
 <p><strong>Angle:</strong> The maximum opening angle of the upside down cone. With a small opening angle, particles will fly straight up. With a wide opening angle, particles will fly in all directions.</p>
 <p><strong>Speed:</strong> The initial speed for the particles.</p>
-<p><video src="media/velocity-cone-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/velocity-cone-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="particle-effects-overview.html">Particle Effects</a></li>

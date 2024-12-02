@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/runtime/application/game-state.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"game-states\" sourcefile=\"pages/docs/runtime/application/game-state.md\" sourcestartlinenumber=\"1\">Game States</h1>",
   "title": "Game States",
-  "wordCount": 693.0,
+  "wordCount": 693,
   "_key": "pages/docs/runtime/application/game-state.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

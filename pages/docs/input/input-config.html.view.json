@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/input/input-config.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"input-set-configuration\" sourcefile=\"pages/docs/input/input-config.md\" sourcestartlinenumber=\"1\">Input Set Configuration</h1>",
   "title": "Input Set Configuration",
-  "wordCount": 561.0,
+  "wordCount": 561,
   "_key": "pages/docs/input/input-config.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

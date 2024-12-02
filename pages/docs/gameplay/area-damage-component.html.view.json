@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/gameplay/area-damage-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"area-damage-component\" sourcefile=\"pages/docs/gameplay/area-damage-component.md\" sourcestartlinenumber=\"1\">Area Damage Component</h1>",
   "title": "Area Damage Component",
-  "wordCount": 180.0,
+  "wordCount": 180,
   "_key": "pages/docs/gameplay/area-damage-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/physics/jolt/actors/jolt-static-actor-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"jolt-static-actor-component\" sourcefile=\"pages/docs/physics/jolt/actors/jolt-static-actor-component.md\" sourcestartlinenumber=\"1\">Jolt Static Actor Component</h1>",
   "title": "Jolt Static Actor Component",
-  "wordCount": 409.0,
+  "wordCount": 409,
   "_key": "pages/docs/physics/jolt/actors/jolt-static-actor-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

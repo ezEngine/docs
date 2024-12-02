@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -92,7 +92,7 @@
 <p>The <em>AI navigation component</em> is used to make an NPC move towards a destination, using the <a href="runtime-navmesh.html">navmesh</a> to move around obstacles.</p>
 <p>The component has to be instructed via <a href="../../custom-code/custom-code-overview.html">code</a> what to do. The <code>SetDestination()</code> function is used to make it move the parent game object along a path towards the goal. <code>GetState()</code> can be called to query whether it is moving and how.</p>
 <p>The component uses physics queries to place the NPC on solid ground. It uses the navmesh information only for the general direction. The <em>foot radius</em> determines the width for this query. It should be wide enough, so that the NPC cannot fall through small holes in the ground, but narrow enough, so that it can't stand far away in the air on a ledge. As long as the &quot;feet&quot; touch any solid ground, the NPC will hang there, it will not slide down.</p>
-<p><video src="media/crawl.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p><video src="media/crawl.mp4" width="800" height="600" autoplay controls></video></p>
 <p>This component demonstrates how navigation for an NPC can be implemented. It is not meant to be a solution for every game, though. In many cases you may want to implement your own, so that you can handle your game specific needs as desired. Don't hesitate to copy the implementation of this component and just use it as a starting point.</p>
 <blockquote>
 <p><strong>Note:</strong></p>

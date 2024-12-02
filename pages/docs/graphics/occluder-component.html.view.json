@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/graphics/occluder-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"occluder-component\" sourcefile=\"pages/docs/graphics/occluder-component.md\" sourcestartlinenumber=\"1\">Occluder Component</h1>",
   "title": "Occluder Component",
-  "wordCount": 114.0,
+  "wordCount": 114,
   "_key": "pages/docs/graphics/occluder-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

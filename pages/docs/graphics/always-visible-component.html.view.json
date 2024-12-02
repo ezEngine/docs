@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/graphics/always-visible-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"always-visible-component\" sourcefile=\"pages/docs/graphics/always-visible-component.md\" sourcestartlinenumber=\"1\">Always Visible Component</h1>",
   "title": "Always Visible Component",
-  "wordCount": 57.0,
+  "wordCount": 57,
   "_key": "pages/docs/graphics/always-visible-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

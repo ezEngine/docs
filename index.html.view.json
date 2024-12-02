@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "index.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"welcome-to-ezengine\" sourcefile=\"index.md\" sourcestartlinenumber=\"1\">Welcome to ezEngine</h1>",
   "title": "Welcome to ezEngine",
-  "wordCount": 538.0,
+  "wordCount": 538,
   "_key": "index.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

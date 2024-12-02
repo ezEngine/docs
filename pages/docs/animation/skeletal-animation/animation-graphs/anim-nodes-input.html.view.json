@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-input.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"input-nodes\" sourcefile=\"pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-input.md\" sourcestartlinenumber=\"1\">Input Nodes</h1>",
   "title": "Input Nodes",
-  "wordCount": 171.0,
+  "wordCount": 171,
   "_key": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-input.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

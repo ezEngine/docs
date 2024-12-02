@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -94,27 +94,27 @@
 <p><strong>Orientation:</strong> This mode defines how the quad is oriented and around which axis it may rotate. In the 'rotating' modes the quad geometry constantly rotates around some axis that is decided when the particle is spawned. In the 'fixed' modes the quads themselves will not rotate, but have a fixed plane decided when they spawn. If they have a non-zero rotation speed, their texture will rotate around the quads center. In the 'axis' modes, the quads have one fixed axis and one that orients itself into the direction of the camera.</p>
 <ul>
 <li><p><em>Billboard</em> - This is the most common mode. Billboards always face the camera. If the camera moves around the effect, the billboards keep orienting towards it. When billboards should rotate, they always rotate in screen-space, meaning around the current forward axis of the camera.</p>
-<p><video src="media/billboards.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/billboards.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 <li><p><em>Rotating: Ortho Emitter Dir</em> - In this mode the quads rotate around the orthogonal axis between the direction of the emitter and the direction the particle moves into. This mode is particularly useful for simulating debris of concrete for bullet impacts and such. When the particles have a high <a href="particle-initializers.html#rotation-speed-initializer">rotation speed</a>, they will fly off in a spectacular fashion. For this type of effect it is also best to use alpha-masked textures representing debris, and to use the 'Opaque' <em>render mode</em>.</p>
-<p><video src="media/quad-rotating-ortho.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/quad-rotating-ortho.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 <li><p><em>Rotating: Emitter Dir</em> - Similar to the mode above, but uses the direction of the emitter as its rotation axis. This can be used for muzzle flashes (the part that shows along the direction of the barrel) or impact effects.</p>
-<p><video src="media/quad-rotating-emdir.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/quad-rotating-emdir.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 <li><p><em>Fixed: Emitter Dir</em> - In this mode the quad always uses the emitter direction as its plane normal (with some optional <em>Deviation</em>). This mode is useful for creating shockwave effects at a point of impact, or things like ripples in water. It can also be used for muzzle flashes (the part sideways out of a barrel).</p>
-<p><video src="media/quad-fixed-emdir.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/quad-fixed-emdir.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 <li><p><em>Fixed: World Up</em> - Similar to <em>Fixed: Emitter Dir</em> but the axis used is always the world up direction. This can be useful for effects where the emitter may have an arbitrary direction, but the particles should always face upwards. For example for the ripples of water impact effects.</p>
 </li>
 <li><p><em>Fixed: Random Dir</em> - In this mode each quad gets a random axis assigned when it is spawned. This can be useful for creating shockwave effects in explosions.</p>
-<p><video src="media/random-color-init.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/random-color-init.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 <li><p><em>Axis: Emitter Dir</em> - In this mode the quads fixed axis is the direction of the emitter. The quad will rotate around this axis to face the camera as much as possible. Additionally, the quad will not scale around its center, but around one of its edges. Therefore, when scaling up or down, that edge will stay in a fixed position. This can be used to create muzzle flashes and other impact effects which should generally move into the direction of the emitter, but also face the camera as much as possible, to be well visible. This mode won't look too convincing if the particles' movement deviates strongly from the emitter direction. For most common use cases, the particles may not move at all, but only change their size.</p>
-<p><video src="media/quad-axis-emdir.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/quad-axis-emdir.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 <li><p><em>Axis: Particle Dir</em> - In this mode the quads fixed axis is its own fly direction. The quad will rotate around this axis to face the camera as much as possible. This is useful for creating sparks or laser blasts which shall stretch a little while moving into some direction.</p>
-<p><video src="media/continuous-emitter.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/continuous-emitter.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 </ul>
 <p><strong>Render Mode:</strong> This mode specifies how the color from the particle will be combined with the scene background.</p>
@@ -128,7 +128,7 @@
 <li><p><em>Blended Foreground/Background</em> - Same as <em>Blended</em> but when there are multiple particle systems using <em>Blended</em> mode, this allows you to influence in which order the systems are rendered. This is used to fix rendering issues.</p>
 </li>
 <li><p><em>Distortion</em> - This is used to create a <em>heat haze</em> effect, which distorts the scene behind it. The alpha-channel of <em>Texture</em> is used to determine the shape of the distortion effect. The <em>Distortion Texture</em> and <em>Distortion Strength</em> are used to decide for each pixels how much to distort the background. Any texture can be used as the distortion texture, but the effect works best using a <em>normal map</em>.</p>
-<p><video src="media/render-mode-distortion.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/render-mode-distortion.webm" width="500" height="500" autoplay loop></video></p>
 </li>
 </ul>
 <p><strong>Lighting Mode:</strong> Controls whether the particles receive dynamic lighting.</p>
@@ -159,7 +159,7 @@
 <p><strong>Mesh:</strong> The mesh to use for rendering.</p>
 <p><strong>Material:</strong> The material to use on the mesh.</p>
 <p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the meshes.</p>
-<p><video src="media/mesh-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/mesh-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="light-renderer">Light Renderer</h2>
 <p>The light renderer treats each particle as a light source and thus illuminates the scene around it. Usually one would add this renderer as a second renderer to a particle system, such that one can easily reuse the behavior and color of for example billboards. Since light sources have a very high performance overhead, and adding as many lights into a scene as billboards would often be way too much, this renderer may visualize only a fraction of all particles in the system.</p>
 <p><strong>Size Factor:</strong> A factor to scale the particle's size with to determine the light influence radius. If the particles are also visualized as, for instance, billboards, the light source around the billboard should often be three to five times bigger.</p>
@@ -168,17 +168,17 @@
 <p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the lights.</p>
 <p><strong>Intensity Scale Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to scale the intensity of the lights.</p>
 <p><strong>Size Scale Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to scale the light influence radius.</p>
-<p><video src="media/light-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/light-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="trail-renderer">Trail Renderer</h2>
 <p>This renderer visualizes particles as long lines that draw the path that the particle took. Trail particles are made up of a fixed number of segments. The more segments the renderer uses, the longer the trails will be. Also the faster a particle moves, the longer the trail will stretch. More segments cost more performance to update and render. For very short sparks that should just stretch a little, it is better to use billboards with <em>Orientation</em> set the <em>Axis: Particle Dir</em> and <em>StretchFactor</em> set to some value between 2 and 5.</p>
 <p><strong>Render Mode, Texture, Texture Atlas, TintColorParam, Lighting Mode:</strong> These options are identical to the <a href="#quad-renderer">quad renderer</a>.</p>
 <p><strong>Segments:</strong> The number of segments to use for each particle. More segments cost more performance but also result in longer and more detailed trails.</p>
-<p><video src="media/trail-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/trail-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="effect-renderer">Effect Renderer</h2>
 <p>This renderer visualizes each particle using another particle effect. The referenced effect is spawned at the position of each particle and then moved along as the particle moves. This allows you to create effects like fireworks, where each 'rocket' is represented by a single particle flying into the sky, but visualizes as a complete burning particle effect.</p>
 <p><strong>Effect:</strong> The particle effect to spawn and move along for each particle in this system. Usually the other particle system would use at least one continuous emitter, such that the effect will be active for the whole lifetime of the particle that references it.</p>
 <p><strong>Random Seeed:</strong> An optional random seed to pass into the spawned effect.</p>
-<p><video src="media/effect-renderer.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="media/effect-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="particle-effects-overview.html">Particle Effects</a></li>

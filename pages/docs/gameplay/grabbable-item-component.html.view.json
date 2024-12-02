@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/gameplay/grabbable-item-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"grabbable-item-component\" sourcefile=\"pages/docs/gameplay/grabbable-item-component.md\" sourcestartlinenumber=\"1\">Grabbable Item Component</h1>",
   "title": "Grabbable Item Component",
-  "wordCount": 171.0,
+  "wordCount": 171,
   "_key": "pages/docs/gameplay/grabbable-item-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-blending.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"pose-blending-nodes\" sourcefile=\"pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-blending.md\" sourcestartlinenumber=\"1\">Pose Blending Nodes</h1>",
   "title": "Pose Blending Nodes",
-  "wordCount": 368.0,
+  "wordCount": 368,
   "_key": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-blending.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

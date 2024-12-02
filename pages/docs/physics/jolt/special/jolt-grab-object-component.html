@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -90,7 +90,7 @@
 <h1 id="jolt-grab-object-component">Jolt Grab Object Component</h1>
 
 <p>The <em>Jolt grab object component</em> enables a <a href="jolt-character-controller.html">character controller</a> to pick up physical items to carry around, drop or throw.</p>
-<p><video src="media/grab-items.webm" width="600" height="600" autoplay="" loop=""></video></p>
+<p><video src="media/grab-items.webm" width="600" height="600" autoplay loop></video></p>
 <p>The component is typically attached to the same object as the <a href="../../../graphics/camera-component.html">camera component</a>. When triggered, it uses a raycast along its X axis to determine which physical object to potentially pick up. When it finds a non-kinematic <a href="../actors/jolt-dynamic-actor-component.html">dynamic actor</a>, it checks whether a <a href="../../../gameplay/grabbable-item-component.html">grabbable item component</a> is available. If so, the information from that component is used to determine the best anchor at which to hold the object, otherwise it uses the object's bounding box to approximate a grab point.</p>
 <p>When it finds a suitable grab point, it attaches a <a href="../constraints/jolt-constraints.html">constraint</a> to an object that is specified to be the pivot point (see <code>AttachTo</code> property). That object has to have a <a href="../actors/jolt-dynamic-actor-component.html"><strong>kinematic</strong> actor</a> and a dummy <a href="../collision-shapes/jolt-shapes.html">shape</a>. The joint will then pull the grabbed item towards it and try to align its orientation according to the grabbed anchor.</p>
 <p>The grabbed item can then be dropped, or thrown away. All actions must be triggered from code, either <a href="../../../custom-code/cpp/cpp-overview.html">C++</a> or <a href="../../../custom-code/typescript/typescript-overview.html">TypeScript</a>.</p>

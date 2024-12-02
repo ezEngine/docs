@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -105,7 +105,7 @@
 <h2 id="animation-mapping">Animation Mapping</h2>
 <p>When no node is selected, the properties pane displays the general asset properties. Here you can edit the <code>Animation Clip Mapping</code> array.</p>
 <p><img src="media/anim-clip-mapping.png" alt="Animation clip mapping"></p>
-<p>Every array entry represents one animation. From the drop down you select the name of the animation. If the desired animation name doesn't exist yet, use the <strong><edit values...=""></edit></strong> option to add one. These names are used throughout your project to identify animations and should be chosen carefully. Select an <a href="../animation-clip-asset.html">animation clip asset</a> to map from the animation name to the clip.</p>
+<p>Every array entry represents one animation. From the drop down you select the name of the animation. If the desired animation name doesn't exist yet, use the <strong><edit values...></edit></strong> option to add one. These names are used throughout your project to identify animations and should be chosen carefully. Select an <a href="../animation-clip-asset.html">animation clip asset</a> to map from the animation name to the clip.</p>
 <p>In the animation graph you never select animation clips directly, but rather always choose the animation by name. Because the mapping is defined in one central place in the animation graph asset, it is easy to replace an animation by another clip, simply by changing the mapping.</p>
 <p>In the future this feature is also meant to be used to switch between entirely different animation sets and be able to reuse an animation graph between different creatures and different skeletons. This is, however, not yet implemented, but if necessary, can already be emulated to some degree using graph composition (see next section).</p>
 <h2 id="compositing-animation-graphs">Compositing Animation Graphs</h2>

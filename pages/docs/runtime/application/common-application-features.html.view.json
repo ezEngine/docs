@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/runtime/application/common-application-features.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"common-application-features\" sourcefile=\"pages/docs/runtime/application/common-application-features.md\" sourcestartlinenumber=\"1\">Common Application Features</h1>",
   "title": "Common Application Features",
-  "wordCount": 222.0,
+  "wordCount": 222,
   "_key": "pages/docs/runtime/application/common-application-features.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

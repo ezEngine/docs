@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/scenes/selection.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"selecting-objects\" sourcefile=\"pages/docs/scenes/selection.md\" sourcestartlinenumber=\"1\">Selecting Objects</h1>",
   "title": "Selecting Objects",
-  "wordCount": 409.0,
+  "wordCount": 409,
   "_key": "pages/docs/scenes/selection.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

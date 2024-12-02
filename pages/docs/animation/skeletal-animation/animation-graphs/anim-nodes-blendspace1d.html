@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -90,7 +90,7 @@
 <h1 id="sample-blendspace-1d-node">Sample Blendspace 1D Node</h1>
 
 <p>The <em>Sample Blendspace 1D</em> node is used to linearly interpolate between a fixed set of animations.</p>
-<p><video src="../../media/anim-mix1d.webm" width="500" height="500" autoplay="" loop=""></video></p>
+<p><video src="../../media/anim-mix1d.webm" width="500" height="500" autoplay loop></video></p>
 <p>Every <a href="../animation-clip-asset.html">animation clip</a> is assigned a <em>position</em> value in 1D space. The <code>Lerp</code> input pin value determines how to interpolate those clips. The output pose will be either exactly one of those clips, or a mix between two clips, but never more than that.</p>
 <p>So if one clip is placed at position <code>0</code> and another at position <code>1</code>, you can fade from the first clip to the second by passing in a <em>lerp value</em> between <code>0</code> and <code>1</code>.</p>
 <p>The length of each clip may be different, however, the lookup positions across all clips are synchronized. That means if two clips are being mixed, and the first clip is sampled right at its middle, then the second clip will also be sampled at its middle, even if this is a completely different time offset (say 1 second versus 1.5 seconds). At which speed to move the sample position forwards, is determined by the length of the two animation clips that the <em>lerp value</em> is closest to.</p>

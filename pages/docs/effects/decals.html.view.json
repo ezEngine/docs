@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/effects/decals.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"decals\" sourcefile=\"pages/docs/effects/decals.md\" sourcestartlinenumber=\"1\">Decals</h1>",
   "title": "Decals",
-  "wordCount": 938.0,
+  "wordCount": 938,
   "_key": "pages/docs/effects/decals.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

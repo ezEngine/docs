@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/scenes/greyboxing.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"greyboxing\" sourcefile=\"pages/docs/scenes/greyboxing.md\" sourcestartlinenumber=\"1\">Greyboxing</h1>",
   "title": "Greyboxing",
-  "wordCount": 421.0,
+  "wordCount": 421,
   "_key": "pages/docs/scenes/greyboxing.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

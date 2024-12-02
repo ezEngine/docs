@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -94,7 +94,7 @@
 <p>So one thing I did to make this easier, is to add the <a href="https://github.com/ezEngine/ezEngine/pull/1065">Global Blackboard Component</a>. All it does, is to initialize blackboard values for you at level start. Then all other scripts work as desired. Since global state is truly global, it would otherwise persist even across runs and across level transitions (which can be useful).</p>
 <p>Another thing I needed, was to spawn many monsters in an area over a certain time, so that they disperse a bit. I've previously hacked this together using the <a href="../../docs/gameplay/spawn-component.html">spawn component</a> but since this is a quite useful feature, I decided to write a proper <a href="https://github.com/ezEngine/ezEngine/pull/1070">new component</a> for this.</p>
 <p>So now I can do this:</p>
-<p><video src="media/devlog6/ma-dl6-SpawnBox.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog6/ma-dl6-SpawnBox.mp4" width=600 controls></video></p>
 <p>Of note here is that all our &quot;gameplay&quot; components are mostly meant as demonstrations how one could do some feature. If those components are sufficient for you, that's great, but for a lot of use cases they won't be perfect and you are encouraged to write your own. The great thing about open source is obviously, that you can look at how the built-in features are done for inspiration. So these components give you a decent starting point for doing copy &amp; paste, or how I like to call it &quot;CTRL+C, CTRL+Inspire&quot; ;)</p>
 <p>Another thing I've done, is to get my level state machine working properly. It currently looks like this:</p>
 <p><img src="media/devlog6/ma-dl6-LevelStateMachine.png" alt="LevelStateMachine"></p>

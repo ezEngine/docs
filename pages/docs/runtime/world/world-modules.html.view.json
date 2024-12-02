@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/runtime/world/world-modules.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"world-modules\" sourcefile=\"pages/docs/runtime/world/world-modules.md\" sourcestartlinenumber=\"1\">World Modules</h1>",
   "title": "World Modules",
-  "wordCount": 1081.0,
+  "wordCount": 1081,
   "_key": "pages/docs/runtime/world/world-modules.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

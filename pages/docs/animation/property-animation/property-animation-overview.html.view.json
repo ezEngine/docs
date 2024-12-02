@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/property-animation/property-animation-overview.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"property-animations\" sourcefile=\"pages/docs/animation/property-animation/property-animation-overview.md\" sourcestartlinenumber=\"1\">Property Animations</h1>",
   "title": "Property Animations",
-  "wordCount": 22.0,
+  "wordCount": 22,
   "_key": "pages/docs/animation/property-animation/property-animation-overview.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

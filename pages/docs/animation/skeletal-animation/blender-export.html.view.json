@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/skeletal-animation/blender-export.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"authoring-and-exporting-animations-with-blender\" sourcefile=\"pages/docs/animation/skeletal-animation/blender-export.md\" sourcestartlinenumber=\"1\">Authoring and Exporting Animations with Blender</h1>",
   "title": "Authoring and Exporting Animations with Blender",
-  "wordCount": 1580.0,
+  "wordCount": 1580,
   "_key": "pages/docs/animation/skeletal-animation/blender-export.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

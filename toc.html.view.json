@@ -5,7 +5,7 @@
       "href": "pages/getting-started/how-to-contribute.html",
       "tocHref": "pages/getting-started/toc.html",
       "topicHref": "pages/getting-started/how-to-contribute.html",
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -14,7 +14,7 @@
       "href": "pages/docs/docs-overview.html",
       "tocHref": "pages/docs/toc.html",
       "topicHref": "pages/docs/docs-overview.html",
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -23,7 +23,7 @@
       "href": "pages/samples/samples-overview.html",
       "tocHref": "pages/samples/toc.html",
       "topicHref": "pages/samples/samples-overview.html",
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -32,7 +32,7 @@
       "href": "pages/contact.html",
       "topicHref": "pages/contact.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -41,7 +41,7 @@
       "href": "https://github.com/ezEngine/ezEngine",
       "topicHref": "https://github.com/ezEngine/ezEngine",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     }
@@ -144,7 +144,7 @@
   "topicHref": null,
   "tocHref": null,
   "name": null,
-  "level": 1.0,
+  "level": 1,
   "leaf": false,
   "title": "Table of Content",
   "_disableToc": true

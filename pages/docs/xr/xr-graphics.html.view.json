@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/xr/xr-graphics.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"xr-graphics\" sourcefile=\"pages/docs/xr/xr-graphics.md\" sourcestartlinenumber=\"1\">XR Graphics</h1>",
   "title": "XR Graphics",
-  "wordCount": 365.0,
+  "wordCount": 365,
   "_key": "pages/docs/xr/xr-graphics.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

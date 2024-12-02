@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -90,7 +90,7 @@
 <h1 id="wind">Wind</h1>
 
 <p>Some components can be animated by wind. For instance <a href="../particle-effects/particle-effects-overview.html">particle effects</a>, <a href="../ropes/fake-rope-component.html">ropes</a> and <a href="../../terrain/kraut-overview.html">Kraut trees</a> will react to wind. Usually these animations are for decorative purposes.</p>
-<p><video src="../media/wind-cone.webm" width="600" height="600" autoplay="" loop=""></video></p>
+<p><video src="../media/wind-cone.webm" width="600" height="600" autoplay loop></video></p>
 <p>Wind is implemented as a <a href="../../runtime/world/world-modules.html">world module</a>. Thus, it is possible to have different wind system implementations, and choose the most suitable for each scene. For example, one system may do a full volumetric fluid simulation, whereas another does not.</p>
 <p>You instantiate a specific wind system by adding the respective component to a scene. At this time, EZ only ships with a basic implementation. You instantiate it with the <a href="simple-wind-component.html">simple wind component</a>. As long as there is no such component in a scene, there won't be any wind.</p>
 <h2 id="querying-wind-values">Querying Wind Values</h2>

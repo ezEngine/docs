@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/build/build-uwp.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"building-for-windows-uwp\" sourcefile=\"pages/docs/build/build-uwp.md\" sourcestartlinenumber=\"1\">Building for Windows UWP</h1>",
   "title": "Building for Windows UWP",
-  "wordCount": 216.0,
+  "wordCount": 216,
   "_key": "pages/docs/build/build-uwp.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/performance/profiling.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"profiling\" sourcefile=\"pages/docs/performance/profiling.md\" sourcestartlinenumber=\"1\">Profiling</h1>",
   "title": "Profiling",
-  "wordCount": 506.0,
+  "wordCount": 506,
   "_key": "pages/docs/performance/profiling.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

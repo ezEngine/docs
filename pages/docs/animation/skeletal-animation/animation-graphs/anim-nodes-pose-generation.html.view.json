@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-generation.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"pose-generation-nodes\" sourcefile=\"pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-generation.md\" sourcestartlinenumber=\"1\">Pose Generation Nodes</h1>",
   "title": "Pose Generation Nodes",
-  "wordCount": 388.0,
+  "wordCount": 388,
   "_key": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-pose-generation.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

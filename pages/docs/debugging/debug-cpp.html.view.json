@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/debugging/debug-cpp.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"debugging-c-code\" sourcefile=\"pages/docs/debugging/debug-cpp.md\" sourcestartlinenumber=\"1\">Debugging C++ Code</h1>",
   "title": "Debugging C++ Code",
-  "wordCount": 296.0,
+  "wordCount": 296,
   "_key": "pages/docs/debugging/debug-cpp.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

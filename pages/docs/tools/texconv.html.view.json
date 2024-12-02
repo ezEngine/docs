@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/tools/texconv.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"eztexconv\" sourcefile=\"pages/docs/tools/texconv.md\" sourcestartlinenumber=\"1\">ezTexConv</h1>",
   "title": "ezTexConv",
-  "wordCount": 1057.0,
+  "wordCount": 1057,
   "_key": "pages/docs/tools/texconv.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

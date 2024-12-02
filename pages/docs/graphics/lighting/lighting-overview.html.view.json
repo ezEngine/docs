@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/graphics/lighting/lighting-overview.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"lighting\" sourcefile=\"pages/docs/graphics/lighting/lighting-overview.md\" sourcestartlinenumber=\"1\">Lighting</h1>",
   "title": "Lighting",
-  "wordCount": 406.0,
+  "wordCount": 406,
   "_key": "pages/docs/graphics/lighting/lighting-overview.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

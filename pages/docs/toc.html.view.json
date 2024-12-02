@@ -5,7 +5,7 @@
       "href": "docs-overview.html",
       "topicHref": "docs-overview.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -14,7 +14,7 @@
       "href": "api-docs.html",
       "topicHref": "api-docs.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -26,7 +26,7 @@
           "href": "build/building-ez.html",
           "topicHref": "build/building-ez.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -35,7 +35,7 @@
           "href": "build/supported-platforms.html",
           "topicHref": "build/supported-platforms.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -44,7 +44,7 @@
           "href": "build/build-windows.html",
           "topicHref": "build/build-windows.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -53,7 +53,7 @@
           "href": "build/build-uwp.html",
           "topicHref": "build/build-uwp.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -62,7 +62,7 @@
           "href": "build/build-linux.html",
           "topicHref": "build/build-linux.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -71,7 +71,7 @@
           "href": "build/build-android.html",
           "topicHref": "build/build-android.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -80,7 +80,7 @@
           "href": "build/build-macos.html",
           "topicHref": "build/build-macos.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -89,7 +89,7 @@
           "href": "build/clang-on-windows.html",
           "topicHref": "build/clang-on-windows.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -98,7 +98,7 @@
           "href": "build/cmake-config.html",
           "topicHref": "build/cmake-config.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -107,7 +107,7 @@
           "href": "build/submodule.html",
           "topicHref": "build/submodule.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -116,14 +116,14 @@
           "href": "build/sdk-root.html",
           "topicHref": "build/sdk-root.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Editor",
@@ -133,7 +133,7 @@
           "href": "editor/editor-documents.html",
           "topicHref": "editor/editor-documents.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -142,7 +142,7 @@
           "href": "editor/dashboard.html",
           "topicHref": "editor/dashboard.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -151,7 +151,7 @@
           "href": "editor/run-scene.html",
           "topicHref": "editor/run-scene.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -160,7 +160,7 @@
           "href": "editor/editor-bg-operations.html",
           "topicHref": "editor/editor-bg-operations.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -169,7 +169,7 @@
           "href": "editor/editor-settings.html",
           "topicHref": "editor/editor-settings.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -178,7 +178,7 @@
           "href": "editor/editor-template-documents.html",
           "topicHref": "editor/editor-template-documents.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -187,7 +187,7 @@
           "href": "editor/editor-plugins.html",
           "topicHref": "editor/editor-plugins.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -196,14 +196,14 @@
           "href": "editor/editor-views.html",
           "topicHref": "editor/editor-views.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Projects",
@@ -213,7 +213,7 @@
           "href": "projects/data-directories.html",
           "topicHref": "projects/data-directories.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -222,7 +222,7 @@
           "href": "projects/project-settings.html",
           "topicHref": "projects/project-settings.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -231,7 +231,7 @@
           "href": "projects/plugin-selection.html",
           "topicHref": "projects/plugin-selection.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -240,7 +240,7 @@
           "href": "projects/projects-overview.html",
           "topicHref": "projects/projects-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -249,14 +249,14 @@
           "href": "projects/tags.html",
           "topicHref": "projects/tags.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Scenes",
@@ -266,7 +266,7 @@
           "href": "scenes/gizmos.html",
           "topicHref": "scenes/gizmos.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -275,7 +275,7 @@
           "href": "scenes/scene-editing.html",
           "topicHref": "scenes/scene-editing.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -284,7 +284,7 @@
           "href": "scenes/advanced-object-transform.html",
           "topicHref": "scenes/advanced-object-transform.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -293,7 +293,7 @@
           "href": "scenes/object-references.html",
           "topicHref": "scenes/object-references.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -302,7 +302,7 @@
           "href": "scenes/editor-camera.html",
           "topicHref": "scenes/editor-camera.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -311,7 +311,7 @@
           "href": "scenes/greyboxing.html",
           "topicHref": "scenes/greyboxing.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -320,7 +320,7 @@
           "href": "scenes/scene-layers.html",
           "topicHref": "scenes/scene-layers.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -329,7 +329,7 @@
           "href": "scenes/selection.html",
           "topicHref": "scenes/selection.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -338,14 +338,14 @@
           "href": "scenes/exposed-parameters.html",
           "topicHref": "scenes/exposed-parameters.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Assets",
@@ -355,7 +355,7 @@
           "href": "assets/asset-browser.html",
           "topicHref": "assets/asset-browser.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -364,7 +364,7 @@
           "href": "assets/asset-curator.html",
           "topicHref": "assets/asset-curator.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -373,7 +373,7 @@
           "href": "assets/asset-profiles.html",
           "topicHref": "assets/asset-profiles.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -382,7 +382,7 @@
           "href": "assets/import-assets.html",
           "topicHref": "assets/import-assets.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -391,14 +391,14 @@
           "href": "assets/assets-overview.html",
           "topicHref": "assets/assets-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Prefabs",
@@ -408,14 +408,14 @@
           "href": "prefabs/prefabs-overview.html",
           "topicHref": "prefabs/prefabs-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Graphics",
@@ -425,7 +425,7 @@
           "href": "graphics/textures-overview.html",
           "topicHref": "graphics/textures-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -437,7 +437,7 @@
               "href": "graphics/render-pipeline/render-pipeline-overview.html",
               "topicHref": "graphics/render-pipeline/render-pipeline-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -446,7 +446,7 @@
               "href": "graphics/render-pipeline/render-pipeline-extractors.html",
               "topicHref": "graphics/render-pipeline/render-pipeline-extractors.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -455,14 +455,14 @@
               "href": "graphics/render-pipeline/render-pipeline-passes.html",
               "topicHref": "graphics/render-pipeline/render-pipeline-passes.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Meshes",
@@ -472,7 +472,7 @@
               "href": "graphics/meshes/meshes-overview.html",
               "topicHref": "graphics/meshes/meshes-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -481,7 +481,7 @@
               "href": "graphics/meshes/mesh-asset.html",
               "topicHref": "graphics/meshes/mesh-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -490,7 +490,7 @@
               "href": "graphics/meshes/mesh-component.html",
               "topicHref": "graphics/meshes/mesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -499,7 +499,7 @@
               "href": "graphics/meshes/instanced-mesh-component.html",
               "topicHref": "graphics/meshes/instanced-mesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -508,7 +508,7 @@
               "href": "graphics/meshes/custom-mesh-component.html",
               "topicHref": "graphics/meshes/custom-mesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -517,21 +517,21 @@
               "href": "graphics/meshes/lod-mesh-component.html",
               "topicHref": "graphics/meshes/lod-mesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "LOD Component",
           "href": "graphics/lod-component.html",
           "topicHref": "graphics/lod-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -540,7 +540,7 @@
           "href": "graphics/occluder-component.html",
           "topicHref": "graphics/occluder-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -549,7 +549,7 @@
           "href": "graphics/sprite-component.html",
           "topicHref": "graphics/sprite-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -558,7 +558,7 @@
           "href": "graphics/substance-textures.html",
           "topicHref": "graphics/substance-textures.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -567,7 +567,7 @@
           "href": "graphics/always-visible-component.html",
           "topicHref": "graphics/always-visible-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -576,7 +576,7 @@
           "href": "graphics/camera-component.html",
           "topicHref": "graphics/camera-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -588,7 +588,7 @@
               "href": "graphics/shaders/shader-templates.html",
               "topicHref": "graphics/shaders/shader-templates.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -597,7 +597,7 @@
               "href": "graphics/shaders/shader-permutation-variables.html",
               "topicHref": "graphics/shaders/shader-permutation-variables.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -606,7 +606,7 @@
               "href": "graphics/shaders/shader-render-state.html",
               "topicHref": "graphics/shaders/shader-render-state.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -615,7 +615,7 @@
               "href": "graphics/shaders/shaders-overview.html",
               "topicHref": "graphics/shaders/shaders-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -624,7 +624,7 @@
               "href": "graphics/shaders/shader-debugging.html",
               "topicHref": "graphics/shaders/shader-debugging.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -633,14 +633,14 @@
               "href": "graphics/shaders/shader-resources.html",
               "topicHref": "graphics/shaders/shader-resources.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Lighting",
@@ -650,7 +650,7 @@
               "href": "graphics/lighting/lighting-overview.html",
               "topicHref": "graphics/lighting/lighting-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -659,7 +659,7 @@
               "href": "graphics/lighting/directional-light-component.html",
               "topicHref": "graphics/lighting/directional-light-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -668,7 +668,7 @@
               "href": "graphics/lighting/point-light-component.html",
               "topicHref": "graphics/lighting/point-light-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -677,7 +677,7 @@
               "href": "graphics/lighting/spot-light-component.html",
               "topicHref": "graphics/lighting/spot-light-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -686,7 +686,7 @@
               "href": "graphics/lighting/dynamic-shadows.html",
               "topicHref": "graphics/lighting/dynamic-shadows.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -695,7 +695,7 @@
               "href": "graphics/lighting/ambient-light-component.html",
               "topicHref": "graphics/lighting/ambient-light-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -704,7 +704,7 @@
               "href": "graphics/lighting/fill-light-component.html",
               "topicHref": "graphics/lighting/fill-light-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -713,7 +713,7 @@
               "href": "graphics/lighting/sky-light-component.html",
               "topicHref": "graphics/lighting/sky-light-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -722,14 +722,14 @@
               "href": "graphics/lighting/reflection-probe-components.html",
               "topicHref": "graphics/lighting/reflection-probe-components.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Render To Texture",
@@ -739,7 +739,7 @@
               "href": "graphics/render-to-texture/render-target-activator-component.html",
               "topicHref": "graphics/render-to-texture/render-target-activator-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -748,19 +748,19 @@
               "href": "graphics/render-to-texture/render-to-texture.html",
               "topicHref": "graphics/render-to-texture/render-to-texture.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Materials",
@@ -770,7 +770,7 @@
           "href": "materials/surfaces.html",
           "topicHref": "materials/surfaces.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -779,7 +779,7 @@
           "href": "materials/materials-overview.html",
           "topicHref": "materials/materials-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -788,14 +788,14 @@
           "href": "materials/visual-shaders.html",
           "topicHref": "materials/visual-shaders.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Input",
@@ -805,7 +805,7 @@
           "href": "input/input-overview.html",
           "topicHref": "input/input-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -814,7 +814,7 @@
           "href": "input/input-config.html",
           "topicHref": "input/input-config.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -823,14 +823,14 @@
           "href": "input/input-component.html",
           "topicHref": "input/input-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Physics",
@@ -843,7 +843,7 @@
               "href": "physics/jolt/jolt-overview.html",
               "topicHref": "physics/jolt/jolt-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -852,7 +852,7 @@
               "href": "physics/jolt/jolt-settings-component.html",
               "topicHref": "physics/jolt/jolt-settings-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -861,7 +861,7 @@
               "href": "physics/jolt/jolt-debug-visualizations.html",
               "topicHref": "physics/jolt/jolt-debug-visualizations.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -873,7 +873,7 @@
                   "href": "physics/jolt/actors/jolt-actors.html",
                   "topicHref": "physics/jolt/actors/jolt-actors.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -882,7 +882,7 @@
                   "href": "physics/jolt/actors/jolt-static-actor-component.html",
                   "topicHref": "physics/jolt/actors/jolt-static-actor-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -891,7 +891,7 @@
                   "href": "physics/jolt/actors/jolt-dynamic-actor-component.html",
                   "topicHref": "physics/jolt/actors/jolt-dynamic-actor-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -900,7 +900,7 @@
                   "href": "physics/jolt/actors/jolt-trigger-component.html",
                   "topicHref": "physics/jolt/actors/jolt-trigger-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -909,14 +909,14 @@
                   "href": "physics/jolt/actors/jolt-queryshape-actor-component.html",
                   "topicHref": "physics/jolt/actors/jolt-queryshape-actor-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             },
             {
               "name": "Collision Shapes",
@@ -926,7 +926,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-shapes.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-shapes.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -935,7 +935,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-sphere-shape-component.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-sphere-shape-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -944,7 +944,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-box-shape-component.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-box-shape-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -953,7 +953,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-capsule-shape-component.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-capsule-shape-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -962,7 +962,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-cylinder-shape-component.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-cylinder-shape-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -971,7 +971,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-convex-shape-component.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-convex-shape-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -980,7 +980,7 @@
                   "href": "physics/jolt/collision-shapes/jolt-collision-meshes.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-collision-meshes.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -989,14 +989,14 @@
                   "href": "physics/jolt/collision-shapes/jolt-collision-layers.html",
                   "topicHref": "physics/jolt/collision-shapes/jolt-collision-layers.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             },
             {
               "name": "Constraints",
@@ -1006,7 +1006,7 @@
                   "href": "physics/jolt/constraints/jolt-constraints.html",
                   "topicHref": "physics/jolt/constraints/jolt-constraints.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1015,7 +1015,7 @@
                   "href": "physics/jolt/constraints/jolt-hinge-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-hinge-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1024,7 +1024,7 @@
                   "href": "physics/jolt/constraints/jolt-point-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-point-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1033,7 +1033,7 @@
                   "href": "physics/jolt/constraints/jolt-fixed-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-fixed-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1042,7 +1042,7 @@
                   "href": "physics/jolt/constraints/jolt-slider-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-slider-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1051,7 +1051,7 @@
                   "href": "physics/jolt/constraints/jolt-distance-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-distance-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1060,7 +1060,7 @@
                   "href": "physics/jolt/constraints/jolt-cone-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-cone-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1069,14 +1069,14 @@
                   "href": "physics/jolt/constraints/jolt-swing-twist-constraint-component.html",
                   "topicHref": "physics/jolt/constraints/jolt-swing-twist-constraint-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             },
             {
               "name": "Ragdolls",
@@ -1086,7 +1086,7 @@
                   "href": "physics/jolt/ragdolls/jolt-hitbox-component.html",
                   "topicHref": "physics/jolt/ragdolls/jolt-hitbox-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1095,14 +1095,14 @@
                   "href": "physics/jolt/ragdolls/jolt-ragdoll-component.html",
                   "topicHref": "physics/jolt/ragdolls/jolt-ragdoll-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             },
             {
               "name": "Special",
@@ -1112,7 +1112,7 @@
                   "href": "physics/jolt/special/jolt-cloth-sheet-component.html",
                   "topicHref": "physics/jolt/special/jolt-cloth-sheet-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1121,7 +1121,7 @@
                   "href": "physics/jolt/special/jolt-grab-object-component.html",
                   "topicHref": "physics/jolt/special/jolt-grab-object-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1130,7 +1130,7 @@
                   "href": "physics/jolt/special/jolt-rope-component.html",
                   "topicHref": "physics/jolt/special/jolt-rope-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1139,24 +1139,24 @@
                   "href": "physics/jolt/special/jolt-character-controller.html",
                   "topicHref": "physics/jolt/special/jolt-character-controller.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Effects",
@@ -1169,7 +1169,7 @@
               "href": "effects/camera-shake/camera-shake-component.html",
               "topicHref": "effects/camera-shake/camera-shake-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1178,14 +1178,14 @@
               "href": "effects/camera-shake/camera-shake-volume-components.html",
               "topicHref": "effects/camera-shake/camera-shake-volume-components.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Wind",
@@ -1195,7 +1195,7 @@
               "href": "effects/wind/wind.html",
               "topicHref": "effects/wind/wind.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1204,7 +1204,7 @@
               "href": "effects/wind/simple-wind-component.html",
               "topicHref": "effects/wind/simple-wind-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1213,14 +1213,14 @@
               "href": "effects/wind/wind-volume-components.html",
               "topicHref": "effects/wind/wind-volume-components.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Particle Effects",
@@ -1230,7 +1230,7 @@
               "href": "effects/particle-effects/particle-effects-overview.html",
               "topicHref": "effects/particle-effects/particle-effects-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1239,7 +1239,7 @@
               "href": "effects/particle-effects/how-particle-effects-work.html",
               "topicHref": "effects/particle-effects/how-particle-effects-work.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1248,7 +1248,7 @@
               "href": "effects/particle-effects/particle-emitters.html",
               "topicHref": "effects/particle-effects/particle-emitters.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1257,7 +1257,7 @@
               "href": "effects/particle-effects/particle-initializers.html",
               "topicHref": "effects/particle-effects/particle-initializers.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1266,7 +1266,7 @@
               "href": "effects/particle-effects/particle-behaviors.html",
               "topicHref": "effects/particle-effects/particle-behaviors.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1275,7 +1275,7 @@
               "href": "effects/particle-effects/particle-renderers.html",
               "topicHref": "effects/particle-effects/particle-renderers.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1284,21 +1284,21 @@
               "href": "effects/particle-effects/particle-effect-component.html",
               "topicHref": "effects/particle-effects/particle-effect-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Beam Component",
           "href": "effects/beam-component.html",
           "topicHref": "effects/beam-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1310,7 +1310,7 @@
               "href": "effects/post-processing/volume-components.html",
               "topicHref": "effects/post-processing/volume-components.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1319,21 +1319,21 @@
               "href": "effects/post-processing/post-processing-component.html",
               "topicHref": "effects/post-processing/post-processing-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Sky",
           "href": "effects/sky.html",
           "topicHref": "effects/sky.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1342,7 +1342,7 @@
           "href": "effects/lensflare-component.html",
           "topicHref": "effects/lensflare-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1354,7 +1354,7 @@
               "href": "effects/ropes/fake-rope-component.html",
               "topicHref": "effects/ropes/fake-rope-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1363,21 +1363,21 @@
               "href": "effects/ropes/rope-render-component.html",
               "topicHref": "effects/ropes/rope-render-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Decals",
           "href": "effects/decals.html",
           "topicHref": "effects/decals.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1386,7 +1386,7 @@
           "href": "effects/fog.html",
           "topicHref": "effects/fog.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1395,14 +1395,14 @@
           "href": "effects/cloth-sheet-component.html",
           "topicHref": "effects/cloth-sheet-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Animation",
@@ -1415,7 +1415,7 @@
               "href": "animation/paths/follow-path-component.html",
               "topicHref": "animation/paths/follow-path-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1424,7 +1424,7 @@
               "href": "animation/paths/path-node-component.html",
               "topicHref": "animation/paths/path-node-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1433,14 +1433,14 @@
               "href": "animation/paths/path-component.html",
               "topicHref": "animation/paths/path-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Common",
@@ -1450,7 +1450,7 @@
               "href": "animation/common/curves.html",
               "topicHref": "animation/common/curves.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1459,14 +1459,14 @@
               "href": "animation/common/color-gradients.html",
               "topicHref": "animation/common/color-gradients.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Property Animation",
@@ -1476,7 +1476,7 @@
               "href": "animation/property-animation/property-animation-component.html",
               "topicHref": "animation/property-animation/property-animation-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1485,7 +1485,7 @@
               "href": "animation/property-animation/move-to-component.html",
               "topicHref": "animation/property-animation/move-to-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1494,7 +1494,7 @@
               "href": "animation/property-animation/color-animation-component.html",
               "topicHref": "animation/property-animation/color-animation-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1503,7 +1503,7 @@
               "href": "animation/property-animation/slider-component.html",
               "topicHref": "animation/property-animation/slider-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1512,7 +1512,7 @@
               "href": "animation/property-animation/property-animation-asset.html",
               "topicHref": "animation/property-animation/property-animation-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1521,7 +1521,7 @@
               "href": "animation/property-animation/property-animation-overview.html",
               "topicHref": "animation/property-animation/property-animation-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1530,7 +1530,7 @@
               "href": "animation/property-animation/rotor-component.html",
               "topicHref": "animation/property-animation/rotor-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1539,14 +1539,14 @@
               "href": "animation/property-animation/reset-transform-component.html",
               "topicHref": "animation/property-animation/reset-transform-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Skeletal Animation",
@@ -1556,7 +1556,7 @@
               "href": "animation/skeletal-animation/skeletal-animation-overview.html",
               "topicHref": "animation/skeletal-animation/skeletal-animation-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1565,7 +1565,7 @@
               "href": "animation/skeletal-animation/animated-mesh-asset.html",
               "topicHref": "animation/skeletal-animation/animated-mesh-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1574,7 +1574,7 @@
               "href": "animation/skeletal-animation/animated-mesh-component.html",
               "topicHref": "animation/skeletal-animation/animated-mesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1583,7 +1583,7 @@
               "href": "animation/skeletal-animation/lod-animated-mesh-component.html",
               "topicHref": "animation/skeletal-animation/lod-animated-mesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1592,7 +1592,7 @@
               "href": "animation/skeletal-animation/skeleton-asset.html",
               "topicHref": "animation/skeletal-animation/skeleton-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1601,7 +1601,7 @@
               "href": "animation/skeletal-animation/skeleton-component.html",
               "topicHref": "animation/skeletal-animation/skeleton-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1610,7 +1610,7 @@
               "href": "animation/skeletal-animation/animation-clip-asset.html",
               "topicHref": "animation/skeletal-animation/animation-clip-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1619,7 +1619,7 @@
               "href": "animation/skeletal-animation/simple-animation-component.html",
               "topicHref": "animation/skeletal-animation/simple-animation-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1628,7 +1628,7 @@
               "href": "animation/skeletal-animation/skeleton-pose-component.html",
               "topicHref": "animation/skeletal-animation/skeleton-pose-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1640,7 +1640,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/animation-graph-overview.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/animation-graph-overview.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1649,7 +1649,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/animation-graph-asset.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/animation-graph-asset.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1658,7 +1658,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/animation-controller-component.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/animation-controller-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1667,7 +1667,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-blackboard.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-blackboard.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1676,7 +1676,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-blendspace1d.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-blendspace1d.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1685,7 +1685,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-blendspace2d.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-blendspace2d.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1694,7 +1694,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-bone-weights.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-bone-weights.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1703,7 +1703,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-debug.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-debug.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1712,7 +1712,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-events.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-events.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1721,7 +1721,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-input.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-input.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1730,7 +1730,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-logic-math.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-logic-math.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1739,7 +1739,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-output.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-output.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1748,7 +1748,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-pose-blending.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-pose-blending.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1757,7 +1757,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-pose-generation.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-pose-generation.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1766,7 +1766,7 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-sample-clip.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-sample-clip.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1775,21 +1775,21 @@
                   "href": "animation/skeletal-animation/animation-graphs/anim-nodes-sample-sequence.html",
                   "topicHref": "animation/skeletal-animation/animation-graphs/anim-nodes-sample-sequence.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             },
             {
               "name": "Animation Events",
               "href": "animation/skeletal-animation/animation-events.html",
               "topicHref": "animation/skeletal-animation/animation-events.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1798,7 +1798,7 @@
               "href": "animation/skeletal-animation/root-motion.html",
               "topicHref": "animation/skeletal-animation/root-motion.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1807,7 +1807,7 @@
               "href": "animation/skeletal-animation/joint-attachment-component.html",
               "topicHref": "animation/skeletal-animation/joint-attachment-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1816,7 +1816,7 @@
               "href": "animation/skeletal-animation/joint-override-component.html",
               "topicHref": "animation/skeletal-animation/joint-override-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1825,7 +1825,7 @@
               "href": "animation/skeletal-animation/blender-export.html",
               "topicHref": "animation/skeletal-animation/blender-export.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1837,7 +1837,7 @@
                   "href": "animation/skeletal-animation/ik/aim-ik-component.html",
                   "topicHref": "animation/skeletal-animation/ik/aim-ik-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 },
@@ -1846,24 +1846,24 @@
                   "href": "animation/skeletal-animation/ik/two-bone-ik-component.html",
                   "topicHref": "animation/skeletal-animation/ik/two-bone-ik-component.html",
                   "tocHref": null,
-                  "level": 5.0,
+                  "level": 5,
                   "items": [],
                   "leaf": true
                 }
               ],
               "topicHref": null,
               "tocHref": null,
-              "level": 4.0
+              "level": 4
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Sound",
@@ -1873,7 +1873,7 @@
           "href": "sound/sound-overview.html",
           "topicHref": "sound/sound-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1882,7 +1882,7 @@
           "href": "sound/fmod-overview.html",
           "topicHref": "sound/fmod-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1891,7 +1891,7 @@
           "href": "sound/fmod-soundbank-asset.html",
           "topicHref": "sound/fmod-soundbank-asset.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1900,7 +1900,7 @@
           "href": "sound/fmod-soundevent-asset.html",
           "topicHref": "sound/fmod-soundevent-asset.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1909,7 +1909,7 @@
           "href": "sound/fmod-listener-component.html",
           "topicHref": "sound/fmod-listener-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1918,14 +1918,14 @@
           "href": "sound/fmod-event-component.html",
           "topicHref": "sound/fmod-event-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Terrain and Vegetation",
@@ -1935,7 +1935,7 @@
           "href": "terrain/terrain-overview.html",
           "topicHref": "terrain/terrain-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1944,7 +1944,7 @@
           "href": "terrain/heightfield-component.html",
           "topicHref": "terrain/heightfield-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1953,7 +1953,7 @@
           "href": "terrain/kraut-overview.html",
           "topicHref": "terrain/kraut-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -1965,7 +1965,7 @@
               "href": "terrain/procedural/procgen-volume-sphere-component.html",
               "topicHref": "terrain/procedural/procgen-volume-sphere-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1974,7 +1974,7 @@
               "href": "terrain/procedural/procgen-placement-component.html",
               "topicHref": "terrain/procedural/procgen-placement-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1983,7 +1983,7 @@
               "href": "terrain/procedural/procgen-volume-box-component.html",
               "topicHref": "terrain/procedural/procgen-volume-box-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -1992,7 +1992,7 @@
               "href": "terrain/procedural/procgen-graph-output-placement.html",
               "topicHref": "terrain/procedural/procgen-graph-output-placement.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2001,7 +2001,7 @@
               "href": "terrain/procedural/procgen-graph-modifiers.html",
               "topicHref": "terrain/procedural/procgen-graph-modifiers.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2010,7 +2010,7 @@
               "href": "terrain/procedural/procgen-graph-inputs.html",
               "topicHref": "terrain/procedural/procgen-graph-inputs.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2019,7 +2019,7 @@
               "href": "terrain/procedural/procgen-volume-image-component.html",
               "topicHref": "terrain/procedural/procgen-volume-image-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2028,7 +2028,7 @@
               "href": "terrain/procedural/procgen-graph-asset.html",
               "topicHref": "terrain/procedural/procgen-graph-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2037,7 +2037,7 @@
               "href": "terrain/procedural/procgen-graph-math.html",
               "topicHref": "terrain/procedural/procgen-graph-math.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2046,7 +2046,7 @@
               "href": "terrain/procedural/procgen-graph-output-vertexcolor.html",
               "topicHref": "terrain/procedural/procgen-graph-output-vertexcolor.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2055,7 +2055,7 @@
               "href": "terrain/procedural/procedural-object-placement.html",
               "topicHref": "terrain/procedural/procedural-object-placement.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2064,19 +2064,19 @@
               "href": "terrain/procedural/procgen-vertex-color-component.html",
               "topicHref": "terrain/procedural/procgen-vertex-color-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Ai",
@@ -2089,7 +2089,7 @@
               "href": "ai/AiPlugin/navmesh-obstacle-component.html",
               "topicHref": "ai/AiPlugin/navmesh-obstacle-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2098,7 +2098,7 @@
               "href": "ai/AiPlugin/runtime-navmesh.html",
               "topicHref": "ai/AiPlugin/runtime-navmesh.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2107,7 +2107,7 @@
               "href": "ai/AiPlugin/navigation-component.html",
               "topicHref": "ai/AiPlugin/navigation-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2116,7 +2116,7 @@
               "href": "ai/AiPlugin/ai-plugin-overview.html",
               "topicHref": "ai/AiPlugin/ai-plugin-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2125,21 +2125,21 @@
               "href": "ai/AiPlugin/navmesh-path-test-component.html",
               "topicHref": "ai/AiPlugin/navmesh-path-test-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Sensor Components",
           "href": "ai/sensor-components.html",
           "topicHref": "ai/sensor-components.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2151,7 +2151,7 @@
               "href": "ai/RecastPlugin/recast.html",
               "topicHref": "ai/RecastPlugin/recast.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2160,7 +2160,7 @@
               "href": "ai/RecastPlugin/recast-navmesh-component.html",
               "topicHref": "ai/RecastPlugin/recast-navmesh-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2169,19 +2169,19 @@
               "href": "ai/RecastPlugin/recast-navmesh.html",
               "topicHref": "ai/RecastPlugin/recast-navmesh.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Ui",
@@ -2191,7 +2191,7 @@
           "href": "ui/ui.html",
           "topicHref": "ui/ui.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2200,7 +2200,7 @@
           "href": "ui/imgui.html",
           "topicHref": "ui/imgui.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2209,14 +2209,14 @@
           "href": "ui/rmlui.html",
           "topicHref": "ui/rmlui.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Gameplay",
@@ -2226,7 +2226,7 @@
           "href": "gameplay/creature-crawl-component.html",
           "topicHref": "gameplay/creature-crawl-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2235,7 +2235,7 @@
           "href": "gameplay/spawn-component.html",
           "topicHref": "gameplay/spawn-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2244,7 +2244,7 @@
           "href": "gameplay/player-start-point.html",
           "topicHref": "gameplay/player-start-point.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2253,7 +2253,7 @@
           "href": "gameplay/timed-death-component.html",
           "topicHref": "gameplay/timed-death-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2262,7 +2262,7 @@
           "href": "gameplay/grabbable-item-component.html",
           "topicHref": "gameplay/grabbable-item-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2271,7 +2271,7 @@
           "href": "gameplay/raycast-placement-component.html",
           "topicHref": "gameplay/raycast-placement-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2280,7 +2280,7 @@
           "href": "gameplay/projectile-component.html",
           "topicHref": "gameplay/projectile-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2289,7 +2289,7 @@
           "href": "gameplay/scene-transition-component.html",
           "topicHref": "gameplay/scene-transition-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2298,7 +2298,7 @@
           "href": "gameplay/spawnbox-component.html",
           "topicHref": "gameplay/spawnbox-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2307,7 +2307,7 @@
           "href": "gameplay/area-damage-component.html",
           "topicHref": "gameplay/area-damage-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2316,7 +2316,7 @@
           "href": "gameplay/headbone-component.html",
           "topicHref": "gameplay/headbone-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2325,7 +2325,7 @@
           "href": "gameplay/power-connector-component.html",
           "topicHref": "gameplay/power-connector-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2334,14 +2334,14 @@
           "href": "gameplay/marker-component.html",
           "topicHref": "gameplay/marker-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Miscellaneous",
@@ -2351,7 +2351,7 @@
           "href": "Miscellaneous/local-blackboard-component.html",
           "topicHref": "Miscellaneous/local-blackboard-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2360,7 +2360,7 @@
           "href": "Miscellaneous/global-blackboard-component.html",
           "topicHref": "Miscellaneous/global-blackboard-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2372,7 +2372,7 @@
               "href": "Miscellaneous/components/comment-component.html",
               "topicHref": "Miscellaneous/components/comment-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2381,21 +2381,21 @@
               "href": "Miscellaneous/components/shape-icon-component.html",
               "topicHref": "Miscellaneous/components/shape-icon-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Blackboards",
           "href": "Miscellaneous/blackboards.html",
           "topicHref": "Miscellaneous/blackboards.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2404,7 +2404,7 @@
           "href": "Miscellaneous/imagedata-asset.html",
           "topicHref": "Miscellaneous/imagedata-asset.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2413,7 +2413,7 @@
           "href": "Miscellaneous/custom-data.html",
           "topicHref": "Miscellaneous/custom-data.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2422,7 +2422,7 @@
           "href": "Miscellaneous/config-file-resource.html",
           "topicHref": "Miscellaneous/config-file-resource.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2431,14 +2431,14 @@
           "href": "Miscellaneous/blackboard-template-asset.html",
           "topicHref": "Miscellaneous/blackboard-template-asset.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Custom Code",
@@ -2448,7 +2448,7 @@
           "href": "custom-code/custom-code-overview.html",
           "topicHref": "custom-code/custom-code-overview.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2460,7 +2460,7 @@
               "href": "custom-code/cpp/cpp-overview.html",
               "topicHref": "custom-code/cpp/cpp-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2469,7 +2469,7 @@
               "href": "custom-code/cpp/cpp-project-generation.html",
               "topicHref": "custom-code/cpp/cpp-project-generation.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2478,7 +2478,7 @@
               "href": "custom-code/cpp/engine-plugins.html",
               "topicHref": "custom-code/cpp/engine-plugins.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2487,7 +2487,7 @@
               "href": "custom-code/cpp/custom-cpp-component.html",
               "topicHref": "custom-code/cpp/custom-cpp-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2496,14 +2496,14 @@
               "href": "custom-code/cpp/cpp-code-reload.html",
               "topicHref": "custom-code/cpp/cpp-code-reload.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "TypeScript",
@@ -2513,7 +2513,7 @@
               "href": "custom-code/typescript/typescript-overview.html",
               "topicHref": "custom-code/typescript/typescript-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2522,7 +2522,7 @@
               "href": "custom-code/typescript/ts-asset.html",
               "topicHref": "custom-code/typescript/ts-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2531,7 +2531,7 @@
               "href": "custom-code/typescript/custom-ts-components.html",
               "topicHref": "custom-code/typescript/custom-ts-components.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2540,7 +2540,7 @@
               "href": "custom-code/typescript/ts-api.html",
               "topicHref": "custom-code/typescript/ts-api.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2549,7 +2549,7 @@
               "href": "custom-code/typescript/ts-messaging.html",
               "topicHref": "custom-code/typescript/ts-messaging.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2558,14 +2558,14 @@
               "href": "custom-code/typescript/ts-component.html",
               "topicHref": "custom-code/typescript/ts-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Visual Script",
@@ -2575,7 +2575,7 @@
               "href": "custom-code/visual-script/visual-script-overview.html",
               "topicHref": "custom-code/visual-script/visual-script-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2584,7 +2584,7 @@
               "href": "custom-code/visual-script/visual-script-class-asset.html",
               "topicHref": "custom-code/visual-script/visual-script-class-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2593,14 +2593,14 @@
               "href": "custom-code/visual-script/script-component.html",
               "topicHref": "custom-code/visual-script/script-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Game Logic",
@@ -2610,7 +2610,7 @@
               "href": "custom-code/game-logic/state-machine-component.html",
               "topicHref": "custom-code/game-logic/state-machine-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2619,7 +2619,7 @@
               "href": "custom-code/game-logic/state-machine-asset.html",
               "topicHref": "custom-code/game-logic/state-machine-asset.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2628,7 +2628,7 @@
               "href": "custom-code/game-logic/trigger-delay-modifier-component.html",
               "topicHref": "custom-code/game-logic/trigger-delay-modifier-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2637,19 +2637,19 @@
               "href": "custom-code/game-logic/forward-events-to-game-state-component.html",
               "topicHref": "custom-code/game-logic/forward-events-to-game-state-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Runtime",
@@ -2659,7 +2659,7 @@
           "href": "runtime/reflection-system.html",
           "topicHref": "runtime/reflection-system.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2671,7 +2671,7 @@
               "href": "runtime/application/game-state.html",
               "topicHref": "runtime/application/game-state.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2680,7 +2680,7 @@
               "href": "runtime/application/application.html",
               "topicHref": "runtime/application/application.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2689,21 +2689,21 @@
               "href": "runtime/application/common-application-features.html",
               "topicHref": "runtime/application/common-application-features.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Resource Management (TODO)",
           "href": "runtime/resource-management.html",
           "topicHref": "runtime/resource-management.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2715,7 +2715,7 @@
               "href": "runtime/configuration/startup.html",
               "topicHref": "runtime/configuration/startup.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2724,7 +2724,7 @@
               "href": "runtime/configuration/interfaces.html",
               "topicHref": "runtime/configuration/interfaces.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2733,14 +2733,14 @@
               "href": "runtime/configuration/actor-system.html",
               "topicHref": "runtime/configuration/actor-system.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "World",
@@ -2750,7 +2750,7 @@
               "href": "runtime/world/world-overview.html",
               "topicHref": "runtime/world/world-overview.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2759,7 +2759,7 @@
               "href": "runtime/world/game-objects.html",
               "topicHref": "runtime/world/game-objects.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2768,7 +2768,7 @@
               "href": "runtime/world/components.html",
               "topicHref": "runtime/world/components.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2777,7 +2777,7 @@
               "href": "runtime/world/worlds.html",
               "topicHref": "runtime/world/worlds.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2786,7 +2786,7 @@
               "href": "runtime/world/object-lifetime.html",
               "topicHref": "runtime/world/object-lifetime.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2795,7 +2795,7 @@
               "href": "runtime/world/world-messaging.html",
               "topicHref": "runtime/world/world-messaging.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2804,7 +2804,7 @@
               "href": "runtime/world/world-modules.html",
               "topicHref": "runtime/world/world-modules.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2813,7 +2813,7 @@
               "href": "runtime/world/component-managers.html",
               "topicHref": "runtime/world/component-managers.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2822,28 +2822,28 @@
               "href": "runtime/world/spatial-system.html",
               "topicHref": "runtime/world/spatial-system.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "FileSystem",
           "href": "runtime/filesystem.html",
           "topicHref": "runtime/filesystem.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Debugging",
@@ -2853,7 +2853,7 @@
           "href": "debugging/logging.html",
           "topicHref": "debugging/logging.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2862,7 +2862,7 @@
           "href": "debugging/tracy.html",
           "topicHref": "debugging/tracy.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2871,7 +2871,7 @@
           "href": "debugging/cvars.html",
           "topicHref": "debugging/cvars.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2880,7 +2880,7 @@
           "href": "debugging/console.html",
           "topicHref": "debugging/console.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2892,7 +2892,7 @@
               "href": "debugging/components/debug-text-component.html",
               "topicHref": "debugging/components/debug-text-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             },
@@ -2901,21 +2901,21 @@
               "href": "debugging/components/draw-line-component.html",
               "topicHref": "debugging/components/draw-line-component.html",
               "tocHref": null,
-              "level": 4.0,
+              "level": 4,
               "items": [],
               "leaf": true
             }
           ],
           "topicHref": null,
           "tocHref": null,
-          "level": 3.0
+          "level": 3
         },
         {
           "name": "Live++ Integration",
           "href": "debugging/livepp.html",
           "topicHref": "debugging/livepp.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2924,7 +2924,7 @@
           "href": "debugging/renderdoc.html",
           "topicHref": "debugging/renderdoc.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2933,7 +2933,7 @@
           "href": "debugging/stats.html",
           "topicHref": "debugging/stats.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2942,7 +2942,7 @@
           "href": "debugging/debug-rendering.html",
           "topicHref": "debugging/debug-rendering.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2951,14 +2951,14 @@
           "href": "debugging/debug-cpp.html",
           "topicHref": "debugging/debug-cpp.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Performance",
@@ -2968,7 +2968,7 @@
           "href": "performance/collection-component.html",
           "topicHref": "performance/collection-component.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2977,7 +2977,7 @@
           "href": "performance/occlusion-culling.html",
           "topicHref": "performance/occlusion-culling.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2986,7 +2986,7 @@
           "href": "performance/asset-collections.html",
           "topicHref": "performance/asset-collections.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -2995,14 +2995,14 @@
           "href": "performance/profiling.html",
           "topicHref": "performance/profiling.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Shipping",
@@ -3012,14 +3012,14 @@
           "href": "Shipping/project-export.html",
           "topicHref": "Shipping/project-export.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Tools",
@@ -3029,7 +3029,7 @@
           "href": "tools/player.html",
           "topicHref": "tools/player.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3038,7 +3038,7 @@
           "href": "tools/archivetool.html",
           "topicHref": "tools/archivetool.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3047,7 +3047,7 @@
           "href": "tools/minidumptool.html",
           "topicHref": "tools/minidumptool.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3056,7 +3056,7 @@
           "href": "tools/inspector.html",
           "topicHref": "tools/inspector.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3065,7 +3065,7 @@
           "href": "tools/unit-tests.html",
           "topicHref": "tools/unit-tests.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3074,7 +3074,7 @@
           "href": "tools/texconv.html",
           "topicHref": "tools/texconv.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3083,7 +3083,7 @@
           "href": "tools/headercheck.html",
           "topicHref": "tools/headercheck.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3092,7 +3092,7 @@
           "href": "tools/fileserve.html",
           "topicHref": "tools/fileserve.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3101,7 +3101,7 @@
           "href": "tools/staticlinkutil.html",
           "topicHref": "tools/staticlinkutil.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3110,14 +3110,14 @@
           "href": "tools/shadercompiler.html",
           "topicHref": "tools/shadercompiler.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "Appendix",
@@ -3127,7 +3127,7 @@
           "href": "appendix/coding-guidelines.html",
           "topicHref": "appendix/coding-guidelines.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3136,7 +3136,7 @@
           "href": "appendix/library-structure.html",
           "topicHref": "appendix/library-structure.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3145,7 +3145,7 @@
           "href": "appendix/container-usage.html",
           "topicHref": "appendix/container-usage.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3154,7 +3154,7 @@
           "href": "appendix/string-usage.html",
           "topicHref": "appendix/string-usage.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3163,7 +3163,7 @@
           "href": "appendix/string-formatting.html",
           "topicHref": "appendix/string-formatting.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3172,7 +3172,7 @@
           "href": "appendix/color-spaces.html",
           "topicHref": "appendix/color-spaces.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -3181,14 +3181,14 @@
           "href": "appendix/third-party-code.html",
           "topicHref": "appendix/third-party-code.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     }
   ],
   "_appFaviconPath": "assets/images/favicon.svg",
@@ -3289,7 +3289,7 @@
   "topicHref": null,
   "tocHref": null,
   "name": null,
-  "level": 1.0,
+  "level": 1,
   "leaf": false,
   "title": "Table of Content",
   "_disableToc": true

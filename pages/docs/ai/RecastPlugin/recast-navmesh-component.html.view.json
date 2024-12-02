@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/ai/RecastPlugin/recast-navmesh-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"recast-navmesh-component\" sourcefile=\"pages/docs/ai/RecastPlugin/recast-navmesh-component.md\" sourcestartlinenumber=\"1\">Recast Navmesh Component</h1>",
   "title": "Recast Navmesh Component",
-  "wordCount": 201.0,
+  "wordCount": 201,
   "_key": "pages/docs/ai/RecastPlugin/recast-navmesh-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

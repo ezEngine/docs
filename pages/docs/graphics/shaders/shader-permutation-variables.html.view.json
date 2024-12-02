@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/graphics/shaders/shader-permutation-variables.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"shader-permutation-variables\" sourcefile=\"pages/docs/graphics/shaders/shader-permutation-variables.md\" sourcestartlinenumber=\"1\">Shader Permutation Variables</h1>",
   "title": "Shader Permutation Variables",
-  "wordCount": 615.0,
+  "wordCount": 615,
   "_key": "pages/docs/graphics/shaders/shader-permutation-variables.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

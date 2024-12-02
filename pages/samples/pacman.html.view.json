@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/pacman.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"pacman-sample\" sourcefile=\"pages/samples/pacman.md\" sourcestartlinenumber=\"1\">PacMan Sample</h1>",
   "title": "PacMan Sample",
-  "wordCount": 290.0,
+  "wordCount": 290,
   "_key": "pages/samples/pacman.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

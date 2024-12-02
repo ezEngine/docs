@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/Miscellaneous/global-blackboard-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"global-blackboard-component\" sourcefile=\"pages/docs/Miscellaneous/global-blackboard-component.md\" sourcestartlinenumber=\"1\">Global Blackboard Component</h1>",
   "title": "Global Blackboard Component",
-  "wordCount": 243.0,
+  "wordCount": 243,
   "_key": "pages/docs/Miscellaneous/global-blackboard-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/debugging/livepp.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"live-integration\" sourcefile=\"pages/docs/debugging/livepp.md\" sourcestartlinenumber=\"1\">Live++ Integration</h1>",
   "title": "Live++ Integration",
-  "wordCount": 222.0,
+  "wordCount": 222,
   "_key": "pages/docs/debugging/livepp.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

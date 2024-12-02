@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/physics/jolt/jolt-debug-visualizations.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"jolt-debug-visualizations\" sourcefile=\"pages/docs/physics/jolt/jolt-debug-visualizations.md\" sourcestartlinenumber=\"1\">Jolt Debug Visualizations</h1>",
   "title": "Jolt Debug Visualizations",
-  "wordCount": 179.0,
+  "wordCount": 179,
   "_key": "pages/docs/physics/jolt/jolt-debug-visualizations.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

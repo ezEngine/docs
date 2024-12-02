@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/build/clang-on-windows.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"building-with-clang-on-windows\" sourcefile=\"pages/docs/build/clang-on-windows.md\" sourcestartlinenumber=\"1\">Building with Clang on Windows</h1>",
   "title": "Building with Clang on Windows",
-  "wordCount": 310.0,
+  "wordCount": 310,
   "_key": "pages/docs/build/clang-on-windows.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

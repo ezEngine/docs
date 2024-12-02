@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/Miscellaneous/imagedata-asset.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"imagedata-asset\" sourcefile=\"pages/docs/Miscellaneous/imagedata-asset.md\" sourcestartlinenumber=\"1\">ImageData Asset</h1>",
   "title": "ImageData Asset",
-  "wordCount": 76.0,
+  "wordCount": 76,
   "_key": "pages/docs/Miscellaneous/imagedata-asset.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/Miscellaneous/config-file-resource.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"config-file-resource\" sourcefile=\"pages/docs/Miscellaneous/config-file-resource.md\" sourcestartlinenumber=\"1\">Config File Resource</h1>",
   "title": "Config File Resource",
-  "wordCount": 439.0,
+  "wordCount": 439,
   "_key": "pages/docs/Miscellaneous/config-file-resource.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

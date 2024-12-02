@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -90,7 +90,7 @@
 <h1 id="ma-devlog-4---tar-trap">MA Devlog 4 - Tar Trap</h1>
 
 <p>Today I added a simple trap that just slows down monsters when they walk over it.</p>
-<p><video src="media/devlog4/SlowDown.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog4/SlowDown.mp4" width=600 controls></video></p>
 <p>As always, there are many ways how one can implement this. I chose to simply do a raycast at the monster position downwards and find the physics object beneath their feet. From there I could use the <a href="../../docs/materials/surfaces.html">surface</a> to determine whether to slow down the monster.</p>
 <p>That means that my trap needs to actually contain a <a href="../../docs/physics/jolt/collision-shapes/jolt-collision-meshes.html">physical collider</a> object, so that the raycast can hit anything. Therefore my trap now looks like this:</p>
 <p><img src="media/devlog4/TarTrap.png" alt="Tar Trap"></p>

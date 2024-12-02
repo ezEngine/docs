@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/physics/jolt/special/jolt-cloth-sheet-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"jolt-cloth-sheet-component\" sourcefile=\"pages/docs/physics/jolt/special/jolt-cloth-sheet-component.md\" sourcestartlinenumber=\"1\">Jolt Cloth Sheet Component</h1>",
   "title": "Jolt Cloth Sheet Component",
-  "wordCount": 243.0,
+  "wordCount": 243,
   "_key": "pages/docs/physics/jolt/special/jolt-cloth-sheet-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

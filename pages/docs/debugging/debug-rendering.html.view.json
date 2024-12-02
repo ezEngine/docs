@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/debugging/debug-rendering.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"debug-rendering\" sourcefile=\"pages/docs/debugging/debug-rendering.md\" sourcestartlinenumber=\"1\">Debug Rendering</h1>",
   "title": "Debug Rendering",
-  "wordCount": 591.0,
+  "wordCount": 591,
   "_key": "pages/docs/debugging/debug-rendering.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

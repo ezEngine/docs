@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/releases/releases.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"releases\" sourcefile=\"pages/releases/releases.md\" sourcestartlinenumber=\"1\">Releases</h1>",
   "title": "Releases",
-  "wordCount": 20.0,
+  "wordCount": 20,
   "_key": "pages/releases/releases.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

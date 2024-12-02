@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/Miscellaneous/custom-data.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"custom-data\" sourcefile=\"pages/docs/Miscellaneous/custom-data.md\" sourcestartlinenumber=\"1\">Custom Data</h1>",
   "title": "Custom Data",
-  "wordCount": 901.0,
+  "wordCount": 901,
   "_key": "pages/docs/Miscellaneous/custom-data.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

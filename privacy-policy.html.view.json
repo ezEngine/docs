@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "privacy-policy.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -45,7 +45,7 @@
   "rawTitle": "<h1 id=\"privacy-policy-for-ezengine-website\" sourcefile=\"privacy-policy.md\" sourcestartlinenumber=\"5\">Privacy Policy for ezEngine Website</h1>",
   "_layout": "landing",
   "title": "Privacy Policy for ezEngine Website",
-  "wordCount": 233.0,
+  "wordCount": 233,
   "_key": "privacy-policy.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

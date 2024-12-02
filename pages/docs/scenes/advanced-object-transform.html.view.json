@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/scenes/advanced-object-transform.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"advanced-object-transforms\" sourcefile=\"pages/docs/scenes/advanced-object-transform.md\" sourcestartlinenumber=\"1\">Advanced Object Transforms</h1>",
   "title": "Advanced Object Transforms",
-  "wordCount": 570.0,
+  "wordCount": 570,
   "_key": "pages/docs/scenes/advanced-object-transform.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

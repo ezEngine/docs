@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/tools/unit-tests.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"unit-tests\" sourcefile=\"pages/docs/tools/unit-tests.md\" sourcestartlinenumber=\"1\">Unit Tests</h1>",
   "title": "Unit Tests",
-  "wordCount": 484.0,
+  "wordCount": 484,
   "_key": "pages/docs/tools/unit-tests.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

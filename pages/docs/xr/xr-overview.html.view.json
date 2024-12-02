@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/xr/xr-overview.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"xr\" sourcefile=\"pages/docs/xr/xr-overview.md\" sourcestartlinenumber=\"1\">XR</h1>",
   "title": "XR",
-  "wordCount": 153.0,
+  "wordCount": 153,
   "_key": "pages/docs/xr/xr-overview.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

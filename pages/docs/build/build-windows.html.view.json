@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/build/build-windows.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"building-for-windows\" sourcefile=\"pages/docs/build/build-windows.md\" sourcestartlinenumber=\"1\">Building for Windows</h1>",
   "title": "Building for Windows",
-  "wordCount": 322.0,
+  "wordCount": 322,
   "_key": "pages/docs/build/build-windows.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

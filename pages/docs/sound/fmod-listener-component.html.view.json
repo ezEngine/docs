@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/sound/fmod-listener-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"fmod-listener-component\" sourcefile=\"pages/docs/sound/fmod-listener-component.md\" sourcestartlinenumber=\"1\">FMOD Listener Component</h1>",
   "title": "FMOD Listener Component",
-  "wordCount": 314.0,
+  "wordCount": 314,
   "_key": "pages/docs/sound/fmod-listener-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

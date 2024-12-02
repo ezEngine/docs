@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -91,7 +91,7 @@
 
 <p>The <em>Jolt trigger component</em> is a special kind of <a href="jolt-actors.html">actor</a> that determines whether other actors overlap with its volume. If so, it sends a trigger <a href="../../../runtime/world/world-messaging.html">event message</a>. Other components or script code can react to this message to implement their game logic.</p>
 <p>Triggers are often used to open and close doors, to check whether a character walked over a pickup item and to detect when the player reached some location.</p>
-<p><video src="media/trigger.webm" width="600" height="600" autoplay="" loop=""></video></p>
+<p><video src="media/trigger.webm" width="600" height="600" autoplay loop></video></p>
 <p>A trigger is set up the same way as a <a href="jolt-static-actor-component.html">static actor</a> or a <a href="jolt-dynamic-actor-component.html">dynamic actor</a>, by attaching <a href="../collision-shapes/jolt-shapes.html">collision shapes</a> to it. Which other physics objects activate the trigger is determined through the <a href="../collision-shapes/jolt-collision-layers.html">collision layers</a> on the attached shapes.</p>
 <p>Since triggers are not simulated like rigid bodies, they don't require much configuration.</p>
 <p>Triggers can be moved around at runtime and they will fire, when an object enters a trigger because the trigger moved into the object.</p>

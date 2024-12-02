@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/physics/jolt/collision-shapes/jolt-collision-meshes.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"jolt-collision-meshes\" sourcefile=\"pages/docs/physics/jolt/collision-shapes/jolt-collision-meshes.md\" sourcestartlinenumber=\"1\">Jolt Collision Meshes</h1>",
   "title": "Jolt Collision Meshes",
-  "wordCount": 641.0,
+  "wordCount": 641,
   "_key": "pages/docs/physics/jolt/collision-shapes/jolt-collision-meshes.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

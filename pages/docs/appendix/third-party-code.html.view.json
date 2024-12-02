@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/appendix/third-party-code.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"thirdparty-code-and-data\" sourcefile=\"pages/docs/appendix/third-party-code.md\" sourcestartlinenumber=\"1\">ThirdParty Code and Data</h1>",
   "title": "ThirdParty Code and Data",
-  "wordCount": 1286.0,
+  "wordCount": 1286,
   "_key": "pages/docs/appendix/third-party-code.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

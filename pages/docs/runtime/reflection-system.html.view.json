@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/runtime/reflection-system.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"reflection-system\" sourcefile=\"pages/docs/runtime/reflection-system.md\" sourcestartlinenumber=\"1\">Reflection System</h1>",
   "title": "Reflection System",
-  "wordCount": 1392.0,
+  "wordCount": 1392,
   "_key": "pages/docs/runtime/reflection-system.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/skeletal-animation/skeleton-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"skeleton-component\" sourcefile=\"pages/docs/animation/skeletal-animation/skeleton-component.md\" sourcestartlinenumber=\"1\">Skeleton Component</h1>",
   "title": "Skeleton Component",
-  "wordCount": 159.0,
+  "wordCount": 159,
   "_key": "pages/docs/animation/skeletal-animation/skeleton-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

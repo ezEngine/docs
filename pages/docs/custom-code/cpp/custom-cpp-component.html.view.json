@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/custom-code/cpp/custom-cpp-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"custom-components-with-c\" sourcefile=\"pages/docs/custom-code/cpp/custom-cpp-component.md\" sourcestartlinenumber=\"1\">Custom Components with C++</h1>",
   "title": "Custom Components with C++",
-  "wordCount": 965.0,
+  "wordCount": 965,
   "_key": "pages/docs/custom-code/cpp/custom-cpp-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

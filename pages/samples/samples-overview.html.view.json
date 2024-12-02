@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/samples-overview.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"samples\" sourcefile=\"pages/samples/samples-overview.md\" sourcestartlinenumber=\"1\">Samples</h1>",
   "title": "Samples",
-  "wordCount": 161.0,
+  "wordCount": 161,
   "_key": "pages/samples/samples-overview.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

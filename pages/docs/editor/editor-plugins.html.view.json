@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/editor/editor-plugins.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"editor-plugins\" sourcefile=\"pages/docs/editor/editor-plugins.md\" sourcestartlinenumber=\"1\">Editor Plugins</h1>",
   "title": "Editor Plugins",
-  "wordCount": 1783.0,
+  "wordCount": 1783,
   "_key": "pages/docs/editor/editor-plugins.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

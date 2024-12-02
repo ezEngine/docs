@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -90,13 +90,13 @@
 <h1 id="ma-devlog-2---spike-trap">MA Devlog 2 - Spike Trap</h1>
 
 <p>So today was all about getting my first trap working. Here is the result:</p>
-<p><video src="media/devlog2/ma-dl2-Spike_Trap.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog2/ma-dl2-Spike_Trap.mp4" width=600 controls></video></p>
 <p>The most flexible way to do these things, is to just use <a href="../../docs/custom-code/cpp/custom-cpp-component.html">custom C++ components</a> for everything. However, I want to test out our other infrastructure as well, for example the new <a href="../../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>, the <a href="../../docs/custom-code/game-logic/state-machine-asset.html">state machines</a>, and so on, so the goal is to prefer those, and only use C++ for the things that really need it.</p>
 <p>At the moment I only have two custom C++ components, one for the player logic and one for the monsters. The former mostly does <a href="../../docs/input/input-overview.html">input handling</a> and forwarding to the <a href="../../docs/physics/jolt/special/jolt-character-controller.html">character controller</a>, the latter mainly does the path finding and steering.</p>
 <p>So today I had to figure out how to build my first trap.</p>
 <p>If I were (or had) an artist, I would use an <a href="../../docs/animation/skeletal-animation/animated-mesh-asset.html">animated mesh</a> with multiple <a href="../../docs/animation/skeletal-animation/animation-clip-asset.html">animations</a> for the different trap states. However, I only have two <a href="../../docs/graphics/meshes/mesh-asset.html">static meshes</a>, one with spikes, one without, and I really want to make things work with the assets as I have them. So I needed a way to do the visuals without animations.</p>
 <p>Here is what it looks like in a close up:</p>
-<p><video src="media/devlog2/ma-dl2-SpikeTrapAnim.mp4" width="600" controls=""></video></p>
+<p><video src="media/devlog2/ma-dl2-SpikeTrapAnim.mp4" width=600 controls></video></p>
 <p>The trap has four states, therefore I built a <a href="../../docs/custom-code/game-logic/state-machine-asset.html">state machine</a>.</p>
 <p><img src="media/devlog2/ma-dl2-image1.png" alt="Spike Trap States"></p>
 <p>In the <em>Dormant</em> state it does nothing. This is the state where the trap is not dangerous. It takes a second and then transitions into the <em>Loaded</em> state.</p>

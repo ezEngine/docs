@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/ai/AiPlugin/runtime-navmesh.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"runtime-navmesh\" sourcefile=\"pages/docs/ai/AiPlugin/runtime-navmesh.md\" sourcestartlinenumber=\"1\">Runtime Navmesh</h1>",
   "title": "Runtime Navmesh",
-  "wordCount": 950.0,
+  "wordCount": 950,
   "_key": "pages/docs/ai/AiPlugin/runtime-navmesh.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

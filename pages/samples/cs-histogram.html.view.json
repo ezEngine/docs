@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/cs-histogram.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"compute-shader-histogram-sample\" sourcefile=\"pages/samples/cs-histogram.md\" sourcestartlinenumber=\"1\">Compute Shader Histogram Sample</h1>",
   "title": "Compute Shader Histogram Sample",
-  "wordCount": 84.0,
+  "wordCount": 84,
   "_key": "pages/samples/cs-histogram.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

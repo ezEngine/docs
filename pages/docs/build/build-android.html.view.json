@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/build/build-android.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"building-for-android\" sourcefile=\"pages/docs/build/build-android.md\" sourcestartlinenumber=\"1\">Building for Android</h1>",
   "title": "Building for Android",
-  "wordCount": 1365.0,
+  "wordCount": 1365,
   "_key": "pages/docs/build/build-android.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

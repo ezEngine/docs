@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/custom-code/game-logic/forward-events-to-game-state-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"forward-events-to-game-state-component\" sourcefile=\"pages/docs/custom-code/game-logic/forward-events-to-game-state-component.md\" sourcestartlinenumber=\"1\">Forward Events To Game State Component</h1>",
   "title": "Forward Events To Game State Component",
-  "wordCount": 110.0,
+  "wordCount": 110,
   "_key": "pages/docs/custom-code/game-logic/forward-events-to-game-state-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

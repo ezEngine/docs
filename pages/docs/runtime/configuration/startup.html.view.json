@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/runtime/configuration/startup.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"startup-system\" sourcefile=\"pages/docs/runtime/configuration/startup.md\" sourcestartlinenumber=\"1\">Startup System</h1>",
   "title": "Startup System",
-  "wordCount": 870.0,
+  "wordCount": 870,
   "_key": "pages/docs/runtime/configuration/startup.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

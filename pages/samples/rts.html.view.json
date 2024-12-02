@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/rts.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"rts-sample\" sourcefile=\"pages/samples/rts.md\" sourcestartlinenumber=\"1\">RTS Sample</h1>",
   "title": "RTS Sample",
-  "wordCount": 143.0,
+  "wordCount": 143,
   "_key": "pages/samples/rts.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

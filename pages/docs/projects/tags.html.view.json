@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/projects/tags.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"tags\" sourcefile=\"pages/docs/projects/tags.md\" sourcestartlinenumber=\"1\">Tags</h1>",
   "title": "Tags",
-  "wordCount": 628.0,
+  "wordCount": 628,
   "_key": "pages/docs/projects/tags.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

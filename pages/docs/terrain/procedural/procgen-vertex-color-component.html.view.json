@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/terrain/procedural/procgen-vertex-color-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"procedural-vertex-color-component\" sourcefile=\"pages/docs/terrain/procedural/procgen-vertex-color-component.md\" sourcestartlinenumber=\"1\">Procedural Vertex Color Component</h1>",
   "title": "Procedural Vertex Color Component",
-  "wordCount": 19.0,
+  "wordCount": 19,
   "_key": "pages/docs/terrain/procedural/procgen-vertex-color-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

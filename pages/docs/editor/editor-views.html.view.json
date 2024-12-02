@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/editor/editor-views.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"editing-views\" sourcefile=\"pages/docs/editor/editor-views.md\" sourcestartlinenumber=\"1\">Editing Views</h1>",
   "title": "Editing Views",
-  "wordCount": 440.0,
+  "wordCount": 440,
   "_key": "pages/docs/editor/editor-views.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

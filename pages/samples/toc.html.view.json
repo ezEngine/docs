@@ -5,7 +5,7 @@
       "href": "samples-overview.html",
       "topicHref": "samples-overview.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -14,7 +14,7 @@
       "href": "screenshots.html",
       "topicHref": "screenshots.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -23,7 +23,7 @@
       "href": "asteroids.html",
       "topicHref": "asteroids.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -32,7 +32,7 @@
       "href": "cs-histogram.html",
       "topicHref": "cs-histogram.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -41,7 +41,7 @@
       "href": "line-count.html",
       "topicHref": "line-count.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -53,7 +53,7 @@
           "href": "monster-attack/monster-attack.html",
           "topicHref": "monster-attack/monster-attack.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -62,7 +62,7 @@
           "href": "monster-attack/devlog-1.html",
           "topicHref": "monster-attack/devlog-1.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -71,7 +71,7 @@
           "href": "monster-attack/devlog-2.html",
           "topicHref": "monster-attack/devlog-2.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -80,7 +80,7 @@
           "href": "monster-attack/devlog-3.html",
           "topicHref": "monster-attack/devlog-3.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -89,7 +89,7 @@
           "href": "monster-attack/devlog-4.html",
           "topicHref": "monster-attack/devlog-4.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -98,7 +98,7 @@
           "href": "monster-attack/devlog-5.html",
           "topicHref": "monster-attack/devlog-5.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -107,7 +107,7 @@
           "href": "monster-attack/devlog-6.html",
           "topicHref": "monster-attack/devlog-6.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         },
@@ -116,21 +116,21 @@
           "href": "monster-attack/devlog-7.html",
           "topicHref": "monster-attack/devlog-7.html",
           "tocHref": null,
-          "level": 3.0,
+          "level": 3,
           "items": [],
           "leaf": true
         }
       ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2.0
+      "level": 2
     },
     {
       "name": "PacMan Sample",
       "href": "pacman.html",
       "topicHref": "pacman.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -139,7 +139,7 @@
       "href": "rts.html",
       "topicHref": "rts.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -148,7 +148,7 @@
       "href": "sample-game-plugin.html",
       "topicHref": "sample-game-plugin.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -157,7 +157,7 @@
       "href": "shader-explorer.html",
       "topicHref": "shader-explorer.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -166,7 +166,7 @@
       "href": "testing-chambers.html",
       "topicHref": "testing-chambers.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -175,7 +175,7 @@
       "href": "texture-sample.html",
       "topicHref": "texture-sample.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     }
@@ -278,7 +278,7 @@
   "topicHref": null,
   "tocHref": null,
   "name": null,
-  "level": 1.0,
+  "level": 1,
   "leaf": false,
   "title": "Table of Content",
   "_disableToc": true

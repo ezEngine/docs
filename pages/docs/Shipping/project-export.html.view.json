@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/Shipping/project-export.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"project-export\" sourcefile=\"pages/docs/Shipping/project-export.md\" sourcestartlinenumber=\"1\">Project Export</h1>",
   "title": "Project Export",
-  "wordCount": 521.0,
+  "wordCount": 521,
   "_key": "pages/docs/Shipping/project-export.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

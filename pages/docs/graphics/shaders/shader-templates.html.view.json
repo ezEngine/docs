@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/graphics/shaders/shader-templates.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"shader-templates\" sourcefile=\"pages/docs/graphics/shaders/shader-templates.md\" sourcestartlinenumber=\"1\">Shader Templates</h1>",
   "title": "Shader Templates",
-  "wordCount": 362.0,
+  "wordCount": 362,
   "_key": "pages/docs/graphics/shaders/shader-templates.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

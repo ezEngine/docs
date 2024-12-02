@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/input/input-overview.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"input-system\" sourcefile=\"pages/docs/input/input-overview.md\" sourcestartlinenumber=\"1\">Input System</h1>",
   "title": "Input System",
-  "wordCount": 1333.0,
+  "wordCount": 1333,
   "_key": "pages/docs/input/input-overview.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

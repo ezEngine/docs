@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/ui/ui.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"ingame-ui\" sourcefile=\"pages/docs/ui/ui.md\" sourcestartlinenumber=\"1\">Ingame UI</h1>",
   "title": "Ingame UI",
-  "wordCount": 137.0,
+  "wordCount": 137,
   "_key": "pages/docs/ui/ui.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

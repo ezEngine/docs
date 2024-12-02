@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/custom-code/cpp/engine-plugins.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"engine-plugins\" sourcefile=\"pages/docs/custom-code/cpp/engine-plugins.md\" sourcestartlinenumber=\"1\">Engine Plugins</h1>",
   "title": "Engine Plugins",
-  "wordCount": 692.0,
+  "wordCount": 692,
   "_key": "pages/docs/custom-code/cpp/engine-plugins.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

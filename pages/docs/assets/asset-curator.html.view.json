@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/assets/asset-curator.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"asset-curator\" sourcefile=\"pages/docs/assets/asset-curator.md\" sourcestartlinenumber=\"1\">Asset Curator</h1>",
   "title": "Asset Curator",
-  "wordCount": 227.0,
+  "wordCount": 227,
   "_key": "pages/docs/assets/asset-curator.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

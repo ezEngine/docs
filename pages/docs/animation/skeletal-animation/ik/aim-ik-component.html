@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -93,11 +93,11 @@
 <p>The aim IK component rotates a bone of the <a href="../skeleton-asset.html">skeleton</a> such that it points towards a target position. Optionally, this rotation can be distributed over multiple bones in a chain, to make the result more natural.</p>
 <p>Typical use cases for this are for characters to look at objects, guns to point correctly at a target or align feet with the ground slope.</p>
 <p>In the video below, this is used to rotate the head such that it looks at the stone. The rotation is distributed over three bones, such that the upper body, neck and head each contribute a part of the motion.</p>
-<p><video src="media/lookat-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p><video src="media/lookat-ik.mp4" width="800" height="600" autoplay controls></video></p>
 <p>This video shows a common problem, an <em>aim animation</em> is used to have the gun point at something, but the animation doesn't let the character point precisely forwards. Once multiple animations are combined for movement, such as walking sideways, the direction that the character points into is completely off target.</p>
-<p><video src="media/no-aim-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p><video src="media/no-aim-ik.mp4" width="800" height="600" autoplay controls></video></p>
 <p>In the video below, aim IK is used to correct both the right arm, as well as the head, such that the character precisely points and looks at the target. Here the IK component is also only active (and its weight is gradually faded in and out) when the player actually wants to aim.</p>
-<p><video src="media/aim-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p><video src="media/aim-ik.mp4" width="800" height="600" autoplay controls></video></p>
 <blockquote>
 <p><strong>IMPORTANT</strong></p>
 <p><em>Inverse kinematics</em> is currently only applied when an animated mesh receives a new animation pose. Thus, to actually see the result of IK, you need to have a <a href="../simple-animation-component.html">simple animation component</a> or an <a href="../animation-graphs/animation-controller-component.html">animation controller component</a> attached, and check the option <strong>Enable IK</strong> on it. It also has to play some animation in a loop, such as an idle animation or literally a single keyframe pose.</p>

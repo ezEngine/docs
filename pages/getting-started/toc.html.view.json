@@ -5,7 +5,7 @@
       "href": "how-to-contribute.html",
       "topicHref": "how-to-contribute.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -14,7 +14,7 @@
       "href": "videos.html",
       "topicHref": "videos.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -23,7 +23,7 @@
       "href": "faq.html",
       "topicHref": "faq.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -32,7 +32,7 @@
       "href": "binaries.html",
       "topicHref": "binaries.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     },
@@ -41,7 +41,7 @@
       "href": "editor-overview.html",
       "topicHref": "editor-overview.html",
       "tocHref": null,
-      "level": 2.0,
+      "level": 2,
       "items": [],
       "leaf": true
     }
@@ -144,7 +144,7 @@
   "topicHref": null,
   "tocHref": null,
   "name": null,
-  "level": 1.0,
+  "level": 1,
   "leaf": false,
   "title": "Table of Content",
   "_disableToc": true

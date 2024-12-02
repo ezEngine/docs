@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/graphics/sprite-component.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"sprite-component\" sourcefile=\"pages/docs/graphics/sprite-component.md\" sourcestartlinenumber=\"1\">Sprite Component</h1>",
   "title": "Sprite Component",
-  "wordCount": 206.0,
+  "wordCount": 206,
   "_key": "pages/docs/graphics/sprite-component.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

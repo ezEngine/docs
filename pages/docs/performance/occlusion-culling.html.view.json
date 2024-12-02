@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/performance/occlusion-culling.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"occlusion-culling\" sourcefile=\"pages/docs/performance/occlusion-culling.md\" sourcestartlinenumber=\"1\">Occlusion Culling</h1>",
   "title": "Occlusion Culling",
-  "wordCount": 492.0,
+  "wordCount": 492,
   "_key": "pages/docs/performance/occlusion-culling.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

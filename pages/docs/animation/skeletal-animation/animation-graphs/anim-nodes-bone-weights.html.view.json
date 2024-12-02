@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-bone-weights.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"bone-weight-nodes\" sourcefile=\"pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-bone-weights.md\" sourcestartlinenumber=\"1\">Bone Weight Nodes</h1>",
   "title": "Bone Weight Nodes",
-  "wordCount": 650.0,
+  "wordCount": 650,
   "_key": "pages/docs/animation/skeletal-animation/animation-graphs/anim-nodes-bone-weights.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

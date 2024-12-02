@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/appendix/string-formatting.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"string-formatting\" sourcefile=\"pages/docs/appendix/string-formatting.md\" sourcestartlinenumber=\"1\">String Formatting</h1>",
   "title": "String Formatting",
-  "wordCount": 850.0,
+  "wordCount": 850,
   "_key": "pages/docs/appendix/string-formatting.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

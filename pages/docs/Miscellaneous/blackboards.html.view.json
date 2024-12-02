@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/Miscellaneous/blackboards.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"blackboards\" sourcefile=\"pages/docs/Miscellaneous/blackboards.md\" sourcestartlinenumber=\"1\">Blackboards</h1>",
   "title": "Blackboards",
-  "wordCount": 303.0,
+  "wordCount": 303,
   "_key": "pages/docs/Miscellaneous/blackboards.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

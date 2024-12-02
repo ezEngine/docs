@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/custom-code/typescript/ts-messaging.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"messaging-in-typescript-code\" sourcefile=\"pages/docs/custom-code/typescript/ts-messaging.md\" sourcestartlinenumber=\"1\">Messaging in TypeScript Code</h1>",
   "title": "Messaging in TypeScript Code",
-  "wordCount": 450.0,
+  "wordCount": 450,
   "_key": "pages/docs/custom-code/typescript/ts-messaging.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

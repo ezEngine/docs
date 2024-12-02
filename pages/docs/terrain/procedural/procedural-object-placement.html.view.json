@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/terrain/procedural/procedural-object-placement.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"procedural-object-placement\" sourcefile=\"pages/docs/terrain/procedural/procedural-object-placement.md\" sourcestartlinenumber=\"1\">Procedural Object Placement</h1>",
   "title": "Procedural Object Placement",
-  "wordCount": 411.0,
+  "wordCount": 411,
   "_key": "pages/docs/terrain/procedural/procedural-object-placement.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

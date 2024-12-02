@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/samples/monster-attack/devlog-7.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"ma-devlog-7---level-pieces\" sourcefile=\"pages/samples/monster-attack/devlog-7.md\" sourcestartlinenumber=\"1\">MA Devlog 7 - Level Pieces</h1>",
   "title": "MA Devlog 7 - Level Pieces",
-  "wordCount": 371.0,
+  "wordCount": 371,
   "_key": "pages/samples/monster-attack/devlog-7.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

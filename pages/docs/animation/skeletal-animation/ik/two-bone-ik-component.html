@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -56,7 +56,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -93,7 +93,7 @@
 <p>The component rotates two bones such, that a third end point bone comes as close to a target position, as possible.</p>
 <p>Typical use cases for this are for characters to grab things or precise foot placement on uneven terrain.</p>
 <p>In the video below this is used to move the arms of a character such that they reach towards an object. Note that the target position isn't always reachable.</p>
-<p><video src="media/two-bone-ik.mp4" width="800" height="600" autoplay="" controls=""></video></p>
+<p><video src="media/two-bone-ik.mp4" width="800" height="600" autoplay controls></video></p>
 <blockquote>
 <p><strong>IMPORTANT</strong></p>
 <p><em>Inverse kinematics</em> is currently only applied when an animated mesh receives a new animation pose. Thus, to actually see the result of IK, you need to have a <a href="../simple-animation-component.html">simple animation component</a> or an <a href="../animation-graphs/animation-controller-component.html">animation controller component</a> attached, and check the option <strong>Enable IK</strong> on it. It also has to play some animation in a loop, such as an idle animation or literally a single keyframe pose.</p>

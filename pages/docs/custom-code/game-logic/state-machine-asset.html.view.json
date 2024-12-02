@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/custom-code/game-logic/state-machine-asset.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"state-machine-asset\" sourcefile=\"pages/docs/custom-code/game-logic/state-machine-asset.md\" sourcestartlinenumber=\"1\">State Machine Asset</h1>",
   "title": "State Machine Asset",
-  "wordCount": 1707.0,
+  "wordCount": 1707,
   "_key": "pages/docs/custom-code/game-logic/state-machine-asset.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",

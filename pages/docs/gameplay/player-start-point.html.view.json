@@ -7,8 +7,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "path": "pages/docs/gameplay/player-start-point.md",
   "documentation": {
@@ -17,8 +17,8 @@
       "branch": "main",
       "repo": "https://github.com/ezEngine/docs-src"
     },
-    "startLine": 0.0,
-    "endLine": 0.0
+    "startLine": 0,
+    "endLine": 0
   },
   "_appFaviconPath": "assets/images/favicon.svg",
   "_appFooter": "Hello",
@@ -44,7 +44,7 @@
   ],
   "rawTitle": "<h1 id=\"player-start-point\" sourcefile=\"pages/docs/gameplay/player-start-point.md\" sourcestartlinenumber=\"1\">Player Start Point</h1>",
   "title": "Player Start Point",
-  "wordCount": 150.0,
+  "wordCount": 150,
   "_key": "pages/docs/gameplay/player-start-point.md",
   "_navKey": "~/toc.yml",
   "_navPath": "toc.html",
