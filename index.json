@@ -1577,7 +1577,7 @@
   "pages/getting-started/videos.html": {
     "href": "pages/getting-started/videos.html",
     "title": "Videos | ezEngine",
-    "keywords": "Videos If you are interested in learning more about ezEngine, this page lists a couple of interesting videos. For the full list of available videos, see the ezEngine YouTube channel. ezEngine Feature Trailer ezEngine Overview ezEditor: Basic Editing ezEditor: Documents ezEditor: Asset Browser ezEditor: Gizmos ezEditor: Camera Controls ezEditor: Views ezEditor: Configurations Live Asset Reloading Surfaces Asset Curator Introduction to Visual Scripting"
+    "keywords": "Videos If you are interested in learning more about ezEngine, this page lists a couple of interesting videos. For the full list of available videos, see the ezEngine YouTube channel. ezEngine Feature Trailer Game Tutorial: PacMan How to Simulate and Play Your Game How to add custom C++ code to your game Introduction to Visual Scripting How to use Prefabs How to add a Game Camera How to create a physics object How to use the greyboxing tool How to Make Projectiles ezEngine Overview ezEditor: Basic Editing ezEditor: Documents ezEditor: Asset Browser ezEditor: Gizmos ezEditor: Camera Controls ezEditor: Views ezEditor: Configurations Live Asset Reloading Surfaces Asset Curator See Also Screenshots Samples"
   },
   "pages/releases/releases.html": {
     "href": "pages/releases/releases.html",
@@ -1657,17 +1657,22 @@
   "pages/samples/samples-overview.html": {
     "href": "pages/samples/samples-overview.html",
     "title": "Samples | ezEngine",
-    "keywords": "Samples Sample data is mostly stored in the Content git sub-module. If any data is missing, make sure your git sub-module is updated (git submodule update). Some samples may come purely as data (editor projects). Other samples require custom code. Sample code is generally only available if the CMake build switch EZ_BUILD_SAMPLES is set. Make sure to compile all sample projects, if you want to try them out. Getting Started The Testing Chambers project is a good start point to see what you can do purely through the editor and using scripting. No custom C++ code is used in this project. If you want to see how you can extend the engine with your own C++ code through a plugin, have a look at the Sample Game Plugin or the RTS Sample. The former shows just the basics to get your own code running. The latter goes a bit further and shows how you can make a simple game. See Also Videos"
+    "keywords": "Samples Sample data is mostly stored in the Content git sub-module. If any data is missing, make sure your git sub-module is updated (git submodule update). Some samples may come purely as data (editor projects). Other samples require custom code. Sample code is generally only available if the CMake build switch EZ_BUILD_SAMPLES is set. Make sure to compile all sample projects, if you want to try them out. Getting Started The Testing Chambers project is a good starting point to see what you can do purely through the editor and using scripting. No C++ code is used in this project. If you want to see how you can extend the engine with your own C++ code through a plugin, have a look at the Sample Game Plugin or the RTS Sample. The former shows just the basics to get your own code running. The latter goes a bit further and shows how you can make a simple game. See Also Videos Custom Code Screenshots"
   },
   "pages/samples/screenshots.html": {
     "href": "pages/samples/screenshots.html",
     "title": "Screenshots | ezEngine",
-    "keywords": "Screenshots For tutorial videos, have a look here. Tools Samples UI Skeletal Animations Particle Effects Physics Terrain Vegetation Decals AI Other See Also Samples Videos"
+    "keywords": "Screenshots For videos, have a look here. Tools Samples UI Skeletal Animations Particle Effects Physics Terrain Vegetation Decals AI Other See Also Samples Videos"
   },
   "pages/samples/shader-explorer.html": {
     "href": "pages/samples/shader-explorer.html",
     "title": "Shader Explorer Sample | ezEngine",
     "keywords": "Shader Explorer Sample The ShaderExplorer Sample shows how to render a scene entirely in the shader, with no polygonal geometry. The shader evaluates geometric shapes and computes color and shadows inside the shader. Prerequisites Note: The sample is only available when the solution is built with EZ_BUILD_SAMPLES activated in CMake. Code The C++ code uses a minimal setup to load the shaders and render a quad on screen. Check out the shader code to see how the scene rendering is done. See Also Samples Videos"
+  },
+  "pages/samples/store-sample.html": {
+    "href": "pages/samples/store-sample.html",
+    "title": "Store Sample | ezEngine",
+    "keywords": "Store Sample The Store Sample demonstrates the use of a large number of high quality assets. For more details, check out its GitHub repository. The sample can be downloaded directly from the ezEditor dashboard, though because of its size, the download may take a while. Video: Store Sample See Also Samples Videos"
   },
   "pages/samples/testing-chambers.html": {
     "href": "pages/samples/testing-chambers.html",

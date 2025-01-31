@@ -6788,6 +6788,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/samples/media/store-sample-editor.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/store-sample-editor.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/store-sample.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/store-sample.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/samples/media/tc0.jpg",
       "output": {
         "resource": {
@@ -7492,6 +7512,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/shader-explorer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/store-sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/store-sample.html"
         }
       },
       "version": ""

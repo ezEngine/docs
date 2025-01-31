@@ -19,27 +19,9 @@
       "leaf": true
     },
     {
-      "name": "Asteroids Sample",
-      "href": "asteroids.html",
-      "topicHref": "asteroids.html",
-      "tocHref": null,
-      "level": 2,
-      "items": [],
-      "leaf": true
-    },
-    {
-      "name": "Compute Shader Histogram Sample",
-      "href": "cs-histogram.html",
-      "topicHref": "cs-histogram.html",
-      "tocHref": null,
-      "level": 2,
-      "items": [],
-      "leaf": true
-    },
-    {
-      "name": "LineCount Sample",
-      "href": "line-count.html",
-      "topicHref": "line-count.html",
+      "name": "Testing Chambers",
+      "href": "testing-chambers.html",
+      "topicHref": "testing-chambers.html",
       "tocHref": null,
       "level": 2,
       "items": [],
@@ -135,9 +117,9 @@
       "leaf": true
     },
     {
-      "name": "RTS Sample",
-      "href": "rts.html",
-      "topicHref": "rts.html",
+      "name": "Store Sample",
+      "href": "store-sample.html",
+      "topicHref": "store-sample.html",
       "tocHref": null,
       "level": 2,
       "items": [],
@@ -153,6 +135,15 @@
       "leaf": true
     },
     {
+      "name": "RTS Sample",
+      "href": "rts.html",
+      "topicHref": "rts.html",
+      "tocHref": null,
+      "level": 2,
+      "items": [],
+      "leaf": true
+    },
+    {
       "name": "Shader Explorer Sample",
       "href": "shader-explorer.html",
       "topicHref": "shader-explorer.html",
@@ -162,9 +153,18 @@
       "leaf": true
     },
     {
-      "name": "Testing Chambers",
-      "href": "testing-chambers.html",
-      "topicHref": "testing-chambers.html",
+      "name": "Asteroids Sample",
+      "href": "asteroids.html",
+      "topicHref": "asteroids.html",
+      "tocHref": null,
+      "level": 2,
+      "items": [],
+      "leaf": true
+    },
+    {
+      "name": "Compute Shader Histogram Sample",
+      "href": "cs-histogram.html",
+      "topicHref": "cs-histogram.html",
       "tocHref": null,
       "level": 2,
       "items": [],
@@ -174,6 +174,15 @@
       "name": "Texture Sample",
       "href": "texture-sample.html",
       "topicHref": "texture-sample.html",
+      "tocHref": null,
+      "level": 2,
+      "items": [],
+      "leaf": true
+    },
+    {
+      "name": "LineCount Sample",
+      "href": "line-count.html",
+      "topicHref": "line-count.html",
       "tocHref": null,
       "level": 2,
       "items": [],
