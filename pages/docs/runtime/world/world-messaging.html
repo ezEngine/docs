@@ -90,7 +90,7 @@
 <h1 id="messaging">Messaging</h1>
 
 <p>For an introduction what a message is and how it fits into the overall picture, see <a href="world-overview.html">The World / Scenegraph System</a>.</p>
-<p>This documentation focuses on the C++ <code>ezMessage</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
+<p>This documentation focuses on the C++ <code>ezMessage</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript (TODO)</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
 <p>Messages can be sent from any code. They can only be received by <a href="components.html">components</a>, though, as the messaging system is implemented by <code>ezWorld</code>.</p>
 <h2 id="declaring-a-message">Declaring a Message</h2>
 <p>A message has to be derived from <code>ezMessage</code> and contain a helper macro that implements some message specific functionality:</p>
@@ -113,7 +113,7 @@ EZ_END_DYNAMIC_REFLECTED_TYPE;
 <p>This is all that is needed to send and receive the message in C++ code.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
-<p>The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.</p>
+<p>The code above does not add reflection for each message member, as that is not necessary to make this message work. However, if you want to send and receive this message from non-C++ code, for example from <a href="../../custom-code/visual-script/visual-script-overview.html">Visual Scripts</a>, then reflecting the members is necessary for the language binding to work. Be aware though, that language bindings may not support all types of reflected members and would ignore those.</p>
 </blockquote>
 <h2 id="message-handlers">Message Handlers</h2>
 <p>For each message type that your component is supposed to receive, you need to add a function that takes the respective component types as the only argument:</p>
@@ -162,9 +162,9 @@ Apart from a time delay, when posting a message you also have to specify a <em>p
 <h2 id="event-messages">Event Messages</h2>
 <p>Regular messages are used to 'instruct' components to do something. For example to switch something on, or to apply a physical force to it. These things can be implemented differently by different component types, but generally the calling code assumes them to do something. When messages are <em>broadcast</em> (instead of sending them to a single component directly), <em>all</em> targeted components get the message.</p>
 <p><em>Event messages</em> on the other hand, are used to 'inform' an object hierarchy that <em>something happened</em> inside that hierarchy. An example would be <code>ezMsgDamage</code> which is used to inform an object that it received damage. The difference is mainly in the routing. Regular messages are either sent directly to the recipient or to all its children. Event messages are delivered to a node or its closest <strong>parent node</strong> that has a message handler for this type of message.</p>
-<p>The idea is, that for complex objects you typically want to have a single script at the top of the hierarchy that deals with all everything that's happening below. For example an NPC may have many different child nodes, but if an <code>ezMsgDamage</code> is sent to any of them, the script at the top should decide what to do about it.</p>
+<p>The idea is, that for complex objects you typically want to have a single script at the top of the hierarchy that deals with everything that's happening below. For example an NPC may have many different child nodes, but if an <code>ezMsgDamage</code> is sent to any of them, the script at the top should decide what to do about it.</p>
 <p>Any message can be sent as an <em>event</em> by using <code>ezGameObject::SendEventMessage()</code>, however, messages that are meant to be always treated as events should derive from <code>ezEventMessage</code>, so that they include additional information.</p>
-<p>Finally, there is the <code>ezEventMessageHandlerComponent</code> interface, which is only implemented by very few component types. Out of the box, only by <code>ezTypeScriptComponent</code> and <code>ezVisualScriptComponent</code>.</p>
+<p>Finally, there is the <code>ezEventMessageHandlerComponent</code> interface, which is only implemented by very few component types, for example the <a href="../../custom-code/visual-script/script-component.html">Script Component</a>.</p>
 <p>When an <code>ezEventMessageHandlerComponent</code> is attached to a node, it will receive <em>all</em> event messages below that node hierarchy, no matter whether it has a message handler for it or not. It therefore prevents event messages from leaving the hierarchy. If an event message is supposed to 'bubble up' further, the message handler component must either forward the message manually or be configured to pass-through all unhandled event messages.</p>
 <h3 id="example-gas-cylinder">Example: Gas Cylinder</h3>
 <p>This prefab has two physics shapes. One for the body, one for the cap. If the body receives too much damage, the cylinder is supposed to explode. If the cap receives enough damage, the cylinder is supposed to start ventilating burning gas, fly off and explode after a while.</p>

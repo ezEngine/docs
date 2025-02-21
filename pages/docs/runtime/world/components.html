@@ -90,7 +90,7 @@
 <h1 id="components">Components</h1>
 
 <p>For an introduction what a component is and how it fits into the overall picture, see <a href="world-overview.html">The World / Scenegraph System</a>.</p>
-<p>This documentation focuses on the C++ <code>ezComponent</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
+<p>This documentation focuses on the C++ <code>ezComponent</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript (TODO)</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
 <p>Components are the fundamental building blocks with which to make the engine do things. Components act as glue between systems like the renderer and the user. They expose the available functionality to the editor and they control when and how each system is used. This document describes how components work.</p>
 <h2 id="owner">Owner</h2>
 <p>A component is always attached to a <a href="game-objects.html">game object</a>. This 'owner' can be queried with <code>ezComponent::GetOwner()</code>.</p>
@@ -164,7 +164,7 @@ EZ_END_COMPONENT_TYPE
 <p>The <em>properties</em> section lists all the members that should be editable. Components can have 'virtual' properties, that don't exist as members, but use <em>accessors</em> (functions). Properties can have <em>attributes</em> to configure how they show up in the editor.</p>
 <p>The <em>attributes</em> section can additionally specify type specific properties. For example, here we tell the editor where in the component menu this component should appear.</p>
 <p>The <em>message handler</em> section is important to enable <a href="world-messaging.html">messaging</a>.</p>
-<p>The <em>functions</em> section is used to expose certain member functions to the reflection system, such that script bindings, such as <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a> can call these functions.</p>
+<p>The <em>functions</em> section is used to expose certain member functions to the reflection system, such that script bindings, such as <a href="../../custom-code/visual-script/visual-script-overview.html">Visual Scripts</a> can call these functions.</p>
 <!-- TODO: at some point 'we' must document all the available options *sigh* -->
 <p>At the moment there is no documentation that lists all the available options. It is best to get inspiration by looking at the code for existing components.</p>
 <h2 id="component-activation">Component Activation</h2>
@@ -249,7 +249,8 @@ EZ_END_COMPONENT_TYPE
 <p>You can extend the engine with custom components:</p>
 <ul>
 <li><a href="../../custom-code/cpp/custom-cpp-component.html">Custom Components with C++</a></li>
-<li><a href="../../custom-code/typescript/custom-ts-components.html">Custom Components with TypeScript</a></li>
+<li><a href="../../custom-code/angelscript/as-components.html">Custom Components with AngelScript (TODO)</a></li>
+<li><a href="../../custom-code/visual-script/visual-script-class-asset.html">Visual Script Class Asset</a></li>
 </ul>
 <p>For examples, have a look at the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>.</p>
 <h2 id="see-also">See Also</h2>

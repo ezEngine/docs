@@ -2506,57 +2506,39 @@
           "level": 3
         },
         {
-          "name": "TypeScript",
+          "name": "AngelScript",
           "items": [
             {
-              "name": "Custom Code with TypeScript",
-              "href": "custom-code/typescript/typescript-overview.html",
-              "topicHref": "custom-code/typescript/typescript-overview.html",
+              "name": "Custom Code with AngelScript (TODO)",
+              "href": "custom-code/angelscript/angelscript-overview.html",
+              "topicHref": "custom-code/angelscript/angelscript-overview.html",
               "tocHref": null,
               "level": 4,
               "items": [],
               "leaf": true
             },
             {
-              "name": "TypeScript Asset",
-              "href": "custom-code/typescript/ts-asset.html",
-              "topicHref": "custom-code/typescript/ts-asset.html",
+              "name": "AngelScript Asset (TODO)",
+              "href": "custom-code/angelscript/as-asset.html",
+              "topicHref": "custom-code/angelscript/as-asset.html",
               "tocHref": null,
               "level": 4,
               "items": [],
               "leaf": true
             },
             {
-              "name": "Custom Components with TypeScript",
-              "href": "custom-code/typescript/custom-ts-components.html",
-              "topicHref": "custom-code/typescript/custom-ts-components.html",
+              "name": "Custom Components with AngelScript (TODO)",
+              "href": "custom-code/angelscript/as-components.html",
+              "topicHref": "custom-code/angelscript/as-components.html",
               "tocHref": null,
               "level": 4,
               "items": [],
               "leaf": true
             },
             {
-              "name": "TypeScript API",
-              "href": "custom-code/typescript/ts-api.html",
-              "topicHref": "custom-code/typescript/ts-api.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            },
-            {
-              "name": "Messaging in TypeScript Code",
-              "href": "custom-code/typescript/ts-messaging.html",
-              "topicHref": "custom-code/typescript/ts-messaging.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            },
-            {
-              "name": "TypeScript Component",
-              "href": "custom-code/typescript/ts-component.html",
-              "topicHref": "custom-code/typescript/ts-component.html",
+              "name": "Messaging in AngelScript Code (TODO)",
+              "href": "custom-code/angelscript/as-messaging.html",
+              "topicHref": "custom-code/angelscript/as-messaging.html",
               "tocHref": null,
               "level": 4,
               "items": [],

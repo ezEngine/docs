@@ -94,7 +94,7 @@
 <h2 id="enable-jolt-support">Enable Jolt Support</h2>
 <p>Support for Jolt is enabled by default on all platforms. It can be disabled in the <a href="../../build/cmake-config.html">CMake config</a>.</p>
 <h2 id="working-with-jolt">Working with Jolt</h2>
-<p>The most important Jolt functionality is exposed through components, as well as through <a href="../../custom-code/typescript/typescript-overview.html">TypeScript</a>.</p>
+<p>The most important Jolt functionality is exposed through components.</p>
 <p>When you write custom C++ code, you can access the most important functionality, like raycasts and shape queries, through the abstract <code>ezPhysicsWorldModuleInterface</code>, which is implementation independent. If you need to access Jolt features that are not exposed in EZ, you can cast that interface to <code>ezJoltWorldModule</code> and directly work with the <code>JPH::PhysicsSystem</code>. For Jolt details, refer to its <a href="https://github.com/jrouwe/JoltPhysics">documentation</a>.</p>
 <h2 id="feature-overview">Feature Overview</h2>
 <p>You use components to tell Jolt which objects should be considered for its simulation, and how. In Jolt, objects participating in the simulation are called <em>bodies</em> but in EZ they are usually referred to as <em>actors</em>.</p>

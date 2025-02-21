@@ -90,13 +90,13 @@
 <h1 id="debug-rendering">Debug Rendering</h1>
 
 <p>The rendering in EZ is optimized to handle large and complex data efficiently. However, to achieve this you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the <code>ezDebugRenderer</code> is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.</p>
-<p>This interface is also (partially) available through <a href="../custom-code/typescript/typescript-overview.html">TypeScript</a>.</p>
+<p>This interface is also (partially) available through <a href="../custom-code/angelscript/angelscript-overview.html">AngelScript (TODO)</a>.</p>
 <p><img src="media/debug-rendering.jpg" alt="Debug rendering"></p>
 <h2 id="usage">Usage</h2>
 <p>The <code>ezDebugRenderer</code> class has a number of static functions that you can call from any thread and at any time. The debug renderer gathers all requests and renders them at a specific point in the frame. Afterwards all requests are cleared and you must resubmit the same calls in the next frame, if you want it to appear again.</p>
 <h3 id="render-context">Render Context</h3>
 <p>Every function in <code>ezDebugRenderer</code> takes an <code>ezDebugRendererContext</code> as its first parameter. This specifies where the debug geometry should be rendered. You can either pass in an <code>ezViewHandle</code> or an <code>ezWorld</code> here. If you pass in a view handle, the geometry will only be rendered in the corresponding <code>ezView</code>, meaning you can have the debug geometry only appear in a specific render target. If you pass in an <code>ezWorld</code>, the geometry appears in all views that render that world.</p>
-<p>It is more common to bind debug geometry to an entire <code>ezWorld</code>, such that it appears in any view. The <a href="../custom-code/typescript/typescript-overview.html">TypeScript</a> binding omits the <code>ezDebugRendererContext</code> parameter and always binds it to the world.</p>
+<p>It is more common to bind debug geometry to an entire <code>ezWorld</code>, such that it appears in any view.</p>
 <h3 id="debug-geometry-types">Debug Geometry Types</h3>
 <p>The debug renderer allows you to render arbitrary lines and triangles. For convenience it also provides functions to render a number of common shapes:</p>
 <ul>
@@ -135,7 +135,7 @@ ezDebugRenderer::DrawLineSphere(GetWorld(), sphere, m_Color, ownerTransform);
 <li><a href="debug-cpp.html">Debugging C++ Code</a></li>
 <li><a href="../graphics/shaders/shader-debugging.html">Shader Debugging</a></li>
 <li><a href="../physics/jolt/jolt-debug-visualizations.html">Jolt Debug Visualizations</a></li>
-<li><a href="../custom-code/typescript/typescript-overview.html">Custom Code with TypeScript</a></li>
+<li><a href="../custom-code/angelscript/angelscript-overview.html">Custom Code with AngelScript (TODO)</a></li>
 </ul>
 
 </article>

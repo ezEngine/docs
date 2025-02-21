@@ -1642,6 +1642,46 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/angelscript/angelscript-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/angelscript/angelscript-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/angelscript/as-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/angelscript/as-asset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/angelscript/as-components.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/angelscript/as-components.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/angelscript/as-messaging.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/angelscript/as-messaging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/custom-code/cpp/cpp-code-reload.md",
       "output": {
         ".html": {
