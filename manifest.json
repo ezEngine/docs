@@ -4992,16 +4992,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/projects/media/editor-create-project.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/projects/media/editor-create-project.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/projects/media/editor-data-dir.png",
       "output": {
         "resource": {
@@ -5066,6 +5056,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/projects/media/plugin-selection.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/projects/media/project-wizard-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/projects/media/project-wizard-1.png"
         }
       },
       "version": ""
@@ -6642,6 +6642,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/samples/asteroids.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/samples/basic-fps-template.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/basic-fps-template.html"
         }
       },
       "version": ""
