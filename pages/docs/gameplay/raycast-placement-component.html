@@ -93,25 +93,22 @@
 <p>The image below shows raycast placement components being used together with a <a href="../effects/beam-component.html">beam components</a> to create laser beams.</p>
 <p><img src="../effects/media/beam.jpg" alt="Laser Beam"></p>
 <p>This component does a ray cast along the forward axis of the game object it is attached to. If this produces a hit, the target object is placed there. If no hit is found the target object is either placed at the maximum distance or deactivated depending on the component configuration.</p>
-<p>This component can also trigger messages when objects enter the ray. E.g. when a player trips a laser detection beam.
-To enable this set the trigger collision layer to another layer than the main ray cast and set a trigger message.</p>
-<p>Sample setup:</p>
-<ul>
-<li><code>CollisionLayerEndPoint</code> = Default</li>
-<li><code>CollisionLayerTrigger</code> = Player</li>
-<li><code>TriggerMessage</code> = &quot;APlayerEnteredTheBeam&quot;</li>
-</ul>
-<p>This will lead to trigger messages being sent when a physics actor on the 'Player' layer comes between
-the original hit on the default layer and the ray cast origin.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>MaxDistance</code>: The maximum distance to do the raycast.</li>
-<li><code>DisableTargetObjectOnNoHit</code>: If set, the <code>RaycastEndObject</code> is set to <a href="../runtime/world/game-objects.html#active-flag">inactive</a> when the raycast hits nothing within <code>MaxDistance</code>. This can be used to for things like laser pointers, where the target object represents the 'laser dot'. If the laser pointer hits nothing, the laser dot object should temporarily disappear. Once the raycast hits something again, the component will make sure to reactivate the target object again.</li>
-<li><code>RaycastEndObject</code>: A <a href="../scenes/object-references.html">referenced object</a> that this component should affect. Every time the placement component determines a different position for the raycast hit, it will move the referenced object there.</li>
-<li><code>ForceTargetParentless</code>: If set, the placement component will make sure that the referenced <code>RaycastEndObject</code> will be detached from any parent object. The practical reason for this is, that to prevent multiple objects from modifying the position of the end object, it should have no parent game object, which may pass down its own transform changes. However, when the end object is part of a prefab, it will always have a parent, and that parent may need to move. For example when a weapon is attached to a character controller. Therefore the placement component can take care of detaching the end object at the appropriate time.</li>
-<li><code>CollisionLayerEndPoint</code>: The <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for the raycast to detect where the <code>RaycastEndObject</code> should be placed.</li>
-<li><code>CollisionLayerTrigger</code>: An optional, different <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to detect whether a specific type of object is closer than the placed end object. If this is the case, the event <code>ezMsgTriggerTriggered</code> is raised, using the identifier given in <code>TriggerMessage</code>. This can be used for things like trip mines, where the first collision layer detects how far away the closest wall is, and the second collision layer checks whether any player or NPC has come between the mine and the opposing wall.</li>
-<li><code>TriggerMessage</code>: The trigger identifier message to use when <code>CollisionLayerTrigger</code> detects an object.</li>
+<li><p><code>MaxDistance</code>: The maximum distance to do the raycast.</p>
+</li>
+<li><p><code>DisableTargetObjectOnNoHit</code>: If set, the <code>RaycastEndObject</code> is set to <a href="../runtime/world/game-objects.html#active-flag">inactive</a> when the raycast hits nothing within <code>MaxDistance</code>. This can be used for things like laser pointers, where the target object represents the 'laser dot'. If the laser pointer hits nothing, the laser dot object should temporarily disappear. Once the raycast hits something again, the component will make sure to reactivate the target object again.</p>
+</li>
+<li><p><code>RaycastEndObject</code>: A <a href="../scenes/object-references.html">referenced object</a> that this component should affect. Every time the placement component determines a different position for the raycast hit, it will move the referenced object there.</p>
+</li>
+<li><p><code>ForceTargetParentless</code>: If set, the placement component will make sure that the referenced <code>RaycastEndObject</code> will be detached from any parent object. The practical reason for this is, that to prevent multiple objects from modifying the position of the end object, it should have no parent game object, which may pass down its own transform changes. However, when the end object is part of a prefab, it will always have a parent, and that parent may need to move. For example when a weapon is attached to a character controller. Therefore the placement component can take care of detaching the end object at the appropriate time.</p>
+</li>
+<li><p><code>ShapeTypesToHit</code>: Which kind of physics objects to hit with the raycast.</p>
+</li>
+<li><p><code>CollisionLayerEndPoint</code>: The <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for the raycast to detect where the <code>RaycastEndObject</code> should be placed.</p>
+</li>
+<li><p><code>ChangeNotificationMsg</code>: If this string is non-empty, the component will broadcast a <code>ezMsgGenericEvent</code> message every time that the raycast hit position changes. This can be used by game code to react, for example a laser trip mine could then determine whether it should explode.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

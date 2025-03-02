@@ -2082,41 +2082,6 @@
       "name": "Ai",
       "items": [
         {
-          "name": "Recastplugin",
-          "items": [
-            {
-              "name": "Recast Navmesh Component",
-              "href": "ai/RecastPlugin/recast-navmesh-component.html",
-              "topicHref": "ai/RecastPlugin/recast-navmesh-component.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            },
-            {
-              "name": "Recast Integration",
-              "href": "ai/RecastPlugin/recast.html",
-              "topicHref": "ai/RecastPlugin/recast.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            },
-            {
-              "name": "Recast Navmesh",
-              "href": "ai/RecastPlugin/recast-navmesh.html",
-              "topicHref": "ai/RecastPlugin/recast-navmesh.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            }
-          ],
-          "topicHref": null,
-          "tocHref": null,
-          "level": 3
-        },
-        {
           "name": "Aiplugin",
           "items": [
             {

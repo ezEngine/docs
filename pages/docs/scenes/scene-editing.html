@@ -133,6 +133,16 @@
 <p>The fun really starts once you get to play around with physics. Read up on the <a href="../physics/jolt/jolt-overview.html">Jolt Physics integration</a> for this. For a basic setup you always need at least an <a href="../physics/jolt/actors/jolt-actors.html">actor component</a> (<a href="../physics/jolt/actors/jolt-static-actor-component.html">static</a> for scene geometry, <a href="../physics/jolt/actors/jolt-dynamic-actor-component.html">dynamic</a> for stuff that should fall down) and a <a href="../physics/jolt/collision-shapes/jolt-shapes.html">shape component</a> to give the object a physical shape.</p>
 <h3 id="advanced-editing">Advanced Editing</h3>
 <p>Once you have <em>one</em> physically correct falling box, you may want to have one hundred. Using <a href="advanced-object-transform.html">these tools</a>, you are only a few clicks away from that.</p>
+<h3 id="active-parent">Active Parent</h3>
+<p>Usually when you drag assets into a scene, they are created on the top level of the scene hierarchy. However, you may prefer that they get added into a specific group right away.</p>
+<p>To do so, you can specify one game object to be the <strong>active parent</strong>. To do so, right click on a game object in the scene tree and choose <em>Set Active Parent</em> or use the shortcut <code>Ctrl + Shift + A</code>.</p>
+<p>From now on, all objects that get created through asset drag &amp; drop, of through <em>Create Object Here</em> (<code>Ctrl + Shift + X</code>) will be created below this object. The active parent object is indicated by a selection box icon next to it:</p>
+<p><img src="media/active-parent.png" alt="Active Parent"></p>
+<p>To reset this, right click in the scene tree and choose <em>Clear Active Parent</em> (<code>Ctrl + Shift + C</code>).</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>The active parent does not affect copy &amp; paste or duplicate. These operations always use the parent of the currently selected object, such that the new objects become siblings of the selected object.</p>
+</blockquote>
 <h3 id="scene-layers">Scene Layers</h3>
 <p>Once your scene starts to become bigger, you may want to use <a href="scene-layers.html">scene layers</a> for better organization.</p>
 <h2 id="video">Video</h2>

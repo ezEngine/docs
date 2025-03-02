@@ -352,46 +352,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/ai/RecastPlugin/media/navmesh.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/ai/RecastPlugin/media/navmesh.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh-component.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh-component.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/RecastPlugin/recast-navmesh.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/ai/RecastPlugin/recast.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/ai/RecastPlugin/recast.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/ai/media/sensor-components.jpg",
       "output": {
         "resource": {
@@ -5426,6 +5386,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/scenes/greyboxing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/active-parent.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/active-parent.png"
         }
       },
       "version": ""

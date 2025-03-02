@@ -96,7 +96,8 @@
 <p>Occluders can be moved around dynamically, so you can attach it to a door and it will properly occlude objects when the door closes. You can also (de-)activate the entire component programmatically. For example a breakable wall can use an occluder as long as it is intact, and deactivate it when the wall breaks.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Extents</code>: The size of the box.</li>
+<li><code>Type</code>: The occluder geometry type. Quads are more efficient than boxes, since they only need to rasterize a single polygon.</li>
+<li><code>Extents</code>: The size of the occluder geometry.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
