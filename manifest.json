@@ -1462,6 +1462,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-widget.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-widget.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/assets/media/find-asset-references.png",
       "output": {
         "resource": {
@@ -4951,11 +4961,31 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/prefabs/media/random-prefab.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/prefabs/media/random-prefab.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/prefabs/prefabs-overview.md",
       "output": {
         ".html": {
           "relative_path": "pages/docs/prefabs/prefabs-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/prefabs/random-prefab-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/prefabs/random-prefab-component.html"
         }
       },
       "version": ""

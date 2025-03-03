@@ -129,6 +129,12 @@ However, if you want that, you can include the generated plugin as an <a href=".
 <li>Run CMake yourself. For example you can use the CMake GUI app, point it to the plugin's build directory, and then <em>Configure</em> and <em>Generate</em> the C++ project at any time you like.</li>
 <li>Rerun <em>CMake Generate</em> from the dialog above. This will <strong>clear the CMake cache</strong> and fully regenerate the C++ project. Be aware that this resets all CMake options to their default values and often takes longer than strictly necessary.</li>
 </ol>
+<h2 id="what-gets-generated">What Gets Generated</h2>
+<p>The generated solution contains two projects.</p>
+<ol>
+<li>An engine plugin with some sample code for custom components and a <a href="../../runtime/application/game-state.html">game state</a>. You are supposed to implement all your game logic in here.</li>
+<li>A custom <a href="../../runtime/application/application.html">application</a> that is similar to <a href="../../tools/player.html">ezPlayer</a>. This will automatically load the engine plugin and run the game logic. This is only meant to be changed to modify the integration into the host operating system. It also gives you an <code>.exe</code> file that you can distribute.</li>
+</ol>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="cpp-overview.html">Custom Code with C++</a></li>
