@@ -95,15 +95,19 @@
 <p>On the right hand side the asset properties specify how to import or generate the mesh data.</p>
 <blockquote>
 <p><strong>Important:</strong></p>
-<p>The mesh asset does not automatically update when you edit its properties. Instead you need to <em>transform</em> the asset (<code>Ctrl+E</code> or with the rightmost button in the toolbar).</p>
+<p>The mesh asset does not automatically update when you edit its properties. Instead you need to <em>transform</em> the asset (<code>Ctrl+E</code> or with the green arrow button in the toolbar).</p>
 </blockquote>
 <h2 id="video-how-to-import-meshes">Video: How to import meshes</h2>
 <p><a href="https://www.youtube.com/watch?v=XBO4OPcF2bs"><img src="https://img.youtube.com/vi/XBO4OPcF2bs/0.jpg" alt="video"></a></p>
+<h2 id="mesh-orientation">Mesh Orientation</h2>
+<p>In ezEngine it is the convention that <strong>meshes should point into the +X direction</strong>. Every component (such as AI) assumes that moving along the +X axis will move the mesh <em>forward</em>, moving along +Y moves it to the <em>right</em> and moving along +Z moves it <em>upwards</em>. It is therefore best to import all meshes this way right away.</p>
+<p>The mesh preview shows this direction with a red arrow on the ground. Also the camera of the preview and the thumbnails looks onto this side of the meshes.</p>
+<p>Since assets are often authered with many different conventions, you can adjust the orientation during mesh import. The <code>ImportTransform</code> option gives you a quick way to select from common conventions. The asset must be re-transformed to see the effect of the option. If none of the presets yield the desired result, use the <em>Custom</em> option and then configure each axis individually.</p>
 <h2 id="asset-properties">Asset Properties</h2>
 <ul>
 <li><p><code>PrimitiveType</code>: This selects how the mesh data is generated. If <code>From File</code> is chosen, you need to also specify the <code>MeshFile</code> property. If you choose a procedural method, other configuration options appear.</p>
 </li>
-<li><p><code>ForwardDir</code>, <code>RightDir</code>, <code>UpDir</code>: With these you can change which axis is considered forward, right and up in the mesh data. For  mesh data from FBX files, this information is typically embedded in the file. For other file types, you may need to adjust these to make the imported data appear correctly upright.</p>
+<li><p><code>ImportTransform</code>, <code>RightDir</code>, <code>UpDir</code>, <code>FlipForwardDir</code>: How to rotate or mirror the mesh during import, so that it is oriented correctly for use in ezEngine. See <a href="#mesh-orientation">Mesh Orientation</a> above.</p>
 </li>
 <li><p><code>UniformScaling</code>: Adjusts the size of the mesh, for example to convert a mesh from centimeter to meter scale.</p>
 </li>

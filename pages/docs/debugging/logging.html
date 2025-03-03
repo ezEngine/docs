@@ -104,7 +104,7 @@
 <h2 id="inspecting-the-log">Inspecting the Log</h2>
 <p>There are multiple ways to see the content of the log:</p>
 <ul>
-<li>In the <a href="../../getting-started/editor-overview.html">ezEditor</a> you can open <em>Panels &gt; Log</em> to see two logs, the one for the editor and the one from the engine process.</li>
+<li>In the <a href="../../getting-started/editor-overview.html">ezEditor</a> you can open <em>Panels &gt; Log</em>. Note that the editor consists of <a href="../editor/editor-plugins.html">multiple processes</a> and the log panel shows the logs of two of those processes combined, which may result in unexpected output. If you want to see the logs separately, open the <a href="../editor/editor-settings.html">preferences</a> and uncheck <code>Application: General &gt; Combined Editor and Engine Logs</code>.</li>
 <li><a href="../tools/inspector.html">ezInspector</a> shows the log of the connected process.</li>
 <li>The in-game <a href="console.html">console</a> outputs the log messages.</li>
 <li>By default all EZ <a href="../runtime/application/application.html">applications</a> also write the log output to a <code>Log.htm</code> file in the application's <em>appdata</em> folder.</li>

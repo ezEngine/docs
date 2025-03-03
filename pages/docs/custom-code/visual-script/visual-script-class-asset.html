@@ -170,6 +170,8 @@
 <p>Additionally, all component specific functionality can be found in the sub-menus.</p>
 <h3 id="coroutine">Coroutine</h3>
 <p>Here you find all functionality to work with coroutines, see <a href="#coroutines">the coroutines section</a> above.</p>
+<h3 id="cvar">CVar</h3>
+<p>These nodes allow to read and write <a href="../../debugging/cvars.html">CVars</a>.</p>
 <h3 id="debug">Debug</h3>
 <p>These nodes are for <a href="../../debugging/debug-rendering.html">debug rendering</a>.</p>
 <h3 id="enums">Enums</h3>
@@ -234,8 +236,18 @@
 </ul>
 <h3 id="messages">Messages</h3>
 <p>While event handlers react to messages, the script can also <em>send messages</em> to other objects. Messages can be sent directly to a component, or to a game object, in which case they may be broadcast to all components on that object, or even to the whole sub-tree of objects and components. If the <code>Send Mode</code> is set to <em>Event</em>, however, they are delivered not downwards in the hierarchy, but <em>upwards</em> along the parent chain of the target object, to the closest component that handles this type of message. See <a href="../../runtime/world/world-messaging.html#event-messages">this chapter</a> for details.</p>
+<h3 id="physics">Physics</h3>
+<p>Various functions to use the physics engine.</p>
+<h3 id="prefabs">Prefabs</h3>
+<p>Utility functions to spawn prefabs.</p>
 <h3 id="property">Property</h3>
 <p>For reading and writing component properties.</p>
+<h3 id="quat">Quat</h3>
+<p>Utility functions for working with quaternions.</p>
+<h3 id="sound">Sound</h3>
+<p>Functions for playing sounds.</p>
+<h3 id="spatial">Spatial</h3>
+<p>The spatial system allows to find nearby objects. Contrary to using the physics engine for this, the spatial system is typically used to find tagged objects (see <a href="../../gameplay/marker-component.html">Marker Component</a>). This is often useful for game logic. For example, an NPC may want to find the closest health-pack, so it would use the spatial system to search for objects that use a health-pack marker.</p>
 <h3 id="statemachineinstance-and-statemachinestate">StateMachineInstance and StateMachineState</h3>
 <p>For interacting with <a href="../game-logic/state-machine-asset.html">state machines</a>. This is mainly necessary when the script itself is used as a <em>StateMachineState</em>. Be aware that the <em>state machine instance</em> in which the script is run, is passed into the script through the <code>OnEnter</code>, <code>OnExit</code> and <code>Update</code> nodes.</p>
 <h3 id="string">String</h3>
@@ -246,6 +258,8 @@
 <p>These nodes are for converting variables from one type to another. Especially important is the <code>ConvertTo</code> node, which is used for converting a <em>Variant</em> to an expected type. A <em>Variant</em> is a variable that can contain data of many different types. When a node returns a variant, you usually expect that it contains a certain type and using the <code>ConvertTo</code> node, you can get to it.</p>
 <h3 id="variable-nodes">Variable Nodes</h3>
 <p>These nodes operate on <a href="#visual-script-variables">visual script variables</a>. The variables have to be declared on the script first. Use these to keep track of state within the script and also to read state that was passed in through <a href="../../scenes/exposed-parameters.html">exposed parameters</a>.</p>
+<p>Additionally, the <strong>Temp Variable</strong> node can be used to store the result of an evaluated expression and reuse it multiple times. Since the node has execution pins, you can control exactly when its input should be evaluated. Its output can then be read as often as desired and won't change.</p>
+<p>This is useful for two reasons. The first is performance, as it allows to reuse the value many times without needlessly reevaluating it. The second is, that sometimes expressions can produce different results, depending on when exactly they are evaluated. For example, if an expression reads a variable <code>A</code>but then the script also writes to <code>A</code>, then evaluating the expression again, would now produce a different result. By using a temp variable, you can guarantee to the see the same value, even after the script already updated <code>A</code>.</p>
 <h3 id="world">World</h3>
 <p>These nodes provide access to the <a href="../../runtime/world/worlds.html">world</a>, which is used for managing objects.</p>
 <h2 id="see-also">See Also</h2>

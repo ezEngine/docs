@@ -1432,6 +1432,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-properties.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-properties.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-property-menu.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-property-menu.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/assets/media/asset-reference-button.png",
       "output": {
         "resource": {

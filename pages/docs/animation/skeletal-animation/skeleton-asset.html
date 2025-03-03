@@ -100,7 +100,7 @@
 <ul>
 <li><p><code>File</code>: The file from which to import the skeleton information. This is typically the same file as in the <a href="animated-mesh-asset.html">animated mesh asset</a>.</p>
 </li>
-<li><p><code>RightDir</code>, <code>UpDir</code>, <code>FlipForwardDir</code>: These properties are the same as on the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset</a>. Depending on how the mesh was exported, you may need to adjust these to have the skeleton (and every mesh that uses this skeleton) stand upright and look into the correct direction.</p>
+<li><p><code>ImportTransform</code>, <code>RightDir</code>, <code>UpDir</code>, <code>FlipForwardDir</code>: These properties are the same as on the <a href="../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset</a>. Depending on how the mesh was exported, you may need to adjust these to have the skeleton (and every mesh that uses this skeleton) stand upright and look into the correct direction.</p>
 <p>In Blender it is common to model meshes such that they face the user when the front view is active (<code>Numpad 1</code>):</p>
 <p><img src="../media/blender-orientation.png" alt="Typical orientation in Blender"></p>
 <p>With such an orientation the <em>right</em> side of the model points into the <em>-X</em> direction. The <em>+Z</em> axis corresponds to the <em>up</em> direction and the model looks into the <em>+Y</em> direction. When you export such a model to GLTF/GLB, you can keep this convention (<em>Y up</em> disabled in the export settings) or you can export it in the more common convention of using +Y as the <em>up</em> axis (<em>Y up</em> enabled). Both conventions can be mapped to EZ's preferred convention like so:</p>

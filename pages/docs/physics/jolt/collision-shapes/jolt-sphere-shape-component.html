@@ -93,9 +93,13 @@
 <p><img src="media/jolt-sphere-shape.jpg" alt="Sphere Shape"></p>
 <p>You can attach this component to the same node where the actor component is attached, or you can create a child object to attach it to, which allows you to position the shape relative to the actor.</p>
 <p>Spheres are very efficient for the physics engine to handle. Therefore you should prefer them over all other shapes, especially <a href="jolt-convex-shape-component.html">convex shapes</a>, when you can approximate the geometry of an object with one or a couple sphere shapes.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>It is <em>valid</em> to have a sphere with zero radius. This is useful when you need a dummy actor, for example a kinematic object, to which you later want to attach a <a href="../constraints/jolt-constraints.html">constraints</a> to join a dynamic actor to.</p>
+</blockquote>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Radius</code>: The radius of the sphere shape.</li>
+<li><code>Radius</code>: The radius of the sphere shape. It is valid to set this to zero to have a shape without any volume. In this case the shape doesn't interact with other shapes.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

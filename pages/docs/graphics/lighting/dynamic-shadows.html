@@ -119,13 +119,24 @@
 Casting shadows costs a lot of performance. Make sure to only have a small number of lights with shadows active at any one time, otherwise your game may perform poorly.</p>
 </blockquote>
 </li>
+<li><p><code>TransparentShadows</code>: If enabled, geometry that uses the <em>dithering</em> mode for transparency, will cast shadows. The shadows appear transparent, though they may be quite noisy.</p>
+</li>
 <li><p><code>PenumbraSize</code>: This value specifies how soft the edge of shadows is supposed to be. The image below shows a penumbra size of <code>0</code> on the left and <code>0.5</code> on the right:</p>
 <p><img src="media/penumbra.jpg" alt="Penumbra Size"></p>
 </li>
 <li><p><code>SlopeBias, ConstantBias</code>: TODO</p>
 </li>
+<li><p><code>ShadowFadeOutRange</code>: If specified, shadows are faded out when the light source has less than a certain size in screen space. This makes it possible to have many shadow casting lights in a scene, and although all of them contribute light, only the most prominent ones cast shadows, which reduces the performance impact.</p>
+</li>
 </ul>
+<p>By default this range is the same as the light range.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="directional-light-component.html">Directional Light Component</a></li>
+<li><a href="point-light-component.html">Point Light Component</a></li>
+<li><a href="spot-light-component.html">Spot Light Component</a></li>
+<li><a href="fill-light-component.html">Fill Light Component</a></li>
+</ul>
 
 </article>
 
