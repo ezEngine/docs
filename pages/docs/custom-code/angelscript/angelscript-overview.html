@@ -89,7 +89,34 @@
         <article data-uid="">
 <h1 id="custom-code-with-angelscript">Custom Code with AngelScript</h1>
 
-<!-- PAGE IS TODO -->
+<p><a href="https://www.angelcode.com/angelscript">AngelScript</a> (AS) is a script language that was designed specifically to be used in games. Its syntax is very close to C++ which makes it easy to move code from C++ to AS and vice versa. Its runtime performance is also much better than many other script languages.</p>
+<p>AngelScript code uses strong typing and is compiled up front, which makes it easy to detect coding errors. You can write short AS scripts directly in <a href="as-asset.html">AngelScript assets</a>, but it is more convenient to have code in separate files, which can be opened with <a href="https://code.visualstudio.com/download">Visual Studio Code</a> (VSC).</p>
+<p>There is a great extension for VSC, called <a href="https://github.com/sashi0034/angel-lsp">AngelScript Language Server</a> (short: angel-lsp), which is supported by EZ, and which adds syntax highlighting, error detection, jump-to-definition and several other features to VSC, which makes editing AngelScript code for EZ very convenient.</p>
+<p>AngelScript code compiles nearly instantly, and is automatically reloaded, which means you can edit a script, switch to the editor and press play, and have the latest code running without any delay.</p>
+<h2 id="the-angelscript-language">The AngelScript Language</h2>
+<p>For a description of the AngelScript language, please consult the <a href="https://www.angelcode.com/angelscript/sdk/docs/manual/doc_script.html">AngelScript documentation</a>.</p>
+<h2 id="extending-the-engine-with-angelscript">Extending the Engine with AngelScript</h2>
+<p>The AngelScript integration allows you to create <a href="as-components.html">custom components</a>. AngelScript components can interact both with each other, as well as with C++ components. The <a href="as-api.html">APIs</a> available to AngelScript code are nearly identical to their C++ counterparts, to make it easy to migrate an AS component to C++.</p>
+<h2 id="instantiating-angelscript-components">Instantiating AngelScript Components</h2>
+<p>AngelScript code is executed through the <a href="../visual-script/script-component.html">script component</a>. This is a C++ component which forwards everything of relevance to script code and back.
+The same component is also used to execute <a href="../visual-script/visual-script-overview.html">Visual Scripts</a>.</p>
+<h2 id="compiling-angelscript-code">Compiling AngelScript Code</h2>
+<p>AngelScript code is compiled by <a href="as-asset.html">AngelScript assets</a>. If there is an error, the asset transform will fail (you can see all failing assets in the <a href="../../assets/asset-curator.html">Asset Curator</a>). More error details can be found in the asset document.</p>
+<p>Each script is compiled in isolation. Scripts can <a href="as-api.html#including-files">#include</a> other files to share code. If a shared file gets modified, EZ automatically recompiles all scripts that depend on it.</p>
+<h2 id="messaging">Messaging</h2>
+<p>AngelScript code can use <a href="../../runtime/world/world-messaging.html">messages</a> to communicate both with other AS components, as well as with C++ components. AngelScript code can <em>handle</em> any message, and it can <em>send</em> (or <em>post</em>) any message. To communicate with another AS component, you can define custom message types directly in script code. To communicate with a C++ component, only C++ messages can be used, as the C++ code has no means to know and handle an AngelScript message. If necessary to do so, the custom message type has to be defined in C++.</p>
+<p>See <a href="as-messaging.html">Messaging in AngelScript Code</a> for details.</p>
+<h2 id="functionality-available-in-angelscript">Functionality Available in AngelScript</h2>
+<p>The AngelScript binding is a mixture of auto-generated code and hand-crafted APIs specifically tailored to provide a smooth experience.</p>
+<h3 id="manual-bindings">Manual Bindings</h3>
+<p>All the base functionality, such as the math code, has been manually bound to AngelScript, since this allows for the most efficient execution.</p>
+<p>There are also a hand full of functions that require features (such as callbacks) which are not covered by the reflection system, and thus were added by hand.</p>
+<h3 id="auto-generated-bindings">Auto-Generated Bindings</h3>
+<p>Where possible <a href="../../runtime/reflection-system.html">reflection information</a> is used to expose EZ functionality to AngelScript. This is, for example, used to expose all C++ components, enums, flags, and messages.</p>
+<p>However, only reflected parts are available to AngelScript. For components this is obvious, as only reflected parts will show up in the editor UI as well, but for messages you may come across a C++ message for which members are missing in the AS version, as reflecting message properties is technically not necessary for the message to work. If you do need that message on the AngelScript side, you need to add the proper reflection information.</p>
+<p>Additionally, not all kinds of reflected properties are currently supported in AngelScript. <em>Array</em>, <em>map</em> and <em>set</em> properties are not available. Such reflected properties are simply not included in the auto-generated AS code.</p>
+<h3 id="auto-generated-syntax-file">Auto-Generated Syntax File</h3>
+<p>EZ automatically generates the file <code>as.predefined</code> in the project root folder. This file is used by the VSC extension <em>angel-lsp</em> for code-completion and error-checking. But it is also a good source to see which functionality is generally available.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>

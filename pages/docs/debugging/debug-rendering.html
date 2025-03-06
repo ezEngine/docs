@@ -90,7 +90,7 @@
 <h1 id="debug-rendering">Debug Rendering</h1>
 
 <p>The rendering in EZ is optimized to handle large and complex data efficiently. However, to achieve this you must implement certain patterns, and to get started a non-trivial amount of code is involved. To visualize simple things, the <code>ezDebugRenderer</code> is provided. This class allows you to quickly add debug visualizations to your game, with just a few lines of code.</p>
-<p>This interface is also (partially) available through <a href="../custom-code/angelscript/angelscript-overview.html">AngelScript (TODO)</a>.</p>
+<p>This interface is also (partially) available through <a href="../custom-code/angelscript/angelscript-overview.html">AngelScript</a>.</p>
 <p><img src="media/debug-rendering.jpg" alt="Debug rendering"></p>
 <h2 id="usage">Usage</h2>
 <p>The <code>ezDebugRenderer</code> class has a number of static functions that you can call from any thread and at any time. The debug renderer gathers all requests and renders them at a specific point in the frame. Afterwards all requests are cleared and you must resubmit the same calls in the next frame, if you want it to appear again.</p>
@@ -135,7 +135,7 @@ ezDebugRenderer::DrawLineSphere(GetWorld(), sphere, m_Color, ownerTransform);
 <li><a href="debug-cpp.html">Debugging C++ Code</a></li>
 <li><a href="../graphics/shaders/shader-debugging.html">Shader Debugging</a></li>
 <li><a href="../physics/jolt/jolt-debug-visualizations.html">Jolt Debug Visualizations</a></li>
-<li><a href="../custom-code/angelscript/angelscript-overview.html">Custom Code with AngelScript (TODO)</a></li>
+<li><a href="../custom-code/angelscript/angelscript-overview.html">Custom Code with AngelScript</a></li>
 </ul>
 
 </article>

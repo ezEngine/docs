@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>AngelScript API | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="AngelScript API | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/angelscript/as-api.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="angelscript-api">AngelScript API</h1>
+
+<p>This page gives an overview over the functionality that EZ exposes through AngelScript.</p>
+<p>While this chapter mentions <em>what</em> is available, for concrete examles <em>how</em> to use the code, please look at the <a href="../../../samples/samples-overview.html">sample projects</a>, such as the <a href="../../../samples/testing-chambers.html">Testing Chambers</a>. They use AngelScript for gameplay code and demonstrate how to do many different things.</p>
+<h2 id="angelscript-language">AngelScript Language</h2>
+<p>For an introduction to the AngelScript language please consult the <a href="https://www.angelcode.com/angelscript/sdk/docs/manual/doc_script.html">AngelScript documentation</a>.</p>
+<p>Additionally, the following EZ specific limitations apply:</p>
+<ul>
+<li>Global variables are not allowed in AngelScript code.</li>
+<li>Certain types, such as <code>ezStringBuilder</code>, <code>ezStringView</code>, <code>ezGameObject@</code> and <code>ezComponent@</code> are forbidden to be used as member variables (they can only be used as temporary variables). To store these, use <code>ezString</code>, <code>ezGameObjectHandle</code> and <code>ezComponentHandle</code> instead.</li>
+<li>Not all types can be used in <code>array</code>s.</li>
+<li>Dictionaries and other containers are currently not available.</li>
+<li>The <code>string</code> type does not exist in AS code in EZ. Use <code>ezString</code> and other EZ specific string classes instead.</li>
+<li>There is no access to the filesystem or other OS functionality.</li>
+</ul>
+<h2 id="code-editing">Code Editing</h2>
+<p>Make sure to use <a href="https://code.visualstudio.com/download">Visual Studio Code</a> (VSC) together with the VSC extension <a href="https://github.com/sashi0034/angel-lsp">AngelScript Language Server (angel-lsp)</a>.</p>
+<h2 id="api-documentation">API Documentation</h2>
+<p>There is currently no API documentation directly in AngelScript available. However, all functions map directly to their C++ counterparts, so you can look at the <a href="../../api-docs.html">API Docs</a> for those.</p>
+<h2 id="full-api-listing">Full API Listing</h2>
+<p>Once you set up AngelScript in a project, the file <strong>as.predefined</strong> is written to the project folder. This file lists the entire available API and is thus the best source for what is available and what the function signatures look like. The <em>angel-lsp</em> plugin for VSC uses this file to provide features such as auto-completion.</p>
+<h2 id="including-files">Including Files</h2>
+<p>To use code that is written in a different <code>.as</code> file, use the <code>#include</code> statement. This works the same as in regular C++.</p>
+<p>Paths can either be relative to the current file location, or relative to the <a href="../../projects/data-directories.html">data directories</a>.</p>
+<p>A file-relative #include uses quotes:</p>
+<pre><code class="lang-cpp">#include &quot;../Shared/Common.as&quot;
+</code></pre>
+<p>A data-directory-relative #include uses angle brackets:</p>
+<pre><code class="lang-cpp">#include &lt;Shared/Common.as&gt;
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>The angel-lsp plugin for VSC only understands file-relative paths.</p>
+</blockquote>
+<p>Data-directory-relative paths have to be used, if you want to #include a file from a different <a href="../../projects/data-directories.html">data directory</a>.</p>
+<h2 id="api-overview">API Overview</h2>
+<p>The following APIs are frequently used:</p>
+<h3 id="math">Math</h3>
+<p>The <code>ezMath</code> namespace provides general math functions. <code>ezVec2</code>, <code>ezVec3</code> and <code>ezVec4</code> are vector classes, <code>ezQuat</code> is a quaternion implementation for representing rotations. <code>ezTransform</code> represents a full position / rotation / scale transform.</p>
+<p><code>ezAngle</code> is used for representing angles either in degree or Radians.</p>
+<p><code>ezColor</code> is used for HDR colors in linear color space (the default) and <code>ezColorGammaUB</code> can be used for 8-bit colors in Gamma space (see <a href="../../appendix/color-spaces.html">Color Spaces (TODO)</a>).</p>
+<h3 id="time">Time</h3>
+<p>The class <code>ezTime</code> is used for storing time values. <code>ezClock</code> can be retrieved from the <code>ezWorld</code> and gives you the current game time.</p>
+<p>Note that the <code>Update()</code> function of components comes with a <code>deltaTime</code> argument, which gives you the time between calls to <code>Update()</code>, whereas <code>ezClock</code> gives you the time difference between frames, which often is not the same.</p>
+<h3 id="random">Random</h3>
+<p>An instance of <code>ezRandom</code> can be retrieved through the <code>ezWorld</code>. It generates random numbers.</p>
+<h3 id="strings">Strings</h3>
+<p>As in C++, there are multiple string classes in EZ.</p>
+<ul>
+<li><code>ezString</code> is the default type for <em>storing</em> strings.</li>
+<li><code>ezStringBuilder</code> is used for working with strings, ie for concatenating, formatting and so on. Instances of <code>ezStringBuilder</code> can only be used as local variables, they are forbidden as member variables.</li>
+<li><code>ezStringView</code> is a read-only view into another string object. This is the typical way for passing strings into functions (instead of using <code>const char*</code> which doesn't exist in AS anyway). Since <code>ezStringView</code> doesn't store the actual string data, this type may also only be used temporarily and not stored as a member variable.</li>
+<li><code>ezHashedString</code> and <code>ezTempHashedString</code> are also exposed to AS for completeness. Both are used to optimize repeated usage of strings and are needed to bind all functions to AS. You usually don't need to use them directly in script code.</li>
+</ul>
+<h3 id="gameobject">GameObject</h3>
+<p>Most functionality of <code>ezGameObject</code> is accessible in AS code. For details, <a href="../../runtime/world/game-objects.html">see this chapter</a>.</p>
+<p>Additionally, in AS you can create components on a game object through <code>ezGameObject::CreateComponent()</code>. This is different to how it would be done in C++.</p>
+<h3 id="component">Component</h3>
+<p><code>ezComponent</code> is the base class for all C++ components. All these component types are automatically exposed to AS code.</p>
+<h3 id="world">World</h3>
+<p>The <code>ezWorld</code> object represents the entire scenegraph of the currently running level. You can always call <code>ezAngelScriptClass::GetWorld()</code> to get access to the world. Through it you can create new game objects, send and post messages to other objects, and access things like the <code>ezClock</code> and <code>ezRandom</code>.</p>
+<h3 id="logging">Logging</h3>
+<p>The <code>ezLog</code> namespace contains functions for <a href="../../debugging/logging.html">logging</a>.</p>
+<h3 id="debug-rendering">Debug Rendering</h3>
+<p>The <code>ezDebug</code> namespace exposes some functions for <a href="../../debugging/debug-rendering.html">debug rendering</a>. Note that not all functionality is available.</p>
+<h3 id="physics">Physics</h3>
+<p>In the <code>ezPhysics</code> namespace you'll find functions to do raycasts, overlap queries and some other common operations that are powered by the physics engine.</p>
+<p>There are also functions to trigger <a href="../../materials/surfaces.html">surface interactions</a>, such as spawning effects for impacts or footsteps.</p>
+<h3 id="spatial">Spatial</h3>
+<p>The <code>ezSpatial</code> namespace contains some functions to access the <a href="../../runtime/world/spatial-system.html">spatial system</a>. This allows you to search for nearby objects of certain types, such as <a href="../../gameplay/marker-component.html">marker components</a>, to identify objects to interact with.</p>
+<h3 id="sound">Sound</h3>
+<p>The <code>ezSound</code> namespace contains functions to play sounds.</p>
+<h3 id="array">array</h3>
+<p>The <code>array</code> class is a template type that can be used with many (but not all) types. It is mainly useful for saving state within AngelScripts. The API functions to interact with C++ code currently do not support passing arrays back and forth.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="angelscript-overview.html">Custom Code with AngelScript</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/angelscript/as-api.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

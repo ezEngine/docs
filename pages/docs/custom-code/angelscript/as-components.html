@@ -89,10 +89,34 @@
         <article data-uid="">
 <h1 id="custom-components-with-angelscript">Custom Components with AngelScript</h1>
 
-<!-- PAGE IS TODO -->
+<p>To create a new component type, create a new <a href="as-asset.html">AngelScript asset</a>. In that asset document, select the <code>Source</code> mode to edit the script either inline or in an external editor.</p>
+<p>Choose a name for your component class and make sure the name is also specified in the asset <code>Class Name</code> property.</p>
+<h2 id="base-class">Base Class</h2>
+<p>Your component class must derive from the base class <code>ezAngelScriptClass</code> either directly or indirectly.</p>
+<h2 id="entry-points">Entry Points</h2>
+<p>If any of these functions is present, the <a href="../visual-script/script-component.html">script component</a> will execute them in the same way as for C++ components. See <a href="../../runtime/world/components.html#component-activation">Component Activation</a> for details.</p>
+<ul>
+<li><p><code>void OnActivated()</code>: If present, this is executed every time the component <em>active state</em> changes to <em>active</em>. This is usually shortly after component creation. In an editor this happens right after scene loading or when a new object is added. It is rare to use this entry point, except when your component supports being deactivated and re-actived multiple times.</p>
+</li>
+<li><p><code>void OnDeactivated()</code>: If present, this is executed when the component <em>active state</em> changes to <em>inactive</em>. This happens shortly before destruction, and when the component is deliberately deactivated.</p>
+</li>
+<li><p><code>void OnSimulationStarted()</code>: If present, this function gets executed when the game simulation starts. In an editor this happens when you <a href="../../editor/run-scene.html">run the scene</a> in any way. This is where you should execute first time setup code, for example to detect which child objects exist to store handles to them.</p>
+</li>
+<li><p><code>void Update(ezTime deltaTime)</code>: If present, this function gets executed in regular intervals. The interval can be configured on the script component, but the script can also dynamically adjust it through the function <code>ezAngelScriptClass::SetUpdateInterval()</code>.
+The <code>deltaTime</code> argument gives you the time between calls to <code>Update()</code>, which is typically what you should use to update game logic.</p>
+</li>
+</ul>
+<p>If none of these entry points is present, the class must have at least one <a href="as-messaging.html#handling-messages">message handler</a>.</p>
+<h2 id="message-handlers">Message Handlers</h2>
+<p>AngelScript components can both send and receive messages. The article <a href="as-messaging.html">Messaging in AngelScript Code</a> explains this in more detail.</p>
+<h2 id="writing-your-component">Writing Your Component</h2>
+<p>To initialize things, use the <code>OnSimulationStarted()</code> callback. For regular updates, put your code into the <code>Update()</code> function. Use <a href="as-messaging.html">messaging</a> to communicate with unknown component types or when a delay is desired.</p>
+<p>For an overview what functionality is available through AngelScript, check out the <a href="as-api.html">AngelScript API</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="angelscript-overview.html">Custom Code with AngelScript (TODO)</a></li>
+<li><a href="as-asset.html">AngelScript Asset</a></li>
+<li><a href="as-messaging.html">Messaging in AngelScript Code</a></li>
+<li><a href="as-api.html">AngelScript API</a></li>
 </ul>
 
 </article>

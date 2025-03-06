@@ -113,7 +113,7 @@
 <h2 id="example">Example</h2>
 <p>The player object is often the most complicated object in a game. The character controller only provides the locomotion aspect, but this is often coupled tightly to the overall game logic. For example, the player may move slower or be disallowed to jump while <a href="jolt-grab-object-component.html">carrying an object</a>. Many of these aspects can be handled by an overall player logic script. Other aspects, like the details of the characters velocity while sliding down a slope or jumping through the air, have to be implemented directly inside a character controller component.</p>
 <p>The <a href="../../../../samples/testing-chambers.html">Testing Chambers sample</a> contains a <a href="../../../prefabs/prefabs-overview.html">prefab</a> called <strong>Player.ezPrefab</strong>, which demonstrates how to build your own player object. The top level node contains a <em>Default Character Controller</em> component. You could replace this with a custom character controller component, to test out entirely different movement behavior.</p>
-<p>Note that the player object also uses an <a href="../../../input/input-component.html">input component</a> to funnel input into a <a href="../../../custom-code/angelscript/angelscript-overview.html">script (TODO)</a>, which implements high level game logic, like weapon selection.</p>
+<p>Note that the player object also uses an <a href="../../../input/input-component.html">input component</a> to funnel input into a <a href="../../../custom-code/angelscript/angelscript-overview.html">script</a>, which implements high level game logic, like weapon selection.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="jolt-character-controller.html">Character Controller</a></li>

@@ -90,7 +90,7 @@
 <h1 id="components">Components</h1>
 
 <p>For an introduction what a component is and how it fits into the overall picture, see <a href="world-overview.html">The World / Scenegraph System</a>.</p>
-<p>This documentation focuses on the C++ <code>ezComponent</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript (TODO)</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
+<p>This documentation focuses on the C++ <code>ezComponent</code> class. The functionality exposed through other mechanisms, such as <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript</a>, may be more limited in scope, but ultimately maps to the C++ implementation.</p>
 <p>Components are the fundamental building blocks with which to make the engine do things. Components act as glue between systems like the renderer and the user. They expose the available functionality to the editor and they control when and how each system is used. This document describes how components work.</p>
 <h2 id="owner">Owner</h2>
 <p>A component is always attached to a <a href="game-objects.html">game object</a>. This 'owner' can be queried with <code>ezComponent::GetOwner()</code>.</p>
@@ -249,7 +249,7 @@ EZ_END_COMPONENT_TYPE
 <p>You can extend the engine with custom components:</p>
 <ul>
 <li><a href="../../custom-code/cpp/custom-cpp-component.html">Custom Components with C++</a></li>
-<li><a href="../../custom-code/angelscript/as-components.html">Custom Components with AngelScript (TODO)</a></li>
+<li><a href="../../custom-code/angelscript/as-components.html">Custom Components with AngelScript</a></li>
 <li><a href="../../custom-code/visual-script/visual-script-class-asset.html">Visual Script Class Asset</a></li>
 </ul>
 <p>For examples, have a look at the <a href="../../../samples/sample-game-plugin.html">Sample Game Plugin</a>.</p>

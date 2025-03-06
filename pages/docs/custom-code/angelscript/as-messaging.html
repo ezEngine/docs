@@ -89,10 +89,42 @@
         <article data-uid="">
 <h1 id="messaging-in-angelscript-code">Messaging in AngelScript Code</h1>
 
-<!-- PAGE IS TODO -->
+<p>AngelScript components can both send and receive messages. The way messages can be sent, posted and received, and how messages are routed is identical to the behavior on the C++ side. Please read the chapter about <a href="../../runtime/world/world-messaging.html">messaging</a> to familiarize yourself with the general concepts.</p>
+<p>The main difference in AngelScript is, that messages that have been declared in C++ can be sent and received in AngelScript, but messages that have been declared in AngelScript can only be sent and received by AngelScript code.</p>
+<h2 id="sending-messages">Sending Messages</h2>
+<p>You can send a message directly to a specific component or game object, through these functions:</p>
+<ul>
+<li><code>ezGameObject::SendMessage()</code></li>
+<li><code>ezGameObject::SendMessageRecursive()</code></li>
+<li><code>ezGameObject::PostMessage()</code></li>
+<li><code>ezGameObject::PostMessageRecursive()</code></li>
+<li><code>ezComponent::SendMessage()</code></li>
+<li><code>ezComponent::PostMessage()</code></li>
+</ul>
+<p>You can also send messages through <code>ezWorld</code> which is more convenient when you only have an <code>ezGameObjectHandle</code> or <code>ezComponentHandle</code>.</p>
+<h3 id="event-messages">Event Messages</h3>
+<p>You can send <em>event messages</em> on any game object with <code>ezGameObject::SendEventMessage()</code> or <code>ezGameObject::PostEventMessage()</code>.</p>
+<h2 id="handling-messages">Handling Messages</h2>
+<p>To handle messages of a specific type, a component needs a function that takes that message type as a <em>handle</em> (using the '@' suffix) as its only parameter. Also the function name must start with <strong>OnMsg</strong>:</p>
+<pre><code class="lang-cpp">void OnMsgSetColor(ezMsgSetColor@ msg)
+{
+    ezLog::Info(&quot;MsgSetColor: {}, {}, {}, {}&quot;, msg.Color.r, msg.Color.g, msg.Color.b, msg.Color.a);
+}
+</code></pre>
+<h2 id="declaring-a-message-in-angelscript">Declaring a Message in AngelScript</h2>
+<p>You declare a custom message in AngelScript by deriving from <code>ezAngelScriptMessage</code>:</p>
+<pre><code class="lang-cpp">class MsgShowText : ezAngelScriptMessage
+{    
+    ezString text;
+}
+</code></pre>
+<p>If you need to send a message from one component and handle it in another component type, you should put the message declaration into a separate <code>.as</code> file and <a href="as-api.html#including-files">#include</a> that file from both component files.</p>
+<h3 id="angelscript-event-messages">AngelScript Event Messages</h3>
+<p>At the moment it is not supported to send AngelScript messages as event messages.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="angelscript-overview.html">Custom Code with AngelScript (TODO)</a></li>
+<li><a href="../../runtime/world/world-messaging.html">Messaging</a></li>
+<li><a href="angelscript-overview.html">Custom Code with AngelScript</a></li>
 </ul>
 
 </article>

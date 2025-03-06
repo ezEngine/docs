@@ -1642,6 +1642,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/angelscript/as-api.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/angelscript/as-api.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/custom-code/angelscript/as-asset.md",
       "output": {
         ".html": {
@@ -1666,6 +1676,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/custom-code/angelscript/as-messaging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/custom-code/angelscript/media/as-asset-document.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/custom-code/angelscript/media/as-asset-document.png"
         }
       },
       "version": ""

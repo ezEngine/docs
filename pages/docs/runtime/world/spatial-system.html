@@ -97,7 +97,7 @@
 <p>Since there is exactly one spatial system per world, it usually means that the choice of a system is made for a type of game. In theory, though, one could use different systems for different types of levels, as well.</p>
 <h2 id="accessing-the-spatial-system">Accessing the Spatial System</h2>
 <p>In C++ code you get access to the world's spatial system through <code>ezWorld::GetSpatialSystem()</code>.</p>
-<p>When using other languages bindings the spatial system may not be exposed directly. For example, when using <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript (TODO)</a>, the most useful functions are exposed directly through <code>ezSpatial</code>, for example <code>ezSpatial::FindObjectsInSphere()</code>.</p>
+<p>When using other languages bindings the spatial system may not be exposed directly. For example, when using <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript</a>, the most useful functions are exposed directly through <code>ezSpatial</code>, for example <code>ezSpatial::FindObjectsInSphere()</code>.</p>
 <h2 id="spatial-data-categories">Spatial Data Categories</h2>
 <p>Every piece of spatial data is associated with a <em>category</em>. For example, rendering data is either in the category &quot;RenderStatic&quot; or &quot;RenderDynamic&quot;. This is mainly used to separate spatial information into distinct groups, so that during a spatial query, data that is irrelevant can be filtered out quickly.</p>
 <p>For efficiency reasons, categories are represented with bitmasks internally, which is why there can only be up to 32 categories. You should assume that the core engine uses at least 5 categories already.</p>
