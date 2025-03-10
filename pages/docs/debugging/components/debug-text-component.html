@@ -92,13 +92,15 @@
 <p>The <em>debug text component</em> can be used to display a short piece of text at the location of the object.</p>
 <p><img src="media/debug-text.jpg" alt="Debug Text"></p>
 <blockquote>
-<p><strong>Important:</strong> If this component is attached to an object that has no other rendered component, its text will not show up! This component will only render its text, if the parent object is already being rendered because of other things, such as an attached <a href="../../graphics/meshes/mesh-component.html">mesh</a>.</p>
+<p><strong>Important</strong></p>
+<p>If this component is attached to an object that has no other rendered component, its text will not show up! This component will only render its text, if the parent object is already being rendered because of other things, such as an attached <a href="../../graphics/meshes/mesh-component.html">mesh</a>.</p>
 </blockquote>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>Text</code>: The text to display. It may contain placeholders for up to four float values, e.g. <code>{0}</code>, <code>{1}</code>, etc. The values of the properties <code>Value0</code> to <code>Value3</code> will be embedded into the text.</li>
 <li><code>Value0, Value1, Value2, Value3</code>: Four float properties that can be set to arbitrary values. If <code>Text</code> contains appropriate placeholders, these values will be displayed.</li>
 <li><code>Color</code>: The color of the text.</li>
+<li><code>Max Distance</code>: The distance from the camera up to which the debug text is displayed.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

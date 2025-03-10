@@ -5692,6 +5692,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/scenes/media/snap-toolbar.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/scenes/media/snap-toolbar.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/scenes/media/visualizer-shapeicon.jpg",
       "output": {
         "resource": {
@@ -6668,16 +6678,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/samples/media/asteroids2.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/asteroids2.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/samples/media/cs-histogram.jpg",
       "output": {
         "resource": {
@@ -6738,16 +6738,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/samples/media/rts4.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/rts4.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/samples/media/shader-explorer1.jpg",
       "output": {
         "resource": {
@@ -6762,16 +6752,6 @@
       "output": {
         "resource": {
           "relative_path": "pages/samples/media/shader-explorer2.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/samples/media/shader-explorer3.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/shader-explorer3.jpg"
         }
       },
       "version": ""
@@ -6852,36 +6832,6 @@
       "output": {
         "resource": {
           "relative_path": "pages/samples/media/tc3.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/samples/media/tc4.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/tc4.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/samples/media/tc5.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/tc5.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/samples/media/tc6.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/tc6.jpg"
         }
       },
       "version": ""
