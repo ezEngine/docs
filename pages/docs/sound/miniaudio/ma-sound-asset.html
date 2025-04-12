@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>CMake Configuration | ezEngine </title>
+      <title>MiniAudio Sound Asset | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="CMake Configuration | ezEngine ">
+      <meta name="title" content="MiniAudio Sound Asset | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/cmake-config.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/miniaudio/ma-sound-asset.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,42 +87,42 @@
         </div>
 
         <article data-uid="">
-<h1 id="cmake-configuration">CMake Configuration</h1>
+<h1 id="miniaudio-sound-asset">MiniAudio Sound Asset</h1>
 
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>Using CMake directly is only needed, if you want to choose advanced build options. This is rarely needed. Prefer to use the provided build scripts for <a href="build-windows.html">Windows</a> or <a href="build-linux.html">Linux</a>.</p>
-</blockquote>
-<p>To generate a solution, run the CMake GUI. Specify <em>Where is the source code</em> and <em>Where to build the binaries</em>, then run <strong>Configure</strong>. As a generator, pick <em>Visual Studio 2022 x64</em> (or one of the other <a href="supported-platforms.html">supported platforms</a>).</p>
-<p><img src="media/cmake-config.png" alt="CMake configuration"></p>
-<p>The screenshot above shows a common setup. Noteworthy are the following points:</p>
+<p>The <em>MiniAudio sound asset</em> represents one in-game sound. The asset references <em>WAV</em> or <em>MP3</em> files and it can randomize the playback by choosing from a list of sounds and also by applying random pitch and volume.</p>
+<p>A sound asset may be set to be <em>positional</em>, which means that its location influences how audible it is, or it may be non-positional, in which case the sound is always audible in exactly the same way. Non-positional sounds are typically used for UI sounds or in games that do not need it. For instance, the <a href="../../../samples/pacman.html">PacMan sample</a> uses only non-positional sounds, since everything is always on-screen anyway.</p>
+<p>Sound assets are used by <a href="ma-sound-component.html">MiniAudio sound components</a>, which instantiate and play the sounds in the world.</p>
+<p>You can instantiate sounds by dragging a sound asset from the asset browser into a scene. This will automatically create a <a href="../../runtime/world/game-objects.html">game object</a> and attach a <a href="ma-sound-component.html">sound component</a>.</p>
+<h2 id="asset-properties">Asset Properties</h2>
 <ul>
-<li><p><strong>EZ_ENABLE_QT_SUPPORT</strong> Disable this setting, if you want to compile EZ without Qt. This will remove all editor code and several tools from the final solution. The default is <em>on</em>. When possible the EZ CMake scripts will automatically download Qt libraries and set everything up for you. On configurations for which we do not support fully automatic setup, you need to install Qt manually and then set set <strong>EZ_QT_DIR</strong> to its installation folder.</p>
+<li><p><code>Files</code>: A list of sound files. Every time a sound gets played, a random sound file is chosen. Every sound asset has to have at least one such input file.</p>
 </li>
-<li><p><strong>EZ_BUILD_FMOD</strong> Enable this, if you want to <a href="../sound/fmod/fmod-overview.html">FMOD sound</a> support in your build. On Windows and Linux the default is <em>on</em>.</p>
+<li><p><code>Loop</code>: Whether to play the sound in a looping fashion. If there are multiple input files, one random file is chosen and then that one file is played in a loop. If instead you want to loop the playback and play random files each time, use the <code>Restart</code> option on the <a href="ma-sound-component.html">MiniAudio sound component</a> instead.</p>
+</li>
+<li><p><code>MinRandomVolume</code>, <code>MaxRandomVolume</code>: Every time a sound gets played, the volume of the sound is randomized between these two values.</p>
+</li>
+<li><p><code>MinRandomPitch</code>, <code>MaxRandomPitch</code>: Every time a sound gets played, the pitch of the sound is randomized between these two values. Even just a small random pitch is enough to prevent a sound from sounding repetative, so it is a good idea to use this for the majority of effect sounds.</p>
+</li>
+<li><p><code>IsPositional</code>: If true, the sound will be attenuated according to the distance and direction towards the listener. If disabled, the sound will always sound identical, which is useful for UI sounds.</p>
+</li>
+<li><p><code>DopplerFactor</code>: How strong the <a href="https://en.wikipedia.org/wiki/Doppler_effect">Doppler Effect</a> shall be for this sound. Be careful to only enable this for sounds that really need it, since it costs additional performance and often sounds broken, since game characters typically move way faster than possible in real life. This is only relevant for positional sounds.</p>
+</li>
+<li><p><code>SoundSize</code>: How large the sound source is in the world. Within this radius, sounds are always equally loud and appear to be coming from all directions. Be careful not to set this too large, as it also affects how far a sound can be audible, at all. This is only relevant for positional sounds.</p>
+</li>
+<li><p><code>Rolloff</code>: How quickly a sound drops in volume over distance. This is only relevant for positional sounds.</p>
 </li>
 </ul>
-<p>Once you have configured everything, run <strong>Generate</strong> and then <strong>Open Project</strong>.</p>
-<h2 id="adding-a-custom-project">Adding a Custom Project</h2>
-<p>The easiest way to get started with a custom project, is to use the <a href="../custom-code/cpp/cpp-project-generation.html">C++ project generation</a>.</p>
-<p>Another method is to copy an existing sample, such as the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a>. For starters, just create it in the same location, within the EZ source tree. If you want to move it into your own repository, you can then reference its location as an <em>external project</em> (see below).</p>
-<h2 id="external-projects">External Projects</h2>
-<p>The options <strong>EZ_EXTERNAL_PROJECT_1-3</strong> allow you to specify folders outside the EZ repository, which will be integrated into the solution. This is the most practical way to store your own code in a separate repository, yet have it all compiled in the same solution. This makes building, linking and debugging code as convenient as if it was stored inside the EZ file structure.</p>
-<h2 id="build-filter">Build Filter</h2>
-<p>The option <strong>EZ_BUILD_FILTER</strong> allows you to strip down the code that is included in the solution. This is mainly meant for use cases where EZ is <a href="submodule.html">integrated as a submodule</a> and you only need parts of its functionality.</p>
-<h2 id="advanced-cmake-options">Advanced CMake Options</h2>
-<p>Checking <em>Advanced</em> in the CMake GUI will show additional options to configure the EZ build. These are mostly used to remove specific 3rd party code (and all dependent features). This is particularly helpful, if you want to build EZ on a platform on which one of the dependencies may not compile.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="supported-platforms.html">Supported Platforms</a></li>
-<li><a href="../custom-code/cpp/cpp-project-generation.html">C++ Project Generation</a></li>
-<li><a href="submodule.html">ezEngine as a Submodule</a></li>
+<li><a href="ma-overview.html">MiniAudio Integration</a></li>
+<li><a href="ma-sound-component.html">MiniAudio Sound Component</a></li>
+<li><a href="../../assets/assets-overview.html">Assets</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/build/cmake-config.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/miniaudio/ma-sound-asset.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

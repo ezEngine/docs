@@ -99,7 +99,7 @@
 <p>An alternative to custom data is the <a href="config-file-resource.html">config file resource</a>, though it has no editor integration.</p>
 <h2 id="creating-custom-data-types">Creating Custom Data Types</h2>
 <p><em>Custom data</em> types are fully defined in C++ code.</p>
-<p>To create a new custom data type, derive from the <code>ezCustomData</code> base class and add reflection capabilities. Then add all the properties that you need. Additionally we need to declare a dedicated <a href="../runtime/resource-management.html">resource (TODO)</a> for your data type.</p>
+<p>To create a new custom data type, derive from the <code>ezCustomData</code> base class and add reflection capabilities. Then add all the properties that you need. Additionally we need to declare a dedicated <a href="../runtime/resource-management.html">resource</a> for your data type.</p>
 <p>The code snippet below shows what should be added to a <em>header file (.h)</em>:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: customdata-decl -->
 <pre><code class="lang-cpp">class SampleCustomData : public ezCustomData
@@ -158,7 +158,7 @@ EZ_DEFINE_CUSTOM_DATA_RESOURCE(SampleCustomData);
 <p>Make sure to add the necessary asset browser attribute, otherwise it only shows up as an ordinary string property.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
-<p>Using a reflected resource handle isn't strictly necessary, you can also get a custom data resource directly in code by using the <a href="../assets/assets-overview.html#asset-guid">asset GUID</a> to <a href="../runtime/resource-management.html">load the resource (TODO)</a> manually. It is just more convenient and enables you to select the desired resource in the editor.</p>
+<p>Using a reflected resource handle isn't strictly necessary, you can also get a custom data resource directly in code by using the <a href="../assets/assets-overview.html#asset-guid">asset GUID</a> to <a href="../runtime/resource-management.html">load the resource</a> manually. It is just more convenient and enables you to select the desired resource in the editor.</p>
 </blockquote>
 <p>Now when you look at the properties of your component in the editor, it should show a field that allows you to select <em>custom data assets</em>.</p>
 <blockquote>
@@ -178,7 +178,7 @@ if (pCustomDataResource.GetAcquireResult() == ezResourceAcquireResult::Final)
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <p>As you can see in the snippet above, once you have a <em>resource lock</em> you can access your custom data type like a regular C++ class. Make sure not to hold direct pointers to the data struct, but always go through the resource lock and keep the resource handle around for the entire duration that you potentially want to access the resource, as it determines the resource's lifetime.</p>
-<p>For more details about how to use resources, see the <a href="../runtime/resource-management.html">resource management (TODO)</a> chapter.</p>
+<p>For more details about how to use resources, see the <a href="../runtime/resource-management.html">resource management</a> chapter.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="config-file-resource.html">Config File Resource</a></li>

@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>FMOD Sound Event Asset | ezEngine </title>
+      <title>MiniAudio Sound Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="FMOD Sound Event Asset | ezEngine ">
+      <meta name="title" content="MiniAudio Sound Component | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-soundevent-asset.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/miniaudio/ma-sound-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,23 +87,40 @@
         </div>
 
         <article data-uid="">
-<h1 id="fmod-sound-event-asset">FMOD Sound Event Asset</h1>
+<h1 id="miniaudio-sound-component">MiniAudio Sound Component</h1>
 
-<p>The <em>sound event asset</em> represents a single FMOD sound event. An event typically represents an actual sound, but may also be something like a reverb effect. Sound events are very versatile, for details refer to the FMOD documentation.</p>
-<p>You don't create sound event assets. Instead, when you transform a <a href="fmod-soundbank-asset.html">sound bank asset</a>, for every event in the FMOD sound bank, one sound event asset appears in the <a href="../assets/asset-browser.html">asset browser</a>.</p>
-<p>Sound event assets are <em>virtual assets</em>, they don't have a representation on disk. They mainly exist as a UI element, such that you can browse for and select them in the <a href="fmod-event-component.html">sound event component</a>.</p>
-<p>You can also instantiate sound events by dragging a sound event asset from the asset browser into a scene. This will automatically create a <a href="../runtime/world/game-objects.html">game object</a> and attach an <a href="fmod-event-component.html">FMOD event component</a>.</p>
+<p>The <em>MiniAudio sound component</em> plays an instance of a <a href="ma-sound-asset.html">MiniAudio sound asset</a> at its location.</p>
+<p>It will randomize the sound playback according to the sound asset properties.</p>
+<p>If the sound is positional, the location of the object is important to determine attenuation and direction in relation to the <a href="ma-listener-component.html">listener</a>. If it is non-positional, the location of the game object is irrelevant.</p>
+<p>If the sound asset is configured to be looping, the playback can only be stopped by either deleting the component or object, or by programmatically calling <code>Stop()</code> or <code>FadeOut()</code> on the component (for instance through a <a href="../../custom-code/visual-script/visual-script-overview.html">visual script</a>).</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Sound</code>: The <a href="ma-sound-asset.html">sound asset</a> that will be played by this component.</li>
+<li><code>Paused</code>: If set, the referenced sound won't start playing at start. Toggling this value programmatically will pause/resume a playing sound.</li>
+<li><code>Volume</code>: Adjusts the volume for this sound.</li>
+<li><code>Pitch</code>: Higher pitch means the sound plays faster, a lower pitch makes it play slower (and at lower frequency).</li>
+<li><code>NoGlobalPitch</code>: If disabled, changing the <a href="../../runtime/world/worlds.html">world</a> clock speed (game speed) also affects the playback of sounds. For instance, slowing down time will make sounds play back slower and at lower frequency. For sounds where this is not desired, enable this option.</li>
+<li><code>OnFinishedAction</code>: For sounds that end by themselves, this option allows you to specify whether the component should delete itself or its entire object afterwards, or restart the sound playback to create a looping effect that includes randomization.</li>
+</ul>
+<h2 id="component-script-functions">Component Script Functions</h2>
+<ul>
+<li><code>Play()</code>: Starts or resumes playing the sound, if it isn't already playing.</li>
+<li><code>Pause()</code>: Pauses a currently playing sound.</li>
+<li><code>Stop()</code>: Stops (and rewinds) playback of a sound. If followed by <code>Play()</code> the sound will be played from the beginning.</li>
+<li><code>FadeOut(duration)</code>: Similar to <code>Stop()</code> but fades the sound out over the given duration for a less jarring stop.</li>
+<li><code>StartOneShot()</code>: Plays an instance of the sound at the current location and with the current properties of the component, but detatches it from the component. Only allowed for non-looping sounds. When this is used, the component is typically not used for playback itself.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="fmod-overview.html">FMOD Integration</a></li>
-<li><a href="fmod-soundbank-asset.html">FMOD Sound Bank Asset</a></li>
-<li><a href="../assets/assets-overview.html">Assets</a></li>
+<li><a href="ma-overview.html">MiniAudio Integration</a></li>
+<li><a href="ma-sound-asset.html">MiniAudio Sound Asset</a></li>
+<li><a href="ma-listener-component.html">MiniAudio Listener Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-soundevent-asset.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/miniaudio/ma-sound-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

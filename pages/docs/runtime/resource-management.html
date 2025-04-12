@@ -89,9 +89,88 @@
         <article data-uid="">
 <h1 id="resource-management">Resource Management</h1>
 
-<!-- PAGE IS TODO -->
-<p>Resource management is fully functional, but currently undocumented.</p>
+<p>In the majoriy of cases, resources are binary representations of <a href="../assets/assets-overview.html">assets</a> that are stored on disk. Resources can also be dynamically created at runtime based on a <em>resource descriptor</em>. All resources derive from the <a href="https://ezengine.github.io/api-docs/d3/d0a/classez_resource.htm">ezResource</a> base class. You cannot create or access these directly. Instead, they are managed by the <a href="https://ezengine.github.io/api-docs/dc/d99/classez_resource_manager.htm">ezResourceManager</a>, which is a global singleton. In the chapters below, the following concepts will be used:</p>
+<ul>
+<li><strong>Resource ID</strong>: This is a globally unique identifier, in the form of a case-sensitive string. It can be an asset GUID or a relative path into a data directory or a completely arbitrary string in case of runtime-generated resources. The resource ID must be provided when loading or creating a resource.</li>
+<li><strong>Resource Handle</strong>: User code should never store a pointer to a resource. Instead, a handle to a resource should be stored which is like a shared pointer (e.g. it increases the reference count of the resource). Handles come in two flavors: <code>ezTypelessResourceHandle</code> and <code>ezTypedResourceHandle</code>. The typeless variant allows you to store a handle to any resource of any type while the typed version only allows you to store a reference to one specific resource type. Typically there is a typed resource handle declaration for each resource type, see for example <code>ezParticleEffectResourceHandle</code> for particle resources. Note that storing a resource handle marks it as <em>in use</em> which prevents unloading of the resource. It is important to keep handles to resourcees around, that will be used soon, but if a handle isn't cleaned up properly, it will keep data loaded unnecessarily. So be careful where you store resource handles.</li>
+<li><strong>Resource Descriptor</strong>: When creating a resource, you can't just call the constructor. Instead, you need to fill out a <em>resource descriptor</em> that defines the resource and tells the <em>resource manager</em> to create the resource for you via e.g. <code>ezResourceManager::CreateResource</code>.</li>
+<li><strong>Resource Pointer</strong>: At some point you will want to access the content of a resource. As resource management is heavily multi-threaded, these accesses must happen by acquiring a lock to the resource. This is usually done via the <code>ezResourceLock</code>, which is explained later. The pointer must only be accessed under the lock and not stored after the lock is released.</li>
+<li><strong>Resource State</strong>: A resource is always in one of the following states:
+<ul>
+<li><strong>Invalid</strong>: The resource no longer exists.</li>
+<li><strong>Unloaded</strong>: The resource is not loaded yet. Each resource that gets loaded by the resource manager starts in this state.</li>
+<li><strong>LoadedResourceMissing</strong>: The resource failed to load. Most likely it is missing on disk.</li>
+<li><strong>Loaded</strong>: The resource is loaded at some level of quality and can be used.</li>
+</ul>
+</li>
+<li><strong>Fallback Resource</strong>: If a resource isn't loaded yet, a fallback resource can be returned by the <em>resource manager</em>. For this to work, either the resource type or the individual resource must provide a fallback resource and the user must acquire the resource with <code>ezResourceAcquireMode::AllowLoadingFallback</code>.</li>
+<li><strong>Quality Levels</strong>: Some resources can exist at multiple quality levels. E.g. textures can have some of their mip levels missing. The resource is considered loaded as long as any quality level is loaded.</li>
+</ul>
+<h2 id="loading-resources">Loading Resources</h2>
+<p>To load a resource, you will usually provide the <a href="../assets/assets-overview.html#asset-guid">asset guid</a> or a relative path to a file. Note that this does not load the resource immediately. The resource manager is lazy and only loads resources once they get <a href="#acquiring-resources">acquired</a>. Similiarly, the resource manager unloads resources again, when no handles reference them anymore, and they haven't been acquiring in a while.</p>
+<pre><code class="lang-cpp">ezShaderResourceHandle hShader = ezResourceManager::LoadResource&lt;ezShaderResource&gt;(&quot;ResourceID&quot;);
+</code></pre>
+<h2 id="creating-runtime-resources">Creating Runtime Resources</h2>
+<p>To create a resource at runtime, you need to fill out the resource type specific resource descriptor. Below is an example of an <code>ezMeshBufferResource</code> created from an <code>ezGeometry</code> instance:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: resource-management-create -->
+<pre><code class="lang-cpp">ezGeometry geom;
+geom.AddBox(ezVec3(2.0f), false);
+
+ezMeshBufferResourceDescriptor desc;
+desc.AddStream(ezGALVertexAttributeSemantic::Position, ezGALResourceFormat::XYZFloat);
+desc.AllocateStreamsFromGeometry(geom, ezGALPrimitiveTopology::Triangles);
+
+s_hSolidBoxMeshBuffer = ezResourceManager::CreateResource&lt;ezMeshBufferResource&gt;(&quot;DebugSolidBox&quot;, std::move(desc), &quot;Mesh for Rendering Debug Solid Boxes&quot;);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<p>Use <code>GetOrCreateResource</code> instead if you expect your resource to be created by multiple threads at the same time. E.g. your code runs inside a task or other multi-threaded environment. Unlike resources that are loaded via <code>ezResourceManager::LoadResource</code>, creating resources will block until the resource is fully created (i.e. in <em>Loaded</em> state) before returning to the caller. Therefore, complex resources should ideally be created inside tasks and not inside the runtime loop.</p>
+<h2 id="acquiring-resources">Acquiring Resources</h2>
+<p>To access a resource, it needs to be acquired first. This is done by creating a scoped <code>ezResourceLock</code> on the handle. There are multiple modes for how a resource can be acquired, as defined by <code>ezResourceAcquireMode</code>:</p>
+<ul>
+<li><strong>PointerOnly</strong>: This will only acquire the pointer to the resource. It will not trigger the resource manager to actually load this resource from disk. Use this if you merely want to e.g. register to <a href="#listening-for-resource-changes">resource changes</a>.</li>
+<li><strong>BlockTillLoaded</strong>: As the name suggests, this blocks the current thread until the resource has switched to the <em>Loaded</em> state. This does NOT mean that all quality levels are loaded.</li>
+<li><strong>AllowLoadingFallback</strong>: If the resource is loaded, it is immediately returned. If not, a fallback resouce is returned instead. If no fallback exists, this will assert. Prefer this version as is does not block.</li>
+</ul>
+<p>For additional modes and further information, please refer to the <code>ezResourceAcquireMode</code> declaration.
+The resource manager keeps track, if and when resources are attempted to be acquired, to decide which resources to load from disk. Thus, it is important that you try to acquire a resource, which you want to load, using one of the <code>AllowLoadingFallback</code> variants at least once. Otherwise the resource will never switch to the <em>loaded</em> state. Alternatively, you can also call <code>ezResourceManager::PreloadResource()</code>.</p>
+<pre><code class="lang-cpp">ezShaderResourceHandle hShader = ezResourceManager::LoadResource&lt;ezShaderResource&gt;(&quot;ResourceID&quot;);
+{
+  ezResourceLock&lt;ezShaderResource&gt; pShader(hShader, ezResourceAcquireMode::AllowLoadingFallback);
+  ezResourceAcquireResult result = pShader.GetAcquireResult();
+  if (result == ezResourceAcquireResult::LoadingFallback)
+  {
+    // A fallback was returned as the resource was not loaded yet.
+    // In many cases the fallback resource can be used directly as a replacement for the actual resource.
+    // Should the final result really be required, it is best to skip the operation until a later frame.
+  }
+  else if (result == ezResourceAcquireResult::Final)
+  {
+    // The resource is loaded and can now be accesed under the lock.
+    pShader-&gt;...
+  }
+}
+</code></pre>
+<h2 id="listening-for-resource-changes">Listening for Resource Changes</h2>
+<p>You can either listen to a single resource's state changes or you can listen to the same for all resource via the resource manager. Note that if you add an event handler to a single resource's event, you need to also hold a handle to that resource as you can't unsubscribe inside the event handler callback when the resource gets destroyed.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: resource-management-listen -->
+<pre><code class="lang-cpp">// Subscribe to resource changes of the shader
+ezResourceLock&lt;ezShaderResource&gt; pShader(m_hShader, ezResourceAcquireMode::PointerOnly);
+pShader-&gt;m_ResourceEvents.AddEventHandler(ezMakeDelegate(&amp;ezMaterialManager::MaterialShaderConstants::OnResourceEvent, this), m_ShaderResourceEventSubscriber);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<!-- BEGIN-DOCS-CODE-SNIPPET: resource-management-listen-all -->
+<pre><code class="lang-cpp">// Listening to all resource events
+ezResourceManager::GetResourceEvents().AddEventHandler(ezMakeDelegate(&amp;WorldData::ResourceEventHandler, this));
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="unloading-of-resources">Unloading of Resources</h2>
+<p>There are two ways a resource can be unloaded: due to lack of handles pointing to the resource and due to forced resource unloading (tooling only).
+The resource manager will enumerate resources with no handles on them and will start unloading them after a certain time of inactivity.</p>
+<p>Forced resource unloading can be triggered via <code>ezResourceManager::ReloadAllResources</code>, <code>ezResourceManager::ReloadResource</code> and related functions on the resource manager. Calling these functions will immediately lock and unload the resource, switching it into the <em>Unloaded</em> state. The next resource acquisition will trigger loading the resource again. This means that resource unload and reload can potentially happen at any time during the frame. Some resources will have custom logic to e.g. double buffer its state to make sure resource switching happens at fixed times in the frame.</p>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../assets/assets-overview.html">Asset Overview</a></li>
+</ul>
 
 </article>
 

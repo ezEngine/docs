@@ -90,7 +90,7 @@
 <h1 id="ma-devlog-3---sound">MA Devlog 3 - Sound</h1>
 
 <p>Today I spent some time on improving and polishing what I built so far.</p>
-<p>First I set up sound. EZ uses Fmod, so <a href="../../docs/sound/fmod-overview.html">following the documentation</a> and my own tutorial video, I created a new Fmod Studio project, downloaded a couple of sounds from &lt;freesound.org&gt; and added sounds for footsteps, the player's projectile and the trap.</p>
+<p>First I set up sound. EZ uses Fmod, so <a href="../../docs/sound/fmod/fmod-overview.html">following the documentation</a> and my own tutorial video, I created a new Fmod Studio project, downloaded a couple of sounds from &lt;freesound.org&gt; and added sounds for footsteps, the player's projectile and the trap.</p>
 <p>Footsteps for the player are quite easy, because the <a href="../../docs/physics/jolt/special/jolt-character-controller.html">character controller</a> already supports this through <a href="../../docs/materials/surfaces.html">surface interactions</a>. Basically, whenever something needs to interact with a surface, for example a bullet hitting a wall, we can easily spawn a <em>surface interaction</em>. Usually polygons are linked to a surface and the surface acts as a lookup table. So if I walk over a stone surface and I want to spawn a <em>footstep</em> interaction, the stone surface defines which prefab to use, and if I walk over a metal surface, it may define a different prefab to use.</p>
 <p><img src="media/devlog3/ma-dl3-image1.png" alt="Footstep config"></p>
 <p>Surfaces are hierarchical, so both stone and metal surfaces are built on top of the <em>Default</em> surface, and as long as they don't define an override, the value from the <em>Default</em> surface is used.</p>

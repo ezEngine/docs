@@ -5752,50 +5752,50 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/sound/fmod-event-component.md",
+      "source_relative_path": "pages/docs/sound/fmod/fmod-event-component.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/sound/fmod-event-component.html"
+          "relative_path": "pages/docs/sound/fmod/fmod-event-component.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/sound/fmod-listener-component.md",
+      "source_relative_path": "pages/docs/sound/fmod/fmod-listener-component.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/sound/fmod-listener-component.html"
+          "relative_path": "pages/docs/sound/fmod/fmod-listener-component.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/sound/fmod-overview.md",
+      "source_relative_path": "pages/docs/sound/fmod/fmod-overview.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/sound/fmod-overview.html"
+          "relative_path": "pages/docs/sound/fmod/fmod-overview.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/sound/fmod-soundbank-asset.md",
+      "source_relative_path": "pages/docs/sound/fmod/fmod-soundbank-asset.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/sound/fmod-soundbank-asset.html"
+          "relative_path": "pages/docs/sound/fmod/fmod-soundbank-asset.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/sound/fmod-soundevent-asset.md",
+      "source_relative_path": "pages/docs/sound/fmod/fmod-soundevent-asset.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/sound/fmod-soundevent-asset.html"
+          "relative_path": "pages/docs/sound/fmod/fmod-soundevent-asset.html"
         }
       },
       "version": ""
@@ -5836,6 +5836,46 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/sound/media/sound-ui.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/miniaudio/ma-listener-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/miniaudio/ma-listener-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/miniaudio/ma-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/miniaudio/ma-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/miniaudio/ma-sound-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/miniaudio/ma-sound-asset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/sound/miniaudio/ma-sound-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/sound/miniaudio/ma-sound-component.html"
         }
       },
       "version": ""
@@ -6284,11 +6324,11 @@
       "type": "Toc",
       "source_relative_path": "pages/docs/toc.md",
       "output": {
-        ".json": {
-          "relative_path": "pages/docs/toc.json"
-        },
         ".html": {
           "relative_path": "pages/docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/docs/toc.json"
         }
       },
       "version": ""
@@ -6577,11 +6617,11 @@
       "type": "Toc",
       "source_relative_path": "pages/getting-started/toc.md",
       "output": {
-        ".json": {
-          "relative_path": "pages/getting-started/toc.json"
-        },
         ".html": {
           "relative_path": "pages/getting-started/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/getting-started/toc.json"
         }
       },
       "version": ""
@@ -7510,11 +7550,11 @@
       "type": "Toc",
       "source_relative_path": "pages/samples/toc.md",
       "output": {
-        ".json": {
-          "relative_path": "pages/samples/toc.json"
-        },
         ".html": {
           "relative_path": "pages/samples/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/samples/toc.json"
         }
       },
       "version": ""
@@ -7533,11 +7573,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""

@@ -161,13 +161,21 @@ DEBUG
 ALPHATEST
 CAMERA_MODE = CAMERA_MODE_PERSPECTIVE
 </code></pre>
-<h3 id="materialparameter-materialconfig">MATERIALPARAMETER, MATERIALCONFIG</h3>
-<p>If the shader is used as a material shader, two more sections are used:</p>
-<ul>
-<li><code>MATERIALPARAMETER</code>: Used to define which permutation variables should be allowed to be changed on a material in the editor. This is explained in detail in <a href="shader-permutation-variables.html#exposing-permutations-to-materials">exposing permutation variables to materials</a>.</li>
-<li><code>MATERIALCONFIG</code>: This section controls when a material is rendered during a frame. This is done by this line: <code>RenderDataCategory = LitOpaque</code>. You can use the preprocessor to change the value depending on some permutation variable, if neccessary. The valid values for <code>RenderDataCategory</code> are defined in code via <code>ezRenderData::RegisterCategory</code>. Commonly used values are <code>LitOpaque</code> for opaque materials, <code>LitMasked</code> for alpha-tested materials and <code>LitTransparent</code> for alpha blended materials.</li>
-</ul>
-<pre><code class="lang-cpp">[MATERIALCONFIG]
+<h3 id="material-sections">Material Sections</h3>
+<p>Material shaders are special and require further sections expose parameters to the engine and editor.</p>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<p>These sections have changed with a recent refactor. If you need to migrate from the old system, please follow the steps here: <a href="https://github.com/ezEngine/ezEngine/pull/1516">Material Refactor</a>.</p>
+</blockquote>
+<pre><code class="lang-cpp">[MATERIALCONSTANTS]
+COLOR4F(BaseColor);
+
+[MATERIALPARAMETER]
+Permutation BLEND_MODE;
+Color BaseColor @Default(Color(1.0, 1.0, 1.0));
+Texture2D BaseTexture @Default(&quot;{ ac614d7c-2b31-4a7b-aa0c-c5d8200b7b89 }&quot;);
+
+[MATERIALCONFIG]
 #if (BLEND_MODE == BLEND_MODE_OPAQUE)
     RenderDataCategory = LitOpaque
 #elif (BLEND_MODE == BLEND_MODE_MASKED)
@@ -175,14 +183,53 @@ CAMERA_MODE = CAMERA_MODE_PERSPECTIVE
 #else
     RenderDataCategory = LitTransparent
 #endif
+
+[PIXELSHADER]
+
+Texture2D BaseTexture;
+SamplerState BaseTexture_AutoSampler;
+
+float4 main(VS_OUT a) : SV_Target
+{
+  float4 color = BaseTexture.Sample(BaseTexture_AutoSampler, ...).rgba;
+  return color * GetMaterialData(BaseColor).rgba;
+}
 </code></pre>
+<h4 id="materialconstants-this-sections-defines-per-material-constants"><code>MATERIALCONSTANTS</code>: This sections defines per-material constants</h4>
+<p>The material constants are what eventually maps to constant buffer (hence the name of the section) or structured buffer in the engine, depending on the renderer feature set. These can be changed at runtime for each material and also exposed to the editor.
+These need to be constant macros defined in <code>Data/Base/Shaders/Common/ConstantBufferMacros.h</code>, e.g. <code>FLOAT1(ConstantName);</code>. Only these macros are supported:</p>
+<ul>
+<li><code>FLOAT1</code>, <code>FLOAT2</code>, <code>FLOAT3</code>, <code>FLOAT4</code>: Maps to HLSL <code>float</code>, <code>float2</code> etc.</li>
+<li><code>INT1</code>, <code>INT2</code>, <code>INT3</code>, <code>INT4</code>: Maps to HLSL <code>int</code>, <code>int2</code> etc.</li>
+<li><code>UINT1</code>, <code>UINT2</code>, <code>UINT3</code>, <code>UINT4</code>: Maps to HLSL <code>uint</code>, <code>uint2</code> etc.</li>
+<li><code>MAT3</code>, <code>MAT4</code>: Maps to HLSL <code>float3x3</code> and <code>float4x4</code>.</li>
+<li><code>TRANSFORM</code>: Note, that there is no HLSL type for this, instead this maps to a struct with three rows <code>r0</code>, <code>r1</code> and <code>r2</code>.</li>
+<li><code>COLOR4F</code>: Note, that there is no color type in HLSL, so this maps to <code>float4</code> instead.</li>
+<li><code>BOOL1</code>: Note, that the HLSL <code>bool</code> is always 4 bytes wide. Consider using flags inside an <code>UINT1</code> instead to safe space if you have multiple bool variables in your constants.</li>
+</ul>
+<p>To access these in the shader, use the macro <code>GetMaterialData(ConstantName)</code> to access the constant's value.</p>
+<h4 id="materialparameter-what-parameters-to-expose-on-a-material-in-the-editor"><code>MATERIALPARAMETER</code>: What parameters to expose on a material in the editor</h4>
+<p>There are three categories:</p>
+<ul>
+<li><strong>Permutation variables</strong>: Add the name of a permutation variable to expose it to the user in the editor. This is explained in detail in <a href="shader-permutation-variables.html#exposing-permutations-to-materials">exposing permutation variables to materials</a>.</li>
+<li><strong>Material constants</strong>: To expose, these need to match exactly the name that was used in the <code>MATERIALCONSTANTS</code> section described above. Note that the type changes from the macro name to the HLSL name, e.g. <code>FLOAT1(MaskThreshold);</code> becomes <code>float MaskThreshold @Default(0.25);</code>.</li>
+<li><strong>Textures</strong>: Both <code>Texture2D</code> and <code>TextureCube</code> are supported. Use the same syntax as you would for declaring a texture in HLSL.</li>
+</ul>
+<p>Parameters can have attributes that define default value and other meta data for the editor:</p>
+<ul>
+<li><code>@Default(&lt;VALUE_TYPE&gt;)</code>: Can be used on constants and textures to define the default value.</li>
+<li><code>@Clamp(0.0, 1.0)</code>: Usable on float and int parameters, this can be used to clamp the value the user can set in the editor to a fixed range.</li>
+</ul>
+<h4 id="materialconfig-this-section-controls-when-a-material-is-rendered-during-a-frame"><code>MATERIALCONFIG</code>: This section controls when a material is rendered during a frame</h4>
+<p>This is done by changing the <em>RenderDataCategory</em> with a line like this: <code>RenderDataCategory = LitOpaque</code>. You can use the preprocessor to change the value depending on some permutation variable, if neccessary. The valid values for <code>RenderDataCategory</code> are defined in code via <code>ezRenderData::RegisterCategory</code>. Commonly used values are <code>LitOpaque</code> for opaque materials, <code>LitMasked</code> for alpha-tested materials and <code>LitTransparent</code> for alpha blended materials.</p>
 <h3 id="renderstate">RENDERSTATE</h3>
 <p>Each shader defines the complete state of the renderer. This includes, but is not limited to blendind, rasterizer, depth stencil etc. You can use permutations variables and preprcessor macros to change the render state of shader permutations.
 This is explained in more detail on the <a href="shader-render-state.html">shader render state</a> page.</p>
-<p>[RENDERSTATE]
+<pre><code class="lang-cpp">[RENDERSTATE]
 #if WIREFRAME == 1
-WireFrame = true
-#endif</p>
+  WireFrame = true
+#endif
+</code></pre>
 <h3 id="shader">SHADER</h3>
 <p>The <code>SHADER</code> section contains code that is shared among all shader stages. The content is simply prepended to all used stages before compiling.</p>
 <h3 id="shader-stages">*SHADER stages</h3>

@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>FMOD Listener Component | ezEngine </title>
+      <title>FMOD Sound Event Asset | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="FMOD Listener Component | ezEngine ">
+      <meta name="title" content="FMOD Sound Event Asset | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-listener-component.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod/fmod-soundevent-asset.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,30 +87,23 @@
         </div>
 
         <article data-uid="">
-<h1 id="fmod-listener-component">FMOD Listener Component</h1>
+<h1 id="fmod-sound-event-asset">FMOD Sound Event Asset</h1>
 
-<p>The <em>FMOD listener component</em> represents the position and direction from where the player perceives sound. Every game must have exactly one listener component in the scene, to instruct FMOD how to compute the spatial sound.</p>
-<p>For first-person and third-person games the listener component would be attached to the character controller, typically the same node where the main <a href="../graphics/camera-component.html">camera component</a> is located.</p>
-<p>For other kinds of games positioning the listener component can be more tricky. For example in a top down strategy game, or a 2D side scroller, you may move the camera very far out (to achieve the desired perspective). Though, if you were to place the listener component at the same position, you would either not hear anything (too far away), or if you adjust sound distances such that you hear something, you may hear sounds that are very far off screen.</p>
-<p>In such situations it is better to move the listener component much closer to the action. The image below shows such a setup, where the listener is much closer to the action than the camera:</p>
-<p><img src="media/listener.png" alt="Listener"></p>
-<p>The red cone represents what the camera sees. The green circle visualizes the area in which sounds are audible.</p>
-<h2 id="multiple-listeners">Multiple Listeners</h2>
-<p>If you build a multi-player game, you should be careful to only instantiate a single listener component for the local player, and don't accidentally duplicate the listeners from remote players.</p>
-<p>However, FMOD also supports multiple listeners locally, in case you want to do split screen multi-player on the same machine. This is automatically enabled if multiple listeners are in the scene, with non-zero <code>ListenerIndex</code>. In multi-listener mode FMOD will deactivate many spatial audio effects and try to render the audio in the most sensible way. For details refer to the FMOD documentation.</p>
-<h2 id="component-properties">Component Properties</h2>
-<ul>
-<li><code>ListenerIndex</code>: Which listener this component represents. Should always be zero, unless you do a split-screen multi-player game.</li>
-</ul>
+<p>The <em>sound event asset</em> represents a single FMOD sound event. An event typically represents an actual sound, but may also be something like a reverb effect. Sound events are very versatile, for details refer to the FMOD documentation.</p>
+<p>You don't create sound event assets. Instead, when you transform a <a href="fmod-soundbank-asset.html">sound bank asset</a>, for every event in the FMOD sound bank, one sound event asset appears in the <a href="../../assets/asset-browser.html">asset browser</a>.</p>
+<p>Sound event assets are <em>virtual assets</em>, they don't have a representation on disk. They mainly exist as a UI element, such that you can browse for and select them in the <a href="fmod-event-component.html">sound event component</a>.</p>
+<p>You can also instantiate sound events by dragging a sound event asset from the asset browser into a scene. This will automatically create a <a href="../../runtime/world/game-objects.html">game object</a> and attach an <a href="fmod-event-component.html">FMOD event component</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="fmod-overview.html">FMOD Integration</a></li>
+<li><a href="fmod-soundbank-asset.html">FMOD Sound Bank Asset</a></li>
+<li><a href="../../assets/assets-overview.html">Assets</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-listener-component.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod/fmod-soundevent-asset.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

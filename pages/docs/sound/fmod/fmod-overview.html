@@ -6,16 +6,16 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="FMOD Integration | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod/fmod-overview.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -103,7 +103,7 @@
 <li>Create a free account at <a href="https://www.fmod.com">fmod.com</a> and sign in.</li>
 <li>Download and install the <em>FMOD Studio API SDK for Windows</em> (or whichever platform you need).</li>
 <li>Download and install <em>FMOD Studio</em> (only needed by people who want to edit FMOD projects).</li>
-<li>Enable FMOD in the <a href="../build/cmake-config.html">CMake configuration</a>.</li>
+<li>Enable FMOD in the <a href="../../build/cmake-config.html">CMake configuration</a>.</li>
 <li>Clean the CMake cache and regenerate. This way CMake will pick up the installed FMOD SDK rather than the built-in one.</li>
 <li>Compile the engine.</li>
 </ol>
@@ -125,7 +125,7 @@
 </ul>
 <h2 id="fmod-project-settings">FMOD Project Settings</h2>
 <p>For project wide FMOD settings, go to <em>Project &gt; Plugin Settings &gt; FMOD Project Settings...</em></p>
-<p><img src="media/fmod-settings.png" alt="FMOD settings"></p>
+<p><img src="../media/fmod-settings.png" alt="FMOD settings"></p>
 <blockquote>
 <p><strong>Important:</strong></p>
 <p>Although you can configure profiles for multiple platforms, at the moment only the <strong>Desktop</strong> profile will be used.</p>
@@ -134,24 +134,24 @@
 <p>The other options are best left at their default values. See the FMOD documentation for details.</p>
 <p>Once you have these things set up, you can create your first <a href="fmod-soundbank-asset.html">sound bank asset</a>, through which you get FMOD sound data into the engine.</p>
 <h2 id="sample-data">Sample Data</h2>
-<p>A sample FMOD Studio project is available under <em>Data/Content/Sound</em>, including pre-exported sound banks. These are also used by the sample projects, such as the <a href="../../samples/testing-chambers.html">Testing Chambers</a>.</p>
+<p>A sample FMOD Studio project is available under <em>Data/Content/Sound</em>, including pre-exported sound banks. These are also used by the sample projects, such as the <a href="../../../samples/testing-chambers.html">Testing Chambers</a>.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
 <p>When opening the sample FMOD Studio projects from EZ, FMOD Studio may ask you to upgrade the project to the latest version. This should work fine.</p>
 </blockquote>
 <h2 id="scene-editing-settings">Scene Editing Settings</h2>
 <p>The FMOD editor plugin adds UI elements to <em>mute</em> sound entirely and to adjust the <em>master volume</em>:</p>
-<p><img src="media/sound-ui.jpg" alt="FMOD UI"></p>
+<p><img src="../media/sound-ui.jpg" alt="FMOD UI"></p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="sound-overview.html">Sound</a></li>
+<li><a href="../sound-overview.html">Sound</a></li>
 <li><a href="https://www.fmod.com">www.fmod.com</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod/fmod-overview.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

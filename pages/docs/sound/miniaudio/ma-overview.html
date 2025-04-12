@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Sound | ezEngine </title>
+      <title>MiniAudio Integration | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Sound | ezEngine ">
+      <meta name="title" content="MiniAudio Integration | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/sound-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/miniaudio/ma-overview.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,25 +87,30 @@
         </div>
 
         <article data-uid="">
-<h1 id="sound">Sound</h1>
+<h1 id="miniaudio-integration">MiniAudio Integration</h1>
 
-<p>The engine doesn't have sound support directly built-in, instead all sound functionality is provided through <a href="../custom-code/cpp/engine-plugins.html">plugins</a>.</p>
-<h2 id="fmod-plugin">FMOD Plugin</h2>
-<p>ezEngine comes with support for <a href="https://www.fmod.com/">FMOD</a>.</p>
-<p>For details, please checkout the <a href="fmod/fmod-overview.html">page about FMOD</a>.</p>
-<h2 id="sound-interface">Sound Interface</h2>
-<p>The class <code>ezSoundInterface</code> is an abstract interface that allows you to set some very basic options, like the volume, or the current listener position. These features are mainly needed by the editor such that it can mute sounds and have the editor camera be the listener position, independent of which sound plugin ends up being used.</p>
-<p>A game can use this interface to adjust the volume of the entire game or specific channels. For more specific actions you need to query the interface of the actual implementation.</p>
+<p><a href="https://miniaud.io">MiniAudio</a> is a leight-weight, cross-platform audio solution. Its integration is provided as a <strong>free alternative</strong> to the <a href="../fmod/fmod-overview.html">FMOD integration</a>, for games that have fewer requirements for game audio. It is also easier to set up and use, especially if you are unfamiliar with FMOD.</p>
+<p>The MiniAudio integration supports both positional (3D) and non-positional <a href="ma-sound-component.html">sound sources</a>. The <a href="ma-listener-component.html">MiniAudio listener component</a> is used to control from where sound is perceived.</p>
+<p>The <a href="ma-sound-asset.html">MiniAudio sound asset</a> is used to get a <em>.WAV</em> or <em>.MP3</em> file into the engine and contains options for randomizing sound playback.</p>
+<p>Sounds can also be played programmatically, e.g. from <a href="../../custom-code/visual-script/visual-script-overview.html">visual scripts</a> or <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScripts</a>, using the script function <code>ezSound::PlaySound()</code>.</p>
+<h2 id="scene-editing-settings">Scene Editing Settings</h2>
+<p>The MiniAudio editor plugin adds UI elements to <em>mute</em> sound entirely and to adjust the <em>overal volume</em>:</p>
+<p><img src="../media/sound-ui.jpg" alt="MiniAudio UI"></p>
+<h2 id="limitations">Limitations</h2>
+<p>Currently, all instantiated sounds get played, no matter how far away they are. There is no <em>sound virtualization</em> and no culling. This is typically no problem for small games, but when you start making games with larger scenes, you may run into performance problems.</p>
+<p>The <em>attenuation model</em> of MiniAudio is also not particularly well suited for first-person and third-person types of games, as it lacks control for game designers.</p>
+<p>Overall, the feature set of MiniAudio is not comparable to what <a href="../fmod/fmod-overview.html">FMOD</a> offers, and the integration into EZ is even more limited. Some functionality can and may get added to the integration, but if you do need significantly more control or plan on building large worlds where many sounds may play simultaneously, FMOD is the better choice.</p>
+<p>The concepts of how MiniAudio and FMOD are integrated into EZ are nearly identical, so it is possible to start with MiniAudio and switch to FMOD when needed. However, be aware that you would still need to adjust every object and every script that plays sound, as you would need to switch from the <a href="ma-sound-component.html">MiniAudio sound component</a> to the <a href="../fmod/fmod-event-component.html">FMOD event component</a> and adjust asset GUIDs in scripts.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="fmod/fmod-overview.html">FMOD Integration</a></li>
-<li><a href="miniaudio/ma-overview.html">MiniAudio Integration</a></li>
+<li><a href="../sound-overview.html">Sound</a></li>
+<li><a href="https://miniaud.io">MiniAudio</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/sound-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/miniaudio/ma-overview.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

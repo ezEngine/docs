@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Custom Code with Visual Scripts | ezEngine </title>
+      <title>FMOD Event Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Custom Code with Visual Scripts | ezEngine ">
+      <meta name="title" content="FMOD Event Component | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/visual-script-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod/fmod-event-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,33 +87,37 @@
         </div>
 
         <article data-uid="">
-<h1 id="custom-code-with-visual-scripts">Custom Code with Visual Scripts</h1>
+<h1 id="fmod-event-component">FMOD Event Component</h1>
 
-<p>The engine supports <em>visual scripting</em> as a way to execute custom logic without writing code. Visual scripting aims to be quick and easy to use, while providing a subset of the engine's features that is most useful for the intended use cases.</p>
-<p><img src="media/vs-state.png" alt="Visual Script"></p>
-<h2 id="visual-script-use-cases">Visual Script Use Cases</h2>
-<p>Visual scripting is meant for <strong>small scripts</strong> that deal with simple tasks. Often they act as glue code between other systems. For example to wait for an event from one component and then instruct another component to do something. Such logic would be overly cumbersome to set up in C++, and the performance difference is negligible.</p>
-<p>Visual script code may also be used to quickly prototype behavior to get an idea how something might work. However, dealing with edge-cases and errors typically involves a lot of complex code, and once the stage is reached where a feature should be fully fledged out and polished, it might be better to migrate to C++.</p>
-<p>In general, visual scripting is <strong>no substitue for C++</strong>. It only provides a subset of the features. A lot of functionality is deliberately left inaccessible, such as working with <a href="../../runtime/resource-management.html">resources</a> or <a href="../../runtime/application/game-state.html">game states</a>. If you need to access them, you definitely should <a href="../cpp/cpp-overview.html">use C++</a>.</p>
-<h3 id="custom-components">Custom Components</h3>
-<p>The <a href="visual-script-class-asset.html">Visual Script Class Asset</a> allows you to write custom <a href="../../runtime/world/components.html">components</a> to interface with other components within the same object hierarchy.</p>
-<h3 id="custom-state-machine-states">Custom State Machine States</h3>
-<p>The <a href="visual-script-class-asset.html">Visual Script Class Asset</a> may also be used to write custom <a href="../game-logic/state-machine-asset.html#state-types">state machine states</a>. In this case the script code is executed by a state machine whenever the state is active.</p>
-<h2 id="performance-considerations">Performance Considerations</h2>
-<p>Most visual script code actually calls existing C++ functions. A custom virtual machine ministrates those calls. The execution is relatively fast and shouldn't be a concern for the intended use cases. It is more likely that you run into the limitations of <em>editing the script</em>, than performance bottlenecks.</p>
-<h2 id="video-introduction-to-visual-scripting">Video: Introduction to Visual Scripting</h2>
-<p>Click the image below to watch the video:</p>
-<p><a href="https://www.youtube.com/watch?v=0gVEXeWBF2Q"><img src="https://img.youtube.com/vi/0gVEXeWBF2Q/0.jpg" alt="video"></a></p>
+<p>The <em>FMOD event component</em> creates an instance of an FMOD event. An event is usually a 2D or 3D sound, but can also be an environmental effect that changes how other sounds are perceived. FMOD events are very powerful, which is why ezEngine doesn't need to have a large feature set of audio features. No matter what you want to do, pretty much anything is available through FMOD events.</p>
+<p>A description of FMOD events is out of scope for this documentation. Please see <a href="fmod-overview.html#using-fmod-studio">Using FMOD Studio</a> for learning resources.</p>
+<p>FMOD event components reference <a href="fmod-soundevent-asset.html">sound event assets</a>. The component plays the referenced sound. If the FMOD event has looping regions, the sound will play indefinitely, until it is stopped programmatically, or the component is deleted. There is no looping option on the component, since this feature controlled through FMOD Studio.</p>
+<p>Advanced FMOD features, like <em>sound cues</em> and adjusting <em>event parameters</em> are only accessible programmatically. For details please see the <a href="../../api-docs.html">API Docs</a> about <code>ezFmodEventComponent</code>.</p>
+<h2 id="sound-occlusion">Sound Occlusion</h2>
+<p>By default sounds are only attenuated by distance. FMOD doesn't have a representation of the 3D geometry and therefore can't muffle or disable sounds when they are (visually) occluded.</p>
+<p>The event component allows you to enable a simple physics raycast based heuristic to determine whether a sound source is occluded by a wall or larger obstacle. If enabled, the occlusion factor is computed and the FMOD event parameter <code>Occlusion</code> is passed into the event. It is your responsibility to set up the FMOD event such that this parameter exists and is used to adjust the event's volume.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>SoundEvent</code>: The <a href="fmod-soundevent-asset.html">sound event asset</a> that will be played by this component.</li>
+<li><code>Paused</code>: If set, the referenced sound won't start playing at start. Toggling this value programmatically will pause/resume a playing sound.</li>
+<li><code>Volume</code>: Adjusts the volume for this sound.</li>
+<li><code>Pitch</code>: Higher pitch means the sound plays faster, a lower pitch makes it play slower (and at lower frequency).</li>
+<li><code>NoGlobalPitch</code>: If disabled, changing the <a href="../../runtime/world/worlds.html">world</a> clock speed (game speed) also affects the playback of sounds. For instancing, slowing down time will make sounds play back slower and at lower frequency. For sounds where this is not desired, enable this option.</li>
+<li><code>UseOcclusion</code>: If enabled, the component will use physics raycasts to determine whether the sound source is occluded by geometry. The occlusion factor is passed to the FMOD event as the event parameter <code>Occlusion</code>.</li>
+<li><code>OcclusionThreshold</code>: How strongly the sound source must be occluded, before the occlusion value will be larger than zero.</li>
+<li><code>OcclusionCollisionLayer</code>: The physics <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for the occlusion raycasts.</li>
+<li><code>OnFinishedAction</code>: For sounds that end by themselves, this option allows you to specify whether the component should delete itself or its entire object afterwards.</li>
+<li><code>ShowDebugInfo</code>: If enabled, the component displays some statistics about its state.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../custom-code-overview.html">Custom Code</a></li>
-<li><a href="visual-script-class-asset.html">Visual Script Class Asset</a></li>
+<li><a href="fmod-overview.html">FMOD Integration</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/visual-script-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/sound/fmod/fmod-event-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
