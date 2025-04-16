@@ -1632,6 +1632,96 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/concepts/exposed-parameters.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/concepts/exposed-parameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/concepts/media/expose-property.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/concepts/media/expose-property.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/concepts/media/exposed-parameters.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/concepts/media/exposed-parameters.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/concepts/media/exposed-prefab-params.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/concepts/media/exposed-prefab-params.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/concepts/media/object-names.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/concepts/media/object-names.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/concepts/media/object-reference-menu.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/concepts/media/object-reference-menu.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/concepts/media/object-reference.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/concepts/media/object-reference.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/concepts/object-paths.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/concepts/object-paths.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/concepts/object-references.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/concepts/object-references.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/custom-code/angelscript/angelscript-overview.md",
       "output": {
         ".html": {
@@ -3262,6 +3352,46 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/camera/headbone-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/camera/headbone-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/camera/media/3pview.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/camera/media/3pview.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/gameplay/camera/media/3rdp-view.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/gameplay/camera/media/3rdp-view.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/camera/thirdpersonview-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/camera/thirdpersonview-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/gameplay/creature-crawl-component.md",
       "output": {
         ".html": {
@@ -3276,16 +3406,6 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/gameplay/grabbable-item-component.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/gameplay/headbone-component.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/gameplay/headbone-component.html"
         }
       },
       "version": ""
@@ -5352,16 +5472,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/scenes/exposed-parameters.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/scenes/exposed-parameters.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "pages/docs/scenes/gizmos.md",
       "output": {
         ".html": {
@@ -5502,36 +5612,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/scenes/media/expose-property.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/scenes/media/expose-property.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/docs/scenes/media/exposed-parameters.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/scenes/media/exposed-parameters.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/docs/scenes/media/exposed-prefab-params.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/scenes/media/exposed-prefab-params.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/scenes/media/gizmos.jpg",
       "output": {
         "resource": {
@@ -5622,26 +5702,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "pages/docs/scenes/media/object-reference-menu.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/scenes/media/object-reference-menu.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/docs/scenes/media/object-reference.png",
-      "output": {
-        "resource": {
-          "relative_path": "pages/docs/scenes/media/object-reference.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "pages/docs/scenes/media/scene-layers-contextmenu.png",
       "output": {
         "resource": {
@@ -5706,16 +5766,6 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/scenes/media/visualizer-shapeicon.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/scenes/object-references.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/scenes/object-references.html"
         }
       },
       "version": ""

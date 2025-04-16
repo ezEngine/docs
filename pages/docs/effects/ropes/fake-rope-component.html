@@ -94,7 +94,7 @@
 <p>These ropes are not able to pull on another object and thus can't be used as a gameplay element. Use the <a href="../../physics/jolt/special/jolt-rope-component.html">rope component</a> for such use cases.</p>
 <p>On the other hand, the fake rope component is more lightweight to simulate and is optimized to have very little overhead when it has reached a resting state (doesn't swing anymore). Therefore it can be used in larger quantities for decorative purposes.</p>
 <h2 id="setting-up-a-rope">Setting Up a Rope</h2>
-<p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../scenes/object-references.html">object reference</a> is used to select which one to use.</p>
+<p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../concepts/object-references.html">object reference</a> is used to select which one to use.</p>
 <p>In the object hierarchy it typically looks like this:</p>
 <p><img src="../media/fake-rope-hierarchy.png" alt="Rope Objects"></p>
 <p>The position of the anchors can be moved in the 3D viewport to position the rope as desired. The shape of the simulated rope will be shown as a preview. Use the <code>Slack</code> property to make the rope sag.</p>
@@ -106,7 +106,7 @@
 <p>The <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project contains a dedicated <strong>Ropes scene</strong> with many examples.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>Anchor</code>: A <a href="../../scenes/object-references.html">reference</a> to an object whose position determines where the rope ends.</p>
+<li><p><code>Anchor</code>: A <a href="../../concepts/object-references.html">reference</a> to an object whose position determines where the rope ends.</p>
 </li>
 <li><p><code>AttachToOrigin</code>, <code>AttachToAnchor</code>: Whether the rope is fixed at the origin or anchor location. If the rope is not attached at one or both ends it is free to move away from there.</p>
 </li>

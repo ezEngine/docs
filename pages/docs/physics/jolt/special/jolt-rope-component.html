@@ -94,7 +94,7 @@
 <p>Ropes can be attached to walls as decorative elements (cables, wires), or they can even be attached to <a href="../actors/jolt-dynamic-actor-component.html">dynamic physics objects</a> to link them together. This can be used as a gameplay feature.</p>
 <p>If all you need is a decorative rope, that doesn't react to physical stimuli (except <a href="../../../effects/wind/wind.html">wind</a>), prefer to use a <a href="../../../effects/ropes/fake-rope-component.html">fake rope component</a>, as that has a much lower performance overhead.</p>
 <h2 id="setting-up-a-rope">Setting Up a Rope</h2>
-<p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../../scenes/object-references.html">object reference</a> is used to select which one to use.</p>
+<p>A rope requires two anchor points between which it hangs. One anchor point is the rope object position itself, for the other one typically uses a dummy game object. The <code>Anchor</code> <a href="../../../concepts/object-references.html">object reference</a> is used to select which one to use.</p>
 <p>In the object hierarchy it typically looks like this:</p>
 <p><img src="media/jolt-rope-hierarchy.png" alt="Rope Objects"></p>
 <p>The position of the anchors can be moved in the 3D viewport to position the rope as desired. The approximate shape of the simulated rope will be shown as a preview. Use the <code>Slack</code> property to make the rope sag.</p>
@@ -109,7 +109,7 @@
 <p>Overall the same guidelines to prevent stability issues apply here as well.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>Anchor1</code>, <code>Anchor2</code>: A <a href="../../../scenes/object-references.html">reference</a> to an object whose position determines one end of the rope. If only one anchor is specified, the position of the rope component's owner object is used as the other end.</p>
+<li><p><code>Anchor1</code>, <code>Anchor2</code>: A <a href="../../../concepts/object-references.html">reference</a> to an object whose position determines one end of the rope. If only one anchor is specified, the position of the rope component's owner object is used as the other end.</p>
 </li>
 <li><p><code>Anchor1Constraint</code>, <code>Anchor2Constraint</code>: How the rope is attached to each anchor:</p>
 <ul>

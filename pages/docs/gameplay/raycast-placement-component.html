@@ -99,7 +99,7 @@
 </li>
 <li><p><code>DisableTargetObjectOnNoHit</code>: If set, the <code>RaycastEndObject</code> is set to <a href="../runtime/world/game-objects.html#active-flag">inactive</a> when the raycast hits nothing within <code>MaxDistance</code>. This can be used for things like laser pointers, where the target object represents the 'laser dot'. If the laser pointer hits nothing, the laser dot object should temporarily disappear. Once the raycast hits something again, the component will make sure to reactivate the target object again.</p>
 </li>
-<li><p><code>RaycastEndObject</code>: A <a href="../scenes/object-references.html">referenced object</a> that this component should affect. Every time the placement component determines a different position for the raycast hit, it will move the referenced object there.</p>
+<li><p><code>RaycastEndObject</code>: A <a href="../concepts/object-references.html">referenced object</a> that this component should affect. Every time the placement component determines a different position for the raycast hit, it will move the referenced object there.</p>
 </li>
 <li><p><code>ForceTargetParentless</code>: If set, the placement component will make sure that the referenced <code>RaycastEndObject</code> will be detached from any parent object. The practical reason for this is, that to prevent multiple objects from modifying the position of the end object, it should have no parent game object, which may pass down its own transform changes. However, when the end object is part of a prefab, it will always have a parent, and that parent may need to move. For example when a weapon is attached to a character controller. Therefore the placement component can take care of detaching the end object at the appropriate time.</p>
 </li>

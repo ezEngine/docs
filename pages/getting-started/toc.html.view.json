@@ -1,18 +1,18 @@
 {
   "items": [
     {
-      "name": "Prebuilt Binaries",
-      "href": "binaries.html",
-      "topicHref": "binaries.html",
+      "name": "How to Contribute",
+      "href": "how-to-contribute.html",
+      "topicHref": "how-to-contribute.html",
       "tocHref": null,
       "level": 2,
       "items": [],
       "leaf": true
     },
     {
-      "name": "ezEditor Overview",
-      "href": "editor-overview.html",
-      "topicHref": "editor-overview.html",
+      "name": "Prebuilt Binaries",
+      "href": "binaries.html",
+      "topicHref": "binaries.html",
       "tocHref": null,
       "level": 2,
       "items": [],
@@ -37,9 +37,9 @@
       "leaf": true
     },
     {
-      "name": "How to Contribute",
-      "href": "how-to-contribute.html",
-      "topicHref": "how-to-contribute.html",
+      "name": "ezEditor Overview",
+      "href": "editor-overview.html",
+      "topicHref": "editor-overview.html",
       "tocHref": null,
       "level": 2,
       "items": [],

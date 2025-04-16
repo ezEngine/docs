@@ -2,9 +2,9 @@
   "items": [
     {
       "name": "Getting Started",
-      "href": "pages/getting-started/binaries.html",
+      "href": "pages/getting-started/how-to-contribute.html",
       "tocHref": "pages/getting-started/toc.html",
-      "topicHref": "pages/getting-started/binaries.html",
+      "topicHref": "pages/getting-started/how-to-contribute.html",
       "level": 2,
       "items": [],
       "leaf": true

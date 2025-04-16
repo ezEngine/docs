@@ -116,7 +116,7 @@
 <h2 id="lifetime-and-referencing-game-objects">Lifetime and Referencing Game Objects</h2>
 <p>When deleting a game object, it typically stays alive till the end of the frame, to make writing robust code easier. You should, however, never store pointers to game objects across frames, as objects can be relocated in memory. Instead, always use <strong>handles</strong> (<code>ezGameObjectHandle</code>) to store references to game objects.</p>
 <p>The chapter about <a href="object-lifetime.html">object lifetime</a> explains this in more detail.</p>
-<p>Components can also <a href="../../scenes/object-references.html">reference objects</a> from their properties. These references are also based on handles.</p>
+<p>Components can also <a href="../../concepts/object-references.html">reference objects</a> from their properties. These references are also based on handles.</p>
 <h2 id="tags">Tags</h2>
 <p>Game objects can have <a href="../../projects/tags.html">tags</a>. These are used to control things like whether the object will cast shadows. However, they are mostly at your disposal to tag objects with game play relevant information.</p>
 <h2 id="iterating-over-game-objects">Iterating over Game Objects</h2>

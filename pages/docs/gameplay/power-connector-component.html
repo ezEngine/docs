@@ -105,9 +105,9 @@ On its own this component doesn't do anything. However, it can be set to be <em>
 <p>If this is zero, it is either a receiver, or a pass-through connector, e.g. a cable, or just currently inactive.</p>
 <p>If this is non-zero, it acts like a source, and when another connector gets connected to it, that output will be propagated through the connection/buddy chain.</p>
 </li>
-<li><p><code>Buddy</code>: If this is intended to act like a cable with two ends, specify the <a href="../scenes/object-references.html">object references</a> to the other end of the cable here. This way, if this end gets power, the other end will output that power, and vice versa.</p>
+<li><p><code>Buddy</code>: If this is intended to act like a cable with two ends, specify the <a href="../concepts/object-references.html">object references</a> to the other end of the cable here. This way, if this end gets power, the other end will output that power, and vice versa.</p>
 </li>
-<li><p><code>ConnectedTo</code>: If this object is supposed to start in a state connected to something else, e.g. a power socket or another cable, use this <a href="../scenes/object-references.html">object references</a> to configure it connected. Note that this will create a physics joint with between this object and the target object. If they aren't aligned already, this will make the two objects snap together during the first simulation steps.</p>
+<li><p><code>ConnectedTo</code>: If this object is supposed to start in a state connected to something else, e.g. a power socket or another cable, use this <a href="../concepts/object-references.html">object references</a> to configure it connected. Note that this will create a physics joint with between this object and the target object. If they aren't aligned already, this will make the two objects snap together during the first simulation steps.</p>
 </li>
 </ul>
 <h2 id="message-handlers">Message Handlers</h2>

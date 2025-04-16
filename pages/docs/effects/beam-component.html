@@ -94,7 +94,7 @@
 <p>The beam component is purely a graphical effect, it has no game play functionality. It also has no logic to decide how long the beam shall be. To adjust the length of the beam, the target object has to be positioned at the desired distance. The <a href="../gameplay/raycast-placement-component.html">raycast placement component</a> works well in conjunction with the beam component, as it uses a raycast to decide where to move a referenced object to. You can attach both components to the same object and let them reference the same (dummy) target object, to get a beam that always stretches towards the closest obstacle.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><p><code>TargetObject</code>: The beam geometry starts at the beam component position and goes towards the position of the <a href="../scenes/object-references.html">referenced object</a>. If the target object moves, the beam follows.</p>
+<li><p><code>TargetObject</code>: The beam geometry starts at the beam component position and goes towards the position of the <a href="../concepts/object-references.html">referenced object</a>. If the target object moves, the beam follows.</p>
 </li>
 <li><p><code>Material</code>: The material to use to render the beam geometry with.</p>
 </li>

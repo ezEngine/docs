@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Thirdperson View Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Thirdperson View Component | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/camera/thirdpersonview-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="thirdperson-view-component">Thirdperson View Component</h1>
+
+<p>The <em>Thirdperson View</em> component is used to place an object, typically a <a href="../../graphics/camera-component.html">camera</a>, relative to another object with clear line of sight. The component will make the owner object look at the target point and place it at a certain distance. When there are physical obstacles between the camera and the target, it moves the owner object closer.</p>
+<p><video src="media/3pview.mp4" width="800" height="600" autoplay controls></video></p>
+<h2 id="setup">Setup</h2>
+<p>Reference the component properties below for more details.</p>
+<p>In the diagram below:</p>
+<ul>
+<li>the blue trapezoids represent possible camera positions</li>
+<li>the orange cross is the <code>TargetObject</code></li>
+<li>the green stars are <code>TargetOffsetHigh</code> and <code>TargetOffsetLow</code> respectively</li>
+<li>the pink lines represent <code>MaxDistanceUp</code> (left), <code>MaxDistanceDown</code> (bottom) and <code>MaxDistance</code> (from left to right)</li>
+</ul>
+<p><img src="media/3rdp-view.png" alt="3rd person view setup"></p>
+<p>When the view is rotated to look downward, its maximum distance is determined by <code>MaxDistanceUp</code>. In this example it therefore moves clsoer. It also focuses more on the <code>TargetOffsetHigh</code> point. When it is rotated to look upward, its distance is determined by <code>MaxDistanceDown</code>. It also focuses more on <code>TargetOffsetLow</code>.</p>
+<p>When the view is rotated to look straight, it zooms out up to <code>MaxDistance</code>. It focuses at the point in between <code>TargetOffsetLow</code> and <code>TargetOffsetHigh</code>.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>TargetObject</code>: An <a href="../../concepts/object-paths.html">object path</a> identifying the object that this object should look at. It may be a parent object, in which case the view will also move and rotate with that object. The default value of <code>..</code> references the direct parent. Often the target object is positioned directly on the floor. Use the offset values below to adjust which point to look at exactly.</p>
+</li>
+<li><p><code>TargetOffsetHigh</code>, <code>TargetOffsetLow</code>: Two offest positions relative to the <code>TargetObject</code>. Setting these to non-zero values allows to look for example at a point slightly before or behind the target object, or even offset the center sideways.
+If the view looks down from above, it focuses on <code>TargetOffsetHigh</code>, if it looks up from below it focuses on <code>TargetOffsetLow</code>. In between the two points are interpolated. This allows to have the camera look over the shoulder of a character when viewing from above, and up behind its head, when viewing from below.</p>
+</li>
+<li><p><code>MinDistance</code>, <code>MaxDistance</code>: When there is no obstacle, the view will place the camera at <code>MaxDistance</code>. If there are obstacles, the camera moves in closer, but no closer than <code>MinDistance</code>. Make sure that the radius of the <a href="../../physics/jolt/special/jolt-character-controller.html">character controller</a> is large enough to prevent the camera from being pushed into surrounding geometry.</p>
+</li>
+<li><p><code>MaxDistanceUp</code>, <code>MaxDistanceDown</code>: The more that the camera is looking at the target from above or below, the more it will use <code>MaxDistanceUp</code> or <code>MaxDistanceDown</code> rather than <code>MaxDistance</code>. This allows to pull the camera closer or move it even further out, when viewed from these extreme angles.</p>
+</li>
+<li><p><code>MinUpRotation</code>, <code>MaxUpRotation</code>: The minimum and maximum angle that the view may look at the target object from above and below. An angle of zero means looking straight ahead.</p>
+</li>
+<li><p><code>CollisionLayer</code>: The <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for checking collisions with the environment. Only static geometry is checked, dynamic geometry gets ignored.</p>
+</li>
+<li><p><code>SweepWidth</code>: The radius of the sphere that is swept backwards to determine collisions with the environment. Too small values mean the camera may be able to move through small openings, which will move the camera back and forth frequently.</p>
+</li>
+<li><p><code>ZoomInSpeed</code>, <code>ZoomOutSpeed</code>: The speed with which the camera zooms in when it encounters an obstacle, and out when the obstacle has passed.</p>
+</li>
+</ul>
+<h2 id="scriptable-functions">Scriptable Functions</h2>
+<ul>
+<li><code>void RotateUp(angle)</code>: Makes the camera rotate up or down by the given angle within the defined boundaries.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../graphics/camera-component.html">Camera Component</a></li>
+<li><a href="../../physics/jolt/special/jolt-character-controller.html">Character Controller</a></li>
+<li><a href="../../custom-code/visual-script/visual-script-overview.html">Custom Code with Visual Scripts</a></li>
+<li><a href="headbone-component.html">Head Bone Component</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/gameplay/camera/thirdpersonview-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
