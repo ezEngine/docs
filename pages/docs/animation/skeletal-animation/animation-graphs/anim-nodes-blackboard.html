@@ -95,7 +95,7 @@
 <p>If no blackboad is available, these nodes will typically silently not do anything. If a blackboard is available, but the desired entry is not (yet) in the blackboard, they may add the entry or log a warning and assume a default value.</p>
 </blockquote>
 <h2 id="set-number-node--set-bool-node">Set Number Node / Set Bool Node</h2>
-<p>When activated, this node writes a given value to the blackboard.</p>
+<p>When activated, this node writes a given value to the blackboard. If the activation pin is not connected, at all, the node updates the blackboard with the incoming number every update.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
 <li><p><code>Blackboard Entry</code>: The name of the blackboard entry (variable) to write to.</p>
@@ -136,6 +136,7 @@
 <li><code>On True</code>: Gets triggered for one frame when the comparison result changes to <code>true</code>.</li>
 <li><code>On False</code>: Gets triggered for one frame when the comparison result changes to <code>false</code>.</li>
 <li><code>Is True</code>: Outputs the result of the comparison. This is a data pin that can always be read, contrary to the other two pins that are <em>event pins</em> and only get triggered when something changes.</li>
+<li><code>Is False</code>: Outputs the opposite value of <code>Is True</code>.</li>
 </ul>
 <h2 id="check-bool-node">Check Bool Node</h2>
 <p>This node monitors a boolean blackboard value and compares it to <code>true</code>. When the result of the comparison changes, the <code>On True</code> or <code>On False</code> output pin gets triggered for one frame.</p>

@@ -107,6 +107,10 @@
 <ul>
 <li><p><code>PrimitiveType</code>: This selects how the mesh data is generated. If <code>From File</code> is chosen, you need to also specify the <code>MeshFile</code> property. If you choose a procedural method, other configuration options appear.</p>
 </li>
+<li><p><code>MeshIncludeTags</code>, <code>MeshExcludeTags</code>: Some source assets pack different types of meshes into a single file, for example different LODs or a dedicated collider mesh. These options allow you to select which meshes to import. Both are <em>semicolon-separated</em> lists of strings. Ie <em>A;B</em> represents two <em>tags</em>, <code>A</code> and <code>B</code>.</p>
+<p>If any <em>include tag</em> is specified, only meshes whose names <strong>start or end</strong> with that string are used. For instance, the include tag <code>LOD1</code> means that a mesh named <em>Bunny_LOD1</em> would be imported, but a mesh named <em>Bunny</em> would be skipped.</p>
+<p>If any <em>exclude tag</em> is specified, meshes whose names <em>start or end</em>* with that string are skipped. However, include tags take precedence.</p>
+</li>
 <li><p><code>ImportTransform</code>, <code>RightDir</code>, <code>UpDir</code>, <code>FlipForwardDir</code>: How to rotate or mirror the mesh during import, so that it is oriented correctly for use in ezEngine. See <a href="#mesh-orientation">Mesh Orientation</a> above.</p>
 </li>
 <li><p><code>UniformScaling</code>: Adjusts the size of the mesh, for example to convert a mesh from centimeter to meter scale.</p>

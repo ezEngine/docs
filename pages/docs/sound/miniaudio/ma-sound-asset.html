@@ -97,6 +97,8 @@
 <ul>
 <li><p><code>Files</code>: A list of sound files. Every time a sound gets played, a random sound file is chosen. Every sound asset has to have at least one such input file.</p>
 </li>
+<li><p><code>Group</code>: What sound group this sound belongs to. Sometimes also called a <em>bus</em> or <em>VCA</em> (<em>Voltage Controlled Amplifier</em>). Usually something like <em>music</em>, <em>effects</em>, <em>background</em> or <em>ui</em>. The game code can control the volume of groups through the <code>ezSoundInterface</code>.</p>
+</li>
 <li><p><code>Loop</code>: Whether to play the sound in a looping fashion. If there are multiple input files, one random file is chosen and then that one file is played in a loop. If instead you want to loop the playback and play random files each time, use the <code>Restart</code> option on the <a href="ma-sound-component.html">MiniAudio sound component</a> instead.</p>
 </li>
 <li><p><code>MinRandomVolume</code>, <code>MaxRandomVolume</code>: Every time a sound gets played, the volume of the sound is randomized between these two values.</p>

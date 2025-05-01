@@ -10,9 +10,9 @@
       "leaf": true
     },
     {
-      "name": "Prebuilt Binaries",
-      "href": "binaries.html",
-      "topicHref": "binaries.html",
+      "name": "Frequently Asked Questions",
+      "href": "faq.html",
+      "topicHref": "faq.html",
       "tocHref": null,
       "level": 2,
       "items": [],
@@ -28,9 +28,9 @@
       "leaf": true
     },
     {
-      "name": "Frequently Asked Questions",
-      "href": "faq.html",
-      "topicHref": "faq.html",
+      "name": "Prebuilt Binaries",
+      "href": "binaries.html",
+      "topicHref": "binaries.html",
       "tocHref": null,
       "level": 2,
       "items": [],

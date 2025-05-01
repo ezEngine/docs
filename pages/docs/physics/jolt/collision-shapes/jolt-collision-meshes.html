@@ -108,6 +108,9 @@
 <p><img src="../media/jolt-colmesh-convex-decomp.jpg" alt="Convex Decomposition Collision Mesh"></p>
 <p>In the image above the mesh import decomposed the mesh into multiple pieces (seven pieces in this case). Each piece is a convex mesh with less than 250 vertices and triangles.</p>
 <p>This mode allows you to dictate into how many pieces to split the mesh. The more pieces, the closer the result resembles the original shape. These collision meshes can still be used for dynamic simulation, the Jolt actors simply use multiple convex shapes as their representation. Of course the more pieces such a mesh contains, the less efficient the simulation becomes.</p>
+<h2 id="selective-mesh-import">Selective Mesh Import</h2>
+<p>Sometimes a <strong>dedicated collider mesh</strong> is embedded in the same source asset as the graphics mesh. You can use the properties <code>MeshIncludeTags</code> and <code>MeshExcludeTags</code> to selectively import only those meshes. See the <a href="../../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a> for details.</p>
+<p>As an example, if the graphics mesh is called <em>Bunny</em> and the dedicated collider mesh is called <em>$COL_Bunny</em>, you can set the <em>MeshIncludeTags</em> to <code>$COL</code> to only import <em>$COL_Bunny</em> as the collider mesh.</p>
 <h2 id="mesh-simplification">Mesh Simplification</h2>
 <p>Collision meshes support mesh simplification to reduce their amount of triangles and vertices. See the <a href="../../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset</a> for details about the parameters.</p>
 <p>The image below shows the original mesh and a simplified collider mesh that has roughly one fourth the number of triangles.</p>

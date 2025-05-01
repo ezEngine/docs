@@ -90,6 +90,12 @@
 <h1 id="assets">Assets</h1>
 
 <p><em>Assets</em> are the most common type of <a href="../editor/editor-documents.html">documents</a> in the editor. Assets represent data that usually comes from some source file (like an image or a model) and must be processed into an optimized format for the engine to use at runtime.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>There is asset specific documentation for every single asset type.
+When you have an asset document open, select <em>Asset &gt; Open Asset Documentation</em> from the main menu, or click the purple <code>?</code> button, to open the online documentation page.</p>
+<p>There you will find an explanation of the asset's purpose and all its configuration options.</p>
+</blockquote>
 <p>This processing step is called <strong>asset transformation</strong>. A good example are <a href="../graphics/textures-overview.html">textures</a>. Textures come in many different source formats, such as TGA, JPG, PNG, and so on. Texture data in these formats is not suited to be loaded directly by the engine. Instead, it must be encoded and compressed in formats that GPUs can decode efficiently. This step can be very time consuming and should therefore be done up front. Additionally, textures should contain mipmaps and may need to be downscaled for different platforms. Exactly how a texture should be transformed is something that you may want to have full control over, so you need some way to configure this.</p>
 <p>Therefore, instead of loading a texture directly into the engine, you need to create a texture asset in the editor. This document will reference one or multiple source files and allow you to configure the asset transform. When the asset gets <em>transformed</em> it will output an optimized file that the engine can then load and use efficiently.</p>
 <h2 id="types-of-assets">Types of Assets</h2>
