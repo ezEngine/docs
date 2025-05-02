@@ -2262,6 +2262,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-preferences.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-preferences.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/editor/editor-settings.md",
       "output": {
         ".html": {
@@ -6635,16 +6645,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/getting-started/editor-overview.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/getting-started/editor-overview.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "pages/getting-started/faq.md",
       "output": {
         ".html": {
@@ -6659,6 +6659,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/getting-started/how-to-contribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/getting-started/start.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/getting-started/start.html"
         }
       },
       "version": ""

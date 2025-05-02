@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Logging | ezEngine </title>
+      <title>Editor Preferences | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Logging | ezEngine ">
+      <meta name="title" content="Editor Preferences | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/logging.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/editor-preferences.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,43 +87,69 @@
         </div>
 
         <article data-uid="">
-<h1 id="logging">Logging</h1>
+<h1 id="editor-preferences">Editor Preferences</h1>
 
-<p>Log messages are often very helpful in finding problems.</p>
-<h2 id="logging-information">Logging Information</h2>
-<p>The log is accessible through the <code>ezLog</code> class. There are multiple functions to log information of different severity:</p>
+<p>Preferences are user specific editor settings. Preferences may affect the entire editor application, only a certain <a href="../projects/projects-overview.html">project</a>, or even just a single <a href="editor-documents.html">document</a>. For additional editor settings, see <a href="editor-settings.html">this page</a>.</p>
+<p>To open the preferences dialog, select <em>Tools &gt; Preferences...</em>.</p>
+<p><img src="media/editor-preferences.png" alt="Preferences"></p>
+<p>The list on the left lists all the available preferences. Items prefixed with <code>Application:</code> affect the general editor, no matter which project is open. Items prefixed with <code>Project:</code> are specific to the currently open project and can be configured differently for other projects. Per-document preferences only show up while a document is open.</p>
+<h3 id="application-c-projects">Application: C++ projects</h3>
 <ul>
-<li><code>ezLog::Debug</code> - for verbose output, will be compiled out in non-debug builds</li>
-<li><code>ezLog::Dev</code> - for output during development, will typically be silenced (but not compiled out) in non-development builds</li>
-<li><code>ezLog::Info</code> - for regular information</li>
-<li><code>ezLog::Warning</code> - for important information that may point at problems</li>
-<li><code>ezLog::SeriousWarning</code> - for problems that should be fixed but won't crash the system just now</li>
-<li><code>ezLog::Error</code> - for errors</li>
-</ul>
-<p>Log messages can be <em>grouped</em> using the <code>EZ_LOG_BLOCK</code> macro.</p>
-<h2 id="inspecting-the-log">Inspecting the Log</h2>
-<p>There are multiple ways to see the content of the log:</p>
+<li><p><strong>C++ IDE:</strong> Select which IDE you want to use as default when opening C++ projects.</p>
+</li>
+<li><p><strong>Compiler Preferences:</strong> Settings on what compiler to use to compile C++ projects.</p>
 <ul>
-<li>In the <a href="../../getting-started/editor-overview.md">ezEditor</a> you can open <em>Panels &gt; Log</em>. Note that the editor consists of <a href="../editor/editor-plugins.html">multiple processes</a> and the log panel shows the logs of two of those processes combined, which may result in unexpected output. If you want to see the logs separately, open the <a href="../editor/editor-settings.html">preferences</a> and uncheck <code>Application: General &gt; Combined Editor and Engine Logs</code>.</li>
-<li><a href="../tools/inspector.html">ezInspector</a> shows the log of the connected process.</li>
-<li>The in-game <a href="console.html">console</a> outputs the log messages.</li>
-<li>By default all EZ <a href="../runtime/application/application.html">applications</a> also write the log output to a <code>Log.htm</code> file in the application's <em>appdata</em> folder.</li>
+<li><p><strong>Compiler Preset:</strong> Select one of the auto detected compiler presets available on your system, or use a &quot;custom&quot; preset to manually configure a compiler.</p>
+</li>
+<li><p><strong>C++ Compiler:</strong> Path to the C++ compiler executable to use.</p>
+</li>
+<li><p><strong>C Compiler:</strong> Path to the C compiler executable to use.</p>
+</li>
+<li><p><strong>RC Compiler:</strong> Path to the resource compiler executable to use.</p>
+</li>
 </ul>
-<h2 id="thread-local-logging">Thread-local logging</h2>
-<p>The logging system uses a thread-local variable to store the <em>active</em> logging system, through which to route all messages that originate on that thread. This can be used to easily replace the entire logging backend on a thread and capture all log messages in a custom backend. See <code>ezLogSystemScope</code> and <code>ezLogInterface</code>, if you want to write a custom backend. This can be used to, for example, capture all output from some subsystem and prevent the messages from reaching the regular outputs.</p>
-<h2 id="custom-log-writers">Custom Log Writers</h2>
-<p><code>ezLog</code> is the central class for all messages to be logged. By default, it routes all messages through an instance of <code>ezGlobalLog</code>, though you can redirect this on the calling side if you want. On <code>ezGlobalLog</code> you can register multiple handlers that take the messages and either write them to some output or forward them to another system. This method is used to, for instance, forward log messages from one process to another. The <a href="../tools/inspector.html">ezInspector</a> integration, for example, registers a custom log writer to gather all log messages, and send them over the network, for display in the external tool. <a href="../../getting-started/editor-overview.md">ezEditor</a> does something similar for the messages from the engine process.</p>
-<p>For an in-depth explanation of how you can configure the system, see <code>ezLog</code> and <code>ezGlobalLog</code>.</p>
+</li>
+</ul>
+<h3 id="application-general">Application: General</h3>
+<ul>
+<li><p><strong>Restore Project On Startup:</strong> If enabled, the editor will load the project that was open the last time.</p>
+</li>
+<li><p><strong>Show Splashscreen:</strong> Disable this to not have a splashscreen show up every time the editor starts.</p>
+</li>
+<li><p><strong>Background Asset Processing:</strong> If set, background <a href="../assets/assets-overview.html">assets processing</a> will be activated by default, when you open a project.</p>
+</li>
+<li><p><strong>Field Of View:</strong> The FOV of the generic editor camera.</p>
+</li>
+<li><p><strong>Max Framerate:</strong> Limits how fast the editor should render the scene.</p>
+</li>
+<li><p><strong>Gizmo Size:</strong> Allows you to change the size of the editor gizmos.</p>
+</li>
+<li><p><strong>Show In Development Features:</strong> Some features (mainly <a href="../runtime/world/components.html">components</a>) are hidden by default from menus. That's because those features are not considered ready to be used productively. If you do want to try them out regardless, check this option for them to show up.</p>
+</li>
+<li><p><strong>Use Precompiled Tools:</strong> If enabled, the editor will prefer to use the tools under <code>Data\Tools\Precompiled</code>, rather than the ones from its own binary directory. The precompiled tools are built with maximum optimizations and are therefore typically faster, however, they only get updated infrequently and may not have all the latest features and bugfixes.</p>
+</li>
+<li><p><strong>Custom Precompiled Tools:</strong> If not empty use the given path instead of <code>Data\Tools\Precompiled</code> when looking for tools. This is especially useful on Linux if you want fast tools while using a debug build of the editor.</p>
+</li>
+<li><p><strong>Expand Scene Tree On Selection:</strong> If enabled, selecting an object in a scene will automatically expand the corresponding item in the scene tree view. If disabled, the scene tree will not change on selection from the viewport, and jumping to the selected tree item has to be done manually using <code>CTRL+T</code>.</p>
+</li>
+<li><p><strong>Clear Editor Logs On Play:</strong> If enabled, the engine log gets cleared every time you <a href="run-scene.html">run a scene</a>.</p>
+</li>
+<li><p><strong>Highlight Untranslated UI:</strong> If enabled, the editor will highlight all texts in the UI which are missing a translation.</p>
+</li>
+<li><p><strong>Engine View Light Settings:</strong> Many <a href="../assets/assets-overview.html">assets</a> have 3D previews that require lighting. These are the lighting settings to use.</p>
+</li>
+<li><p><strong>CameraRotationSpeed:</strong> Allows to adjust how quickly the <a href="../scenes/editor-camera.html">editor camera</a> rotates.</p>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../tools/inspector.html">ezInspector</a></li>
-<li><a href="console.html">Console</a></li>
+<li><a href="editor-settings.html">Editor Settings</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/logging.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/editor-preferences.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

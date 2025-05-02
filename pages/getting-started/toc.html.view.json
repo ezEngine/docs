@@ -1,27 +1,9 @@
 {
   "items": [
     {
-      "name": "How to Contribute",
-      "href": "how-to-contribute.html",
-      "topicHref": "how-to-contribute.html",
-      "tocHref": null,
-      "level": 2,
-      "items": [],
-      "leaf": true
-    },
-    {
-      "name": "Frequently Asked Questions",
-      "href": "faq.html",
-      "topicHref": "faq.html",
-      "tocHref": null,
-      "level": 2,
-      "items": [],
-      "leaf": true
-    },
-    {
-      "name": "Videos",
-      "href": "videos.html",
-      "topicHref": "videos.html",
+      "name": "Getting Started",
+      "href": "start.html",
+      "topicHref": "start.html",
       "tocHref": null,
       "level": 2,
       "items": [],
@@ -37,9 +19,27 @@
       "leaf": true
     },
     {
-      "name": "ezEditor Overview",
-      "href": "editor-overview.html",
-      "topicHref": "editor-overview.html",
+      "name": "Frequently Asked Questions",
+      "href": "faq.html",
+      "topicHref": "faq.html",
+      "tocHref": null,
+      "level": 2,
+      "items": [],
+      "leaf": true
+    },
+    {
+      "name": "How to Contribute",
+      "href": "how-to-contribute.html",
+      "topicHref": "how-to-contribute.html",
+      "tocHref": null,
+      "level": 2,
+      "items": [],
+      "leaf": true
+    },
+    {
+      "name": "Videos",
+      "href": "videos.html",
+      "topicHref": "videos.html",
       "tocHref": null,
       "level": 2,
       "items": [],

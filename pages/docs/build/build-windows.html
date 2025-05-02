@@ -105,19 +105,21 @@
 <li><em>.Net Desktop Development</em></li>
 </ul>
 <p>You can also use the file <a href="https://github.com/ezEngine/ezEngine/tree/dev/Utilities/VS2022-ezEngine.vsconfig">Utilities/VS2022-ezEngine.vsconfig</a> to import the necessary configuration into the Visual Studio installer.</p>
-<h3 id="cmake-optional">CMake (optional)</h3>
-<p><a href="https://cmake.org/">CMake</a> is used as the build system. On Windows you only need to install CMake if you want to use the CMake GUI to choose custom <a href="cmake-config.html">CMake configurations</a>. If you only use the provided <code>GenerateXYZ.bat</code> scripts, those will use a <code>cmake.exe</code> that comes with the EZ repository.</p>
 <h2 id="generate-the-solution">Generate the Solution</h2>
 <h3 id="using-the-generate-scripts">Using the Generate Scripts</h3>
 <p>In the root folder of the EZ repository you will find a couple of <code>.bat</code> files, such as:</p>
 <ul>
 <li><code>GenerateWin64vs2022.bat</code></li>
 </ul>
-<p>Run one of them to generate a Visual Studio solution for your preferred compiler. If these scripts fail, you most likely don't have all the <a href="#prerequisites">prerequisites</a> installed. They also sometimes fail, if Visual Studio recently installed an update and you haven't rebooted your PC since. Usually when this script fails it is due to common issues with CMake or the MSVC installation. Read the error messages carefully and search the internet, you'll usually find a solution quickly.</p>
-<p>Once the script finished successfully, there will be a <strong>Workspace</strong> folder in the EZ root folder. You fill find a <code>ezEngine_***.sln</code> file in the respective folder for the Visual Studio version that you chose.</p>
-<h3 id="manually-running-cmake">Manually Running CMake</h3>
-<p>This step requires that you install <a href="#cmake-optional">CMake</a> yourself.</p>
+<p>Run one of them to generate a Visual Studio solution for your preferred compiler. Afterwards, there will be a <strong>Workspace</strong> folder in the EZ root folder, where you find a <code>ezEngine_***.sln</code> file in the respective folder for the Visual Studio version that you chose.</p>
+<p>If the script fails, you most likely don't have all the <a href="#prerequisites">prerequisites</a> installed. They also sometimes fail, if Visual Studio recently installed an update and you haven't rebooted your PC since. Usually when this script fails it is due to common issues with CMake or the MSVC installation. <strong>Read the full error messages carefully</strong> and search the internet, you'll usually find a solution quickly.</p>
+<h3 id="manually-running-cmake-advanced">Manually Running CMake (advanced)</h3>
+<p>This step requires you to install <a href="https://cmake.org/">CMake</a> yourself.</p>
 <p>Run the CMake GUI and <a href="cmake-config.html">configure the build options</a>.</p>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>If you are new to EZ, you should <strong>use the generate script</strong>, since it also takes care of some potential pitfalls (e.g. forgetting to update the submodules).</p>
+</blockquote>
 <h2 id="building-the-code">Building the Code</h2>
 <p>Open the generated solution with Visual Studio and build everything. Run the <strong>Editor</strong> project afterwards.</p>
 <h2 id="see-also">See Also</h2>

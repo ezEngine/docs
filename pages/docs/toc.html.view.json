@@ -192,6 +192,15 @@
           "leaf": true
         },
         {
+          "name": "Editor Preferences",
+          "href": "editor/editor-preferences.html",
+          "topicHref": "editor/editor-preferences.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
           "name": "Editor Plugins",
           "href": "editor/editor-plugins.html",
           "topicHref": "editor/editor-plugins.html",
