@@ -99,7 +99,7 @@
 <li><code>ProjectPath</code>: The absolute path to the project directory.</li>
 <li><code>ScenePath</code>: A relative path to a scene file. It is relative to the <a href="../projects/data-directories.html">data directory</a> that it resides in. If it is a path to an <code>.ezScene</code> or <code>.ezPrefab</code> file, ezPlayer automatically redirects the path to the corresponding exported <code>.ezObjectGraph</code> file in the <em>AssetCache</em>.</li>
 </ul>
-<p>Typically you only need to pass the path to the project and scene (or prefab) file. The other options are used by the <a href="../../getting-started/editor-overview.md">ezEditor</a> to select different configurations.</p>
+<p>Typically you only need to pass the path to the project and scene (or prefab) file. The other options are used by the ezEditor to select different configurations.</p>
 <h2 id="execution">Execution</h2>
 <p>The Player will automatically detect the <a href="../projects/projects-overview.html">projects</a> directory by searching the file system for an ezProject file. It then executes the core ezEngine functionality, meaning it reads the configuration for the <a href="../projects/data-directories.html">data directories</a> as well as the <a href="../custom-code/cpp/engine-plugins.html">engine plugins</a> from the project config files. If the scene requires custom (game) plugins, they must be referenced in those config files.</p>
 <p>Then it will execute the regular game loop. Thus, if the scene contains game objects to spawn a character controller or otherwise handle input and move the camera, you will be able to interact with it. If a custom <a href="../custom-code/cpp/engine-plugins.html">plugin</a> implements a custom <a href="../runtime/application/game-state.html">game state</a> that will be instantiated and can take full control over the application logic. If no such functionality is available, the Player will instantiate the <code>ezFallbackGameState</code> which will spawn a player object, if a <code>ezPlayerStartPointComponent</code> is part of the scene. Otherwise it will provide a simple WASD camera movement scheme. If <code>ezCameraComponent</code>s are placed in the scene, you can cycle through them using <code>Page Up</code> and <code>Page Down</code>.</p>
@@ -112,7 +112,6 @@
 <li><a href="../runtime/application/game-state.html">Game States</a></li>
 <li><a href="../custom-code/cpp/engine-plugins.html">Engine Plugins</a></li>
 <li><a href="../projects/projects-overview.html">Projects</a></li>
-<li><a href="../../getting-started/editor-overview.md">ezEditor Overview</a></li>
 </ul>
 
 </article>

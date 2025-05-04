@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Mesh Asset Import | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Mesh Asset Import | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/meshes/mesh-import.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="mesh-asset-import">Mesh Asset Import</h1>
+
+<p>This chapter describes how to quickly and conveniently import mesh files and their dependencies.</p>
+<h2 id="general-steps">General Steps</h2>
+<p>Make sure your source assets are <strong>located inside your project folder</strong>. In the <a href="../../assets/asset-browser.html">asset browser</a> navigate to that folder and set the asset browser's <em>asset type filter</em> to <strong>&lt;Importable Files&gt;</strong>.</p>
+<p>You should then be able to see your <code>.fbx</code>, <code>.gltf</code> and <code>.glb</code> files.</p>
+<p>Files that have never been imported before show an orange arrow icon as an overlay, assets that are already in use show a grey arrow icon.</p>
+<p>Right click a file and navigate to the <em>Import As</em> sub-menu.</p>
+<p><img src="../../assets/media/import-as.png" alt="Import As"></p>
+<p>Mesh files can be imported in different ways, depending on whether they should be used as static, animated
+or collision meshes. Since these file types may also contain animation clips, there are also options to import only those.</p>
+<h2 id="mesh-import-dialog">Mesh Import Dialog</h2>
+<p>Select <strong>Mesh</strong> or <strong>Animated Mesh</strong>, depending on the desired usage. The following dialog will appear. For static meshes some options will be hidden, but the general concept is the same.</p>
+<p><img src="../../assets/media/import-mesh.png" alt="Import Mesh"></p>
+<p>At the top, the dialog shows the name of the file to import.</p>
+<p>The checkbox at the very bottom is relevant when you selected many meshes for import. If checked, the dialog won't be shown again and all meshes will be imported with these settings. Note that static meshes and animated meshes are treated separately, though.</p>
+<h3 id="create-materials">Create Materials</h3>
+<p>If this option is <em>disabled</em> the mesh will be imported <em>without</em> materials, and you need to configure material references manually afterwards.</p>
+<p>Otherwise, <a href="../../materials/materials-overview.html">material assets</a> will be created using the material description from the source asset.</p>
+<p>If <strong>Use Shared Materials Folder</strong> is <em>disabled</em>, new, unique materials are created and stored in a folder next to the mesh. The folder gets a <code>_data</code> suffix, which means that by default <a href="../../assets/asset-browser.html#hidden-folders">the asset browser hides its contents</a>.</p>
+<p>If the option is <em>enabled</em>, you need to select a folder, where to store materials. The importer will then search the entire folder structure for existing materials with the same names as the <em>material slots</em>, and only create those that don't exist yet.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Sharing materials across assets requires that your team has a plan how to name material slots consistently. Make sure to decide on a naming scheme early to benefit from EZ's automatism.</p>
+</blockquote>
+<p>New materials will be created directly in the selected folder, but you may move them to sub-folders afterwards. The <a href="../../debugging/logging.html">log</a> lists which new assets where created during the import step.</p>
+<h3 id="skeleton">Skeleton</h3>
+<p>This option only shows up when importing as an animated mesh.</p>
+<p>If <strong>Use Existing Skeleton</strong> is <em>disabled</em>, a new skeleton asset will be created for the animated mesh to use. You may need to open it afterwards to correct the orientation of the mesh. See the <a href="../../animation/skeletal-animation/skeleton-asset.html">skeleton asset properties</a> for details.</p>
+<p>If <em>enabled</em>, you need to select an existing skeleton to re-use. This should be preferred, if you have multiple animated characters that share the same bone structure.</p>
+<p>If you want to <strong>import only a skeleton</strong>, choose <strong>Import As &gt; Skeleton</strong>.</p>
+<h3 id="animations">Animations</h3>
+<p>This option only shows up when importing as an animated mesh.</p>
+<p>Enable <strong>Import all animation clips</strong> to automatically create <a href="../../animation/skeletal-animation/animation-clip-asset.html">animation clip assets</a> for all animations found in the mesh. If you don't want to do this now, or new animation clips get added to the source file later, you can also do only this step later by selecting <strong>Import As &gt; Animation Clips (all)</strong>.</p>
+<h3 id="add-levels-of-detail">Add Levels of Detail</h3>
+<p>If <em>enabled</em> the import automatically sets up additional mesh assets for level-of-detail (LOD). These can then be used with the <a href="lod-mesh-component.html">LOD mesh component</a> or <a href="../../animation/skeletal-animation/lod-animated-mesh-component.html">LOD animated mesh component</a>.</p>
+<p>There are two possibilities for LODs:</p>
+<ol>
+<li>Self-made, low-resolution meshes.</li>
+<li>Automatic mesh decimation.</li>
+</ol>
+<p>Option 1. is more effort, but typically yields superior results. Option 2. can be a quick and easy solution, but isn't guaranteed to give good results.</p>
+<p>EZ supports both options.</p>
+<h4 id="mesh-lod-prefix">Mesh LOD Prefix</h4>
+<p>This option is for cases where a source asset contains multiple different meshes and the meshes are named in a specific way to distinguish their use. The mesh LOD prefix is ultimately used to set the <a href="mesh-asset.html#asset-properties">MeshIncludeTags</a> option, such that specific meshes get imported as dedicated LODs.</p>
+<p>For instance, name your meshes like this:</p>
+<ul>
+<li><code>Door</code></li>
+<li><code>$LOD1_Door</code></li>
+<li><code>$LOD2_Door</code></li>
+</ul>
+<p>Then you set the <em>Mesh LOD Prefix</em> to <code>$LOD</code>. The importer then sees that the file contains a mesh with the prefix <code>$LOD1</code> and one with <code>$LOD2</code> and automatically sets up two LOD meshes.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>For this to work well, the main mesh also needs to <strong>exclude</strong> the <code>$LOD</code> meshes. By default all meshes whose names start with <code>$</code> are excluded, which is why this naming scheme works well out of the box. Other schemes are possible, though.</p>
+</blockquote>
+<p>If the mesh LOD prefix option is set to be empty, no LODs are attempted to be imported this way. However, the automatic mesh decimation (see section below) may still be used.</p>
+<h4 id="auto-generate-num-lods">Auto Generate Num LODs</h4>
+<p>If this value is set to 1 or larger, the import step may add this many additional meshes as LODs and enables <a href="mesh-asset.html#asset-properties">mesh simplification</a> on them. However, this is only done, if no LODs were found via the <em>Mesh LOD Prefix</em>.</p>
+<p>After import you should inspect the LOD meshes and check that the simplification settings produce acceptable results and that each LOD has no more than half the number of triangles than the previous one.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../assets/import-assets.html">Asset Import</a></li>
+<li><a href="mesh-asset.html">Mesh Asset</a></li>
+<li><a href="../../animation/skeletal-animation/animated-mesh-asset.html">Animated Mesh Asset</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/meshes/mesh-import.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

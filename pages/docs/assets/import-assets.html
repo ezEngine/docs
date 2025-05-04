@@ -90,7 +90,11 @@
 <h1 id="asset-import">Asset Import</h1>
 
 <p>All <a href="assets-overview.html">assets</a> are represented by <a href="../editor/editor-documents.html">documents</a>. That means to get a texture into the engine, you need a <a href="../graphics/textures-overview.html">texture document</a> which describes which source files (png, jpg, etc) are used to create the texture and how they shall be imported. This is where you configure such things as, whether to use compression, whether an alpha channel should be present and so on.</p>
-<p>Other asset types of course have other options for importing.</p>
+<p>Other asset types, of course, have other options for importing.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p><strong>Meshes</strong> are the most common type of asset to import. See <a href="../graphics/meshes/mesh-import.html">this page</a> for how to import them and their dependencies.</p>
+</blockquote>
 <p>To create these documents you have two options: Manual or automatic import.</p>
 <h2 id="create-documents-manually">Create Documents Manually</h2>
 <p>You can manually create documents by right clicking into the <a href="asset-browser.html">asset browser</a> and selecting <em>New &gt; Asset Type</em>. If you right clicked free space, the asset document will be created in the folder that is selected on the left. If you right clicked another document, the new document will be created in the same folder as the selected asset.</p>
@@ -99,16 +103,20 @@
 <h2 id="create-documents-automatically">Create Documents Automatically</h2>
 <p>For asset types that are mostly defined by a single source file (e.g. <a href="../graphics/textures-overview.html">textures</a> and <a href="../graphics/meshes/mesh-asset.html">meshes</a>), the editor often provides an importing method that automates most of the trivial setup.</p>
 <h3 id="quick-import">Quick Import</h3>
-<p>The <strong>most convenient</strong> way is to find the source asset file in the <a href="asset-browser.html">asset browser</a> (ensure it shows <em>importable files</em>), right-click on it and select <strong>Import As</strong>. This sub-menu makes it possible to quickly import one or multiple assets as a specific asset type. It does so fully automatically. For some file types this method also allows to import assets quickly multiple times. For example, <a href="../animation/skeletal-animation/animation-clip-asset.html">animation clips</a> are often packed into a single file, which requires them to be imported many times.</p>
+<p>The <strong>most convenient</strong> way is to find the source asset file in the <a href="asset-browser.html">asset browser</a> (ensure it shows <em>importable files</em>), right-click on it and select <strong>Import As</strong>.</p>
+<p><img src="media/import-as.png" alt="Import As"></p>
+<p>This sub-menu makes it possible to quickly import one or multiple assets as a specific asset type. It does so fully automatically. For some file types this method also allows to import assets quickly multiple times. For example, <a href="../animation/skeletal-animation/animation-clip-asset.html">animation clips</a> are often packed into a single file, which requires them to be imported many times.</p>
 <h3 id="controlled-import">Controlled Import</h3>
-<p>If you want to have a few more options, select <strong>Import...</strong> instead.</p>
-<p>Another method is to select <strong>Project &gt; Import Assets...</strong> or press <strong>CTRL+I</strong> to open a file browse dialog. Navigate to the file(s) that you want to import and select them. If you want to know which asset types are currently supported for automatic import, you can open the dropdown with the allowed file extensions here.</p>
-<p>Afterwards, you will be presented with a table of options how to import the selected files:</p>
+<p>If you import many files, but want to select for each one how to import it, select <strong>Import...</strong> in the context menu.</p>
+<p>Another method is to select <strong>Project &gt; Import Assets...</strong> or press <strong>CTRL+I</strong> to open a file browse dialog. Navigate to the file(s) that you want to import and select them.</p>
+<p>You then get a table where you can select for each file how to import it:</p>
 <p><img src="media/asset-import.png" alt="Asset Import Table"></p>
-<p>Here we selected four files for import. One .obj file and three .jpg files. The automatic import uses heuristics to make an educated guess how to import certain source files. Here it already suggests to import the &quot;_col.jpg&quot; file as a diffuse texture, the &quot;_nrm.jpg&quot; file as a normal map and so on. If the heuristic is incorrect, you can use the dropdown on the left to fix it.</p>
-<p>Some source files can be imported in multiple ways. For example the .obj file could be imported as a mesh for rendering or as a mesh for physics. Often you want to import the same mesh for both, so you want two asset documents (a <em>Mesh</em> and a <em>Collision Mesh</em>) which reference the same input file. Therefore this table lists the .obj file twice but with different import options in the dropdown box. If, for example, you do not want a mesh to be imported as collision mesh, at all, you can just select <em>No Import</em> from the respective dropdown.</p>
+<p>This can be useful, if you want to import many meshes, but need to decide which ones shall be static meshes and which ones animated meshes. It can also be useful, if you want to import many textures, as the dialog allows to select how each texture gets imported.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Importing textures directly is typically not needed when the textures are part of meshes, since the mesh import automatically imports textures for you.</p>
+</blockquote>
 <p>Once you click <em>Import</em> the asset documents are generated and you can then open them. If background asset processing is enabled, the editor will already start <a href="assets-overview.html#asset-transform">transforming</a> the asset data.</p>
-<p>The automatic import creates the documents using a set of rules to fill out its properties, depending on the template that you selected for it. So for example an image imported as a &quot;diffuse texture&quot; and one imported as a &quot;normal map&quot; are mostly the same, except that a few options are already configured in a certain way for you. You should review all options for correctness afterwards.</p>
 <h3 id="import-via-drag-and-drop">Import Via Drag And Drop</h3>
 <p>The methods above assume that the source asset is already present inside one of the project's <a href="../projects/data-directories.html">data directories</a>. If that is not the case, you can drag and drop a file into the <a href="asset-browser.html">asset browser</a> to copy the file into the selected directory. This also automatically launches the asset import dialog mentioned above.</p>
 <h2 id="video-how-to-import-textures">Video: How to import textures</h2>

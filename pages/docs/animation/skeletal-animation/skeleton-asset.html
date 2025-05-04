@@ -92,6 +92,10 @@
 <p>The main function of the <em>Skeleton asset</em> is to store information about the bone hierarchy in an <a href="animated-mesh-asset.html">animated mesh</a>. It is a central aspect for all <a href="skeletal-animation-overview.html">skeletal animations</a>.</p>
 <p><img src="../media/skeleton-asset.jpg" alt="Skeleton Asset"></p>
 <p>The skeleton is used to adjust the overall scale and rotation of animated meshes. It is also used to define <a href="../../physics/jolt/collision-shapes/jolt-shapes.html">collision shapes</a> for bones, which is needed for <a href="../../physics/jolt/ragdolls/jolt-hitbox-component.html">hit detection</a> and when additionally joint types and joint limits are configured, the skeleton can be used for <a href="../../physics/jolt/ragdolls/jolt-ragdoll-component.html">ragdolls</a>.</p>
+<blockquote>
+<p><strong>Importing Skeletons:</strong></p>
+<p>Skeletons can be imported automatically during <a href="../../graphics/meshes/mesh-import.html">mesh import</a>.</p>
+</blockquote>
 <h2 id="user-interface">User Interface</h2>
 <p>The left hand side shows a tree view with the bone hierarchy. The top most element is always the <code>ezEditableSkeleton</code> node, which represents the skeleton in general.</p>
 <p>When you select any node in this tree, the <em>Skeleton Properties</em> panel on the right displays the properties of the selected node. Select the root node (<code>ezEditableSkeleton</code>) to edit the overall properties, such as which file to import. Once a file is imported, the bones should show up as child nodes. Select any of them, to configure the properties of a bone.</p>

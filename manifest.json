@@ -1492,6 +1492,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/import-as.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/import-as.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/import-mesh.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/import-mesh.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/assets/media/transform-asset.png",
       "output": {
         "resource": {
@@ -4006,6 +4026,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/meshes/mesh-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/meshes/mesh-import.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/meshes/mesh-import.html"
         }
       },
       "version": ""
