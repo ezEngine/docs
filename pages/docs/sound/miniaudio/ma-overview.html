@@ -93,6 +93,16 @@
 <p>The MiniAudio integration supports both positional (3D) and non-positional <a href="ma-sound-component.html">sound sources</a>. The <a href="ma-listener-component.html">MiniAudio listener component</a> is used to control from where sound is perceived.</p>
 <p>The <a href="ma-sound-asset.html">MiniAudio sound asset</a> is used to get a <em>.WAV</em> or <em>.MP3</em> file into the engine and contains options for randomizing sound playback.</p>
 <p>Sounds can also be played programmatically, e.g. from <a href="../../custom-code/visual-script/visual-script-overview.html">visual scripts</a> or <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScripts</a>, using the script function <code>ezSound::PlaySound()</code>.</p>
+<h2 id="how-to-enable-miniaudio">How To Enable MiniAudio</h2>
+<p>To enable MiniAudio support in your project, follow these steps:</p>
+<ol>
+<li>Open ezEditor</li>
+<li>Go to <em>Project &gt; Plugin Settings &gt; Plugin Selection...</em> to open the <a href="../../projects/plugin-selection.html">plugin selection</a> dialog.</li>
+<li>If <em>MiniAudio</em> is greyed out, you have another sound plugin active (such as FMOD). Deactivate that sound plugin.</li>
+<li>Activate the <em>MiniAudio</em> plugin and click <em>OK</em>.</li>
+<li>Click <em>Yes</em> to restart the editor.</li>
+</ol>
+<p>If your project already made use of other sound components, the <a href="../../assets/asset-curator.html">Asset Curator</a> will now show you which assets need to be updated.</p>
 <h2 id="scene-editing-settings">Scene Editing Settings</h2>
 <p>The MiniAudio editor plugin adds UI elements to <em>mute</em> sound entirely and to adjust the <em>overal volume</em>:</p>
 <p><img src="../media/sound-ui.jpg" alt="MiniAudio UI"></p>
