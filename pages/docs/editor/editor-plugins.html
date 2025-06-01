@@ -111,7 +111,41 @@
 <p>Because of the split into multiple processes, <em>ezEditor.exe</em> cannot simply read and modify arbitrary data, which often makes it more complicated to implement editing functionality, that would be quite trivial in other engines, where the editor is just a single process. Some functionality has to be implemented across both processes, in which case they need to send messages back and forth to communicate.</p>
 <h3 id="ezeditorprocessorexe">ezEditorProcessor.exe</h3>
 <p><em>ezEditorProcessor.exe</em> is a trimmed down version of <em>ezEditor.exe</em> which is only used to <a href="../assets/assets-overview.html#asset-transform">transform assets</a> in the background. Consequently it loads the same editor plugins and also launches its own engine process. In case an <em>ezEditorProcessor</em> crashes, a new one may be launched. Asset transform activity is shown in the <a href="../assets/asset-curator.html">asset curator panel</a>.</p>
-<p><em>ezEditorProcessor.exe</em> doesn't show any UI. It can be launched manually, to transform all assets for a project. This is utilized, for example, by the <em>GameEngineTests</em>.</p>
+<p><em>ezEditorProcessor.exe</em> doesn't show any UI. It can be launched manually to automate certain operations on a project without running the full editor. This is utilized, for example, by the <em>GameEngineTests</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-project</code></td>
+<td>Path to the project root folder to be processed</td>
+</tr>
+<tr>
+<td><code>-resave</code></td>
+<td>If specified, assets will be resaved.</td>
+</tr>
+<tr>
+<td><code>-transform</code></td>
+<td>Transform all assets in the given project. Also compiles the C++ plugin.</td>
+</tr>
+<tr>
+<td><code>-compile</code></td>
+<td>Generate and compile the C++ plugin of the project (if any).</td>
+</tr>
+<tr>
+<td><code>-profiling</code></td>
+<td>Saves performance profiling information into the output folder.</td>
+</tr>
+<tr>
+<td><code>-outputDir</code></td>
+<td>Path to the output directory.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="plugin-types">Plugin Types</h2>
 <p>As the diagram above shows, there are three types of plugins. Most plugins use a specific naming scheme, though it is not a requirement. <strong>Every</strong> type of plugin is optional, depending on what functionality you want to add. However, if you need a plugin for the <em>ezEditorEngineProcess</em> then you typically also need a plugin for the <em>ezEditor</em> process, to expose the functionality to the user (e.g. through a new asset type).</p>
 <p>These plugin types exist:</p>
