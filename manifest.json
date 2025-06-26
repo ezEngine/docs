@@ -1562,16 +1562,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/build/build-uwp.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/build/build-uwp.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "pages/docs/build/build-windows.md",
       "output": {
         ".html": {

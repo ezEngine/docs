@@ -121,11 +121,6 @@
 <p>Link: <a href="https://github.com/Microsoft/DirectXTex">https://github.com/Microsoft/DirectXTex</a></p>
 <p>Compile switch: Currently none</p>
 <p>Used by ezImage and the ezTexConv tool for GPU-enabled block compression.</p>
-<h2 id="duktape">Duktape</h2>
-<p>Link: <a href="https://duktape.org">https://duktape.org</a></p>
-<p>Compile switch: <strong>EZ_3RDPARTY_DUKTAPE_SUPPORT</strong></p>
-<p>Duktape is an embeddable Javascript engine, with a focus on portability and compact footprint.
-It can be used directly or through ezDuktapeWrapper. Non-essential for the engine, but scripting functionality (using <a href="https://www.typescriptlang.org/">TypeScript</a>) is built on top of it.</p>
 <h2 id="enet">Enet</h2>
 <p>Link: <a href="http://enet.bespin.org">http://enet.bespin.org</a></p>
 <p>Compile switch: <strong>EZ_3RDPARTY_ENET_SUPPORT</strong></p>
@@ -171,29 +166,6 @@ It can be used directly or through ezDuktapeWrapper. Non-essential for the engin
 <p>Link: <a href="http://guillaumeblanc.github.io/ozz-animation">http://guillaumeblanc.github.io/ozz-animation</a></p>
 <p>Compile switch: None</p>
 <p>Used as the basis for skeletal animations. Both during asset import (to build an optimized skeleton structure) and at runtime for animation playback.</p>
-<h2 id="physx-411">PhysX 4.1.1</h2>
-<blockquote>
-<p><strong>Important:</strong></p>
-<p>NVIDIA PhysX in EZ is no longer maintained. The code is currently still there, but most likely doesn't compile without errors anymore.</p>
-</blockquote>
-<p>Link: <a href="https://github.com/NVIDIAGameWorks/PhysX">https://github.com/NVIDIAGameWorks/PhysX</a></p>
-<p>Compile switch: <strong>EZ_BUILD_PHYSX</strong></p>
-<p>NVIDIA PhysX is used to provide collision detection, physics simulation, character controllers and other interactions.</p>
-<p>To build PhysX yourself:</p>
-<ol>
-<li>Checkout <strong><a href="https://github.com/NVIDIAGameWorks/PhysX.git">https://github.com/NVIDIAGameWorks/PhysX.git</a></strong></li>
-<li>Goto <strong>physx/buildtools/presets/public</strong> and open all presets that you want to build and change or add<br>
-&lt;cmakeSwitch name=&quot;NV_USE_STATIC_WINCRT&quot; value=&quot;False&quot; comment=&quot;Use the statically linked windows CRT&quot; /&gt;<br>
-&lt;cmakeSwitch name=&quot;NV_USE_DEBUG_WINCRT&quot; value=&quot;True&quot; comment=&quot;Use the debug version of the CRT&quot; /&gt;</li>
-<li><strong>Run physx/generate_projects.bat</strong> for every configuration you want to build</li>
-<li>Open <strong>physx/compiler/.../PhysXSDK.sln</strong> and compile <strong>CMakePredefinedTargets/INSTALL</strong> for both debug and release</li>
-<li>Uwp installs are missing two include folders: <strong>PhysX/include/cudamanager</strong> and <strong>PhysX/include/gpu</strong> so copy those from <strong>physx/include</strong> to <strong>physx/install/.../PhysX/include</strong></li>
-<li>The content of the built configuration in <strong>physx/install</strong> is now ready to be consumed by ezEngine by pointing the advanced cmake var <strong>EZ_PHYSX_SDK</strong> to it.</li>
-</ol>
-<blockquote>
-<p><strong>Important:</strong></p>
-<p>Depending on how you use PhysX, you may need to acquire (buy) a license for it from NVIDIA.</p>
-</blockquote>
 <h2 id="polyhaven">PolyHaven</h2>
 <p>Link: <a href="https://polyhaven.com/">PolyHaven.com</a></p>
 <p>Poly Haven is a small company based in South Africa, working with artists around the world, with the goal to create a constantly growing community-funded resource of open content (CC0 license).</p>
