@@ -89,9 +89,9 @@
         <article data-uid="">
 <h1 id="jolt-cloth-sheet-component">Jolt Cloth Sheet Component</h1>
 
-<p>The <em>Jolt cloth sheet component</em> simulates a square patch of cloth as it hangs and swings in the wind. It is meant for decorative purposes such as flags but it also interacts with other physics objects. Note that this interaction isn't very precise and prone to tunneling as well as getting tangled up inside dynamic objects.</p>
+<p>The <em>Jolt cloth sheet component</em> simulates a square patch of cloth as it hangs and swings in the wind. It is meant for decorative purposes such as flags and curtains. Note that this interaction isn't very precise and prone to tunneling as well as getting tangled up inside dynamic objects.</p>
 <p><img src="media/jolt-cloth-sheet.jpg" alt="Jolt Cloth"></p>
-<p>Jolt cloth sheets are affected by <a href="../../../effects/wind/wind.html">wind</a> and contrary to the <a href="../../../effects/cloth-sheet-component.html">cloth sheet component</a> they also interact with physics objects and collide with scene geometry.</p>
+<p>Jolt cloth sheets are affected by <a href="../../../effects/wind/wind.html">wind</a> and contrary to the <a href="../../../effects/cloth-sheet-component.html">cloth sheet component</a> they also collide with other physics objects and scene geometry. However, the physics interactions are <em>one-sided</em>, meaning that the cloth is pushed by dynamic objects, but does not push them. Although this would be technically possible, it is deliberately disabled, to prevent undesirable physics simulation artifacts.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><p><code>Size</code>: The physical size of the cloth sheet in the world.</p>

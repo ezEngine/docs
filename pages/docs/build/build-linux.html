@@ -230,6 +230,23 @@ cmake -B build -S . -G Ninja -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_C_COMPILER=gcc-
 <!-- TODO: should add something about building and setting the precompiled binaries.
 See https://github.com/ezEngine/ezEngine/pull/1152
  -->
+<h2 id="building-with-steamrt-sniper-steam-linux-runtime-3">Building with SteamRT Sniper (Steam Linux Runtime 3)</h2>
+<p>SteamRT Sniper (Steam Linux Runtime 3) is Valve's official containerized runtime for building and running Linux games on Steam. Building ezEngine inside the SteamRT Sniper SDK/container ensures maximum compatibility with the Steam client and other games using this environment.</p>
+<p><strong>Why use SteamRT Sniper?</strong></p>
+<ul>
+<li>Provides a consistent, predictable build and runtime environment for Linux games on Steam.</li>
+<li>Matches the environment used by modern native Linux games and Proton.</li>
+<li>Reduces issues caused by differences between Linux distributions.</li>
+<li>With the provided <code>CMakeUserPresets.json</code>, you can easily cross-compile ezEngine for SteamRT Sniper. This allows you to build once and run on all Steam-supported Linux distributions, making it ideal for shipping games on Steam.</li>
+</ul>
+<p><strong>How to use:</strong></p>
+<ol>
+<li>Download and set up the SteamRT Sniper SDK/container. See the <a href="https://gitlab.steamos.cloud/steamrt/sniper/sdk/-/blob/steamrt/sniper/README.md">Steam Runtime 3 'sniper' SDK documentation</a> for details.</li>
+<li>You can also install the runtime via Steam: <code>steam steam://install/1628350</code>.</li>
+<li>Use the provided <code>CMakeUserPresets.json</code> to configure your build for SteamRT Sniper. For example, select the <code>Debug-SteamRT</code>, <code>Dev-SteamRT</code>, or <code>Shipping-SteamRT</code> preset when configuring with CMake.</li>
+<li>Build ezEngine inside the container using the usual CMake commands. The container provides all required dependencies.</li>
+</ol>
+<p>For more information, see the <a href="https://github.com/ValveSoftware/steam-runtime">Valve Steam Runtime repository</a> and the <a href="https://gitlab.steamos.cloud/steamrt/sniper/sdk/-/blob/steamrt/sniper/README.md">SteamRT Sniper SDK documentation</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="building-ez.html">Building ezEngine</a></li>

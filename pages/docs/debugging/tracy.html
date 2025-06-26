@@ -93,12 +93,10 @@
 <p>The <code>tracy-profiler.exe</code> of the version with which EZ was compiled is checked into the folder <code>Data/Tools/Precompiled</code>.
 To get the latest version of Tracy, see their <a href="https://github.com/wolfpld/tracy/releases">releases</a>.</p>
 <h2 id="building-with-tracy-support">Building with Tracy Support</h2>
-<p>Unfortunately, when Tracy support is enabled, it hooks into the PDB files (debug symbols) in such a way, that it breaks <a href="../custom-code/cpp/cpp-code-reload.html">Hot Reloading C++ Game Plugins in the Editor</a>.</p>
-<p>Therefore, Tracy support is currently disabled by default.</p>
-<p>Use the <a href="https://cmake.org/">CMake GUI</a> to adjust the <a href="../build/cmake-config.html">CMake configuration</a>. Enable <code>EZ_3RDPARTY_TRACY_SUPPORT</code> then click <em>Configure</em> and <em>Generate</em>.</p>
-<p>If you want to use Tracy to inspect memory usage, you should also enable <code>EZ_3RDPARTY_TRACY_TRACK_ALLOCATIONS</code>. Note that this adds additional performance overhead.</p>
+<p>General support for Tracy is enabled by default, but can be disabled with the compile switch <code>EZ_3RDPARTY_TRACY_SUPPORT</code>.</p>
+<p>If you want to use Tracy to also inspect memory usage, you need to enable <code>EZ_3RDPARTY_TRACY_TRACK_ALLOCATIONS</code> in the <a href="../build/cmake-config.html">CMake configuration</a>. Note that this adds additional performance overhead. By default, this option is disabled.</p>
 <h2 id="using-tracy">Using Tracy</h2>
-<p>Once Tracy support is enabled, you can run the Tracy profiler app either manually from <code>Data/Tools/Precompiled</code>, or you can launch it from the editor through <em>Tools &gt; Launch Tracy...</em>. Connect to any EZ process, such as <code>ezEditor</code>, <code>ezEditorEngineProcess</code> or <code>ezPlayer</code>. Be aware that the editor uses multiple processes and you have to connect to the correct one, depending on what you want to profile.</p>
+<p>When Tracy support is enabled, you can run the Tracy profiler app either manually from <code>Data/Tools/Precompiled</code>, or you can launch it from the editor through <em>Tools &gt; Launch Tracy...</em>. Connect to any EZ process, such as <code>ezEditor</code>, <code>ezEditorEngineProcess</code> or <code>ezPlayer</code>. Be aware that the editor uses multiple processes and you have to connect to the correct one, depending on what you want to profile.</p>
 <p>For more information about how to use Tracy, please consult <a href="https://github.com/wolfpld/tracy">its documentation</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>

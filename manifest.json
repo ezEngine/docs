@@ -3692,6 +3692,26 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/light-cookie.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/light-cookie.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/light-material.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/light-material.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/graphics/lighting/media/penumbra.jpg",
       "output": {
         "resource": {
@@ -4556,6 +4576,26 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/collision-shapes/jolt-sphere-shape-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/collision-shapes/media/convex-hull-group-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/collision-shapes/media/convex-hull-group-1.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/collision-shapes/media/convex-hull-group-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/collision-shapes/media/convex-hull-group-2.png"
         }
       },
       "version": ""

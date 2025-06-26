@@ -108,6 +108,13 @@
 <p><img src="../media/jolt-colmesh-convex-decomp.jpg" alt="Convex Decomposition Collision Mesh"></p>
 <p>In the image above the mesh import decomposed the mesh into multiple pieces (seven pieces in this case). Each piece is a convex mesh with less than 250 vertices and triangles.</p>
 <p>This mode allows you to dictate into how many pieces to split the mesh. The more pieces, the closer the result resembles the original shape. These collision meshes can still be used for dynamic simulation, the Jolt actors simply use multiple convex shapes as their representation. Of course the more pieces such a mesh contains, the less efficient the simulation becomes.</p>
+<h3 id="convex-hull-group">Convex Hull Group</h3>
+<p>This mode creates a convex hull for each submesh (material group) in the mesh. Unlike convex decomposition, it does not attempt to approximate the original shape with multiple convex pieces, but instead generates one convex hull per material group. This is especially useful if each material group is already modeled as a good collider mesh, allowing the result to represent the real shape quite well. Each material can also have its own surface.</p>
+<p>For example, if a triangle mesh has two different materials:</p>
+<p><img src="media/convex-hull-group-1.png" alt="Convex Hull Group Input"></p>
+<p>The resulting collision mesh will look like this:</p>
+<p><img src="media/convex-hull-group-2.png" alt="Convex Hull Group Result"></p>
+<p>This approach can be used for dynamic rigid bodies and is particularly effective when the mesh is authored with separate material groups for each collider part.</p>
 <h2 id="selective-mesh-import">Selective Mesh Import</h2>
 <p>Sometimes a <strong>dedicated collider mesh</strong> is embedded in the same source asset as the graphics mesh. You can use the properties <code>MeshIncludeTags</code> and <code>MeshExcludeTags</code> to selectively import only those meshes. See the <a href="../../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a> for details.</p>
 <p>As an example, if the graphics mesh is called <em>Bunny</em> and the dedicated collider mesh is called <em>$COL_Bunny</em>, you can set the <em>MeshIncludeTags</em> to <code>$COL</code> to only import <em>$COL_Bunny</em> as the collider mesh.</p>

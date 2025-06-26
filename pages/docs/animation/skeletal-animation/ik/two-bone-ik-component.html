@@ -116,12 +116,13 @@
 </blockquote>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Joint Start</code>: The first bone to adjust.</li>
-<li><code>Joint Middle</code>: The second bone to adjust.</li>
-<li><code>Joint End</code>: The bone that should reach the target position.</li>
-<li><code>Mid Axis</code>: The cardinal axis of the middle joint around which the bone can rotate. The skeleton must be built such, that there is one such side axis that aligns with the desired bend axis.</li>
-<li><code>Pole Vector</code>: An optional object to use as a secondary target, to have the middle joint point towards. See details above.</li>
+<li><code>JointStart</code>: The first bone to adjust.</li>
+<li><code>JointMiddle</code>: The second bone to adjust.</li>
+<li><code>JointEnd</code>: The bone that should reach the target position.</li>
+<li><code>MidAxis</code>: The cardinal axis of the middle joint around which the bone can rotate. The skeleton must be built such, that there is one such side axis that aligns with the desired bend axis.</li>
+<li><code>PoleVector</code>: An optional object reference to use as a secondary target, to have the middle joint point towards. See details above.</li>
 <li><code>Weight</code>: The overall weight to use to apply the IK. This is typically used at runtime to gradually fade the IK in and out.</li>
+<li><code>DebugVisScale</code>: If larger than zero, debug visualization will be rendered, to show the joints, axis and pole vector. Use this to easier see the effect of the configuration.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
