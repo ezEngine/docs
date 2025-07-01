@@ -118,7 +118,7 @@
 </ul>
 </li>
 <li><code>GravityFactor</code>: How much gravity to use.</li>
-<li><code>Mass</code>: How heavy the ragdoll should be.</li>
+<li><code>WeightCategory</code>, <code>WeightScale</code>: How heavy the ragdoll should be. See <a href="../concepts/weights-forces.html">weights and forces</a> for details.</li>
 <li><code>StiffnessFactor</code>: The overall stiffness of the joints. Each joint has an individual stiffness as defined in the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton asset</a>, but when scaling characters up or down, it may be necessary to also scale the stiffness.</li>
 <li><code>OwnerVelocityScale</code>: A ragdoll may get enabled while a character is moving, for example while it is running. The owner object velocity is then transferred to the ragdoll to have it continue falling into the direction, rather then suddenly stop and just fall down. This factor allows to tweak how much of that momentum to keep (or even exaggerate).</li>
 <li><code>CenterPosition</code>: An experimental feature mainly meant for breakable objects (ragdolls with no joints). Specifies an offset where the <em>center</em> of the object should be, to apply an outwards force from.</li>
@@ -129,6 +129,7 @@
 <li><a href="../../../animation/skeletal-animation/skeletal-animation-overview.html">Skeletal Animations</a></li>
 <li><a href="jolt-hitbox-component.html">Jolt Hitbox Component</a></li>
 <li><a href="../../../animation/skeletal-animation/skeleton-asset.html">Skeleton Asset</a></li>
+<li><a href="../concepts/weights-forces.html">Weights and Forces</a></li>
 </ul>
 
 </article>

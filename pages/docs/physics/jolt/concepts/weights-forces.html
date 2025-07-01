@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Character Controller | ezEngine </title>
+      <title>Weights and Forces | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Character Controller | ezEngine ">
+      <meta name="title" content="Weights and Forces | ezEngine ">
       
       <link rel="icon" href="../../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/special/jolt-character-controller.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/concepts/weights-forces.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,43 +87,44 @@
         </div>
 
         <article data-uid="">
-<h1 id="character-controller">Character Controller</h1>
+<h1 id="weights-and-forces">Weights and Forces</h1>
 
-<p>A <em>character controller</em> is a special object in the physics engine that is used to move a character throughout a scene and make it collide with other geometry. A character controller is typically an upright capsule that abstractly represents the space that a character occupies.</p>
-<p><video src="media/cc.webm" width="600" height="600" autoplay loop></video></p>
-<p>The character controller provides the following functionality:</p>
+<p>For a physical simulation all dynamic objects (<em>rigid bodies</em>) muss have a mass. The unit for mass is <em>kilogramm</em> (kg). Heavier objects will require more force to alter their motion and they will push lighter objects out of their way.</p>
+<p>Unfortunately, game physics engines don't work well with realistic masses. When two objects collide whose mass-ratio differs significantly (one is very heavy, the other is very light), the simulation becomes unstable. Often the lighter object will fly away at ridiculous speeds or get pushed through walls. But the heavy object may also react unrealisticly.</p>
+<p>Consequently, it is best to only use masses within a certain range. For example, no object should have a mass lower than <em>1 kg</em> and no object should be heavier than <em>1000 kg</em>. Fortunately, it isn't important for objects to have exact masses, there is a lot of room for deviation without it being noticeable. Therefore, you can treat mass as a value that only needs to be somewhat correct in relation to another object. E.g. an object that is in reality significantly heavier than another, should also have a significantly larger mass in game, but the exact values don't matter much.</p>
+<h2 id="weight-categories">Weight Categories</h2>
+<p>All physical object masses are configured through so-called <strong>Weight categories</strong>.</p>
+<p>Weight categories solve the problem of managing masses for many objects. They allow you to define named categories for common weights in your game (e.g., <em>Small Crate</em>, <em>Barrel</em>, <em>Car</em>). Instead of setting the mass for each object individually, you select a weight category for it. If you later decide that all <em>Barrel</em> objects should be heavier or lighter, you can simply adjust the category's value, and all objects using that category will update automatically.</p>
+<p>Weight categories are configured through the dialog at <em>Project &gt; Plugin Settings &gt; Jolt Project Settings...</em>.</p>
+<p>If you do want to set the mass for an object directly, use one of these weight categories:</p>
 <ul>
-<li>Move throughout a scene, collide with and slide along walls</li>
-<li>Fall to the ground, slide down steep slopes</li>
-<li>Climb up shallow slopes</li>
-<li>Step over small obstacles</li>
-<li>Climb stairs</li>
-<li>Jump</li>
-<li>Stand and crouch with different capsule sizes</li>
-<li>Push dynamic objects</li>
-<li>Get pushed by kinematic objects</li>
-<li>Ride on kinematic platforms</li>
+<li><p><strong>Custom Mass</strong>: Use this when you want to specify the exact mass for an object directly.</p>
+</li>
+<li><p><strong>Custom Density</strong>: Use this to specify a density for the object. Its mass will then be calculated from its volume. This way the mass automatically scales with the object size, however, since volumes scale exponentially (a twice as large box has eight times the volume) this has to be used carefully.</p>
+</li>
 </ul>
-<p>On top of these basic features, the character controller implements many details of movement. For example, while jumping or falling, a game may allow the player some degree of control. Such details are very game specific, though, and there is no one-size-fits-all solution.</p>
-<p>Consequently, the character controller functionality is split up into multiple classes, and you are encouraged to implement your own logic:</p>
-<ol>
-<li><code>ezJoltCharacterControllerComponent</code>: A base class for Jolt character controllers. It gives access to the most important functionality and also adds some convenience functionality.</li>
-<li><code>ezJoltDefaultCharacterComponent</code>: An implementation of <code>ezJoltCharacterControllerComponent</code> that is provided as an example and as a decent starting point. It implements behavior similar to old-school first-person shooter games, such as Half-Life 2. Depending on how significantly different behavior you want, you can either derive from this class and override some parts, or copy the entire code and rewrite everything as desired.</li>
-</ol>
-<h2 id="example">Example</h2>
-<p>The player object is often the most complicated object in a game. The character controller only provides the locomotion aspect, but this is often coupled tightly to the overall game logic. For example, the player may move slower or be disallowed to jump while <a href="jolt-grab-object-component.html">carrying an object</a>. Many of these aspects can be handled by an overall player logic script. Other aspects, like the details of the characters velocity while sliding down a slope or jumping through the air, have to be implemented directly inside a character controller component.</p>
-<p>The <a href="../../../../samples/testing-chambers.html">Testing Chambers sample</a> contains a <a href="../../../prefabs/prefabs-overview.html">prefab</a> called <strong>Player.ezPrefab</strong>, which demonstrates how to build your own player object. The top level node contains a <em>Default Character Controller</em> component. You could replace this with a custom character controller component, to test out entirely different movement behavior.</p>
-<p>Note that the player object also uses an <a href="../../../input/input-component.html">input component</a> to funnel input into a <a href="../../../custom-code/angelscript/angelscript-overview.html">script</a>, which implements high level game logic, like weapon selection.</p>
+<h3 id="weight-scale">Weight Scale</h3>
+<p>The <em>weight scale</em> parameter allows you to adjust the weight from the weight category within a limited range. This is only meant for small tweaks and shouldn't be used too much.</p>
+<h2 id="impulse-types">Impulse Types</h2>
+<p>When a game wants to push physical objects (for example in an explosion or a bullet hit), it has to apply an <em>impulse</em>. The impulse strength and the mass of the affected object determine how far the object will be pushed.</p>
+<p>Using the same impulse strength to push all object types rarely gives the desired result. An impulse that may only barely move a heavy object, might already make a small object fly away at high speed.</p>
+<p><em>Impulse types</em> allow you to define named categories for different kinds of physical impulses. An impulse type has a default impulse strength, but this value can be overridden for each <em>weight category</em>.</p>
+<p>When an impulse should be applied to an object, you don't specify the impulse strength directly, but instead select an impulse type. This is then used to look up whether there is a specific impulse strength value for the weight category of the pushed object. Otherwise the default strength of that impulse type is used. This way an explosion can push objects, using different impulse strengths, such that the overall result looks pleasing.</p>
+<p>Impulse types are configured in the <em>Project &gt; Plugin Settings &gt; Jolt Project Settings...</em> dialog.</p>
+<p><img src="media/impulse-types.png" alt="Impulse Types Config"></p>
+<p>On the left-hand side, you specify the impulse types and their default strength. On the right-hand side you can override the impulse strength for each weight category.</p>
+<p>For example, in the image above the <em>Throw Object</em> impulse type has a default strength of <code>250</code> but for <em>Crate - Small</em> and <em>Debris</em> there are overrides to reduce the strength, to prevent these light object types from being thrown too far.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="jolt-character-controller.html">Character Controller</a></li>
-<li><a href="../concepts/weights-forces.html">Weights and Forces</a></li>
+<li><a href="../actors/jolt-dynamic-actor-component.html">Jolt Dynamic Actor Component</a></li>
+<li><a href="../ragdolls/jolt-ragdoll-component.html">Jolt Ragdoll Component</a></li>
+<li><a href="../special/jolt-rope-component.html">Jolt Rope Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/special/jolt-character-controller.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/concepts/weights-forces.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

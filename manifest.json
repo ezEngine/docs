@@ -4661,6 +4661,26 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/concepts/media/impulse-types.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/concepts/media/impulse-types.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/jolt/concepts/weights-forces.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/jolt/concepts/weights-forces.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/physics/jolt/constraints/jolt-cone-constraint-component.md",
       "output": {
