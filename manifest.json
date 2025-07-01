@@ -4992,6 +4992,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/jolt/special/jolt-breakable-slab-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/jolt/special/jolt-breakable-slab-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/physics/jolt/special/jolt-character-controller.md",
       "output": {
         ".html": {
@@ -5046,6 +5056,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/physics/jolt/special/media/grab-items.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/physics/jolt/special/media/jolt-breakable-slab.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/physics/jolt/special/media/jolt-breakable-slab.jpg"
         }
       },
       "version": ""

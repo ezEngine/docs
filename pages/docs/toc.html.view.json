@@ -1143,6 +1143,15 @@
                   "leaf": true
                 },
                 {
+                  "name": "Jolt Breakable Slab Component",
+                  "href": "physics/jolt/special/jolt-breakable-slab-component.html",
+                  "topicHref": "physics/jolt/special/jolt-breakable-slab-component.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
                   "name": "Jolt Rope Component",
                   "href": "physics/jolt/special/jolt-rope-component.html",
                   "topicHref": "physics/jolt/special/jolt-rope-component.html",
