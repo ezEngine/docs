@@ -120,12 +120,30 @@
 </blockquote>
 <h3 id="pole-vector">Pole Vector</h3>
 <p>When rotating a bone towards a target, there is not only the main direction to consider, but also the <em>roll</em> around that direction.</p>
-<p>The <em>pole vector</em> is an optional object to use as a secondary target, that the <code>Up Vector</code> should point towards. In the case of pointing an arm, this is typically used to specify into which direction the elbow should point (for instance to the left, right, downwards, etc). Usually the pole vector object would be another child object of the animated mesh and thus move along with it.</p>
+<p>The <em>pole vector</em> is an optional object to use as a secondary target, that the <code>Up Vector</code> should point towards. In the case of pointing an arm, this is typically used to specify into which direction the elbow should point (for instance to the left, right, up, down). Usually the pole vector object would be another child object of the animated mesh and thus move along with it.</p>
 <p>Again, for this to work, your skeleton needs to be build such, that the bones have the proper <em>roll</em>, such that their orthogonal directions point into a useful direction. For example an elbow joint should be built such, that the <em>forward</em> direction (for example <code>+Y</code>) goes straight along the forearm, and its <em>roll</em> should be such, that the sidewards direction (<code>+X</code> or <code>+Z</code>) points into the direction of the elbow.</p>
 <blockquote>
 <p><strong>NOTE</strong></p>
 <p>Often aim IK already works good enough without a dedicated pole vector, so only set it up, when the result doesn't look convincing enough without it.</p>
 </blockquote>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>The IK computation attempts to align the <em>up direction</em> with the <em>direction towards the pole vector</em> by rotating around each bone's <em>forwards direction</em>. Therefore the up vector will generally point roughly towards the pole vector (use the debug visualization to inspect this). However, there are always two directions that a bone could be rotated around, clockwise or counter-clockwise. The IK calculation will choose the shorter rotation, which means that if the pole vector is at a position where rotating either way round is close to 180 degrees, a minor change (such as from a playing idle-animation) will make the rotation flip back and forth between the two. If this is the case, first try to use a different <em>up direction</em> and potentially use an <em>inverse pole vector</em>. However, depending on the range of motion that you want to support, you may also need to dynamically <strong>move the pole vector</strong> when you change the aim target position.</p>
+</blockquote>
+<h3 id="debug-visualization">Debug Visualization</h3>
+<p>Set the <code>DebugVisScale</code> property to a non-zero value to see a visualization of the various joints and vectors. The visualization will only appear once you <a href="../../../editor/run-scene.html">simulate the scene</a>.</p>
+<p><img src="media/aimik-debug.jpg" alt="Aim IK Debug Visualization"></p>
+<p>In the image above an aim IK chain with three bones was set up.</p>
+<ul>
+<li><p>For every bone involved there are three arrows, one red (X), one green (Y), one blue (Z), indicating the cardinal directions of the bone, as they are defined in the model. These arrows should help you choose which direction to use for the forward and up vector.</p>
+</li>
+<li><p>There's a light green sphere at the target position and a light green arrow pointing towards the target position.</p>
+</li>
+<li><p>The orange arrows represent the chosen up direction. In this example they point into the +X direction, which is why they align with the red arrows.</p>
+</li>
+<li><p>The cyan cross represents the position of the pole vector and the cyan arrows point towards the pole vector. In case an <em>inverse pole vector</em> is used, they would point into the opposite direction.</p>
+</li>
+</ul>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><p><code>Forward Vector</code>: The cardinal axis of the bones to align with the aim direction. Usually found by the scientific method of trying all possible options.</p>
