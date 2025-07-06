@@ -89,8 +89,47 @@
         <article data-uid="">
 <h1 id="color-spaces">Color Spaces</h1>
 
-<!-- PAGE IS TODO -->
+<p>Color spaces are a fundamental concept in computer graphics. Understanding the difference between linear and gamma (sRGB) color spaces is crucial for achieving correct color representation and lighting in your projects.</p>
+<p>This page gives a very brief introduction, for more in-depth explanations, please consult online resources.</p>
+<h2 id="what-is-linear-space">What is Linear Space</h2>
+<p>Linear color space is the representation of colors how people would <em>expect</em> colors to work. Here a value of <code>0.5</code> is half as bright as a value of <code>1.0</code>. Or if encoded as bytes, a value of 128 is half as bright as a value of 256.</p>
+<p>Consequently, doing mathematical operations with them make sense. For instance, multiplying an RGB value of <code>(64, 64, 64)</code> (a dark grey) by <code>2</code> results in the RGB value <code>(128, 128, 128)</code>. If these values are in linear space, the perceived brightness is then also doubled.</p>
+<h2 id="what-is-gamma-space-srgb">What is Gamma Space (sRGB)</h2>
+<p>Gamma (or sRGB) color space is the representation of colors that nobody expects, but that is used in practice nearly everywhere where colors are saved with one byte per channel.</p>
+<p>Gamma space is <em>only relevant for 8-bit-per-channel</em> colors. Once a color is stored with 16 or 32 bits per channel, it is always in linear space. The reason is, that Gamma space is basically a compression method and when more storage space is available, this compression is not necessary anymore.</p>
+<p>Basically, human vision is pretty good at distinguishing dark color shades, whereas it is pretty bad at distinguishing bright colors. The reason is simply, that humans need to be able to see as much as possible in the dark, so our eyes are more sensitive to darker shades.</p>
+<p>8 bits per channel is not enough to represent the many shades of colors that the human eye can distinguish and this is especially true for the darker color shades. To still be able to store colors reasonably well with just 8 bits per channel (24 bits per RGB pixel), the sRGB color space uses more bits to represent darker colors and only few bits to represent bright colors.</p>
+<p>As a consequence, the RGB color value <code>(64, 64, 64)</code> in Gamma space appears much darker than the same value when interpreted in linear space. Also multiplying it by <code>2</code>, while still resulting in the same mathematical value of <code>(128, 128, 128)</code> results in a grey value that is not perceived as <em>twice as bright</em>. Consequently, although doing mathematical operations with sRGB values works and gives believable results, they are mathematically incorrect.</p>
+<p>However, all the lighting, blending and filtering operations that are done in 3D graphics rely on mathematical correctness and break when they are done in sRGB space.</p>
+<p><em>Fun fact:</em> The vast majority of programs do their color calculations in Gamma space. Outside of the realm of 3D graphics, most programmers are not aware of this problem and even many professional programs do this incorrectly.</p>
+<h2 id="practical-uses">Practical Uses</h2>
+<p>In practice nearly all photos and textures that represent visual images are stored in Gamma space (except HDR images).</p>
+<p>However, artificial textures like <em>normal maps</em>, <em>roughness textures</em> and pretty much all other textures that store calculated data, treat the pixel values as linear values.</p>
+<p>The GPU is capable of automatically converting sRGB values to linear space, as long as it knows that a texture holds such data. That's the reason why <a href="../graphics/textures-overview.html">textures</a> have a <em>usage</em> parameter, where you need to select wether the texture contains <em>real colors</em> (e.g. a photo) or just <em>data</em> (e.g. roughness). This way, the GPU can take care of the conversion, and the shader code can then work with all values in linear space.</p>
+<h2 id="color-classes-in-ezengine">Color Classes in ezEngine</h2>
+<p>ezEngine provides several color classes to help you work correctly with different color spaces:</p>
+<ul>
+<li><strong>ezColor</strong>: Represents an RGBA color in linear space, using floating-point values. This is the main class for color computations. Colors don't have to be store this way, but when you need to manipulate a color, always assign it to an <code>ezColor</code> instance first, then do the calculations, and afterwards assign it back to the desired storage format.</li>
+<li><strong>ezColorGammaUB</strong>: Stores colors in gamma (sRGB) space using 8 bits per channel. This is the format typically used for images and textures intended for display. This is also the format that all 8-bit color values are displayed in in paint programs or CSS files.</li>
+<li><strong>ezColorLinearUB</strong>: Stores colors in linear space using 8 bits per channel (unsigned byte). This should only be used when it is absolutely crucial to store a color with 8 bits per channel and the value has to already be converted to linear space. This is nearly only the case for vertex color streams.</li>
+</ul>
+<h3 id="example-converting-between-spaces">Example: Converting Between Spaces</h3>
+<p>When you hardcode a color from a paint program (which gives you sRGB values), you can convert it to linear space like so:</p>
+<pre><code class="lang-cpp">// Convert from sRGB (gamma) to linear
+// Cornflower Blue: sRGB(100, 149, 237)
+ezColor linear = ezColorGammaUB(100, 149, 237);
+</code></pre>
+<p>When you want to display a color in the UI, convert it back to gamma space:</p>
+<pre><code class="lang-cpp">// Convert from linear to sRGB (gamma)
+ezColorGammaUB gamma = ezColor(0.39f, 0.58f, 0.93f);
+</code></pre>
 <h2 id="see-also">See Also</h2>
+<ul>
+<li>Code documentation of <code>ezColor</code>.</li>
+<li><a href="https://kinematicsoup.com/news/2016/6/15/gamma-and-linear-space-what-they-are-how-they-differ">Gamma and Linear Space: What They Are &amp; How They Differ</a></li>
+<li><a href="https://docs.unity3d.com/6000.1/Documentation/Manual/differences-linear-gamma-color-space.html">Unity Manual: Differences between linear and gamma color space</a></li>
+<li><a href="https://matt77hias.github.io/blog/2018/07/01/linear-gamma-and-sRGB-color-spaces.html">Linear, Gamma, and sRGB Color Spaces (Matt77hias Blog)</a></li>
+</ul>
 
 </article>
 

@@ -3254,7 +3254,7 @@
           "leaf": true
         },
         {
-          "name": "Color Spaces (TODO)",
+          "name": "Color Spaces",
           "href": "appendix/color-spaces.html",
           "topicHref": "appendix/color-spaces.html",
           "tocHref": null,

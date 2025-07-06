@@ -127,7 +127,7 @@
 <h3 id="math">Math</h3>
 <p>The <code>ezMath</code> namespace provides general math functions. <code>ezVec2</code>, <code>ezVec3</code> and <code>ezVec4</code> are vector classes, <code>ezQuat</code> is a quaternion implementation for representing rotations. <code>ezTransform</code> represents a full position / rotation / scale transform.</p>
 <p><code>ezAngle</code> is used for representing angles either in degree or Radians.</p>
-<p><code>ezColor</code> is used for HDR colors in linear color space (the default) and <code>ezColorGammaUB</code> can be used for 8-bit colors in Gamma space (see <a href="../../appendix/color-spaces.html">Color Spaces (TODO)</a>).</p>
+<p><code>ezColor</code> is used for HDR colors in linear color space (the default) and <code>ezColorGammaUB</code> can be used for 8-bit colors in Gamma space (see <a href="../../appendix/color-spaces.html">Color Spaces</a>).</p>
 <h3 id="time">Time</h3>
 <p>The class <code>ezTime</code> is used for storing time values. <code>ezClock</code> can be retrieved from the <code>ezWorld</code> and gives you the current game time.</p>
 <p>Note that the <code>Update()</code> function of components comes with a <code>deltaTime</code> argument, which gives you the time between calls to <code>Update()</code>, whereas <code>ezClock</code> gives you the time difference between frames, which often is not the same.</p>
