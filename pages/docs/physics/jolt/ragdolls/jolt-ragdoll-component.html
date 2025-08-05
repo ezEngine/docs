@@ -89,10 +89,6 @@
         <article data-uid="">
 <h1 id="jolt-ragdoll-component">Jolt Ragdoll Component</h1>
 
-<blockquote>
-<p><strong>Note</strong></p>
-<p>Ragdolls are a work-in-progress feature. They are working, but the exact functionality may change in the future.</p>
-</blockquote>
 <p>The <em>Jolt ragdoll component</em> is used to physically simulate limp bodies.</p>
 <p><video src="media/ragdolls.webm" width="800" height="600" autoplay loop></video></p>
 <h2 id="ragdoll-configuration">Ragdoll Configuration</h2>
@@ -107,6 +103,15 @@
 <p>This feature is only experimental and very limited in functionality.</p>
 </blockquote>
 <p><video src="media/breakable.webm" width="800" height="600" autoplay loop></video></p>
+<h2 id="ragdoll-simulation">Ragdoll Simulation</h2>
+<p>Once a ragdoll component is switched to <em>active</em>, it takes over the <em>pose generation</em> for the <a href="../../../animation/skeletal-animation/animated-mesh-component.html">animated mesh</a>. It will also take over the positioning of the <em>owner game object</em>. That means that the owner position will be moved to the position of the top-most simulated joint of the ragdoll (the first one that has a collider). So the owner position might be at a character's feet before the ragdoll takes over, but then get moved to the hips once the ragdoll activates.</p>
+<h3 id="animated-ragdolls">Animated Ragdolls</h3>
+<p>If the <code>AnimMode</code> property is set to <em>Powered</em> or <em>Controlled</em> and an <a href="../../../animation/skeletal-animation/animation-graphs/animation-graph-overview.html">animation graph</a> is active that provides a pose, the ragdoll will use that pose to influence the ragdoll simulation.</p>
+<p>In the <em>powered</em> mode, the ragdoll is still physically simulated like normal, but the joints act like muscles, moving the ragdoll towards the desired pose. This is typically used to play a death animation, and have the character continue to move a little before it finally goes limp.</p>
+<p>In the <em>controlled</em> mode, the ragdoll is fully moved by the animation, include position changes that can let the ragdoll walk around or jump. It isn't really physically simulated, only small overlaps with other geometry can be avoided, but they usually produce jittering.</p>
+<p>This mode is mainly meant to control the ragdoll for a very short time (less than a second) and then switch to the powered or limp mode, so that a death animation can start off more dramatically. This will also give each bone some motion, which will then be continue by the physics simulation.</p>
+<p>Use <a href="../../../animation/skeletal-animation/animation-events.html">animation events</a> to mark up a death animation, where it should switch to <em>controlled</em>, <em>powered</em> or <em>limp</em> mode, and use a script to forward this setting to the ragdoll component.</p>
+<p>In <em>powered</em> mode, you can also call <code>FadeJointMotorStrength()</code> to have the strength of the muscles fade over a short time. This does allow to also fade the strength back in, as the ragdoll stays in the powered mode, and the animation provider will stay active and will continue to provide animation poses. To fully switch of animation generation, switch the ragdoll to <em>limp</em> mode at the end of a death animation.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>SelfCollision</code>: Whether the individual bones of a ragdoll shall collide with each other. If disabled, they will pass through each other and only the joint constraints will prevent unnatural motion. Wether self collision works well or not on a given character highly depends on how the colliders for the bones are set up.</li>
@@ -117,6 +122,13 @@
 <li><code>WithCurrentMeshPose</code>: The ragdoll starts immediately with the current pose. This does not require another component to regularly provide new poses and thus can also be used with a <a href="../../../animation/skeletal-animation/skeleton-pose-component.html">skeleton pose component</a>.</li>
 </ul>
 </li>
+<li><code>AnimMode</code>: What to do, in case an animation pose is provided during ragdoll simulation, by an <a href="../../../animation/skeletal-animation/animation-graphs/animation-controller-component.html">animation controller component</a>.
+<ul>
+<li><code>Limp</code>: The ragdoll ignores the animation. It also instructs the animation provider to deactivate itself, to not waste performance.</li>
+<li><code>Powered</code>: The ragdoll joints attempt to rotate towards the desired animation target, however, the ragdoll is still fully physically simulated and will fall, push against objects and be limited by walls etc.</li>
+<li><code>Controlled</code>: The entire ragdoll is controlled by the animation, like a puppet. It will follow the animation nearly perfectly, including position changes (ie it can jump etc). Physical simulation does happen, but will only prevent minor penetration issues.</li>
+</ul>
+</li>
 <li><code>GravityFactor</code>: How much gravity to use.</li>
 <li><code>WeightCategory</code>, <code>WeightScale</code>: How heavy the ragdoll should be. See <a href="../concepts/weights-forces.html">weights and forces</a> for details.</li>
 <li><code>StiffnessFactor</code>: The overall stiffness of the joints. Each joint has an individual stiffness as defined in the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton asset</a>, but when scaling characters up or down, it may be necessary to also scale the stiffness.</li>
@@ -124,6 +136,41 @@
 <li><code>CenterPosition</code>: An experimental feature mainly meant for breakable objects (ragdolls with no joints). Specifies an offset where the <em>center</em> of the object should be, to apply an outwards force from.</li>
 <li><code>CenterVelocity</code>, <code>CenterAngularVelocity</code>: What linear and angular velocity to set at start outwards from the <code>CenterPosition</code> on each bone. This makes it possible to build <em>breakable</em> objects that break apart when the ragdall gets activated.</li>
 </ul>
+<h2 id="script-functions">Script Functions</h2>
+<ul>
+<li><code>SetInitialImpulse</code>, <code>AddInitialImpulse</code>: Should be called before activating the ragdoll component. Will apply an impulse to the ragdoll at the provided position, when it starts simulating.</li>
+<li><code>SetJointTypeOverride</code>: Call this before activating the ragdoll. Makes it possible to override the type of a joint in ragdoll, so that it can be either stiff or break off.</li>
+<li><code>SetJointMotorStrength</code>: Changes the overall strength of the joint motors (&quot;muscles&quot;) in an animation powered ragdoll.</li>
+<li><code>FadeJointMotorStrength</code>: Fades the motor (&quot;muscle&quot;) strength of an animation powered ragdoll to a target value. Typically used to fade out the animation contribution.</li>
+</ul>
+<h2 id="ragdoll-troubleshooting">Ragdoll Troubleshooting</h2>
+<p>Getting ragdolls to behave correctly can be very hard. Here are some tips how to approach problems:</p>
+<ol>
+<li><p>All important configurations are set up in the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton</a>. While configuring a ragdoll, open a simple scene and add a game object only with an <a href="../../../animation/skeletal-animation/animated-mesh-component.html">animated mesh component</a> and a ragdoll component into it, and frequently <a href="../../../editor/run-scene.html">simulate the scene</a> to see how the ragdoll behaves.</p>
+</li>
+<li><p>Start by just adding the most important bone shapes. Disable <em>self collision</em> on the ragdoll.</p>
+</li>
+<li><p>Once you get to setting up the joints, disable gravity on the ragdoll (set <code>GravityFactor</code> to zero). When you simulate the scene, the ragdoll should not move at all. If it does, that means that the joint limits are incorrect and even the start state of the ragdoll is not allowed by the limits. Setting up correct joint limits can be very tricky, especially shoulder and hip joints are difficult.</p>
+</li>
+<li><p>If the ragdoll moves at startup, with gravity disabled, deactivate joints in the skeleton, until you find the joint that introduces the force.</p>
+</li>
+<li><p>Enable the rotation gizmo on a joint in the skeleton asset, to correct its overall orientation.</p>
+</li>
+<li><p>Relax joint limits, especially shoulders should have quite loose limits, but pretty much all joints should allow some swing and twist.</p>
+</li>
+<li><p>Use the <em>Twist Center Angle</em> to adjust the neutral rotation for the joint twisting. The gizmo tries to help you finding a good angle, by highlighting the center direction in red, in case it is outside the allowed min and max range.</p>
+</li>
+<li><p>Once you fixed a joint to not modify a bone at startup, enable the next joints and try again. Repeat until all joints are configured and none introduce a force on the ragdoll at startup with gravity disables.</p>
+</li>
+<li><p>If you want to use <em>self collision</em>, enable it and check that the ragdoll doesn't behave weirdly.</p>
+</li>
+<li><p>Make sure that the shapes of adjacent bones overlap, so that there are no gaps anywhere. However, also check that shapes of bones that are not directly adjacent <strong>do not overlap</strong>, otherwise they will push each other away at the start.</p>
+</li>
+<li><p>Increase <code>GravityFactor</code> again to see how the ragdoll behaves when falling down.</p>
+</li>
+<li><p>The issues mentioned above can also happen from other poses, of course, so test your ragdoll from various different starting poses. You can use the <a href="../../../animation/skeletal-animation/simple-animation-component.html">simple animation component</a> to play an animation on the mesh and manually activate the ragdoll at different times to test from that pose. Reduce the animation playback speed to make it easier to time the activation.</p>
+</li>
+</ol>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../../../animation/skeletal-animation/skeletal-animation-overview.html">Skeletal Animations</a></li>
