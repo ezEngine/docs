@@ -91,6 +91,9 @@
 
 <p><img src="media/hitboxes.png" alt="Hitboxes"></p>
 <p>The <em>Jolt hitbox component</em> is used to add collider shapes to an <a href="../../../animation/skeletal-animation/animated-mesh-component.html">animated mesh</a>.</p>
+<h2 id="video-how-to-setup-hitboxes">Video: How to Setup Hitboxes</h2>
+<p><a href="https://youtu.be/AB6vTTyQCnE"><img src="https://img.youtube.com/vi/AB6vTTyQCnE/0.jpg" alt="video"></a></p>
+<h2 id="setup">Setup</h2>
 <p>The component must be attached next to another component that defines the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton</a> to use, for instance an <a href="../../../animation/skeletal-animation/animated-mesh-component.html">animated mesh component</a> or a <a href="../../../animation/skeletal-animation/skeleton-component.html">skeleton component</a>. It will then use that skeleton to create the physics shapes.</p>
 <p>Consequently, the configuration of the hitbox shapes is set up through the <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeleton asset</a>.</p>
 <p>The hitboxes are usually used to be able to shoot an animated character. Although they share the collider setup with the <a href="jolt-ragdoll-component.html">Jolt ragdoll component</a>, hitboxes and ragdolls are separate features that can be used independently of each other. For example, while a character is alive, it would use hitboxes, so that raycasts can determine where it would be hit, but it would not use a ragdoll component yet. Once a character dies, a ragdoll component would be activated to make it fall to the ground. The hitbox component could now be deactivated (which also makes sense for performance reasons), since it's functionality may not be needed anymore.</p>
