@@ -97,7 +97,7 @@
 <pre><code class="lang-cmd">ShaderCompiler.exe -help
 </code></pre>
 <ul>
-<li><p><code>-project &lt;path&gt;</code>: The compiler takes a path to a <a href="../projects/projects-overview.html">project</a> to resolve paths relative to the project directory.</p>
+<li><p><code>-project &lt;path&gt;</code>: The compiler takes a path to a <a href="../projects/projects-overview.html">project</a> to resolve paths relative to the project directory. If only a project path is specified and no <code>-shader</code> option, all shaders that belong to a project (in all <a href="../projects/data-directories.html">data directories</a>) are compiled.</p>
 </li>
 <li><p><code>-platform &lt;name&gt;</code>: The name of the target platform for which to compile the shaders. For example <code>DX11_SM50</code>. See the command line help for all options.</p>
 </li>
@@ -108,6 +108,8 @@
 </ul>
 <h2 id="example">Example</h2>
 <pre><code class="lang-cmd">ShaderCompiler.exe -project &quot;C:\ez\Data\Base&quot; -platform DX11_SM50 -shader &quot;Shaders\Debug&quot; -perm TOPOLOGY=TOPOLOGY_LINES CAMERA_MODE=CAMERA_MODE_PERSPECTIVE
+</code></pre>
+<pre><code class="lang-cmd">ShaderCompiler.exe -project &quot;C:\ez\Data\Base&quot; -platform VULKAN
 </code></pre>
 <h2 id="see-also">See Also</h2>
 <ul>

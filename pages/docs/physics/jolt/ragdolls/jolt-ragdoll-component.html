@@ -91,6 +91,8 @@
 
 <p>The <em>Jolt ragdoll component</em> is used to physically simulate limp bodies.</p>
 <p><video src="media/ragdolls.webm" width="800" height="600" autoplay loop></video></p>
+<h2 id="video-how-to-make-ragdolls">Video: How to make Ragdolls</h2>
+<p><a href="https://www.youtube.com/watch?v=okvQ6SlBDvk"><img src="https://img.youtube.com/vi/okvQ6SlBDvk/0.jpg" alt="video"></a></p>
 <h2 id="ragdoll-configuration">Ragdoll Configuration</h2>
 <p>Ragdolls only work with <a href="../../../animation/skeletal-animation/skeleton-asset.html">skeletons</a> that have a proper bone collider and joint setup. The most important bones need to have <em>collider shapes</em>. Additionally, bones that should be anatomically connected, need to have <em>joints</em> set up. Bones also must adhere to a physically plausible hierarchy, meaning that leg bones should be child bones of a hip bone, feet bones must be child bones of leg bones and so on. Unfortunately many assets don't strictly follow this rule, which often makes them unsuitable for use as a ragdoll.</p>
 <p>The ragdoll component works with <em>uniform scaling</em>, so you can create differently sized characters or objects. It does <em>not</em> work with non-uniform scaling.</p>

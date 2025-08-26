@@ -6848,6 +6848,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/samples/crazyball.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/crazyball.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/samples/cs-histogram.md",
       "output": {
         ".html": {

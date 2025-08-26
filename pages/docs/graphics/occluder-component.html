@@ -97,7 +97,8 @@
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>Type</code>: The occluder geometry type. Quads are more efficient than boxes, since they only need to rasterize a single polygon.</li>
-<li><code>Extents</code>: The size of the occluder geometry.</li>
+<li><code>Extents</code>: The size of the occluder quad or box.</li>
+<li><code>Mesh</code>: Reference to a <a href="meshes/mesh-asset.html">Mesh Asset</a> for more complex occluder geometry. This can be used for a low-detail representation of a level. Be careful not to use too complex geometry, otherwise occluder rasterization can become the bottleneck and defeat the purpose. If the occluder is large, split it up into multiple pieces, such that pieces can be culled more broadly.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

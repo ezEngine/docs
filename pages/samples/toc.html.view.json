@@ -126,6 +126,15 @@
       "leaf": true
     },
     {
+      "name": "Crazy Ball Sample",
+      "href": "crazyball.html",
+      "topicHref": "crazyball.html",
+      "tocHref": null,
+      "level": 2,
+      "items": [],
+      "leaf": true
+    },
+    {
       "name": "Store Sample",
       "href": "store-sample.html",
       "topicHref": "store-sample.html",
