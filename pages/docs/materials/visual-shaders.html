@@ -89,9 +89,102 @@
         <article data-uid="">
 <h1 id="visual-shaders">Visual Shaders</h1>
 
-<!-- PAGE IS TODO -->
-<p>Visual Shaders are fully functional (except for several known limitations), but currently undocumented.</p>
-<p>An alternative to using visual shaders is to write a custom shader based off of a <a href="../graphics/shaders/shader-templates.html">shader template</a>.</p>
+<p>Visual Shaders are a mode of <a href="materials-overview.html">material asset</a>. This allows to create custom shading effects within a given framework (e.g. a PBR lighting model). Visual Shader Editing (VSE) is much simpler than writing a full shader and is a good start to get familiar with shaders.</p>
+<p><img src="media/vse.png" alt="VSE"></p>
+<p>An alternative to using visual shaders is to write a custom shader based off of a <a href="../graphics/shaders/shader-templates.html">shader template</a>. However, this is only necessary, once you want to create advanced effects that are not possible with visual shaders.</p>
+<h2 id="limitations">Limitations</h2>
+<p>Visual shaders are mainly used to write <em>pixel shaders</em>. Although an output node may allow to also modify the vertex position, there are strict limitations for what can be done.</p>
+<p>Visual shaders do not support writing geometry shaders or tesselation shaders.</p>
+<p>The output node defines the base functionality, for instance that a material uses a PBR lighting model. If you have different requirements, you can create a custom output node for your project.</p>
+<p>There is no support for loops or conditionals. If you need such functionality, you have to write a full shader using HLSL. A starting point for this are <a href="../graphics/shaders/shader-templates.html">shader templates</a>.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>To work with visual shaders, switch the <code>Shader Mode</code> property of a material to <strong>Visual Shader</strong>. Now a node editing panel at the bottom shows up. Next create an <strong>Output node</strong> and connect something to its pins.</p>
+<p>To see the result of your custom shader, <strong>save the material asset</strong> to compile the shader. Now the 3D preview should start showing the result of your custom shader. If it doesn't, check the <a href="#trouble-shooting">trouble shooting</a> section below.</p>
+<p>Every node has properties. These are shown when you select the node. If no node is selected, the general <em>material properties</em> are shown.</p>
+<h2 id="trouble-shooting">Trouble Shooting</h2>
+<p>The material preview is supposed to show the result of the shader. In case that it doesn't behave as expected, check the following:</p>
+<ul>
+<li>Make sure you have exactly one <em>output node</em>.</li>
+<li>Make sure the asset is <em>saved</em>. Modifications that haven't been saved yet, are not shown.</li>
+<li>Check the window in the bottom right for <em>shader compilation errors</em>.</li>
+<li>Make sure all parameters have the expected values.</li>
+<li>There is a bug where the preview doesn't switch to the newly modified shader. Save and close the material asset, then reopen it, to fix this issue.</li>
+</ul>
+<h2 id="available-visual-shader-nodes">Available Visual Shader Nodes</h2>
+<p>To see which nodes are available, just open the context menu in the node editor. Nodes are sorted by category. When you instantiate a node, you can point the mouse cursor at the node title to show a tooltip with a short description. Additionally, pointing at any of the input or output pins, may show a tooltip with more details about its functionality.</p>
+<h3 id="output-nodes">Output Nodes</h3>
+<p>Every shader must have <em>exactly one</em> node from the <strong>Output</strong> category. This defines what type of shader this will be.</p>
+<h4 id="material-output-node">Material Output Node</h4>
+<p>This is used for standard PBR material shaders.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>When using this output node, the <code>Asset Filter Tags</code> property on the material should be set to <strong>empty</strong> for the material to be available as a standard mesh material.</p>
+</blockquote>
+<p>If the <code>Local Pos Offset</code> or <code>Global Pos Offset</code> pin of this node are connected, this code is injected into the <strong>vertex shader</strong>. This allows to do vertex position manipulation.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>Some nodes produce different output when they are used for vertex shaders. For instance, the <em>VertexPosition</em> and <em>VertexNormal</em> nodes return their data in different spaces. See the tooltips on their output pins for details.</p>
+</blockquote>
+<h4 id="decal-output-node">Decal Output Node</h4>
+<p>This is used for projected textures in <a href="../graphics/lighting/spot-light-component.html">spotlights</a>.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>When using this output node, the <code>Asset Filter Tags</code> property on the material must be set to <strong>Decal</strong> for the material to be available for spotlights.</p>
+</blockquote>
+<p>This output node is <strong>pixel shader only</strong>. It does not allow to modify the vertex shader.</p>
+<h2 id="constants-and-parameters">Constants and Parameters</h2>
+<p>These nodes define input values for a shader. Constants are always fixed, whereas parameters show up in the material properties section (after saving and transforming the asset).</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>Parameter nodes have a <em>default</em> value. If you change this, the material typicallys continues to use the previous value, because the material was already saved with the previous value. To change this, go to the material properties, right-click the property name and select <em>Revert to Default</em>.</p>
+</blockquote>
+<h2 id="texturing-nodes">Texturing Nodes</h2>
+<p>These nodes allow you to sample a texture. There are a couple of nodes for typical texture types, like <em>Base Texture</em> and <em>Normal Texture</em>, that take care of some details. See the tooltip on the output pins for details. If you do not want to use a standard texture, simply use the <code>Texture 2D</code> node. If you want to use a non-standard <em>sampler</em>, for instance for nearest neighbor sampling, you have to use the <code>Texture 2D</code> node and connect a custom sampler type.</p>
+<h2 id="input-nodes">Input Nodes</h2>
+<p>These nodes provide various kinds of input data. Some give access to vertex attributes like position, normal, color and UV texture coordinates. Others provide global values, like the time or camera configuration.</p>
+<p>Of particular interest should be the <strong>InstanceData</strong> node, which allows to access object specific per-instance data. This is used to configure a shader differently and dynamically per object. Particularly the <strong>Custom Data</strong> value, which is available on <a href="../graphics/meshes/mesh-component.html">mesh components</a>, allows you to dynamically adjust a shader.</p>
+<h2 id="how-to-add-visual-shader-nodes">How to Add Visual Shader Nodes</h2>
+<p>It is straight-forward to add new visual shader nodes.
+The nodes are defined in <code>DDL</code> files located in</p>
+<pre><code class="lang-cmd">Data/Tools/ezEditor/VisualShader
+</code></pre>
+<p>Simply add a file or edit an existing one to extend the system. The editor automatically hot-reloads the definition files when they change.</p>
+<p>The majority of the configuration should be self-explanatory, just look at existing nodes and their input and output pin setups.</p>
+<p>The following only describes non-obvious options.</p>
+<blockquote>
+<p><strong>IMPORTANT</strong></p>
+<p>Typically you are not supposed to have to add your own nodes. However, in case you come across missing functionality, or you have an idea for a useful helper node, please open a pull request to have it added to ezEngine.</p>
+</blockquote>
+<h3 id="node-options">Node Options</h3>
+<ul>
+<li><p><code>NodeType</code>: Can be <code>Main</code>, <code>Texture</code> or empty.</p>
+<p>Use <code>Main</code> for final output nodes, <code>Texture</code> for texture sampling nodes.</p>
+</li>
+<li><p><code>CheckPermutations</code>: Typically only used on <code>Main</code> nodes. Defines which permutation variables to set to a fixed value when running checks on the generated shader. This is to reduce how many permutations get pre-compiled, to save time during development, by not compiling thousands of unnecessary shader permutations.</p>
+</li>
+<li><p><code>CodePermutations</code>: Typically only used on <code>Main</code> nodes. Defines which permutation variables to use for this shader. This will be injected into the <a href="../graphics/shaders/shader-permutation-variables.html">PERMUTATIONS section</a>.</p>
+</li>
+<li><p><code>CodeRenderStates</code>: Typically only used on <code>Main</code> nodes. The code that should be injected into the <a href="../graphics/shaders/shader-render-state.html">RENDERSTATE section</a>.</p>
+</li>
+<li><p><code>CodeVertexShader</code>, <code>CodeGeometryShader</code>: Code that will be injected into the body of the vertex or geometry shader. Often used to enable defines or include certain files.</p>
+</li>
+<li><p><code>CodeMaterialParams</code>: Code that will be injected into the <code>MATERIALPARAMETER</code> section of the shader. See <a href="../graphics/shaders/shaders-overview.html">Shaders</a> and <a href="../graphics/shaders/shader-permutation-variables.html">Shader Permutation Variables</a>. Here <code>$prop0</code>, <code>$prop1</code>, etc are placeholders for the name of the first, second, etc <code>Property</code> of the node.</p>
+</li>
+<li><p><code>CodeMaterialConstants</code>: Typically only used on <code>Main</code> nodes. Code that is injected into the <code>MATERIALCONSTANTS</code> section. See <a href="../graphics/shaders/shaders-overview.html">Shaders</a>.</p>
+</li>
+<li><p><code>CodeMaterialCB</code>: Code injected into the material constant buffer (CB) section of the shader. Used to declare and initialize constant buffer variables that are shared between shader stages. Here <code>$prop0</code>, <code>$prop1</code>, etc are placeholders for the name of the first, second, etc <code>Property</code> of the node.</p>
+</li>
+<li><p><code>CodePixelDefines</code>: Code injected as preprocessor defines (<code>#define</code>) into the pixel shader. Used to enable features or declare macros required by pixel shader nodes. For example, nodes may add defines like <code>#define USE_TEXCOORD0</code> to ensure the shader includes necessary data.</p>
+</li>
+<li><p><code>CodePixelIncludes</code>: Code injected as <code>#include</code> statements into the pixel shader. Used to include additional shader files or shared code required by pixel shader nodes.</p>
+</li>
+<li><p><code>CodePixelSamplers</code>: Code injected to declare sampler states in the pixel shader. Used by nodes that require texture sampling, such as <code>BaseTexture</code> or <code>NormalTexture</code>, to add sampler definitions like <code>SamplerState BaseTexture_AutoSampler BIND_GROUP(BG_MATERIAL);</code>.</p>
+</li>
+<li><p><code>CodePixelConstants</code>: Code injected to declare constant variables in the pixel shader. Used by nodes that need to define constants for use in pixel shader calculations.</p>
+</li>
+<li><p><code>CodePixelBody</code>: Code injected into the main body of the pixel shader. Used to implement the actual logic or helper functions for calculations performed by output pins.</p>
+</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../graphics/shaders/shaders-overview.html">Shaders</a></li>

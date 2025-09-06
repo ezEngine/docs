@@ -784,7 +784,7 @@
           "leaf": true
         },
         {
-          "name": "Visual Shaders (TODO)",
+          "name": "Visual Shaders",
           "href": "materials/visual-shaders.html",
           "topicHref": "materials/visual-shaders.html",
           "tocHref": null,

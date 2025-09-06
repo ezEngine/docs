@@ -4311,6 +4311,16 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/materials/media/vse.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/materials/media/vse.png"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/materials/surfaces.md",
       "output": {
