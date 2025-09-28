@@ -104,17 +104,7 @@
 #endif
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
-<p>This can be done for example in <code>OnActivation()</code> of a custom <a href="../runtime/application/game-state.html">game state</a>. Similarly, you should delete the <code>ezImgui</code> instance at shutdown:</p>
-<!-- BEGIN-DOCS-CODE-SNIPPET: imgui-dealloc -->
-<pre><code class="lang-cpp">#ifdef BUILDSYSTEM_ENABLE_IMGUI_SUPPORT
-  if (ezImgui::GetSingleton() != nullptr)
-  {
-    ezImgui* pImgui = ezImgui::GetSingleton();
-    EZ_DEFAULT_DELETE(pImgui);
-  }
-#endif
-</code></pre>
-<!-- END-DOCS-CODE-SNIPPET -->
+<p>This can be done for example in <code>OnActivation()</code> of a custom <a href="../runtime/application/game-state.html">game state</a>.</p>
 <p>During a frame, the <code>ezImgui</code> instance needs to know which <em>view</em> to render the UI elements to. Therefore you should call this every frame:</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: imgui-activate -->
 <pre><code class="lang-cpp">ezImgui::GetSingleton()-&gt;SetCurrentContextForView(m_hMainView);
