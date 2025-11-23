@@ -90,8 +90,8 @@
 <h1 id="procgen-graph-math-nodes">ProcGen Graph Math Nodes</h1>
 
 <p>These node types implement math functions for <a href="procgen-graph-asset.html">ProcGen graph assets</a>.</p>
-<h2 id="blend-node">Blend Node</h2>
-<p>The <em>Blend</em> node provides the most common math expressions to combine two values.</p>
+<h2 id="blend-node-standard-math-operators">Blend Node (Standard Math Operators)</h2>
+<p>The <em>Blend</em> node provides the most common math expressions to combine two values. These include <strong>Add</strong>, <strong>Subtract</strong>, <strong>Multiply</strong>, <strong>Divide</strong>, <strong>Min</strong> and <strong>Max</strong>.</p>
 <h3 id="node-properties">Node Properties</h3>
 <ul>
 <li><code>Mode</code>: Determines how the two input values get combined.</li>
@@ -121,6 +121,23 @@
 <ul>
 <li><code>Seed</code>: A seed value for the random number generator. If a fixed seed is chosen, the random number output is always exactly the same.</li>
 <li><code>OutputMin</code>, <code>OutputMax</code>: The output value will be between these two values.</li>
+</ul>
+<h2 id="remap-node">Remap Node</h2>
+<p>The <em>Remap</em> node transforms values from an input range to an output range. This is useful for converting values that come in one range (such as height or slope values) into a different range needed by another node.</p>
+<p>For example, if you have a height value between 0 and 100, but need to convert it to a density value between 0 and 1, you would set <code>InputMin</code> to 0, <code>InputMax</code> to 100, <code>OutputMin</code> to 0, and <code>OutputMax</code> to 1.</p>
+<h3 id="node-properties-3">Node Properties</h3>
+<ul>
+<li><code>InputMin</code>, <code>InputMax</code>: The expected range of the input value.</li>
+<li><code>OutputMin</code>, <code>OutputMax</code>: The range to map the output value to.</li>
+<li><code>ClampIntermediate</code>: If enabled, the normalized intermediate value is clamped to [0, 1] before being scaled to the output range. This prevents output values from going outside the output range when input values are outside the input range.</li>
+</ul>
+<h2 id="curve-node">Curve Node</h2>
+<p>The <em>Curve</em> node remaps values using a custom curve. This allows for non-linear transformations, such as easing functions or custom falloff patterns.</p>
+<p>The input value is used as the X coordinate on the curve, and the Y value at that point becomes the output.</p>
+<h3 id="node-properties-4">Node Properties</h3>
+<ul>
+<li><code>Curve</code>: The curve definition with control points. Click to open the curve editor.</li>
+<li><code>NumSamples</code>: The number of samples used to approximate the curve. Higher values give more accurate results but use more memory.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

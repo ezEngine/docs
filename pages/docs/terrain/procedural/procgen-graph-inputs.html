@@ -112,6 +112,12 @@ If, however, <code>MinSlope</code> is set to <code>30</code> (steep) and <code>M
 </ul>
 <h2 id="mesh-vertex-color-input-node">Mesh Vertex Color Input Node</h2>
 <!-- PAGE IS TODO -->
+<h2 id="position-node">Position Node</h2>
+<p>The <em>Position</em> node outputs the world space coordinates of the current evaluation point. It provides three separate output pins for the X, Y, and Z components.</p>
+<p>This node is useful for creating placement rules based on absolute world position, such as restricting certain objects to specific areas of the map or creating patterns that align with world coordinates.</p>
+<h2 id="normal-node">Normal Node</h2>
+<p>The <em>Normal</em> node outputs the surface normal at the current evaluation point. Like the Position node, it provides three separate output pins for the X, Y, and Z components of the normal vector.</p>
+<p>This can be used to create placement rules based on surface orientation beyond just slope angle. For example, you could use the normal's X and Y components to prefer surfaces facing a particular direction.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>

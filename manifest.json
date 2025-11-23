@@ -2172,6 +2172,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/debugging/media/debug-console.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/debugging/media/debug-console.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/debugging/media/debug-rendering.jpg",
       "output": {
         "resource": {
@@ -2812,6 +2822,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/effects/media/mesh-decals.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/media/mesh-decals.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/effects/media/particle-overview.png",
       "output": {
         "resource": {
@@ -2856,6 +2876,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/media/wind-vortex.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/mesh-decals.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/mesh-decals.html"
         }
       },
       "version": ""
@@ -6242,6 +6272,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/procedural/media/procgen-modifier-volume-spline.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/procedural/media/procgen-modifier-volume-spline.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/terrain/procedural/media/procgen-modifier-volumes.jpg",
       "output": {
         "resource": {
@@ -6486,6 +6526,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/terrain/procedural/procgen-volume-sphere-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/procedural/procgen-volume-spline-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/procedural/procgen-volume-spline-component.html"
         }
       },
       "version": ""
@@ -6942,16 +6992,6 @@
       "output": {
         "resource": {
           "relative_path": "pages/samples/media/rts1.jpg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "pages/samples/media/rts2.jpg",
-      "output": {
-        "resource": {
-          "relative_path": "pages/samples/media/rts2.jpg"
         }
       },
       "version": ""

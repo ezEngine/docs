@@ -111,6 +111,27 @@
 <h3 id="key-state">Key State</h3>
 <p>Both slots and actions have a current <code>ezKeyState</code>, which describes whether the action is currently active or not, and whether the stated changed just now (between the last frame and this frame) or has been persisting. If you want to react only once to a button press, you would check for the state <code>ezKeyState::Pressed</code>, whereas if you want to do something as long as a button is held, you would react to <code>ezKeyState::Down</code>.</p>
 <p>The key state is derived from the <em>key value</em>. Once a button gets pressed, the key value jumps from <code>0</code> to <code>1</code>. As a consequence the <em>key state</em> transitions from <code>ezKeyState::Up</code> to <code>ezKeyState::Pressed</code> for this frame, and continues to <code>ezKeyState::Down</code> in the next frame. Once a button is depressed, the key value goes back to <code>0</code> and the key state transitions first to <code>ezKeyState::Released</code> for one frame, and finally back to <code>ezKeyState::Up</code> in the next frame.</p>
+<h2 id="controller-mapping">Controller Mapping</h2>
+<p>The input system uses <em>virtual controllers</em> to abstract away physical controller hardware. By default, all physical controllers (up to 4) are mapped to virtual controller 0. This means any connected controller can be used to play the game without requiring configuration.</p>
+<h3 id="multiple-controllers-to-one-virtual-controller">Multiple Controllers to One Virtual Controller</h3>
+<p>Multiple physical controllers can send input to the same virtual controller. The inputs are combined, so pressing a button on any mapped controller will trigger the corresponding action. This is the default behavior and allows any player to pick up any controller and start playing.</p>
+<h3 id="controller-mapping-for-multiplayer">Controller Mapping for Multiplayer</h3>
+<p>For multiplayer games, you typically want each player to have their own virtual controller. Use <code>ezInputDeviceController::SetPhysicalControllerMapping()</code> to assign a physical controller to a specific virtual controller:</p>
+<pre><code class="lang-cpp">// Map physical controller 0 to virtual controller 0 (player 1)
+pController-&gt;SetPhysicalControllerMapping(0, 0);
+// Map physical controller 1 to virtual controller 1 (player 2)
+pController-&gt;SetPhysicalControllerMapping(1, 1);
+// Disable physical controller 2 (pass negative value)
+pController-&gt;SetPhysicalControllerMapping(2, -1);
+</code></pre>
+<h3 id="detecting-controller-usage">Detecting Controller Usage</h3>
+<p>To let players self-select their controllers (e.g., &quot;Press Start to join&quot;), use <code>ezInputDeviceController::GetRecentPhysicalControllerInput()</code>. This returns a bitmask indicating which buttons were recently pressed on a physical controller:</p>
+<pre><code class="lang-cpp">auto recentInput = pController-&gt;GetRecentPhysicalControllerInput(uiPhysicalController);
+if (recentInput.IsSet(ezPhysicalControllerInput::Start))
+{
+  // This controller pressed Start, assign it to the next available player
+}
+</code></pre>
 <h2 id="accessing-input-state">Accessing Input State</h2>
 <p>Through <code>ezInputManager</code> all input state (both for slots and actions) is accessible by all code at all times. However, depending on the type of game you build, you may prefer to use the <a href="input-component.html">input component</a> to get a specific <em>input set</em> routed to a specific component through <code>ezMsgInputActionTriggered</code>.</p>
 <h3 id="direct-input-access">Direct Input Access</h3>

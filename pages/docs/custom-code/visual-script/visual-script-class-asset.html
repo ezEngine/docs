@@ -105,6 +105,21 @@
 <p>These scripts are used in state machines through the <a href="../game-logic/state-machine-asset.html#script-state">script state</a>.</p>
 <h2 id="visual-script-variables">Visual Script Variables</h2>
 <p>Through the general script properties you can add <em>variables</em> to your script. These may just be internal variables to keep track of state, but when the <code>Expose</code> flag is enabled, they become <a href="../../concepts/exposed-parameters.html">exposed parameters</a>. These variables will show up where the script is used (for example on <a href="script-component.html">script components</a>) and allow you to pass in different starting values.</p>
+<h3 id="variable-types">Variable Types</h3>
+<p>Variables support various data types including numbers, strings, vectors, and more. Additionally, you can create:</p>
+<ul>
+<li><p><strong>Array Variables:</strong> Set the variable category to <em>Array</em> to create a typed array. On the component side, arrays are displayed with their element type for better readability. Note that internally within visual scripts, arrays store variants and are not strictly typed.</p>
+</li>
+<li><p><strong>GameObject and Component References:</strong> Internal (non-exposed) variables can store references to game objects and components. This is useful for caching the results of expensive lookups at runtime. Note that GameObject references cannot currently be exposed as public variables.</p>
+</li>
+</ul>
+<h3 id="numeric-variable-options">Numeric Variable Options</h3>
+<p>For exposed numeric variables (Int, Float, etc.), additional options are available:</p>
+<ul>
+<li><code>ClampRange</code>: Enable this to restrict the value to a specific range.</li>
+<li><code>MinValue</code>, <code>MaxValue</code>: When clamping is enabled, these define the allowed range. Values are automatically clamped on the component side.</li>
+</ul>
+<!-- TODO IMAGE: Screenshot of the variable properties panel showing a numeric variable with ClampRange enabled and Min/Max values set -->
 <h2 id="editing-visual-scripts">Editing Visual Scripts</h2>
 <p>To build a visual script, right-click into the graph editor to open the context menu:</p>
 <p><img src="media/vs-context.png" alt="Context Menu"></p>

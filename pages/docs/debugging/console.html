@@ -90,18 +90,27 @@
 <h1 id="console">Console</h1>
 
 <p>The in-game console is a utility for inspecting the <a href="logging.html">log</a>, modifying <a href="cvars.html">CVars</a> and calling <a href="#console-functions">console functions</a>.</p>
-<p><img src="media/console.png" alt="Console"></p>
-<h2 id="key-bindings">Key bindings</h2>
-<p>The default key binding for the console is:</p>
+<p><img src="media/debug-console.jpg" alt="Ingame Console"></p>
+<h2 id="console-windows">Console Windows</h2>
+<p>The console provides multiple windows that can be shown, hidden, and rearranged:</p>
+<ul>
+<li><strong>Command Window:</strong> Text input for entering commands with auto-completion. Shows command output separately from log messages.</li>
+<li><strong>Log Window:</strong> Displays engine <a href="logging.html">log messages</a>. Supports text filtering and severity level filtering.</li>
+<li><strong>CVar Window:</strong> Hierarchical tree view of all <a href="cvars.html">CVars</a>. CVars are organized by their dot-separated names (e.g., <code>r.Bloom</code> appears under &quot;r&quot; &gt; &quot;Bloom&quot;).</li>
+<li><strong>Stats Window:</strong> Shows FPS, frame time graph, and memory usage.</li>
+</ul>
+<h3 id="pinnable-overlays">Pinnable Overlays</h3>
+<p>The Stats and Log windows can be <em>pinned</em> using the &quot;Pin Window&quot; checkbox. Pinned windows remain visible as overlays even when the console is closed. This is useful for monitoring performance or watching for specific log messages during gameplay.</p>
+<h2 id="key-bindings">Key Bindings</h2>
+<p>The default key bindings for the console are:</p>
 <ul>
 <li><strong>F1</strong> - Opens/closes the console.</li>
-<li><strong>Up / Down</strong> - Select a previously entered command from the history. Note that the history is saved to disk so that commands don't need to be typed again after restarting.</li>
-<li><strong>F2</strong> and <strong>F3</strong> - Repeat last and second-to-last commands. This works even when the console is currently closed.</li>
-<li><strong>ESC</strong> - Clears the input line.</li>
-<li><strong>Page Up / Page Down</strong> - Scrolls the log output up / down.</li>
-<li><strong>TAB</strong> - Auto-completes the current input. Also displays all available input options in the output. Ie. lists the names of CVars and console functions and prints their descriptions.</li>
-<li><strong>Enter</strong> - Executes the typed command. If the typed text is only the name of a CVar without an assignment, this will simply print the current value and the description of the CVar.</li>
+<li><strong>Up / Down</strong> - Select a previously entered command from the history. The history is saved to disk so that commands persist after restarting.</li>
+<li><strong>F2</strong> and <strong>F3</strong> - Repeat last and second-to-last commands. This works even when the console is closed.</li>
+<li><strong>TAB</strong> - Auto-completes the current input. Also displays all available input options in the output.</li>
+<li><strong>Enter</strong> - Executes the typed command. If the typed text is only the name of a CVar without an assignment, this will print the current value and description of the CVar.</li>
 </ul>
+<p>When the console is open, the mouse cursor is shown and not clipped to the window, allowing interaction with elements outside the console.</p>
 <h2 id="modify-cvars">Modify CVars</h2>
 <p>You can modify CVars by typing:</p>
 <pre><code class="lang-cmd">CVarName = value
@@ -115,11 +124,13 @@
 <p>To unbind a key call:</p>
 <pre><code class="lang-cmd">unbind f
 </code></pre>
-<h2 id="search">Search</h2>
-<p>You can filter the output of the console (the log messages) to only strings that contain some string by typing a <strong>*</strong> at the beginning:</p>
-<pre><code class="lang-cmd">*some text
-</code></pre>
-<p>Now the output window will only show strings that contain 'some text'.</p>
+<h2 id="log-filtering">Log Filtering</h2>
+<p>The Log window provides filtering options to help find specific messages:</p>
+<ul>
+<li><strong>Text Filter:</strong> Type in the filter field to show only log messages containing that text (case-insensitive).</li>
+<li><strong>Severity Filter:</strong> Use the dropdown to filter messages by severity.</li>
+<li><strong>Clear Log:</strong> Remove all current log messages from the display.</li>
+</ul>
 <h2 id="console-functions">Console Functions</h2>
 <p>Console functions are an easy way to expose C++ utility functions through the console. The class <code>ezConsoleFunction</code> is used to wrap any function (static or method function) in a delegate and enable the console to call it. Of course, since the user can only input certain types of variables in the console, the argument types that you can use are very limited: strings, numbers (int / float) and boolean.</p>
 <p>This code snippet shows how to declare a console function in a class, for example inside a custom <a href="../runtime/application/game-state.html">game state</a>.</p>

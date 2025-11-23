@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Mesh Decals | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Mesh Decals | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/mesh-decals.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="mesh-decals">Mesh Decals</h1>
+
+<p><em>Mesh decals</em> (also called <em>floaters</em>) are a different approach to decals where the decal texture is mapped directly onto mesh geometry rather than being projected. This technique is useful for adding surface detail to meshes like dirt, scratches, or markings that need to follow the mesh topology precisely.</p>
+<p><img src="media/mesh-decals.jpg" alt="Mesh Decals"></p>
+<p>Unlike regular <a href="decals.html">decals</a> which project a texture onto geometry, mesh decals:</p>
+<ul>
+<li>Follow the mesh geometry exactly without projection distortion</li>
+<li>Support multiple decal textures per mesh (up to 8 slots)</li>
+<li>Can have random texture variants per instance</li>
+</ul>
+<h2 id="mesh-decal-component">Mesh Decal Component</h2>
+<p>Add a <em>Mesh Decal Component</em> to a game object that has a <a href="../graphics/meshes/mesh-component.html">mesh component</a>. The component manages decal textures and communicates with the runtime decal atlas.</p>
+<h3 id="component-properties">Component Properties</h3>
+<p><strong>Decals:</strong> An array of decal definitions. Each entry has:</p>
+<ul>
+<li><code>Index</code>: The decal slot (0-7). Mesh UVs determine which slot applies to each part of the mesh.</li>
+<li><code>BaseColorTexture</code>: The texture asset to use for this decal.</li>
+</ul>
+<p>Multiple entries can share the same slot index. When this happens, a random variant is selected per game object instance, providing visual variety.</p>
+<h2 id="mesh-requirements">Mesh Requirements</h2>
+<p>To use mesh decals, the mesh must have UV coordinates that encode which decal slot applies to each surface region. The integer parts of the UV coordinates determine the slot index. For example, a UV of (1.5, 2.3) would use slot indices derived from (1, 2).</p>
+<h2 id="shader-setup">Shader Setup</h2>
+<p>Mesh decals require a shader that:</p>
+<ol>
+<li>Uses <code>USE_VERTEX_DEPTH_BIAS</code> to prevent z-fighting with the underlying surface</li>
+<li>Samples from the runtime decal atlas using the transformed UV coordinates</li>
+<li>Implements <code>GetVertexDepthBias()</code> to return the appropriate depth offset</li>
+</ol>
+<p>The <code>MeshDecalMaterial.ezShader</code> in the engine provides a reference implementation.</p>
+<h3 id="depth-bias">Depth Bias</h3>
+<p>The <code>DepthBias</code> material parameter (default: 1.0) controls how far the decal geometry is pushed toward the camera. Increase this value if you see z-fighting between the decal and the surface.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="decals.html">Decals</a></li>
+<li><a href="../graphics/meshes/meshes-overview.html">Meshes</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/mesh-decals.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
