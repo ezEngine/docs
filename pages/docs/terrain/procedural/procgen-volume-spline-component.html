@@ -89,14 +89,14 @@
         <article data-uid="">
 <h1 id="procedural-volume-spline-component">Procedural Volume Spline Component</h1>
 
-<p>The <em>procedural volume spline component</em> defines a tube-shaped volume along a <a href="../../animation/paths/path-component.html">spline</a> in which the rules of <a href="procgen-graph-asset.html">ProcGen graphs</a> are modified. Not every graph has to make use of this information, and what the exact effect is, is up to the ProcGen graph.</p>
+<p>The <em>procedural volume spline component</em> defines a tube-shaped volume along a <a href="../../animation/paths/spline-component.html">spline</a> in which the rules of <a href="procgen-graph-asset.html">ProcGen graphs</a> are modified. Not every graph has to make use of this information, and what the exact effect is, is up to the ProcGen graph.</p>
 <p>For more details see the chapter on <a href="procgen-graph-modifiers.html">ProcGen graph modifier nodes</a>.</p>
 <p><img src="media/procgen-modifier-volume-spline.jpg" alt="Spline Modifier"></p>
 <p>Spline volumes are useful for creating paths, roads, rivers, or other linear features through procedurally generated terrain. The volume follows the spline curve with a configurable radius and falloff.</p>
 <h2 id="setup">Setup</h2>
-<p>The procedural volume spline component must be on the same game object as a <a href="../../animation/paths/path-component.html">spline component</a>. The spline defines the path that the volume follows, while this component controls the volume's radius, value, and blending properties.</p>
+<p>The procedural volume spline component must be on the same game object as a <a href="../../animation/paths/spline-component.html">spline component</a>. The spline defines the path that the volume follows, while this component controls the volume's radius, value, and blending properties.</p>
 <ol>
-<li>Create a game object with a <a href="../../animation/paths/path-component.html">spline component</a> and configure the spline shape.</li>
+<li>Create a game object with a <a href="../../animation/paths/spline-component.html">spline component</a> and configure the spline shape.</li>
 <li>Add a <em>Procedural Volume Spline Component</em> to the same game object.</li>
 <li>Set the <code>Radius</code> to control how wide the influence area is around the spline.</li>
 <li>Configure the <code>Value</code>, <code>BlendMode</code>, and other properties as needed.</li>
@@ -112,7 +112,7 @@
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="../../animation/paths/path-component.html">Spline Component</a></li>
+<li><a href="../../animation/paths/spline-component.html">Spline Component</a></li>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
 <li><a href="procgen-graph-modifiers.html">ProcGen Graph Modifier Nodes</a></li>
 <li><a href="procgen-volume-box-component.html">Procedural Volume Box Component</a></li>

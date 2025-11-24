@@ -721,21 +721,41 @@
       "version": ""
     },
     {
-      "type": "Conceptual",
-      "source_relative_path": "pages/docs/animation/paths/path-component.md",
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/spline-edit.jpg",
       "output": {
-        ".html": {
-          "relative_path": "pages/docs/animation/paths/path-component.html"
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/spline-edit.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/spline-tangent-edit.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/spline-tangent-edit.jpg"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/animation/paths/path-node-component.md",
+      "source_relative_path": "pages/docs/animation/paths/spline-component.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/animation/paths/path-node-component.html"
+          "relative_path": "pages/docs/animation/paths/spline-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/paths/spline-node-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/paths/spline-node-component.html"
         }
       },
       "version": ""

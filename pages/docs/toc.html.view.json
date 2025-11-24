@@ -1864,9 +1864,18 @@
           "name": "Paths",
           "items": [
             {
-              "name": "Path Node Component",
-              "href": "animation/paths/path-node-component.html",
-              "topicHref": "animation/paths/path-node-component.html",
+              "name": "Spline Node Component",
+              "href": "animation/paths/spline-node-component.html",
+              "topicHref": "animation/paths/spline-node-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Spline Component",
+              "href": "animation/paths/spline-component.html",
+              "topicHref": "animation/paths/spline-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],
@@ -1876,15 +1885,6 @@
               "name": "Follow Path Component",
               "href": "animation/paths/follow-path-component.html",
               "topicHref": "animation/paths/follow-path-component.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            },
-            {
-              "name": "Path Shape Component",
-              "href": "animation/paths/path-component.html",
-              "topicHref": "animation/paths/path-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],

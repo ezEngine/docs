@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Follow Path Component | ezEngine </title>
+      <title>Spline Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Follow Path Component | ezEngine ">
+      <meta name="title" content="Spline Component | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/follow-path-component.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/spline-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,41 +87,82 @@
         </div>
 
         <article data-uid="">
-<h1 id="follow-path-component">Follow Path Component</h1>
+<h1 id="spline-component">Spline Component</h1>
 
-<p>The <em>follow path component</em> is used to move an object along a spline.</p>
+<p>The spline component defines smooth curves in 3D space using cubic Bezier curves. Other components, such as the <a href="follow-path-component.html">follow path component</a> can use splines to animate objects, and scripts can sample spline data for custom logic.</p>
 <p><video src="media/path-component.webm" width="800" height="600" autoplay loop></video></p>
-<p>See the <a href="spline-component.html">spline component</a> for how to create the spline shape.</p>
-<p>This component is mainly meant for mechanical movement, such as objects moving on a rail. Movement is with constant speed and strictly along the path. It can be used for moving effects (lights, particles) around, where the mechanical behavior may not be too obvious, but for things like camera paths or anything else that should have natural acceleration, it won't be sufficient.</p>
+<h2 id="how-to-configure-a-spline">How to Configure a Spline</h2>
+<ol>
+<li><p>Add a <a href="../../runtime/world/game-objects.html">game object</a> and attach a <em>spline component</em> to it.</p>
+</li>
+<li><p>Add several game objects as child objects (at least two).</p>
+</li>
+<li><p>Attach a <em>spline node component</em> to each child object.</p>
+</li>
+<li><p>Give each child object a different name. It is easiest to just give them numbers in the order in which you want them to be used in the spline.</p>
+<p><img src="media/path-hierarchy.png" alt="Path hierarchy config"></p>
+</li>
+<li><p>Add those names in the desired order to the <strong>Nodes</strong> property of the spline component.</p>
+<p><img src="media/path-properties.png" alt="Path property config"></p>
+</li>
+<li><p>Position the child objects in the world to form a spline. Enable the <code>Visualize Spline</code> flag to see a preview of the curve.</p>
+</li>
+</ol>
+<h3 id="editing-tips">Editing Tips</h3>
+<p>When editing a spline you often need to select the child path nodes and then go back to the spline object. <code>Ctrl+Q</code> selects the parent object of the currently selected object, which is very useful here. Also <code>Ctrl+B</code> changes to the previous selection, which can also be used to <em>undo</em> a selection change.</p>
+<h3 id="adding-points-interactively">Adding Points Interactively</h3>
+<p>When the <em>Edit Nodes</em> manipulator is active, small gizmos appear on each spline segment. Click on a segment gizmo to insert a new spline node at that position. The editor automatically creates a child game object with a spline node component, gives it a proper name and adds it to the nodes list.</p>
+<p><img src="media/spline-edit.jpg" alt="Spline editing"></p>
+<p>To re-enable <em>manipulator mode</em> after translating an object, press <code>Q</code> or click on the <code>Edit Nodes</code> property again.</p>
+<h3 id="editing-tangents">Editing Tangents</h3>
+<p>Each spline node can have its tangent mode set to <em>Auto</em>, <em>Linear</em> or <em>Custom</em>:</p>
+<ul>
+<li><strong>Auto</strong>: Tangents are computed automatically for smooth curvature.</li>
+<li><strong>Linear</strong>: Creates a sharp corner at the node with no curvature.</li>
+<li><strong>Custom</strong>: You can manually adjust the tangent direction and length using rotate and scale gizmos.</li>
+</ul>
+<p>When using custom tangents, enable <strong>Link Custom Tangents</strong> to make the incoming and outgoing tangents mirror each other, creating a smooth transition through the point.</p>
+<p><img src="media/spline-tangent-edit.jpg" alt="Spline Tangent Edit"></p>
+<h2 id="spline-features">Spline Features</h2>
+<p>Splines support interpolation of:</p>
+<ul>
+<li><strong>Position</strong>: Smooth cubic Bezier curve between nodes.</li>
+<li><strong>Rotation</strong>: Including a roll angle at each node.</li>
+<li><strong>Scale</strong>: Scale values can vary along the spline.</li>
+<li><strong>Up Direction</strong>: Computed from the roll angle for proper orientation.</li>
+</ul>
+<h2 id="what-to-do-with-a-spline">What to do with a Spline</h2>
+<p>A spline component by itself has no functionality other than to define a shape. These component types can utilize splines:</p>
+<ul>
+<li><a href="follow-path-component.html">Follow Path Component</a></li>
+</ul>
+<h3 id="scripting-with-splines">Scripting with Splines</h3>
+<p>Visual scripts and C++ code can sample spline data using these functions:</p>
+<ul>
+<li><code>GetPositionAtDistance(distance, space)</code>: Get position at a distance along the spline.</li>
+<li><code>GetTransformAtDistance(distance, space)</code>: Get full transform including rotation and scale.</li>
+<li><code>GetTotalLength()</code>: Get the total length of the spline.</li>
+<li><code>FindKeyClosestToPoint(point, space)</code>: Find the closest point on the spline to a given position.</li>
+</ul>
+<p>The <code>space</code> parameter can be <em>Local</em> (relative to the spline) or <em>Global</em> (world space).</p>
+<p>See the <em>ScatterOnSpline</em> sample script in the <a href="../../../samples/testing-chambers.html">Testing Chambers</a> project for an example of spawning objects along a spline.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Path</code>: The object on which the <a href="spline-component.html">spline</a> to use is attached. If none is provided, the parent objects are searched for an object that contains a spline component. That means you can put an object into a <a href="../../prefabs/prefabs-overview.html">prefab</a> and then place it onto different splines by adding the prefab instance as a child of the spline shape.</li>
-<li><code>StartDistance</code>: At what distance along the path to start traversing it. If the <code>Path</code> reference is set, changing this value will properly preview where the object would start.</li>
-<li><code>Running</code>: Whether the component is currently running or paused. This can be used at runtime from scripts, to start and stop traversal. It is also automatically set to false, when the end of the path is reached and no looping behavior is active.</li>
-<li><code>Mode</code>: Whether to traverse the path in a loop or only once.</li>
-<li><code>Speed</code>: How fast to move along the path.</li>
-<li><code>LookAhead</code>: The component will rotate the object according to the path direction. For this it samples the path some distance ahead. The farther the look-ahead the earlier the object will rotate into upcoming curves. At a very low look-ahead, it will rotate very rigidly.</li>
-<li><code>Smoothing</code>: With zero smoothing the position of the object will be exactly that of the path. With some smoothing, the position doesn't change as abruptly. For mechanical objects attached to a rail, this should be zero, for more organic movement, increase the value towards one.</li>
-<li><code>FollowMode</code>: How the transform of the owner object gets modified:
-<ul>
-<li><code>OnlyPosition</code>: Only the position gets moved along the path. The orientation of the object stays unaffected.</li>
-<li><code>AlignUpZ</code>: While moving along the path, the object rotates only around the up axis (Z) to look into the direction of the path. This is useful for moving platforms that should always stay perfectly flat.</li>
-<li><code>FullRotation</code>: The object is both moved and oriented accoring to the path.</li>
+<li><code>Flags</code>: Preview flags for the spline. Options include <em>Visualize Spline</em>, <em>Visualize Up Dir</em>, and <em>Visualize Tangents</em>.</li>
+<li><code>Closed</code>: Whether the spline should loop back to the first node.</li>
+<li><code>Nodes</code>: This array references all nodes by name or <a href="../../concepts/object-paths.html">object path</a>. Non-existing names are ignored.</li>
 </ul>
-</li>
-<li><code>TiltAmount</code>, <code>MaxTilt</code>: If <code>FollowMode</code> is <code>AlignUpZ</code>, <em>MaxTilt</em> defines whether the object may tilt a little when turning. <em>TiltAmount</em> specifies how much tilting will occur.</li>
-</ul>
-<p><video src="media/follow-path-mode.mp4" width="800" height="600" autoplay controls></video></p>
+<p>Also see the <a href="spline-node-component.html">spline node component</a> for options on each node.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="spline-component.html">Spline Component</a></li>
 <li><a href="spline-node-component.html">Spline Node Component</a></li>
+<li><a href="follow-path-component.html">Follow Path Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/follow-path-component.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/spline-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

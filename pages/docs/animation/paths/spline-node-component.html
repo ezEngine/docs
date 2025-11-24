@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Path Shape Component | ezEngine </title>
+      <title>Spline Node Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Path Shape Component | ezEngine ">
+      <meta name="title" content="Spline Node Component | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/path-component.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/spline-node-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,51 +87,43 @@
         </div>
 
         <article data-uid="">
-<h1 id="path-shape-component">Path Shape Component</h1>
+<h1 id="spline-node-component">Spline Node Component</h1>
 
-<p>This component is used to set up path shapes. Other components, such as the <a href="follow-path-component.html">follow path component</a> can then use the path shape to animate objects or to build geometry.</p>
-<p><video src="media/path-component.webm" width="800" height="600" autoplay loop></video></p>
-<h2 id="how-to-configure-a-path-shape">How to Configure a Path Shape</h2>
-<ol>
-<li><p>Add a <a href="../../runtime/world/game-objects.html">game object</a> and attach a <em>path component</em> to it.</p>
-</li>
-<li><p>Add several game objects as child objects (at least three)</p>
-</li>
-<li><p>Attach a <a href="path-node-component.html">path node component</a> to each child object.</p>
-</li>
-<li><p>Give each child object a different name. It is easiest to just give them numbers in the order in which you want them to be used in the path.</p>
-<p><img src="media/path-hierarchy.png" alt="Path hierarchy config"></p>
-</li>
-<li><p>Add those names in the desired order to the <strong>Nodes</strong> property of the path component.</p>
-<p><img src="media/path-properties.png" alt="Path property config"></p>
-</li>
-<li><p>Position the child objects in the world to form a path. Make sure the <code>Visualize Path</code> flag is enabled on the path component, so that you can see a preview of the shape.</p>
-</li>
-<li><p>Additionally to the options on the path component itself, you can also edit each node's properties, to adjust the curvature, and whether the path should curl around itself.</p>
-</li>
-</ol>
-<h2 id="what-to-do-with-a-path-shape">What to do with a Path Shape</h2>
-<p>A path component by itself has no functionality other than to define a shape. Currently these component types can utilize path shapes:</p>
-<ul>
-<li><a href="follow-path-component.html">Follow Path Component</a></li>
-</ul>
+<p>The <em>spline node component</em> is used in conjunction with a <a href="spline-component.html">spline component</a> to build a spline shape.
+It must be attached to a child object of the object where a spline component is present.</p>
+<p>The spline node component has no runtime functionality and mainly exists for editing splines, as it provides a shape icon in the editor for node selection, and can be moved around with the standard editing tools. At runtime, the spline component stores all the important data in a more optimized data structure.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Objects that only contain a <em>spline node component</em> are removed from the scene during <a href="../../editor/run-scene.html">scene export</a>. They have no use at runtime and are solely used for editing purposes. Thus in an exported scene you will neither find any spline node components, nor the objects that they were attached to, unless you attach other components or child objects to them.</p>
+</blockquote>
+<h2 id="editing-tips">Editing Tips</h2>
+<p>When editing a spline you often need to select the child path nodes and then go back to the spline object. <code>Ctrl+Q</code> selects the parent object of the currently selected object, which is very useful here. Also <code>Ctrl+B</code> changes to the previous selection, which can also be used to <em>undo</em> a selection change.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Flags</code>: Preview flags for the path shape. The <em>visualize path</em> flag is enabled by default, once you are done setting up the path, you should disable it.</li>
-<li><code>Closed</code>: Whether the path should loop in on itself or not.</li>
-<li><code>Detail</code>: How detailed the path will be. A finer detail (low value) means there are fewer sharp turns along the curves, but also takes up more memory and time to compute. Unless you notice obvious problems with the path tesselation, this value should stay at its default value.</li>
-<li><code>Nodes</code>: This array needs to reference all nodes by name. If a non-existing name is used, it is ignored.</li>
+<li><p><code>Roll</code>: Sets the roll angle at this node, affecting how the up direction is oriented. This is used by components that sample the spline, such as the <a href="follow-path-component.html">follow path component</a>.</p>
+</li>
+<li><p><code>TangentModeIn</code>, <code>TangentModeOut</code>: The mode for the tangents of the incoming and outgoing spline segments:</p>
+<ul>
+<li><code>Auto</code>: The curvature at the node is automatically adjusted to be smooth.</li>
+<li><code>Linear</code>: The spline takes the shortest route in or out of the node. Used to create sharp corners without any curvature.</li>
+<li><code>Custom</code>: You can manually specify the tangent direction and length.</li>
+</ul>
+</li>
+<li><p><code>CustomTangentIn</code>, <code>CustomTangentOut</code>: When using <em>Custom</em> tangent mode, these specify the tangent vectors. The tangent direction and magnitude affect the curve shape.</p>
+</li>
+<li><p><code>LinkCustomTangents</code>: When enabled, the incoming and outgoing tangents are linked so that changing one automatically mirrors the other. This ensures a smooth transition through the node even with custom tangents.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="path-node-component.html">Path Node Component</a></li>
+<li><a href="spline-component.html">Spline Component</a></li>
 <li><a href="follow-path-component.html">Follow Path Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/path-component.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/paths/spline-node-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
