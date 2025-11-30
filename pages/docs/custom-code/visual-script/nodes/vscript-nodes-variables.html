@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Visual Script: Type Conversion and Variable Nodes | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Visual Script: Type Conversion and Variable Nodes | ezEngine ">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-nodes-variables.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="visual-script-type-conversion-and-variable-nodes">Visual Script: Type Conversion and Variable Nodes</h1>
+
+<h2 id="type-conversion">Type Conversion</h2>
+<p>Type conversion nodes allow you to convert data between different types in visual scripts. These conversions are essential when working with different data types and connecting nodes with mismatched pin types.</p>
+<p>The most important conversion node is <code>ConvertTo</code>, which converts a <em>Variant</em> to a specific type. A <em>Variant</em> is a special variable type that can hold data of many different types. When a node returns a variant, you typically know what type it should contain and use the <code>ConvertTo</code> node to extract the typed value.</p>
+<p>Common type conversions include:</p>
+<ul>
+<li><strong>Number conversions</strong> - Converting between integers, floats, and doubles</li>
+<li><strong>String conversions</strong> - Converting any value to text for display or logging</li>
+<li><strong>Variant conversions</strong> - Extracting typed values from variant containers</li>
+<li><strong>Boolean conversions</strong> - Converting values to true/false</li>
+</ul>
+<h2 id="variable-nodes">Variable Nodes</h2>
+<p>Variable nodes operate on <a href="../visual-script-class-asset.html#visual-script-variables">visual script variables</a>. Variables must be declared on the script first through the script properties panel. Use variable nodes to:</p>
+<ul>
+<li><strong>Read variables</strong> - Get the current value of a script variable</li>
+<li><strong>Write variables</strong> - Update a variable's value during script execution</li>
+<li><strong>Track state</strong> - Maintain internal state across multiple script executions</li>
+<li><strong>Access parameters</strong> - Read values passed in through <a href="../../../concepts/exposed-parameters.html">exposed parameters</a></li>
+</ul>
+<h3 id="temp-variable-node">Temp Variable Node</h3>
+<p>The <strong>Temp Variable</strong> node is a special node for storing intermediate computation results. Unlike regular variables, temp variables have execution pins, allowing you to control exactly when their input is evaluated.</p>
+<p>This is useful for two reasons:</p>
+<ol>
+<li><strong>Performance</strong> - Reuse computed values multiple times without reevaluating expensive expressions</li>
+<li><strong>Consistency</strong> - Guarantee the same value even if underlying data changes. For example, if an expression reads variable <code>A</code>, but the script later writes to <code>A</code>, the temp variable preserves the original value from when it was first evaluated.</li>
+</ol>
+<p>The temp variable's output can be read as often as needed and won't change until the node is executed again.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../visual-script-class-asset.html">Visual Script Class Asset</a></li>
+<li><a href="../visual-script-class-asset.html#visual-script-variables">Visual Script Variables</a></li>
+<li><a href="../visual-script-overview.html">Visual Script Overview</a></li>
+<li><a href="../script-component.html">Script Component</a></li>
+<li><a href="../../../concepts/exposed-parameters.html">Exposed Parameters</a></li>
+<li><a href="vscript-nodes-string.html">String Nodes</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-nodes-variables.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

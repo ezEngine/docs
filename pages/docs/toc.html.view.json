@@ -1289,8 +1289,8 @@
             },
             {
               "name": "Wind",
-              "href": "effects/wind/wind.html",
-              "topicHref": "effects/wind/wind.html",
+              "href": "effects/wind/wind-overview.html",
+              "topicHref": "effects/wind/wind-overview.html",
               "tocHref": null,
               "level": 4,
               "items": [],
@@ -2426,8 +2426,8 @@
       "items": [
         {
           "name": "Custom Data",
-          "href": "Miscellaneous/custom-data.html",
-          "topicHref": "Miscellaneous/custom-data.html",
+          "href": "misc/custom-data.html",
+          "topicHref": "misc/custom-data.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2435,8 +2435,8 @@
         },
         {
           "name": "Blackboard Template Asset",
-          "href": "Miscellaneous/blackboard-template-asset.html",
-          "topicHref": "Miscellaneous/blackboard-template-asset.html",
+          "href": "misc/blackboard-template-asset.html",
+          "topicHref": "misc/blackboard-template-asset.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2444,8 +2444,8 @@
         },
         {
           "name": "Global Blackboard Component",
-          "href": "Miscellaneous/global-blackboard-component.html",
-          "topicHref": "Miscellaneous/global-blackboard-component.html",
+          "href": "misc/global-blackboard-component.html",
+          "topicHref": "misc/global-blackboard-component.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2453,8 +2453,8 @@
         },
         {
           "name": "Blackboards",
-          "href": "Miscellaneous/blackboards.html",
-          "topicHref": "Miscellaneous/blackboards.html",
+          "href": "misc/blackboards.html",
+          "topicHref": "misc/blackboards.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2462,8 +2462,8 @@
         },
         {
           "name": "Config File Resource",
-          "href": "Miscellaneous/config-file-resource.html",
-          "topicHref": "Miscellaneous/config-file-resource.html",
+          "href": "misc/config-file-resource.html",
+          "topicHref": "misc/config-file-resource.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2471,8 +2471,8 @@
         },
         {
           "name": "ImageData Asset",
-          "href": "Miscellaneous/imagedata-asset.html",
-          "topicHref": "Miscellaneous/imagedata-asset.html",
+          "href": "misc/imagedata-asset.html",
+          "topicHref": "misc/imagedata-asset.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2483,8 +2483,8 @@
           "items": [
             {
               "name": "Comment Component",
-              "href": "Miscellaneous/components/comment-component.html",
-              "topicHref": "Miscellaneous/components/comment-component.html",
+              "href": "misc/components/comment-component.html",
+              "topicHref": "misc/components/comment-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],
@@ -2492,8 +2492,8 @@
             },
             {
               "name": "Shape Icon Component",
-              "href": "Miscellaneous/components/shape-icon-component.html",
-              "topicHref": "Miscellaneous/components/shape-icon-component.html",
+              "href": "misc/components/shape-icon-component.html",
+              "topicHref": "misc/components/shape-icon-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],
@@ -2506,8 +2506,8 @@
         },
         {
           "name": "Local Blackboard Component",
-          "href": "Miscellaneous/local-blackboard-component.html",
-          "topicHref": "Miscellaneous/local-blackboard-component.html",
+          "href": "misc/local-blackboard-component.html",
+          "topicHref": "misc/local-blackboard-component.html",
           "tocHref": null,
           "level": 3,
           "items": [],
@@ -2675,18 +2675,18 @@
           "name": "Visual Script",
           "items": [
             {
-              "name": "Visual Script Class Asset",
-              "href": "custom-code/visual-script/visual-script-class-asset.html",
-              "topicHref": "custom-code/visual-script/visual-script-class-asset.html",
+              "name": "Custom Code with Visual Scripts",
+              "href": "custom-code/visual-script/visual-script-overview.html",
+              "topicHref": "custom-code/visual-script/visual-script-overview.html",
               "tocHref": null,
               "level": 4,
               "items": [],
               "leaf": true
             },
             {
-              "name": "Custom Code with Visual Scripts",
-              "href": "custom-code/visual-script/visual-script-overview.html",
-              "topicHref": "custom-code/visual-script/visual-script-overview.html",
+              "name": "Visual Script Class Asset",
+              "href": "custom-code/visual-script/visual-script-class-asset.html",
+              "topicHref": "custom-code/visual-script/visual-script-class-asset.html",
               "tocHref": null,
               "level": 4,
               "items": [],
@@ -2700,6 +2700,221 @@
               "level": 4,
               "items": [],
               "leaf": true
+            },
+            {
+              "name": "Nodes",
+              "items": [
+                {
+                  "name": "Visual Script: Logic Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-logic.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-logic.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Coroutine Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-coroutine.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-coroutine.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Physics Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-physics.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-physics.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Spatial Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-spatial.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-spatial.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Property Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-property.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-property.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Type Conversion and Variable Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-variables.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-variables.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Component and Property Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-component.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-component.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Clock and Time Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-time.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-time.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Prefab Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-prefabs.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-prefabs.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Blackboard Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-blackboard.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-blackboard.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: String Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-string.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-string.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Message Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-messages.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-messages.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: World Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-world.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-world.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Logging Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-log.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-log.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Sound Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-sound.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-sound.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: State Machine Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-statemachine.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-statemachine.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Debug Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-debug.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-debug.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Event Handler Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-events.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-events.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Math Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-math.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-math.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: CVar Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-cvar.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-cvar.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Enum Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-enum.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-enum.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script: Game Object Nodes",
+                  "href": "custom-code/visual-script/nodes/vscript-nodes-game-object.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-nodes-game-object.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Visual Script Node Reference",
+                  "href": "custom-code/visual-script/nodes/index.html",
+                  "topicHref": "custom-code/visual-script/nodes/index.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                }
+              ],
+              "topicHref": null,
+              "tocHref": null,
+              "level": 4
             }
           ],
           "topicHref": null,
@@ -3100,21 +3315,12 @@
       "level": 2
     },
     {
-      "name": "Shipping",
-      "items": [
-        {
-          "name": "Project Export",
-          "href": "Shipping/project-export.html",
-          "topicHref": "Shipping/project-export.html",
-          "tocHref": null,
-          "level": 3,
-          "items": [],
-          "leaf": true
-        }
-      ],
+      "name": "[](./pages/docs/Shipping)",
       "topicHref": null,
       "tocHref": null,
-      "level": 2
+      "level": 2,
+      "items": [],
+      "leaf": true
     },
     {
       "name": "Tools",

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Visual Script: Clock and Time Nodes | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Visual Script: Clock and Time Nodes | ezEngine ">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-nodes-time.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="visual-script-clock-and-time-nodes">Visual Script: Clock and Time Nodes</h1>
+
+<h2 id="clock">Clock</h2>
+<p>Clock nodes provide access to the engine's time systems. Understanding the difference between the two clocks is essential for proper script behavior:</p>
+<ul>
+<li><p><strong>Global Clock</strong> - Advances in real-time, unaffected by game speed. Use this for:</p>
+<ul>
+<li>UI animations</li>
+<li>Real-time timers</li>
+<li>Effects that should run at normal speed regardless of slow-motion</li>
+<li>Frame-rate independent animations</li>
+</ul>
+</li>
+<li><p><strong>World Clock</strong> - Scales with game speed and can be paused or slowed down. Use this for:</p>
+<ul>
+<li>Gameplay mechanics</li>
+<li>AI behavior</li>
+<li>Physics-driven animations</li>
+<li>Anything that should respect slow-motion or game pauses</li>
+</ul>
+</li>
+</ul>
+<p>Choosing the correct clock is important: gameplay timers should use the world clock so they pause when the game pauses, while UI elements should typically use the global clock to remain responsive.</p>
+<p>Clock nodes provide access to delta time (time since last frame), total elapsed time, and other timing information. Use these with <a href="vscript-nodes-coroutine.html">coroutine nodes</a> to create time-based behaviors.</p>
+<h2 id="time">Time</h2>
+<p>Time nodes operate on the <em>time</em> data type, allowing you to:</p>
+<ul>
+<li><strong>Convert time values</strong> - Between different representations (seconds, milliseconds)</li>
+<li><strong>Compare times</strong> - Check if enough time has passed</li>
+<li><strong>Calculate durations</strong> - Measure elapsed time</li>
+<li><strong>Store timestamps</strong> - Track when events occurred</li>
+</ul>
+<p>Time values work together with clock nodes to create time-aware script logic.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../visual-script-class-asset.html">Visual Script Class Asset</a></li>
+<li><a href="../visual-script-overview.html">Visual Script Overview</a></li>
+<li><a href="../script-component.html">Script Component</a></li>
+<li><a href="vscript-nodes-coroutine.html">Coroutine Nodes</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-nodes-time.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Visual Script: Math Nodes | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Visual Script: Math Nodes | ezEngine ">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-nodes-math.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="visual-script-math-nodes">Visual Script: Math Nodes</h1>
+
+<h2 id="math">Math</h2>
+<p>All sorts of mathematical operations for working with number types, vectors, and rotations.</p>
+<h2 id="quat">Quat</h2>
+<p>Quaternion nodes provide utility functions for working with rotations. Quaternions are used throughout the engine to represent 3D rotations.</p>
+<p>Common quaternion operations include:</p>
+<ul>
+<li><strong>Rotation construction</strong> - Create rotations from axis-angle or Euler angles</li>
+<li><strong>Rotation composition</strong> - Combine multiple rotations</li>
+<li><strong>Interpolation</strong> - Smoothly blend between rotations (SLERP - Spherical Linear Interpolation)</li>
+<li><strong>Direction vectors</strong> - Extract forward, up, and right vectors from rotations</li>
+<li><strong>Rotation application</strong> - Apply rotations to vectors</li>
+</ul>
+<p>Use quaternion nodes when working with object orientations, camera rotations, or any other 3D rotation operations. They integrate seamlessly with <a href="vscript-nodes-game-object.html">game object transform nodes</a> for positioning and orienting objects in the scene.</p>
+<h2 id="expression-node">Expression Node</h2>
+<p>The <strong>Expression</strong> node lets you write complex mathematical expressions with multiple input and output values. This is much more convenient than using many individual math nodes.</p>
+<p><img src="../media/vs-expression.png" alt="Math Expression"></p>
+<p>The following built-in functions are available:</p>
+<ul>
+<li><code>abs(number)</code></li>
+<li><code>saturate(number)</code> - clamps number to <code>[0; 1]</code> range</li>
+<li><code>sqrt(number)</code></li>
+<li><code>exp(number)</code></li>
+<li><code>ln(number)</code></li>
+<li><code>log2(number)</code></li>
+<li><code>log10(number)</code></li>
+<li><code>pow2(number)</code></li>
+<li><code>sin(number)</code></li>
+<li><code>cos(number)</code></li>
+<li><code>tan(number)</code></li>
+<li><code>asin(number)</code></li>
+<li><code>acos(number)</code></li>
+<li><code>atan(number)</code></li>
+<li><code>radToDeg(number)</code> or <code>rad_to_deg(number)</code></li>
+<li><code>degToRad(number)</code> or <code>deg_to_rad(number)</code></li>
+<li><code>round(number)</code></li>
+<li><code>floor(number)</code></li>
+<li><code>ceil(number)</code></li>
+<li><code>trunc(number)</code></li>
+<li><code>frac(number)</code></li>
+<li><code>length(vector)</code></li>
+<li><code>normalize(vector)</code></li>
+<li><code>trunc(number)</code></li>
+<li><code>all(number)</code></li>
+<li><code>any(number)</code></li>
+<li><code>mod(number, number)</code> - computes <code>a</code> modulo <code>b</code></li>
+<li><code>log(number, number)</code></li>
+<li><code>pow(number, number)</code></li>
+<li><code>min(number, number)</code></li>
+<li><code>max(number, number)</code></li>
+<li><code>dot(vector, vector)</code></li>
+<li><code>cross(vector, vector)</code></li>
+<li><code>reflect(vector, vector)</code></li>
+<li><code>clamp(value, min, max)</code></li>
+<li><code>lerp(min, max, factor)</code></li>
+<li><code>smoothstep(value, edge1, edge2)</code> - returns 0, if value is &lt;= edge1, 1 if value &gt;= edge2 and the hermite interpolation in between</li>
+<li><code>smootherstep(value, edge1, edge2)</code> - returns 0, if value is &lt;= edge1, 1 if value &gt;= edge2 and the second order hermite interpolation in between</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../visual-script-class-asset.html">Visual Script Class Asset</a></li>
+<li><a href="../visual-script-overview.html">Visual Script Overview</a></li>
+<li><a href="../script-component.html">Script Component</a></li>
+<li><a href="vscript-nodes-logic.html">Logic Nodes</a></li>
+<li><a href="vscript-nodes-game-object.html">Game Object Nodes</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-nodes-math.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

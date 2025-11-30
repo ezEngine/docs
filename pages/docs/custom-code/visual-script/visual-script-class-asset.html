@@ -169,114 +169,33 @@
 <p>Loops are often used together with arrays. Various array operations such as <code>PushBack</code>, <code>GetCount</code>, <code>Contains</code> and <code>Remove</code> are available:</p>
 <p><img src="media/vs-array.png" alt="Array"></p>
 <h2 id="node-types">Node Types</h2>
-<p>The following broad categories of nodes exist:</p>
-<h3 id="event-handlers">Event Handlers</h3>
-<p>Event handlers are nodes that get executed when a certain <a href="../../runtime/world/world-messaging.html">message</a> is sent to any of the objects that this script is responsible for. All event handlers are <em>entry points</em> into the script and most scripts will only execute as a reaction to an event.</p>
-<h3 id="blackboards">Blackboards</h3>
-<p>All the nodes for working with <a href="../../Miscellaneous/blackboards.html">blackboards</a>.</p>
-<h3 id="clock">Clock</h3>
-<p>There are two clocks, the <em>global clock</em> and the <em>world clock</em>. The global one always advances in real-time and should be used for animating things that are independent of the game speed. The world clock should be used for all game-play functionality that should slow down or speed up according to the game's speed, so that they work correctly in slow-motion.</p>
-<h3 id="component">Component</h3>
-<p>Here you find all functionality shared by all <a href="../../runtime/world/components.html">components</a> such as:</p>
+<p>Visual scripts provide a wide variety of node types for different operations. For detailed documentation on each node category, see the <a href="nodes/index.html">Visual Script Node Reference</a>.</p>
+<h3 id="quick-reference">Quick Reference</h3>
+<p>The following broad categories of nodes are available:</p>
 <ul>
-<li><code>GetOwner</code>: Returns the components owner game object.</li>
-<li><code>GetWorld</code>: Returns the world that the component belongs to.</li>
+<li><strong><a href="nodes/vscript-nodes-events.html">Event Handlers</a></strong> - Entry points that execute when specific messages are received</li>
+<li><strong><a href="nodes/vscript-nodes-blackboard.html">Blackboards</a></strong> - Working with blackboard data</li>
+<li><strong><a href="nodes/vscript-nodes-time.html">Clock and Time</a></strong> - Access to global/world clocks and time operations</li>
+<li><strong><a href="nodes/vscript-nodes-component.html">Components</a></strong> - Component operations like GetOwner, GetWorld</li>
+<li><strong><a href="nodes/vscript-nodes-property.html">Properties</a></strong> - Reading and writing component properties</li>
+<li><strong><a href="nodes/vscript-nodes-coroutine.html">Coroutines</a></strong> - Managing coroutines</li>
+<li><strong><a href="nodes/vscript-nodes-cvar.html">CVars</a></strong> - Reading and writing console variables</li>
+<li><strong><a href="nodes/vscript-nodes-debug.html">Debug</a></strong> - Debug rendering</li>
+<li><strong><a href="nodes/vscript-nodes-enum.html">Enums</a></strong> - Working with enum values</li>
+<li><strong><a href="nodes/vscript-nodes-game-object.html">Game Objects</a></strong> - Object transforms, hierarchy, and access</li>
+<li><strong><a href="nodes/vscript-nodes-world.html">World</a></strong> - World management operations</li>
+<li><strong><a href="nodes/vscript-nodes-logic.html">Logic</a></strong> - Conditionals, loops, comparisons</li>
+<li><strong><a href="nodes/vscript-nodes-math.html">Math</a></strong> - Mathematical operations including the Expression node</li>
+<li><strong><a href="nodes/vscript-nodes-messages.html">Messages</a></strong> - Sending messages to objects</li>
+<li><strong><a href="nodes/vscript-nodes-physics.html">Physics</a></strong> - Physics engine functions</li>
+<li><strong><a href="nodes/vscript-nodes-prefabs.html">Prefabs</a></strong> - Spawning prefabs</li>
+<li><strong><a href="nodes/vscript-nodes-spatial.html">Spatial</a></strong> - Spatial queries and quaternions</li>
+<li><strong><a href="nodes/vscript-nodes-sound.html">Sound</a></strong> - Playing sounds</li>
+<li><strong><a href="nodes/vscript-nodes-statemachine.html">State Machines</a></strong> - State machine interaction</li>
+<li><strong><a href="nodes/vscript-nodes-string.html">Strings</a></strong> - String operations</li>
+<li><strong><a href="nodes/vscript-nodes-log.html">Logging</a></strong> - Logging messages</li>
+<li><strong><a href="nodes/vscript-nodes-variables.html">Variables and Type Conversion</a></strong> - Variable operations and type conversions</li>
 </ul>
-<p>Additionally, all component specific functionality can be found in the sub-menus.</p>
-<h3 id="coroutine">Coroutine</h3>
-<p>Here you find all functionality to work with coroutines, see <a href="#coroutines">the coroutines section</a> above.</p>
-<h3 id="cvar">CVar</h3>
-<p>These nodes allow to read and write <a href="../../debugging/cvars.html">CVars</a>.</p>
-<h3 id="debug">Debug</h3>
-<p>These nodes are for <a href="../../debugging/debug-rendering.html">debug rendering</a>.</p>
-<h3 id="enums">Enums</h3>
-<p>These nodes are for working with enum values. There are two node types for each enum. The <em>value</em> nodes just return a fixed value and can be used to pass along. The <em>switch</em> nodes are used for reading an enum value and then executing a code path depending on the value.</p>
-<h3 id="game-object">Game Object</h3>
-<p><a href="../../runtime/world/game-objects.html">Game objects</a> nodes are for reading and writing object transforms, finding and accessing child objects and components.</p>
-<h3 id="log">Log</h3>
-<p>Nodes for <a href="../../debugging/logging.html">logging</a>. You can add input values for printing. Reference them in the format string using <code>{0}</code>, <code>{1}</code>, <code>{2}</code> and so on.</p>
-<h3 id="logic">Logic</h3>
-<p>This group contains mathematical logic operators as well as conditions and loops. Very important nodes are:</p>
-<ul>
-<li><code>Branch</code>: An <code>if</code> condition node with two possible outcomes.</li>
-<li><code>Switch</code>: Several variants to map one value to multiple possible outcomes.</li>
-<li><code>Compare</code>: Checks whether two values are equal, with a boolean result.</li>
-<li><code>Is Valid</code>: Checks whether the incoming value, such as a game object or component, can still be used.</li>
-</ul>
-<h3 id="math">Math</h3>
-<p>All sorts of mathematical operations for working with number types.</p>
-<h4 id="expression-node">Expression Node</h4>
-<p>The <strong>Expression</strong> node lets you write complex mathematical expressions with multiple input and output values. This is much more convenient than using many individual math nodes.</p>
-<p><img src="media/vs-expression.png" alt="Math Expression"></p>
-<p>The following built-in functions are available:</p>
-<ul>
-<li><code>abs(number)</code></li>
-<li><code>saturate(number)</code> - clamps number to <code>[0; 1]</code> range</li>
-<li><code>sqrt(number)</code></li>
-<li><code>exp(number)</code></li>
-<li><code>ln(number)</code></li>
-<li><code>log2(number)</code></li>
-<li><code>log10(number)</code></li>
-<li><code>pow2(number)</code></li>
-<li><code>sin(number)</code></li>
-<li><code>cos(number)</code></li>
-<li><code>tan(number)</code></li>
-<li><code>asin(number)</code></li>
-<li><code>acos(number)</code></li>
-<li><code>atan(number)</code></li>
-<li><code>radToDeg(number)</code> or <code>rad_to_deg(number)</code></li>
-<li><code>degToRad(number)</code> or <code>deg_to_rad(number)</code></li>
-<li><code>round(number)</code></li>
-<li><code>floor(number)</code></li>
-<li><code>ceil(number)</code></li>
-<li><code>trunc(number)</code></li>
-<li><code>frac(number)</code></li>
-<li><code>length(vector)</code></li>
-<li><code>normalize(vector)</code></li>
-<li><code>trunc(number)</code></li>
-<li><code>all(number)</code></li>
-<li><code>any(number)</code></li>
-<li><code>mod(number, number)</code> - computes <code>a</code> modulo <code>b</code></li>
-<li><code>log(number, number)</code></li>
-<li><code>pow(number, number)</code></li>
-<li><code>min(number, number)</code></li>
-<li><code>max(number, number)</code></li>
-<li><code>dot(vector, vector)</code></li>
-<li><code>cross(vector, vector)</code></li>
-<li><code>reflect(vector, vector)</code></li>
-<li><code>clamp(value, min, max)</code></li>
-<li><code>lerp(min, max, factor)</code></li>
-<li><code>smoothstep(value, edge1, edge2)</code> - returns 0, if value is &lt;= edge1, 1 if value &gt;= edge2 and the hermite interpolation in between</li>
-<li><code>smootherstep(value, edge1, edge2)</code> - returns 0, if value is &lt;= edge1, 1 if value &gt;= edge2 and the second order hermite interpolation in between</li>
-</ul>
-<h3 id="messages">Messages</h3>
-<p>While event handlers react to messages, the script can also <em>send messages</em> to other objects. Messages can be sent directly to a component, or to a game object, in which case they may be broadcast to all components on that object, or even to the whole sub-tree of objects and components. If the <code>Send Mode</code> is set to <em>Event</em>, however, they are delivered not downwards in the hierarchy, but <em>upwards</em> along the parent chain of the target object, to the closest component that handles this type of message. See <a href="../../runtime/world/world-messaging.html#event-messages">this chapter</a> for details.</p>
-<h3 id="physics">Physics</h3>
-<p>Various functions to use the physics engine.</p>
-<h3 id="prefabs">Prefabs</h3>
-<p>Utility functions to spawn prefabs.</p>
-<h3 id="property">Property</h3>
-<p>For reading and writing component properties.</p>
-<h3 id="quat">Quat</h3>
-<p>Utility functions for working with quaternions.</p>
-<h3 id="sound">Sound</h3>
-<p>Functions for playing sounds.</p>
-<h3 id="spatial">Spatial</h3>
-<p>The spatial system allows to find nearby objects. Contrary to using the physics engine for this, the spatial system is typically used to find tagged objects (see <a href="../../gameplay/marker-component.html">Marker Component</a>). This is often useful for game logic. For example, an NPC may want to find the closest health-pack, so it would use the spatial system to search for objects that use a health-pack marker.</p>
-<h3 id="statemachineinstance-and-statemachinestate">StateMachineInstance and StateMachineState</h3>
-<p>For interacting with <a href="../game-logic/state-machine-asset.html">state machines</a>. This is mainly necessary when the script itself is used as a <em>StateMachineState</em>. Be aware that the <em>state machine instance</em> in which the script is run, is passed into the script through the <code>OnEnter</code>, <code>OnExit</code> and <code>Update</code> nodes.</p>
-<h3 id="string">String</h3>
-<p>For working with strings, e.g. to format a string by combining variable values.</p>
-<h3 id="time">Time</h3>
-<p>For working with the <em>time</em> data type.</p>
-<h3 id="type-conversion">Type Conversion</h3>
-<p>These nodes are for converting variables from one type to another. Especially important is the <code>ConvertTo</code> node, which is used for converting a <em>Variant</em> to an expected type. A <em>Variant</em> is a variable that can contain data of many different types. When a node returns a variant, you usually expect that it contains a certain type and using the <code>ConvertTo</code> node, you can get to it.</p>
-<h3 id="variable-nodes">Variable Nodes</h3>
-<p>These nodes operate on <a href="#visual-script-variables">visual script variables</a>. The variables have to be declared on the script first. Use these to keep track of state within the script and also to read state that was passed in through <a href="../../concepts/exposed-parameters.html">exposed parameters</a>.</p>
-<p>Additionally, the <strong>Temp Variable</strong> node can be used to store the result of an evaluated expression and reuse it multiple times. Since the node has execution pins, you can control exactly when its input should be evaluated. Its output can then be read as often as desired and won't change.</p>
-<p>This is useful for two reasons. The first is performance, as it allows to reuse the value many times without needlessly reevaluating it. The second is, that sometimes expressions can produce different results, depending on when exactly they are evaluated. For example, if an expression reads a variable <code>A</code>but then the script also writes to <code>A</code>, then evaluating the expression again, would now produce a different result. By using a temp variable, you can guarantee to the see the same value, even after the script already updated <code>A</code>.</p>
-<h3 id="world">World</h3>
-<p>These nodes provide access to the <a href="../../runtime/world/worlds.html">world</a>, which is used for managing objects.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="visual-script-overview.html">Custom Code with Visual Scripts</a></li>

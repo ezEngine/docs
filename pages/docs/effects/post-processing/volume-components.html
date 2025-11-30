@@ -90,7 +90,7 @@
 <h1 id="volume-components">Volume Components</h1>
 
 <p>Volume components are used to define custom environmental conditions in areas of a level.</p>
-<p>By itself, volume components have no functionality and no noticeable effect. They only specify an area and what values to use there. Values are usually specified by referencing a <a href="../../Miscellaneous/blackboard-template-asset.html">blackboard template asset</a>. Other systems may use this information to implement behavior.</p>
+<p>By itself, volume components have no functionality and no noticeable effect. They only specify an area and what values to use there. Values are usually specified by referencing a <a href="../../misc/blackboard-template-asset.html">blackboard template asset</a>. Other systems may use this information to implement behavior.</p>
 <p>One such system is the <a href="post-processing-component.html">post-processing component</a> which uses these volumes to modify parameters of the rendering pipeline, for example to have different color grading per area.</p>
 <p>A custom system could for example also use these volumes to determine whether the player is inside water.</p>
 <p>There are multiple volume components for different shapes:</p>
@@ -106,7 +106,7 @@
 </li>
 <li><p><code>SortOrder</code>: In case two volumes overlap, the one with a higher sort order value has precedence.</p>
 </li>
-<li><p><code>Template</code>: A reference to a <a href="../../Miscellaneous/blackboard-template-asset.html">blackboard template asset</a> to define the key/value pairs. It is usually more convenient to use a blackboard template as a preset for values, than to specify them directly on the volume component.</p>
+<li><p><code>Template</code>: A reference to a <a href="../../misc/blackboard-template-asset.html">blackboard template asset</a> to define the key/value pairs. It is usually more convenient to use a blackboard template as a preset for values, than to specify them directly on the volume component.</p>
 </li>
 <li><p><code>Values</code>: Individually added key/value pairs. Prefer to use a <code>Template</code>, but If the same key is also added here, it overrides the value from the template.</p>
 </li>
