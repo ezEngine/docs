@@ -1429,18 +1429,18 @@
               "leaf": true
             },
             {
-              "name": "Mesh Decals",
-              "href": "effects/decals/mesh-decals.html",
-              "topicHref": "effects/decals/mesh-decals.html",
+              "name": "Projected Decals",
+              "href": "effects/decals/projected-decals.html",
+              "topicHref": "effects/decals/projected-decals.html",
               "tocHref": null,
               "level": 4,
               "items": [],
               "leaf": true
             },
             {
-              "name": "Decals",
-              "href": "effects/decals/decals.html",
-              "topicHref": "effects/decals/decals.html",
+              "name": "Mesh Decals",
+              "href": "effects/decals/mesh-decals.html",
+              "topicHref": "effects/decals/mesh-decals.html",
               "tocHref": null,
               "level": 4,
               "items": [],
@@ -3332,12 +3332,21 @@
       "level": 2
     },
     {
-      "name": "[](./pages/docs/Shipping)",
+      "name": "Shipping",
+      "items": [
+        {
+          "name": "Project Export",
+          "href": "shipping/project-export.html",
+          "topicHref": "shipping/project-export.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        }
+      ],
       "topicHref": null,
       "tocHref": null,
-      "level": 2,
-      "items": [],
-      "leaf": true
+      "level": 2
     },
     {
       "name": "Tools",

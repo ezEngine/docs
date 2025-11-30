@@ -2822,20 +2822,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/effects/decals/decals.md",
+      "source_relative_path": "pages/docs/effects/decals/mesh-decals.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/effects/decals/decals.html"
+          "relative_path": "pages/docs/effects/decals/mesh-decals.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/effects/decals/mesh-decals.md",
+      "source_relative_path": "pages/docs/effects/decals/projected-decals.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/effects/decals/mesh-decals.html"
+          "relative_path": "pages/docs/effects/decals/projected-decals.html"
         }
       },
       "version": ""

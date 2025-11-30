@@ -91,7 +91,7 @@
 
 <p><em>Mesh decals</em> (also called <em>floaters</em>) are a different approach to decals where the decal texture is mapped directly onto mesh geometry rather than being projected. This technique is useful for adding surface detail to meshes like dirt, scratches, or markings that need to follow the mesh topology precisely.</p>
 <p><img src="../media/mesh-decals.jpg" alt="Mesh Decals"></p>
-<p>Unlike regular <a href="decals.html">decals</a> which project a texture onto geometry, mesh decals:</p>
+<p>Unlike regular <a href="projected-decals.html">decals</a> which project a texture onto geometry, mesh decals:</p>
 <ul>
 <li>Follow the mesh geometry exactly without projection distortion</li>
 <li>Support multiple decal textures per mesh (up to 8 slots)</li>
@@ -120,7 +120,7 @@
 <p>The <code>DepthBias</code> material parameter (default: 1.0) controls how far the decal geometry is pushed toward the camera. Increase this value if you see z-fighting between the decal and the surface.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="decals.html">Decals</a></li>
+<li><a href="projected-decals.html">Projected Decals</a></li>
 <li><a href="../../graphics/meshes/meshes-overview.html">Meshes</a></li>
 </ul>
 
