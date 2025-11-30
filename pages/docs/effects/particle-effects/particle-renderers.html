@@ -156,8 +156,9 @@
 <p><strong>Particle Stretch:</strong> Only available in the 'axis' render modes. Allows to stretch the particles along their fixed axis. Useful to create sparks.</p>
 <h2 id="mesh-renderer">Mesh Renderer</h2>
 <p>This renderer visualizes each particle using a <a href="../../graphics/meshes/mesh-asset.html">mesh</a>.</p>
-<p><strong>Mesh:</strong> The mesh to use for rendering.</p>
-<p><strong>Material:</strong> The material to use on the mesh.</p>
+<p><strong>Mesh:</strong> The mesh to use for rendering. If the mesh contains multiple sub-meshes, the renderer will randomly select one sub-mesh for each particle. This allows for visual variety in effects like debris or broken pieces by including multiple mesh variations in a single mesh asset.</p>
+<p><strong>Material:</strong> The material to use on the mesh. If specified, this material overrides the materials defined on the mesh asset. If left empty, the mesh's own materials are used.</p>
+<p><strong>Scale:</strong> A scale factor to adjust the size of the mesh independently of the particle size. This allows you to fine-tune the visual size of the mesh without having to modify the particle size parameter.</p>
 <p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the color of the meshes.</p>
 <p><video src="media/mesh-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="light-renderer">Light Renderer</h2>

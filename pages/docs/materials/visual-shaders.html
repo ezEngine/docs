@@ -157,6 +157,10 @@ The nodes are defined in <code>DDL</code> files located in</p>
 </blockquote>
 <h3 id="node-options">Node Options</h3>
 <ul>
+<li><p><code>Docs</code>: A documentation string that describes what the node does. This text appears as a tooltip when you hover over the node title in the visual shader editor. Use <code>\n</code> for line breaks to create multi-line descriptions. It's highly recommended to provide clear documentation for all custom nodes to improve usability.</p>
+</li>
+<li><p><code>Tooltip</code>: Can be added to individual input and output pins. Provides contextual help that appears when hovering over a pin, explaining what the pin represents or expects. This helps users understand how to correctly connect and use the node.</p>
+</li>
 <li><p><code>NodeType</code>: Can be <code>Main</code>, <code>Texture</code> or empty.</p>
 <p>Use <code>Main</code> for final output nodes, <code>Texture</code> for texture sampling nodes.</p>
 </li>

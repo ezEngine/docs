@@ -97,6 +97,7 @@
 <p>These versions are currently supported:</p>
 <ul>
 <li>Visual Studio 2022 64 Bit</li>
+<li>Visual Studio 2026 64 Bit</li>
 </ul>
 <p>These <em>workloads</em> have to be installed:</p>
 <ul>
@@ -109,9 +110,14 @@
 <h3 id="using-the-generate-scripts">Using the Generate Scripts</h3>
 <p>In the root folder of the EZ repository you will find a couple of <code>.bat</code> files, such as:</p>
 <ul>
+<li><code>GenerateWin64vs2026.bat</code></li>
 <li><code>GenerateWin64vs2022.bat</code></li>
 </ul>
 <p>Run one of them to generate a Visual Studio solution for your preferred compiler. Afterwards, there will be a <strong>Workspace</strong> folder in the EZ root folder, where you find a <code>ezEngine_***.sln</code> file in the respective folder for the Visual Studio version that you chose.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Visual Studio 2026 uses the new <code>.slnx</code> solution file format. If double-clicking the <code>.slnx</code> file opens it in Visual Studio 2022 instead of 2026, you need to adjust your Windows file association settings to ensure <code>.slnx</code> files open with the correct Visual Studio version.</p>
+</blockquote>
 <p>If the script fails, you most likely don't have all the <a href="#prerequisites">prerequisites</a> installed. They also sometimes fail, if Visual Studio recently installed an update and you haven't rebooted your PC since. Usually when this script fails it is due to common issues with CMake or the MSVC installation. <strong>Read the full error messages carefully</strong> and search the internet, you'll usually find a solution quickly.</p>
 <h3 id="manually-running-cmake-advanced">Manually Running CMake (advanced)</h3>
 <p>This step requires you to install <a href="https://cmake.org/">CMake</a> yourself.</p>

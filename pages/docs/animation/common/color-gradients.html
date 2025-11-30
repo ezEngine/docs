@@ -91,6 +91,8 @@
 
 <p><em>Color gradients</em> are used to color things using a 1D lookup. They are typically set up once and shared across many assets, such as <a href="../../effects/particle-effects/particle-effects-overview.html">particle effects</a>. Modifying a color gradient will affect all resources that use the gradient. Therefore it is advisable to create common gradients early during development.</p>
 <p>The color gradient can be sampled along the X-axis. This is frequently used to sample a color over time, but other parameters may be used for the lookup as well. If a gradient is supposed to be used in a looping fashion, the first and last color have to be set up to match.</p>
+<h2 id="using-gradients-as-textures">Using Gradients as Textures</h2>
+<p>Color gradients can be directly referenced in <a href="../../materials/materials-overview.html">materials</a> as <a href="../../graphics/textures-overview.html">textures</a>. When you reference a color gradient asset in a material's texture slot, the engine automatically converts it to a 1D texture with 512 pixels. This is particularly useful for creating color ramps, custom lighting effects, or any shader effect that needs to sample colors along a gradient. The gradient is stored in HDR format (R16G16B16A16_FLOAT), which means it can represent high dynamic range colors with the full intensity values you define in the gradient editor.</p>
 <h2 id="gradient-editor">Gradient Editor</h2>
 <p>The image below shows a color gradient and its editing controls:</p>
 <p><img src="../media/color-gradient.png" alt="Color Gradient"></p>
@@ -117,6 +119,8 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="curves.html">Curves</a></li>
+<li><a href="../../graphics/textures-overview.html">Textures</a></li>
+<li><a href="../../materials/materials-overview.html">Materials</a></li>
 <li><a href="../property-animation/property-animation-overview.html">Property Animation (TODO)</a></li>
 </ul>
 

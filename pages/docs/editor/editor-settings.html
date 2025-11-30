@@ -94,6 +94,11 @@
 <h2 id="shortcuts">Shortcuts</h2>
 <p><em>Tools &gt; Shortcuts...</em> opens a dialog to configure the shortcuts.</p>
 <p><img src="media/editor-shortcuts.png" alt="Preferences"></p>
+<p>The shortcuts dialog includes a search box to help you quickly find specific shortcuts.</p>
+<h3 id="keyboard-layout-support">Keyboard Layout Support</h3>
+<p>The editor uses scancodes (physical key positions) instead of character codes for most camera controls and movement shortcuts. This ensures that camera controls like WASD work consistently across different keyboard layouts (QWERTY, AZERTY, QWERTZ, etc.).</p>
+<p>However, there is an important limitation: single-character shortcuts (like <code>G</code> for grid toggle) only work on keyboard layouts that contain that specific character. For example, shortcuts with Latin characters won't work on Cyrillic layouts unless you remap them.</p>
+<p><strong>Workaround</strong>: Shortcuts that use modifiers (CTRL, ALT, SHIFT) work universally across all keyboard layouts since they operate by physical key position rather than character. If you're using a non-QWERTY layout and encounter issues with single-character shortcuts, you can remap them to characters that exist on your keyboard layout using the shortcuts dialog.</p>
 <h2 id="preferences">Preferences</h2>
 <p><em>Tools &gt; Preferences...</em> opens a dialog to configure the preferences.</p>
 <p>For details see <a href="editor-preferences.html">the editor preferences page</a>.</p>
