@@ -1368,6 +1368,95 @@
               "leaf": true
             },
             {
+              "name": "Behaviors",
+              "items": [
+                {
+                  "name": "Velocity Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-velocity.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-velocity.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Raycast Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-raycast.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-raycast.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Pull Along Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-pull-along.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-pull-along.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Color Gradient Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-color-gradient.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-color-gradient.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Fade Out Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-fade-out.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-fade-out.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Bounds Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-bounds.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-bounds.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Flies Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-flies.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-flies.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Size Curve Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-size-curve.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-size-curve.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Gravity Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-gravity.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-gravity.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                }
+              ],
+              "topicHref": null,
+              "tocHref": null,
+              "level": 4
+            },
+            {
               "name": "Particle Renderers",
               "href": "effects/particle-effects/particle-renderers.html",
               "topicHref": "effects/particle-effects/particle-renderers.html",
