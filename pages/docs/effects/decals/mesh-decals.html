@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle Behaviors | ezEngine </title>
+      <title>Mesh Decals | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle Behaviors | ezEngine ">
+      <meta name="title" content="Mesh Decals | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/decals/mesh-decals.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,31 +87,47 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-behaviors">Particle Behaviors</h1>
+<h1 id="mesh-decals">Mesh Decals</h1>
 
-<p>Particle behaviors modify particles after they have been spawned. Each behavior performs a specific function:</p>
+<p><em>Mesh decals</em> (also called <em>floaters</em>) are a different approach to decals where the decal texture is mapped directly onto mesh geometry rather than being projected. This technique is useful for adding surface detail to meshes like dirt, scratches, or markings that need to follow the mesh topology precisely.</p>
+<p><img src="../media/mesh-decals.jpg" alt="Mesh Decals"></p>
+<p>Unlike regular <a href="decals.html">decals</a> which project a texture onto geometry, mesh decals:</p>
 <ul>
-<li><a href="behaviors/pb-bounds.html">Bounds Behavior</a> - Confines particles to a specific area</li>
-<li><a href="behaviors/pb-color-gradient.html">Color Gradient Behavior</a> - Changes particle color over time</li>
-<li><a href="behaviors/pb-fade-out.html">Fade Out Behavior</a> - Gradually fades out particle alpha</li>
-<li><a href="behaviors/pb-flies.html">Flies Behavior</a> - Creates erratic flying patterns</li>
-<li><a href="behaviors/pb-gravity.html">Gravity Behavior</a> - Applies gravity to particles</li>
-<li><a href="behaviors/pb-pull-along.html">Pull Along Behavior</a> - Pulls particles along with moving effect</li>
-<li><a href="behaviors/pb-raycast.html">Raycast Behavior</a> - Detects collisions using raycasts</li>
-<li><a href="behaviors/pb-size-curve.html">Size Curve Behavior</a> - Changes particle size over lifetime</li>
-<li><a href="behaviors/pb-velocity.html">Velocity Behavior</a> - Affects particle velocity with friction and wind</li>
+<li>Follow the mesh geometry exactly without projection distortion</li>
+<li>Support multiple decal textures per mesh (up to 8 slots)</li>
+<li>Can have random texture variants per instance</li>
 </ul>
+<h2 id="mesh-decal-component">Mesh Decal Component</h2>
+<p>Add a <em>Mesh Decal Component</em> to a game object that has a <a href="../../graphics/meshes/mesh-component.html">mesh component</a>. The component manages decal textures and communicates with the runtime decal atlas.</p>
+<h3 id="component-properties">Component Properties</h3>
+<p><strong>Decals:</strong> An array of decal definitions. Each entry has:</p>
+<ul>
+<li><code>Index</code>: The decal slot (0-7). Mesh UVs determine which slot applies to each part of the mesh.</li>
+<li><code>BaseColorTexture</code>: The texture asset to use for this decal.</li>
+</ul>
+<p>Multiple entries can share the same slot index. When this happens, a random variant is selected per game object instance, providing visual variety.</p>
+<h2 id="mesh-requirements">Mesh Requirements</h2>
+<p>To use mesh decals, the mesh must have UV coordinates that encode which decal slot applies to each surface region. The integer parts of the UV coordinates determine the slot index. For example, a UV of (1.5, 2.3) would use slot indices derived from (1, 2).</p>
+<h2 id="shader-setup">Shader Setup</h2>
+<p>Mesh decals require a shader that:</p>
+<ol>
+<li>Uses <code>USE_VERTEX_DEPTH_BIAS</code> to prevent z-fighting with the underlying surface</li>
+<li>Samples from the runtime decal atlas using the transformed UV coordinates</li>
+<li>Implements <code>GetVertexDepthBias()</code> to return the appropriate depth offset</li>
+</ol>
+<p>The <code>MeshDecalMaterial.ezShader</code> in the engine provides a reference implementation.</p>
+<h3 id="depth-bias">Depth Bias</h3>
+<p>The <code>DepthBias</code> material parameter (default: 1.0) controls how far the decal geometry is pushed toward the camera. Increase this value if you see z-fighting between the decal and the surface.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="particle-effects-overview.html">Particle Effects</a></li>
-<li><a href="particle-initializers.html">Particle Initializers</a></li>
-<li><a href="particle-renderers.html">Particle Renderers</a></li>
+<li><a href="decals.html">Decals</a></li>
+<li><a href="../../graphics/meshes/meshes-overview.html">Meshes</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/decals/mesh-decals.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

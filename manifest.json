@@ -1912,10 +1912,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/custom-code/visual-script/nodes/index.md",
+      "source_relative_path": "pages/docs/custom-code/visual-script/nodes/vscript-node-reference.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/custom-code/visual-script/nodes/index.html"
+          "relative_path": "pages/docs/custom-code/visual-script/nodes/vscript-node-reference.html"
         }
       },
       "version": ""
@@ -2812,10 +2812,30 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/effects/decals.md",
+      "source_relative_path": "pages/docs/effects/decals/decals-overview.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/effects/decals.html"
+          "relative_path": "pages/docs/effects/decals/decals-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/decals/decals.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/decals/decals.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/decals/mesh-decals.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/decals/mesh-decals.html"
         }
       },
       "version": ""
@@ -3002,10 +3022,90 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/effects/mesh-decals.md",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-bounds.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/effects/mesh-decals.html"
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-bounds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-color-gradient.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-color-gradient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-fade-out.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-fade-out.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-flies.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-flies.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-gravity.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-gravity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-pull-along.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-pull-along.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-raycast.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-raycast.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-size-curve.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-size-curve.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-velocity.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-velocity.html"
         }
       },
       "version": ""
@@ -7005,10 +7105,40 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/xr/xr-components.md",
+      "source_relative_path": "pages/docs/xr/device-tracking-component.md",
       "output": {
         ".html": {
-          "relative_path": "pages/docs/xr/xr-components.html"
+          "relative_path": "pages/docs/xr/device-tracking-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/spatial-anchor-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/spatial-anchor-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/stage-space-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/stage-space-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/xr/visualize-hand-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/xr/visualize-hand-component.html"
         }
       },
       "version": ""

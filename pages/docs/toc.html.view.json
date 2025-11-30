@@ -1320,15 +1320,6 @@
           "leaf": true
         },
         {
-          "name": "Mesh Decals",
-          "href": "effects/mesh-decals.html",
-          "topicHref": "effects/mesh-decals.html",
-          "tocHref": null,
-          "level": 3,
-          "items": [],
-          "leaf": true
-        },
-        {
           "name": "Particle Effects",
           "items": [
             {
@@ -1427,12 +1418,38 @@
         },
         {
           "name": "Decals",
-          "href": "effects/decals.html",
-          "topicHref": "effects/decals.html",
+          "items": [
+            {
+              "name": "Decals Overview",
+              "href": "effects/decals/decals-overview.html",
+              "topicHref": "effects/decals/decals-overview.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Mesh Decals",
+              "href": "effects/decals/mesh-decals.html",
+              "topicHref": "effects/decals/mesh-decals.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Decals",
+              "href": "effects/decals/decals.html",
+              "topicHref": "effects/decals/decals.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            }
+          ],
+          "topicHref": null,
           "tocHref": null,
-          "level": 3,
-          "items": [],
-          "leaf": true
+          "level": 3
         }
       ],
       "topicHref": null,
@@ -2750,6 +2767,15 @@
                   "leaf": true
                 },
                 {
+                  "name": "Visual Script Node Reference",
+                  "href": "custom-code/visual-script/nodes/vscript-node-reference.html",
+                  "topicHref": "custom-code/visual-script/nodes/vscript-node-reference.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
                   "name": "Visual Script: Type Conversion and Variable Nodes",
                   "href": "custom-code/visual-script/nodes/vscript-nodes-variables.html",
                   "topicHref": "custom-code/visual-script/nodes/vscript-nodes-variables.html",
@@ -2897,15 +2923,6 @@
                   "name": "Visual Script: Game Object Nodes",
                   "href": "custom-code/visual-script/nodes/vscript-nodes-game-object.html",
                   "topicHref": "custom-code/visual-script/nodes/vscript-nodes-game-object.html",
-                  "tocHref": null,
-                  "level": 5,
-                  "items": [],
-                  "leaf": true
-                },
-                {
-                  "name": "Visual Script Node Reference",
-                  "href": "custom-code/visual-script/nodes/index.html",
-                  "topicHref": "custom-code/visual-script/nodes/index.html",
                   "tocHref": null,
                   "level": 5,
                   "items": [],

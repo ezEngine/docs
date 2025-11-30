@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle Behaviors | ezEngine </title>
+      <title>Raycast Behavior | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle Behaviors | ezEngine ">
+      <meta name="title" content="Raycast Behavior | ezEngine ">
       
-      <link rel="icon" href="../../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../../">
+      <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/behaviors/pb-raycast.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../../index.html">
+          <a class="navbar-brand" href="../../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,31 +87,31 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-behaviors">Particle Behaviors</h1>
+<h1 id="raycast-behavior">Raycast Behavior</h1>
 
-<p>Particle behaviors modify particles after they have been spawned. Each behavior performs a specific function:</p>
+<p>This behavior uses raycasts to detect collisions along the trajectory of a particle. If a particle would collide with geometry, the behavior can either adjust the its velocity, or terminate the particle early, potentially raising an <a href="../particle-effects-overview.html#events-and-event-reactions">event</a>, which could in turn lead to other effects or being spawned.</p>
+<p><strong>Reaction:</strong> Specifies how the particle should react to a collision.</p>
 <ul>
-<li><a href="behaviors/pb-bounds.html">Bounds Behavior</a> - Confines particles to a specific area</li>
-<li><a href="behaviors/pb-color-gradient.html">Color Gradient Behavior</a> - Changes particle color over time</li>
-<li><a href="behaviors/pb-fade-out.html">Fade Out Behavior</a> - Gradually fades out particle alpha</li>
-<li><a href="behaviors/pb-flies.html">Flies Behavior</a> - Creates erratic flying patterns</li>
-<li><a href="behaviors/pb-gravity.html">Gravity Behavior</a> - Applies gravity to particles</li>
-<li><a href="behaviors/pb-pull-along.html">Pull Along Behavior</a> - Pulls particles along with moving effect</li>
-<li><a href="behaviors/pb-raycast.html">Raycast Behavior</a> - Detects collisions using raycasts</li>
-<li><a href="behaviors/pb-size-curve.html">Size Curve Behavior</a> - Changes particle size over lifetime</li>
-<li><a href="behaviors/pb-velocity.html">Velocity Behavior</a> - Affects particle velocity with friction and wind</li>
+<li><em>Bounce:</em> The particle's velocity will be adjusted such that it bounces off the hit surface.</li>
+<li><em>Die:</em> The particle will be killed early.</li>
+<li><em>Stop:</em> The particle's current velocity will be set to zero, thus stopping it in its tracks. If other position affecting behaviors are active, for example the <a href="pb-gravity.html">gravity behavior</a>, it will start moving again, but without its previous momentum.</li>
 </ul>
+<p><strong>BounceFactor:</strong> How much of the current speed should be preserved after the bounce.</p>
+<p><strong>CollisionLayer:</strong> The physics collision layer to use. Affects with which geometry the particle will collide and which it will pass through.</p>
+<p><strong>OnCollideEvent:</strong> An optional name of an <a href="../particle-effects-overview.html#events-and-event-reactions">event</a> to raise. If set, other effects or prefabs can be spawned at the location of impact.</p>
+<p><video src="../media/raycast.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="particle-effects-overview.html">Particle Effects</a></li>
-<li><a href="particle-initializers.html">Particle Initializers</a></li>
-<li><a href="particle-renderers.html">Particle Renderers</a></li>
+<li><a href="../particle-behaviors.html">Particle Behaviors</a></li>
+<li><a href="../particle-effects-overview.html">Particle Effects</a></li>
+<li><a href="../particle-initializers.html">Particle Initializers</a></li>
+<li><a href="../particle-renderers.html">Particle Renderers</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/behaviors/pb-raycast.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

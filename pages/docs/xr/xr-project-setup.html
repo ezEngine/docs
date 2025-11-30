@@ -99,9 +99,9 @@
 <p>To be able to move around and use our controllers, we need to modify our character rig to support XR input scenarios. As an example, we will modify the <strong>Player</strong> prefab found in the testing chambers project.</p>
 <h3 id="stage-space">Stage Space</h3>
 <p>Once a XR plugin is active it takes control of the rendering camera. This means that the transform and projection of the <a href="../graphics/camera-component.html">camera component</a> is no longer taken into account when rendering. To move the user in XR, we need to instead move the <em>stage space</em> that the XR system is using as a reference point to place the user into the scene.</p>
-<p>The <a href="xr-components.html#stage-space-component">ezStageSpaceComponent</a> does just that. In our example, add the component to the root <code>Player</code> object of the prefab as it best represents the players position in the world. If the player moves, it will also move the XR camera and controllers relative to it.</p>
+<p>The <a href="stage-space-component.html">ezStageSpaceComponent</a> does just that. In our example, add the component to the root <code>Player</code> object of the prefab as it best represents the players position in the world. If the player moves, it will also move the XR camera and controllers relative to it.</p>
 <h3 id="device-tracking">Device Tracking</h3>
-<p>As mentioned above, the XR plugin takes ownership of the rendering camera. However, in many cases you will want to reflect the HMD position and controller positions in the scene as well. A Simple way of achieving this is to add a <a href="xr-components.html#device-tracking-component">ezDeviceTrackingComponent</a> to a game object that you like to follow one of the XR input devices.</p>
+<p>As mentioned above, the XR plugin takes ownership of the rendering camera. However, in many cases you will want to reflect the HMD position and controller positions in the scene as well. A Simple way of achieving this is to add a <a href="device-tracking-component.html">ezDeviceTrackingComponent</a> to a game object that you like to follow one of the XR input devices.</p>
 <p>Add one component to the <code>Camera</code> game object with default settings and one to the <code>Gun</code> game object with device type <code>Right Controller</code>, pose location <code>Aim</code> and <code>Global</code> transform.</p>
 <p>Safe the prefab and play the scene again. You should now be able to move the controller via a gamepad and point the gun at things using your right controller.</p>
 <h3 id="input-mapping">Input Mapping</h3>
@@ -112,7 +112,6 @@
 <ul>
 <li><a href="xr-graphics.html">XR Graphics</a></li>
 <li><a href="xr-input.html">XR Input</a></li>
-<li><a href="xr-components.html">XR Components</a></li>
 </ul>
 
 </article>

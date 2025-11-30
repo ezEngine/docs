@@ -107,7 +107,7 @@ if (deviceID != -1)
 <h2 id="xr-input-mapping">XR Input Mapping</h2>
 <p>XR input slots are defined in <code>Code\Engine\GameEngine\XR\XRInputDevice.h</code> and all start with <strong>xr_</strong>. Use the same machanism as for other input controllers to create an <a href="../input/input-config.html">input set configuration</a>.</p>
 <h2 id="pose-tracking">Pose Tracking</h2>
-<p>XR controllers also provide positional data. You can either use the <a href="xr-components.html#device-tracking-component">ezDeviceTrackingComponent</a> to automatically make a game object follow a controller or you can manually query the controller transform using the <code>ezXRInputDevice::GetDeviceState</code> function.</p>
+<p>XR controllers also provide positional data. You can either use the <a href="device-tracking-component.html">ezDeviceTrackingComponent</a> to automatically make a game object follow a controller or you can manually query the controller transform using the <code>ezXRInputDevice::GetDeviceState</code> function.</p>
 <p>Many devices support two poses <code>Grip</code> and <code>Aim</code>. The difference between the two is nicely explained <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#semantic-path-standard-pose-identifiers">here</a>.</p>
 <pre><code class="lang-cpp">ezXRInterface* pXRInterface = ezSingletonRegistry::GetSingletonInstance&lt;ezXRInterface&gt;();
 ezXRInputDevice&amp; xrInput = pXRInterface-&gt;GetXRInput();
@@ -140,7 +140,6 @@ for (ezXRHand::Enum hand : {ezXRHand::Left, ezXRHand::Right})
 <ul>
 <li><a href="../input/input-overview.html">Input</a></li>
 <li><a href="xr-overview.html">XR Overview</a></li>
-<li><a href="xr-components.html">XR Components</a></li>
 </ul>
 
 </article>

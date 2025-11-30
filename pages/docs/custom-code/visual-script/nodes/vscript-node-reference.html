@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle Behaviors | ezEngine </title>
+      <title>Visual Script Node Reference | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle Behaviors | ezEngine ">
+      <meta name="title" content="Visual Script Node Reference | ezEngine ">
       
-      <link rel="icon" href="../../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../../">
+      <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-node-reference.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../../index.html">
+          <a class="navbar-brand" href="../../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,31 +87,45 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-behaviors">Particle Behaviors</h1>
+<h1 id="visual-script-node-reference">Visual Script Node Reference</h1>
 
-<p>Particle behaviors modify particles after they have been spawned. Each behavior performs a specific function:</p>
+<p>This section documents all the node types available in visual scripts.</p>
+<h2 id="node-categories">Node Categories</h2>
 <ul>
-<li><a href="behaviors/pb-bounds.html">Bounds Behavior</a> - Confines particles to a specific area</li>
-<li><a href="behaviors/pb-color-gradient.html">Color Gradient Behavior</a> - Changes particle color over time</li>
-<li><a href="behaviors/pb-fade-out.html">Fade Out Behavior</a> - Gradually fades out particle alpha</li>
-<li><a href="behaviors/pb-flies.html">Flies Behavior</a> - Creates erratic flying patterns</li>
-<li><a href="behaviors/pb-gravity.html">Gravity Behavior</a> - Applies gravity to particles</li>
-<li><a href="behaviors/pb-pull-along.html">Pull Along Behavior</a> - Pulls particles along with moving effect</li>
-<li><a href="behaviors/pb-raycast.html">Raycast Behavior</a> - Detects collisions using raycasts</li>
-<li><a href="behaviors/pb-size-curve.html">Size Curve Behavior</a> - Changes particle size over lifetime</li>
-<li><a href="behaviors/pb-velocity.html">Velocity Behavior</a> - Affects particle velocity with friction and wind</li>
+<li><a href="vscript-nodes-events.html">Event Handler Nodes</a> - React to messages and events</li>
+<li><a href="vscript-nodes-blackboard.html">Blackboard Nodes</a> - Work with blackboards</li>
+<li><a href="vscript-nodes-time.html">Time and Clock Nodes</a> - Access global and world clocks</li>
+<li><a href="vscript-nodes-component.html">Component Nodes</a> - Component operations</li>
+<li><a href="vscript-nodes-property.html">Property Nodes</a> - Read and write component properties</li>
+<li><a href="vscript-nodes-coroutine.html">Coroutine Nodes</a> - Manage coroutines</li>
+<li><a href="vscript-nodes-cvar.html">CVar Nodes</a> - Read and write CVars</li>
+<li><a href="vscript-nodes-debug.html">Debug Nodes</a> - Debug rendering</li>
+<li><a href="vscript-nodes-enum.html">Enum Nodes</a> - Work with enum values</li>
+<li><a href="vscript-nodes-game-object.html">Game Object Nodes</a> - Game object operations</li>
+<li><a href="vscript-nodes-world.html">World Nodes</a> - Access the world</li>
+<li><a href="vscript-nodes-logic.html">Logic Nodes</a> - Conditionals and loops</li>
+<li><a href="vscript-nodes-math.html">Math Nodes</a> - Mathematical operations</li>
+<li><a href="vscript-nodes-messages.html">Message Nodes</a> - Send messages</li>
+<li><a href="vscript-nodes-physics.html">Physics Nodes</a> - Physics engine functions</li>
+<li><a href="vscript-nodes-prefabs.html">Prefab Nodes</a> - Spawn prefabs</li>
+<li><a href="vscript-nodes-spatial.html">Spatial Nodes</a> - Spatial queries and transforms</li>
+<li><a href="vscript-nodes-sound.html">Sound Nodes</a> - Play sounds</li>
+<li><a href="vscript-nodes-statemachine.html">State Machine Nodes</a> - Interact with state machines</li>
+<li><a href="vscript-nodes-string.html">String Nodes</a> - String operations</li>
+<li><a href="vscript-nodes-log.html">Logging Nodes</a> - Log messages</li>
+<li><a href="vscript-nodes-variables.html">Variable and Type Conversion Nodes</a> - Variables and type conversion</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="particle-effects-overview.html">Particle Effects</a></li>
-<li><a href="particle-initializers.html">Particle Initializers</a></li>
-<li><a href="particle-renderers.html">Particle Renderers</a></li>
+<li><a href="../visual-script-class-asset.html">Visual Script Class Asset</a></li>
+<li><a href="../visual-script-overview.html">Visual Script Overview</a></li>
+<li><a href="../script-component.html">Script Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/custom-code/visual-script/nodes/vscript-node-reference.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

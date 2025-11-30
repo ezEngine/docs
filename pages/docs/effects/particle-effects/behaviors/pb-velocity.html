@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle Behaviors | ezEngine </title>
+      <title>Velocity Behavior | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle Behaviors | ezEngine ">
+      <meta name="title" content="Velocity Behavior | ezEngine ">
       
-      <link rel="icon" href="../../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../../">
+      <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/behaviors/pb-velocity.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../../index.html">
+          <a class="navbar-brand" href="../../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,31 +87,25 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-behaviors">Particle Behaviors</h1>
+<h1 id="velocity-behavior">Velocity Behavior</h1>
 
-<p>Particle behaviors modify particles after they have been spawned. Each behavior performs a specific function:</p>
-<ul>
-<li><a href="behaviors/pb-bounds.html">Bounds Behavior</a> - Confines particles to a specific area</li>
-<li><a href="behaviors/pb-color-gradient.html">Color Gradient Behavior</a> - Changes particle color over time</li>
-<li><a href="behaviors/pb-fade-out.html">Fade Out Behavior</a> - Gradually fades out particle alpha</li>
-<li><a href="behaviors/pb-flies.html">Flies Behavior</a> - Creates erratic flying patterns</li>
-<li><a href="behaviors/pb-gravity.html">Gravity Behavior</a> - Applies gravity to particles</li>
-<li><a href="behaviors/pb-pull-along.html">Pull Along Behavior</a> - Pulls particles along with moving effect</li>
-<li><a href="behaviors/pb-raycast.html">Raycast Behavior</a> - Detects collisions using raycasts</li>
-<li><a href="behaviors/pb-size-curve.html">Size Curve Behavior</a> - Changes particle size over lifetime</li>
-<li><a href="behaviors/pb-velocity.html">Velocity Behavior</a> - Affects particle velocity with friction and wind</li>
-</ul>
+<p>This behavior affects particle position and velocity. It can be used to gradually dampen the starting velocity through 'friction' and it may apply a constant upwards movement. If a scene contains <a href="../../wind/wind-overview.html">wind</a>, this behavior can also apply a fraction of the wind force to the particle's position.</p>
+<p><strong>RiseSpeed:</strong> If non-zero, the particles will move upwards with at least this constant speed. This is added to the particle position independent from its velocity, so if the current velocity points downward, the two may cancel each other out.</p>
+<p><strong>Friction:</strong> This value imitates air friction. If it is non-zero, the particle's velocity will be dampened over time. The value's range is <code>[0; infinity]</code>. To achieve an effect as in the animation below, the particles must have a very large starting velocity (here: 10). The <em>friction</em> here is set to 6. This way the particles will appear to be quite fast, but will also get slowed down almost to a standstill within a fraction of a second.</p>
+<p><strong>WindInfluence:</strong> If the scene has wind, this value specifies how much the wind should be able to push the particles around.</p>
+<p><video src="../media/velocity.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="particle-effects-overview.html">Particle Effects</a></li>
-<li><a href="particle-initializers.html">Particle Initializers</a></li>
-<li><a href="particle-renderers.html">Particle Renderers</a></li>
+<li><a href="../particle-behaviors.html">Particle Behaviors</a></li>
+<li><a href="../particle-effects-overview.html">Particle Effects</a></li>
+<li><a href="../particle-initializers.html">Particle Initializers</a></li>
+<li><a href="../particle-renderers.html">Particle Renderers</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/particle-behaviors.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/behaviors/pb-velocity.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
