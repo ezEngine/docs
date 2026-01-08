@@ -89,7 +89,7 @@
         <article data-uid="">
 <h1 id="shaders">Shaders</h1>
 
-<p>Shaders are files with the <code>.ezShader</code> extension. These files not only provide the HLSL code for each shader stage used, but also the complete render state used when drawing with this shader. Several permutations of the same shader can exist. Permutations can inpact the render state or affect the HLSL source code. Thus, one shader file can produce several outputs.</p>
+<p>Shaders are files with the <code>.ezShader</code> extension. These files not only provide the HLSL code for each shader stage used, but also the complete render state used when drawing with this shader. Several permutations of the same shader can exist. Permutations can impact the render state or affect the HLSL source code. Thus, one shader file can produce several outputs.</p>
 <h2 id="shader-sections">Shader Sections</h2>
 <p>Each shader is made up of several <strong>sections</strong>. Not all sections need to be defined as most have a default state. Here is a very simple shader:</p>
 <pre><code class="lang-cpp">[PLATFORMS]
@@ -155,7 +155,7 @@ ALL
 DEBUG
 </code></pre>
 <h3 id="permutations">PERMUTATIONS</h3>
-<p>The <code>PERMUTATIONS</code> section defines permutation variables which allow for modofication of the shader code. Each variable is exposed as a preprocessor variable, allowing for various sections of the shader to be modifed via preprocessor blocks.</p>
+<p>The <code>PERMUTATIONS</code> section defines permutation variables which allow for modification of the shader code. Each variable is exposed as a preprocessor variable, allowing for various sections of the shader to be modified via preprocessor blocks.</p>
 <p>The values of these permutation variables are defined by the engine / material and the entire system is explained in detail in the dedicated <a href="shader-permutation-variables.html">shader permutation variables</a> page.</p>
 <pre><code class="lang-cpp">[PERMUTATIONS]
 ALPHATEST
@@ -223,7 +223,7 @@ These need to be constant macros defined in <code>Data/Base/Shaders/Common/Const
 <h4 id="materialconfig-this-section-controls-when-a-material-is-rendered-during-a-frame"><code>MATERIALCONFIG</code>: This section controls when a material is rendered during a frame</h4>
 <p>This is done by changing the <em>RenderDataCategory</em> with a line like this: <code>RenderDataCategory = LitOpaque</code>. You can use the preprocessor to change the value depending on some permutation variable, if neccessary. The valid values for <code>RenderDataCategory</code> are defined in code via <code>ezRenderData::RegisterCategory</code>. Commonly used values are <code>LitOpaque</code> for opaque materials, <code>LitMasked</code> for alpha-tested materials and <code>LitTransparent</code> for alpha blended materials.</p>
 <h3 id="renderstate">RENDERSTATE</h3>
-<p>Each shader defines the complete state of the renderer. This includes, but is not limited to blendind, rasterizer, depth stencil etc. You can use permutations variables and preprcessor macros to change the render state of shader permutations.
+<p>Each shader defines the complete state of the renderer. This includes, but is not limited to blending, rasterizer, depth stencil etc. You can use permutation variables and preprocessor macros to change the render state of shader permutations.
 This is explained in more detail on the <a href="shader-render-state.html">shader render state</a> page.</p>
 <pre><code class="lang-cpp">[RENDERSTATE]
 #if WIREFRAME == 1
