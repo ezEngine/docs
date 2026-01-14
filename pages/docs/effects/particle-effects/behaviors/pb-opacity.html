@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Dashboard | ezEngine </title>
+      <title>Opacity Behavior | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Dashboard | ezEngine ">
+      <meta name="title" content="Opacity Behavior | ezEngine ">
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/dashboard.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/behaviors/pb-opacity.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -42,12 +42,12 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
+          <a class="navbar-brand" href="../../../../../index.html">
             <!--
-			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
             ezEngine
 			-->
-			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-three-dots"></i>
@@ -87,31 +87,24 @@
         </div>
 
         <article data-uid="">
-<h1 id="dashboard">Dashboard</h1>
+<h1 id="opacity-behavior">Opacity Behavior</h1>
 
-<p>The editor dashboard is a welcome screen that helps you getting started quickly. The buttons on the left-hand switch between the available options.</p>
-<h2 id="projects">Projects</h2>
-<p><img src="media/dashboard-projects.png" alt="Dashboard projects"></p>
-<p>On the projects page you can easily open a recently used <a href="../projects/projects-overview.html">project</a>. To create a new project, click the <strong>New</strong> button. To <em>open an existing project</em> that isn't shown in the list, click the <strong>Browse...</strong> button.</p>
-<p>To open a project selected from the list, use the <strong>Open Project</strong> button or double click the list entry.</p>
-<p>If you uncheck <em>Always load last project</em>, then the editor won't automatically open the project that you had open last time, when it starts up. Instead, it will always display the dashboard.</p>
-<p>You can also start the editor without loading any project by using the command line options, or via the Windows taskbar jumplist. See <a href="editor-launch.html">Launching the Editor</a> for details.</p>
-<h2 id="samples">Samples</h2>
-<p><img src="media/dashboard-samples.jpg" alt="Dashboard samples"></p>
-<p>On the samples page you can see all the available sample projects. Open one via the <strong>Open Sample</strong> button or double-click.</p>
-<h2 id="docs--community">Docs &amp; Community</h2>
-<p>On the community page you find buttons to quickly go to the available online resources, such as the <a href="../api-docs.html">API Docs</a> and <a href="../../contact.html">contact options</a>.</p>
+<p>This behavior changes a particle's opacity over the course of its lifetime using a curve.</p>
+<p><strong>OpacityCurve:</strong> A <a href="../../../animation/common/curves.html">curve</a> which controls the opacity of the particle over its lifetime. The current fraction of the particle's lifespan is used for the lookup along the X axis. A value of 1 means fully opaque, 0 means fully transparent.</p>
+<p>This behavior provides more control over particle transparency than the simpler <a href="pb-fade-out.html">Fade Out Behavior</a>, allowing for effects like particles that fade in, stay visible, and then fade out.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="editor-launch.html">Launching the Editor</a></li>
-<li><a href="../projects/projects-overview.html">Projects</a></li>
-<li><a href="../../contact.html">Contact</a></li>
+<li><a href="../particle-behaviors.html">Particle Behaviors</a></li>
+<li><a href="pb-fade-out.html">Fade Out Behavior</a></li>
+<li><a href="../particle-effects-overview.html">Particle Effects</a></li>
+<li><a href="../particle-initializers.html">Particle Initializers</a></li>
+<li><a href="../particle-renderers.html">Particle Renderers</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/dashboard.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/effects/particle-effects/behaviors/pb-opacity.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

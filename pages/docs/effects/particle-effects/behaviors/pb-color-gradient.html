@@ -92,6 +92,7 @@
 <p>This behavior changes a particle's color during the update step. A <a href="../../../animation/common/color-gradients.html">color gradient</a> is used as the color source, and a mode specifies how to look up the color from the gradient.</p>
 <p><strong>Gradient:</strong> The <a href="../../../animation/common/color-gradients.html">color gradient</a> to use as the source.</p>
 <p><strong>TintColor:</strong> An additional color to be multiplied into the gradient, for tweaking the final result.</p>
+<p><strong>ApplyAlpha:</strong> If enabled, the alpha channel from the color gradient is applied to the particle's opacity. This allows the gradient to control both color and transparency simultaneously.</p>
 <p><strong>ColorFrom:</strong> This mode specifies how the color is looked up from the gradient:</p>
 <ul>
 <li><code>Age</code> - In this mode the particle's color depends on its age and remaining lifetime. That means it starts out with the leftmost color from the gradient and transitions towards the rightmost color. Optimally, the color gradient should include alpha values, such that the particles can fade out towards the end.</li>

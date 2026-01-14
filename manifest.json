@@ -2412,6 +2412,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/editor/editor-launch.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/editor/editor-launch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/editor/editor-plugins.md",
       "output": {
         ".html": {
@@ -3072,6 +3082,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-move.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-move.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-opacity.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-opacity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-pull-along.md",
       "output": {
         ".html": {
@@ -3106,6 +3136,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-velocity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-wind.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-wind.html"
         }
       },
       "version": ""

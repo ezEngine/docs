@@ -136,6 +136,10 @@ ImGui::End();
 <h2 id="samples">Samples</h2>
 <p>The <a href="../../samples/rts.html">RTS Sample</a> and the <a href="../../samples/sample-game-plugin.html">Sample Game Plugin</a> demonstrate how to use ImGui.</p>
 <h2 id="limitations">Limitations</h2>
+<h3 id="threading-constraints">Threading Constraints</h3>
+<p>ImGui is <strong>not thread-safe</strong> and must only be called from the main thread. This means you cannot call ImGui functions from <a href="../runtime/world/components.html">component</a> <code>Update()</code> methods, as component updates run in parallel across multiple threads.</p>
+<p>Instead, call ImGui from your <a href="../runtime/application/game-state.html">game state</a>, which runs on the main thread. If you need to display component data in ImGui, cache the relevant values in your component and read them from the game state when building your UI.</p>
+<h3 id="styling">Styling</h3>
 <p>It is very difficult to adjust the appearance of ImGui elements. Use ImGui for developer tools and to prototype ideas quickly. Prefer to use <a href="rmlui.html">RmlUi</a> once you need more control over the look and feel.</p>
 <h2 id="see-also">See Also</h2>
 <ul>

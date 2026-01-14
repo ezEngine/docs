@@ -105,8 +105,12 @@
 <li>Visual Studio 2022 or Linux</li>
 </ul>
 <p><a href="https://ninja-build.org/">Ninja</a> is a build generator used by CMake and needs to be added to the <code>PATH</code> environment variable.</p>
-<p>The easiest way to install the Android components is to download <a href="https://developer.android.com/studio">Android Studio</a> and then to select these from the <strong>SDK Manager</strong>.</p>
-<p>Alternatively, you can also install these via the command line tool located in <code>C:\Users\[USER]\AppData\Local\Android\Sdk\cmdline-tools\latest\bin</code>:</p>
+<p>The easiest way to install the Android components is to use the provided installation script from the root of the EZ checkout:</p>
+<pre><code class="lang-pwsh">./Utilities/Android/InstallAndroidDependencies.ps1
+</code></pre>
+<p>This script downloads and installs the Android SDK, NDK and required tools to a shared workspace directory. Use the <code>-InstallEmulator</code> parameter to also install the emulator, or <code>-AcceptLicenses</code> to automatically accept licenses (useful for CI environments).</p>
+<p>Alternatively, you can download <a href="https://developer.android.com/studio">Android Studio</a> and select the required components from the <strong>SDK Manager</strong>.</p>
+<p>You can also install these via the command line tool located in <code>C:\Users\[USER]\AppData\Local\Android\Sdk\cmdline-tools\latest\bin</code>:</p>
 <pre><code class="lang-pwsh"># From the root of the EZ checkout, run:
 .\Utilities\Android\AndroidEmulator.ps1 -installBuildDependencies
 # Or run these manually from the ...\cmdline-tools\latest\bin folder:
@@ -130,8 +134,27 @@ Change the version to reflect the one you are using.</p>
 <li><strong>JAVA_HOME</strong> needs to point to a java runtime. Android Studio has its own version so there is no need to download it separately: <code>C:\Program Files\Android\Android Studio\jbr</code></li>
 <li><strong>ANDROID_STUDIO</strong> (Optional for debugging). Needs to point to the root of Android Studio, e.g. <code>C:\Program Files\Android\Android Studio</code>. We currently rely on the <code>lldb-server</code> that ships with Android Studio. Alternatively, you can also debug any app with Android Studio once at which point the required files are on the device and this env var is no longer needed.</li>
 </ul>
+<h2 id="building-with-runcmakeps1">Building with RunCMake.ps1</h2>
+<p>The simplest way to configure and build for Android is using the <code>RunCMake.ps1</code> script in the root of the repository:</p>
+<pre><code class="lang-pwsh"># Configure for Android arm64 debug build
+./RunCMake.ps1 -target android-arm64-debug
+
+# Configure for Android arm64 release build
+./RunCMake.ps1 -target android-arm64-release
+</code></pre>
+<p>The script uses CMake presets and handles the configuration automatically. After running the script, you can build with:</p>
+<pre><code class="lang-pwsh">cmake --build --preset android-arm64-debug
+</code></pre>
+<h2 id="compiling-shaders">Compiling Shaders</h2>
+<p>To compile shaders for Android, use the <code>CompileShaders.ps1</code> script:</p>
+<pre><code class="lang-pwsh"># On Windows (uses precompiled tools by default)
+./Utilities/Android/CompileShaders.ps1
+
+# On Linux (specify the binary directory)
+./Utilities/Android/CompileShaders.ps1 -BinDir /path/to/ezEngine/Output/Bin/LinuxClangDev64
+</code></pre>
 <h2 id="visual-studio--vscode--clion">Visual Studio / VSCode / CLion</h2>
-<p>While you can manually run CMake to use the ninja generator, a more convenient solution is to use CMake's <code>CMakePresets.json</code> which is already configured for Android arm64 and x64 builds.</p>
+<p>Alternatively, you can use an IDE. CMake's <code>CMakePresets.json</code> is already configured for Android arm64 and x64 builds.</p>
 <ul>
 <li><strong>Visual Studio</strong>: Use Visual Studio's open folder functionality. Go to <code>File &gt; Open &gt; Folder...</code> and select the root of the repository. If all environment variables were set correctly VS should automatically configure CMake. Once done, a drop down appears in the VS toolbar, allowing you to select the configuration, e.g. <code>android-arm64-debug</code>. Once changed, VS will start to configure CMake again for the new configuration. Next, select a build target, e.g. <code>libFoundationTest.so</code> which are the foundation unit tests. Note that you can only select applications, not all libraries here.</li>
 <li><strong>VSCode</strong>: Make sure you have the <code>C/C++</code>, <code>C/C++ Extension Pack</code>, <code>CMake</code> and <code>CMake Tools</code> plugins installed. Select <code>File &gt; Open Folder...</code> and select the root of the repository. Execute <code>CMake: Select Configure Preset</code> to select the config you wish to use. Make sure CMake runs through without errors. On failure fix any errors and execute  <code>CMake: Configure</code> until successful. Finally, execute <code>CMake: Build Target</code> to build the project you want.</li>

@@ -127,10 +127,10 @@
 </li>
 <li><p><em>Blended Foreground/Background</em> - Same as <em>Blended</em> but when there are multiple particle systems using <em>Blended</em> mode, this allows you to influence in which order the systems are rendered. This is used to fix rendering issues.</p>
 </li>
-<li><p><em>Distortion</em> - This is used to create a <em>heat haze</em> effect, which distorts the scene behind it. The alpha-channel of <em>Texture</em> is used to determine the shape of the distortion effect. The <em>Distortion Texture</em> and <em>Distortion Strength</em> are used to decide for each pixels how much to distort the background. Any texture can be used as the distortion texture, but the effect works best using a <em>normal map</em>.</p>
-<p><video src="media/render-mode-distortion.webm" width="500" height="500" autoplay loop></video></p>
+<li><p><em>Custom</em> - Use a custom material for rendering. See <strong>Custom Material</strong> below.</p>
 </li>
 </ul>
+<p><strong>Custom Material:</strong> When <em>Render Mode</em> is set to <em>Custom</em>, you can assign a custom <a href="../../materials/materials-overview.html">material</a> for particle rendering. The material must have its <em>Asset Filter Tag</em> set to <code>QuadParticle</code> to appear in the asset browser. Custom materials can be created using <a href="../../graphics/shaders/shader-templates.html">shader templates</a> or <a href="../../materials/visual-shaders.html">visual shaders</a>, enabling advanced effects like distortion, custom lighting, or other special rendering techniques.</p>
 <p><strong>Lighting Mode:</strong> Controls whether the particles receive dynamic lighting.</p>
 <ul>
 <li><code>Fullbright</code>: Particles will not be lit dynamically.</li>
@@ -172,7 +172,7 @@
 <p><video src="media/light-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="trail-renderer">Trail Renderer</h2>
 <p>This renderer visualizes particles as long lines that draw the path that the particle took. Trail particles are made up of a fixed number of segments. The more segments the renderer uses, the longer the trails will be. Also the faster a particle moves, the longer the trail will stretch. More segments cost more performance to update and render. For very short sparks that should just stretch a little, it is better to use billboards with <em>Orientation</em> set the <em>Axis: Particle Dir</em> and <em>StretchFactor</em> set to some value between 2 and 5.</p>
-<p><strong>Render Mode, Texture, Texture Atlas, TintColorParam, Lighting Mode:</strong> These options are identical to the <a href="#quad-renderer">quad renderer</a>.</p>
+<p><strong>Render Mode, Custom Material, Texture, Texture Atlas, TintColorParam, Lighting Mode:</strong> These options are identical to the <a href="#quad-renderer">quad renderer</a>. For custom materials on trails, the <em>Asset Filter Tag</em> must be set to <code>TrailParticle</code>.</p>
 <p><strong>Segments:</strong> The number of segments to use for each particle. More segments cost more performance but also result in longer and more detailed trails.</p>
 <p><video src="media/trail-renderer.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="effect-renderer">Effect Renderer</h2>

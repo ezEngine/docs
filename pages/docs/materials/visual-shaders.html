@@ -140,6 +140,8 @@
 </blockquote>
 <h2 id="texturing-nodes">Texturing Nodes</h2>
 <p>These nodes allow you to sample a texture. There are a couple of nodes for typical texture types, like <em>Base Texture</em> and <em>Normal Texture</em>, that take care of some details. See the tooltip on the output pins for details. If you do not want to use a standard texture, simply use the <code>Texture 2D</code> node. If you want to use a non-standard <em>sampler</em>, for instance for nearest neighbor sampling, you have to use the <code>Texture 2D</code> node and connect a custom sampler type.</p>
+<h2 id="state-nodes">State Nodes</h2>
+<p>State nodes allow you to configure the <a href="../graphics/shaders/shader-render-state.html">render state</a> directly in a visual shader. You can set depth state, stencil state, blend state and rasterizer state. This is useful for special effects that require non-default rendering behavior.</p>
 <h2 id="input-nodes">Input Nodes</h2>
 <p>These nodes provide various kinds of input data. Some give access to vertex attributes like position, normal, color and UV texture coordinates. Others provide global values, like the time or camera configuration.</p>
 <p>Of particular interest should be the <strong>InstanceData</strong> node, which allows to access object specific per-instance data. This is used to configure a shader differently and dynamically per object. Particularly the <strong>Custom Data</strong> value, which is available on <a href="../graphics/meshes/mesh-component.html">mesh components</a>, allows you to dynamically adjust a shader.</p>

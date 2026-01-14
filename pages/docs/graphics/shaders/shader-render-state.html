@@ -187,6 +187,13 @@ DepthTestFunc = CompareFunc_Always        // Always pass (ignores depth buffer)
 <li><p>int <strong>StencilWriteMask</strong> = 255</p>
 <p>Bitmask applied when writing to the stencil buffer. Use <code>255</code> (all bits) to write the full stencil value.</p>
 </li>
+<li><p>int <strong>StencilRefValue</strong> = 0</p>
+<p>The reference value used for stencil comparisons and operations. When comparing, this value (masked by <code>StencilReadMask</code>) is compared against the stencil buffer value. When using <code>StencilOp_Replace</code>, this value (masked by <code>StencilWriteMask</code>) is written to the stencil buffer.</p>
+<p>Set this to <code>-1</code> to use a dynamic stencil reference value provided by the rendering code at runtime, rather than the fixed value from the shader.</p>
+</li>
+<li><p>bool <strong>UseUserStencilRef</strong> = false</p>
+<p>When <code>true</code>, the stencil reference value is provided dynamically by the rendering code at runtime. When <code>false</code>, the shader's <code>StencilRefValue</code> is used. Setting <code>StencilRefValue</code> to <code>-1</code> implicitly enables this option.</p>
+</li>
 </ul>
 <h4 id="front-face-stencil-operations">Front-Face Stencil Operations</h4>
 <p>These operations apply to front-facing polygons (see <code>FrontCounterClockwise</code> to configure winding order).</p>

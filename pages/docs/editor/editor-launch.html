@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Dashboard | ezEngine </title>
+      <title>Launching the Editor | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Dashboard | ezEngine ">
+      <meta name="title" content="Launching the Editor | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/dashboard.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/editor-launch.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,31 +87,58 @@
         </div>
 
         <article data-uid="">
-<h1 id="dashboard">Dashboard</h1>
+<h1 id="launching-the-editor">Launching the Editor</h1>
 
-<p>The editor dashboard is a welcome screen that helps you getting started quickly. The buttons on the left-hand switch between the available options.</p>
-<h2 id="projects">Projects</h2>
-<p><img src="media/dashboard-projects.png" alt="Dashboard projects"></p>
-<p>On the projects page you can easily open a recently used <a href="../projects/projects-overview.html">project</a>. To create a new project, click the <strong>New</strong> button. To <em>open an existing project</em> that isn't shown in the list, click the <strong>Browse...</strong> button.</p>
-<p>To open a project selected from the list, use the <strong>Open Project</strong> button or double click the list entry.</p>
-<p>If you uncheck <em>Always load last project</em>, then the editor won't automatically open the project that you had open last time, when it starts up. Instead, it will always display the dashboard.</p>
-<p>You can also start the editor without loading any project by using the command line options, or via the Windows taskbar jumplist. See <a href="editor-launch.html">Launching the Editor</a> for details.</p>
-<h2 id="samples">Samples</h2>
-<p><img src="media/dashboard-samples.jpg" alt="Dashboard samples"></p>
-<p>On the samples page you can see all the available sample projects. Open one via the <strong>Open Sample</strong> button or double-click.</p>
-<h2 id="docs--community">Docs &amp; Community</h2>
-<p>On the community page you find buttons to quickly go to the available online resources, such as the <a href="../api-docs.html">API Docs</a> and <a href="../../contact.html">contact options</a>.</p>
+<p>The ezEditor can be launched simply by running <code>ezEditor.exe</code>. By default, it will restore the project that was open during the last session (see <a href="editor-preferences.html">Editor Preferences</a>).</p>
+<h2 id="command-line-options">Command Line Options</h2>
+<p>The editor supports the following command line arguments:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-project &lt;path&gt;</code></td>
+<td>Opens the editor with the specified project. The path should point to the project's <code>ezProject</code> file.</td>
+</tr>
+<tr>
+<td><code>-noRecent</code></td>
+<td>Opens the editor without loading a recent project. Use this to start with a blank editor.</td>
+</tr>
+<tr>
+<td><code>-safe</code></td>
+<td>Starts the editor in <em>safe mode</em>, which disables automatic loading of projects and scenes. This is useful for troubleshooting startup issues.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<pre><code class="lang-cmd">ezEditor.exe -project &quot;C:/dev/MyGame/ezProject&quot;
+</code></pre>
+<pre><code class="lang-cmd">ezEditor.exe -noRecent
+</code></pre>
+<pre><code class="lang-cmd">ezEditor.exe -safe
+</code></pre>
+<h2 id="windows-taskbar-integration">Windows Taskbar Integration</h2>
+<p>On Windows, the editor integrates with the taskbar jumplist. Right-click the editor icon in the taskbar to access:</p>
+<ul>
+<li><strong>Recent Projects</strong> - Quickly open one of your recently used projects.</li>
+<li><strong>New Window</strong> - Launch a new editor instance without loading a project.</li>
+<li><strong>Start in Safe Mode</strong> - Launch the editor in safe mode.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="editor-launch.html">Launching the Editor</a></li>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="editor-preferences.html">Editor Preferences</a></li>
 <li><a href="../projects/projects-overview.html">Projects</a></li>
-<li><a href="../../contact.html">Contact</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/dashboard.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/editor/editor-launch.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
