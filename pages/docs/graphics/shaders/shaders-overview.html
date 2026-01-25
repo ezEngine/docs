@@ -90,6 +90,8 @@
 <h1 id="shaders">Shaders</h1>
 
 <p>Shaders are files with the <code>.ezShader</code> extension. These files not only provide the HLSL code for each shader stage used, but also the complete render state used when drawing with this shader. Several permutations of the same shader can exist. Permutations can impact the render state or affect the HLSL source code. Thus, one shader file can produce several outputs.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>This page describes the structure of a shader file in ezEngine. If you want to write your own shader, we highly suggest to start from a <a href="shader-templates.html">shader template</a>, as it makes setting up a basic shader significantly easier.</p>
 <h2 id="shader-sections">Shader Sections</h2>
 <p>Each shader is made up of several <strong>sections</strong>. Not all sections need to be defined as most have a default state. Here is a very simple shader:</p>
 <pre><code class="lang-cpp">[PLATFORMS]
@@ -145,9 +147,6 @@ float4 main(PS_IN Input) : SV_Target
 <li><code>ALL</code>: The shader is supported on all platforms.</li>
 <li><code>DEBUG</code>: If set, the shader is not optimized and contains debug information to allow stepping through it in tools like RenderDoc.</li>
 <li><code>VULKAN</code>: The shader will be compiled as SPIRV code for the Vulkan renderer.</li>
-<li><code>DX11_SM40_93</code>: DX9 feature set. Used by the DX11 renderer when using downlevel hardware support.</li>
-<li><code>DX11_SM40</code>: DX10 feature set. Used by the DX11 renderer when using downlevel hardware support.</li>
-<li><code>DX11_SM41</code>: DX10.1 feature set. Used by the DX11 renderer when using downlevel hardware support.</li>
 <li><code>DX11_SM50</code>: DX11 feature set. Default platform used by the DX11 renderer.</li>
 </ul>
 <pre><code class="lang-cpp">[PLATFORMS]
@@ -162,11 +161,7 @@ ALPHATEST
 CAMERA_MODE = CAMERA_MODE_PERSPECTIVE
 </code></pre>
 <h3 id="material-sections">Material Sections</h3>
-<p>Material shaders are special and require further sections expose parameters to the engine and editor.</p>
-<blockquote>
-<p><strong>NOTE:</strong></p>
-<p>These sections have changed with a recent refactor. If you need to migrate from the old system, please follow the steps here: <a href="https://github.com/ezEngine/ezEngine/pull/1516">Material Refactor</a>.</p>
-</blockquote>
+<p>Material shaders are special and require further sections to expose parameters to the engine and editor.</p>
 <pre><code class="lang-cpp">[MATERIALCONSTANTS]
 COLOR4F(BaseColor);
 
@@ -195,9 +190,10 @@ float4 main(VS_OUT a) : SV_Target
   return color * GetMaterialData(BaseColor).rgba;
 }
 </code></pre>
-<h4 id="materialconstants-this-sections-defines-per-material-constants"><code>MATERIALCONSTANTS</code>: This sections defines per-material constants</h4>
-<p>The material constants are what eventually maps to constant buffer (hence the name of the section) or structured buffer in the engine, depending on the renderer feature set. These can be changed at runtime for each material and also exposed to the editor.
-These need to be constant macros defined in <code>Data/Base/Shaders/Common/ConstantBufferMacros.h</code>, e.g. <code>FLOAT1(ConstantName);</code>. Only these macros are supported:</p>
+<h4 id="materialconstants">MATERIALCONSTANTS</h4>
+<p>This sections defines per-material constants.</p>
+<p>The material constants are what eventually maps to constant buffer or structured buffer in the engine, depending on the renderer feature set. These can be changed at runtime for each material and also exposed to the editor.</p>
+<p>These need to be constant macros defined in <code>Data/Base/Shaders/Common/ConstantBufferMacros.h</code>, e.g. <code>FLOAT1(ConstantName);</code>. Only these macros are supported:</p>
 <ul>
 <li><code>FLOAT1</code>, <code>FLOAT2</code>, <code>FLOAT3</code>, <code>FLOAT4</code>: Maps to HLSL <code>float</code>, <code>float2</code> etc.</li>
 <li><code>INT1</code>, <code>INT2</code>, <code>INT3</code>, <code>INT4</code>: Maps to HLSL <code>int</code>, <code>int2</code> etc.</li>
@@ -208,20 +204,100 @@ These need to be constant macros defined in <code>Data/Base/Shaders/Common/Const
 <li><code>BOOL1</code>: Note, that the HLSL <code>bool</code> is always 4 bytes wide. Consider using flags inside an <code>UINT1</code> instead to safe space if you have multiple bool variables in your constants.</li>
 </ul>
 <p>To access these in the shader, use the macro <code>GetMaterialData(ConstantName)</code> to access the constant's value.</p>
-<h4 id="materialparameter-what-parameters-to-expose-on-a-material-in-the-editor"><code>MATERIALPARAMETER</code>: What parameters to expose on a material in the editor</h4>
+<h4 id="materialparameter">MATERIALPARAMETER</h4>
+<p>This section defines which parameters to expose on a material in the editor.</p>
 <p>There are three categories:</p>
 <ul>
-<li><strong>Permutation variables</strong>: Add the name of a permutation variable to expose it to the user in the editor. This is explained in detail in <a href="shader-permutation-variables.html#exposing-permutations-to-materials">exposing permutation variables to materials</a>.</li>
-<li><strong>Material constants</strong>: To expose, these need to match exactly the name that was used in the <code>MATERIALCONSTANTS</code> section described above. Note that the type changes from the macro name to the HLSL name, e.g. <code>FLOAT1(MaskThreshold);</code> becomes <code>float MaskThreshold @Default(0.25);</code>.</li>
-<li><strong>Textures</strong>: Both <code>Texture2D</code> and <code>TextureCube</code> are supported. Use the same syntax as you would for declaring a texture in HLSL.</li>
+<li><p><strong>Permutation variables</strong>: Add the name of a permutation variable to expose it in the editor. This is explained in detail in <a href="shader-permutation-variables.html#exposing-permutations-to-materials">exposing permutation variables to materials</a>.</p>
+</li>
+<li><p><strong>Material constants</strong>: To expose, these need to match exactly the name that was used in the <code>MATERIALCONSTANTS</code> section described above. Note that the type changes from the macro name to the HLSL name, e.g. <code>FLOAT1(MaskThreshold);</code> becomes <code>float MaskThreshold @Default(0.25);</code>.</p>
+</li>
+<li><p><strong>Textures</strong>: Both <code>Texture2D</code> and <code>TextureCube</code> are supported. Use the same syntax as you would for declaring a texture in HLSL.</p>
+</li>
 </ul>
 <p>Parameters can have attributes that define default value and other meta data for the editor:</p>
 <ul>
 <li><code>@Default(&lt;VALUE_TYPE&gt;)</code>: Can be used on constants and textures to define the default value.</li>
 <li><code>@Clamp(0.0, 1.0)</code>: Usable on float and int parameters, this can be used to clamp the value the user can set in the editor to a fixed range.</li>
 </ul>
-<h4 id="materialconfig-this-section-controls-when-a-material-is-rendered-during-a-frame"><code>MATERIALCONFIG</code>: This section controls when a material is rendered during a frame</h4>
-<p>This is done by changing the <em>RenderDataCategory</em> with a line like this: <code>RenderDataCategory = LitOpaque</code>. You can use the preprocessor to change the value depending on some permutation variable, if neccessary. The valid values for <code>RenderDataCategory</code> are defined in code via <code>ezRenderData::RegisterCategory</code>. Commonly used values are <code>LitOpaque</code> for opaque materials, <code>LitMasked</code> for alpha-tested materials and <code>LitTransparent</code> for alpha blended materials.</p>
+<h4 id="materialconfig">MATERIALCONFIG</h4>
+<p>The MATERIALCONFIG section controls when a material is rendered during a frame by assigning a <em>RenderDataCategory</em>. This category determines which render passes process the material, the sorting order of objects using this material, and how the material integrates into the rendering pipeline.</p>
+<h5 id="understanding-renderdatacategory">Understanding RenderDataCategory</h5>
+<p>During rendering, components extract render data and tag it with a specific category. Render passes then process only the categories they need in a specific order. For example, opaque geometry (LitOpaque category) is rendered before transparent geometry (LitTransparent category), and objects within each category are sorted differently: opaque geometry front-to-back for depth rejection optimization, transparent geometry back-to-front for correct alpha blending.</p>
+<h5 id="default-category-assignment">Default Category Assignment</h5>
+<p>Most materials use the default category assignment provided by <code>MaterialConfig.h</code>. Include it in your MATERIALCONFIG section to automatically map BLEND_MODE permutation values to appropriate categories:</p>
+<pre><code class="lang-cpp">[MATERIALCONFIG]
+#include &lt;Shaders/Materials/MaterialConfig.h&gt;
+</code></pre>
+<p>This automatically assigns categories based on BLEND_MODE:</p>
+<ul>
+<li><code>BLEND_MODE_OPAQUE</code> → <code>LitOpaque</code></li>
+<li><code>BLEND_MODE_MASKED</code> or <code>BLEND_MODE_DITHERED</code> → <code>LitMasked</code></li>
+<li>All others (TRANSPARENT, ADDITIVE, MODULATE) → <code>LitTransparent</code></li>
+</ul>
+<p>You can override this by explicitly setting the category:</p>
+<pre><code class="lang-cpp">[MATERIALCONFIG]
+RenderDataCategory = SimpleForeground
+</code></pre>
+<h5 id="available-render-data-categories">Available Render Data Categories</h5>
+<h6 id="lit-categories-full-pbr-lighting">Lit Categories (Full PBR Lighting)</h6>
+<p>These categories render with complete lighting calculations including direct lights, shadows, and image-based lighting.</p>
+<ul>
+<li><p><strong>LitOpaque</strong> - Use for solid, opaque materials. Renders in the depth pre-pass (optional) and opaque forward pass. Sorted front-to-back for optimal depth rejection. Automatically resolves to LitOpaqueStatic or LitOpaqueDynamic based on whether the object is static or moves.</p>
+</li>
+<li><p><strong>LitMasked</strong> - Use for materials with binary alpha cutout like foliage, chain-link fences, or grates. Similar to LitOpaque but uses alpha testing to discard pixels. Writes to the depth buffer. Renders in depth pre-pass and opaque forward pass. Resolves to LitMaskedStatic or LitMaskedDynamic.</p>
+</li>
+<li><p><strong>LitTransparent</strong> - Use for alpha-blended transparent materials like glass, water, or particles. Renders in the transparent forward pass after opaque geometry. Sorted back-to-front for correct blending. Does not write to the depth buffer. Reads lighting information.</p>
+</li>
+<li><p><strong>LitForeground</strong> - Use for transparent materials that should render after other transparent objects. Renders after the LitTransparent pass. Useful for effects that need to appear in front of regular transparent geometry.</p>
+</li>
+<li><p><strong>LitScreenFX</strong> - Use for screen-space effects with lighting. Renders in the transparent forward pass with special handling for screen-aligned effects.</p>
+</li>
+</ul>
+<h6 id="simple-categories-unlit-rendering">Simple Categories (Unlit Rendering)</h6>
+<p>These categories use unlit rendering without lighting calculations. Useful for debug visualization, editor tools, and effects that should not be affected by scene lighting.</p>
+<ul>
+<li><p><strong>SimpleOpaque</strong> - Use for unlit opaque geometry like debug visualizations or editor gizmos. Renders after lit passes. No lighting calculations. Sorted front-to-back.</p>
+</li>
+<li><p><strong>SimpleTransparent</strong> - Use for unlit transparent geometry. Renders after SimpleOpaque. Sorted back-to-front. No lighting calculations.</p>
+</li>
+<li><p><strong>SimpleForeground</strong> - Use for debug overlays and UI elements in 3D space. Renders last among simple categories to ensure debug visualization appears on top of other geometry.</p>
+</li>
+</ul>
+<h6 id="special-categories">Special Categories</h6>
+<ul>
+<li><p><strong>Sky</strong> - Use for skybox and sky dome materials. Renders after the depth pre-pass but before the opaque forward pass to provide the scene background.</p>
+</li>
+<li><p><strong>Light</strong> - Use for light source visualization geometry. Renders with special handling for light volumes and debug rendering.</p>
+</li>
+<li><p><strong>Decal</strong> - Use for projected decals on surfaces. Renders after the opaque forward pass and projects onto opaque geometry.</p>
+</li>
+<li><p><strong>ReflectionProbe</strong> - Use for reflection probe visualization. Primarily used for editor and debug rendering of reflection capture volumes.</p>
+</li>
+<li><p><strong>Selection</strong> - Use for editor selection highlighting. Editor-only category for visualizing selected objects.</p>
+</li>
+<li><p><strong>GUI</strong> - Use for UI rendering. Special category with specific handling for GUI elements.</p>
+</li>
+</ul>
+<h5 id="static-vs-dynamic-resolution">Static vs Dynamic Resolution</h5>
+<p>LitOpaque and LitMasked are &quot;redirected categories&quot; that automatically resolve to Static or Dynamic variants at runtime:</p>
+<ul>
+<li><strong>LitOpaque</strong> resolves to <strong>LitOpaqueStatic</strong> or <strong>LitOpaqueDynamic</strong></li>
+<li><strong>LitMasked</strong> resolves to <strong>LitMaskedStatic</strong> or <strong>LitMaskedDynamic</strong></li>
+</ul>
+<p>This resolution happens during render data extraction based on component flags (whether the object's transform changes or is animated). The rendering pipeline can then optimize static geometry separately from dynamic geometry, enabling better batching and caching strategies.</p>
+<p><strong>Important:</strong> Shader authors should use LitOpaque and LitMasked in the MATERIALCONFIG section, not the Static/Dynamic variants directly. The engine handles the resolution automatically.</p>
+<h5 id="rendering-pipeline-order">Rendering Pipeline Order</h5>
+<p>Materials are rendered in this order during a frame:</p>
+<ol>
+<li><strong>Depth Pre-Pass</strong> (optional): LitOpaqueStatic, LitOpaqueDynamic, LitMaskedStatic, LitMaskedDynamic - Renders depth-only for early-z rejection optimization</li>
+<li><strong>Sky Rendering</strong>: Sky - Renders the background skybox or sky dome</li>
+<li><strong>Opaque Forward</strong>: LitOpaqueStatic, LitOpaqueDynamic, LitMaskedStatic, LitMaskedDynamic - Renders opaque geometry with full lighting</li>
+<li><strong>Decals</strong>: Decal - Projects decals onto opaque surfaces</li>
+<li><strong>Transparent Forward</strong>: LitTransparent, LitForeground, LitScreenFX - Renders transparent geometry with lighting</li>
+<li><strong>Simple Rendering</strong>: SimpleOpaque, SimpleTransparent, SimpleForeground - Renders unlit geometry and debug visualization</li>
+<li><strong>Special</strong>: Light, ReflectionProbe, Selection, GUI - Renders specialized visualization and UI</li>
+</ol>
 <h3 id="renderstate">RENDERSTATE</h3>
 <p>Each shader defines the complete state of the renderer. This includes, but is not limited to blending, rasterizer, depth stencil etc. You can use permutation variables and preprocessor macros to change the render state of shader permutations.
 This is explained in more detail on the <a href="shader-render-state.html">shader render state</a> page.</p>
@@ -232,7 +308,7 @@ This is explained in more detail on the <a href="shader-render-state.html">shade
 </code></pre>
 <h3 id="shader">SHADER</h3>
 <p>The <code>SHADER</code> section contains code that is shared among all shader stages. The content is simply prepended to all used stages before compiling.</p>
-<h3 id="shader-stages">*SHADER stages</h3>
+<h3 id="shader-stages">SHADER stages</h3>
 <p>Each shader stage has its own section. The following stages are supported: <code>VERTEXSHADER</code>, <code>HULLSHADER</code>, <code>DOMAINSHADER</code>, <code>GEOMETRYSHADER</code>, <code>PIXELSHADER</code> and <code>COMPUTESHADER</code>. Even if you define a shader section, you can use the preprocessor to remove its content via permutation variables, allowing you to remove stages from certain permutations.</p>
 <p>The entry point into each stage must be called <code>main</code>. The shader code supports preprocessor macros that are defined by <a href="shader-permutation-variables.html">permutation variables</a> as well as include directives.
 Beyond that, any HLSL code is fine as long as it compiles on the <a href="#platforms">platforms</a> the shader defines. However, when defining resources, special care must be taken to ensure no conflicting resource mappings are created between the stages. Please refer to the <a href="shader-resources.html">shader resource</a> page for further details and on how to facilitate interop with the C++ code.</p>
@@ -240,10 +316,10 @@ Beyond that, any HLSL code is fine as long as it compiles on the <a href="#platf
 <p>This section is only used when <a href="shader-templates.html#adding-a-shader-template">creating a shader template</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="shader-templates.html">Shader Templates</a></li>
 <li><a href="shader-render-state.html">Shader Render State</a></li>
 <li><a href="shader-permutation-variables.html">Shader Permutation Variables</a></li>
 <li><a href="shader-resources.html">Shader Resources</a></li>
-<li><a href="shader-templates.html">Shader Templates</a></li>
 <li><a href="../../tools/shadercompiler.html">ShaderCompiler</a></li>
 <li><a href="../render-pipeline/render-pipeline-overview.html">Render Pipeline</a></li>
 </ul>
