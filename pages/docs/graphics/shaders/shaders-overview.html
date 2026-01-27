@@ -255,7 +255,7 @@ RenderDataCategory = SimpleForeground
 </li>
 </ul>
 <h6 id="simple-categories-unlit-rendering">Simple Categories (Unlit Rendering)</h6>
-<p>These categories use unlit rendering without lighting calculations. Useful for debug visualization, editor tools, and effects that should not be affected by scene lighting.</p>
+<p>These categories use unlit rendering without lighting calculations. Useful for debug visualization, editor tools, and effects that should not be affected by scene lighting and tonemapping.</p>
 <ul>
 <li><p><strong>SimpleOpaque</strong> - Use for unlit opaque geometry like debug visualizations or editor gizmos. Renders after lit passes. No lighting calculations. Sorted front-to-back.</p>
 </li>
@@ -266,37 +266,28 @@ RenderDataCategory = SimpleForeground
 </ul>
 <h6 id="special-categories">Special Categories</h6>
 <ul>
-<li><p><strong>Sky</strong> - Use for skybox and sky dome materials. Renders after the depth pre-pass but before the opaque forward pass to provide the scene background.</p>
-</li>
-<li><p><strong>Light</strong> - Use for light source visualization geometry. Renders with special handling for light volumes and debug rendering.</p>
-</li>
-<li><p><strong>Decal</strong> - Use for projected decals on surfaces. Renders after the opaque forward pass and projects onto opaque geometry.</p>
-</li>
-<li><p><strong>ReflectionProbe</strong> - Use for reflection probe visualization. Primarily used for editor and debug rendering of reflection capture volumes.</p>
-</li>
-<li><p><strong>Selection</strong> - Use for editor selection highlighting. Editor-only category for visualizing selected objects.</p>
+<li><p><strong>Sky</strong> - Use for skybox and sky dome materials. Renders after the opaque forward pass to fill the scene background.</p>
 </li>
 <li><p><strong>GUI</strong> - Use for UI rendering. Special category with specific handling for GUI elements.</p>
 </li>
 </ul>
-<h5 id="static-vs-dynamic-resolution">Static vs Dynamic Resolution</h5>
-<p>LitOpaque and LitMasked are &quot;redirected categories&quot; that automatically resolve to Static or Dynamic variants at runtime:</p>
+<h5 id="static-vs-dynamic-redirection">Static vs Dynamic Redirection</h5>
+<p>LitOpaque and LitMasked are &quot;redirected categories&quot; that are automatically redirected to Static or Dynamic variants at runtime:</p>
 <ul>
 <li><strong>LitOpaque</strong> resolves to <strong>LitOpaqueStatic</strong> or <strong>LitOpaqueDynamic</strong></li>
 <li><strong>LitMasked</strong> resolves to <strong>LitMaskedStatic</strong> or <strong>LitMaskedDynamic</strong></li>
 </ul>
-<p>This resolution happens during render data extraction based on component flags (whether the object's transform changes or is animated). The rendering pipeline can then optimize static geometry separately from dynamic geometry, enabling better batching and caching strategies.</p>
-<p><strong>Important:</strong> Shader authors should use LitOpaque and LitMasked in the MATERIALCONFIG section, not the Static/Dynamic variants directly. The engine handles the resolution automatically.</p>
+<p>This redirection happens during render data extraction based on object flags (whether the object is marked as static or dynamic). The rendering pipeline can then render static geometry separately from dynamic geometry, enabling use cases like screen space velocities for dynamic objects etc.</p>
+<p><strong>Important:</strong> Shader authors should use LitOpaque and LitMasked in the MATERIALCONFIG section, not the Static/Dynamic variants directly. The engine handles the redirection automatically.</p>
 <h5 id="rendering-pipeline-order">Rendering Pipeline Order</h5>
 <p>Materials are rendered in this order during a frame:</p>
 <ol>
 <li><strong>Depth Pre-Pass</strong> (optional): LitOpaqueStatic, LitOpaqueDynamic, LitMaskedStatic, LitMaskedDynamic - Renders depth-only for early-z rejection optimization</li>
-<li><strong>Sky Rendering</strong>: Sky - Renders the background skybox or sky dome</li>
 <li><strong>Opaque Forward</strong>: LitOpaqueStatic, LitOpaqueDynamic, LitMaskedStatic, LitMaskedDynamic - Renders opaque geometry with full lighting</li>
-<li><strong>Decals</strong>: Decal - Projects decals onto opaque surfaces</li>
+<li><strong>Sky Rendering</strong>: Sky - Renders the background skybox or sky dome</li>
 <li><strong>Transparent Forward</strong>: LitTransparent, LitForeground, LitScreenFX - Renders transparent geometry with lighting</li>
 <li><strong>Simple Rendering</strong>: SimpleOpaque, SimpleTransparent, SimpleForeground - Renders unlit geometry and debug visualization</li>
-<li><strong>Special</strong>: Light, ReflectionProbe, Selection, GUI - Renders specialized visualization and UI</li>
+<li><strong>GUI</strong>: GUI - Renders UI</li>
 </ol>
 <h3 id="renderstate">RENDERSTATE</h3>
 <p>Each shader defines the complete state of the renderer. This includes, but is not limited to blending, rasterizer, depth stencil etc. You can use permutation variables and preprocessor macros to change the render state of shader permutations.
