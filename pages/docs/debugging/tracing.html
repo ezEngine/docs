@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Tracing | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Tracing | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/tracing.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="tracing">Tracing</h1>
+
+<p>ezEngine provides a cross-platform tracing system that emits structured events to the operating system's tracing infrastructure. Tracing is different from <a href="../performance/profiling.html">profiling</a> and <a href="logging.html">logging</a> as it allows for different debugging aproaches:</p>
+<ol>
+<li>Unlike <a href="../performance/profiling.html">profiling</a>, which stores data in an in-process ring buffer, tracing sends events to an external OS-level backend for capture by dedicated tools. This enables correlation with e.g.kernel events (scheduling, I/O).</li>
+<li>Traces are system wide so you can capture events from multiple threads / processes, even those you don't own.</li>
+<li>You can attach data fields to a trace event which are structured, allowing tools to aggregate or filter by them.</li>
+<li>Each trace event stores process and thread information, allowing to filter by various dimensions unlike <a href="logging.html">logging</a> which is always linear.</li>
+</ol>
+<p>When you should not use tracing:</p>
+<ol>
+<li>If you need instant feedback in the debugger, use <a href="logging.html">logging</a> instead.</li>
+<li>If you want to do performance profiling on CPU / GPU, use <a href="../performance/profiling.html">profiling</a> for capturing or <a href="../performance/profiling.html">tracy</a> for real-time observation instead.</li>
+</ol>
+<p>The tracing system uses:</p>
+<ul>
+<li><strong>ETW</strong> (Event Tracing for Windows) via TraceLogging on Windows.</li>
+<li><strong>LTTNG-UST</strong> (Linux Trace Toolkit Next Generation) on Linux.</li>
+<li><strong>Perfetto SDK</strong> on Android.</li>
+<li>No-op stubs on all other platforms</li>
+</ul>
+<p>Tracing is controlled by the <code>EZ_USE_TRACING</code> compile-time toggle (see <code>UserConfig.h</code>). When disabled, all macros expand to nothing with zero overhead. It is enabled by default in non-shipping builds.</p>
+<h2 id="trace-providers">Trace Providers</h2>
+<p>Each library or executable that emits trace events needs its own <em>provider</em>. Create two files in a <code>Tracing/</code> subfolder of your library:</p>
+<ol>
+<li><code>TraceProvider.h</code>:</li>
+</ol>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-provider-header -->
+<pre><code class="lang-cpp">EZ_DECLARE_TRACE_PROVIDER(g_ezTrace_FoundationTest);
+
+/// All EZ_TRACE_* macros in FoundationTest source files use this provider.
+#define EZ_TRACE_PROVIDER g_ezTrace_FoundationTest
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<ol start="2">
+<li><code>TraceProvider.cpp</code>:</li>
+</ol>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-provider-cpp -->
+<pre><code class="lang-cpp">EZ_IMPLEMENT_TRACE_PROVIDER(g_ezTrace_FoundationTest, &quot;ez_FoundationTest&quot;);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h3 id="important-rules">Important Rules</h3>
+<ul>
+<li><strong>Never include <code>Tracing.h</code> directly outside of the provider setup.</strong> Source files that emit trace events should include the provider header <code>TraceProvider.h</code> of their respective library.</li>
+<li><strong>Only include the provider header in <code>.cpp</code> files.</strong> Never include tracing headers from another header. Each trace macro instantiation must exist exactly once or linker errors will occur.</li>
+<li><strong>Events with different schemas must have different names.</strong> If two events share a name but have different fields (different number or types of <code>EZ_TRACE_VALUE</code> arguments), Linux traces will be corrupted. The exception is begin/end macro pairs, which must share a name — the backend renames them internally when needed.</li>
+<li><strong>Do not include <code>TraceProvider.h</code> from other libraries.</strong> If you need to emit events from the provider of a different library, wrap these events into functions and export them.</li>
+</ul>
+<h2 id="emitting-events">Emitting Events</h2>
+<p>All events need a name and take an <code>ezTraceLevel::Enum</code> that maps to the platform's native severity levels:</p>
+<ul>
+<li><code>ezTraceLevel::Error</code>: serious failure.</li>
+<li><code>ezTraceLevel::Warning</code>: potential problem.</li>
+<li><code>ezTraceLevel::Info</code>: informational.</li>
+<li><code>ezTraceLevel::Verbose</code>: detailed diagnostic.</li>
+</ul>
+<p>Events can store additional data besides the name and level via the use of the <code>EZ_TRACE_VALUE</code> macro. The following value types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>C++ Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool</code></td>
+<td>Boolean value.</td>
+</tr>
+<tr>
+<td><code>ezInt8</code>, <code>ezInt16</code>, <code>ezInt32</code>, <code>ezInt64</code></td>
+<td>Signed integers.</td>
+</tr>
+<tr>
+<td><code>ezUInt8</code>, <code>ezUInt16</code>, <code>ezUInt32</code>, <code>ezUInt64</code></td>
+<td>Unsigned integers.</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>32-bit floating point.</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>64-bit floating point.</td>
+</tr>
+<tr>
+<td><code>const char*</code></td>
+<td>Null-terminated UTF-8 string.</td>
+</tr>
+<tr>
+<td><code>const void*</code></td>
+<td>Pointer value (logs the address, not the data).</td>
+</tr>
+</tbody>
+</table>
+<p>The macro auto-detects the C++ type. Cast the value explicitly if the auto-detection picks the wrong type (e.g. <code>(ezInt32)42</code>).</p>
+<h3 id="instant-events">Instant Events</h3>
+<p>A single point-in-time event:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-instant-event -->
+<pre><code class="lang-cpp">// Instant event demonstrating all supported value types.
+const void* pDemoPtr = nullptr;
+EZ_TRACE_EVENT(&quot;TestInstantEvent&quot;, ezTraceLevel::Info,
+  EZ_TRACE_VALUE(&quot;BoolField&quot;, true),
+  EZ_TRACE_VALUE(&quot;Int8Field&quot;, (ezInt8)-1),
+  EZ_TRACE_VALUE(&quot;Int16Field&quot;, (ezInt16)-16),
+  EZ_TRACE_VALUE(&quot;Int32Field&quot;, (ezInt32)42),
+  EZ_TRACE_VALUE(&quot;Int64Field&quot;, (ezInt64)1234567890LL),
+  EZ_TRACE_VALUE(&quot;UInt8Field&quot;, (ezUInt8)255),
+  EZ_TRACE_VALUE(&quot;UInt16Field&quot;, (ezUInt16)65535),
+  EZ_TRACE_VALUE(&quot;UInt32Field&quot;, (ezUInt32)100),
+  EZ_TRACE_VALUE(&quot;UInt64Field&quot;, (ezUInt64)9876543210ULL),
+  EZ_TRACE_VALUE(&quot;FloatField&quot;, 3.14f),
+  EZ_TRACE_VALUE(&quot;DoubleField&quot;, 2.71828),
+  EZ_TRACE_VALUE(&quot;StringField&quot;, &quot;hello&quot;),
+  EZ_TRACE_VALUE(&quot;PointerField&quot;, pDemoPtr));
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h3 id="scoped-events">Scoped Events</h3>
+<p>Automatically records begin and end timestamps via RAII. Fields are attached to the begin event:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-scoped-event -->
+<pre><code class="lang-cpp">// Scoped event (RAII begin + end).
+{
+  EZ_TRACE_SCOPE(&quot;TestScopedWork&quot;, ezTraceLevel::Verbose,
+    EZ_TRACE_VALUE(&quot;Detail&quot;, &quot;scope-payload&quot;));
+  ezThreadUtils::Sleep(ezTime::MakeFromMilliseconds(5));
+}
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h3 id="manual-scope-events">Manual Scope Events</h3>
+<p>For situations where the begin and end do not fall within the same C++ scope (e.g. across callbacks):</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-manual-scope -->
+<pre><code class="lang-cpp">// Manual scope begin + end (for cases where RAII is not applicable).
+EZ_TRACE_SCOPE_BEGIN(&quot;TestManualScope&quot;, ezTraceLevel::Info,
+  EZ_TRACE_VALUE(&quot;Detail&quot;, &quot;manual-scope-payload&quot;));
+ezThreadUtils::Sleep(ezTime::MakeFromMilliseconds(5));
+EZ_TRACE_SCOPE_END(&quot;TestManualScope&quot;);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h3 id="async-activities">Async Activities</h3>
+<p>Correlate events across threads using a unique <code>ezUInt64</code> ID:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-async-activity-start -->
+<pre><code class="lang-cpp">// Async activity that spans across threads.
+const ezUInt64 uiAsyncId = 123456789ULL;
+EZ_TRACE_ASYNC_BEGIN(&quot;CrossThreadActivity&quot;, uiAsyncId, ezTraceLevel::Info,
+  EZ_TRACE_VALUE(&quot;Resource&quot;, &quot;test-resource.dat&quot;));
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-async-activity-end -->
+<pre><code class="lang-cpp">// Complete the async activity that was started on the main thread.
+EZ_TRACE_ASYNC_END(&quot;CrossThreadActivity&quot;, m_uiAsyncId);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h3 id="flushing">Flushing</h3>
+<p>Call <code>EZ_TRACE_FLUSH()</code> before stopping a trace session to ensure all buffered events are written out. Some backends buffer events internally and may lose the tail of a trace without an explicit flush.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: tracing-flush -->
+<pre><code class="lang-cpp">// Flush buffered events to the tracing backend.
+EZ_TRACE_FLUSH();
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="log-writer">Log Writer</h2>
+<p><code>ezLogWriter::Tracing</code> is a log writer that forwards <code>ezLog</code> messages as trace events. It is automatically registered in <code>ezGameApplicationBase::BaseInit_ConfigureLogging</code> but you may have to register it manually if you are creating a custom application:</p>
+<pre><code class="lang-cpp">ezGlobalLog::AddLogWriter(ezLogWriter::Tracing::LogMessageHandler);
+// ... run application ...
+ezGlobalLog::RemoveLogWriter(ezLogWriter::Tracing::LogMessageHandler);
+</code></pre>
+<p>This makes all engine log output (including <code>EZ_LOG_BLOCK</code> scopes) visible in the trace alongside your custom events.</p>
+<h2 id="capturing-traces">Capturing Traces</h2>
+<p>A cross-platform PowerShell 7 script is provided at <code>Utilities/Tracing/Capture-Trace.ps1</code>. It supports Windows, Linux, and Android.</p>
+<h3 id="interactive-mode">Interactive Mode</h3>
+<p>Start a trace, wait for a keypress, then stop and save:</p>
+<pre><code class="lang-sh">pwsh Utilities/Tracing/Capture-Trace.ps1
+</code></pre>
+<h3 id="non-interactive-mode">Non-Interactive Mode</h3>
+<p>For automation and CI:</p>
+<pre><code class="lang-sh">pwsh Utilities/Tracing/Capture-Trace.ps1 -Start
+# ... run application ...
+pwsh Utilities/Tracing/Capture-Trace.ps1 -Stop -OutputPath my-trace.etl
+</code></pre>
+<h3 id="android">Android</h3>
+<p>Target a connected Android device via Perfetto:</p>
+<pre><code class="lang-sh">pwsh Utilities/Tracing/Capture-Trace.ps1 -Android
+</code></pre>
+<p>When <code>-OutputPath</code> is not specified, traces are saved in the current working directory with an ISO-timestamped name (e.g. <code>ez-trace-2026-02-14T15-30-00.etl</code>).</p>
+<h3 id="platform-prerequisites">Platform Prerequisites</h3>
+<h4 id="windows-etw">Windows (ETW)</h4>
+<ul>
+<li><code>wpr.exe</code> must be on PATH (ships with Windows 10+).</li>
+<li>Must run as Administrator.</li>
+<li>The WPR profile <code>Utilities/Tracing/ezTraceProvider.wprp</code> is used automatically.</li>
+<li>Open traces in <a href="https://learn.microsoft.com/en-us/windows-hardware/test/wpt/windows-performance-analyzer">Windows Performance Analyzer</a>.</li>
+</ul>
+<p>To capture manually without the script:</p>
+<pre><code class="lang-bat">wpr -start Utilities\Tracing\ezTraceProvider.wprp
+:: ... run your application ...
+wpr -stop MyTrace.etl
+wpa MyTrace.etl
+</code></pre>
+<h4 id="linux-lttng">Linux (LTTNG)</h4>
+<ul>
+<li>Install LTTNG tools: <code>sudo apt install lttng-tools lttng-modules-dkms liblttng-ust-dev</code></li>
+<li>Build with <code>EZ_3RDPARTY_TRACELOGGING_LTTNG_SUPPORT=ON</code> (default on Linux).</li>
+<li>Your user must be in the <code>tracing</code> group: <code>sudo usermod -aG tracing $USER</code> (log out and back in).</li>
+<li>Open traces in <a href="https://www.eclipse.org/tracecompass/">Trace Compass</a>.</li>
+</ul>
+<p>To capture manually without the script:</p>
+<pre><code class="lang-sh">lttng create ez-session
+lttng enable-event -u 'ez_*:*'
+lttng add-context -u -t vpid -t vtid -t procname
+lttng start
+# ... run your application ...
+lttng stop
+lttng destroy
+</code></pre>
+<p>To add kernel scheduling events (requires root):</p>
+<pre><code class="lang-sh">sudo lttng enable-event -k sched_switch,sched_wakeup
+</code></pre>
+<h4 id="android-perfetto">Android (Perfetto)</h4>
+<ul>
+<li>Build with <code>EZ_3RDPARTY_PERFETTO_SUPPORT=ON</code> (default on Android).</li>
+<li>The Perfetto config <code>Utilities/Tracing/ez-perfetto.pbtx</code> is used automatically.</li>
+<li>If traces are zero bytes, run <code>pwsh Utilities/Tracing/Capture-Trace.ps1 -Android -Cleanup</code> which restarts the perfetto daemon on the device. Note this requires root so your only alternative is to restart the device if your device isn't rooted.</li>
+<li>Open traces in the <a href="https://ui.perfetto.dev">Perfetto UI</a>. Events appear under the <code>ez</code> category.</li>
+</ul>
+<p>To capture manually without the script:</p>
+<pre><code class="lang-sh">adb push Utilities/Tracing/ez-perfetto.pbtx /data/local/tmp/
+adb shell perfetto --txt -d \
+  -c /data/local/tmp/ez-perfetto.pbtx \
+  -o /data/misc/perfetto-traces/ez.perfetto-trace
+# ... run your application ...
+adb shell 'kill -INT $(cat /data/local/tmp/ez-perfetto.pid 2&gt;/dev/null)'
+adb pull /data/misc/perfetto-traces/ez.perfetto-trace .
+</code></pre>
+<h2 id="viewing-traces">Viewing Traces</h2>
+<p>While you can use the most common trace viewer for you respective platform:</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/windows-hardware/test/wpt/windows-performance-analyzer">Windows Performance Analyzer</a> for Windows ETW traces.</li>
+<li><a href="https://www.eclipse.org/tracecompass/">Trace Compass</a> for Linux LTTNG.</li>
+<li><a href="https://ui.perfetto.dev">Perfetto UI</a> for Android perfetto traces.</li>
+</ol>
+<p>You also have the option of converting to different trace formats to use different tools. No tool is perfect and each has its own strength and weaknesses. Some options to consider:</p>
+<ol>
+<li>There are many tools that can read LTTNG traces.</li>
+<li>You can use <a href="https://github.com/KDABLabs/ctf2ctf">ctf2ctf</a> to convert LTTNG traces to Chrome Trace Format (json). Chrome trace format can be opened by <a href="chrome://tracing/">chrome://tracing/</a> in chromium-based browser or in Qt's <a href="https://doc.qt.io/qtcreator/creator-ctf-visualizer.html">Chrome Trace Format Visualizer</a>.</li>
+<li>You can install <a href="https://github.com/microsoft/Microsoft-Performance-Tools-Linux-Android">Microsoft Performance Tools Linux / Android</a> plugins into WPA to be able to load perfetto and LTTNG (ctf format) traces. Note that you need to zip the LTTNG trace folder and rename it to <code>*.ctf</code> in order to open it in WPA.</li>
+</ol>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="tracy.html">Tracy Integration</a></li>
+<li><a href="../performance/profiling.html">Profiling</a></li>
+<li><a href="logging.html">Logging</a></li>
+<li><a href="debug-cpp.html">Debugging C++ Code</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/debugging/tracing.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
