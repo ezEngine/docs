@@ -92,8 +92,7 @@
 <p>The <em>asset curator panel</em> is a tool to help find and fix problems with <a href="assets-overview.html">assets</a>. If the panel is not visible, use <em>Panels &gt; Asset Curator</em> to open it.</p>
 <p><img src="media/asset-curator.png" alt="Asset Curator Panel"></p>
 <h2 id="activity">Activity</h2>
-<p>At its top the asset curator panel displays an activity log. If <em>background transform</em> is active, this shows which assets have been transformed recently. Whether background transform is enabled can be seen from the progress bar at the bottom:</p>
-<p><img src="media/transform-progress.png" alt="Transform Progress"></p>
+<p>At its top the asset curator panel displays a timeline of recently processed assets. Each bar represents one asset being transformed, with the Y-axis showing the individual worker processes and the X-axis showing time. Periods of inactivity are compressed to keep the view compact, indicated by a diagonal pattern. This makes it easy to see how many assets were processed in parallel and how long each one took.</p>
 <h2 id="transform-issues">Transform Issues</h2>
 <p>If an asset fails to transform for some reason, it will be listed in the view to the bottom left. The most common issue is a missing file reference. For example when a texture source file has been moved or renamed, the texture asset can't find it anymore and thus fails to transform.</p>
 <p>When you select an asset from that list, the log at the bottom right will display any error message from the failed transform. Double click the asset to directly open the document.</p>

@@ -89,9 +89,9 @@
         <article data-uid="">
 <h1 id="tracing">Tracing</h1>
 
-<p>ezEngine provides a cross-platform tracing system that emits structured events to the operating system's tracing infrastructure. Tracing is different from <a href="../performance/profiling.html">profiling</a> and <a href="logging.html">logging</a> as it allows for different debugging aproaches:</p>
+<p>ezEngine provides a cross-platform tracing system that emits structured events to the operating system's tracing infrastructure. Tracing is different from <a href="../performance/profiling.html">profiling</a> and <a href="logging.html">logging</a> as it allows for different debugging approaches:</p>
 <ol>
-<li>Unlike <a href="../performance/profiling.html">profiling</a>, which stores data in an in-process ring buffer, tracing sends events to an external OS-level backend for capture by dedicated tools. This enables correlation with e.g.kernel events (scheduling, I/O).</li>
+<li>Unlike <a href="../performance/profiling.html">profiling</a>, which stores data in an in-process ring buffer, tracing sends events to an external OS-level backend for capture by dedicated tools. This enables correlation with e.g. kernel events (scheduling, I/O).</li>
 <li>Traces are system wide so you can capture events from multiple threads / processes, even those you don't own.</li>
 <li>You can attach data fields to a trace event which are structured, allowing tools to aggregate or filter by them.</li>
 <li>Each trace event stores process and thread information, allowing to filter by various dimensions unlike <a href="logging.html">logging</a> which is always linear.</li>
@@ -99,7 +99,7 @@
 <p>When you should not use tracing:</p>
 <ol>
 <li>If you need instant feedback in the debugger, use <a href="logging.html">logging</a> instead.</li>
-<li>If you want to do performance profiling on CPU / GPU, use <a href="../performance/profiling.html">profiling</a> for capturing or <a href="../performance/profiling.html">tracy</a> for real-time observation instead.</li>
+<li>If you want to do performance profiling on CPU / GPU, use <a href="../performance/profiling.html">profiling</a> for capturing or <a href="tracy.html">tracy</a> for real-time observation instead.</li>
 </ol>
 <p>The tracing system uses:</p>
 <ul>

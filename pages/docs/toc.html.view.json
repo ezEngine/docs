@@ -1143,6 +1143,15 @@
                   "leaf": true
                 },
                 {
+                  "name": "Jolt Generate Collision Component",
+                  "href": "physics/jolt/special/jolt-generate-collision-component.html",
+                  "topicHref": "physics/jolt/special/jolt-generate-collision-component.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
                   "name": "Jolt Cloth Sheet Component",
                   "href": "physics/jolt/special/jolt-cloth-sheet-component.html",
                   "topicHref": "physics/jolt/special/jolt-cloth-sheet-component.html",
@@ -1938,6 +1947,15 @@
               "name": "Spline Node Component",
               "href": "animation/paths/spline-node-component.html",
               "topicHref": "animation/paths/spline-node-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Spline Mesh Component",
+              "href": "animation/paths/spline-mesh-component.html",
+              "topicHref": "animation/paths/spline-mesh-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],

@@ -602,6 +602,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/animation/paths/media/spline-mesh.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/animation/paths/media/spline-mesh.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/animation/paths/media/spline-tangent-edit.jpg",
       "output": {
         "resource": {
@@ -616,6 +626,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/animation/paths/spline-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/animation/paths/spline-mesh-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/animation/paths/spline-mesh-component.html"
         }
       },
       "version": ""
@@ -5456,6 +5476,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/physics/jolt/special/jolt-cloth-sheet-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/physics/jolt/special/jolt-generate-collision-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/physics/jolt/special/jolt-generate-collision-component.html"
         }
       },
       "version": ""
