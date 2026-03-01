@@ -3932,6 +3932,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/gameplay/volume-sampler-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/gameplay/volume-sampler-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/always-visible-component.md",
       "output": {
         ".html": {

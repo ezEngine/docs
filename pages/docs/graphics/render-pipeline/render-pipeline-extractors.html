@@ -89,40 +89,39 @@
         <article data-uid="">
 <h1 id="render-pipeline-extractors">Render Pipeline Extractors</h1>
 
-<p>This page lists all render pipeline <em>extractors</em> and their functionality.</p>
+<p>Extractors run every frame before any rendering takes place. Their job is to inspect the scene and record <em>render data</em> — the information that render passes then use to draw objects. Which extractors are present in a pipeline determines what can be rendered.</p>
 <h2 id="clustered-data-extractor">Clustered Data Extractor</h2>
-<p>Gathers information about</p>
-<ul>
-<li>light sources</li>
-<li>decals</li>
-<li>reflection probes</li>
-<li>fog</li>
-</ul>
-<p>Required by the forward rendering passes, for lighting and other things to work.</p>
+<p>Collects all visible lights, <a href="../../effects/decals/decals-overview.html">decals</a>, <a href="../lighting/reflection-probe-components.html">reflection probes</a>, and <a href="../../effects/fog.html">fog</a>, then assigns them to a 3D grid of spatial clusters that covers the camera frustum. During shading each pixel looks up which lights and decals affect it from the cluster it falls into, making per-pixel lighting cost proportional to local density rather than scene totals.</p>
+<p>This extractor is required by all forward rendering passes (Opaque, Sky, Transparent) for lighting and decals to work.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
 <h2 id="editor-grid-extractor">Editor Grid Extractor</h2>
-<p>Used in the editor to extract render data for the editor grid.</p>
+<p>Extracts render data for the editor's construction grid. Only meaningful inside editor pipelines.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
-<p><strong>Required Renderpass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
+<p><strong>Required Render Pass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
 <h2 id="editor-selected-objects-extractor">Editor Selected Objects Extractor</h2>
+<p>Extracts render data for objects that are currently selected in the editor, feeding the <a href="render-pipeline-passes.html#selection-highlight-pass">Selection Highlight Pass</a> with the geometry it needs to draw the outline. Only meaningful inside editor pipelines.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
 <h2 id="editor-shape-icons-extractor">Editor Shape Icons Extractor</h2>
-<p>Used in the editor to extract render data for all 3D icons used for selecting objects.</p>
+<p>Extracts the 3D icon sprites that the editor draws at the position of objects whose component type has a registered shape icon (e.g. light sources, cameras, sound sources). Only meaningful inside editor pipelines.</p>
 <p><strong>Properties:</strong></p>
 <ul>
-<li><code>Size</code>:</li>
-<li><code>Max Screen Size</code>:</li>
+<li><code>Size</code>: World-space radius of the icons in metres (default 1 m).</li>
+<li><code>MaxScreenSize</code>: Maximum rendered size of an icon in pixels (default 64 px). Prevents icons from becoming too large when the camera is very close.</li>
 </ul>
-<p><strong>Required Renderpass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
+<p><strong>Required Render Pass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
 <h2 id="imgui-extractor">ImGUI Extractor</h2>
-<p>Prepares rendering of <a href="../../ui/imgui.html">ImGui</a> UI. The <em>simple render pass</em> must be part of the render pipeline to render the data.</p>
+<p>Collects the geometry produced by <a href="../../ui/imgui.html">Dear ImGui</a> each frame and prepares it for rendering.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
-<p><strong>Required Renderpass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
+<p><strong>Required Render Pass:</strong> <a href="render-pipeline-passes.html#simple-render-pass">Simple Render Pass</a></p>
 <h2 id="selected-objects-extractor">Selected Objects Extractor</h2>
+<p>A runtime equivalent of the <em>Editor Selected Objects Extractor</em> that can be used in game pipelines. A <code>SelectionContext</code> object is supplied at runtime via <code>ezView::SetExtractorProperty()</code>, listing the game objects that should receive the selection highlight outline.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
+<p><strong>Required Render Pass:</strong> <a href="render-pipeline-passes.html#selection-highlight-pass">Selection Highlight Pass</a></p>
 <h2 id="simplified-data-extractor">Simplified Data Extractor</h2>
+<p>A lightweight alternative to the <em>Clustered Data Extractor</em>. Gathers only basic sky irradiance data, without the full spatial clustering of lights and decals. Used by pipelines that do not need dynamic per-pixel lighting, such as the reflection capture pipeline.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
 <h2 id="visible-objects-extractor">Visible Objects Extractor</h2>
+<p>The main extractor for scene geometry. Iterates over all visible game objects and calls <code>ezMsgExtractRenderData</code> on their components, allowing each component to record the render data it needs. This is what makes meshes, particles, sprites, and other visual components appear in the world.</p>
 <p><strong>Properties:</strong> <em>none</em></p>
 <h2 id="see-also">See Also</h2>
 <ul>

@@ -2541,6 +2541,15 @@
           "leaf": true
         },
         {
+          "name": "Volume Sampler Component",
+          "href": "gameplay/volume-sampler-component.html",
+          "topicHref": "gameplay/volume-sampler-component.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
           "name": "Power Connector Component",
           "href": "gameplay/power-connector-component.html",
           "topicHref": "gameplay/power-connector-component.html",
