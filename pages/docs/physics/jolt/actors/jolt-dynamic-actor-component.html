@@ -120,9 +120,11 @@
 <li><code>CollisionLayer</code>: The <a href="../collision-shapes/jolt-collision-layers.html">collision layer</a> to use.</li>
 <li><code>Kinematic</code>: See <a href="#kinematic-vs-simulated">Kinematic vs. Simulated</a> above.</li>
 <li><code>StartAsleep</code>: If enabled, the actor starts in the 'sleeping' state and will not be physically simulated until it gets into contact with another active actor. This is a performance optimization to prevent performance spikes after loading a level. If used badly, an object can float in air and not fall down until something else touches it. Make sure to only use this on objects that are <a href="../../../editor/run-scene.html#keep-simulation-changes">convincingly placed</a> to begin with.</li>
+<li><code>AllowSleeping</code>: Whether this actor is allowed to go to sleep when it comes to rest. Disabling sleeping keeps the actor active every frame, which has a performance cost. Only disable this in rare cases where sleeping causes undesired behavior.</li>
 <li><code>WeightCategory</code>, <code>WeightScale</code>: See <a href="#actor-mass">actor mass</a> above.</li>
 <li><code>Surface</code>: The <a href="../../../materials/surfaces.html">surface</a> to use for this actor's shapes. The surface determines the friction and restitution during simulation, but also determines what effects are spawned when you interact with the object. Note that <a href="../collision-shapes/jolt-collision-meshes.html">collision meshes</a> already specify the surface to use. If a surface is selected on the actor, it overrides the mesh's surface.</li>
 <li><code>GravityFactor</code>: Adjusts the influence of gravity on this object. If set to zero, it will float in space.</li>
+<li><code>BuoyancyFactor</code>: Determines how the actor behaves when submerged in a <a href="../special/jolt-water-volume-component.html">water volume</a>. A value of <code>1.0</code> means neutral buoyancy (neither floats nor sinks), values above <code>1.0</code> cause the actor to float upward, and values below <code>1.0</code> cause it to sink.</li>
 <li><code>LinearDamping</code>, <code>AngularDamping</code>: The damping properties affect how quickly an actor loses momentum and comes to rest. This can be adjusted separately for positional (linear) movement and rotational (angular) movement.</li>
 <li><code>ContinuousCollisionDetection</code>: See <a href="#simulation-stability">Simulation Stability</a> above.</li>
 <li><code>OnContact</code>: See <a href="#oncontact-reactions">OnContact Reactions</a> above.</li>
@@ -134,6 +136,7 @@
 <li><a href="../collision-shapes/jolt-shapes.html">Jolt Shapes</a></li>
 <li><a href="../constraints/jolt-constraints.html">Jolt Constraints</a></li>
 <li><a href="../concepts/weights-forces.html">Weights and Forces</a></li>
+<li><a href="../special/jolt-water-volume-component.html">Jolt Water Volume Component</a></li>
 </ul>
 
 </article>

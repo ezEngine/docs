@@ -89,19 +89,40 @@
         <article data-uid="">
 <h1 id="procedural-vertex-color-component">Procedural Vertex Color Component</h1>
 
-<!-- PAGE IS TODO -->
+<p>The <em>Procedural Vertex Color Component</em> applies procedurally computed vertex colors to a mesh at runtime. It uses a <a href="procgen-graph-asset.html">ProcGen graph</a> containing one or more <a href="procgen-graph-output-vertexcolor.html">Vertex Color Output</a> nodes, and writes the resulting per-vertex RGBA data into a GPU buffer that the mesh's material shader can sample.</p>
+<!-- ![Procedural vertex colors applied to a mesh](media/procgen-vertexcolor-component.jpg) -->
+<p>This is the vertex-color equivalent of the <a href="procgen-placement-component.html">Procedural Placement Component</a>. It is what connects the graph's vertex color outputs to an actual mesh in the scene.</p>
+<h2 id="how-it-works">How It Works</h2>
+<p>The component requires a <a href="../../graphics/meshes/mesh-component.html">mesh component</a> on the <strong>same game object</strong>. When the component activates — or when any relevant data changes — it iterates over every vertex of that mesh. For each vertex it evaluates the ProcGen graph, passing the vertex's world-space position, world-space normal, and original authored vertex colors as inputs. The resulting RGBA values are uploaded to a GPU buffer.</p>
+<p>The mesh's material shader then reads from this buffer to drive blending, masking, or other per-vertex effects. Exactly how the data is interpreted depends entirely on the shader.</p>
+<p>The vertex colors are recomputed automatically when:</p>
+<ul>
+<li>The game object is moved (its transform changes).</li>
+<li>The referenced ProcGen graph asset is reloaded.</li>
+<li>The mesh resource changes.</li>
+<li>A <a href="procgen-volume-box-component.html">procedural volume</a> in the affected area is invalidated.</li>
+</ul>
+<h2 id="output-descriptions">Output Descriptions</h2>
+<p>Each entry in the <code>OutputDescs</code> list connects one named <a href="procgen-graph-output-vertexcolor.html">Vertex Color Output</a> node from the graph to a color slot, and optionally remaps its channels.</p>
+<ul>
+<li><code>Name</code>: The name of the vertex color output node in the ProcGen graph to use for this slot. The name must match exactly.</li>
+<li><code>Mapping</code>: Defines how the four channels (R, G, B, A) of the computed color are written into the output slot. Each output channel can be mapped to any input channel from the graph result, or set to a constant <code>Black</code> (0) or <code>White</code> (1). By default each channel maps to itself (R→R, G→G, B→B, A→A). Remapping is useful when a shader expects data in a specific channel order that differs from how the graph computes it.</li>
+</ul>
+<p>Multiple entries can be added when the material shader needs more than one independent RGBA slot per vertex. Each entry corresponds to a separate named output in the ProcGen graph.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Mesh</code>:</li>
-<li><code>Color</code>:</li>
-<li><code>Materials</code>:</li>
-<li><code>Resource</code>:</li>
-<li><code>Output Descriptions</code>:</li>
+<li><p><code>Resource</code>: The <a href="procgen-graph-asset.html">ProcGen graph asset</a> to evaluate. The graph must contain at least one <a href="procgen-graph-output-vertexcolor.html">Vertex Color Output</a> node.</p>
+</li>
+<li><p><code>OutputDescs</code>: A list of output description entries. Each entry selects one named vertex color output from the graph and controls how its channels are mapped into the output. See <a href="#output-descriptions">Output Descriptions</a> above.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="procgen-graph-asset.html">ProcGen Graph Asset</a></li>
+<li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output</a></li>
+<li><a href="procgen-graph-inputs.html">ProcGen Graph Input Nodes</a></li>
+<li><a href="procgen-placement-component.html">Procedural Placement Component</a></li>
 <li><a href="procedural-object-placement.html">Procedural Object Placement</a></li>
-<li><a href="procgen-graph-output-vertexcolor.html">ProcGen Graph Vertex Color Output (TODO)</a></li>
 </ul>
 
 </article>

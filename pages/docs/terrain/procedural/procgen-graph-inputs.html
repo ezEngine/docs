@@ -111,7 +111,19 @@ If, however, <code>MinSlope</code> is set to <code>30</code> (steep) and <code>M
 <li><code>LowerFade</code>, <code>UpperFade</code>:  How quickly to fade the output value from one towards zero, when the height approaches the min (lower) or max (upper) value. Fade values of zero mean an abrupt change from one to zero at the boundaries, a value of one means there is always some fade out, except right at the center of the value range.</li>
 </ul>
 <h2 id="mesh-vertex-color-input-node">Mesh Vertex Color Input Node</h2>
-<!-- PAGE IS TODO -->
+<p>The <em>Mesh Vertex Color</em> node reads the <strong>original, authored vertex colors</strong> baked into the mesh asset itself — for example, colors painted directly in a 3D modeling application such as Blender. It exposes these per-vertex colors as individual output pins so they can be combined with procedural inputs or passed through math nodes before reaching a <a href="procgen-graph-output-vertexcolor.html">Vertex Color Output</a> node.</p>
+<p>This is useful for workflows where an artist paints blend masks or weights directly on the mesh (e.g. a &quot;coverage&quot; mask in the red channel), and the ProcGen graph then combines those authored values with procedural inputs such as slope, height, or noise.</p>
+<blockquote>
+<p><strong>Note:</strong> This node is only meaningful when the graph is evaluated by a <a href="procgen-vertex-color-component.html">Procedural Vertex Color Component</a>. It is <em>not</em> available in placement graphs, since object placement does not operate on individual mesh vertices.</p>
+</blockquote>
+<h3 id="output-pins">Output Pins</h3>
+<ul>
+<li><code>R</code>: The red channel of the mesh's baked vertex color at this vertex.</li>
+<li><code>G</code>: The green channel of the mesh's baked vertex color at this vertex.</li>
+<li><code>B</code>: The blue channel of the mesh's baked vertex color at this vertex.</li>
+<li><code>A</code>: The alpha channel of the mesh's baked vertex color at this vertex.</li>
+</ul>
+<p>All values are in [0;1] range. If the mesh has no vertex color stream, all outputs will be <code>0</code>.</p>
 <h2 id="position-node">Position Node</h2>
 <p>The <em>Position</em> node outputs the world space coordinates of the current evaluation point. It provides three separate output pins for the X, Y, and Z components.</p>
 <p>This node is useful for creating placement rules based on absolute world position, such as restricting certain objects to specific areas of the map or creating patterns that align with world coordinates.</p>

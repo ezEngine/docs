@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Jolt Water Volume Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Jolt Water Volume Component | ezEngine ">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/special/jolt-water-volume-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="jolt-water-volume-component">Jolt Water Volume Component</h1>
+
+<p>The <em>Jolt water volume component</em> creates a box-shaped region that simulates water. It applies buoyancy forces to <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a> that enter the volume, and can trigger <a href="../../../materials/surfaces.html">surface interactions</a> such as splash effects.</p>
+<p><img src="media/jolt-water-volume.jpg" alt="Water Volume"></p>
+<p>Objects inside the water volume are pushed upward against gravity (buoyancy) and experience drag that slows their motion. Whether an object floats or sinks is controlled by the <code>BuoyancyFactor</code> property on the dynamic actor itself. The water can also flow in a given direction, and its effective surface height can be randomized with Perlin noise to simulate choppy water.</p>
+<h2 id="setup">Setup</h2>
+<p>The water volume component requires a <a href="../actors/jolt-trigger-component.html">Jolt trigger component</a> on the <strong>same game object</strong>. The trigger detects when dynamic actors enter and leave the water volume. Without the trigger component, no buoyancy will be applied and a warning is emitted at simulation start.</p>
+<p>Typically you set up the trigger component to match the extents of the water volume, so that actors are detected as soon as they overlap the water region.</p>
+<blockquote>
+<p><strong>Note:</strong> Only <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a> (non-kinematic) are affected by the water volume. Static and kinematic actors are ignored.</p>
+</blockquote>
+<h2 id="buoyancy-factor">Buoyancy Factor</h2>
+<p>How an object behaves inside the water is determined by the <code>BuoyancyFactor</code> property on the <code>ezJoltDynamicActorComponent</code>:</p>
+<ul>
+<li><strong>&gt; 1.0</strong> — Object floats upward (default is 1.1, which causes slight floating).</li>
+<li><strong>= 1.0</strong> — Neutral buoyancy; the object neither rises nor sinks.</li>
+<li><strong>&lt; 1.0</strong> — Object sinks to the bottom.</li>
+</ul>
+<h2 id="water-surface-plane">Water Surface Plane</h2>
+<p>The water surface is computed automatically from the extents of the volume. It is always the face of the box that points most <em>against</em> gravity — i.e., the top face under normal gravity. If the game object is rotated, or if gravity changes direction, the surface plane is updated accordingly.</p>
+<p>When a dynamic actor is submerged, the buoyancy impulse is calculated relative to this surface plane. The <code>NoiseStrength</code> property further varies the perceived surface height per actor position, creating a natural floating motion.</p>
+<h2 id="rendering-the-water-surface">Rendering the Water Surface</h2>
+<p>The water volume component handles physics only. It does not render anything by itself. To make the water visible, you need a separate mesh object (typically a plane) positioned at the water surface, with a custom water material applied to it.</p>
+<p>Water rendering typically requires effects such as transparency, refraction, and animated normals (waves). The built-in <a href="../../../materials/materials-overview.html">default material</a> is not suitable for this. Instead, you need to write a <a href="../../../graphics/shaders/shader-templates.html">custom shader</a> or use the <a href="../../../materials/visual-shaders.html">Visual Shader Editor</a> to create a water material.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><p><code>Extents</code>: The size of the water volume box along each local axis. Default is (10, 10, 10). Use the in-editor box manipulator to resize it visually.</p>
+</li>
+<li><p><code>Flow</code>: Direction and speed of water flow in <strong>local space</strong>. This vector is transformed to world space at runtime. A flowing current pushes submerged actors in the given direction. Set to zero for still water.</p>
+</li>
+<li><p><code>NoiseStrength</code>: Adds Perlin noise to the effective water surface height at each actor's position. A value of <code>0</code> means a flat surface. Higher values produce choppier water where objects bob more unevenly.</p>
+</li>
+<li><p><code>Surface</code>: A <a href="../../../materials/surfaces.html">surface resource</a> used to determine splash and interaction effects when actors enter the water. Only the interaction effects of the surface are used; its physical material properties are not applied.</p>
+</li>
+<li><p><code>Interaction</code>: Which interaction type (as defined in the surface resource) to trigger when a dynamic actor enters the water volume. Typically used to spawn splash particle effects.</p>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../actors/jolt-dynamic-actor-component.html">Jolt Dynamic Actor Component</a></li>
+<li><a href="../actors/jolt-trigger-component.html">Jolt Trigger Component</a></li>
+<li><a href="../../../materials/surfaces.html">Surfaces</a></li>
+<li><a href="../../../materials/visual-shaders.html">Visual Shaders</a></li>
+<li><a href="../../../graphics/shaders/shader-templates.html">Custom Shaders</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/physics/jolt/special/jolt-water-volume-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
