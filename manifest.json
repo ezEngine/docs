@@ -7175,6 +7175,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/ui/rmlui-canvas3d-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ui/rmlui-canvas3d-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/ui/rmlui.md",
       "output": {
         ".html": {

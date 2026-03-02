@@ -2433,6 +2433,24 @@
           "level": 3,
           "items": [],
           "leaf": true
+        },
+        {
+          "name": "RmlUI Canvas 2D Component",
+          "href": "ui/rmlui-canvas2d-component.html",
+          "topicHref": "ui/rmlui-canvas2d-component.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "RmlUI Canvas 3D Component",
+          "href": "ui/rmlui-canvas3d-component.html",
+          "topicHref": "ui/rmlui-canvas3d-component.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
         }
       ],
       "topicHref": null,

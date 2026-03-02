@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>RmlUI Canvas 2D Component | ezEngine </title>
+      <title>RmlUI Canvas 3D Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="RmlUI Canvas 2D Component | ezEngine ">
+      <meta name="title" content="RmlUI Canvas 3D Component | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/rmlui-canvas2d-component.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/rmlui-canvas3d-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,33 +87,27 @@
         </div>
 
         <article data-uid="">
-<h1 id="rmlui-canvas-2d-component">RmlUI Canvas 2D Component</h1>
+<h1 id="rmlui-canvas-3d-component">RmlUI Canvas 3D Component</h1>
 
-<p>The <em>RmlUi Canvas 2D</em> component (<code>ezRmlUiCanvas2DComponent</code>) renders an <a href="rmlui.html">RmlUi</a> document as a screen-space overlay. This is the standard choice for HUDs and menus.</p>
+<p>The <em>RmlUi Canvas 3D</em> component (<code>ezRmlUiCanvas3DComponent</code>) renders an <a href="rmlui.html">RmlUi</a> document into a texture that is applied to a mesh in the scene. This allows UI panels to exist as physical objects in the 3D world — for example interactive terminals, noticeboards, or in-world displays.</p>
 <h2 id="component-properties">Component Properties</h2>
-<h3 id="base-properties">Base Properties</h3>
-<p>These properties are shared with the <a href="rmlui-canvas3d-component.html">RmlUI Canvas 3D Component</a>.</p>
-<p><strong>Rml Resource:</strong> The <code>.rml</code> document file to load and render.</p>
-<p><strong>Autobind Blackboards:</strong> When enabled, the component searches the owner object's hierarchy for a <a href="../misc/blackboards.html">blackboard</a> component and binds it automatically. The blackboard's name is used as the RmlUi model name, making its entries accessible as RmlUi data model variables. You can also bind blackboards manually from C++ using <code>ezRmlUiCanvasComponentBase::AddBlackboardBinding()</code>. Both scalar values and <a href="https://mikke89.github.io/RmlUiDoc/pages/data_bindings.html">variant arrays</a> stored in the blackboard are supported.</p>
-<p><strong>Send Event Message:</strong> When enabled, every RmlUi event (such as a button click) fires an <code>ezMsgRmlUiEvent</code> message on the component's owner object. The message carries:</p>
-<ul>
-<li><code>m_sIdentifier</code> — the identifier string configured on the RmlUi element (e.g. via the <code>data-event-id</code> attribute or the event listener identifier).</li>
-<li><code>m_sType</code> — the RmlUi event type (e.g. <code>click</code>, <code>change</code>).</li>
-</ul>
-<p>This message can be handled in <a href="../custom-code/visual-script/visual-script-overview.html">visual scripts</a> or C++ components attached to the same object, enabling script-driven UI logic without writing a custom C++ event handler. As an alternative, you can register C++ event handlers directly via <code>ezRmlUiContext::RegisterEventHandler()</code>.</p>
-<p><strong>On Demand Update:</strong> When enabled (the default), the canvas texture is only re-rendered when something has changed. Disable this to force a re-render every frame.</p>
-<h3 id="2d-specific-properties">2D-Specific Properties</h3>
-<p><strong>Offset:</strong> A 2D pixel offset (in screen pixels) applied to the canvas position. Combined with <strong>Anchor Point</strong>, this determines where on screen the canvas appears.</p>
-<p><strong>Size:</strong> The resolution of the RmlUi canvas in pixels. This also determines the canvas's logical coordinate space for RmlUi layout.</p>
-<p><strong>Anchor Point:</strong> A normalized (0–1) 2D value that controls which corner or point of the canvas is placed at the screen anchor. <code>(0, 0)</code> anchors the top-left corner; <code>(1, 1)</code> anchors the bottom-right corner.</p>
-<p><strong>Pass Input:</strong> When enabled, mouse and keyboard input is forwarded to the RmlUi context for interaction. Disable this to make the canvas non-interactive (display only).</p>
-<p><strong>Custom Scale:</strong> A scaling factor applied to the canvas. Useful for adapting to different screen densities or for visual effects. Defaults to <code>1.0</code>.</p>
+<p>For the base properties shared with the 2D canvas (Rml Resource, Autobind Blackboards, Send Event Message, On Demand Update), see the <a href="rmlui-canvas2d-component.html">RmlUI Canvas 2D Component</a>.</p>
+<h3 id="3d-specific-properties">3D-Specific Properties</h3>
+<p><strong>Proxy Mesh:</strong> The mesh asset used for hit-testing when raycasting input onto the panel. This should match the visible geometry of the panel surface. See <a href="#interaction">Interaction</a> below.</p>
+<p><strong>Base Material:</strong> The material applied to the rendered mesh. The UI texture is injected into this material via the <strong>Texture Slot Name</strong> parameter.</p>
+<p><strong>Material Index:</strong> Which material slot on the mesh to replace when applying the UI texture. Defaults to <code>0</code>.</p>
+<p><strong>Texture Slot Name:</strong> The name of the texture parameter in the <strong>Base Material</strong> that should receive the rendered UI texture (e.g. <code>BaseTexture</code>).</p>
+<p><strong>Texture Size:</strong> The pixel resolution of the render target used to render the UI. Higher resolutions give a sharper result on large panels but cost more GPU memory.</p>
+<p><strong>Dpi Scale:</strong> A scaling factor applied to the RmlUi document layout, allowing the UI to be authored at a standard resolution and then scaled up for high-resolution textures. Defaults to <code>1.0</code>.</p>
+<p><strong>Clear Stale Input:</strong> When enabled (the default), mouse hover and press state is automatically cleared when no fresh <code>RaycastInput()</code> call arrives for that frame. This prevents phantom hover effects when the player looks away from the panel.</p>
+<p><strong>Interactive:</strong> When enabled (the default), the panel accepts raycasted input. Disable this to make the panel a non-interactive display.</p>
 <h2 id="interaction">Interaction</h2>
-<p>Input is forwarded automatically when <strong>Pass Input</strong> is enabled. For programmatic interaction, call <code>ReceiveInput()</code> with a canvas-space mouse position and an <code>ezRmlUiInputSnapshot</code>.</p>
+<p>Input is delivered to the 3D canvas via raycasting. Call <code>RaycastInput()</code> with a world-space ray origin and direction (e.g. from the player's line-of-sight or crosshair), along with an <code>ezRmlUiInputSnapshot</code> containing the current button state. The component intersects the ray against the <strong>Proxy Mesh</strong> to compute the UV coordinate, maps that to a canvas-space position, and forwards the result to the RmlUi context.</p>
+<p>A ready-made helper is provided by <code>ezRmlUiCanvas3DInteractionExampleComponent</code>. This component performs a physics raycast each frame (using a configurable collision layer and maximum distance) and calls <code>RaycastInput()</code> on the canvas component found on the hit object. It is intended as a reference implementation — copy and adapt it for your own interaction logic.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="rmlui.html">RmlUi</a></li>
-<li><a href="rmlui-canvas3d-component.html">RmlUI Canvas 3D Component</a></li>
+<li><a href="rmlui-canvas2d-component.html">RmlUI Canvas 2D Component</a></li>
 <li><a href="ui.html">Ingame UI</a></li>
 <li><a href="../misc/blackboards.html">Blackboards</a></li>
 </ul>
@@ -121,7 +115,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/rmlui-canvas2d-component.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/rmlui-canvas3d-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
