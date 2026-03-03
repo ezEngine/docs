@@ -108,9 +108,9 @@
 </li>
 <li><p><code>FadeOutStart</code>: At what fraction of the shadow range it should start to fade out. For instance, if the <code>MinShadowRange</code> is set to 10 meters, and <code>FadeOutStart</code> is set to 0.8, then the shadows will start to fade out at a distance of 8 meters.</p>
 </li>
-<li><p><code>SplitModeWeight</code>: TODO</p>
+<li><p><code>SplitModeWeight</code>: Controls how the shadow range is divided among the cascades. A value of <code>0</code> distributes cascades evenly (linear split), while a value of <code>1</code> uses a fully logarithmic split that concentrates more cascades near the camera for sharper close-up shadows. Values in between blend the two modes. Increase this value to improve shadow quality near the camera at the cost of quality in the distance.</p>
 </li>
-<li><p><code>NearPlaneOffset</code>: TODO</p>
+<li><p><code>NearPlaneOffset</code>: Extends the shadow camera's near plane behind the main camera. This ensures that objects located just behind the viewer can still cast shadows into the visible scene. Increase this value if you notice missing shadows from objects that are slightly outside the camera's view.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>

@@ -94,10 +94,16 @@
 <p>Mesh components will cast <a href="../lighting/dynamic-shadows.html">shadows</a> when the <code>CastShadow</code> <a href="../../projects/tags.html">tag</a> is set on the owner game object. The referenced mesh is rendered according to the used <a href="../../materials/materials-overview.html">materials</a>, which determine <a href="../lighting/lighting-overview.html">lighting</a> and other visual effects.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
-<li><code>Mesh</code>: The <a href="mesh-asset.html">mesh asset</a> to render.</li>
-<li><code>Color</code>: A tint color for the mesh instance. Typically this is just multiplied into the diffuse color of the mesh <a href="../../materials/materials-overview.html">materials</a>, though if the material uses a <a href="../../materials/visual-shaders.html">visual shader</a>, the mesh color can be used to represent arbitrary input data, for example to blend between material states.</li>
-<li><code>CustomData</code>: A 4-component vector to pass in arbitrary values. By default, this data is not used, at all, but custom shaders are free to use it in any way they like.</li>
-<li><code>Materials</code>: By default the referenced mesh is rendered with the materials that are set up inside the mesh asset. However, the mesh component can override the materials. Each mesh has one or many <em>sub-meshes</em>, meaning mesh parts that use different materials. This array allows to set an override for each of those sub-meshes.</li>
+<li><p><code>Mesh</code>: The <a href="mesh-asset.html">mesh asset</a> to render.</p>
+</li>
+<li><p><code>Color</code>: A tint color for the mesh instance. Typically this is just multiplied into the diffuse color of the mesh <a href="../../materials/materials-overview.html">materials</a>, though if the material uses a <a href="../../materials/visual-shaders.html">visual shader</a>, the mesh color can be used to represent arbitrary input data, for example to blend between material states.</p>
+</li>
+<li><p><code>CustomData</code>: A 4-component vector to pass in arbitrary values. By default, this data is not used, at all, but custom shaders are free to use it in any way they like.</p>
+</li>
+<li><p><code>SortingDepthOffset</code>: An offset (in world units) added to the camera distance when computing the render sort order. This is mainly relevant for transparent materials, which are rendered back-to-front. A positive value makes the mesh sort as if it were further away (rendered earlier, behind other transparent objects), a negative value makes it sort as if it were closer (rendered later, in front of other transparent objects). Use this to resolve incorrect overlap ordering between transparent meshes that are at similar depths.</p>
+</li>
+<li><p><code>Materials</code>: By default the referenced mesh is rendered with the materials that are set up inside the mesh asset. However, the mesh component can override the materials. Each mesh has one or many <em>sub-meshes</em>, meaning mesh parts that use different materials. This array allows to set an override for each of those sub-meshes.</p>
+</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Shader Material Sections | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Shader Material Sections | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-material-sections.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="shader-material-sections">Shader Material Sections</h1>
+
+<p>Material shaders are special and require additional sections to expose parameters to the engine and editor. A material shader typically includes all three sections shown below:</p>
+<pre><code class="lang-cpp">[MATERIALCONSTANTS]
+COLOR4F(BaseColor);
+
+[MATERIALPARAMETER]
+Permutation BLEND_MODE;
+Color BaseColor @Default(Color(1.0, 1.0, 1.0));
+Texture2D BaseTexture @Default(&quot;{ ac614d7c-2b31-4a7b-aa0c-c5d8200b7b89 }&quot;);
+
+[MATERIALCONFIG]
+#if (BLEND_MODE == BLEND_MODE_OPAQUE)
+    RenderDataCategory = LitOpaque
+#elif (BLEND_MODE == BLEND_MODE_MASKED)
+    RenderDataCategory = LitMasked
+#else
+    RenderDataCategory = LitTransparent
+#endif
+
+[PIXELSHADER]
+
+Texture2D BaseTexture;
+SamplerState BaseTexture_AutoSampler;
+
+float4 main(VS_OUT a) : SV_Target
+{
+  float4 color = BaseTexture.Sample(BaseTexture_AutoSampler, ...).rgba;
+  return color * GetMaterialData(BaseColor).rgba;
+}
+</code></pre>
+<h2 id="materialconstants">MATERIALCONSTANTS</h2>
+<p>This section defines per-material constants. The constants map to a constant buffer or structured buffer in the engine, depending on the renderer feature set. They can be changed at runtime for each material instance and exposed to the editor.</p>
+<p>Constants must be declared using the macros defined in <code>Data/Base/Shaders/Common/ConstantBufferMacros.h</code>, e.g. <code>FLOAT1(ConstantName);</code>. Only these macros are supported:</p>
+<ul>
+<li><code>FLOAT1</code>, <code>FLOAT2</code>, <code>FLOAT3</code>, <code>FLOAT4</code>: Maps to HLSL <code>float</code>, <code>float2</code> etc.</li>
+<li><code>INT1</code>, <code>INT2</code>, <code>INT3</code>, <code>INT4</code>: Maps to HLSL <code>int</code>, <code>int2</code> etc.</li>
+<li><code>UINT1</code>, <code>UINT2</code>, <code>UINT3</code>, <code>UINT4</code>: Maps to HLSL <code>uint</code>, <code>uint2</code> etc.</li>
+<li><code>MAT3</code>, <code>MAT4</code>: Maps to HLSL <code>float3x3</code> and <code>float4x4</code>.</li>
+<li><code>TRANSFORM</code>: Maps to a struct with three rows <code>r0</code>, <code>r1</code> and <code>r2</code> (no direct HLSL equivalent).</li>
+<li><code>COLOR4F</code>: Maps to <code>float4</code> (no color type exists in HLSL).</li>
+<li><code>BOOL1</code>: The HLSL <code>bool</code> is always 4 bytes wide. Consider packing multiple flags into a <code>UINT1</code> to save space.</li>
+</ul>
+<p>To access a constant in the shader, use <code>GetMaterialData(ConstantName)</code>.</p>
+<h2 id="materialparameter">MATERIALPARAMETER</h2>
+<p>This section defines which parameters are exposed on a material in the editor. There are three categories:</p>
+<ul>
+<li><p><strong>Permutation variables</strong>: Add the name of a permutation variable to expose it in the editor. See <a href="shader-permutation-variables.html#exposing-permutations-to-materials">Shader Permutation Variables</a> for details.</p>
+</li>
+<li><p><strong>Material constants</strong>: These must match the name used in <code>MATERIALCONSTANTS</code> exactly. The type changes from the macro name to the HLSL name, e.g. <code>FLOAT1(MaskThreshold);</code> becomes <code>float MaskThreshold @Default(0.25);</code>.</p>
+</li>
+<li><p><strong>Textures</strong>: Both <code>Texture2D</code> and <code>TextureCube</code> are supported, using the same syntax as HLSL texture declarations.</p>
+</li>
+</ul>
+<p>Parameters support the following attributes:</p>
+<ul>
+<li><code>@Default(&lt;VALUE&gt;)</code>: Sets the default value shown in the editor. Usable on constants and textures.</li>
+<li><code>@Clamp(min, max)</code>: Restricts the range of float and int parameters in the editor.</li>
+</ul>
+<h2 id="materialconfig">MATERIALCONFIG</h2>
+<p>This section controls when a material is rendered during a frame by assigning a <em>RenderDataCategory</em>. The category determines which render passes process the material, how objects using it are sorted, and how it integrates into the rendering pipeline.</p>
+<h3 id="default-category-assignment">Default Category Assignment</h3>
+<p>Most materials use the default mapping provided by <code>MaterialConfig.h</code>:</p>
+<pre><code class="lang-cpp">[MATERIALCONFIG]
+#include &lt;Shaders/Materials/MaterialConfig.h&gt;
+</code></pre>
+<p>This automatically assigns categories based on <code>BLEND_MODE</code>:</p>
+<ul>
+<li><code>BLEND_MODE_OPAQUE</code> → <code>LitOpaque</code></li>
+<li><code>BLEND_MODE_MASKED</code> or <code>BLEND_MODE_DITHERED</code> → <code>LitMasked</code></li>
+<li>All others (TRANSPARENT, ADDITIVE, MODULATE) → <code>LitTransparent</code></li>
+</ul>
+<p>You can override this by setting the category explicitly:</p>
+<pre><code class="lang-cpp">[MATERIALCONFIG]
+RenderDataCategory = SimpleForeground
+</code></pre>
+<h3 id="available-render-data-categories">Available Render Data Categories</h3>
+<h4 id="lit-categories-full-pbr-lighting">Lit Categories (Full PBR Lighting)</h4>
+<p>These categories render with complete lighting calculations including direct lights, shadows, and image-based lighting.</p>
+<ul>
+<li><p><strong>LitOpaque</strong> — Use for solid, opaque materials. Renders in the depth pre-pass and opaque forward pass. Sorted front-to-back for optimal depth rejection. Automatically redirected to <code>LitOpaqueStatic</code> or <code>LitOpaqueDynamic</code> based on whether the object is static or dynamic.</p>
+</li>
+<li><p><strong>LitMasked</strong> — Use for materials with binary alpha cutout, such as foliage, chain-link fences, or grates. Similar to <code>LitOpaque</code> but uses alpha testing to discard pixels. Writes to the depth buffer. Redirected to <code>LitMaskedStatic</code> or <code>LitMaskedDynamic</code>.</p>
+</li>
+<li><p><strong>LitTransparent</strong> — Use for alpha-blended transparent materials like glass, water, or particles. Renders after opaque geometry. Sorted back-to-front for correct blending. Does not write to the depth buffer.</p>
+</li>
+<li><p><strong>LitForeground</strong> — Use for transparent materials that must appear in front of regular transparent geometry. Renders after <code>LitTransparent</code>.</p>
+</li>
+<li><p><strong>LitScreenFX</strong> — Use for screen-space effects with lighting.</p>
+</li>
+</ul>
+<h4 id="simple-categories-unlit-rendering">Simple Categories (Unlit Rendering)</h4>
+<p>These categories skip lighting calculations. Useful for debug visualization, editor tools, and effects that should not be affected by scene lighting or tonemapping.</p>
+<ul>
+<li><strong>SimpleOpaque</strong> — Unlit opaque geometry. Renders after lit passes. Sorted front-to-back.</li>
+<li><strong>SimpleTransparent</strong> — Unlit transparent geometry. Renders after <code>SimpleOpaque</code>. Sorted back-to-front.</li>
+<li><strong>SimpleForeground</strong> — Debug overlays and 3D UI elements. Renders last among simple categories to appear on top of other geometry.</li>
+</ul>
+<h4 id="special-categories">Special Categories</h4>
+<ul>
+<li><strong>Sky</strong> — For skybox and sky dome materials. Renders after the opaque forward pass to fill the background.</li>
+<li><strong>GUI</strong> — For UI rendering.</li>
+</ul>
+<h3 id="static-vs-dynamic-redirection">Static vs Dynamic Redirection</h3>
+<p><code>LitOpaque</code> and <code>LitMasked</code> are <em>redirected categories</em>: at runtime, the engine automatically redirects them to their static or dynamic variants based on object flags.</p>
+<ul>
+<li><strong>LitOpaque</strong> → <strong>LitOpaqueStatic</strong> or <strong>LitOpaqueDynamic</strong></li>
+<li><strong>LitMasked</strong> → <strong>LitMaskedStatic</strong> or <strong>LitMaskedDynamic</strong></li>
+</ul>
+<p>Shader authors should always use <code>LitOpaque</code> and <code>LitMasked</code> in the <code>MATERIALCONFIG</code> section. Do not use the Static/Dynamic variants directly.</p>
+<h3 id="rendering-pipeline-order">Rendering Pipeline Order</h3>
+<p>Materials are rendered in the following order each frame:</p>
+<ol>
+<li><strong>Depth Pre-Pass</strong> (optional): <code>LitOpaqueStatic</code>, <code>LitOpaqueDynamic</code>, <code>LitMaskedStatic</code>, <code>LitMaskedDynamic</code></li>
+<li><strong>Opaque Forward</strong>: <code>LitOpaqueStatic</code>, <code>LitOpaqueDynamic</code>, <code>LitMaskedStatic</code>, <code>LitMaskedDynamic</code></li>
+<li><strong>Sky</strong>: <code>Sky</code></li>
+<li><strong>Transparent Forward</strong>: <code>LitTransparent</code>, <code>LitForeground</code>, <code>LitScreenFX</code></li>
+<li><strong>Simple</strong>: <code>SimpleOpaque</code>, <code>SimpleTransparent</code>, <code>SimpleForeground</code></li>
+<li><strong>GUI</strong>: <code>GUI</code></li>
+</ol>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="shaders-overview.html">Shaders</a></li>
+<li><a href="shader-permutation-variables.html">Shader Permutation Variables</a></li>
+<li><a href="shader-render-state.html">Shader Render State</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/shaders/shader-material-sections.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

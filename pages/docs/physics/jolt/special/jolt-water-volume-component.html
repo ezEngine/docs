@@ -94,9 +94,8 @@
 <p>Objects inside the water volume are pushed upward against gravity (buoyancy) and experience drag that slows their motion. Whether an object floats or sinks is controlled by the <code>BuoyancyFactor</code> property on the dynamic actor itself. The water can also flow in a given direction, and its effective surface height can be randomized with Perlin noise to simulate choppy water.</p>
 <h2 id="setup">Setup</h2>
 <p>The water volume component requires a <a href="../actors/jolt-trigger-component.html">Jolt trigger component</a> on the <strong>same game object</strong>. The trigger detects when dynamic actors enter and leave the water volume. Without the trigger component, no buoyancy will be applied and a warning is emitted at simulation start.</p>
-<p>Typically you set up the trigger component to match the extents of the water volume, so that actors are detected as soon as they overlap the water region.</p>
 <blockquote>
-<p><strong>Note:</strong> Only <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a> (non-kinematic) are affected by the water volume. Static and kinematic actors are ignored.</p>
+<p><strong>Note:</strong> Only <a href="../actors/jolt-dynamic-actor-component.html">dynamic actors</a> are affected by the water volume. Static and kinematic actors are ignored.</p>
 </blockquote>
 <h2 id="buoyancy-factor">Buoyancy Factor</h2>
 <p>How an object behaves inside the water is determined by the <code>BuoyancyFactor</code> property on the <code>ezJoltDynamicActorComponent</code>:</p>

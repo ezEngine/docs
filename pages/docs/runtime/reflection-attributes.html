@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Reflection Attributes | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Reflection Attributes | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/reflection-attributes.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="reflection-attributes">Reflection Attributes</h1>
+
+<p>Reflection attributes decorate <a href="reflection-system.html">reflected</a> types and properties to control how they appear and behave in the editor. Attributes are attached either to a <strong>type</strong> (inside <code>EZ_BEGIN_ATTRIBUTES</code> / <code>EZ_END_ATTRIBUTES</code>) or to an individual <strong>property</strong> (via <code>-&gt;AddAttributes(...)</code>).</p>
+<pre><code class="lang-cpp">EZ_BEGIN_COMPONENT_TYPE(MyComponent, 1, ezComponentMode::Static)
+{
+  EZ_BEGIN_PROPERTIES
+  {
+    EZ_MEMBER_PROPERTY(&quot;Radius&quot;, m_fRadius)
+      -&gt;AddAttributes(new ezDefaultValueAttribute(1.0f), new ezClampValueAttribute(0.0f, ezVariant())),
+  }
+  EZ_END_PROPERTIES;
+
+  EZ_BEGIN_ATTRIBUTES
+  {
+    new ezCategoryAttribute(&quot;MyPlugin&quot;),
+  }
+  EZ_END_ATTRIBUTES;
+}
+EZ_END_COMPONENT_TYPE
+</code></pre>
+<h2 id="basic-editor-behavior">Basic Editor Behavior</h2>
+<h3 id="ezreadonlyattribute"><code>ezReadOnlyAttribute</code></h3>
+<p>The property is displayed in the editor but cannot be modified by the user. Use this for values that are set only by code.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;ComputedValue&quot;, m_fComputed)-&gt;AddAttributes(new ezReadOnlyAttribute()),
+</code></pre>
+<h3 id="ezhiddenattribute"><code>ezHiddenAttribute</code></h3>
+<p>The property is not shown in the editor at all. It is still serialized and exists in the reflected data, but the user has no way to see or change it.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;InternalState&quot;, m_iState)-&gt;AddAttributes(new ezHiddenAttribute()),
+</code></pre>
+<h3 id="eztemporaryattribute"><code>ezTemporaryAttribute</code></h3>
+<p>The property is neither shown in the editor nor serialized. It exists only at runtime or during editing. Use this for runtime-only cached data that should not be saved.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;CachedHandle&quot;, m_hCached)-&gt;AddAttributes(new ezTemporaryAttribute()),
+</code></pre>
+<h2 id="type-level-attributes">Type-Level Attributes</h2>
+<p>These are placed on the <strong>type</strong> in an <code>EZ_BEGIN_ATTRIBUTES</code> block, not on individual properties.</p>
+<h3 id="ezcategoryattribute"><code>ezCategoryAttribute</code></h3>
+<p>Places the type in a named category in the editor's add-component menu. Use <code>/</code> to create sub-categories.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_ATTRIBUTES
+{
+  new ezCategoryAttribute(&quot;Effects/Particles&quot;),
+}
+EZ_END_ATTRIBUTES;
+</code></pre>
+<h3 id="ezindevelopmentattribute"><code>ezInDevelopmentAttribute</code></h3>
+<p>Marks a component as still in development. The editor typically hides these objects, unless explicitly enabled in the <a href="../editor/editor-preferences.html">editor preferences</a>.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_ATTRIBUTES
+{
+  new ezInDevelopmentAttribute(ezInDevelopmentAttribute::Alpha),
+}
+EZ_END_ATTRIBUTES;
+</code></pre>
+<h3 id="ezcolorattribute"><code>ezColorAttribute</code></h3>
+<p>Sets a color used to visually distinguish this type in the editor (e.g. for visual script node headers).</p>
+<pre><code class="lang-cpp">EZ_BEGIN_ATTRIBUTES
+{
+  new ezColorAttribute(ezColorScheme::LightUI(ezColorScheme::Teal)),
+}
+EZ_END_ATTRIBUTES;
+</code></pre>
+<h3 id="eztitleattribute"><code>ezTitleAttribute</code></h3>
+<p>Sets a dynamic title string for a visual script node or embedded struct. Use <code>{PropertyName}</code> placeholders to insert the current value of a property into the title.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_ATTRIBUTES
+{
+  new ezTitleAttribute(&quot;Set Property '{Name}'&quot;),
+}
+EZ_END_ATTRIBUTES;
+</code></pre>
+<h2 id="value-and-display-attributes">Value and Display Attributes</h2>
+<h3 id="ezdefaultvalueattribute"><code>ezDefaultValueAttribute</code></h3>
+<p>Sets the default value for a property. This is what the property is initialized to when a new component is created.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Speed&quot;, m_fSpeed)-&gt;AddAttributes(new ezDefaultValueAttribute(5.0f)),
+EZ_MEMBER_PROPERTY(&quot;Color&quot;, m_Color)-&gt;AddAttributes(new ezDefaultValueAttribute(ezColor::White)),
+</code></pre>
+<h3 id="ezclampvalueattribute"><code>ezClampValueAttribute</code></h3>
+<p>Restricts the range of a numeric property in the editor. Pass <code>ezVariant()</code> for no bound in one direction.</p>
+<pre><code class="lang-cpp">// Clamp between 0 and 100
+EZ_MEMBER_PROPERTY(&quot;Percent&quot;, m_f)-&gt;AddAttributes(new ezClampValueAttribute(0.0f, 100.0f)),
+// Clamp to minimum 0, no upper limit
+EZ_MEMBER_PROPERTY(&quot;Range&quot;, m_fRange)-&gt;AddAttributes(new ezClampValueAttribute(0.0f, ezVariant())),
+</code></pre>
+<h3 id="ezsuffixattribute"><code>ezSuffixAttribute</code></h3>
+<p>Appends a suffix string to the property value in the editor's display. Useful for making units explicit.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Distance&quot;, m_fDist)-&gt;AddAttributes(new ezSuffixAttribute(&quot; m&quot;)),
+EZ_MEMBER_PROPERTY(&quot;Angle&quot;, m_fDeg)-&gt;AddAttributes(new ezSuffixAttribute(&quot; °&quot;)),
+</code></pre>
+<h3 id="ezminvaluetextattribute"><code>ezMinValueTextAttribute</code></h3>
+<p>Replaces the display of the minimum value with a text label. Commonly used to show &quot;Auto&quot; instead of <code>0</code> when zero means automatic computation.</p>
+<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;Range&quot;, GetRange, SetRange)
+  -&gt;AddAttributes(new ezClampValueAttribute(0.0f, ezVariant()), new ezMinValueTextAttribute(&quot;Auto&quot;)),
+</code></pre>
+<h3 id="ezexposecoloralphaattribute"><code>ezExposeColorAlphaAttribute</code></h3>
+<p>For <code>ezColor</code> or <code>ezColorGammaUB</code> properties, exposes the alpha channel in the color picker. Without this attribute, the alpha channel is hidden.</p>
+<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;Color&quot;, GetColor, SetColor)-&gt;AddAttributes(new ezExposeColorAlphaAttribute()),
+</code></pre>
+<h3 id="ezgroupattribute"><code>ezGroupAttribute</code></h3>
+<p>Visually groups properties in the editor under a collapsible header. The optional <code>fOrder</code> parameter controls the order of groups relative to each other.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_PROPERTIES
+{
+  EZ_MEMBER_PROPERTY(&quot;Color&quot;, m_Color)-&gt;AddAttributes(new ezGroupAttribute(&quot;Appearance&quot;)),
+  EZ_MEMBER_PROPERTY(&quot;Size&quot;, m_fSize),
+  EZ_MEMBER_PROPERTY(&quot;Mass&quot;, m_fMass)-&gt;AddAttributes(new ezGroupAttribute(&quot;Physics&quot;)),
+}
+</code></pre>
+<h2 id="widget-and-picker-attributes">Widget and Picker Attributes</h2>
+<h3 id="ezassetbrowserattribute"><code>ezAssetBrowserAttribute</code></h3>
+<p>Marks a string (or resource handle) property as an asset reference, replacing the text field with an asset browser picker. The type filter specifies which asset types are accepted.</p>
+<pre><code class="lang-cpp">EZ_RESOURCE_MEMBER_PROPERTY(&quot;Texture&quot;, m_hTexture)
+  -&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Texture_2D&quot;)),
+EZ_RESOURCE_MEMBER_PROPERTY(&quot;Mesh&quot;, m_hMesh)
+  -&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Mesh_Static&quot;)),
+</code></pre>
+<p>The second constructor overload accepts a required asset tag to further filter which assets appear:</p>
+<pre><code class="lang-cpp">-&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_CustomData&quot;, &quot;MyTag&quot;)),
+</code></pre>
+<h3 id="ezfilebrowserattribute"><code>ezFileBrowserAttribute</code></h3>
+<p>For string properties that hold a file path (not an asset). Opens a native file dialog with the given title and file type filter. The <code>ezDependencyFlags</code> parameter controls how the reference is treated for asset transforms and packaging.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;InputFile&quot;, m_sFile)
+  -&gt;AddAttributes(new ezFileBrowserAttribute(&quot;Choose Input File&quot;, &quot;*.fbx;*.gltf&quot;)),
+</code></pre>
+<p>Predefined type filters are available as static constants: <code>ezFileBrowserAttribute::Meshes</code>, <code>ezFileBrowserAttribute::ImagesLdrOnly</code>, <code>ezFileBrowserAttribute::ImagesHdrOnly</code>, <code>ezFileBrowserAttribute::ImagesLdrAndHdr</code>.</p>
+<h3 id="ezexternalfilebrowserattribute"><code>ezExternalFileBrowserAttribute</code></h3>
+<p>Like <code>ezFileBrowserAttribute</code>, but allows browsing outside the project directory. Useful for referencing external executables or system files.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;ExternalTool&quot;, m_sPath)
+  -&gt;AddAttributes(new ezExternalFileBrowserAttribute(&quot;Select Tool&quot;, &quot;*.exe&quot;)),
+</code></pre>
+<h3 id="ezdynamicenumattribute"><code>ezDynamicEnumAttribute</code></h3>
+<p>For integer properties, displays a dropdown populated from a named <code>ezDynamicEnum</code>. The enum values can change at runtime.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Layer&quot;, m_iLayer)-&gt;AddAttributes(new ezDynamicEnumAttribute(&quot;PhysicsLayers&quot;)),
+</code></pre>
+<h3 id="ezdynamicstringenumattribute"><code>ezDynamicStringEnumAttribute</code></h3>
+<p>Like <code>ezDynamicEnumAttribute</code>, but for string properties, backed by a named <code>ezDynamicStringEnum</code>.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Preset&quot;, m_sPreset)-&gt;AddAttributes(new ezDynamicStringEnumAttribute(&quot;QualityPresets&quot;)),
+</code></pre>
+<h3 id="ezdynamicbitflagsattribute"><code>ezDynamicBitflagsAttribute</code></h3>
+<p>For integer properties, displays a multi-select checklist populated from a named dynamic bitflags set.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Flags&quot;, m_uiFlags)-&gt;AddAttributes(new ezDynamicBitflagsAttribute(&quot;CollisionLayers&quot;)),
+</code></pre>
+<h3 id="eztagsetwidgetattribute"><code>ezTagSetWidgetAttribute</code></h3>
+<p>For tag set member properties (<code>EZ_SET_MEMBER_PROPERTY</code>), displays the tag set editor. The argument is a semicolon-separated list of tag category names to filter the available tags.</p>
+<pre><code class="lang-cpp">EZ_SET_MEMBER_PROPERTY(&quot;Tags&quot;, m_Tags)-&gt;AddAttributes(new ezTagSetWidgetAttribute(&quot;Default&quot;)),
+</code></pre>
+<h3 id="ezgameobjectreferenceattribute"><code>ezGameObjectReferenceAttribute</code></h3>
+<p>Marks a property as a reference to a game object. The editor shows a game object picker instead of a plain text field.</p>
+<p>This attribute requires an <strong>accessor property</strong> (<code>EZ_ACCESSOR_PROPERTY</code>). Because the value is stored internally as an <code>ezGameObjectHandle</code>, the getter is a dummy that always returns <code>nullptr</code>. The setter receives a string reference and resolves it via the world's reference resolver.</p>
+<pre><code class="lang-cpp">// Header
+const char* DummyGetter() const { return nullptr; }
+void SetTargetReference(const char* szReference); // [ property ]
+
+// Cpp - reflection block
+EZ_ACCESSOR_PROPERTY(&quot;Target&quot;, DummyGetter, SetTargetReference)
+  -&gt;AddAttributes(new ezGameObjectReferenceAttribute()),
+
+// Cpp - setter implementation
+void MyComponent::SetTargetReference(const char* szReference)
+{
+  auto resolver = GetWorld()-&gt;GetGameObjectReferenceResolver();
+  if (resolver.IsValid())
+    m_hTarget = resolver(szReference, GetHandle(), &quot;Target&quot;);
+}
+</code></pre>
+<h3 id="ezrttitypestringattribute"><code>ezRttiTypeStringAttribute</code></h3>
+<p>Turns a string property into a dropdown that lists all reflected types derived from a given base type.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;ComponentType&quot;, m_sType)-&gt;AddAttributes(new ezRttiTypeStringAttribute(&quot;ezComponent&quot;)),
+</code></pre>
+<h3 id="ezimageslideruiattribute"><code>ezImageSliderUiAttribute</code></h3>
+<p>Displays a numeric property as an image-based slider (the image background is generated by a named image generator). Must be combined with <code>ezClampValueAttribute</code>.</p>
+<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;Temperature&quot;, GetTemperature, SetTemperature)
+  -&gt;AddAttributes(new ezImageSliderUiAttribute(&quot;LightTemperature&quot;),
+                  new ezClampValueAttribute(1000, 15000)),
+</code></pre>
+<h2 id="container-attributes">Container Attributes</h2>
+<h3 id="ezcontainerattribute"><code>ezContainerAttribute</code></h3>
+<p>Controls which operations (add, delete, reorder) are allowed on an array or set property in the editor.</p>
+<pre><code class="lang-cpp">// Allow adding and deleting but not reordering
+EZ_ARRAY_MEMBER_PROPERTY(&quot;Items&quot;, m_Items)
+  -&gt;AddAttributes(new ezContainerAttribute(true, true, false)),
+</code></pre>
+<h3 id="ezmaxarraysizeattribute"><code>ezMaxArraySizeAttribute</code></h3>
+<p>Limits the maximum number of elements an array property can hold in the editor.</p>
+<pre><code class="lang-cpp">EZ_ARRAY_MEMBER_PROPERTY(&quot;Slots&quot;, m_Slots)-&gt;AddAttributes(new ezMaxArraySizeAttribute(8)),
+</code></pre>
+<h3 id="ezpreventduplicatesattribute"><code>ezPreventDuplicatesAttribute</code></h3>
+<p>Prevents the user from adding duplicate entries to an array or set. For arrays of objects, this means that multiple objects of the same type are not allowed.</p>
+<pre><code class="lang-cpp">EZ_ARRAY_MEMBER_PROPERTY(&quot;Behaviors&quot;, m_Behaviors)-&gt;AddAttributes(new ezPreventDuplicatesAttribute()),
+</code></pre>
+<h3 id="ezexposedparametersattribute"><code>ezExposedParametersAttribute</code></h3>
+<p>Used on a variant map property to expose the parameters of an asset referenced by another property. The argument is the name of the property that holds the asset reference.</p>
+<pre><code class="lang-cpp">EZ_ACCESSOR_PROPERTY(&quot;Effect&quot;, GetEffectFile, SetEffectFile)
+  -&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Particle_Effect&quot;)),
+EZ_MAP_ACCESSOR_PROPERTY(&quot;Parameters&quot;, ...)
+  -&gt;AddAttributes(new ezExposedParametersAttribute(&quot;Effect&quot;)),
+</code></pre>
+<h3 id="ezdynamicdefaultvalueattribute"><code>ezDynamicDefaultValueAttribute</code></h3>
+<p>Retrieves default values for an embedded class or container property from the asset meta data of an asset referenced by another property. Useful for exposing skeleton bone data or similar asset-driven defaults.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Skeleton&quot;, m_sSkeleton)
+  -&gt;AddAttributes(new ezAssetBrowserAttribute(&quot;CompatibleAsset_Skeleton&quot;)),
+EZ_MAP_MEMBER_PROPERTY(&quot;BoneTransforms&quot;, m_Bones)
+  -&gt;AddAttributes(new ezDynamicDefaultValueAttribute(&quot;Skeleton&quot;, &quot;ezSkeletonMetaData&quot;, &quot;Bones&quot;)),
+</code></pre>
+<h3 id="eznotemporarytransactionsattribute"><code>ezNoTemporaryTransactionsAttribute</code></h3>
+<p>Prevents the editor from creating an undo step for every incremental change to a property (such as each keystroke or slider tick). The change is only committed as a single undo step when editing is complete.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Name&quot;, m_sName)-&gt;AddAttributes(new ezNoTemporaryTransactionsAttribute()),
+</code></pre>
+<h2 id="scripting-attributes">Scripting Attributes</h2>
+<h3 id="ezscriptablefunctionattribute"><code>ezScriptableFunctionAttribute</code></h3>
+<p>Marks a function (declared via <code>EZ_SCRIPT_FUNCTION_PROPERTY</code>) as callable from script. The variadic arguments define each parameter's direction (<code>In</code>, <code>Out</code>, or <code>Inout</code>) and display name. This attribute is applied automatically by the <code>EZ_SCRIPT_FUNCTION_PROPERTY</code> macro.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_FUNCTIONS
+{
+  EZ_SCRIPT_FUNCTION_PROPERTY(FireProjectile, In, &quot;Direction&quot;, In, &quot;Speed&quot;),
+  EZ_SCRIPT_FUNCTION_PROPERTY(GetHealth, Out, &quot;Health&quot;),
+}
+EZ_END_FUNCTIONS;
+</code></pre>
+<h3 id="ezexcludefromscript"><code>ezExcludeFromScript</code></h3>
+<p>Prevents a function or property from being exposed to the scripting system even if it would otherwise qualify.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_FUNCTIONS
+{
+  EZ_FUNCTION_PROPERTY(InternalUpdate)-&gt;AddAttributes(new ezExcludeFromScript()),
+}
+EZ_END_FUNCTIONS;
+</code></pre>
+<h3 id="ezdynamicpinattribute"><code>ezDynamicPinAttribute</code></h3>
+<p>Marks an array or integer property as the source for dynamically generated pins on a visual script node. The argument is the name of the property that determines the number of pins.</p>
+<pre><code class="lang-cpp">EZ_ARRAY_MEMBER_PROPERTY(&quot;Inputs&quot;, m_Inputs)-&gt;AddAttributes(new ezDynamicPinAttribute()),
+</code></pre>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<h3 id="ezlongopattribute"><code>ezLongOpAttribute</code></h3>
+<p>Applied to a <strong>type</strong> to register a long-running editor operation (derived from <code>ezLongOpProxy</code>) that is triggered by the presence of this component in a scene. The editor will display a button to execute the operation with a progress dialog.</p>
+<pre><code class="lang-cpp">EZ_BEGIN_ATTRIBUTES
+{
+  new ezLongOpAttribute(&quot;ezBakingLongOp&quot;),
+}
+EZ_END_ATTRIBUTES;
+</code></pre>
+<h2 id="manipulator-attributes">Manipulator Attributes</h2>
+<p>Manipulators add <strong>interactive 3D handles</strong> to the editor viewport for a component's properties. They are placed on the <strong>type</strong> in the <code>EZ_BEGIN_ATTRIBUTES</code> block. Property names are passed as strings referring to existing reflected properties.</p>
+<h3 id="ezspheremanipulatorattribute"><code>ezSphereManipulatorAttribute</code></h3>
+<p>Displays a draggable sphere handle to edit a radius property. An optional inner radius property can be provided for a double-sphere (e.g. inner/outer radius).</p>
+<pre><code class="lang-cpp">new ezSphereManipulatorAttribute(&quot;OuterRadius&quot;, &quot;InnerRadius&quot;),
+</code></pre>
+<h3 id="ezcapsulemanipulatorattribute"><code>ezCapsuleManipulatorAttribute</code></h3>
+<p>Displays a capsule handle to edit height and radius properties.</p>
+<pre><code class="lang-cpp">new ezCapsuleManipulatorAttribute(&quot;Height&quot;, &quot;Radius&quot;),
+</code></pre>
+<h3 id="ezboxmanipulatorattribute"><code>ezBoxManipulatorAttribute</code></h3>
+<p>Displays a box handle to edit a size (vec3) property. <code>fSizeScale</code> multiplies the stored value for display. <code>bRecenterParent</code> repositions the owner object when the box is resized. Optional offset and rotation properties shift the displayed box.</p>
+<pre><code class="lang-cpp">new ezBoxManipulatorAttribute(&quot;Extents&quot;, 1.0f, false),
+new ezBoxManipulatorAttribute(&quot;Extents&quot;, 1.0f, false, &quot;Offset&quot;, &quot;Rotation&quot;),
+</code></pre>
+<h3 id="eznonuniformboxmanipulatorattribute"><code>ezNonUniformBoxManipulatorAttribute</code></h3>
+<p>Like <code>ezBoxManipulatorAttribute</code>, but each of the six faces is driven by a separate property, allowing asymmetric extents. Can be constructed either with six separate properties (<code>NegX</code>, <code>PosX</code>, <code>NegY</code>, <code>PosY</code>, <code>NegZ</code>, <code>PosZ</code>) or with three uniform size properties (<code>SizeX</code>, <code>SizeY</code>, <code>SizeZ</code>).</p>
+<pre><code class="lang-cpp">new ezNonUniformBoxManipulatorAttribute(&quot;NegX&quot;, &quot;PosX&quot;, &quot;NegY&quot;, &quot;PosY&quot;, &quot;NegZ&quot;, &quot;PosZ&quot;),
+</code></pre>
+<h3 id="ezconelengthmanipulatorattribute"><code>ezConeLengthManipulatorAttribute</code></h3>
+<p>Displays a draggable cone to edit a length/radius property.</p>
+<pre><code class="lang-cpp">new ezConeLengthManipulatorAttribute(&quot;ConeRadius&quot;),
+</code></pre>
+<h3 id="ezconeanglemanipulatorattribute"><code>ezConeAngleManipulatorAttribute</code></h3>
+<p>Displays a draggable cone to edit an angle property. <code>fScale</code> multiplies the cone length. An optional radius property drives the cone length instead.</p>
+<pre><code class="lang-cpp">new ezConeAngleManipulatorAttribute(&quot;OuterAngle&quot;, 1.0f, &quot;Range&quot;),
+</code></pre>
+<h3 id="eztransformmanipulatorattribute"><code>ezTransformManipulatorAttribute</code></h3>
+<p>Displays standard translate/rotate/scale gizmos for separate transform component properties.</p>
+<pre><code class="lang-cpp">new ezTransformManipulatorAttribute(&quot;LocalPosition&quot;, &quot;LocalRotation&quot;, &quot;LocalScale&quot;),
+</code></pre>
+<h3 id="ezbonemanipulatorattribute"><code>ezBoneManipulatorAttribute</code></h3>
+<p>Displays a bone transform manipulator for skeletal editing. The second argument names the property to bind to.</p>
+<pre><code class="lang-cpp">new ezBoneManipulatorAttribute(&quot;Transform&quot;, &quot;BoneName&quot;),
+</code></pre>
+<h3 id="ezsplinemanipulatorattribute"><code>ezSplineManipulatorAttribute</code></h3>
+<p>Displays the spline editing handles (control points and tangent handles). References properties for the node array, a closed flag, and a binding target.</p>
+<pre><code class="lang-cpp">new ezSplineManipulatorAttribute(&quot;Nodes&quot;, &quot;IsClosed&quot;, &quot;&quot;),
+</code></pre>
+<h3 id="ezsplinetangentmanipulatorattribute"><code>ezSplineTangentManipulatorAttribute</code></h3>
+<p>Displays tangent editing handles for individual spline nodes. Used on the node struct type.</p>
+<pre><code class="lang-cpp">new ezSplineTangentManipulatorAttribute(&quot;TangentMode&quot;, &quot;CustomTangent&quot;),
+</code></pre>
+<h2 id="visualizer-attributes">Visualizer Attributes</h2>
+<p>Visualizers draw <strong>non-interactive overlays</strong> in the viewport to show the bounds or shape of a component. Like manipulators, they are placed on the <strong>type</strong> in <code>EZ_BEGIN_ATTRIBUTES</code>. An optional <code>ezVisualizerAnchor</code> flag can anchor the shape to a face of the component's bounding box instead of its center.</p>
+<h3 id="ezboxvisualizerattribute"><code>ezBoxVisualizerAttribute</code></h3>
+<p>Draws a wireframe box. References a vec3 size property and optionally a color property, an offset property, and a rotation property.</p>
+<pre><code class="lang-cpp">new ezBoxVisualizerAttribute(&quot;Extents&quot;, 1.0f, ezColor::MediumAquamarine),
+new ezBoxVisualizerAttribute(&quot;Extents&quot;, 1.0f, ezColor::White, &quot;BoxColor&quot;, ezVisualizerAnchor::Center, ezVec3::MakeZero(), &quot;Offset&quot;),
+</code></pre>
+<h3 id="ezspherevisualizerattribute"><code>ezSphereVisualizerAttribute</code></h3>
+<p>Draws a wireframe sphere. References a radius property and optionally a color property and offset.</p>
+<pre><code class="lang-cpp">new ezSphereVisualizerAttribute(&quot;Radius&quot;, ezColor::MediumAquamarine),
+</code></pre>
+<h3 id="ezcapsulevisualizerattribute"><code>ezCapsuleVisualizerAttribute</code></h3>
+<p>Draws a wireframe capsule. References height and radius properties.</p>
+<pre><code class="lang-cpp">new ezCapsuleVisualizerAttribute(&quot;Height&quot;, &quot;Radius&quot;, ezColor::MediumAquamarine),
+</code></pre>
+<h3 id="ezcylindervisualizerattribute"><code>ezCylinderVisualizerAttribute</code></h3>
+<p>Draws a wireframe cylinder. References height and radius properties and a fixed or property-driven axis.</p>
+<pre><code class="lang-cpp">new ezCylinderVisualizerAttribute(ezBasisAxis::PositiveX, &quot;Height&quot;, &quot;Radius&quot;, ezColor::MediumAquamarine),
+</code></pre>
+<h3 id="ezdirectionvisualizerattribute"><code>ezDirectionVisualizerAttribute</code></h3>
+<p>Draws an arrow along a fixed or property-driven axis. <code>fScale</code> controls the arrow length, which can also be driven by a length property.</p>
+<pre><code class="lang-cpp">new ezDirectionVisualizerAttribute(ezBasisAxis::PositiveX, 0.5f, ezColor::MediumAquamarine),
+new ezDirectionVisualizerAttribute(ezBasisAxis::PositiveX, 1.0f, ezColor::White, &quot;Color&quot;, &quot;Length&quot;),
+</code></pre>
+<h3 id="ezconevisualizerattribute"><code>ezConeVisualizerAttribute</code></h3>
+<p>Draws a wireframe cone along a given axis. References an angle property and optionally a radius property and color property.</p>
+<pre><code class="lang-cpp">new ezConeVisualizerAttribute(ezBasisAxis::PositiveX, &quot;OuterAngle&quot;, 1.0f, &quot;Range&quot;, ezColor::MediumAquamarine),
+</code></pre>
+<h3 id="ezcameravisualizerattribute"><code>ezCameraVisualizerAttribute</code></h3>
+<p>Draws a camera frustum wireframe driven by mode, FOV, ortho dimension, and near/far plane properties.</p>
+<pre><code class="lang-cpp">new ezCameraVisualizerAttribute(&quot;Mode&quot;, &quot;FOV&quot;, &quot;OrthoDim&quot;, &quot;NearPlane&quot;, &quot;FarPlane&quot;),
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="reflection-system.html">Reflection System</a></li>
+<li><a href="world/components.html">Components</a></li>
+<li><a href="../custom-code/cpp/custom-cpp-component.html">Custom Components with C++</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/reflection-attributes.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

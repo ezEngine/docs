@@ -735,6 +735,15 @@
               "leaf": true
             },
             {
+              "name": "Shader Material Sections",
+              "href": "graphics/shaders/shader-material-sections.html",
+              "topicHref": "graphics/shaders/shader-material-sections.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Shaders",
               "href": "graphics/shaders/shaders-overview.html",
               "topicHref": "graphics/shaders/shaders-overview.html",
@@ -3212,6 +3221,15 @@
           "topicHref": null,
           "tocHref": null,
           "level": 3
+        },
+        {
+          "name": "Reflection Attributes",
+          "href": "runtime/reflection-attributes.html",
+          "topicHref": "runtime/reflection-attributes.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
         },
         {
           "name": "Reflection System",

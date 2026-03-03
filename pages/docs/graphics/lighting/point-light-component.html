@@ -102,6 +102,10 @@
 </li>
 <li><p><code>Use Color Temperature</code>: If enabled, the light color is defined through a temperature value. This makes it easier to set up physically accurate lighting conditions.</p>
 </li>
+<li><p><code>Temperature</code>: Visible when <code>Use Color Temperature</code> is enabled. Specifies the color temperature of the light in Kelvin. Lower values (around 2700 K) produce warm, orange-tinted light; higher values (around 6500 K) produce cool, blue-tinted light.</p>
+</li>
+<li><p><code>SpecularMultiplier</code>: A multiplier applied to the light's specular contribution. The default value of <code>1</code> uses the standard specular intensity. Set to <code>0</code> to make the light affect only diffuse lighting, or increase it beyond <code>1</code> to exaggerate specular highlights.</p>
+</li>
 <li><p><code>Range</code>: The distance over which the light source affects geometry. By default this is set to <code>Auto</code>, meaning the necessary range will be computed from the light's brightness. For full control, the range can be set manually. The light will always attenuate to zero within the given range, so by specifying a small range you can create a small, yet very bright light.</p>
 </li>
 </ul>

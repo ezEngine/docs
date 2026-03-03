@@ -4502,6 +4502,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/shaders/shader-material-sections.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/shaders/shader-material-sections.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/shaders/shader-permutation-variables.md",
       "output": {
         ".html": {
@@ -5906,6 +5916,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/runtime/filesystem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/runtime/reflection-attributes.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/runtime/reflection-attributes.html"
         }
       },
       "version": ""
