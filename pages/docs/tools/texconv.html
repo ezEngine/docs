@@ -91,6 +91,12 @@
 
 <p>TexConv is a command-line tool to process textures from typical input formats like PNG, TGA, JPEG and DDS into optimized formats for runtime consumption.
 The most common scenario is to convert a single input file <code>A.xxx</code> into an optimized format <code>B.yyy</code>. However, the tool has many additional options for advanced uses.</p>
+<p>TexConv operates in one of three modes, selected with <code>-mode</code>:</p>
+<ul>
+<li><code>-mode Convert</code> (default): Full texture conversion with channel mapping, compression, mipmap generation, etc.</li>
+<li><code>-mode Compare</code>: Compare two images and produce difference images and an HTML report.</li>
+<li><code>-mode Reduce</code>: Convert DDS or TGA files to JPG or PNG to reduce file size, without any texture processing.</li>
+</ul>
 <h2 id="command-line-help">Command-line Help</h2>
 <p>Run TexConv.exe with the <code>--help</code> parameter to list all available options. Additionally, TexConv prints the used options when it is executed, to help understand what it is doing. Consult this output for details.</p>
 <h2 id="general-usage">General Usage</h2>
@@ -180,6 +186,49 @@ The most common scenario is to convert a single input file <code>A.xxx</code> in
 <h3 id="image-comparison">Image Comparison</h3>
 <p>TexConv can also compare two images and generate difference images and an HTML page with embedded images for easy inspection.</p>
 <p>Use <code>-mode Compare</code> to enable comparison mode, and the <code>-cmpXYZ</code> options to configure which images to compare and what outputs to generate. Consult the <code>--help</code> output for details.</p>
+<h2 id="reduce-mode">Reduce Mode</h2>
+<p>Reduce mode converts DDS and TGA files to JPG or PNG without applying any texture processing such as compression or mipmap generation. It is intended to reduce the on-disk size of imported source assets.</p>
+<p>The output format is chosen automatically based on the alpha channel:</p>
+<ul>
+<li>If the image has no meaningful alpha (all pixels fully opaque), it is saved as <strong>JPG</strong>.</li>
+<li>If the image contains any non-trivial alpha values, it is saved as <strong>PNG</strong>.</li>
+</ul>
+<p>If an output file with the target name already exists, the file is skipped.</p>
+<h3 id="reduce-mode-options">Reduce Mode Options</h3>
+<ul>
+<li><code>-in</code> : Path to the input file, or a folder path. Append <code>*</code> to the folder path to process subdirectories recursively (e.g. <code>-in &quot;D:/textures/*&quot;</code>).</li>
+<li><code>-out</code> : Optional output path. Can be an existing directory, a direct output file path, or a directory path with a trailing <code>*</code> to mirror the input subfolder structure in the output.</li>
+<li><code>-deleteSource</code> : If set to <code>true</code>, the source file is deleted after a successful conversion.</li>
+</ul>
+<h3 id="reduce-mode-examples">Reduce Mode Examples</h3>
+<p>Convert a single file:</p>
+<pre><code class="lang-cmd">TexConv.exe -mode Reduce -in D:/texture.dds
+</code></pre>
+<p>Convert all DDS and TGA files in a folder recursively, deleting the originals:</p>
+<pre><code class="lang-cmd">TexConv.exe -mode Reduce -in &quot;D:/textures/*&quot; -deleteSource true
+</code></pre>
+<p>Convert files in a folder and place outputs in a separate directory, mirroring the folder structure:</p>
+<pre><code class="lang-cmd">TexConv.exe -mode Reduce -in &quot;D:/textures/*&quot; -out &quot;D:/output/*&quot;
+</code></pre>
+<h2 id="utility-scripts-for-reducing-texture-sizes">Utility Scripts for Reducing Texture Sizes</h2>
+<p>The repository provides PowerShell scripts in <code>Utilities/Scripts/</code> to automate texture size reduction on a folder of assets.</p>
+<h3 id="reduce-texture-sizesps1">reduce-texture-sizes.ps1</h3>
+<p>Orchestrates DDS/TGA conversion and optional post-processing of the resulting JPG and PNG files.</p>
+<pre><code class="lang-powershell">./reduce-texture-sizes.ps1 &quot;C:/path/to/folder&quot; [-Convert] [-OptimizeJpeg] [-OptimizePng]
+</code></pre>
+<ul>
+<li><code>-Convert</code>: Runs TexConv in reduce mode on all DDS and TGA files in the folder (recursively). Source files are deleted after successful conversion.</li>
+<li><code>-OptimizeJpeg</code>: Runs <code>optimize-jpeg.ps1</code> on all JPG files afterwards.</li>
+<li><code>-OptimizePng</code>: Runs <code>optimize-png.ps1</code> on all PNG files afterwards.</li>
+</ul>
+<h3 id="optimize-jpegps1">optimize-jpeg.ps1</h3>
+<p>Recompresses all JPG files in a folder using <a href="https://github.com/imagemin/mozjpeg-bin">mozjpeg</a>. Requires Node.js and mozjpeg installed globally (<code>npm install --global mozjpeg</code>). Files inside <code>AssetCache</code> directories are skipped.</p>
+<pre><code class="lang-powershell">./optimize-jpeg.ps1 &quot;C:/path/to/folder&quot;
+</code></pre>
+<h3 id="optimize-pngps1">optimize-png.ps1</h3>
+<p>Recompresses all PNG files in a folder using <code>optipng</code>, which ships with the repository at <code>Data/Tools/Precompiled/optipng/optipng.exe</code>. Files inside <code>AssetCache</code> directories are skipped.</p>
+<pre><code class="lang-powershell">./optimize-png.ps1 &quot;C:/path/to/folder&quot;
+</code></pre>
 <h2 id="examples">Examples</h2>
 <h3 id="convert-a-color-texture">Convert a Color Texture</h3>
 <pre><code class="lang-cmd">TexConv.exe -out D:/diffuse.dds -in0 D:/diffuse.jpg -rgba in0 -usage color

@@ -99,21 +99,18 @@
 </li>
 <li><p>Attach a <em>spline node component</em> to each child object.</p>
 </li>
-<li><p>Give each child object a different name. It is easiest to just give them numbers in the order in which you want them to be used in the spline.</p>
+<li><p>Position the child objects in the world to form a spline. Enable the <code>Visualize Spline</code> flag to see a preview of the curve.</p>
 <p><img src="media/path-hierarchy.png" alt="Path hierarchy config"></p>
 </li>
-<li><p>Add those names in the desired order to the <strong>Nodes</strong> property of the spline component.</p>
-<p><img src="media/path-properties.png" alt="Path property config"></p>
-</li>
-<li><p>Position the child objects in the world to form a spline. Enable the <code>Visualize Spline</code> flag to see a preview of the curve.</p>
-</li>
 </ol>
+<p>The spline uses the child objects in the order in which they appear in the scene hierarchy. To change the order of spline nodes, reorder the child objects in the <a href="../../editor/editor-views.html">scene tree</a>. Node names do not need to be unique.</p>
 <h3 id="editing-tips">Editing Tips</h3>
 <p>When editing a spline you often need to select the child path nodes and then go back to the spline object. <code>Ctrl+Q</code> selects the parent object of the currently selected object, which is very useful here. Also <code>Ctrl+B</code> changes to the previous selection, which can also be used to <em>undo</em> a selection change.</p>
+<p>The <em>Edit Nodes</em> manipulator is available both when the spline object itself is selected and when one of its child nodes is selected. This avoids having to switch back to the parent object to add or adjust nodes.</p>
 <h3 id="adding-points-interactively">Adding Points Interactively</h3>
-<p>When the <em>Edit Nodes</em> manipulator is active, small gizmos appear on each spline segment. Click on a segment gizmo to insert a new spline node at that position. The editor automatically creates a child game object with a spline node component, gives it a proper name and adds it to the nodes list.</p>
+<p>When the <em>Edit Nodes</em> manipulator is active, small gizmos appear at the midpoint of each spline segment. Click on a segment gizmo to insert a new spline node at that position. The new node is immediately selected.</p>
 <p><img src="media/spline-edit.jpg" alt="Spline editing"></p>
-<p>To re-enable <em>manipulator mode</em> after translating an object, press <code>Q</code> or click on the <code>Edit Nodes</code> property again.</p>
+<p>To re-enable <em>manipulator mode</em> after translating an object, press <code>Q</code> to cycle back to the <em>Edit Nodes</em> manipulator, or click the toggle button next to the <code>Edit Nodes</code> property.</p>
 <h3 id="editing-tangents">Editing Tangents</h3>
 <p>Each spline node can have its tangent mode set to <em>Auto</em>, <em>Linear</em> or <em>Custom</em>:</p>
 <ul>
@@ -150,7 +147,6 @@
 <ul>
 <li><code>Flags</code>: Preview flags for the spline. Options include <em>Visualize Spline</em>, <em>Visualize Up Dir</em>, and <em>Visualize Tangents</em>.</li>
 <li><code>Closed</code>: Whether the spline should loop back to the first node.</li>
-<li><code>Nodes</code>: This array references all nodes by name or <a href="../../concepts/object-paths.html">object path</a>. Non-existing names are ignored.</li>
 </ul>
 <p>Also see the <a href="spline-node-component.html">spline node component</a> for options on each node.</p>
 <h2 id="see-also">See Also</h2>

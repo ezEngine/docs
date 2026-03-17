@@ -7428,6 +7428,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/samples/bistro-sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/bistro-sample.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/samples/crazyball.md",
       "output": {
         ".html": {
@@ -7482,6 +7492,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/samples/media/asteroids1.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/bistro-sample.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/bistro-sample.jpg"
         }
       },
       "version": ""
