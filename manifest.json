@@ -7165,6 +7165,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/tutorials/custom-instance-shader-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tutorials/custom-instance-shader-data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/ui/imgui.md",
       "output": {
         ".html": {

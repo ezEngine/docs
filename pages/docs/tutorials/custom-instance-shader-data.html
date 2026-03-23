@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Tutorial: Custom Per-Instance Shader Data | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Tutorial: Custom Per-Instance Shader Data | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tutorials/custom-instance-shader-data.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="tutorial-custom-per-instance-shader-data">Tutorial: Custom Per-Instance Shader Data</h1>
+
+<p>When rendering objects ezEngine passes a <code>perInstanceData</code> buffer to shaders containing standard per-object information: transform, color, a <code>GameObjectID</code>, and a small <code>CustomData</code> vec4 (see <a href="https://github.com/ezEngine/ezEngine/blob/dev/Data/Base/Shaders/Common/ObjectConstants.h">ObjectConstants.h</a>).</p>
+<p>For cases where the 4-float <code>CustomData</code> channel is insufficient, the renderer supports an additional, fully custom structured buffer that can be attached to any mesh component. This tutorial walks you through the required steps to add such a buffer.</p>
+<h2 id="how-it-works">How It Works</h2>
+<p>A component manager registers a typed GPU buffer once per world via <code>ezRenderDataManager</code>. Each component that needs the data allocates a slot in that buffer, writes its data (potentially every frame), and passes the buffer handle + slot offset to the mesh component it wants to apply it to. The renderer then binds the buffer to the <code>perInstanceDataCustom</code> shader resource slot and stores the slot index in <code>DataOffsets.y</code>, where shaders can read it.</p>
+<p>Two in-engine examples that use this system:</p>
+<ul>
+<li><strong><code>ezProcVertexColorComponent</code></strong> (<a href="https://github.com/ezEngine/ezEngine/blob/dev/Code/EnginePlugins/ProcGenPlugin/Components/ProcVertexColorComponent.h">ProcVertexColorComponent.h</a>) — stores per-vertex color data for procedurally-painted meshes.</li>
+<li><strong><code>ezMeshComponentBase::SetCustomInstanceData()</code></strong> (<a href="https://github.com/ezEngine/ezEngine/blob/dev/Code/Engine/RendererCore/Meshes/MeshComponentBase.h#L128">MeshComponentBase.h</a>) — the API through which any component attaches a custom buffer to a mesh.</li>
+</ul>
+<h2 id="step-1-define-the-data-struct">Step 1: Define the Data Struct</h2>
+<p>Create a header that is usable from both C++ and HLSL using the <code>EZ_SHADER_STRUCT</code> / shader macro system:</p>
+<pre><code class="lang-cpp">// MyInstanceData.h  (include from both C++ and .ezShader files)
+#include &lt;Shaders/Common/Platforms.h&gt;
+#include &lt;Shaders/Common/ConstantBufferMacros.h&gt;
+
+struct EZ_SHADER_STRUCT MyCustomInstanceData
+{
+    TRANSFORM(WorldToObject);   // expands to ezShaderTransform (C++) / Transform (HLSL)
+    FLOAT4(CustomParams);       // expands to ezVec4 (C++) / float4 (HLSL)
+};
+</code></pre>
+<p>All available field macros are defined in <a href="https://github.com/ezEngine/ezEngine/blob/dev/Data/Base/Shaders/Common/ConstantBufferMacros.h">ConstantBufferMacros.h</a>.</p>
+<h2 id="step-2-register-the-buffer-in-the-component-manager">Step 2: Register the Buffer in the Component Manager</h2>
+<p>You need a custom component manager (not <code>ezComponentManagerSimple</code>) so you can override <code>Initialize()</code> and <code>Deinitialize()</code>. Call <code>RegisterCustomInstanceData()</code> once and store the returned index — it is your handle to this buffer for the lifetime of the world.</p>
+<pre><code class="lang-cpp">// MyComponent.h
+class MyComponentManager : public ezComponentManager&lt;MyComponent, ezBlockStorageType::FreeList&gt;
+{
+public:
+    MyComponentManager(ezWorld* pWorld);
+    virtual void Initialize() override;
+    virtual void Deinitialize() override;
+
+    ezUInt32 m_uiCustomDataIndex = ezInvalidIndex;
+};
+</code></pre>
+<pre><code class="lang-cpp">// MyComponent.cpp
+#include &lt;RendererCore/Pipeline/RenderDataManager.h&gt;
+#include &lt;RendererFoundation/Device/Device.h&gt;
+
+void MyComponentManager::Initialize()
+{
+    SUPER::Initialize();
+
+    ezGALBufferCreationDescription desc;
+    desc.m_uiStructSize = sizeof(MyCustomInstanceData);
+    desc.m_uiTotalSize  = 256 * desc.m_uiStructSize;  // initial capacity; the buffer grows as needed
+    desc.m_ResourceAccess.m_bImmutable = false;
+    desc.m_BufferFlags = ezGALBufferUsageFlags::StructuredBuffer | ezGALBufferUsageFlags::ShaderResource;
+
+    ezRenderDataManager* pRdm = GetWorld()-&gt;GetOrCreateModule&lt;ezRenderDataManager&gt;();
+    m_uiCustomDataIndex = pRdm-&gt;RegisterCustomInstanceData(desc, &quot;MyCustomInstanceData&quot;);
+}
+
+void MyComponentManager::Deinitialize()
+{
+    SUPER::Deinitialize();
+}
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> <code>RegisterCustomInstanceData()</code> accepts an optional <code>beforeUploadCallback</code> delegate. Use it if your data is produced asynchronously (e.g. by a task), so you can wait for the task to finish before the GPU upload happens. See <code>ezProcVertexColorComponentManager::Initialize()</code> in <a href="https://github.com/ezEngine/ezEngine/blob/dev/Code/EnginePlugins/ProcGenPlugin/Components/Implementation/ProcVertexColorComponent.cpp">ProcVertexColorComponent.cpp</a> for an example.</p>
+</blockquote>
+<h2 id="step-3-store-a-slot-offset-per-component-instance">Step 3: Store a Slot Offset per Component Instance</h2>
+<p>Each component (or each mesh it controls) needs one <code>ezCustomInstanceDataOffset</code> to track its position within the shared buffer. It starts invalidated (<code>m_uiOffset == ezInvalidIndex</code>) and gets a real value on first write.</p>
+<pre><code class="lang-cpp">// MyComponent.h  (inside the component class)
+private:
+    ezCustomInstanceDataOffset m_CustomDataOffset;
+    ezComponentHandle m_hMeshComponent;   // the mesh this data applies to
+</code></pre>
+<h2 id="step-4-write-data-each-frame">Step 4: Write Data Each Frame</h2>
+<p>Call <code>GetOrCreateCustomInstanceDataAndFill()</code> to allocate or update the slot, then hand the buffer handle and offset to the mesh component. Do this wherever you update your component's state — an <code>Update()</code> function or <code>OnMsgExtractRenderData</code> are both valid choices.</p>
+<pre><code class="lang-cpp">#include &lt;RendererCore/Meshes/MeshComponentBase.h&gt;
+
+void MyComponent::UpdateShaderData()
+{
+    auto* pManager = static_cast&lt;MyComponentManager*&gt;(GetOwningManager());
+    ezRenderDataManager* pRdm = GetWorld()-&gt;GetOrCreateModule&lt;ezRenderDataManager&gt;();
+
+    MyCustomInstanceData data;
+    data.m_WorldToObject = GetOwner()-&gt;GetGlobalTransform().GetInverse();
+    data.m_CustomParams  = ezVec4(1, 0, 0, 1);
+
+    ezMeshComponentBase* pMesh = nullptr;
+    if (!GetWorld()-&gt;TryGetComponent(m_hMeshComponent, pMesh))
+        return;
+
+    const ezGALDynamicBufferHandle hBuffer = pRdm-&gt;GetOrCreateCustomInstanceDataAndFill(
+        pManager-&gt;m_uiCustomDataIndex, *pMesh, m_CustomDataOffset, data);
+
+    pMesh-&gt;SetCustomInstanceData(m_CustomDataOffset, hBuffer);
+}
+</code></pre>
+<p><code>GetOrCreateCustomInstanceDataAndFill()</code> is declared in <a href="https://github.com/ezEngine/ezEngine/blob/dev/Code/Engine/RendererCore/Pipeline/RenderDataManager.h#L74">RenderDataManager.h</a>. If you need to write an array of structs (e.g. one entry per vertex), use <code>GetOrCreateCustomInstanceData()</code> instead, which returns an <code>ezArrayPtr&lt;T&gt;</code> you can fill manually.</p>
+<h2 id="step-5-release-the-slot-on-deactivation">Step 5: Release the Slot on Deactivation</h2>
+<p>When a component is deactivated, release its slot so the memory can be reused:</p>
+<pre><code class="lang-cpp">void MyComponent::OnDeactivated()
+{
+    auto* pManager = static_cast&lt;MyComponentManager*&gt;(GetOwningManager());
+    ezRenderDataManager* pRdm = GetWorld()-&gt;GetModule&lt;ezRenderDataManager&gt;();
+    if (pRdm)
+        pRdm-&gt;DeleteCustomInstanceData(pManager-&gt;m_uiCustomDataIndex, m_CustomDataOffset);
+
+    SUPER::OnDeactivated();
+}
+</code></pre>
+<h3 id="optional-handle-buffer-compaction">Optional: Handle Buffer Compaction</h3>
+<p>Over time, if slots of varying sizes are allocated and freed, the buffer may become fragmented. Call <code>CompactCustomInstanceDataBuffer()</code> periodically (e.g. once per second) to defragment it. When the buffer is compacted, offsets change — any component that is <em>not</em> the owner of its mesh component must listen for <code>ezMsgCustomInstanceDataOffsetChanged</code> and update the mesh:</p>
+<pre><code class="lang-cpp">// In component reflection block:
+EZ_MESSAGE_HANDLER(ezMsgCustomInstanceDataOffsetChanged, OnCustomInstanceDataOffsetChanged)
+
+// Handler implementation:
+void MyComponent::OnCustomInstanceDataOffsetChanged(ezMsgCustomInstanceDataOffsetChanged&amp; msg)
+{
+    m_CustomDataOffset = msg.m_NewOffset;
+
+    ezMeshComponentBase* pMesh = nullptr;
+    if (GetWorld()-&gt;TryGetComponent(m_hMeshComponent, pMesh))
+        pMesh-&gt;SetCustomInstanceData(m_CustomDataOffset, pMesh-&gt;GetCustomInstanceDataBuffer());
+}
+</code></pre>
+<p><code>ezMsgCustomInstanceDataOffsetChanged</code> is declared in <a href="https://github.com/ezEngine/ezEngine/blob/dev/Code/Engine/RendererCore/Pipeline/RenderData.h#L228">RenderData.h</a>.</p>
+<h2 id="step-6-declare-the-buffer-in-your-shader">Step 6: Declare the Buffer in Your Shader</h2>
+<p>In your <code>.ezShader</code> file, include your data struct header and declare the <code>perInstanceDataCustom</code> resource. The name and bind group are fixed — the renderer always binds the custom buffer to this slot.</p>
+<pre><code class="lang-hlsl">#include &quot;MyInstanceData.h&quot;
+
+StructuredBuffer&lt;MyCustomInstanceData&gt; perInstanceDataCustom BIND_GROUP(BG_DRAW_CALL);
+</code></pre>
+<p>Access the data using <code>DataOffsets.y</code> as the index. The <code>DataOffsets</code> semantic is available in the vertex shader input after calling <code>FillVertexData()</code>:</p>
+<pre><code class="lang-hlsl">// In your vertex shader:
+MyCustomInstanceData customData = perInstanceDataCustom[G.Input.DataOffsets.y];
+float4x4 worldToObject = TransformToMatrix(customData.WorldToObject);
+</code></pre>
+<p>The four offset channels in <code>DataOffsets</code> are:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.x</code></td>
+<td>Standard instance data index (<code>perInstanceData</code>)</td>
+</tr>
+<tr>
+<td><code>.y</code></td>
+<td>Custom instance data index (<code>perInstanceDataCustom</code>)</td>
+</tr>
+<tr>
+<td><code>.z</code></td>
+<td>Material data index</td>
+</tr>
+<tr>
+<td><code>.w</code></td>
+<td>Skinning data index</td>
+</tr>
+</tbody>
+</table>
+<p>The standard <code>perInstanceData</code> buffer (transform, color, <code>CustomData</code> vec4) is still accessible alongside the custom buffer via <code>GetInstanceData()</code> or <code>perInstanceData[G.Input.DataOffsets.x]</code>. See <a href="https://github.com/ezEngine/ezEngine/blob/dev/Data/Base/Shaders/Common/ObjectConstants.h">ObjectConstants.h</a> for its layout.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../custom-code/cpp/custom-cpp-component.html">Custom C++ Components</a></li>
+<li><a href="../graphics/shaders/shader-render-state.html">Shader Render State</a></li>
+<li><a href="../graphics/meshes/meshes-overview.html">Meshes</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tutorials/custom-instance-shader-data.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -3653,6 +3653,23 @@
       "level": 2
     },
     {
+      "name": "Tutorials",
+      "items": [
+        {
+          "name": "Tutorial: Custom Per-Instance Shader Data",
+          "href": "tutorials/custom-instance-shader-data.html",
+          "topicHref": "tutorials/custom-instance-shader-data.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        }
+      ],
+      "topicHref": null,
+      "tocHref": null,
+      "level": 2
+    },
+    {
       "name": "Appendix",
       "items": [
         {
