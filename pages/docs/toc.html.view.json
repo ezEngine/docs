@@ -1477,6 +1477,15 @@
                   "leaf": true
                 },
                 {
+                  "name": "Bounds Sphere Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-bounds-sphere.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-bounds-sphere.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
                   "name": "Wind Behavior",
                   "href": "effects/particle-effects/behaviors/pb-wind.html",
                   "topicHref": "effects/particle-effects/behaviors/pb-wind.html",
@@ -1489,6 +1498,15 @@
                   "name": "Fade Out Behavior",
                   "href": "effects/particle-effects/behaviors/pb-fade-out.html",
                   "topicHref": "effects/particle-effects/behaviors/pb-fade-out.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Attract Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-attract.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-attract.html",
                   "tocHref": null,
                   "level": 5,
                   "items": [],
@@ -1525,6 +1543,15 @@
                   "name": "Raycast Behavior",
                   "href": "effects/particle-effects/behaviors/pb-raycast.html",
                   "topicHref": "effects/particle-effects/behaviors/pb-raycast.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Turbulence Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-turbulence.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-turbulence.html",
                   "tocHref": null,
                   "level": 5,
                   "items": [],
@@ -1584,6 +1611,15 @@
               "name": "Particle Effect Component",
               "href": "effects/particle-effects/particle-effect-component.html",
               "topicHref": "effects/particle-effects/particle-effect-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Particle Attractor Component",
+              "href": "effects/particle-effects/particle-attractor-component.html",
+              "topicHref": "effects/particle-effects/particle-attractor-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],

@@ -3062,6 +3062,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-attract.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-attract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-bounds-sphere.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-bounds-sphere.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-bounds.md",
       "output": {
         ".html": {
@@ -3162,6 +3182,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-turbulence.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-turbulence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-velocity.md",
       "output": {
         ".html": {
@@ -3192,10 +3222,30 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/attractors.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/attractors.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/effects/particle-effects/media/billboards.webm",
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/particle-effects/media/billboards.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/bounds-sphere.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/bounds-sphere.mp4"
         }
       },
       "version": ""
@@ -3492,6 +3542,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/effects/particle-effects/media/turbulence.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/effects/particle-effects/media/turbulence.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/effects/particle-effects/media/variance-value.png",
       "output": {
         "resource": {
@@ -3516,6 +3576,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/effects/particle-effects/media/velocity.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/particle-attractor-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/particle-attractor-component.html"
         }
       },
       "version": ""
