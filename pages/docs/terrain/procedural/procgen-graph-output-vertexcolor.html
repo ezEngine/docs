@@ -91,7 +91,7 @@
 
 <p>The <em>Vertex Color Output</em> node defines what procedurally computed color values get written per vertex onto a mesh. It is the counterpart to the <a href="procgen-graph-output-placement.html">Placement Output</a> node, but instead of spawning objects it drives vertex colors on an existing mesh.</p>
 <p>A <a href="procgen-graph-asset.html">ProcGen graph</a> can contain multiple vertex color output nodes. Each one represents an independent RGBA layer of vertex color data. They are consumed by the <a href="procgen-vertex-color-component.html">Procedural Vertex Color Component</a>, which applies them to a mesh at runtime.</p>
-<!-- ![ProcGen vertex color output node](media/procgen-vertexcolor-output-node.jpg) -->
+<!-- !ProcGen vertex color output node media/procgen-vertexcolor-output-node.jpg -->
 <h2 id="how-it-works">How It Works</h2>
 <p>When a <a href="procgen-vertex-color-component.html">Procedural Vertex Color Component</a> evaluates the ProcGen graph, it iterates over every vertex of the attached mesh. For each vertex it feeds the following data into the graph as inputs:</p>
 <ul>

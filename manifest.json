@@ -151,6 +151,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/detour-crowd-agent-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/detour-crowd-agent-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Resource",
       "source_relative_path": "pages/docs/ai/AiPlugin/media/ai-navmesh.jpg",
       "output": {
@@ -1822,6 +1832,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/custom-code/expressions.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/custom-code/expressions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/custom-code/game-logic/forward-events-to-game-state-component.md",
       "output": {
         ".html": {
@@ -3102,6 +3122,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-expression.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/effects/particle-effects/behaviors/pb-expression.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/particle-effects/behaviors/pb-fade-out.md",
       "output": {
         ".html": {
@@ -4072,6 +4102,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/lighting/light-shafts-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/lighting/light-shafts-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/lighting/lighting-overview.md",
       "output": {
         ".html": {
@@ -4126,6 +4166,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/graphics/lighting/media/light-material.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/light-shafts.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/light-shafts.jpg"
         }
       },
       "version": ""

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Animation Events | ezEngine </title>
+      <title>Detour Crowd Agent Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Animation Events | ezEngine ">
+      <meta name="title" content="Detour Crowd Agent Component | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-events.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/detour-crowd-agent-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,29 +87,49 @@
         </div>
 
         <article data-uid="">
-<h1 id="animation-events">Animation Events</h1>
+<h1 id="detour-crowd-agent-component">Detour Crowd Agent Component</h1>
 
-<p><em>Animation events</em> are markers that are placed in <a href="animation-clip-asset.html">animation clip assets</a> to indicate that something of interest happens at a certain time during playback.</p>
-<p>These events can be used for mundane things like <em>foot down</em> markers, in a walking animation, to vital gameplay information like <em>shot fired</em> in an attack animation.</p>
-<p>Whenver the EZ animation system plays back any animation clip, it also inspects the <em>event track</em>. For every event that it encounters, it broadcasts an <code>ezMsgGenericEvent</code> with <code>Message</code> set to the value of the event's name.</p>
-<p>If you have an <a href="../../custom-code/angelscript/angelscript-overview.html">AngelScript</a> or <a href="../../custom-code/visual-script/visual-script-overview.html">Visual Script</a> (or <a href="../../custom-code/cpp/custom-cpp-component.html">custom C++ components</a> that is also an event handler) attached to any parent node of the animated mesh, you can handle this type of event and react with the desired game logic.</p>
-<p><video src="../media/anim-point-shoot.webm" width="500" height="500" autoplay loop></video></p>
-<p>In the video above, the clip contains a marker for when a shot is fired. A script reacts to this by spawning a projectile. In this example one could also just spawn the projectile at the same time at which the shoot animation is triggered, however, if the animation was longer, the exact time at which to do this, would be more difficult to estimate and using an event makes it much easier.</p>
-<p><video src="../media/anim-clip.webm" width="800" height="600" autoplay loop></video></p>
-<p>The clip above shows the event track at the bottom of an <a href="animation-clip-asset.html">animation clip asset</a>. This is how you add event markers to a clip.</p>
+<p>The <em>Detour Crowd Agent</em> component provides navigation and local obstacle avoidance for characters, using the Recast/Detour crowd system. Unlike the <a href="navigation-component.html">AI Navigation Component</a>, it handles multiple agents simultaneously and resolves collisions between them through a shared crowd simulation.</p>
+<p>All agents that share the same <a href="runtime-navmesh.html">navmesh configuration</a> are grouped into a single crowd internally. Each agent avoids others in the same crowd while following its own path.</p>
+<h2 id="usage">Usage</h2>
+<p>Call <code>SetDestination()</code> from <a href="../../custom-code/custom-code-overview.html">script</a> or C++ to make the agent navigate toward a position. If the destination is not exactly on the navmesh, the nearest reachable point is used as the actual target; <code>GetActualDestination()</code> returns that point.</p>
+<p><code>HasDestination()</code> returns true while the agent is still navigating. <code>CancelNavigation()</code> stops movement and clears the destination.</p>
+<p>If <code>AllowPartialPath</code> is false and pathfinding fails entirely, the <code>SteeringFailed</code> bit is set on the component.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><strong>NavmeshConfig:</strong> Which <a href="runtime-navmesh.html#navmesh-types">navmesh type</a> the agent walks on.</li>
+<li><strong>Radius:</strong> The agent's horizontal radius, used for navmesh queries and inter-agent avoidance.</li>
+<li><strong>Height:</strong> The agent's vertical extent.</li>
+<li><strong>MaxSpeed:</strong> Maximum movement speed in meters per second.</li>
+<li><strong>MaxAcceleration:</strong> How quickly the agent reaches its target speed.</li>
+<li><strong>StoppingDistance:</strong> When the agent is within this distance of the destination, it considers the destination reached and stops.</li>
+<li><strong>MaxAngularSpeed:</strong> Maximum rotation speed in degrees per second.</li>
+<li><strong>RotationMode:</strong> Controls how the agent orients itself while moving:
+<ul>
+<li><code>LookAtNextPathCorner</code> — rotates toward the next waypoint on the path.</li>
+<li><code>MatchVelocityDirection</code> — rotates to match the current velocity direction.</li>
+</ul>
+</li>
+<li><strong>Pushiness:</strong> Determines priority in agent-to-agent collisions. An agent pushes others with lower pushiness and gets pushed by agents with higher pushiness.</li>
+</ul>
+<h2 id="debug-cvars">Debug CVars</h2>
+<p>The following <a href="../../debugging/cvars.html">CVars</a> can be used to visualize crowd state at runtime:</p>
+<ul>
+<li><code>DetourCrowd.Debug.VisAgents</code> — draws agent shapes.</li>
+<li><code>DetourCrowd.Debug.VisCorners</code> — draws the next few path corners for each agent.</li>
+<li><code>DetourCrowd.Debug.VisDestination</code> — draws agent destination points.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="skeletal-animation-overview.html">Skeletal Animations</a></li>
-<li><a href="animation-clip-asset.html">Animation Clip Asset</a></li>
-<li><a href="animation-graphs/anim-nodes-events.html">Event Nodes</a></li>
-<li><a href="../../custom-code/custom-code-overview.html">Custom Code</a></li>
-<li><a href="../../runtime/world/world-messaging.html">Messaging</a></li>
+<li><a href="navigation-component.html">AI Navigation Component</a></li>
+<li><a href="runtime-navmesh.html">Runtime Navmesh</a></li>
+<li><a href="ai-plugin-overview.html">AiPlugin Overview</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/animation/skeletal-animation/animation-events.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/detour-crowd-agent-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

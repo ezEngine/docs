@@ -90,7 +90,7 @@
 <h1 id="procedural-vertex-color-component">Procedural Vertex Color Component</h1>
 
 <p>The <em>Procedural Vertex Color Component</em> applies procedurally computed vertex colors to a mesh at runtime. It uses a <a href="procgen-graph-asset.html">ProcGen graph</a> containing one or more <a href="procgen-graph-output-vertexcolor.html">Vertex Color Output</a> nodes, and writes the resulting per-vertex RGBA data into a GPU buffer that the mesh's material shader can sample.</p>
-<!-- ![Procedural vertex colors applied to a mesh](media/procgen-vertexcolor-component.jpg) -->
+<!-- Procedural vertex colors applied to a mesh media/procgen-vertexcolor-component.jpg -->
 <p>This is the vertex-color equivalent of the <a href="procgen-placement-component.html">Procedural Placement Component</a>. It is what connects the graph's vertex color outputs to an actual mesh in the scene.</p>
 <h2 id="how-it-works">How It Works</h2>
 <p>The component requires a <a href="../../graphics/meshes/mesh-component.html">mesh component</a> on the <strong>same game object</strong>. When the component activates — or when any relevant data changes — it iterates over every vertex of that mesh. For each vertex it evaluates the ProcGen graph, passing the vertex's world-space position, world-space normal, and original authored vertex colors as inputs. The resulting RGBA values are uploaded to a GPU buffer.</p>

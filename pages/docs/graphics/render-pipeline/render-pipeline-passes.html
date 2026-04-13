@@ -176,6 +176,17 @@
 <li><code>DepthCompareFunction</code>: How depth is evaluated when gathering samples — <code>Depth</code> (hard cutoff), <code>Normal</code> (plane-weighted), or <code>NormalAndSampleDistance</code> (plane and sample-distance weighted).</li>
 <li><code>DistributedGathering</code>: Spreads gather samples across multiple frames to reduce per-frame cost.</li>
 </ul>
+<h2 id="light-shafts-pass">Light Shafts Pass</h2>
+<p>Screen-space post-processing pass that produces volumetric light shaft effects (god rays / crepuscular rays) from the brightest directional light. It builds a mask from the depth buffer, applies a radial blur toward the projected light source position, and additively composites the result into the scene color.</p>
+<p>The pass reads light shaft parameters from the <a href="../lighting/light-shafts-component.html">Light Shafts Component</a> present in the scene.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>DownsampleFactor</code>: How much to downsample the internal mask texture before blurring. Higher values reduce cost but lower the precision of the effect.</li>
+<li><code>NumBlurPasses</code>: Number of radial blur iterations. More passes produce smoother, longer shafts at increased cost.</li>
+<li><code>NumSamples</code>: Number of samples taken per blur pass along each ray.</li>
+<li><code>MaxBlurDistance</code>: Maximum length of the radial blur in normalized screen space. Larger values produce longer shafts.</li>
+</ul>
+<p><strong>Required Extractor:</strong> <a href="render-pipeline-extractors.html#clustered-data-extractor">Clustered Data Extractor</a></p>
 <h2 id="msaa-resolve-pass">MSAA Resolve Pass</h2>
 <p>Resolves a multi-sampled render target into a regular texture by averaging the samples. Required before passing MSAA output into passes that cannot process multi-sampled textures.</p>
 <p><strong>Properties:</strong></p>
@@ -214,6 +225,15 @@
 <li><code>HighlightColor</code>: Outline and overlay color.</li>
 <li><code>OverlayOpacity</code>: Opacity of the fill drawn over the selected object.</li>
 </ul>
+<h2 id="screen-space-shadow-pass">Screen Space Shadow Pass</h2>
+<p>Generates a screen-space shadow mask using per-pixel ray marching against the depth buffer. The shadow mask is used by directional lights that have <code>ScreenSpaceShadows</code> enabled to produce contact shadows for surfaces that are too fine for shadow maps to capture.</p>
+<p>The pass takes a resolved depth buffer as input and produces a single-channel shadow factor texture. This texture is consumed by the <a href="#opaque-forward-render-pass">Opaque Forward Render Pass</a> during lighting.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>SurfaceThickness</code>: Controls how thick surfaces are considered to be during the ray march. Smaller values produce thinner, tighter contact shadows; larger values tolerate more depth variation before the shadow terminates. Range: <code>0.001</code> to <code>0.5</code>, default <code>0.005</code>.</li>
+<li><code>ShadowContrast</code>: Sharpens or softens the shadow falloff. Higher values give harder shadow edges; lower values produce a more gradual falloff. Range: <code>1.0</code> to <code>10.0</code>, default <code>4.0</code>.</li>
+</ul>
+<p>See <a href="../lighting/dynamic-shadows.html#screen-space-shadows">Screen Space Shadows</a> for usage instructions.</p>
 <h2 id="separated-bilateral-blur-pass">Separated Bilateral Blur Pass</h2>
 <p>A depth-aware blur that preserves silhouette edges. Uses a two-pass separable bilateral filter that considers both spatial distance and depth difference, preventing blur from bleeding across object boundaries. Commonly used to smooth out SSAO or similar noisy per-pixel effects.</p>
 <p><strong>Properties:</strong></p>

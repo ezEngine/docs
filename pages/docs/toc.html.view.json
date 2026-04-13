@@ -690,6 +690,15 @@
               "leaf": true
             },
             {
+              "name": "Light Shafts Component",
+              "href": "graphics/lighting/light-shafts-component.html",
+              "topicHref": "graphics/lighting/light-shafts-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Point Light Component",
               "href": "graphics/lighting/point-light-component.html",
               "topicHref": "graphics/lighting/point-light-component.html",
@@ -1509,6 +1518,15 @@
                   "name": "Wind Behavior",
                   "href": "effects/particle-effects/behaviors/pb-wind.html",
                   "topicHref": "effects/particle-effects/behaviors/pb-wind.html",
+                  "tocHref": null,
+                  "level": 5,
+                  "items": [],
+                  "leaf": true
+                },
+                {
+                  "name": "Expression Behavior",
+                  "href": "effects/particle-effects/behaviors/pb-expression.html",
+                  "topicHref": "effects/particle-effects/behaviors/pb-expression.html",
                   "tocHref": null,
                   "level": 5,
                   "items": [],
@@ -2431,6 +2449,15 @@
               "leaf": true
             },
             {
+              "name": "Detour Crowd Agent Component",
+              "href": "ai/AiPlugin/detour-crowd-agent-component.html",
+              "topicHref": "ai/AiPlugin/detour-crowd-agent-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Navmesh Path Test Component",
               "href": "ai/AiPlugin/navmesh-path-test-component.html",
               "topicHref": "ai/AiPlugin/navmesh-path-test-component.html",
@@ -3205,6 +3232,15 @@
           "topicHref": null,
           "tocHref": null,
           "level": 3
+        },
+        {
+          "name": "Expressions",
+          "href": "custom-code/expressions.html",
+          "topicHref": "custom-code/expressions.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
         }
       ],
       "topicHref": null,
