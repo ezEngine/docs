@@ -123,6 +123,7 @@
 <p>Initializes a particle's size to a random value.</p>
 <p><strong>Size:</strong> The base size for the particles to start with. To initialize all particles to have a fixed size, set the variance to zero.</p>
 <p><strong>SizeCurve:</strong> If specified, the <a href="../../animation/common/curves.html">curve</a> is sampled at a random location and the normalized value (always between <code>0</code> and <code>1</code>) is used to scale the randomly chosen base size. The shape of the curve has no meaning for this use case, it only provides a way to affect the distribution of the random sizes. For example, you could have a curve that sets exactly half of all particles to exactly a tenth of the base size. If you want exactly the same distribution as the curve has, you should set the variance of the <em>base size</em> to zero.</p>
+<p><strong>SizeScaleParameter:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the float parameter is used to scale the initial size of all particles.</p>
 <p><video src="media/random-size-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="rotation-speed-initializer">Rotation Speed Initializer</h2>
 <p>Initializes a particle's rotation and rotation speed to a random value.</p>
@@ -133,6 +134,7 @@
 <p>Initializes a particle's velocity to a random up vector.</p>
 <p><strong>Angle:</strong> The maximum opening angle of the upside down cone. With a small opening angle, particles will fly straight up. With a wide opening angle, particles will fly in all directions.</p>
 <p><strong>Speed:</strong> The initial speed for the particles.</p>
+<p><strong>SpeedScaleParam:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the float parameter is used to scale the initial speed of all particles.</p>
 <p><video src="media/velocity-cone-init.webm" width="500" height="500" autoplay loop></video></p>
 <h2 id="see-also">See Also</h2>
 <ul>

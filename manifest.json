@@ -4202,6 +4202,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/lighting/media/point-vs-tube.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/lighting/media/point-vs-tube.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/graphics/lighting/media/reflection-avoid-mirrors.jpg",
       "output": {
         "resource": {
@@ -7154,11 +7164,11 @@
       "type": "Toc",
       "source_relative_path": "pages/docs/toc.md",
       "output": {
-        ".html": {
-          "relative_path": "pages/docs/toc.html"
-        },
         ".json": {
           "relative_path": "pages/docs/toc.json"
+        },
+        ".html": {
+          "relative_path": "pages/docs/toc.html"
         }
       },
       "version": ""
@@ -7507,11 +7517,11 @@
       "type": "Toc",
       "source_relative_path": "pages/getting-started/toc.md",
       "output": {
-        ".html": {
-          "relative_path": "pages/getting-started/toc.html"
-        },
         ".json": {
           "relative_path": "pages/getting-started/toc.json"
+        },
+        ".html": {
+          "relative_path": "pages/getting-started/toc.html"
         }
       },
       "version": ""
@@ -8460,11 +8470,11 @@
       "type": "Toc",
       "source_relative_path": "pages/samples/toc.md",
       "output": {
-        ".html": {
-          "relative_path": "pages/samples/toc.html"
-        },
         ".json": {
           "relative_path": "pages/samples/toc.json"
+        },
+        ".html": {
+          "relative_path": "pages/samples/toc.html"
         }
       },
       "version": ""
@@ -8483,11 +8493,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".html": {
-          "relative_path": "toc.html"
-        },
         ".json": {
           "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
         }
       },
       "version": ""

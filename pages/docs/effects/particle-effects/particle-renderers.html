@@ -154,6 +154,8 @@
 </ul>
 <p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the final color of the particle.</p>
 <p><strong>Particle Stretch:</strong> Only available in the 'axis' render modes. Allows to stretch the particles along their fixed axis. Useful to create sparks.</p>
+<p><strong>Geometry Proximity Fade Out:</strong> Particles fade out when they intersect with or come close to scene geometry. This value controls the distance over which the fade-out occurs.</p>
+<p><strong>Camera Proximity Fade Out:</strong> Particles fade out when the camera is close to them. This value controls the distance over which the fade-out occurs.</p>
 <h2 id="mesh-renderer">Mesh Renderer</h2>
 <p>This renderer visualizes each particle using a <a href="../../graphics/meshes/mesh-asset.html">mesh</a>.</p>
 <p><strong>Mesh:</strong> The mesh to use for rendering. If the mesh contains multiple sub-meshes, the renderer will randomly select one sub-mesh for each particle. This allows for visual variety in effects like debris or broken pieces by including multiple mesh variations in a single mesh asset.</p>

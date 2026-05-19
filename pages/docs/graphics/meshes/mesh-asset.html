@@ -148,7 +148,9 @@
 </li>
 <li><p><code>Mesh Simplification</code>: How strongly to attempt to simplify the mesh.</p>
 </li>
-<li><p><code>Max Simplification Error</code>: How much the mesh may change during simplification. A higher error theshold may allow for stronger simplification.</p>
+<li><p><code>Max Simplification Error</code>: How much the mesh may change during simplification. A higher error threshold may allow for stronger simplification.</p>
+</li>
+<li><p><code>Normal Weight</code>: How strongly surface normals influence the simplification. A higher value preserves normal variation better, which is useful for meshes with hard edges or baked normal detail, but may result in less aggressive triangle reduction. The default value of <code>0.5</code> balances geometry and normal preservation.</p>
 </li>
 <li><p><code>Aggressive Simplification</code>: If enabled, the mesh simplification may throw away even more quality to reach the maximum simplification.</p>
 </li>

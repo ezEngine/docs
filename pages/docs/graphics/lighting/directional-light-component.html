@@ -97,6 +97,8 @@
 <ul>
 <li><p><code>LightColor, Intensity</code>: The color and brightness of the light.</p>
 </li>
+<li><p><code>SourceAngle</code>: The angular diameter of the light emitter disc (the &quot;sun disc&quot;) as seen from the ground, in degrees. Clamped to 0–10°. A non-zero value produces softer specular highlights via <a href="point-light-component.html#area-lights">area-light shading</a>, at a higher shader cost than a zero angle. Has no effect on attenuation since directional lights are treated as infinitely far away. For reference, the real sun subtends approximately 0.53°. Values above a few degrees are physically implausible but may be used for stylised looks.</p>
+</li>
 <li><p><code>ScreenSpaceShadows</code>: When enabled, the directional light will additionally use <a href="dynamic-shadows.html#screen-space-shadows">screen space shadows</a> to produce contact shadows and improve self-shadowing on small objects. Requires the <code>ScreenSpaceShadowPass</code> to be present in the <a href="../render-pipeline/render-pipeline-passes.html#screen-space-shadow-pass">render pipeline</a>.</p>
 </li>
 <li><p><code>NumCascades</code>: How many shadow cascades to use. The more cascades are used, the crisper shadows close to the camera become. However, each cascade costs additional performance.</p>

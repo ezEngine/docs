@@ -99,11 +99,17 @@
 </li>
 <li><p><code>MaxLifetime</code>: If the projectile lives longer than this, it will destroy itself.</p>
 </li>
-<li><p><code>SpawnPrefabOnStatic</code>: If enabled, the <code>OnDeathPrefab</code> will be spawned when the projectile lost so much speed that it is nearly static (not moving anymore). Only useful in combination with the <em>bounce</em> behavior.</p>
+<li><p><code>SpawnPrefabOnStatic</code>: If enabled, the <code>OnDeathPrefab</code> will be spawned when the projectile lost so much speed that it is nearly static (not moving anymore). See also <code>StaticVelocityRatio</code> to control the threshold value below which the projectile is considered nearly static. Only useful in combination with the <em>bounce</em> behavior</p>
 </li>
 <li><p><code>OnDeathPrefab</code>: If the projectile destroys itself because it didn't hit anything before <code>MaxLifetime</code> ended or it slowed to a halt and <code>SpawnPrefabOnStatic</code> is enabled, it will spawn this prefab. Can be used to let rockets 'explode' after a while.</p>
 </li>
 <li><p><code>CollisionLayer</code>: The physics <a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> to use for raycasting whether the projectile hit something.</p>
+</li>
+<li><p><code>Radius</code>: Specifies the size of the projectile, which is used for collision detection. Can be zero.</p>
+</li>
+<li><p><code>StaticVelocityRatio</code>: If the projectile speed becomes lower than <code>StaticVelocityRatio * Speed</code>, the simulation of the projectile is stopped and the projectile is considered nearly static. Only useful in combination with the <em>bounce</em> behavior.</p>
+</li>
+<li><p><code>BounceOrientation</code>: How the projectile changes its orientation after it hits a surface with a <em>reflect</em> or <em>bounce</em> reaction. <code>Reflection</code> means the projectile is oriented along the new flying direction after the hit. <code>Spinning</code> means the projectile is rotated by an angle whose value depends on the projectile's speed before and after the hit. Higher speeds lead to larger rotations. The rotation scaling and direction can be controlled by <code>InertiaRatio</code> in the <code>Interactions</code> settings.</p>
 </li>
 <li><p><code>ShapeTypesToHit</code>: Specifies what types of physics geometry to hit, at all.</p>
 </li>
@@ -119,6 +125,7 @@
 <li><code>Interaction</code>: The <a href="../materials/surfaces.html#surface-interactions">surface interaction</a> to trigger when the projectile hits this type of surface.</li>
 <li><code>Impulse</code>: The amount of physical impulse to exert on the hit object.</li>
 <li><code>Damage</code>: The amount of damage to apply to the hit object.</li>
+<li><code>InertiaRatio</code>: Analogue of mass for spinning behavior. Larger values lead to smaller rotations. If negative, the projectile is rotated in the opposite direction. If zero, no rotation is applied. Only useful in combination with <code>Reaction</code> set to <code>Bounce</code> or <code>Reflect</code> and the projectile <code>BounceOrientation</code> set to <code>Spinning</code>.</li>
 </ul>
 <h2 id="example">Example</h2>
 <p>The image below shows a basic bullet projectile setup:</p>

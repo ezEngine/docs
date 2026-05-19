@@ -95,6 +95,13 @@
 <p>Note that unless a light source casts <a href="dynamic-shadows.html">dynamic shadows</a>, it's light will shine through walls. Casting shadows is very costly, though. When it is possible to avoid casting shadows, for example by using multiple smaller lights instead, the performance should always be better.</p>
 <h2 id="video-how-to-create-a-light-source">Video: How to create a light source</h2>
 <p><a href="https://youtu.be/QCYoYexvynQ"><img src="https://img.youtube.com/vi/QCYoYexvynQ/0.jpg" alt="video"></a></p>
+<h2 id="area-lights">Area Lights</h2>
+<p>When the <code>Length</code> or <code>Radius</code> property are set to non-zero, the point light acts as an area light, either as a sphere or tube light. The image below shows how this can be used to light an area better, where a pure pointlight would result in unnatural light distribution.</p>
+<p><img src="media/point-vs-tube.jpg" alt="Tube light example"></p>
+<blockquote>
+<p><strong>Important!</strong></p>
+<p>Area lights have a higher performance cost. Only use them where it makes a noticeable difference. The exact size values make no difference, an area light with a small radius has the same higher performance impact as one with a large radius. However, it is cheaper to use an area light, than to use multiple light sources to approximate area lighting.</p>
+</blockquote>
 <h2 id="component-properties">Component Properties</h2>
 <p>See <a href="dynamic-shadows.html#shadow-component-properties">this page</a> for shadow related component properties.</p>
 <ul>
@@ -107,6 +114,10 @@
 <li><p><code>SpecularMultiplier</code>: A multiplier applied to the light's specular contribution. The default value of <code>1</code> uses the standard specular intensity. Set to <code>0</code> to make the light affect only diffuse lighting, or increase it beyond <code>1</code> to exaggerate specular highlights.</p>
 </li>
 <li><p><code>Range</code>: The distance over which the light source affects geometry. By default this is set to <code>Auto</code>, meaning the necessary range will be computed from the light's brightness. For full control, the range can be set manually. The light will always attenuate to zero within the given range, so by specifying a small range you can create a small, yet very bright light.</p>
+</li>
+<li><p><code>Length</code>: The length of the tube along the light's local X axis. When non-zero, the light is treated as a tube (capsule) area light. The bounding volume is enlarged accordingly and specular highlights become elongated. A value of <code>0</code> produces a standard point light.</p>
+</li>
+<li><p><code>Radius</code>: The radius of the tube's cross-section. A non-zero value widens specular highlights and produces area-light style shading. Has no effect on light attenuation. When <code>Length</code> is zero, a non-zero radius alone produces a sphere area light. A value of <code>0</code> produces a standard point light.</p>
 </li>
 </ul>
 <h2 id="see-also">See Also</h2>
