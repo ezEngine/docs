@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Kraut | ezEngine </title>
+      <title>Kraut Tree Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Kraut | ezEngine ">
+      <meta name="title" content="Kraut Tree Component | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/kraut-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/kraut-tree-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,30 +87,33 @@
         </div>
 
         <article data-uid="">
-<h1 id="kraut">Kraut</h1>
+<h1 id="kraut-tree-component">Kraut Tree Component</h1>
 
-<p><img src="media/kraut-tree.jpg" alt="Kraut tree"></p>
-<p><a href="https://github.com/jankrassnigg/Kraut">Kraut</a> is a system for procedurally generating trees and other plants directly inside the ezEngine editor. Tree geometry is defined and edited through the <a href="kraut-tree-asset.html">Kraut tree asset</a>.</p>
-<h2 id="kraut-materials">Kraut Materials</h2>
-<p>Kraut uses three material types for different parts of a tree. Ready-to-use base materials are provided under <em>Plugins/Kraut</em> in the asset browser:</p>
-<ul>
-<li><strong><code>KrautStem</code></strong> — used for trunks, branches, and twigs.</li>
-<li><strong><code>KrautFrond</code></strong> — used for static leaf-card geometry.</li>
-<li><strong><code>KrautLeaf</code></strong> — used for camera-facing billboard leaves.</li>
-</ul>
-<p>These materials should be used as the <strong>base material</strong> for custom tree materials. Each of them sets the appropriate asset filter tag (<code>Kraut-Stem</code>, <code>Kraut-Frond</code>, <code>Kraut-Leaf</code>), which is how the asset browser filters for compatible materials when assigning them in the tree asset.</p>
+<p>The <em>Kraut tree component</em> places a procedurally generated tree in a scene. It references a <a href="kraut-tree-asset.html">Kraut tree asset</a> and selects a random seed to determine the tree's visual appearance. Different seeds produce different-looking trees from the same asset.</p>
+<p>LOD meshes are generated on demand in background tasks and the component renders the appropriate LOD for the current camera distance.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p><code>Kraut Tree</code> — The <a href="kraut-tree-asset.html">Kraut tree asset</a> from which the tree is generated.</p>
+<p><code>Variation Index</code> — Selects a seed from the asset's <em>Good Random Seeds</em> list. The list is defined in the tree asset. If the list is empty or the index is out of range, the component falls back to the owner object's stable random seed. Use this property to place trees that are known to look good while still having variation between instances.</p>
+<p><code>Custom Random Seed</code> — Overrides the seed with a fixed value. Trees using the same seed will look identical. Mutually exclusive with <em>Variation Index</em>.</p>
+<h2 id="seed-selection">Seed Selection</h2>
+<p>The component determines which seed to use according to the following priority:</p>
+<ol>
+<li><strong>Custom Random Seed</strong> — if set, this seed is always used.</li>
+<li><strong>Variation Index</strong> — if set, selects from the asset's <em>Good Random Seeds</em> list.</li>
+<li><strong>Owner object's stable random seed</strong> — used when neither of the above is set. This ensures that identically configured tree components on different objects still look different from each other without any manual configuration.</li>
+</ol>
+<h2 id="collision">Collision</h2>
+<p>The component adds a cylinder mesh as a collision approximation when geometry extraction is requested (e.g. for static mesh baking or physics). The cylinder radius is taken from the <em>Static Collider Radius</em> property of the referenced tree asset.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="kraut-overview.html">Kraut Overview</a></li>
 <li><a href="kraut-tree-asset.html">Kraut Tree Asset</a></li>
-<li><a href="kraut-tree-component.html">Kraut Tree Component</a></li>
-<li><a href="https://github.com/jankrassnigg/Kraut">Kraut GitHub Repository</a></li>
-<li><a href="terrain-overview.html">Terrain and Vegetation</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/kraut-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/kraut-tree-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

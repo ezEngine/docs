@@ -2277,6 +2277,24 @@
           "leaf": true
         },
         {
+          "name": "Kraut Tree Asset",
+          "href": "terrain/kraut-tree-asset.html",
+          "topicHref": "terrain/kraut-tree-asset.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "Kraut Tree Component",
+          "href": "terrain/kraut-tree-component.html",
+          "topicHref": "terrain/kraut-tree-component.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
           "name": "Procedural Generation",
           "items": [
             {

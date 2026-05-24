@@ -6731,6 +6731,26 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/kraut-tree-asset.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/kraut-tree-asset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/kraut-tree-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/kraut-tree-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Resource",
       "source_relative_path": "pages/docs/terrain/media/heightfield-rubble.jpg",
       "output": {
@@ -6752,10 +6772,260 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-branchangle.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-branchangle.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-branchnode.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-branchnode.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-branchthickness.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-branchthickness.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-flares.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-flares.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-frondalignsurface.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-frondalignsurface.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-frondcontour.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-frondcontour.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-fronddetail.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-fronddetail.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-frondrepeat.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-frondrepeat.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-fronds.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-fronds.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-frondup.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-frondup.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-frondwidth.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-frondwidth.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-growth.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-growth.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-leafinterval.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-leafinterval.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-leafsize.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-leafsize.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-leaves.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-leaves.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-lod-curvature.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-lod-curvature.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-lod-ringdetail.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-lod-ringdetail.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-lod-thickness.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-lod-thickness.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-lod-tip.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-lod-tip.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-pointy.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-pointy.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-segmentlength.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-segmentlength.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-spawndeviation.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-spawndeviation.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-targetdir.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-targetdir.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/terrain/media/kraut-tree.jpg",
       "output": {
         "resource": {
           "relative_path": "pages/docs/terrain/media/kraut-tree.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-updown.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-updown.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/kraut-usagerange.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/kraut-usagerange.jpg"
         }
       },
       "version": ""
