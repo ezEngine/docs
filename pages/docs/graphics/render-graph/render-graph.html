@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Render Graph | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Render Graph | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-graph/render-graph.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="render-graph">Render Graph</h1>
+
+<p>The render graph is the underlying system that manages GPU resource allocation, synchronization and execution. Instead of manually creating render targets, inserting resource barriers and managing resource lifetimes, passes declare which resources they read and write and the render graph takes care of the rest during execution.</p>
+<p>The render graph provides:</p>
+<ul>
+<li><strong>Automatic resource barriers</strong> between passes based on declared resource access states.</li>
+<li><strong>Automatic ezGALRenderingSetup creation</strong> based on the user pass description.</li>
+<li><strong>Transient resource pooling and aliasing</strong> so that GPU memory is reused across passes with non-overlapping lifetimes.</li>
+<li><strong>Dead pass culling</strong> to skip passes whose outputs are never consumed.</li>
+</ul>
+<h2 id="lifecycle">Lifecycle</h2>
+<p>After creating a render graph once via <code>ezRenderGraphManager::CreateRenderGraph</code>, you can start recording passes into it. Each graph has:</p>
+<ul>
+<li>A <strong>graph name</strong> (immutable, set at creation) and an optional <strong>user name</strong> (mutable, per-frame label).</li>
+<li>A <strong>phase</strong> (immutable, set at creation) that controls execution order relative to other graphs: <code>PreRender</code>, <code>Render</code> (default), or <code>PostRender</code>. Within a phase, graphs run in FIFO order of their <code>ezRenderGraphManager::EnqueueRenderGraph</code> calls.</li>
+<li>A <strong>user data</strong> pointer (<code>void*</code>) that is forwarded to all execution callbacks.</li>
+</ul>
+<p>A typical frame follows these steps:</p>
+<ol>
+<li>Each Frame if you need to re-record the graph, follow this pattern:</li>
+<li>Reset the graph via <code>Reset()</code>.</li>
+<li><strong>Import</strong> external resources (e.g. the swapchain image) with <code>ImportTexture()</code>. On subsequent frames, you can use <code>ReplaceImportedTexture()</code> to swap in the new swapchain image without rebuilding the graph again.</li>
+<li><strong>Create</strong> transient resources with <code>CreateTexture()</code> / <code>CreateBuffer()</code>.</li>
+<li><strong>Add passes</strong>, declare resource access and set execution callbacks.</li>
+<li><strong>Enqueue</strong> the graph with <code>ezRenderGraphManager::EnqueueRenderGraph()</code>. After this call, no new passes can be added to the graph anymore.</li>
+<li>The <strong>ezRenderGraphManager</strong> compiles all enqueued graphs (building dependencies, culling dead passes, allocating transient resources), computes barriers across all graphs using a shared state tracker, and executes them.</li>
+</ol>
+<h2 id="creating-resources">Creating resources</h2>
+<p>There are two kinds of resources in a render graph:</p>
+<ul>
+<li><strong>Transient resources</strong> are created with <code>CreateTexture()</code> or <code>CreateBuffer()</code>. The render graph allocates them from a pool and automatically releases them when no longer needed. Two transient resources with non-overlapping lifetimes may share the same GPU memory.</li>
+<li><strong>Imported resources</strong> are existing GPU resources brought into the graph with <code>ImportTexture()</code> or <code>ImportBuffer()</code>. The graph tracks their state but does not manage their lifetime. You can also use <code>ReplaceImportedTexture()</code> to swap in a compatible GAL handle (e.g. a new swapchain image) after recording without rebuilding the graph. When importing, you can optionally also provide a <code>ezGALResourceState</code> into which the resource should be barriered at the start of the graph execution. If you leave it to the default of <code>ezGALResourceState::Unknown</code>, no barriers will be added at the start of the graph.</li>
+</ul>
+<p>Resources inside the render graph are referenced by <code>ezRenderGraphTextureHandle</code> and <code>ezRenderGraphBufferHandle</code> returned by the above functions. These are opaque, lightweight handles that are only valid inside the graph they were created on until the graph is reset.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>There is no need to set any flags on the resources created via <code>CreateTexture()</code> or <code>CreateBuffer()</code>. Whenever a pass operates on a resources its flags are extended to support that operation.</p>
+</blockquote>
+<p>For the code snippets from here on we will use the example of a transient MSAA texture that is to be resolved into an imported non-MSAA texture:</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: rendergraph-msaa-create-resources -->
+<pre><code class="lang-cpp">// Create transient MSAA texture
+ezGALTextureCreationDescription descMsaa;
+descMsaa.SetAsRenderTarget(64, 64, ezGALResourceFormat::RGBAHalf, ezGALMSAASampleCount::FourSamples);
+ezRenderGraphTextureHandle hMsaaColor = graph.CreateTexture(descMsaa);
+
+// Import persistent non-MSAA resolve target
+ezGALTextureCreationDescription descResolved;
+descResolved.SetAsRenderTarget(64, 64, ezGALResourceFormat::RGBAHalf);
+ezGALTextureHandle hResolvedGAL = m_pDevice-&gt;CreateTexture(descResolved);
+ezRenderGraphTextureHandle hResolved = graph.ImportTexture(hResolvedGAL);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="creating-passes">Creating Passes</h2>
+<p>A pass represents a unit of GPU work. Besides its parameters the user also sets a <strong>callback</strong> that is called when the pass is executed. There are three types of passes:</p>
+<ul>
+<li><strong>Graphics pass</strong> (<code>AddGraphicsPass</code>) - rasterization work. Based on the description, the backend will create the <code>ezGALRenderingSetup</code> and call <code>BeginRendering</code> / <code>EndRendering</code>.</li>
+<li><strong>Compute pass</strong> (<code>AddComputePass</code>) - compute shader dispatches. Backend calls <code>BeginCompute</code>/<code>EndCompute</code>.</li>
+<li><strong>Transfer pass</strong> (<code>AddTransferPass</code>) - used for copy and resolve operations.</li>
+</ul>
+<p>Passes execute in the order they were recorded into the graph. The above functions return a <code>ezRenderGraphPassBuilder</code>. This class is used to define the pass.</p>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>Only one instance on <code>ezRenderGraphPassBuilder</code> can be alive per scope / graph, so multiple <code>Add*Pass</code> calls must be in separate scopes.</p>
+</blockquote>
+<h2 id="resource-states">Resource States</h2>
+<p>The most crucial part of the recording is to set correct states for the resources each pass accesses. For this, you need to call <code>ReadTexture</code>, <code>WriteTexture</code>, <code>ReadBuffer</code> or <code>WriteBuffer</code>. As we want to resolve a texture, we need to set the states accordingly.</p>
+<p>In general, if your shader uses an SRV <code>ezGALShaderResourceType</code>, you need to call <code>Read*</code> with <code>ezGALResourceState::ShaderResource</code>. If your shader uses an UAV <code>ezGALShaderResourceType</code>, you need to call <code>Write*</code> with <code>ezGALResourceState::UnorderedAccess</code>. For buffers, the <code>ezGALBufferUsageFlags</code> match the names of the corresponding states you need to use from <code>ezGALResourceState</code>. These states will be used by the graph to place proper barriers during execution.</p>
+<p>You can also optionally set a shader stage via <code>ezGALShaderStageFlags</code>. Only use these for graphics passes when you know exactly in which stage a resource is accessed.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>For depth textures, the correct SRV state is <code>ezGALResourceState::DepthStencilRead</code> instead of <code>ezGALResourceState::ShaderResource</code>, but the render graph automatically switches this for your convenience.</p>
+</blockquote>
+<!-- BEGIN-DOCS-CODE-SNIPPET: rendergraph-msaa-barriers -->
+<pre><code class="lang-cpp">auto pass = graph.AddTransferPass(&quot;MsaaColorResolve&quot;);
+pass.ReadTexture(hMsaaColor, {}, ezGALResourceState::ResolveSource);
+pass.WriteTexture(hResolved, {}, ezGALResourceState::ResolveDestination);
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="execute-callback">Execute Callback</h2>
+<p>You can set an execute callback that is run when the graph is executed later in the frame once all graphs have been enqueued. Not setting a callback can make sense for graphics passes that only need to clear something or if you just want to set some barriers. Inside the callback, you have access to the <code>ezRenderGraphContext</code>:</p>
+<ul>
+<li><code>ResolveTexture(handle)</code> / <code>ResolveBuffer(handle)</code> - resolve graph handles to real GPU handles so they can be used in the command encoder.</li>
+<li><code>GetCommandEncoder()</code> - the underlying command encoder.</li>
+<li><code>GetRenderContext()</code> - the high-level render context (shader binding, draw calls).</li>
+<li><code>GetDevice()</code> - the GAL device.</li>
+<li><code>GetUserData&lt;T&gt;()</code> - access to the user data pointer set on the graph.</li>
+</ul>
+<blockquote>
+<p><strong>Important:</strong></p>
+<p>As the execute callback is called at a later date, make sure to capture variables by value if using a lambda.</p>
+</blockquote>
+<!-- BEGIN-DOCS-CODE-SNIPPET: rendergraph-msaa-execute-callback -->
+<pre><code class="lang-cpp">pass.SetExecuteCallback([=](const ezRenderGraphContext&amp; ctx)
+  {
+  ezGALTextureSubresource subresource;
+  subresource.m_uiMipLevel = 0;
+  subresource.m_uiArraySlice = 0;
+  ctx.GetCommandEncoder()-&gt;ResolveTexture(ctx.ResolveTexture(hResolved), subresource, ctx.ResolveTexture(hMsaaColor), subresource); });
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="graphics-pass">Graphics Pass</h2>
+<p>In addition to the previous steps, in a graphics pass, you also need to declare the same color and depth targets you would have previously set on a <code>ezGALRenderingSetup</code> and the interface is roughly the same. Calling any of the clear functions will switch the corresponding <code>ezGALRenderTargetLoadOp</code> to <code>Clear</code>.</p>
+<p>Setting render targets implicitly defines barriers via <code>WriteTexture</code> so there is no need to call these functions yourself. If your shader supports stereoscopic rendering, you need to call <code>SetStereoscopic</code> as well.</p>
+<!-- BEGIN-DOCS-CODE-SNIPPET: rendergraph-graphics-pass -->
+<pre><code class="lang-cpp">auto pass = graph.AddGraphicsPass(&quot;RenderMSAA&quot;);
+pass.AddColorTarget(hMsaaColor, {}, ezGALRenderTargetLoadOp::Clear, ezGALRenderTargetStoreOp::Store);
+pass.SetClearColor(0, ezColor::CornflowerBlue);
+pass.AddDepthStencilTarget(hMsaaDepth, {}, ezGALRenderTargetLoadOp::Clear, ezGALRenderTargetStoreOp::Store, ezGALRenderTargetLoadOp::Clear, ezGALRenderTargetStoreOp::Store);
+pass.SetClearDepth(1.0f);
+pass.SetClearStencil(0);
+pass.SetStereoscopic(false);
+pass.HasSideEffects();
+</code></pre>
+<!-- END-DOCS-CODE-SNIPPET -->
+<h2 id="pass-culling">Pass Culling</h2>
+<p>The render graph automatically removes passes whose outputs are never consumed. A pass is kept alive if:</p>
+<ul>
+<li>It was marked with <code>HasSideEffects()</code> during pass recording.</li>
+<li>It writes to an imported resource.</li>
+<li>Any of its outputs are read by another alive pass.</li>
+</ul>
+<p>All transitive dependencies of alive passes are also kept alive. This means that if you toggle a feature off, the passes that fed into it are automatically skipped without any manual intervention.</p>
+<h2 id="compilation-and-execution">Compilation and Execution</h2>
+<p>Once recorded and enqueued, the <code>ezRenderGraphManager</code> drives the full pipeline during <code>ExecuteRenderGraphs</code>. Compilation consists of the following steps:</p>
+<ol>
+<li><strong>ValidateGraph</strong> - checks for dead or invalid GAL handles.</li>
+<li><strong>CullDeadPasses</strong> - removes passes whose outputs are never consumed (unless they have side effects or write to imported resources).</li>
+<li><strong>BuildSortedPassList</strong> - creates a linear list of remaining passes in declaration order.</li>
+<li><strong>ComputeResourceLifetimes</strong> - determines the first and last pass each transient resource is used in.</li>
+<li><strong>AllocateTransientResources</strong> - acquires concrete GPU resources from the pool via the <code>ezRenderGraphResourceAllocator</code>, sharing GAL handles between graph handles with non-overlapping lifetimes.</li>
+<li><strong>BuildRenderingSetups</strong> - creates the <code>ezGALRenderingSetup</code> for each graphics pass from its declared color and depth targets.</li>
+</ol>
+<p>After compilation, the <code>ezRenderGraphManager</code> uses the <code>ezGALResourceStateTracker</code> to compute barriers for the entire frame by calling <code>ComputeBarriers</code> on each graph in execution order. Finally, all graphs are executed and all modified resources are barriered back into their default state.</p>
+<h2 id="integration-with-render-pipeline">Integration with Render Pipeline</h2>
+<p>Within the <a href="../render-pipeline/render-pipeline-overview.html">render pipeline</a>, each <code>ezRenderPipelinePass</code> implements <code>AddRenderPasses()</code> to add one or more render graph passes. The pipeline calls this method during graph construction, passing the pin connections that link passes together.</p>
+<p>For details on how to create a custom render pass using the render graph system, see <a href="../render-pipeline/creating-a-render-pass.html">Creating a Render Pass</a>.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../render-pipeline/render-pipeline-overview.html">Render Pipeline</a></li>
+<li><a href="../render-pipeline/render-pipeline-passes.html">Render Pipeline Passes</a></li>
+<li><a href="../render-pipeline/creating-a-render-pass.html">Creating a Render Pass</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/graphics/render-graph/render-graph.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

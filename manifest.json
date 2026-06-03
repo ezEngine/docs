@@ -4552,6 +4552,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/render-graph/render-graph.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/render-graph/render-graph.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/render-pipeline/creating-a-render-pass.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/render-pipeline/creating-a-render-pass.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-extractors.md",
       "output": {
         ".html": {
