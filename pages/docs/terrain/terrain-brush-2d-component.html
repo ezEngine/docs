@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Terrain Brush 2D Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Terrain Brush 2D Component | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-brush-2d-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="terrain-brush-2d-component">Terrain Brush 2D Component</h1>
+
+<p>The <em>Terrain Brush 2D Component</em> modifies <a href="terrain-patch-component.html">terrain patches</a> and <a href="terrain-volume-component.html">terrain volumes</a> by raising or lowering it or painting a material onto it. Multiple brushes can overlap to form complex geometry.</p>
+<p><video src="media/terrain-brush-2d.mp4" autoplay controls></video></p>
+<p>For an overview of the terrain system, see <a href="terrain-plugin-overview.html">Terrain System</a>.</p>
+<h2 id="modify-modes">Modify Modes</h2>
+<p>The <code>ModifyMode</code> property selects how the brush affects the terrain. <strong>Raise</strong> pulls the terrain up towards the brush, <strong>Lower</strong> pushes terrain down towards the brush. Vertices that are already above (when raising) or below (when lowering) the brush, are unaffected. <strong>Set</strong>, however, raises <em>and</em> lowers the terrain.</p>
+<p><em>Raise</em> is used to create mountains, <em>Lower</em> can be used to flatten an area, <em>Set</em> is useful for roads and riverbeds that are always at a fixed height.</p>
+<p><strong>Paint Only</strong> does not affect height, and only assigns a material. For material painting to work, <code>Material Strength</code> must be set to a non-zero value (usually <code>1</code>) and <code>Material Index</code> can then be used to select the material layer to paint.</p>
+<h2 id="footprint">Footprint</h2>
+<p>The brush footprint is a rounded rectangle oriented by the owner object's rotation in the XY plane. The yellow line represents the inner shape, the green line the outer shape. The 2D brushes affect all terrain <em>below and above</em> them (depending on the <em>modify mode</em> they lower or raise the terrain).</p>
+<p><code>HalfSizeX</code>,<code>HalfSizeY</code> — Half-length of the straight edge along the local X and Y axis. Setting both to <code>0</code> produces a circle (top left image). Setting one to <code>0</code> produces a line (top right image).</p>
+<p><code>InnerRadius</code> — Corner rounding of the full-weight region. Setting this to zero produces a point or rectangle (bottom left image). Positive values give a circle (top left) or rounded rectangle (bottom right image)</p>
+<p><img src="media/brushes-2d.jpg" alt="Brush Shapes"></p>
+<p><code>OuterRadius</code> — Corner rounding of the falloff zone. The outer edge of the brush is at <em>InnerRadius + OuterRadius</em>. Vertices between the inner and outer edge are blended using the <em>Falloff</em> exponent. Setting this to 0 gives a hard edge.</p>
+<p><code>Falloff</code> — Falloff between inner and outer radius. A falloff of <code>1</code> (top left image) results in a natural hill. <code>0.5</code> (top right image) and other values below <code>1</code> result in shapes more like domes or plateaus. <code>2</code> (bottom left), <code>5</code> (bottom right) and other values above <code>1</code> produce steep cliffs.</p>
+<p><img src="media/brush-falloff.jpg" alt="Brush Falloff"></p>
+<h2 id="material-painting">Material Painting</h2>
+<p>Material painting let's you change the material layer that is used in some area. Material painting is activated by setting <code>MaterialStrength</code> to a non-zero value. If <code>ModifyMode</code> is set to <em>Paint Only</em>, the brush doesn't affect the geometry. In the example below, <em>noise</em> is also used, to make the pattern more natural.</p>
+<p><code>MaterialIndex</code> — The material layer index (0–31) to paint within the brush footprint.</p>
+<p><code>MaterialStrength</code> — Blend weight applied to <em>MaterialIndex</em> at the brush center. 0 disables painting; 1 fully assigns the material within the inner zone.</p>
+<p><img src="media/brushes-paint.jpg" alt="Material Painting"></p>
+<h2 id="noise">Noise</h2>
+<p>Noise affects both geometry and material painting. Noise is used to introduce random patterns to make the result more natural. See the image below for an example where the same brush settings are used, only with varying noise strength and frequency.</p>
+<p><code>NoiseStrength</code> — Amount of noise applied to perturb the brush influence. 0 disables noise.</p>
+<p><code>NoiseFrequency</code> — Spatial frequency of the noise. Small values make the effect very local, producing high-frequency noise, higher values are useful for larger terrain features, like mountains.</p>
+<p><img src="media/brush-noise.jpg" alt="Noise"></p>
+<h2 id="shared-properties">Shared Properties</h2>
+<p><code>Priority</code> — Brush evaluation order. Brushes with higher priority are applied later and win over lower-priority brushes in the same region. It is very rarely necessary to adjust this, but if you have multiple brushes in the same area and one brush doesn't have the effect that you expect it to have, increase its priority, to make it more dominant.</p>
+<p><code>AffectPatches</code>, <code>AffectVolumes</code> — Whether the brush applies to <a href="terrain-patch-component.html">terrain patches</a> or <a href="terrain-volume-component.html">terrain volumes</a>. By default 2D brushes only affect terrain patches, and 3D brushes only affect volumes.</p>
+<p><code>Tags</code> — When non-empty, the brush only affects terrain objects whose <em>TerrainTags</em> contain at least one matching tag. Empty tags match all terrain objects. This can be used on complex scenarios, to control precisely which brush affects which piece of terrain. For instance, you could place two heightfields above each other and now need to separate between brushes that affect the top or bottom one.</p>
+<h2 id="spline-brushes">Spline Brushes</h2>
+<p>When a <a href="../animation/paths/spline-component.html">Spline Component</a> is attached to the same game object, the brush stamps along the full length of the spline. This is useful for mountain chains, roads, rivers and tunnels. The brush settings are the same everywhere along the spline, so to make a path wider at some point, you would either add another brush on top there, or stop the spline and start a new one, with different brush settings.</p>
+<p><img src="media/brush-path.jpg" alt="Brush Path"></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="terrain-plugin-overview.html">Terrain System</a></li>
+<li><a href="terrain-patch-component.html">Terrain Patch Component</a></li>
+<li><a href="terrain-brush-3d-component.html">Terrain Brush 3D Component</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-brush-2d-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

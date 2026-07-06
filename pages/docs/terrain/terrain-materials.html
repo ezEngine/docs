@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Terrain Materials | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Terrain Materials | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-materials.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="terrain-materials">Terrain Materials</h1>
+
+<p>Terrain components require materials whose shaders understand the terrain's vertex format. The engine ships sample shader implementations that can be used directly or as a reference for custom shaders. The necessary setup code is provided in headers that can be easily reused in custom shaders.</p>
+<h2 id="sample-shaders">Sample Shaders</h2>
+<p>Two ready-to-use sample shaders are provided:</p>
+<ul>
+<li><code>Shaders/Terrain/Rendering/HeightfieldTerrainMaterial.ezShader</code> — for <a href="terrain-patch-component.html">terrain patches</a>.</li>
+<li><code>Shaders/Terrain/Rendering/VoxelMeshMaterial.ezShader</code> — for <a href="terrain-volume-component.html">terrain volumes</a>.</li>
+</ul>
+<p>Example material assets that use these shaders can be found in the <em>Testing Chambers</em> sample project under <code>Data/Samples/Testing Chambers/Materials/</code>.</p>
+<h2 id="texture-setup">Texture Setup</h2>
+<p>Both sample shaders use three texture arrays (type <code>Texture2DArray</code>):</p>
+<ul>
+<li><code>LayerBaseTexture</code> — diffuse/albedo color.</li>
+<li><code>LayerNormalTexture</code> — normal maps.</li>
+<li><code>LayerRoughnessTexture</code> — roughness, read from the R channel. The sample shaders take metallic from a material-wide <code>MetallicValue</code> constant instead of a texture channel, and disable ambient occlusion on terrain geometry entirely.</li>
+</ul>
+<p>The sample material supports up to 8 layers and there is a mapping to reuse the same texture layer across different material layers. The shader uses different textures to project onto the ground and walls. This is just one way to do this, when you write your own terrain shaders, you can use entirely different methods to organize your data and you can support much more layers, as well.</p>
+<h2 id="writing-a-custom-heightfield-shader">Writing a Custom Heightfield Shader</h2>
+<p>The engine exposes the heightfield's vertex data through include-able header files. A custom heightfield shader must do the following:</p>
+<p><strong>Vertex shader:</strong></p>
+<ol>
+<li>Before including any material interpolator header, declare the custom interpolator that carries the upper two blend weights to the pixel shader:
+<pre><code class="lang-hlsl">#define CUSTOM_INTERPOLATOR float2 MatWeightsHi : TEXCOORD2;
+</code></pre>
+</li>
+<li>Include <code>&lt;Shaders/Terrain/Rendering/HeightfieldTerrainVS.h&gt;</code>. This provides the <code>FillHeightfieldTerrainVertexOutput(uint vertexID)</code> function and declares the GPU buffers for heights, normals, cell materials, and per-vertex blend weights.</li>
+<li>Call <code>FillHeightfieldTerrainVertexOutput(input.VertexID)</code> from the main vertex shader function and return its result.</li>
+</ol>
+<p>The vertex output carries:</p>
+<ul>
+<li><code>TexCoord0.x/y</code> — blend weights w0 and w1 for the top two material layers.</li>
+<li><code>MatWeightsHi.x/y</code> — blend weights w2 and w3 for the third and fourth material layers.</li>
+<li><code>DataOffsets.y</code> — four packed 8-bit cell material indices (mat0 in bits 0–7, mat1 in bits 8–15, mat2 in bits 16–23, mat3 in bits 24–31).</li>
+</ul>
+<p>A fifth implicit weight for the fallback material slot (given by the <code>FallbackMaterialSlot</code> push constant) is reconstructed as <code>max(0, 1 - w0 - w1 - w2 - w3)</code>.</p>
+<p><strong>Pixel shader:</strong></p>
+<p>Include <code>&lt;Shaders/Terrain/Rendering/TerrainLayerSampling.h&gt;</code> after <code>MaterialPixelShader.h</code>. This provides:</p>
+<ul>
+<li><code>TriplanarWeights(float3 worldNormal)</code> — computes blend weights for triplanar projection.</li>
+<li><code>TriplanarSampleColorArray(tex, samp, worldPos, worldNormal, weights, scale, matIndex)</code> — samples one layer from a color texture array using triplanar projection.</li>
+<li><code>TriplanarSampleNormalArray(tex, samp, worldPos, worldNormal, weights, scale, matIndex)</code> — same for normal map arrays; returns a world-space normal.</li>
+</ul>
+<h2 id="writing-a-custom-voxel-shader">Writing a Custom Voxel Shader</h2>
+<p><strong>Vertex shader:</strong></p>
+<p>Include <code>&lt;Shaders/Terrain/Rendering/VoxelTerrainVS.h&gt;</code> in the vertex shader section. This provides <code>FillVoxelTerrainVertexOutput(uint vertexID)</code> and declares the GPU vertex and index buffers.</p>
+<p>The vertex output carries:</p>
+<ul>
+<li><code>TexCoord0.x</code> — material blend weight (<code>MaterialStrength</code>), in [0, 1]. This is the brush-painted override blend weight; 0 means only the base material is visible.</li>
+<li><code>DataOffsets.y</code> — dominant material index for this vertex, or <code>0xFFFFFFFF</code> if the vertex is inactive.</li>
+</ul>
+<p><strong>Pixel shader:</strong></p>
+<p>Use the same <code>&lt;Shaders/Terrain/Rendering/TerrainLayerSampling.h&gt;</code> helpers as for heightfield shaders.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="terrain-patch-component.html">Terrain Patch Component</a></li>
+<li><a href="terrain-volume-component.html">Terrain Volume Component</a></li>
+<li><a href="../materials/materials-overview.html">Materials</a></li>
+<li><a href="../materials/visual-shaders.html">Visual Shaders</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-materials.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Terrain Patch Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Terrain Patch Component | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-patch-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="terrain-patch-component">Terrain Patch Component</h1>
+
+<p>The <em>Terrain Patch Component</em> renders a single heightfield tile. The terrain surface is defined by a grid of height values that are computed on the GPU by applying all overlapping brush components. Both <a href="terrain-brush-2d-component.html">2D brushes</a> and <a href="terrain-brush-3d-component.html">3D brushes</a> can affect a patch.</p>
+<p>Terrain patches can only represent a single height value at each position. Therefore, they cannot form <em>overhangs</em> or <em>caves</em>. If such complex geometry is needed, use the <a href="terrain-volume-component.html">terrain volume component</a>.</p>
+<p><img src="media/terrain-patch.jpg" alt="Terrain Patch"></p>
+<p>For an overview of the terrain system, see <a href="terrain-plugin-overview.html">Terrain System</a>.</p>
+<h2 id="placement">Placement</h2>
+<p>You can place multiple terrain patches next to each other to cover large areas. As long as the <em>vertex density</em> is identical (the distance between each grid point, ie <code>Size</code> / <code>Resolution</code>), neighboring terrain patches will match up perfectly.</p>
+<p>If they don't match, you will see cracks like in the image below. This can be fine, if you place distant terrain for decoration purposes and want to go to a lower resolution, and know that those cracks are not visible from where the player can see.</p>
+<p><img src="media/terrain-cracks.jpg" alt="Terrain Cracks"></p>
+<h2 id="editing">Editing</h2>
+<p>Terrain patches are mostly edited through <a href="terrain-brush-2d-component.html">2D terrain brushes</a>. These are used to raise or lower the terrain and paint material layers on top. You can <strong>cut holes</strong> into terrain patches with <a href="terrain-brush-3d-component.html">3D terrain brushes</a> by setting them to <em>Carve</em> and enabling <em>Affect Patches</em>. This is mainly useful to cut entrances for caves. You will then need to model the entrance in some other way, either by placing some <a href="../graphics/meshes/meshes-overview.html">mesh</a> or using the <a href="terrain-volume-component.html">terrain volumes</a>. Note, that modeling the transition from terrain into a cave is quite tricky to get right.</p>
+<h2 id="performance">Performance</h2>
+<p>Currently terrain patches don't support level-of-detail (LOD). That means they are always rendered at their full resolution, no matter how far away they are. Consequently, you should try to use less detail for far away patches.</p>
+<p>A good density for terrain patch vertices and quads is <strong>half a meter</strong> between vertices. So if your patch has a <code>Size</code> of 128 meters, use a <code>Resolution</code> of 256.</p>
+<p>The renderer only culls entire patches, so prefer to use multiple smaller patches, than few huge ones. Also only place patches where you need them. If your level is long and thin, don't use patches that are much wider, rather place multiple thin ones in a row.</p>
+<p>Terrain patches are much more memory efficient than <a href="terrain-volume-component.html">terrain volumes</a>. Use patches to cover large areas, use volumes only in places where you need overhangs. However, the pixel shader for patches can be more demanding, since terrain patches are able to blend many more material layers. If you determine that the material is too expensive, you can use a custom <a href="terrain-materials.html">terrain material</a> that blends fewer layers or does less complex operations.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p><code>Size</code> — World-space side length of the patch. Combined with <em>Resolution</em>, this determines the distance between vertices.</p>
+<p><code>Resolution</code> — Number of quads per side. Higher resolutions produce finer detail but increase memory consumption.</p>
+<p><code>Material</code> — The <a href="../materials/materials-overview.html">material</a> used to render the patch. Must use a heightfield-compatible shader. See <a href="terrain-materials.html">Terrain Materials</a>.</p>
+<p><code>HeightImage</code> — Optional grayscale <a href="../misc/imagedata-asset.html">ImageData asset</a> used as a baseline height source. Brushes are applied on top of this image, not instead of it. When no image is assigned the baseline height is zero.</p>
+<ul>
+<li><p><code>HeightImageOffset</code>, <code>HeightImageSize</code> — UV offset and extent to select which part of the image will be used.</p>
+</li>
+<li><p><code>HeightImageScale</code> — Multiplier used to scale the height image values.</p>
+</li>
+<li><p><code>BaseMaterialIndex</code> — The material layer (0–31) assigned to vertices not covered by any brush.</p>
+</li>
+</ul>
+<p><code>Collider</code> — Controls whether and at what detail a physics collision shape is generated at scene export time. Lower values save memory, but lose detail. Colliders are  needed when using <a href="procedural/procedural-object-placement.html">procedural object placement</a>. When possible, deactivate colliders (for far away terrain that's only there for decoration) or reduce its detail.</p>
+<p><code>Surfaces</code> — Per-material-index <a href="../materials/surfaces.html">physics surface</a> array. Entry <em>i</em> is the surface used where material index <em>i</em> is dominant. Used to control physics behavior such as footstep sounds and friction per material layer.</p>
+<p><code>TerrainTags</code> — Identity <a href="../projects/tags.html">tags</a> assigned to this patch. A brush only affects this patch when the brush's own tags are either empty or contain at least one tag that matches. This can be used to apply brushes to only very specific objects and is only needed when you use multiple patches or <a href="terrain-volume-component.html">terrain volumes</a> on top of each other to form complex geometry. For instance you can rotate a terrain patch such that it points downward, to form the ceiling of a cave. In this case you may want to apply some brushes only to the floor and others only to the ceiling.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="terrain-plugin-overview.html">Terrain System</a></li>
+<li><a href="terrain-brush-2d-component.html">Terrain Brush 2D Component</a></li>
+<li><a href="terrain-brush-3d-component.html">Terrain Brush 3D Component</a></li>
+<li><a href="terrain-materials.html">Terrain Materials</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-patch-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

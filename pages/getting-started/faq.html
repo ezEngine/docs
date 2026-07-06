@@ -97,7 +97,7 @@
 <h2 id="building">Building</h2>
 <p>See <a href="../docs/build/building-ez.html">this page</a> for instructions how to build the engine.</p>
 <h2 id="render-api">Render API</h2>
-<p>At the moment we (officially) only provide a <strong>DX11 renderer</strong>. A <strong>Vulkan renderer</strong> is in development.</p>
+<p>At the moment we provide a <strong>DX11 renderer</strong> and a <strong>Vulkan renderer</strong>. Vulkan will fully replace DX11 in the near future.</p>
 <h2 id="networking--multiplayer">Networking &amp; Multiplayer</h2>
 <p>The engine ships with the <a href="../docs/appendix/third-party-code.html#enet">Enet</a> networking library included. This is a great, easy to use library that was developed for an FPS game.</p>
 <p>There is <strong>no multiplayer support</strong> in EZ, whatsoever. For the foreseeable future we have no plans to add something. Multiplayer is a very complicated topic and the solutions vary drastically between genres, so providing something that &quot;just works&quot; isn't really possible.</p>
@@ -106,16 +106,14 @@
 <p>Yes, EZ has <a href="../docs/custom-code/visual-script/visual-script-overview.html">visual scripting</a>. You can do simple level logic, like &quot;if that lever is pulled, open that door&quot;. You shouldn't expect to use it for larger features, though. We are generally not convinced that visual scripting is a great way to program (in no engine, no matter how good their tools are). However, for taking care of smaller tasks and as glue code between systems, it is a great way to get things done that would otherwise be quite cumbersome.</p>
 <h2 id="scripting-with-angelscript">Scripting with AngelScript</h2>
 <p>We have an <a href="../docs/custom-code/angelscript/angelscript-overview.html">AngelScript</a> binding which is pretty decent. The entire game logic in the <a href="../samples/testing-chambers.html">Testing Chambers</a> project is done with this.</p>
-<h2 id="terrain">Terrain</h2>
-<p>We currently have <strong>no terrain system</strong>. We have several ideas how we would like to do this, but this is very low priority at the moment. If you want to do terrain, you should just import static meshes. Of course that also means you need to do terrain sculpting in a separate tool. What we do have, is a simple <a href="../docs/terrain/heightfield-component.html">heightfield component</a>. For basic scenarios this may already be sufficient.</p>
 <h2 id="ai">AI</h2>
-<p>We have an integration for building <strong>nav-meshes with <a href="../docs/appendix/third-party-code.html#recast">Recast</a></strong>. We also have some really crappy components to do simple steering. Those are awful and need to be rewritten. If you have experience with AI and would like to contribute something in this regard, we would be happy to get some help. AI has low priority for us at the moment, but since this is a very isolated problem domain, you could probably improve the status quo significantly, without having to know the engine too much in detail.</p>
+<p>We have an integration for building <strong>nav-meshes with <a href="../docs/appendix/third-party-code.html#recast">Recast</a></strong>. We also have some basic components to do steering. If you have experience with AI and would like to contribute something in this regard, we would be happy to get some help. AI has low priority for us at the moment, but since this is a very isolated problem domain, you could probably improve the status quo significantly, without having to know the engine too much in detail.</p>
 <h2 id="streaming">Streaming</h2>
-<p>All our resources (textures, materials, shaders, ...) always use streaming. However, we have <strong>no level streaming</strong>. Since we also don't have a terrain system, this is currently not really needed. However, we do have <a href="../docs/performance/asset-collections.html">asset collections</a>, which can be used to load data in the background. So you could build a system that instantiates e.g. a part of a level only once the background loading is finished. The building blocks are there, but it's not working out of the box.</p>
+<p>All our resources (textures, materials, shaders, ...) always use streaming. However, we have <strong>no level streaming</strong>, at the moment. However, we do have <a href="../docs/performance/asset-collections.html">asset collections</a>, which can be used to load data in the background. So you could build a system that instantiates e.g. a part of a level only once the background loading is finished. The building blocks are there, but it's not fully working out of the box.</p>
 <h2 id="roadmap">Roadmap</h2>
 <p>We don't plan very far ahead. Here are the things we intend to work on in the near term.</p>
 <ol>
-<li>Vulkan renderer</li>
+<li>Better graphics</li>
 <li>Linux port</li>
 <li>General usability improvements</li>
 <li>Game AI functionality</li>

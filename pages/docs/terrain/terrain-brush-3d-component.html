@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Terrain and Vegetation | ezEngine </title>
+      <title>Terrain Brush 3D Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Terrain and Vegetation | ezEngine ">
+      <meta name="title" content="Terrain Brush 3D Component | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-brush-3d-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,25 +87,55 @@
         </div>
 
         <article data-uid="">
-<h1 id="terrain-and-vegetation">Terrain and Vegetation</h1>
+<h1 id="terrain-brush-3d-component">Terrain Brush 3D Component</h1>
 
-<p><img src="media/terrain-overview.jpg" alt="Terrain overview"></p>
-<h2 id="terrain">Terrain</h2>
-<p>ezEngine includes a brush-based <a href="terrain-plugin-overview.html">terrain system</a> for creating heightfield and voxel terrain. Terrain is shaped by placing brush objects in the scene. The system is non-destructive, so brushes can be repositioned or removed at any time.</p>
-<h2 id="vegetation">Vegetation</h2>
-<p>Vegetation can be created with standard meshes. Using custom <a href="../materials/visual-shaders.html">visual shaders</a>, a basic per-vertex wind animation can be applied.</p>
-<p>Additionally, ezEngine has built in support for <a href="kraut-overview.html">Kraut</a>, a system for procedurally generating tree meshes.</p>
-<p>Finally, there is a <a href="procedural/procedural-object-placement.html">procedural placement system</a> to scatter objects, typically plants, around the current player position.</p>
+<p>The <em>Terrain Brush 3D Component</em> modifies <a href="terrain-volume-component.html">terrain volumes</a> by carving out or adding voxel geometry, or by painting a material layer onto the surface. It is the volumetric counterpart to the <a href="terrain-brush-2d-component.html">Terrain Brush 2D Component</a> and shares a lot of properties with it.</p>
+<p><video src="media/terrain-brush-3d.mp4" autoplay controls></video></p>
+<p>For an overview of the terrain system, see <a href="terrain-plugin-overview.html">Terrain System</a>.</p>
+<h2 id="modify-modes">Modify Modes</h2>
+<p><code>ModifyMode</code> — How the brush affects the volume within its footprint.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Carve</code></td>
+<td>Removes voxels within the brush's inner volume.</td>
+</tr>
+<tr>
+<td><code>Fill</code></td>
+<td>Adds voxels within the brush's inner volume.</td>
+</tr>
+<tr>
+<td><code>Paint Only</code></td>
+<td>Only paints the material layer, doesn't change geometry. The outer radius affects the material's fade distance.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shape">Shape</h2>
+<p>The brush footprint is a 3D rounded box oriented by the owner object's rotation.</p>
+<p><code>HalfSizeX</code> — Half-length along the forwards axis.</p>
+<p><code>HalfSizeYTop</code>, <code>HalfSizeYBottom</code> — Half width at the top or bottom of the brush. By using a wider base, you can create more realistic tunnels.</p>
+<p><code>HalfSizeZ</code> — Half-length along the up axis.</p>
+<p>For the remaining properties, see <a href="terrain-brush-2d-component.html#footprint">Terrain Brush 2D Component</a>.</p>
+<h2 id="spline-brushes">Spline Brushes</h2>
+<p>Spline support works the same way as for 2D brushes. Attaching a <a href="../animation/paths/spline-component.html">Spline Component</a> to the same game object extrudes the brush volume along the spline. This is the best way to create tunnels and passages.</p>
+<p><img src="media/brush3d-path.jpg" alt="Brush Path"></p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="terrain-plugin-overview.html">Terrain System</a></li>
-<li><a href="procedural/procedural-object-placement.html">Procedural Object Placement</a></li>
+<li><a href="terrain-volume-component.html">Terrain Volume Component</a></li>
+<li><a href="terrain-brush-2d-component.html">Terrain Brush 2D Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-brush-3d-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

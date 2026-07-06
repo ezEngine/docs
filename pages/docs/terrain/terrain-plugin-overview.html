@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Terrain System | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Terrain System | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-plugin-overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="terrain-system">Terrain System</h1>
+
+<p>The terrain system provides tools for creating both heightfield terrain and voxel terrain, using a non-destructive brush workflow.</p>
+<p><img src="media/terrain-system.jpg" alt="Terrain System"></p>
+<h2 id="terrain-types">Terrain Types</h2>
+<p>Two terrain component types are available:</p>
+<ul>
+<li><strong><a href="terrain-patch-component.html">Terrain Patch</a></strong> — a flat heightfield tile. Each vertex has a height value. Suitable for large open landscapes.</li>
+<li><strong><a href="terrain-volume-component.html">Terrain Volume</a></strong> — a voxel volume. The surface is reconstructed from a 3D density field. Suitable for caves, overhangs, arches, and other shapes that a heightfield cannot represent.</li>
+</ul>
+<p>Both types can be combined in the same scene.</p>
+<h2 id="non-destructive-brush-editing">Non-Destructive Brush Editing</h2>
+<p>Terrain is shaped by placing <strong>brush components</strong> in the scene. Brushes are never destructive: the engine reapplies all active brushes each time the terrain is rebuilt, so any brush can be moved, resized, or deleted at any time without permanently altering the data.</p>
+<p>Both brush types can affect both terrain patches and terrain volumes. Each brush has <em>AffectPatches</em> and <em>AffectVolumes</em> toggles to limit which terrain types it modifies.</p>
+<p>The two brush types differ in how they compute their area of influence:</p>
+<ul>
+<li><strong><a href="terrain-brush-2d-component.html">Terrain Brush 2D</a></strong> — projects downward. It affects all terrain within its XY footprint, regardless of height. The brush height defines the target height for raising, lowering, and set operations. Use this for shaping ground surfaces and painting material across large areas.</li>
+<li><strong><a href="terrain-brush-3d-component.html">Terrain Brush 3D</a></strong> — a volumetric rounded box. It only affects terrain that lies inside the 3D shape. Use this for carving caves, adding rock formations, or any operation that must be confined to a specific region in 3D space.</li>
+</ul>
+<p>Brushes are game objects. Moving a brush object in the editor immediately updates the terrain preview.</p>
+<h2 id="patches-vs-volumes">Patches vs. Volumes</h2>
+<p><strong>Terrain patches</strong> are well suited for large open areas — rolling hills, plains, valleys. They are GPU-efficient and support rich per-vertex material blending: up to four material layers can blend across each quad. However, a heightfield can only represent a single height per XY position, so overhangs and caves are not possible.</p>
+<p><strong>Terrain volumes</strong> support full 3D shapes, making them the right choice for caves, tunnels, arches, and anything that must be modeled in three dimensions. Their material support is more limited: the volume has one base layer and each vertex can have one painted override. Only a single transition is possible at a time. To work around this, multiple smaller volumes can be placed side by side, each with a different base layer, and brush painting used to blend at the seams.</p>
+<p>Both types can coexist in the same scene and are designed to be combined. A typical setup might use a heightfield for the open landscape, a 3D brush to carve an opening into it, and a voxel volume positioned around the entrance and below ground to model the cave interior.</p>
+<p><strong>Seamless adjacency:</strong> Patches tile seamlessly with each other when placed edge to edge at the same vertex density. Volumes also tile seamlessly with other volumes at the same voxel size. Placing a patch next to a volume does not produce a seamless join — the surface reconstruction methods differ and the geometry will not line up. Some creativity is needed to hide the transition, such as overlapping the two types, placing props to cover the seam, or using a 3D brush to create a transition zone.</p>
+<h2 id="spline-brushes">Spline Brushes</h2>
+<p>If a <a href="../animation/paths/spline-component.html">Spline Component</a> is attached to the same game object as a brush, the brush stamps along the full length of the spline instead of acting at a single point. This is useful for roads, river beds, trenches, and tunnels.</p>
+<h2 id="collision">Collision</h2>
+<p>Collision shapes are <strong>not generated at runtime</strong>. They are baked to disk when the scene is exported. Changes made to brushes will not affect collision until the scene is re-exported.</p>
+<h2 id="dynamic-modifications">Dynamic Modifications</h2>
+<p>It is technically possible to modify the terrain visuals <em>in-game</em> by adding, removing or modifying terrain brushes. All affected terrain will automatically be regenerated. However, <em>physics colliders</em> cannot be updated dynamically this way. You can still use this for scripted modifications, for instance to cover a cave entrance with dirt, if you take care of toggling a collider object yourself. You can also use this for purely visual changes, for instance you can change the material layer used on backdrop mountains to toggle whether they have snow on their peaks.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li><strong>No LOD system.</strong> Terrain has no level-of-detail support at all — full detail rendered at all distances.</li>
+<li><strong>Collision baked at export.</strong> Terrain with collision meshes cannot change collision shape at runtime (see <a href="#collision">Collision</a>). Visual changes still work.</li>
+<li><strong>One material override per voxel.</strong> Terrain volumes support only a single painted override per vertex — no blending multiple overrides at same spot.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="terrain-patch-component.html">Terrain Patch Component</a></li>
+<li><a href="terrain-volume-component.html">Terrain Volume Component</a></li>
+<li><a href="terrain-brush-2d-component.html">Terrain Brush 2D Component</a></li>
+<li><a href="terrain-brush-3d-component.html">Terrain Brush 3D Component</a></li>
+<li><a href="terrain-materials.html">Terrain Materials</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-plugin-overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

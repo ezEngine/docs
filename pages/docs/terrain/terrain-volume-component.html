@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Terrain Volume Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Terrain Volume Component | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-volume-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="terrain-volume-component">Terrain Volume Component</h1>
+
+<p>The <em>Terrain Volume Component</em> renders a voxel terrain volume. Unlike a heightfield, a voxel volume can represent overhangs, caves, arches, and tunnels. The surface mesh is generated on the GPU and updated whenever overlapping brush components change. Both <a href="terrain-brush-2d-component.html">2D brushes</a> and <a href="terrain-brush-3d-component.html">3D brushes</a> can affect a volume.</p>
+<p><img src="media/terrain-cave.jpg" alt="Caves"></p>
+<p>For an overview of the terrain system, see <a href="terrain-plugin-overview.html">Terrain System</a>.</p>
+<h2 id="placement">Placement</h2>
+<p>Volumes tile seamlessly with other volumes as long as the <em>voxel size</em> is identical (<code>Size</code> / <code>Resolution</code>). Placing a volume next to a <a href="terrain-patch-component.html">terrain patch</a> does not produce a seamless join, since the two surface reconstruction methods differ — use overlapping terrains or props to hide the seam.</p>
+<p><strong>Working around the single-material-transition limit:</strong> unlike a terrain patch, which can blend up to four material layers per quad, a volume vertex only stores one base layer (<code>BaseMaterialIndex</code>) plus one painted override. That means a single volume can only ever show <em>one</em> transition — for example rock fading into dirt — anywhere brush painting overlaps the base layer. If you need three or four distinct materials, for example for a tunnel to transition from grass to dirt, then to rock, while also using mossy patches here and there, one volume can't hold all of them at once.</p>
+<p>The workaround is to split the tunnel into multiple smaller volumes, each given its own <code>BaseMaterialIndex</code> — one volume set to grass, an adjacent one set to dirt, another set to rock. Since volumes tile seamlessly at matching voxel size, the pieces still form one continuous surface. Brush painting is then only used locally, near each seam, to blend the transition between two neighboring base layers — so every seam gets its own one-layer blend instead of asking a single volume to blend everything at once. At the places where no override material is needed for a transition, it is then possible to paint mossy spots, as well.</p>
+<p><img src="media/volume-pieces.jpg" alt="Volume Pieces"></p>
+<p>See <a href="terrain-materials.html">Terrain Materials</a> for how base layers and painted overrides work.</p>
+<h2 id="editing">Editing</h2>
+<p>Volumes are shaped with <a href="terrain-brush-3d-component.html">3D terrain brushes</a>, used to add or carve solid geometry to form caves, tunnels, arches, and overhangs. <a href="terrain-brush-2d-component.html">2D brushes</a> can affect volumes too, projecting downward to raise, lower, or paint material regardless of the 3D shape underneath.</p>
+<h2 id="performance">Performance</h2>
+<p>Terrain volumes are more memory- and GPU-intensive than <a href="terrain-patch-component.html">terrain patches</a>. Use volumes only where overhangs or caves are actually needed, and prefer patches to cover large open areas.</p>
+<p>Higher <code>Resolution</code> values increase voxel density and bake time. Since the surface mesh regenerates whenever an overlapping brush changes, keep <code>Resolution</code> no higher than necessary for the detail the volume needs.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p><code>Resolution</code> — Number of voxels per axis. Higher resolutions produce finer detail but increase GPU memory and bake time.</p>
+<p><code>Size</code> — World-space side length of the cubic volume. Dividing <em>Size</em> by <em>Resolution</em> gives the world-space size of one voxel.</p>
+<p><code>Material</code> — The <a href="../materials/materials-overview.html">material</a> used to render the generated mesh. Must use a voxel-compatible shader. See <a href="terrain-materials.html">Terrain Materials</a>.</p>
+<p><code>BaseMaterialIndex</code> — The material layer assigned to voxels not covered by any brush paint operation.</p>
+<p><code>FillHeight</code> — Local-space Z height used to split the initial volume into solid (below) and air (above) before brushes run. With the default value, the volume starts entirely empty.</p>
+<p><code>EnableCollider</code> — When enabled, a <a href="../physics/jolt/collision-shapes/jolt-collision-meshes.html">Jolt triangle mesh</a> collision shape is baked to disk at scene export time. Disable for purely visual volumes.</p>
+<p><code>CleanupIterations</code> — Number of topology cleanup passes applied after voxel baking. Each pass removes isolated voxels and spike geometry. Higher values yield a smoother result at the cost of slightly longer bake times. Only necessary on volumes that use brushes with strong noise.</p>
+<p><code>Surfaces</code> — Per-material-index <a href="../materials/surfaces.html">physics surface</a> array. Entry <em>i</em> is the surface used where material index <em>i</em> is dominant. Used to control physics behavior such as footstep sounds and friction per material layer.</p>
+<p><code>TerrainTags</code> — Identity <a href="../projects/tags.html">tags</a> assigned to this volume. A brush only affects this volume when the brush's own tags are either empty or contain at least one tag that matches. This can be used to apply brushes to only very specific objects and is only needed when you use multiple <a href="terrain-patch-component.html">patches</a> or volumes on top of each other to form complex geometry.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="terrain-plugin-overview.html">Terrain System</a></li>
+<li><a href="terrain-brush-2d-component.html">Terrain Brush 2D Component</a></li>
+<li><a href="terrain-brush-3d-component.html">Terrain Brush 3D Component</a></li>
+<li><a href="terrain-materials.html">Terrain Materials</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/terrain/terrain-volume-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

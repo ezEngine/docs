@@ -6772,6 +6772,66 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/brush-falloff.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/brush-falloff.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/brush-noise.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/brush-noise.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/brush-path.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/brush-path.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/brush3d-path.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/brush3d-path.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/brushes-2d.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/brushes-2d.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/brushes-paint.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/brushes-paint.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/terrain/media/heightfield-rubble.jpg",
       "output": {
         "resource": {
@@ -7052,10 +7112,80 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-brush-2d.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-brush-2d.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-brush-3d.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-brush-3d.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-cave.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-cave.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-cracks.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-cracks.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "pages/docs/terrain/media/terrain-overview.jpg",
       "output": {
         "resource": {
           "relative_path": "pages/docs/terrain/media/terrain-overview.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-patch.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-patch.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-system.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-system.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/volume-pieces.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/volume-pieces.jpg"
         }
       },
       "version": ""
@@ -7442,6 +7572,36 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-brush-2d-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-brush-2d-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-brush-3d-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-brush-3d-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-materials.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-materials.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/terrain/terrain-overview.md",
       "output": {
         ".html": {
@@ -7451,14 +7611,44 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-patch-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-patch-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-plugin-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-plugin-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/terrain/terrain-volume-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/terrain/terrain-volume-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "pages/docs/toc.md",
       "output": {
-        ".json": {
-          "relative_path": "pages/docs/toc.json"
-        },
         ".html": {
           "relative_path": "pages/docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/docs/toc.json"
         }
       },
       "version": ""
@@ -7807,11 +7997,11 @@
       "type": "Toc",
       "source_relative_path": "pages/getting-started/toc.md",
       "output": {
-        ".json": {
-          "relative_path": "pages/getting-started/toc.json"
-        },
         ".html": {
           "relative_path": "pages/getting-started/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/getting-started/toc.json"
         }
       },
       "version": ""
@@ -8760,11 +8950,11 @@
       "type": "Toc",
       "source_relative_path": "pages/samples/toc.md",
       "output": {
-        ".json": {
-          "relative_path": "pages/samples/toc.json"
-        },
         ".html": {
           "relative_path": "pages/samples/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/samples/toc.json"
         }
       },
       "version": ""
@@ -8783,11 +8973,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""

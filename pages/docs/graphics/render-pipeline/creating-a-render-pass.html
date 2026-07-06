@@ -179,18 +179,21 @@ EZ_END_DYNAMIC_REFLECTED_TYPE;
 <p>If your pass needs to render materials and have access to the data provided by data providers, you need to declare the dependencies by calling <code>ezRenderPipelinePass::SetupResourceDependencies</code> on the pass and inside the execution callback you need to run <code>ezRenderPipelinePass::BindDataProviderResources</code> to bind the resources to the bind groups.</p>
 <p>If your pass renders scene geometry, use <code>RenderDataWithCategory()</code> inside the callback to draw objects from extractors.</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: renderpass-render-objects -->
-<pre><code class="lang-cpp">ezRenderPipelinePass::SetupResourceDependencies(viewData, ref_graph, pass, m_ShadingQuality);
-pass.SetExecuteCallback([=](const ezRenderGraphContext&amp; ctx)
+<pre><code class="lang-cpp">if (m_RenderDataCategory.IsValid())
+  DeclareRendererDependenciesForCategory(m_RenderDataCategory, ref_graph, pass);
+
+pass.SetExecuteCallback(
+  [=](const ezRenderGraphContext&amp; ctx)
   {
     const ezRenderViewContext&amp; renderViewContext = *ctx.GetUserData&lt;ezRenderViewContext&gt;();
-    renderViewContext.UpdateViewport();
-    ezRenderPipelinePass::BindDataProviderResources(renderViewContext, m_ShadingQuality);
-    ezBindGroupBuilder&amp; bindGroupRenderPass = renderViewContext.m_pRenderContext-&gt;GetBindGroup(EZ_GAL_BIND_GROUP_RENDER_PASS);
-    if (!hResolvedDepth.IsInvalidated())
-    {
-      bindGroupRenderPass.BindTexture(&quot;SceneDepth&quot;, ctx.ResolveTexture(hResolvedDepth));
-    }
-    RenderDataWithCategory(renderViewContext, ezDefaultRenderDataCategories::LitMeshDecal); //
+    if (!m_RenderDataCategory.IsValid())
+      return;
+
+    auto batchList = GetPipeline()-&gt;GetRenderDataBatchesWithCategory(m_RenderDataCategory);
+    if (batchList.GetBatchCount() == 0)
+      return;
+
+    RenderDataWithCategory(renderViewContext, m_RenderDataCategory);
   });
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
