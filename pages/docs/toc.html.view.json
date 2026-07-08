@@ -762,6 +762,15 @@
               "leaf": true
             },
             {
+              "name": "Render Pipeline Properties",
+              "href": "graphics/render-pipeline/render-pipeline-properties.html",
+              "topicHref": "graphics/render-pipeline/render-pipeline-properties.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Creating a Render Pass",
               "href": "graphics/render-pipeline/creating-a-render-pass.html",
               "topicHref": "graphics/render-pipeline/creating-a-render-pass.html",
@@ -1638,15 +1647,6 @@
               "name": "Volume Components",
               "href": "effects/post-processing/volume-components.html",
               "topicHref": "effects/post-processing/volume-components.html",
-              "tocHref": null,
-              "level": 4,
-              "items": [],
-              "leaf": true
-            },
-            {
-              "name": "Post-Processing Component",
-              "href": "effects/post-processing/post-processing-component.html",
-              "topicHref": "effects/post-processing/post-processing-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],

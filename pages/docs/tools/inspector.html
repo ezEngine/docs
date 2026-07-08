@@ -137,6 +137,13 @@ ezTelemetry::PerFrameUpdate();
 <li>For <a href="player.html">ezPlayer</a> and custom apps, the <strong>default port is 1040</strong>.</li>
 <li>For <em>EditorEngineProcess.exe</em>, the <strong>default port is 1050</strong>. So if you want to connect with ezInspector to the editor, you need to provide this port instead.</li>
 </ol>
+<h3 id="launching-from-the-editor">Launching from the Editor</h3>
+<p>The editor can launch ezInspector for you and preconfigure the connection, through <em>Tools &gt; Launch Inspector</em>:</p>
+<ul>
+<li><strong>For ezPlayer</strong>: Connects to port 1040, the default port used by ezPlayer and custom apps.</li>
+<li><strong>For Editor Engine</strong>: Connects to the editor's own engine process, on the port configured through the <code>-TelemetryPort</code> command line option (1050 by default).</li>
+</ul>
+<p>ezInspector itself also accepts <code>-url</code> and <code>-port</code> command line arguments to override the connection target it was last configured with. <code>-url</code> sets the host (<code>localhost</code> if omitted), <code>-port</code> sets the port. The window title always shows which address ezInspector is currently connected, or trying to connect, to. Run ezInspector with <code>-help</code> to list all supported command line options.</p>
 <h2 id="how-to-get-the-best-out-of-ezinspector">How to get the best out of ezInspector</h2>
 <p>Some tips, what to do to benefit from the inspection functionality:</p>
 <ul>

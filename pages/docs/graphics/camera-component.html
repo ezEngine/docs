@@ -142,6 +142,8 @@
 </li>
 <li><p><code>CameraRenderPipeline</code>: Allows you to select a specific <a href="render-pipeline/render-pipeline-overview.html">render pipeline</a> that shall be used to render the output from this camera. Available render pipelines are set up in the <a href="../assets/asset-profiles.html">asset profiles</a>.</p>
 </li>
+<li><p><code>BlackboardName</code>: Optional name of a <a href="../misc/blackboards.html">blackboard</a> whose entries are used to override <a href="render-pipeline/render-pipeline-properties.html">render pipeline properties</a> for this camera's view specifically, taking priority over the world's blackboard. Leave empty if the camera should only be affected by the world's blackboard.</p>
+</li>
 <li><p><code>RenderTarget</code>, <code>RenderTargetOffset</code>, <code>RenderTargetSize</code>: Only available when <code>UsageHint</code> is set to <code>Render to Texture</code>.</p>
 </li>
 <li><p><code>Aperture</code>, <code>ShutterTime</code>, <code>ISO</code>, <code>ExposureCompensation</code>: These options are currently only used for <em>tonemapping</em>. They all affect the final exposure value, which means you can adjust any one of them to change the brightness of the output. In the future these values may be used for motion blur and depth-of-field.</p>

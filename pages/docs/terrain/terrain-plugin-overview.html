@@ -120,7 +120,7 @@
 <p>It is technically possible to modify the terrain visuals <em>in-game</em> by adding, removing or modifying terrain brushes. All affected terrain will automatically be regenerated. However, <em>physics colliders</em> cannot be updated dynamically this way. You can still use this for scripted modifications, for instance to cover a cave entrance with dirt, if you take care of toggling a collider object yourself. You can also use this for purely visual changes, for instance you can change the material layer used on backdrop mountains to toggle whether they have snow on their peaks.</p>
 <h2 id="limitations">Limitations</h2>
 <ul>
-<li><strong>No LOD system.</strong> Terrain has no level-of-detail support at all — full detail rendered at all distances.</li>
+<li><strong>No LOD for terrain volumes.</strong> <a href="terrain-patch-component.html">Terrain patches</a> automatically <a href="terrain-patch-component.html#level-of-detail">reduce detail at a distance</a>, but <a href="terrain-volume-component.html">terrain volumes</a> have no level-of-detail support and always render at full detail.</li>
 <li><strong>Collision baked at export.</strong> Terrain with collision meshes cannot change collision shape at runtime (see <a href="#collision">Collision</a>). Visual changes still work.</li>
 <li><strong>One material override per voxel.</strong> Terrain volumes support only a single painted override per vertex — no blending multiple overrides at same spot.</li>
 </ul>

@@ -3722,16 +3722,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "pages/docs/effects/post-processing/post-processing-component.md",
-      "output": {
-        ".html": {
-          "relative_path": "pages/docs/effects/post-processing/post-processing-component.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "pages/docs/effects/post-processing/volume-components.md",
       "output": {
         ".html": {
@@ -4596,6 +4586,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-passes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-properties.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-properties.html"
         }
       },
       "version": ""
@@ -7146,6 +7146,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/terrain/media/terrain-cracks.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/terrain/media/terrain-overlap.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/terrain/media/terrain-overlap.jpg"
         }
       },
       "version": ""

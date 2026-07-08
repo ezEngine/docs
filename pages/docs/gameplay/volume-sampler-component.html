@@ -105,18 +105,23 @@
 <li>Read the current values at runtime using the scriptable functions <code>GetFloatValue</code>, <code>GetColorValue</code>, or the generic <code>GetValue</code>.</li>
 </ol>
 <p>Alternatively, values can be registered at runtime via <code>RegisterValue</code> instead of the component's <code>Values</code> list. This is useful when the set of values is determined dynamically.</p>
+<p>Enable <code>WriteToBlackboard</code> to also write every sampled value into a <a href="../misc/blackboards.html">blackboard</a>, using the same keys as configured in <code>Values</code>. This is the standard way to feed <a href="../graphics/render-pipeline/render-pipeline-properties.html">render pipeline properties</a> dynamically, for example to change fog or color grading settings depending on which area of a level the camera is in.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><p><code>VolumeType</code>: The <a href="../runtime/world/spatial-system.html">spatial category</a> identifying which volumes to sample. Default is <code>GenericVolume</code>. This must match the <code>Type</code> property of the target <a href="../effects/post-processing/volume-components.html">volume components</a>.</p>
 </li>
 <li><p><code>Values</code>: A list of values to sample. Each entry has:</p>
 <ul>
-<li><code>Name</code>: The key name to look up inside volumes.</li>
+<li><code>Name</code>: The key name to look up inside volumes. If <code>WriteToBlackboard</code> is enabled, this is also the key that the value is written to in the blackboard.</li>
 <li><code>DefaultValue</code>: Returned when the owner is outside all volumes.</li>
 <li><code>InterpolationDuration</code>: The time over which the value transitions when moving into or out of a volume.</li>
 </ul>
 </li>
 <li><p><code>AttachToMainCamera</code>: If enabled, the sampling position is taken from the main camera instead of the owner game object's position. Use this for effects that should follow what the player sees rather than a specific object's location.</p>
+</li>
+<li><p><code>WriteToBlackboard</code>: If enabled, sampled values are written into a <a href="../misc/blackboards.html">blackboard</a> every time they change, using the names from <code>Values</code> as keys.</p>
+</li>
+<li><p><code>BlackboardName</code>: The name of the <a href="../misc/blackboards.html">blackboard</a> to write to, looked up the same way as <a href="../misc/blackboards.html"><code>ezBlackboardComponent::FindBlackboard</code></a>. Leave empty to write to the world's blackboard.</p>
 </li>
 </ul>
 <h2 id="scriptable-functions">Scriptable Functions</h2>
@@ -127,12 +132,12 @@
 <li><code>GetColorValue(Name, FallbackValue)</code>: Returns the current value as a color, or <code>FallbackValue</code> if the value cannot be converted.</li>
 </ul>
 <h2 id="example-use-case">Example Use Case</h2>
-<p>The <a href="../effects/post-processing/post-processing-component.html">Post-Processing Component</a> already uses volumes internally to adjust rendering parameters per area. The Volume Sampler Component extends this pattern for generic use cases.</p>
-<p>For example, to change fog settings based on area, attach a Volume Sampler Component to the camera's game object and use a visual script to read the sampled fog values each frame and apply them to the <a href="../effects/fog.html">fog component</a> or render pipeline. The <a href="../../samples/testing-chambers.html">Testing Chambers</a> project contains a sample scene that demonstrates this. It modifies the fog settings when moving between two rooms.</p>
+<p>To change fog settings based on area, attach a Volume Sampler Component to the camera's game object (or enable <code>AttachToMainCamera</code>), enable <code>WriteToBlackboard</code>, and add entries named <code>Fog.Color</code>, <code>Fog.Density</code>, etc. The <a href="../effects/fog.html">fog component</a> automatically picks up matching keys from the world's blackboard. The <a href="../../samples/testing-chambers.html">Testing Chambers</a> project contains a sample scene that demonstrates this, modifying the fog settings when moving between two rooms.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../effects/post-processing/volume-components.html">Volume Components</a></li>
-<li><a href="../effects/post-processing/post-processing-component.html">Post-Processing Component</a></li>
+<li><a href="../graphics/render-pipeline/render-pipeline-properties.html">Render Pipeline Properties</a></li>
+<li><a href="../misc/blackboards.html">Blackboards</a></li>
 <li><a href="../misc/blackboard-template-asset.html">Blackboard Template Asset</a></li>
 <li><a href="../runtime/world/spatial-system.html">Spatial System</a></li>
 </ul>

@@ -90,7 +90,6 @@
 <h1 id="building-for-linux">Building for Linux</h1>
 
 <p>Linux support for ezEngine is currently in development and still to be considered experimental and incomplete. You can try it, but don't expect to be able to work productively with it.</p>
-<p>For rendering the new Vulkan backend is used, which itself is also very much in development yet.</p>
 <p>We welcome help finding and fixing issues.</p>
 <h2 id="supported-compilers--make-systems">Supported Compilers / Make Systems</h2>
 <p>The ezEngine CMake scripts support the following compilers when building for Linux:</p>
@@ -200,10 +199,6 @@
 <td>Build the ezEngine editor on Linux. This is currently experimental and might have significant bugs.</td>
 </tr>
 <tr>
-<td><code>-DEZ_BUILD_EXPERIMENTAL_VULKAN=ON</code></td>
-<td>Build the Vulkan renderer. This is currently experimental and might have significant bugs.</td>
-</tr>
-<tr>
 <td><code>-DCMAKE_BUILD_TYPE=Dev</code></td>
 <td>Specify the <a href="building-ez.html#build-types">build type</a> to use.</td>
 </tr>
@@ -223,7 +218,7 @@
 </table>
 <p>Example usage:</p>
 <pre><code class="lang-bash">mkdir build
-cmake -B build -S . -G Ninja -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_C_COMPILER=gcc-12 -DEZ_EXPERIMENTAL_EDITOR_ON_LINUX=ON -DEZ_BUILD_EXPERIMENTAL_VULKAN=ON -DCMAKE_BUILD_TYPE=Dev -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -B build -S . -G Ninja -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_C_COMPILER=gcc-12 -DEZ_EXPERIMENTAL_EDITOR_ON_LINUX=ON -DCMAKE_BUILD_TYPE=Dev -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 </code></pre>
 <h2 id="using-qt-creator">Using Qt Creator</h2>
 <p>The root of the repository can also be opened in Qt Creator, which will generally do a good job at finding the Qt location on its own.</p>
