@@ -165,7 +165,7 @@
 <p>When using the <a href="#quad-particle-output-node">Quad Particle Output Node</a>, two additional particle-specific input nodes become relevant:</p>
 <ul>
 <li><strong>ParticleEffect</strong>: Provides system-wide data. Currently exposes <code>TotalLifeTime</code>, the total time elapsed since the particle effect started.</li>
-<li><strong>Particle</strong>: Provides per-particle data. Exposes <code>Life</code> (a value from <code>1.0</code> when the particle spawns to <code>0.0</code> at death) and <code>Variation</code> (a random value per particle, useful for visual variety).</li>
+<li><strong>Particle</strong>: Provides per-particle data. Exposes <code>Life</code> (a value from <code>1.0</code> when the particle spawns to <code>0.0</code> at death), <code>Variation</code> (a random value per particle, useful for visual variety), <code>QuadUV</code> (the raw <code>[0-1]</code> UV coordinate across the particle, unaffected by flipbook animations and random variations — useful for textures that should not be chopped up by the flipbook, e.g. a pattern that a flipbook mask is blended with) and <code>FlipbookUV</code> (the UV coordinate transformed into the current flipbook animation / random variation frame, which is what texturing nodes sample with by default).</li>
 </ul>
 <h2 id="how-to-add-visual-shader-nodes">How to Add Visual Shader Nodes</h2>
 <p>It is straight-forward to add new visual shader nodes.

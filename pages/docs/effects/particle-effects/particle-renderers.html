@@ -151,7 +151,10 @@
 </li>
 <li><p><em>Random Row, Animated Column</em> - The texture contains <em>NumSpritesY</em> animations, each with <em>NumSpritesX</em> frames. Each particle plays one random animation over its lifetime.</p>
 </li>
+<li><p><em>Random Column, Animated Row</em> - The texture contains <em>NumSpritesX</em> animations, each with <em>NumSpritesY</em> frames. Each particle plays one random animation over its lifetime.</p>
+</li>
 </ul>
+<p><strong>Texture Orientation:</strong> Specifies which edge of the source texture is treated as &quot;forward&quot; (unrotated). If a texture is authored with its forward direction pointing in a different direction than the particle system expects, use this to rotate the sampled texture in 90° steps (<em>Up</em>, <em>Right</em>, <em>Down</em>, <em>Left</em>) instead of having to change the source texture.</p>
 <p><strong>Tint Color Param:</strong> An optional <a href="particle-effects-overview.html#effect-parameters">effect parameter</a> name. If set, the parameter is used to tint the final color of the particle.</p>
 <p><strong>Particle Stretch:</strong> Only available in the 'axis' render modes. Allows to stretch the particles along their fixed axis. Useful to create sparks.</p>
 <p><strong>Geometry Proximity Fade Out:</strong> Particles fade out when they intersect with or come close to scene geometry. This value controls the distance over which the fade-out occurs.</p>

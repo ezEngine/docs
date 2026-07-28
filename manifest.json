@@ -1292,6 +1292,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/assets/asset-check-panel.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/assets/asset-check-panel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/assets/asset-curator.md",
       "output": {
         ".html": {
@@ -1336,6 +1346,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/docs/assets/media/asset-browser.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/assets/media/asset-check-panel.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/assets/media/asset-check-panel.png"
         }
       },
       "version": ""

@@ -120,6 +120,10 @@ EZ_END_COMPONENT_TYPE
 <p>The property is neither shown in the editor nor serialized. It exists only at runtime or during editing. Use this for runtime-only cached data that should not be saved.</p>
 <pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;CachedHandle&quot;, m_hCached)-&gt;AddAttributes(new ezTemporaryAttribute()),
 </code></pre>
+<h3 id="ezrequiredattribute"><code>ezRequiredAttribute</code></h3>
+<p>Marks a property as required. It has no effect on how the property is displayed, but is picked up by the <a href="../assets/asset-check-panel.html">Check Assets panel</a>, which reports an issue when the property is left empty or, for a game object / component reference property, when it references an object that no longer exists.</p>
+<pre><code class="lang-cpp">EZ_MEMBER_PROPERTY(&quot;Target&quot;, m_sTarget)-&gt;AddAttributes(new ezRequiredAttribute()),
+</code></pre>
 <h2 id="type-level-attributes">Type-Level Attributes</h2>
 <p>These are placed on the <strong>type</strong> in an <code>EZ_BEGIN_ATTRIBUTES</code> block, not on individual properties.</p>
 <h3 id="ezcategoryattribute"><code>ezCategoryAttribute</code></h3>
