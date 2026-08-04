@@ -3720,6 +3720,15 @@
       "name": "Shipping",
       "items": [
         {
+          "name": "Polishing an Exported Project",
+          "href": "shipping/polishing-your-game.html",
+          "topicHref": "shipping/polishing-your-game.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
           "name": "Project Export",
           "href": "shipping/project-export.html",
           "topicHref": "shipping/project-export.html",

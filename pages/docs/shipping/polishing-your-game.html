@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Polishing an Exported Project | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Polishing an Exported Project | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/shipping/polishing-your-game.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="polishing-an-exported-project">Polishing an Exported Project</h1>
+
+<p>A freshly <a href="project-export.html">exported project</a> runs, but it still behaves like a development build: it launches through <a href="../tools/player.html">ezPlayer</a>, it reacts to all the developer shortcuts, and it shows the default loading screen. This page lists the steps to turn that into something that can be given to players.</p>
+<h2 id="use-a-shipping-build">Use a Shipping Build</h2>
+<p>Most of the development features are compiled out in a <em>Shipping</em> build (see <a href="../build/building-ez.html">Build Configurations</a>). Since the export copies the binaries that the editor itself is running with, you need an editor built in the <em>Shipping</em> configuration to export <em>Shipping</em> binaries.</p>
+<p>Using a <em>Shipping</em> build takes care of several things at once:</p>
+<ul>
+<li>The developer keyboard shortcuts are not registered (see below).</li>
+<li><a href="../tools/inspector.html">ezInspector</a> support is disabled, so the game doesn't open a network port for it.</li>
+<li><a href="../debugging/tracy.html">Tracy</a> is compiled out, so the game doesn't open a network port for that either.</li>
+</ul>
+<p>The last two points are the reason why a <em>Dev</em> build makes the OS firewall report that the game tried to access the network. In a <em>Shipping</em> build no such connection is set up at all.</p>
+<h2 id="ship-your-own-executable">Ship Your Own Executable</h2>
+<p>By default a project is launched with <a href="../tools/player.html">ezPlayer</a>, which is a generic application for running any ez project. To ship a game with its own executable and its own name, use the <a href="../custom-code/cpp/cpp-project-generation.html">C++ project generation</a>. Besides the plugin for your game code, it also sets up an application target named <code>&lt;PluginName&gt;Game</code>.</p>
+<p>If that executable has been built, project export picks it up automatically:</p>
+<ul>
+<li>The executable is added to the exported binaries, even though the default export filters exclude all EXE files.</li>
+<li><code>ezPlayer</code> is not exported anymore.</li>
+<li>A single launch script for your executable is written, instead of one script per scene.</li>
+</ul>
+<p>Most of the startup logic lives in <a href="../runtime/application/game-state.html">ezGameState</a>, so the executable itself stays minimal. Which scene is loaded at startup is decided by <code>ezGameState::GetStartupOptions()</code>. The default implementation takes the scene from the <code>-scene</code> command line option, which is what ezPlayer is used with. In a game you typically override it to return your main menu scene.</p>
+<h2 id="write-your-own-game-state">Write Your Own Game State</h2>
+<p><code>ezFallbackGameState</code> is meant for development and for tools like ezPlayer, not for a finished game. Among other things it displays a menu for selecting which scene to load, which is opened with the <em>Windows</em> key. To be able to use that key, it also disables the OS hotkeys through <code>ezInputDeviceMouseKeyboard::SetDisableOSHotkeys()</code>, which means that all <em>Windows</em> key shortcuts stop working while the game has focus.</p>
+<p>For a game, derive your <a href="../runtime/application/game-state.html">game state</a> directly from <code>ezGameState</code> and implement the functionality that you need. Looking at what <code>ezFallbackGameState</code> does is a good starting point.</p>
+<p>If you want to keep using <code>ezFallbackGameState</code> for the time being, set its <code>m_bAllowOpenMenu</code> member to false to disable the scene selection menu.</p>
+<h2 id="developer-shortcuts">Developer Shortcuts</h2>
+<p><code>ezGameState::ConfigureInputActions()</code> registers the input actions that the application itself handles. In a development build these are all the developer shortcuts, such as <em>F1</em> for the <a href="../debugging/console.html">console</a>, <em>F5</em> for the <a href="../debugging/stats.html">stats</a> display and <em>ESC</em> to close the application. In a <em>Shipping</em> build only the project's own <a href="../input/input-config.html">input configuration</a> is loaded and none of the developer shortcuts are registered.</p>
+<p>If you need a different split than that, override <code>ezGameState::ConfigureInputActions()</code> in your game state and call <code>ezGameApplication::RegisterGameApplicationInputActions()</code> with exactly the <code>ezGameApplicationInputFlags</code> that you want. <code>ezGameApplicationInputFlags::Regular</code> is the set without any developer functionality.</p>
+<p>Note that the developer shortcuts and the actions of your game are registered in the same input set, so a game that uses, for example, the <em>ESC</em> key needs to make sure that the <code>Dev_EscapeToClose</code> action isn't registered.</p>
+<h2 id="customize-the-loading-screen">Customize the Loading Screen</h2>
+<p>While a scene is loaded in the background, the game displays a loading screen, which by default is an empty world, so all you see is the clear color of the render pipeline.</p>
+<p>To replace it, override <code>ezGameState::CreateLoadingScreenWorld()</code>. A loading screen is a regular <a href="../runtime/world/worlds.html">world</a>, so it can be loaded from a scene file, but since it has to be ready quickly, it is better to set it up procedurally in code. For a simple full screen image, place a quad mesh in front of the camera and set the desired color and texture on its mesh instance.</p>
+<h2 id="reduce-stalls-at-startup">Reduce Stalls at Startup</h2>
+<p>Two things make the world visibly appear piece by piece after the loading screen:</p>
+<p><strong>Shaders are compiled at runtime.</strong> The first time a shader permutation is used, it is compiled and written to <code>Output/ShaderCache</code> next to the exported package. Since the export doesn't include a shader cache, this happens on the machine of every player, during the first launch. As a workaround, run the exported game yourself, play through the parts that you want to be smooth, and then ship the resulting <code>Output/ShaderCache</code> folder with your package.</p>
+<p><strong>Assets are loaded on demand.</strong> To load the assets of a scene up front, create an <a href="../performance/asset-collections.html">asset collection</a> with the same name as the scene. It is then used as the preload collection for that scene and all its assets are loaded while the loading screen is displayed.</p>
+<h2 id="export-options">Export Options</h2>
+<p>The <a href="project-export.html">project export dialog</a> has options that matter for a final package:</p>
+<ul>
+<li><strong>Create Launch Scripts</strong> writes the <code>.bat</code> files for starting the game. For a package that is distributed to players, these are usually not wanted, since the executable can be started directly.</li>
+<li>The <code>ProjectBinaries.ezExportFilter</code> and <code>ProjectData.ezExportFilter</code> files in your project folder control which files end up in the package. All DLLs of the SDK are currently exported, whether the project uses them or not, so this is the place to remove the ones that you don't need.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="project-export.html">Project Export</a></li>
+<li><a href="../build/building-ez.html">Build Configurations</a></li>
+<li><a href="../runtime/application/game-state.html">Game States</a></li>
+<li><a href="../custom-code/cpp/cpp-project-generation.html">C++ Project Generation</a></li>
+<li><a href="../performance/asset-collections.html">Asset Collections</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/shipping/polishing-your-game.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

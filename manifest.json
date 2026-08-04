@@ -6602,6 +6602,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/shipping/polishing-your-game.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/shipping/polishing-your-game.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/shipping/project-export.md",
       "output": {
         ".html": {

@@ -96,7 +96,17 @@
 <p>To get started with generating a self-contained package of your game, use the <em>project export dialog</em> that you find in the editor under <em>Project &gt; Export Project...</em>.</p>
 <p><img src="media/project-export-dlg.png" alt="Project Export Dialog"></p>
 <p>Select an output folder and click <strong>Export Project</strong>.</p>
-<p>Once the export is finished, it will automatically open the folder where the files have been copied to. The export also generates one <code>.bat</code> file for every scene in your project. These scripts launch the respective scene with <a href="../tools/player.html">ezPlayer</a>.</p>
+<p>The options are:</p>
+<ul>
+<li><strong>Compile C++ Plugin</strong> builds the project's <a href="../custom-code/cpp/cpp-overview.html">C++ code</a> before exporting. Disabled for projects that have no C++ plugin.</li>
+<li><strong>Transform all Assets</strong> makes sure that the <a href="../assets/assets-overview.html">asset</a> outputs are up-to-date, since only those are exported, not the source assets.</li>
+<li><strong>Create Launch Scripts</strong> writes <code>.bat</code> files for launching the exported project (see below).</li>
+<li><strong>Open Output Folder</strong> opens the output folder in the file browser, once the export finished.</li>
+</ul>
+<p>The state of these options is kept until the editor is closed.</p>
+<h3 id="launch-scripts">Launch Scripts</h3>
+<p>If the project has its own game executable, which the <a href="../custom-code/cpp/cpp-project-generation.html">C++ project generation</a> sets up, a single <code>.bat</code> file for launching that executable is created. The executable is also added to the exported binaries automatically, and <a href="../tools/player.html">ezPlayer</a> is not exported in this case.</p>
+<p>Otherwise the export generates one <code>.bat</code> file for every scene in your project. These scripts launch the respective scene with <a href="../tools/player.html">ezPlayer</a>.</p>
 <h2 id="configuring-project-export">Configuring Project Export</h2>
 <p>When you export your project for the first time, these files are added to your project directory:</p>
 <ol>
@@ -128,11 +138,12 @@ The second file is used to determine which <em>data files</em> should get includ
 <h2 id="limitations">Limitations</h2>
 <ul>
 <li>At this time it is not analyzed which plugin DLLs are actually needed, instead all DLLs are included. Edit your <code>ProjectBinaries.ezExportFilter</code> to control this.</li>
-<li>Currently the export step always creates <code>.bat</code> files to load each scene with ezPlayer. There is no way to automatically set up something different.</li>
+<li>The exported package contains no <a href="polishing-your-game.html">shader cache</a>, so shaders are compiled on the machine of every player, during the first launch.</li>
 <li>You currently can't automatically execute custom logic (C++ code, or a script) to finalize the package.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="polishing-your-game.html">Polishing an Exported Project</a></li>
 <li><a href="../performance/profiling.html">Profiling</a></li>
 <li><a href="../build/supported-platforms.html">Supported Platforms</a></li>
 <li><a href="../tools/player.html">ezPlayer</a></li>
