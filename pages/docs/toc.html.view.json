@@ -3764,6 +3764,15 @@
           "leaf": true
         },
         {
+          "name": "ezEditorProcessor",
+          "href": "tools/editor-processor.html",
+          "topicHref": "tools/editor-processor.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
           "name": "HeaderCheck Tool",
           "href": "tools/headercheck.html",
           "topicHref": "tools/headercheck.html",

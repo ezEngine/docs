@@ -7705,6 +7705,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/editor-processor.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/editor-processor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/tools/fileserve.md",
       "output": {
         ".html": {

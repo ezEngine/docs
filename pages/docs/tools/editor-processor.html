@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Projects | ezEngine </title>
+      <title>ezEditorProcessor | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Projects | ezEngine ">
+      <meta name="title" content="ezEditorProcessor | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/projects/projects-overview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/editor-processor.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,60 +87,116 @@
         </div>
 
         <article data-uid="">
-<h1 id="projects">Projects</h1>
+<h1 id="ezeditorprocessor">ezEditorProcessor</h1>
 
-<p>The term <em>project</em> refers to one game or application, its global settings, and all its data. The editor distinguishes between projects, and allows you to configure various options of each one. On the runtime side, however, the concept of a project does not exist, the current state of the runtime represents the project. Therefore, when you switch to a different project in the editor, the engine will in fact be shut down completely and restarted with different settings (editor and engine are two separate processes).</p>
-<h2 id="video-how-to-create-a-project">Video: How to create a project</h2>
-<p><strong>Note:</strong> This video is slightly outdated, as there is now a creation wizard that makes things even easier.</p>
-<p><a href="https://www.youtube.com/watch?v=5wskaNSRbzE"><img src="https://img.youtube.com/vi/5wskaNSRbzE/0.jpg" alt="video"></a></p>
-<h2 id="creating-a-project">Creating a Project</h2>
-<p>You can use ezEngine entirely without the editor. In that case, you do not need to create a project, at all. Your <a href="../runtime/application/application.html">application</a> is your project and you set up things like the <a href="../runtime/filesystem.html">fileSystem</a>, the <a href="../custom-code/cpp/engine-plugins.html">plugins</a> and so on, entirely from code.</p>
-<p>It is more convenient, though, to maintain your project through the editor. To create a new project, select <code>Project &gt; Create Project...</code>.</p>
-<p>A creation wizard will show up:</p>
-<p><img src="media/project-wizard-1.png" alt="Create a Project"></p>
-<p>Choose a name for your project and a location where it should be stored. The project name is used to create a new folder.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>The name of the folder represents the name of your project. This name is stored nowhere else, you can rename your project later simply by renaming the folder.</p>
-</blockquote>
-<h3 id="project-templates">Project Templates</h3>
-<p>In the next step you can choose a project template. If you choose a blank project, you get a mostly empty project and need to set up details yourself (see below).</p>
-<p>If you choose a project template, many things will be configured up front, and your project will be populated with sample assets, that show how to achieve certain things.</p>
-<p>The following project templates are currently available:</p>
-<ul>
-<li><a href="../../samples/basic-fps-template.html">Basic FPS Project Template</a></li>
-</ul>
-<h3 id="creating-a-project-from-the-command-line">Creating a Project from the Command Line</h3>
-<p>Projects can also be created without the wizard, which is mainly useful for scripts and automated tests:</p>
-<pre><code class="lang-cmd">ezEditor.exe -createProject &quot;C:/dev/MyGame&quot; -projectTemplate &quot;Basic FPS&quot;
+<p><em>ezEditorProcessor.exe</em> is the editor without a UI. The editor starts it on its own to <a href="../assets/assets-overview.html#asset-transform">transform assets</a> in the background - see <a href="../editor/editor-plugins.html#ezeditorprocessorexe">Editor Plugins</a> for its role in the process structure.</p>
+<p>This page is about launching it manually, to automate operations on a project: creating a project, transforming all assets, compiling the <a href="../custom-code/cpp/cpp-project-generation.html">C++ plugin</a> or <a href="../shipping/project-export.html">exporting</a> the project. The <em>GameEngineTests</em> and the <em>EditorTests</em> use it this way.</p>
+<h2 id="command-line-options">Command Line Options</h2>
+<pre><code class="lang-cmd">ezEditorProcessor.exe -project &quot;C:/dev/MyGame&quot; -transform Default
 </code></pre>
-<p><em>ezEditorProcessor.exe</em> accepts the same options and creates the project without opening a UI. See <a href="../editor/editor-launch.html#creating-a-project">Launching the Editor</a> for the details.</p>
-<h2 id="configuring-a-blank-project">Configuring a Blank Project</h2>
-<p>If you choose to create a blank project, the creation wizard asks you to select which <a href="plugin-selection.html">plugins</a> to use, since this also determines which <a href="../assets/assets-overview.html">asset types</a> will be available. This can be adjusted later.</p>
-<p>The editor will create a default 'Main' <a href="../scenes/scene-editing.html">scene</a> for you, but other than that, only the assets from the <code>Base</code> <a href="data-directories.html">data directory</a> are available.</p>
-<h2 id="project-wide-options">Project-Wide Options</h2>
-<p>You should be aware of these <a href="project-settings.html">project settings</a>, at some point you may need to adjust them for your purposes.</p>
-<ul>
-<li><a href="data-directories.html">Data directories</a></li>
-<li><a href="../custom-code/cpp/engine-plugins.html">Engine plugins</a></li>
-<li><a href="../physics/jolt/collision-shapes/jolt-collision-layers.html">Collision layers</a></li>
-<li><a href="project-settings.html#input-configuration">Input Configuration</a></li>
-<li><a href="tags.html">Tags</a></li>
-<li><a href="project-settings.html#window-configuration">Window Configuration</a></li>
-<li><a href="../assets/asset-profiles.html">Asset profiles</a></li>
-</ul>
-<p>Plugins may add additional options.</p>
-<p>Usually you should copy all required assets directly into your project folder, but in case that you want to share assets between multiple projects, you can put those assets into a dedicated folder and add that folder to your project as a <a href="data-directories.html">data directory</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-project &lt;path&gt;</code></td>
+<td>The project folder, or the path to its <code>ezProject</code> file.</td>
+</tr>
+<tr>
+<td><code>-transform &lt;profile&gt;</code></td>
+<td>Transforms all assets for the given <a href="../assets/asset-profiles.html">asset profile</a>, e.g. <code>Default</code>.</td>
+</tr>
+<tr>
+<td><code>-resave</code></td>
+<td>Resaves all assets.</td>
+</tr>
+<tr>
+<td><code>-compile</code></td>
+<td>Generates and compiles the project's C++ plugin.</td>
+</tr>
+<tr>
+<td><code>-recompile</code></td>
+<td>Like <code>-compile</code>, but re-runs CMake and compiles unconditionally. Needed when source files were added, removed or renamed, which <code>-compile</code> does not notice.</td>
+</tr>
+<tr>
+<td><code>-export &lt;path&gt;</code></td>
+<td><a href="../shipping/project-export.html">Exports</a> the project into the given absolute directory. The directory is deleted first, an <code>ExportLog.txt</code> is written into it.</td>
+</tr>
+<tr>
+<td><code>-outputDir &lt;path&gt;</code></td>
+<td>Where logs, profiling data and crash dumps are written.</td>
+</tr>
+<tr>
+<td><code>-profiling</code></td>
+<td>Writes profiling information into the output directory.</td>
+</tr>
+</tbody>
+</table>
+<p>The options of the editor itself work as well. Most relevant are <code>-createProject</code>, <code>-projectTemplate</code>, <code>-pluginTemplate</code> and <code>-listTemplates</code>, see <a href="../editor/editor-launch.html#creating-a-project">Launching the Editor</a>.</p>
+<p><code>ezEditorProcessor.exe -help</code> prints all options.</p>
+<p>Steps are executed in a fixed order within one run: create project, build C++ code, transform, export. So a single call can do everything:</p>
+<pre><code class="lang-cmd">ezEditorProcessor.exe -createProject &quot;C:/dev/MyGame&quot; -projectTemplate &quot;Basic FPS&quot; -transform Default
+</code></pre>
+<p>If a <a href="../custom-code/cpp/cpp-project-generation.html">C++ plugin</a> exists, it is always built before assets are transformed or the project is exported, since assets may depend on it. An export does not transform the assets again if <code>-transform</code> already did so in the same run.</p>
+<h2 id="exit-behavior">Exit Behavior</h2>
+<p><em>ezEditorProcessor</em> always terminates on its own. Once the requested work is done - or has failed - it shuts the editor down and exits, so it can be waited on from a script without any further handshake.</p>
+<p>The one exception is a call that specifies none of the above operations. That is the mode the editor uses for background processing: the process connects back to the host process that started it, waits for assets to transform, and exits when that host is gone. Started by hand, it will fail to connect and exit with code <code>200</code>.</p>
+<p>The exit code says what happened:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Success.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The asset profile passed to <code>-transform</code> is unknown, or transforming an asset failed.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The project could not be opened.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Generating or compiling the C++ plugin failed.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The export failed.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Creating the project failed.</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Started in background mode, but no host process was there to connect to.</td>
+</tr>
+</tbody>
+</table>
+<p>Failures are also written to the log. Since there is no UI, the log is the only place where the details of a failed transform or a compiler error can be found.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="data-directories.html">Data Directories</a></li>
-<li><a href="plugin-selection.html">Plugin Selection</a></li>
+<li><a href="../editor/editor-launch.html">Launching the Editor</a></li>
+<li><a href="../editor/editor-plugins.html">Editor Plugins</a></li>
+<li><a href="../assets/assets-overview.html#asset-transform">Asset Transform</a></li>
+<li><a href="../shipping/project-export.html">Project Export</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/projects/projects-overview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/tools/editor-processor.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

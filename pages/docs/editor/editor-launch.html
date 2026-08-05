@@ -102,7 +102,11 @@
 <tbody>
 <tr>
 <td><code>-project &lt;path&gt;</code></td>
-<td>Opens the editor with the specified project. The path should point to the project's <code>ezProject</code> file.</td>
+<td>Opens the editor with the specified project. The path should point to the project's <code>ezProject</code> file, or to the folder containing it.</td>
+</tr>
+<tr>
+<td><code>-documents &lt;path&gt; ...</code></td>
+<td>Documents to open after the project. The paths are relative to a <a href="../projects/data-directories.html">data directory</a>. Only used together with <code>-project</code>.</td>
 </tr>
 <tr>
 <td><code>-noRecent</code></td>
@@ -112,8 +116,33 @@
 <td><code>-safe</code></td>
 <td>Starts the editor in <em>safe mode</em>, which disables automatic loading of projects and scenes. This is useful for troubleshooting startup issues.</td>
 </tr>
+<tr>
+<td><code>-unattended</code></td>
+<td>Tells the editor that no user is present, see <a href="#unattended-mode">below</a>.</td>
+</tr>
+<tr>
+<td><code>-NoSplash</code></td>
+<td>Disables the splash screen.</td>
+</tr>
+<tr>
+<td><code>-createProject &lt;path&gt;</code></td>
+<td>Creates a new project and opens it, see <a href="#creating-a-project">below</a>.</td>
+</tr>
+<tr>
+<td><code>-projectTemplate &lt;name&gt;</code></td>
+<td>Which project template <code>-createProject</code> should use.</td>
+</tr>
+<tr>
+<td><code>-pluginTemplate &lt;name&gt;</code></td>
+<td>Which plugin template <code>-createProject</code> should use.</td>
+</tr>
+<tr>
+<td><code>-listTemplates</code></td>
+<td>Logs the names that <code>-projectTemplate</code> and <code>-pluginTemplate</code> accept, then continues.</td>
+</tr>
 </tbody>
 </table>
+<p>Running <code>ezEditor.exe -help</code> prints the full list.</p>
 <h3 id="examples">Examples</h3>
 <pre><code class="lang-cmd">ezEditor.exe -project &quot;C:/dev/MyGame/ezProject&quot;
 </code></pre>
@@ -121,6 +150,19 @@
 </code></pre>
 <pre><code class="lang-cmd">ezEditor.exe -safe
 </code></pre>
+<h2 id="creating-a-project">Creating a Project</h2>
+<p>A project can also be created from the command line, which is useful in scripts and for automated tests:</p>
+<pre><code class="lang-cmd">ezEditor.exe -createProject &quot;C:/dev/MyGame&quot; -projectTemplate &quot;Basic FPS&quot;
+</code></pre>
+<p>The path has to be absolute, and the directory must either not exist yet, or be empty. The new project is opened right afterwards.</p>
+<p>Without <code>-projectTemplate</code>, a blank project is created. In that case <code>-pluginTemplate</code> determines which <a href="../projects/plugin-selection.html">plugins</a> it starts with (<code>General3D</code> if not specified). A project template brings its own plugin selection, so the two options are not combined.</p>
+<p><code>-listTemplates</code> logs which names are available:</p>
+<pre><code class="lang-cmd">ezEditor.exe -listTemplates
+</code></pre>
+<p>The same options are understood by <em>ezEditorProcessor.exe</em>, which creates the project without opening a UI and then exits. See <a href="../tools/editor-processor.html">ezEditorProcessor</a>.</p>
+<h2 id="unattended-mode">Unattended Mode</h2>
+<p><code>-unattended</code> is meant for editors that are driven by a script or another tool. Modal dialogs are suppressed and the questions they would ask are answered with the option that lets the operation continue, rather than the safest one - a half-started editor is of no use to an automated caller. Notably, the offer to start in safe mode after a crash is declined, since accepting it would prevent the project from being loaded.</p>
+<p>Without this option, a dialog that nobody closes blocks the editor indefinitely.</p>
 <h2 id="windows-taskbar-integration">Windows Taskbar Integration</h2>
 <p>On Windows, the editor integrates with the taskbar jumplist. Right-click the editor icon in the taskbar to access:</p>
 <ul>
@@ -133,6 +175,7 @@
 <li><a href="dashboard.html">Dashboard</a></li>
 <li><a href="editor-preferences.html">Editor Preferences</a></li>
 <li><a href="../projects/projects-overview.html">Projects</a></li>
+<li><a href="../tools/editor-processor.html">ezEditorProcessor</a></li>
 </ul>
 
 </article>
