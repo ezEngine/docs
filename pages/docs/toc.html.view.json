@@ -897,6 +897,15 @@
           "level": 3,
           "items": [],
           "leaf": true
+        },
+        {
+          "name": "Mouse Cursor",
+          "href": "input/mouse-cursor.html",
+          "topicHref": "input/mouse-cursor.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
         }
       ],
       "topicHref": null,
@@ -3821,6 +3830,15 @@
           "name": "ezTexConv",
           "href": "tools/texconv.html",
           "topicHref": "tools/texconv.html",
+          "tocHref": null,
+          "level": 3,
+          "items": [],
+          "leaf": true
+        },
+        {
+          "name": "MCP Server",
+          "href": "tools/mcp-server.html",
+          "topicHref": "tools/mcp-server.html",
           "tocHref": null,
           "level": 3,
           "items": [],

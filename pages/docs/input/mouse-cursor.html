@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Mouse Cursor | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Mouse Cursor | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/input/mouse-cursor.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="mouse-cursor">Mouse Cursor</h1>
+
+<p>The engine can display a custom mouse cursor, meaning a cursor that is drawn by the engine itself, rather than by the operating system. This is often called a <em>software cursor</em>. Since it is just an image that the engine renders, it can use the same artwork as the rest of the game, and it can be animated, tinted and rotated at runtime.</p>
+<p>The mouse cursor is also affected by two related settings: whether the OS cursor is visible at all, and whether the mouse is confined to the application window.</p>
+<h2 id="displaying-a-custom-cursor">Displaying a Custom Cursor</h2>
+<p><code>ezInputManager::SetMouseCursor()</code> takes an <code>ezMouseCursorDesc</code> that describes what the cursor should look like:</p>
+<pre><code class="lang-cpp">ezMouseCursorDesc cursor;
+cursor.m_sCursor = &quot;{ d4aca571-6900-48aa-93c6-3d388f551f50 }&quot;; // a texture asset
+
+// the tip of the arrow is in the top-left corner of the image
+cursor.m_vHotspot.Set(0.0f);
+
+ezInputManager::SetMouseCursor(cursor);
+</code></pre>
+<p>Setting a custom cursor hides the OS cursor automatically. <code>ezInputManager::ClearMouseCursor()</code> (or an empty <code>m_sCursor</code>) switches back to the OS cursor.</p>
+<p>The cursor is drawn on top of everything else, even while no <a href="../runtime/world/worlds.html">world</a> is loaded. Calling <code>SetMouseCursor()</code> every frame, for example from your <a href="../runtime/application/game-state.html">game state</a> update, is inexpensive, so the cursor can be animated, rotated or tinted freely.</p>
+<h3 id="cursor-description">Cursor Description</h3>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m_sCursor</code></td>
+<td>Which image to display. This is the GUID or the path of either a <a href="../graphics/textures-overview.html">texture</a> or a <a href="../materials/materials-overview.html">material</a> asset. An empty string means that no custom cursor is used.</td>
+</tr>
+<tr>
+<td><code>m_fSize</code></td>
+<td>Scales the size of the cursor image.</td>
+</tr>
+<tr>
+<td><code>m_vHotspot</code></td>
+<td>The point of the image that sits exactly on the mouse position, in normalized coordinates. <code>(0,0)</code> is the top-left corner, <code>(0.5,0.5)</code> the center. This is also the pivot around which the rotation is applied.</td>
+</tr>
+<tr>
+<td><code>m_vUvTopLeft</code> / <code>m_vUvBottomRight</code></td>
+<td>The sub-rectangle of the image to display. Use this for texture atlases and animated cursors.</td>
+</tr>
+<tr>
+<td><code>m_Rotation</code></td>
+<td>Rotation of the image around its hotspot. Positive angles rotate clockwise on screen.</td>
+</tr>
+<tr>
+<td><code>m_Color</code></td>
+<td>The image is multiplied with this color. Useful for state changes without extra artwork.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cursor-size">Cursor Size</h3>
+<p>By default (<code>m_fSize</code> at 1) the custom cursor is rendered at the size of the OS cursor, which takes both the DPI scaling of the display and the mouse pointer size from the user's system settings into account. The cursor therefore matches the size that the player expects on any monitor, resolution and window size. Only change <code>m_fSize</code> to deliberately deviate from that. <code>ezInputManager::GetHardwareCursorSize()</code> returns the size in pixels, if you need it yourself.</p>
+<h3 id="using-a-material">Using a Material</h3>
+<p>If <code>m_sCursor</code> refers to a texture asset, the cursor is drawn with the built-in <code>Shaders/MouseCursor/MouseCursor.ezShader</code>. Pointing it at a <a href="../materials/materials-overview.html">material</a> asset instead allows for arbitrary cursor effects.</p>
+<p>A custom cursor material has to follow these rules:</p>
+<ul>
+<li>Its vertex shader has to <code>#include &lt;Shaders/MouseCursor/MouseCursorCommon.h&gt;</code> and return <code>ezMouseCursorVertex(VertexID)</code>, or do the equivalent math itself, using <code>ezMouseCursorConstants</code>.</li>
+<li>It has to set up its own render state (no depth test, no culling, alpha blending).</li>
+<li>It must not use constant buffer slot 3 in the <code>EZ_GAL_BIND_GROUP_FRAME</code> bind group, since that one holds <code>ezMouseCursorConstants</code>.</li>
+<li>It must not declare permutation variables and it must not read <code>ezGlobalConstants</code>, except for the time constants. Neither is in a defined state while the cursor is rendered.</li>
+</ul>
+<h2 id="os-cursor-visibility-and-clipping">OS Cursor Visibility and Clipping</h2>
+<p>Two functions on <code>ezInputDeviceMouseKeyboard</code> control the OS cursor:</p>
+<ul>
+<li><code>SetShowMouseCursor()</code> shows or hides it inside the application window.</li>
+<li><code>SetClipMouseCursor()</code> confines the mouse to the window, using one of the <code>ezMouseCursorClipMode</code> values. Confining the mouse is usually wanted, to prevent accidental task switches, especially on multi-monitor systems. Don't use it when you have multiple windows and need absolute mouse positions.</li>
+</ul>
+<p>Both of these express what the <em>application</em> wants. Overlays may temporarily override it, and once they stop doing so, the state requested here is restored automatically, so callers never have to save and restore it themselves. <code>GetShowMouseCursor()</code> and <code>GetClipMouseCursor()</code> return what the application requested, ignoring any overrides.</p>
+<h3 id="overrides">Overrides</h3>
+<p>Overlay UI, such as the <a href="../debugging/console.html">in-game console</a> or a debug UI, typically needs the OS cursor to be visible, even while the game hid it or displays a custom cursor. Such code registers an <em>override</em> instead of changing the application's request:</p>
+<pre><code class="lang-cpp">// as a member of the overlay, requested and released as it is shown and hidden
+ezMouseCursorOverrideRequest m_CursorOverride;
+
+// ...
+m_CursorOverride.Request(); // while the overlay is open
+m_CursorOverride.Release(); // when it closes
+</code></pre>
+<p><code>ezMouseCursorOverrideRequest</code> releases its override automatically when it is destroyed, so it can also be used as a scope guard by passing the desc to its constructor.</p>
+<p>An <code>ezMouseCursorOverrideDesc</code> determines what the override does:</p>
+<ul>
+<li><code>m_OSCursor</code> is one of <code>ezMouseCursorOverride::ForceOSCursor</code> (the OS cursor is forced to be visible and the custom cursor is not drawn), <code>ForceHidden</code> (the OS cursor is forced to be hidden, a custom cursor is still drawn) or <code>None</code> (no change).</li>
+<li><code>m_bForceNoClip</code> forces <code>ezMouseCursorClipMode::NoClip</code>, so that the mouse can leave the window, no matter what the application requested.</li>
+</ul>
+<p>The defaults are <code>ForceOSCursor</code> with <code>m_bForceNoClip</code> set to true, which is what overlay UI usually wants.</p>
+<p>Multiple overrides can be active at the same time and the most recently requested one wins, so several overlays don't stomp each other. <code>ezInputManager::PushMouseCursorOverride()</code> and <code>PopMouseCursorOverride()</code> may be used directly, but <code>ezMouseCursorOverrideRequest</code> is preferred, since it cannot leak an override. Both may only be called from the main thread.</p>
+<p><code>ezInputManager::IsCustomMouseCursorActive()</code> returns whether a custom cursor is set and is not currently suppressed by an override.</p>
+<h2 id="rendering">Rendering</h2>
+<p>The custom cursor is rendered by <code>ezMouseCursorRenderer</code> in the <em>GameEngine</em> library. A game that derives from <code>ezGameState</code> doesn't need to set this up, it is pointed at the main window automatically.</p>
+<p>The cursor is not drawn as part of a <a href="../graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a>, so it is not affected by post-processing, and it is visible even while a scene is still loading.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="input-overview.html">Input System</a></li>
+<li><a href="../runtime/application/game-state.html">Game States</a></li>
+<li><a href="../materials/materials-overview.html">Materials</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/input/mouse-cursor.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

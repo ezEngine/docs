@@ -146,10 +146,13 @@ if (recentInput.IsSet(ezPhysicalControllerInput::Start))
 <p>This message based approach is how <a href="../custom-code/visual-script/script-component.html">script components</a> are able to handle input. Since the input messages are delivered to all child objects, you can have multiple scripts or other components which each react to different input. For example one script can forward movement related input to a <a href="../physics/jolt/special/jolt-character-controller.html">character controller</a> and another script can handle input for weapons.</p>
 <h2 id="setting-up-input-sets">Setting Up Input Sets</h2>
 <p>Input sets can be configured either from code, or through the editor <a href="../projects/project-settings.html">project settings</a>. For details, see <a href="input-config.html">this page</a>.</p>
+<h2 id="mouse-cursor">Mouse Cursor</h2>
+<p>Besides reading input, the input manager also holds the state of the mouse cursor: which custom ('software') cursor to display, whether the operating system cursor is visible, and whether the mouse is confined to the window. See <a href="mouse-cursor.html">Mouse Cursor</a>.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="input-config.html">Input Set Configuration</a></li>
 <li><a href="input-component.html">Input Component</a></li>
+<li><a href="mouse-cursor.html">Mouse Cursor</a></li>
 </ul>
 
 </article>

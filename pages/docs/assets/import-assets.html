@@ -114,11 +114,13 @@
 <p>You then get a table where you can select for each file how to import it:</p>
 <p><img src="media/asset-import.png" alt="Asset Import Table"></p>
 <p>This can be useful, if you want to import many meshes, but need to decide which ones shall be static meshes and which ones animated meshes. It can also be useful, if you want to import many textures, as the dialog allows to select how each texture gets imported.</p>
+<p>Where an import mode needs more explanation than its name gives, hovering over it in the drop-down shows a description.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
 <p>Importing textures directly is typically not needed when the textures are part of meshes, since the mesh import automatically imports textures for you.</p>
 </blockquote>
 <p>Once you click <em>Import</em> the asset documents are generated and you can then open them. If background asset processing is enabled, the editor will already start <a href="assets-overview.html#asset-transform">transforming</a> the asset data.</p>
+<p>Importing a file that was imported before does not create a second document and does not overwrite the existing one, it is simply skipped. So it is safe to select a whole folder and import it repeatedly, to pick up the files that were added since. File types from which multiple documents can be created, such as <a href="../animation/skeletal-animation/animation-clip-asset.html">animation clips</a>, can still be imported again.</p>
 <h3 id="import-via-drag-and-drop">Import Via Drag And Drop</h3>
 <p>The methods above assume that the source asset is already present inside one of the project's <a href="../projects/data-directories.html">data directories</a>. If that is not the case, you can drag and drop a file into the <a href="asset-browser.html">asset browser</a> to copy the file into the selected directory. This also automatically launches the asset import dialog mentioned above.</p>
 <h2 id="see-also">See Also</h2>

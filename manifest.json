@@ -4792,6 +4792,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/docs/input/mouse-cursor.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/input/mouse-cursor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/materials/materials-overview.md",
       "output": {
         ".html": {
@@ -7739,6 +7749,16 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/tools/inspector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/tools/mcp-server.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/tools/mcp-server.html"
         }
       },
       "version": ""
