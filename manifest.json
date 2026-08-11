@@ -191,6 +191,26 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ai/AiPlugin/media/voxel-grid.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ai/AiPlugin/media/voxel-grid.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/ai/AiPlugin/media/voxel-path-test.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/ai/AiPlugin/media/voxel-path-test.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/ai/AiPlugin/navigation-component.md",
       "output": {
@@ -226,6 +246,46 @@
       "output": {
         ".html": {
           "relative_path": "pages/docs/ai/AiPlugin/runtime-navmesh.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/voxel-grid-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/voxel-grid-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/voxel-navigation-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/voxel-navigation-component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/voxel-navigation.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/voxel-navigation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/docs/ai/AiPlugin/voxel-path-test-component.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/docs/ai/AiPlugin/voxel-path-test-component.html"
         }
       },
       "version": ""

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Common Application Features | ezEngine </title>
+      <title>3D Voxel Navigation | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Common Application Features | ezEngine ">
+      <meta name="title" content="3D Voxel Navigation | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/common-application-features.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-navigation.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,37 +87,37 @@
         </div>
 
         <article data-uid="">
-<h1 id="common-application-features">Common Application Features</h1>
+<h1 id="3d-voxel-navigation">3D Voxel Navigation</h1>
 
-<p>All applications that are built on top of <code>ezGameApplication</code> provide a number of useful features for developers.</p>
-<p>The shortcuts below are also listed in the <em>Engine</em> menu of the in-game <a href="../../debugging/console.html">console</a> and can be triggered from there.</p>
-<h2 id="in-game-console">In-game console</h2>
-<p><strong>Press F1</strong> to toggle the in-game <a href="../../debugging/console.html">console</a>. See its documentation for further details.</p>
-<h2 id="reload-resources">Reload Resources</h2>
-<p><strong>Press F4</strong> to instruct the engine to reload all <a href="../resource-management.html">resources</a>. This can be useful, if for example, you are working on a <a href="../../graphics/shaders/shaders-overview.html">shader</a> and want to see the result of your changes inside the game, without having to restart the game.</p>
-<p>Reloading resources works for all assets that are used directly by the engine (e.g. <a href="../../graphics/shaders/shaders-overview.html">Shaders</a>). For some assets it will work, after the editor processed the input <a href="../../assets/assets-overview.html">assets</a>. For example for <a href="../../graphics/textures-overview.html">textures</a> and <a href="../../materials/materials-overview.html">materials</a> and many others. Some resources, though, are not reloadable, e.g. things that get instantiated at runtime, such as <a href="../../prefabs/prefabs-overview.html">prefabs</a>.</p>
-<h2 id="show-frames-per-second">Show Frames Per Second</h2>
-<p><strong>Press F5</strong> to toggle the display of the FPS counter.</p>
-<h2 id="take-a-profiling-capture">Take a Profiling Capture</h2>
-<p><strong>Press F8</strong> to take a capture of the profiling data. See the <a href="../../performance/profiling.html">profiling</a> documentation for details.</p>
-<h2 id="open-ezinspector">Open ezInspector</h2>
-<p><strong>Press F10</strong> to launch the <a href="../../tools/inspector.html">ezInspector</a> tool. It is started from the directory of the running application, so it is only available if <code>ezInspector</code> was built and deployed next to it.</p>
-<h2 id="take-a-renderdoc-capture">Take a RenderDoc Capture</h2>
-<p><strong>Press F11</strong> to take a RenderDoc capture. See the <a href="../../debugging/renderdoc.html">RenderDoc integration</a> documentation for details.</p>
-<h2 id="take-a-screenshot">Take a Screenshot</h2>
-<p><strong>Press F12</strong> to take a screenshot. Screenshots are stored in the <code>appdata</code> <a href="../../projects/data-directories.html">data directory</a> (see the <a href="../../debugging/logging.html">log output</a>). On Windows this can be found by typing <code>%appdata%</code> into the Windows Explorer.</p>
+<p>Voxel navigation is used for objects that move freely through 3D space, such as flying creatures, submarines or spaceships. Whereas the <a href="runtime-navmesh.html">runtime navmesh</a> describes walkable surfaces, a voxel grid describes which parts of the <em>volume</em> are blocked and which are free.</p>
+<h2 id="voxel-grids">Voxel Grids</h2>
+<p>The navigable space is described by one or more <a href="voxel-grid-component.html">voxel grid components</a>. Each grid is a box of a fixed size that is subdivided into voxels of a fixed edge length. Once the scene starts simulating, the collision geometry inside the box is rasterized into the grid, and every voxel that is touched by a triangle is marked as <em>occupied</em>. All other voxels are <em>free</em>.</p>
+<p>Only geometry of the <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> that is configured on the grid is taken into account, which allows you to exclude detail geometry or objects that should not block navigation.</p>
+<p><img src="media/voxel-grid.jpg" alt="Voxel Grid"></p>
+<p>Voxelization happens once, a few frames after the simulation started. It is not updated afterwards, so objects that move at runtime don't affect the grid.</p>
+<p>Grids are managed by the <code>ezAiVoxelWorldModule</code>. Its <code>IsReady()</code> function returns true once voxelization has finished. Before that, path searches fail. The module also provides <code>FindGridsInBox()</code> to find all grids in an area.</p>
+<h2 id="path-searches">Path Searches</h2>
+<p>Path searches use A* through free voxels. A search may span multiple grids. Pathfinding is always done within a single grid at a time. If the destination lies outside the grid that is currently searched, the search only looks for a way out of that grid, and then continues in the next grid on the way to the destination. <strong>Space that is not covered by any grid is treated as free.</strong> This means that grids only need to be placed around areas that actually contain obstacles, and that the space in between is crossed in a straight line.</p>
+<p>Path searches are limited by the number of A* iterations per grid, and by the number of grids that a path may pass through. Both are exposed as properties on the components that do the searching.</p>
+<p><img src="media/voxel-path-test.jpg" alt="Path Search"></p>
+<h2 id="visualization">Visualization</h2>
+<p>To see the occupied voxels of all grids in a scene, either enable the <code>Visualize</code> property on a grid component, or set the <a href="../../debugging/cvars.html">CVar</a> <code>AI.VoxelGrid.Visualize</code> to true.</p>
+<p>To check whether the grids in a scene produce the desired paths, use the <a href="voxel-path-test-component.html">voxel path test component</a>.</p>
+<h2 id="moving-along-a-path">Moving Along a Path</h2>
+<p>The <a href="voxel-navigation-component.html">voxel navigation component</a> does both the path search and the steering of a game object along the resulting path. However, it mainly exists to give you a sample implementation for how a steering behavior can look like. If it doesn't fit what you need, you are encouraged to write a custom steering behavior for your use case.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="application.html">Application</a></li>
-<li><a href="../../tools/player.html">ezPlayer</a></li>
-<li><a href="../../performance/profiling.html">Profiling</a></li>
-<li><a href="../../debugging/renderdoc.html">RenderDoc Integration</a></li>
+<li><a href="voxel-grid-component.html">Voxel Grid Component</a></li>
+<li><a href="voxel-navigation-component.html">Voxel Navigation Component</a></li>
+<li><a href="voxel-path-test-component.html">Voxel Path Test Component</a></li>
+<li><a href="ai-plugin-overview.html">AiPlugin Overview</a></li>
+<li><a href="runtime-navmesh.html">Runtime Navmesh</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/common-application-features.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-navigation.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

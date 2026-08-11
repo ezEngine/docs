@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Voxel Navigation Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Voxel Navigation Component | ezEngine ">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-navigation-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="voxel-navigation-component">Voxel Navigation Component</h1>
+
+<p>This component moves a game object through 3D space, using <a href="voxel-grid-component.html">voxel grids</a> to path around obstacles. It is meant for objects that fly or swim, rather than walk on ground. For characters that move over a <a href="runtime-navmesh.html">navmesh</a>, use the <a href="navigation-component.html">AI navigation component</a> instead.</p>
+<p>The component is controlled through <a href="../../custom-code/custom-code-overview.html">code</a>. Call <code>SetDestination()</code> with a world-space position, and the component searches a path and then steers its owner object along it. <code>GetState()</code> tells whether it is idle, moving, or whether the last path search failed.</p>
+<p>Alternatively, set the <code>NavigationTarget</code> property to another game object. The component then paths towards that object's current position on its own, and recomputes the path while moving, when the target has moved far enough away from where the path was last aimed at.</p>
+<h2 id="movement-behavior">Movement Behavior</h2>
+<p>The component tracks two positions. The <em>path position</em> is the ground truth. It always lies on the computed path, which only runs through free voxels, and advances along it by arc length. The <em>steering position</em> is what is applied to the game object. It steers nose-first towards a point further ahead on the path (<code>LookAheadDistance</code>), instead of snapping onto the waypoints, which produces smooth movement through curves. It is not validated against the voxel grid, but it is kept within a corridor around the path position: once it strays further than <code>MaxPathOffset</code>, it is smoothly pulled back (<code>CorridorCorrectionRate</code>).</p>
+<p>Because the path position can never leave the cleared path, following a path can't get stuck. The <code>Failed</code> state only occurs when no path could be found at all.</p>
+<p>Turning is rate-limited by <code>MaxAngularSpeed</code>, and speed is reduced while turning sharply and while approaching the end of the path. The object stays upright, but banks into turns while it is turning.</p>
+<p>The object doesn't necessarily have to come to a stop at its destination. Use <code>IsApproachingDestination()</code> to detect when it would start braking, and set a new destination at that moment to keep it moving continuously.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>NavigationTarget</code>: A <a href="../../concepts/object-references.html">reference</a> to another object to move towards. Optional, if the destination is set through code instead.</li>
+<li><code>Speed</code>: The target movement speed.</li>
+<li><code>Acceleration</code>, <code>Deceleration</code>: How quickly to gain speed and how quickly to brake. The deceleration value also determines how far ahead of the destination the object starts slowing down.</li>
+<li><code>ReachedDistance</code>: The distance at which the destination counts as reached.</li>
+<li><code>ApplySteering</code>: If disabled, the component computes everything but doesn't move the game object. Used when another system applies the movement.</li>
+<li><code>LookAheadDistance</code>: How far ahead along the path the object steers towards. Larger values cut corners more and produce smoother movement.</li>
+<li><code>MaxPathOffset</code>: How far the visual position may stray from the path before it is pulled back.</li>
+<li><code>CorridorCorrectionRate</code>: How quickly the visual position is pulled back once it exceeds <code>MaxPathOffset</code>.</li>
+<li><code>MaxAngularSpeed</code>: The maximum turning speed.</li>
+<li><code>BankAmount</code>: How strongly to bank into turns. Zero disables banking, negative values flip the direction.</li>
+<li><code>MaxBankAngle</code>: The maximum angle to bank by.</li>
+<li><code>DebugFlags</code>: <code>PrintState</code> displays the current state as text at the object's position, <code>VisPath</code> draws the current path.</li>
+</ul>
+<h2 id="component-script-functions">Component Script Functions</h2>
+<ul>
+<li><code>SetDestination(destination)</code>: Searches a path to the given world-space position and starts moving along it.</li>
+<li><code>SetDestinationDirect(destination)</code>: Moves straight towards the position without doing a path search and without checking for obstacles. Used to recover from situations where a regular path search isn't possible, for instance when the object ended up inside an occupied voxel.</li>
+<li><code>SetNavigationTarget(object)</code>: Sets the object to follow, same as the <code>NavigationTarget</code> property.</li>
+<li><code>CancelNavigation()</code>: Stops the navigation.</li>
+<li><code>GetState()</code>: Returns whether the component is <code>Idle</code>, <code>Moving</code>, or <code>Failed</code>.</li>
+<li><code>IsNavigating()</code>: Whether a path is currently being followed.</li>
+<li><code>IsApproachingDestination()</code>: Whether the object is close enough to the end of the path that it would start braking.</li>
+<li><code>TurnTowards(direction)</code>: Rotates the object towards a direction, limited by <code>MaxAngularSpeed</code>, and returns the angle that is still left to turn. Has no lasting effect while a path is being followed, since the path steering overwrites the rotation.</li>
+<li><code>GetTurnAngleTowards(direction)</code>: Returns the same angle as <code>TurnTowards()</code>, but without rotating anything.</li>
+<li><code>FindRandomPointAroundSphere(center, radius, maxAttempts, point)</code>: Searches for a random navigable position within a sphere. Returns false if no such position was found within the given number of attempts.</li>
+<li><code>GetValidCellNearby(start, searchRadius, point)</code>: Returns the given position if it is navigable, otherwise the closest navigable position within the search radius. Returns false if there is none. Combine this with <code>SetDestinationDirect()</code> to get an object out of a blocked position.</li>
+</ul>
+<p>Positions count as navigable if they are in a free voxel, or if they are not covered by any voxel grid at all.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="voxel-navigation.html">3D Voxel Navigation</a></li>
+<li><a href="voxel-grid-component.html">Voxel Grid Component</a></li>
+<li><a href="voxel-path-test-component.html">Voxel Path Test Component</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-navigation-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

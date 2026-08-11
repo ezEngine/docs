@@ -2529,6 +2529,15 @@
           "name": "Aiplugin",
           "items": [
             {
+              "name": "Voxel Navigation Component",
+              "href": "ai/AiPlugin/voxel-navigation-component.html",
+              "topicHref": "ai/AiPlugin/voxel-navigation-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Detour Crowd Agent Component",
               "href": "ai/AiPlugin/detour-crowd-agent-component.html",
               "topicHref": "ai/AiPlugin/detour-crowd-agent-component.html",
@@ -2538,9 +2547,36 @@
               "leaf": true
             },
             {
+              "name": "3D Voxel Navigation",
+              "href": "ai/AiPlugin/voxel-navigation.html",
+              "topicHref": "ai/AiPlugin/voxel-navigation.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Voxel Path Test Component",
+              "href": "ai/AiPlugin/voxel-path-test-component.html",
+              "topicHref": "ai/AiPlugin/voxel-path-test-component.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
               "name": "Runtime Navmesh",
               "href": "ai/AiPlugin/runtime-navmesh.html",
               "topicHref": "ai/AiPlugin/runtime-navmesh.html",
+              "tocHref": null,
+              "level": 4,
+              "items": [],
+              "leaf": true
+            },
+            {
+              "name": "Voxel Grid Component",
+              "href": "ai/AiPlugin/voxel-grid-component.html",
+              "topicHref": "ai/AiPlugin/voxel-grid-component.html",
               "tocHref": null,
               "level": 4,
               "items": [],

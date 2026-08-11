@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Common Application Features | ezEngine </title>
+      <title>Voxel Grid Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Common Application Features | ezEngine ">
+      <meta name="title" content="Voxel Grid Component | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/common-application-features.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-grid-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,37 +87,31 @@
         </div>
 
         <article data-uid="">
-<h1 id="common-application-features">Common Application Features</h1>
+<h1 id="voxel-grid-component">Voxel Grid Component</h1>
 
-<p>All applications that are built on top of <code>ezGameApplication</code> provide a number of useful features for developers.</p>
-<p>The shortcuts below are also listed in the <em>Engine</em> menu of the in-game <a href="../../debugging/console.html">console</a> and can be triggered from there.</p>
-<h2 id="in-game-console">In-game console</h2>
-<p><strong>Press F1</strong> to toggle the in-game <a href="../../debugging/console.html">console</a>. See its documentation for further details.</p>
-<h2 id="reload-resources">Reload Resources</h2>
-<p><strong>Press F4</strong> to instruct the engine to reload all <a href="../resource-management.html">resources</a>. This can be useful, if for example, you are working on a <a href="../../graphics/shaders/shaders-overview.html">shader</a> and want to see the result of your changes inside the game, without having to restart the game.</p>
-<p>Reloading resources works for all assets that are used directly by the engine (e.g. <a href="../../graphics/shaders/shaders-overview.html">Shaders</a>). For some assets it will work, after the editor processed the input <a href="../../assets/assets-overview.html">assets</a>. For example for <a href="../../graphics/textures-overview.html">textures</a> and <a href="../../materials/materials-overview.html">materials</a> and many others. Some resources, though, are not reloadable, e.g. things that get instantiated at runtime, such as <a href="../../prefabs/prefabs-overview.html">prefabs</a>.</p>
-<h2 id="show-frames-per-second">Show Frames Per Second</h2>
-<p><strong>Press F5</strong> to toggle the display of the FPS counter.</p>
-<h2 id="take-a-profiling-capture">Take a Profiling Capture</h2>
-<p><strong>Press F8</strong> to take a capture of the profiling data. See the <a href="../../performance/profiling.html">profiling</a> documentation for details.</p>
-<h2 id="open-ezinspector">Open ezInspector</h2>
-<p><strong>Press F10</strong> to launch the <a href="../../tools/inspector.html">ezInspector</a> tool. It is started from the directory of the running application, so it is only available if <code>ezInspector</code> was built and deployed next to it.</p>
-<h2 id="take-a-renderdoc-capture">Take a RenderDoc Capture</h2>
-<p><strong>Press F11</strong> to take a RenderDoc capture. See the <a href="../../debugging/renderdoc.html">RenderDoc integration</a> documentation for details.</p>
-<h2 id="take-a-screenshot">Take a Screenshot</h2>
-<p><strong>Press F12</strong> to take a screenshot. Screenshots are stored in the <code>appdata</code> <a href="../../projects/data-directories.html">data directory</a> (see the <a href="../../debugging/logging.html">log output</a>). On Windows this can be found by typing <code>%appdata%</code> into the Windows Explorer.</p>
+<p>This component adds a <a href="voxel-navigation.html">3D voxel navigation</a> grid to a scene. The grid is a box centered on the component's game object. When the scene starts simulating, the collision geometry inside the box is rasterized into voxels, which then describe where objects can move through.</p>
+<p><img src="media/voxel-grid.jpg" alt="Voxel Grid"></p>
+<p>Multiple grids can be placed in a scene. A path search can span several of them, and space that isn't covered by any grid is treated as free, so grids only need to be placed around the areas that contain obstacles.</p>
+<p>Memory usage and voxelization cost grow with the size of the box and with the number of voxels, so use the largest voxel size that still resolves the gaps that objects are supposed to fly through.</p>
+<p>The grid is only voxelized once. Changes to the geometry afterwards are not picked up.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>Size</code>: The size of the box in world units. The box is centered on the game object's position.</li>
+<li><code>VoxelSize</code>: The edge length of a single voxel. Smaller values resolve narrow passages more accurately, but increase memory usage and voxelization time.</li>
+<li><code>CollisionLayer</code>: The <a href="../../physics/jolt/collision-shapes/jolt-collision-layers.html">collision layer</a> that determines which geometry is rasterized into the grid. Use this to exclude high-detail geometry or objects that should not block navigation.</li>
+<li><code>Visualize</code>: If enabled, the occupied voxels are drawn using the debug renderer. The <a href="../../debugging/cvars.html">CVar</a> <code>AI.VoxelGrid.Visualize</code> does the same for all grids in the scene.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="application.html">Application</a></li>
-<li><a href="../../tools/player.html">ezPlayer</a></li>
-<li><a href="../../performance/profiling.html">Profiling</a></li>
-<li><a href="../../debugging/renderdoc.html">RenderDoc Integration</a></li>
+<li><a href="voxel-navigation.html">3D Voxel Navigation</a></li>
+<li><a href="voxel-navigation-component.html">Voxel Navigation Component</a></li>
+<li><a href="voxel-path-test-component.html">Voxel Path Test Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/common-application-features.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-grid-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

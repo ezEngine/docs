@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Common Application Features | ezEngine </title>
+      <title>Voxel Path Test Component | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Common Application Features | ezEngine ">
+      <meta name="title" content="Voxel Path Test Component | ezEngine ">
       
       <link rel="icon" href="../../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -15,7 +15,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/common-application-features.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-path-test-component.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,37 +87,34 @@
         </div>
 
         <article data-uid="">
-<h1 id="common-application-features">Common Application Features</h1>
+<h1 id="voxel-path-test-component">Voxel Path Test Component</h1>
 
-<p>All applications that are built on top of <code>ezGameApplication</code> provide a number of useful features for developers.</p>
-<p>The shortcuts below are also listed in the <em>Engine</em> menu of the in-game <a href="../../debugging/console.html">console</a> and can be triggered from there.</p>
-<h2 id="in-game-console">In-game console</h2>
-<p><strong>Press F1</strong> to toggle the in-game <a href="../../debugging/console.html">console</a>. See its documentation for further details.</p>
-<h2 id="reload-resources">Reload Resources</h2>
-<p><strong>Press F4</strong> to instruct the engine to reload all <a href="../resource-management.html">resources</a>. This can be useful, if for example, you are working on a <a href="../../graphics/shaders/shaders-overview.html">shader</a> and want to see the result of your changes inside the game, without having to restart the game.</p>
-<p>Reloading resources works for all assets that are used directly by the engine (e.g. <a href="../../graphics/shaders/shaders-overview.html">Shaders</a>). For some assets it will work, after the editor processed the input <a href="../../assets/assets-overview.html">assets</a>. For example for <a href="../../graphics/textures-overview.html">textures</a> and <a href="../../materials/materials-overview.html">materials</a> and many others. Some resources, though, are not reloadable, e.g. things that get instantiated at runtime, such as <a href="../../prefabs/prefabs-overview.html">prefabs</a>.</p>
-<h2 id="show-frames-per-second">Show Frames Per Second</h2>
-<p><strong>Press F5</strong> to toggle the display of the FPS counter.</p>
-<h2 id="take-a-profiling-capture">Take a Profiling Capture</h2>
-<p><strong>Press F8</strong> to take a capture of the profiling data. See the <a href="../../performance/profiling.html">profiling</a> documentation for details.</p>
-<h2 id="open-ezinspector">Open ezInspector</h2>
-<p><strong>Press F10</strong> to launch the <a href="../../tools/inspector.html">ezInspector</a> tool. It is started from the directory of the running application, so it is only available if <code>ezInspector</code> was built and deployed next to it.</p>
-<h2 id="take-a-renderdoc-capture">Take a RenderDoc Capture</h2>
-<p><strong>Press F11</strong> to take a RenderDoc capture. See the <a href="../../debugging/renderdoc.html">RenderDoc integration</a> documentation for details.</p>
-<h2 id="take-a-screenshot">Take a Screenshot</h2>
-<p><strong>Press F12</strong> to take a screenshot. Screenshots are stored in the <code>appdata</code> <a href="../../projects/data-directories.html">data directory</a> (see the <a href="../../debugging/logging.html">log output</a>). On Windows this can be found by typing <code>%appdata%</code> into the Windows Explorer.</p>
+<p>This component is for testing <a href="voxel-navigation.html">3D voxel navigation</a> in the editor.</p>
+<p><img src="media/voxel-path-test.jpg" alt="Voxel Path Test"></p>
+<p>Place an object with this component in your scene, then specify another object as the <code>PathEnd</code>. Make sure there are <a href="voxel-grid-component.html">voxel grid components</a> that cover the obstacles between the two.</p>
+<p>Path searches are only possible while <a href="../../editor/run-scene.html">simulating a scene</a>, so press the <em>play</em> button to test it. The path is then recomputed and displayed every frame. Segments that run through a voxel grid are drawn in a different color than segments that cross space which isn't covered by any grid, since the latter are straight lines that don't avoid any obstacles.</p>
+<p>Recomputing the path every frame is intentionally wasteful. Use this component to check a scene setup, not as part of a shipping scene.</p>
+<p>If no path shows up, use <code>VisualizePathState</code> to see why the search failed, and enable the visualization of the <a href="voxel-grid-component.html">voxel grids</a> to check that they were generated as expected. A common reason for failure is that the start or end position lies inside an occupied voxel.</p>
+<h2 id="component-properties">Component Properties</h2>
+<ul>
+<li><code>PathEnd</code>: A <a href="../../concepts/object-references.html">reference</a> to another object that acts as the path's destination.</li>
+<li><code>VisualizeSmoothedPath</code>: If enabled, the path that navigation would actually use is drawn.</li>
+<li><code>VisualizePathState</code>: If enabled, the result of the path search is printed as text at the location of this object.</li>
+<li><code>SearchMargin</code>: How much extra space around the start and destination is searched for voxel grids.</li>
+<li><code>MaxIterationsPerHop</code>: The maximum number of A* steps that may be spent within a single voxel grid. Lower values prevent frame stalls in large grids, but may make long paths fail.</li>
+<li><code>MaxHops</code>: Through how many voxel grids a path may pass.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="application.html">Application</a></li>
-<li><a href="../../tools/player.html">ezPlayer</a></li>
-<li><a href="../../performance/profiling.html">Profiling</a></li>
-<li><a href="../../debugging/renderdoc.html">RenderDoc Integration</a></li>
+<li><a href="voxel-navigation.html">3D Voxel Navigation</a></li>
+<li><a href="voxel-grid-component.html">Voxel Grid Component</a></li>
+<li><a href="voxel-navigation-component.html">Voxel Navigation Component</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/runtime/application/common-application-features.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ai/AiPlugin/voxel-path-test-component.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
