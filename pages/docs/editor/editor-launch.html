@@ -109,8 +109,8 @@
 <td>Documents to open after the project. The paths are relative to a <a href="../projects/data-directories.html">data directory</a>. Only used together with <code>-project</code>.</td>
 </tr>
 <tr>
-<td><code>-noRecent</code></td>
-<td>Opens the editor without loading a recent project. Use this to start with a blank editor.</td>
+<td><code>-dashboard</code></td>
+<td>Opens the editor into the <a href="dashboard.html">dashboard</a>, rather than restoring the last project.</td>
 </tr>
 <tr>
 <td><code>-safe</code></td>
@@ -122,7 +122,7 @@
 </tr>
 <tr>
 <td><code>-NoSplash</code></td>
-<td>Disables the splash screen.</td>
+<td>Disables the splash screen. Can also be disabled permanently in the <a href="editor-preferences.html">editor preferences</a>.</td>
 </tr>
 <tr>
 <td><code>-createProject &lt;path&gt;</code></td>
@@ -150,7 +150,7 @@
 <h3 id="examples">Examples</h3>
 <pre><code class="lang-cmd">ezEditor.exe -project &quot;C:/dev/MyGame/ezProject&quot;
 </code></pre>
-<pre><code class="lang-cmd">ezEditor.exe -noRecent
+<pre><code class="lang-cmd">ezEditor.exe -dashboard
 </code></pre>
 <pre><code class="lang-cmd">ezEditor.exe -safe
 </code></pre>
@@ -171,7 +171,7 @@
 <p>On Windows, the editor integrates with the taskbar jumplist. Right-click the editor icon in the taskbar to access:</p>
 <ul>
 <li><strong>Recent Projects</strong> - Quickly open one of your recently used projects.</li>
-<li><strong>New Window</strong> - Launch a new editor instance without loading a project.</li>
+<li><strong>New Window</strong> - Launch a new editor instance without loading a project, showing the dashboard.</li>
 <li><strong>Start in Safe Mode</strong> - Launch the editor in safe mode.</li>
 </ul>
 <h2 id="see-also">See Also</h2>

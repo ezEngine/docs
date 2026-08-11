@@ -93,12 +93,18 @@
 <p>The code uses C++ 11, 14 and 17 features, but only where broad compiler support is available.</p>
 <p>On Windows, both the D3D11 and Vulkan renderers are built by default, with D3D11 used by default. Pass <code>-renderer Vulkan</code> on the command line to use the Vulkan renderer instead. The editor is currently available on Windows, and being ported to Linux.</p>
 <p>On Mac, Android and Linux only the base libraries are fully functional. Once the Vulkan renderer is more mature, the goal is to have most features available everywhere.</p>
+<h2 id="hardware-requirements">Hardware Requirements</h2>
+<ul>
+<li>A 64 Bit CPU. There are no 32 Bit builds.</li>
+<li>A GPU with support for either Direct3D 11 or Vulkan 1.1. The Direct3D renderer falls back to lower feature levels if necessary, but not all rendering features work then.</li>
+</ul>
+<p>To build C++ code, whether the engine itself or just a <a href="../custom-code/cpp/cpp-overview.html">game plugin</a>, a supported compiler has to be installed. See the platform specific pages below for details.</p>
 <h2 id="list-of-officially-supported-platforms">List of Officially Supported Platforms</h2>
 <ul>
 <li>Windows 10/11 (<a href="build-windows.html">details</a>)</li>
-<li>OS X 10.9 (Mavericks) (<a href="build-macos.html">details</a>)</li>
 <li>Linux (<a href="build-linux.html">details</a>)</li>
-<li>Android 6.0 Marshmallow (API 23) or newer (<a href="build-android.html">details</a>)</li>
+<li>Android 10 (API level 29) or newer (<a href="build-android.html">details</a>)</li>
+<li>macOS 11 (Big Sur) or newer, on Intel and Apple Silicon (<a href="build-macos.html">details</a>)</li>
 </ul>
 <h2 id="consoles-unofficial-ports">Consoles (Unofficial Ports)</h2>
 <p>The ezEngine team does not have access to console developer kits and thus cannot provide support for those platforms.</p>
