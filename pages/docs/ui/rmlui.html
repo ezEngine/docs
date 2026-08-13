@@ -107,6 +107,17 @@
 <li>The <a href="rmlui-canvas3d-component.html">RmlUI Canvas 3D Component</a> (<code>ezRmlUiCanvas3DComponent</code>) renders the UI into a texture applied to a mesh in the scene, allowing UI panels to exist as physical objects in the 3D world.</li>
 </ul>
 <p>Both components support blackboard data binding, event messages, and on-demand rendering. See the individual component pages for their full property reference.</p>
+<h2 id="debugger">Debugger</h2>
+<p>RmlUi comes with its own <a href="https://mikke89.github.io/RmlUiDoc/pages/cpp_manual/debugger.html">debugger</a>, which shows the element hierarchy of a document, the applied styles, and a log. It can be attached to a context through the <a href="../debugging/cvars.html">CVar</a> <code>RmlUi.DebugContext</code>.</p>
+<p>Set the CVar to the name of the context that should be debugged. The canvas components name their context after the Rml asset that they display, so entering the asset's file name is usually sufficient. The lookup is a case insensitive substring match, so a partial name works as well. Setting the CVar to an empty string closes the debugger again.</p>
+<p>For example, to debug the UI of an Rml asset called <code>MainMenu.ezRmlUiAsset</code>, open the <a href="../debugging/console.html">console</a> while the game runs and type:</p>
+<pre><code class="lang-cmd">RmlUi.DebugContext = &quot;MainMenu&quot;
+</code></pre>
+<p>The same can be done through the <em>CVars</em> panel in ezEditor, or from the command line when starting the application:</p>
+<pre><code class="lang-cmd">MyGame.exe -RmlUi.DebugContext MainMenu
+</code></pre>
+<p>Only a single context can be debugged at a time. Attaching to another context detaches the previous one. If no context matches the given name at that moment, the debugger is closed, but it opens automatically once a matching context loads a document afterwards.</p>
+<p>The debugger is only available in development builds and only on Windows, since it is loaded from <code>RmlDebugger.dll</code> at runtime. If that DLL can't be found, an error is logged and nothing else happens.</p>
 <h2 id="localization">Localization</h2>
 <p>All text content in RmlUi documents is automatically passed through ezEngine's localization system (<code>ezTranslate</code>). That means you can set up translation tables for different languages.</p>
 <h2 id="see-also">See Also</h2>
