@@ -107,31 +107,57 @@
 <p>The <code>RunCMake.sh</code> script in the root folder of ezEngine can be used to automatically install all required packages and run CMake, so that you can start building right away.</p>
 <p>This script currently supports these distributions:</p>
 <ul>
-<li>Ubuntu 22</li>
-<li>Linux Mint 21</li>
+<li>Ubuntu 22, 24, 25, 26</li>
+<li>Linux Mint 21, 22</li>
+<li>Debian 13</li>
+<li>Arch Linux</li>
 </ul>
 <p>We welcome contributions to add support for more distributions.</p>
 <blockquote>
 <p>⚠️ If the scripts prints a warning about Qt 6.3.0 or newer not being present in your package manager, you will have to install Qt 6.3.0 or newer manually. See <a href="#installing-qt-6-manually">Installing Qt 6 Manually</a></p>
 </blockquote>
-<h3 id="gcc">GCC</h3>
-<p>When running the script the first time, execute:</p>
+<h3 id="first-time-setup">First-Time Setup</h3>
+<p>When running the script for the first time, execute:</p>
 <p><code>./RunCMake.sh --setup</code></p>
-<p>This will install all required packages for your distribution and then generate the make files required to build the <code>Dev</code> version of ezEngine.</p>
-<p>To build the <code>Dev</code> build, execute:</p>
-<p><code>ninja -C build-Dev</code></p>
-<p>This build command is also given by <code>RunCMake.sh</code> as the final output.</p>
-<p>If you change any CMake files or add new source files it is sufficient to run:</p>
-<p><code>./RunCMake.sh</code></p>
-<p>This only invokes CMake, without checking for missing packages.</p>
-<p>To build a different <a href="building-ez.html#build-types">build type</a> then <code>Dev</code>, pass the additional <code>--build-type</code> argument:</p>
-<p><code>./RunCMake.sh --build-type Debug</code></p>
-<h3 id="clang">Clang</h3>
-<p>If you would like to use Clang instead of GCC, simply add <code>--clang</code> to all invocations of <code>RunCMake.sh</code>:</p>
-<pre><code class="lang-bash">./RunCMake.sh --setup --clang
-./RunCMake.sh --clang
-./RunCMake.sh --build-type Debug --clang
+<p>This detects your distribution and installs all required packages (compiler, Ninja, Qt6, X11/graphics dev headers, etc.) through your package manager, and runs <code>git submodule update --init</code> to make sure all submodules are checked out. Add <code>--force</code> to auto-confirm any package manager prompts, which is useful for unattended/CI setups.</p>
+<p><code>--setup</code> only installs dependencies, it does not configure CMake. Once it finishes, run the script again without <code>--setup</code> to actually configure the project.</p>
+<h3 id="configuring-and-building">Configuring and Building</h3>
+<p>Which compiler and <a href="building-ez.html#build-types">build type</a> to use is selected together via the <code>--target</code> argument, which picks one of the CMake presets defined in the repository's <code>CMakePresets.json</code>:</p>
+<ul>
+<li><code>linux-gcc-debug</code>, <code>linux-gcc-dev</code>, <code>linux-gcc-shipping</code></li>
+<li><code>linux-clang-debug</code>, <code>linux-clang-dev</code>, <code>linux-clang-shipping</code></li>
+<li><code>linux-steam-clang-debug</code>, <code>linux-steam-clang-dev</code>, <code>linux-steam-clang-shipping</code> (see <a href="#building-with-steamrt-sniper-steam-linux-runtime-3">Building with SteamRT Sniper</a>)</li>
+</ul>
+<p>If <code>--target</code> is omitted, <code>linux-gcc-debug</code> is used.</p>
+<pre><code class="lang-bash">./RunCMake.sh --target linux-clang-dev
 </code></pre>
+<p>This configures CMake into <code>Workspace/&lt;target&gt;</code>, e.g. <code>Workspace/linux-clang-dev</code>. To build, run:</p>
+<p><code>ninja -C Workspace/linux-clang-dev</code></p>
+<p>This build command is also given by <code>RunCMake.sh</code> as the final output.</p>
+<p>If you change any CMake files or add new source files, it is sufficient to run the script again with the same <code>--target</code> to reconfigure. This does not check for missing packages again.</p>
+<p><code>RunCMake.sh</code> also supports these additional options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--no-unity</code></td>
+<td>Disables unity builds. This increases compile times but might help certain editors provide better code completion.</td>
+</tr>
+<tr>
+<td><code>--solution-name &lt;name&gt;</code></td>
+<td>Sets a custom solution name via <code>EZ_SOLUTION_NAME</code>.</td>
+</tr>
+<tr>
+<td><code>--workspace-dir &lt;dir&gt;</code></td>
+<td>Configures into <code>Workspace/&lt;dir&gt;</code> instead of <code>Workspace/&lt;target&gt;</code>, with matching output directories <code>Workspace/&lt;dir&gt;-output/{Bin,Lib}</code>. Useful for keeping several build trees side by side.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="installing-qt-6-manually">Installing Qt 6 Manually</h3>
 <p>Some distributions provide quite outdated versions of Qt 6 and the ezEngine Editor requires at least Qt 6.3.0 due to a bug that exists in previous versions of Qt and prevents the 3D viewport in the Editor from working correctly.</p>
 <p>You have the following options:</p>
@@ -153,7 +179,7 @@
 <p>If you want to setup things manually or your distribution is not supported by the <code>RunCMake.sh</code> script, you will most likely need all of the following packages:</p>
 <ul>
 <li>C++17 compliant compiler (GCC or Clang)</li>
-<li>CMake 3.20 or newer</li>
+<li>CMake 3.22 or newer</li>
 <li>uuid-dev</li>
 <li>Qt6 (version 6.3 or newer)</li>
 <li>ninja or gnu-make</li>
@@ -162,10 +188,17 @@
 <li>libxcursor</li>
 <li>libxi</li>
 <li>libfreetype</li>
-<li>libtinfo5</li>
-<li>libomp</li>
+<li>libxkbcommon</li>
+<li>mold (or another linker such as lld)</li>
+<li>lttng-ust / lttng-tools</li>
+<li>libtinfo5 (older distributions) or libtinfo6 (newer distributions)</li>
+<li>libomp (only required for Clang)</li>
 </ul>
-<p>Then invoke CMake with the following arguments:</p>
+<p>Once these are installed, configure the project using one of the presets from <code>CMakePresets.json</code> directly:</p>
+<pre><code class="lang-bash">cmake --preset linux-gcc-dev
+ninja -C Workspace/linux-gcc-dev
+</code></pre>
+<p>If you need to override individual settings, pass additional <code>-D</code> arguments alongside <code>--preset</code>:</p>
 <table>
 <thead>
 <tr>
@@ -175,38 +208,6 @@
 </thead>
 <tbody>
 <tr>
-<td><code>-B build</code></td>
-<td>Path to the build directory.</td>
-</tr>
-<tr>
-<td><code>-S .</code></td>
-<td>Path to the ezEngine root.</td>
-</tr>
-<tr>
-<td><code>-G Ninja</code></td>
-<td>Choose to generate Ninja makefiles. Optional, if not provided gnu-make will be used.</td>
-</tr>
-<tr>
-<td><code>-DCMAKE_CXX_COMPILER=g++-12</code></td>
-<td>Specify the C++ compiler to use. Optional, if not provided the system default will be used.</td>
-</tr>
-<tr>
-<td><code>-DCMAKE_C_COMPILER=gcc-12</code></td>
-<td>Specify the C compiler to use. Optional, if not provided the system default will be used.</td>
-</tr>
-<tr>
-<td><code>-DEZ_EXPERIMENTAL_EDITOR_ON_LINUX=ON</code></td>
-<td>Build the ezEngine editor on Linux. This is currently experimental and might have significant bugs.</td>
-</tr>
-<tr>
-<td><code>-DCMAKE_BUILD_TYPE=Dev</code></td>
-<td>Specify the <a href="building-ez.html#build-types">build type</a> to use.</td>
-</tr>
-<tr>
-<td><code>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code></td>
-<td>Generate a <code>compile_commands.json</code> file to be used for code completion in editors like Visual Studio Code.</td>
-</tr>
-<tr>
 <td><code>-DEZ_QT_DIR=/path/to/qt6</code></td>
 <td>Manually specify the path cmake should look for Qt 6 in.</td>
 </tr>
@@ -214,17 +215,32 @@
 <td><code>-DEZ_ENABLE_FOLDER_UNITY_FILES=OFF</code></td>
 <td>Disable unity builds. This increases compile times but might help certain editors to provide better code completion.</td>
 </tr>
+<tr>
+<td><code>-DEZ_SOLUTION_NAME=MyName</code></td>
+<td>Set a custom solution name.</td>
+</tr>
+<tr>
+<td><code>-DCMAKE_CXX_COMPILER=g++-12</code> / <code>-DCMAKE_C_COMPILER=gcc-12</code></td>
+<td>Override the compiler used by the preset.</td>
+</tr>
 </tbody>
 </table>
 <p>Example usage:</p>
-<pre><code class="lang-bash">mkdir build
-cmake -B build -S . -G Ninja -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_C_COMPILER=gcc-12 -DEZ_EXPERIMENTAL_EDITOR_ON_LINUX=ON -DCMAKE_BUILD_TYPE=Dev -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+<pre><code class="lang-bash">cmake --preset linux-gcc-dev -DEZ_QT_DIR=/path/to/qt6 -DEZ_ENABLE_FOLDER_UNITY_FILES=OFF
 </code></pre>
 <h2 id="using-qt-creator">Using Qt Creator</h2>
 <p>The root of the repository can also be opened in Qt Creator, which will generally do a good job at finding the Qt location on its own.</p>
 <!-- TODO: should add something about building and setting the precompiled binaries.
 See https://github.com/ezEngine/ezEngine/pull/1152
  -->
+<h2 id="using-clion">Using CLion</h2>
+<p>The repository's <code>CMakePresets.json</code> already defines all Linux presets, so CLion can configure and build the project directly without going through <code>RunCMake.sh</code>.</p>
+<p>Before opening the project, make sure the machine actually has the required dependencies available, since CLion does not install them for you:</p>
+<ul>
+<li>The system packages listed under <a href="#manual-setup">Manual Setup</a> (compiler, Qt6, Ninja, X11/graphics dev headers, ...). The easiest way to get these is to run <code>./RunCMake.sh --setup</code> once from a terminal; it installs everything and exits without configuring CMake.</li>
+<li>The git submodules must be checked out, e.g. via <code>git submodule update --init</code> (also done by <code>--setup</code>).</li>
+</ul>
+<p>With those in place, open the repository root in CLion, go to <code>Build, Execution, Deployment &gt; CMake</code>, and enable the preset you want to use (e.g. <code>linux-gcc-debug</code>). Make sure CMake configure runs through without errors, then select the desired build target in the toolbar and press build.</p>
 <h2 id="building-with-steamrt-sniper-steam-linux-runtime-3">Building with SteamRT Sniper (Steam Linux Runtime 3)</h2>
 <p>SteamRT Sniper (Steam Linux Runtime 3) is Valve's official containerized runtime for building and running Linux games on Steam. Building ezEngine inside the SteamRT Sniper SDK/container ensures maximum compatibility with the Steam client and other games using this environment.</p>
 <p><strong>Why use SteamRT Sniper?</strong></p>
@@ -232,14 +248,15 @@ See https://github.com/ezEngine/ezEngine/pull/1152
 <li>Provides a consistent, predictable build and runtime environment for Linux games on Steam.</li>
 <li>Matches the environment used by modern native Linux games and Proton.</li>
 <li>Reduces issues caused by differences between Linux distributions.</li>
-<li>With the provided <code>CMakeUserPresets.json</code>, you can easily cross-compile ezEngine for SteamRT Sniper. This allows you to build once and run on all Steam-supported Linux distributions, making it ideal for shipping games on Steam.</li>
+<li>Allows you to build once and run on all Steam-supported Linux distributions, making it ideal for shipping games on Steam.</li>
 </ul>
 <p><strong>How to use:</strong></p>
 <ol>
 <li>Download and set up the SteamRT Sniper SDK/container. See the <a href="https://gitlab.steamos.cloud/steamrt/sniper/sdk/-/blob/steamrt/sniper/README.md">Steam Runtime 3 'sniper' SDK documentation</a> for details.</li>
 <li>You can also install the runtime via Steam: <code>steam steam://install/1628350</code>.</li>
-<li>Use the provided <code>CMakeUserPresets.json</code> to configure your build for SteamRT Sniper. For example, select the <code>Debug-SteamRT</code>, <code>Dev-SteamRT</code>, or <code>Shipping-SteamRT</code> preset when configuring with CMake.</li>
-<li>Build ezEngine inside the container using the usual CMake commands. The container provides all required dependencies.</li>
+<li>Inside the container, configure using the <code>linux-steam-clang-debug</code>, <code>linux-steam-clang-dev</code>, or <code>linux-steam-clang-shipping</code> preset, e.g. <code>./RunCMake.sh --target linux-steam-clang-dev</code> or <code>cmake --preset linux-steam-clang-dev</code>.</li>
+<li>If you need to customize SDK paths (e.g. a custom <code>EZ_STEAMRT_SDK_ROOT</code>), copy <code>CMakeUserPresets.json.template</code> in the repository root to <code>CMakeUserPresets.json</code> and adjust it as needed; it defines presets that inherit from the <code>linux-steam-clang-*</code> presets above.</li>
+<li>Build ezEngine inside the container using the usual CMake/Ninja commands. The container provides all required dependencies.</li>
 </ol>
 <p>For more information, see the <a href="https://github.com/ValveSoftware/steam-runtime">Valve Steam Runtime repository</a> and the <a href="https://gitlab.steamos.cloud/steamrt/sniper/sdk/-/blob/steamrt/sniper/README.md">SteamRT Sniper SDK documentation</a>.</p>
 <h2 id="see-also">See Also</h2>
