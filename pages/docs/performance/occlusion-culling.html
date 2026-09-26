@@ -103,6 +103,7 @@
 <h2 id="how-to-use-occlusion-culling">How to Use Occlusion Culling</h2>
 <p>All rendered objects automatically benefit from occlusion culling. The only thing that's needed is for your level to contain occluders.</p>
 <p>The easiest way to do so, is to use <a href="../scenes/greyboxing.html">greyboxing geometry</a>. It is automatically used as occluders and all its shapes are supported. Another option is to use <a href="../graphics/occluder-component.html">occluder components</a>. These components allow you to create invisible occluder geometry, that can also be moved around dynamically.</p>
+<p><a href="../terrain/terrain-patch-component.html#occlusion-culling">Terrain patches</a> generate occluder geometry for their surface as well. This geometry is only generated when the scene is exported or simulated, so it has no effect in the regular editor viewport.</p>
 <h3 id="visualizing-occluder-geometry">Visualizing Occluder Geometry</h3>
 <p>Use the <a href="../debugging/cvars.html">CVar</a> <code>Spatial.Occlusion.VisView</code> to enable a screen overlay that displays the main view's occlusion buffer:</p>
 <p><img src="media/occlusion-view.jpg" alt="Occlusion buffer"></p>
@@ -118,6 +119,7 @@
 <ul>
 <li><a href="profiling.html">Profiling</a></li>
 <li><a href="../scenes/greyboxing.html">Greyboxing</a></li>
+<li><a href="../terrain/terrain-patch-component.html">Terrain Patch Component</a></li>
 </ul>
 
 </article>

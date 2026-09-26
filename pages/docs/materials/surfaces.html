@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Surfaces | ezEngine </title>
+      <title> | ezEngine </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Surfaces | ezEngine ">
+      <meta name="title" content=" | ezEngine ">
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -87,8 +87,9 @@
         </div>
 
         <article data-uid="">
-<h1 id="surfaces">Surfaces</h1>
 
+<pre><code># Surfaces
+</code></pre>
 <p><em>Surfaces</em> are assets that define the physical properties of objects. This includes both the actual physics parameters such as friction, but also how objects interact from a gameplay perspective. For example, surfaces define what sounds are played when objects slide or roll around and what effects should be spawned when there is an impact on an object.</p>
 <p>Surfaces and <a href="materials-overview.html">materials</a> are related. Materials are used to define the appearance, surfaces define the behavior. However, you may have hundreds of materials in a project, but typically only tens of surfaces. The main reason for this is that you may have many different wood textures that look different, but they will all behave the same way. Therefore you only need one surface defining the properties of wood, but many different materials for each wood texture.</p>
 <p><img src="media/surface-editor.png" alt="Surface Editor"></p>
@@ -99,6 +100,8 @@
 <p><strong>Friction:</strong> The friction values affect how slippery a material is and thus how much it will slide or roll. Smooth surfaces typically have lower and rough surfaces higher friction. Some physics engines also differentiates between <em>static</em> friction for objects that are currently standing still and <em>dynamic</em> friction for objects that are already moving. Static friction is typically higher than dynamic friction, meaning it is more difficult to get something to move, than to keep something moving. Note that <a href="../physics/jolt/jolt-overview.html">Jolt</a> does not differentiate between the two, and we use an average value here.</p>
 <h2 id="ai-properties">AI Properties</h2>
 <p><strong>Ground Type:</strong> This property is used by the <a href="../ai/AiPlugin/ai-plugin-overview.html">AiPlugin</a> during <a href="../ai/AiPlugin/runtime-navmesh.html">navmesh generation</a> and path searches to determine whether a character can traverse this kind of terrain and at what speed.</p>
+<h2 id="debugging-properties">Debugging Properties</h2>
+<p><strong>Debug Color:</strong> The color that this surface uses in the surface debug visualization (see the CVar <code>Jolt.Visualize.Surfaces</code> in <a href="../physics/jolt/jolt-debug-visualizations.html">Jolt Debug Visualizations</a>).</p>
 <h2 id="surface-interactions">Surface Interactions</h2>
 <p>The main feature of surfaces are <em>surface interactions</em>. These are used to tell the engine which effects it should spawn when a surface interacts with something else. The other thing may be another surface, for example when a box slides over the ground, then both the box and the ground have a surface. However, the other thing could also be something entirely different. For example a laser beam. In this case the surface may define whether the beam should create sparks or fire or steam, etc.</p>
 <p>Every surface interaction is configured by adding an entry to the <em>Interactions</em> array (see image above). Each entry represents one way that the surface can interact with something else. To determine which interaction to use, for instance when you shoot an object, you specify a <em>Type</em> string.</p>

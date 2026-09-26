@@ -101,7 +101,12 @@
 <p><strong>Non-Importable files</strong> are all other files. The editor can't do anything with them, other than to open the default application associated with this file type.</p>
 <p>You can also move and delete files and assets. Note that deleting a file moves it to the trash folder, so you can restore the file through the operating system functionality, if necessary.</p>
 <h3 id="delete--replace">Delete &amp; Replace</h3>
-<p>Right-clicking a single asset reveals a <strong>Delete &amp; Replace...</strong> option. This opens an asset picker where you select a replacement asset. The editor then rewrites every asset document that referenced the deleted asset so that it now points to the replacement, and finally deletes the original asset. This is useful when consolidating duplicate assets.</p>
+<p>Right-clicking an asset shows a <strong>Delete &amp; Replace...</strong> option. Using this, you are asked what should happen to existing references:</p>
+<ul>
+<li><strong>Replace With Other Asset...:</strong> Opens an asset picker where you select a replacement asset of the same type. The editor then rewrites every asset document that referenced the deleted asset so that it now points to the replacement. This is useful when consolidating duplicate assets.</li>
+<li><strong>Clear References:</strong> Removes the reference from every asset document that referenced the deleted asset, leaving those properties empty.</li>
+<li><strong>Delete Anyway:</strong> Deletes the asset without modifying other assets. Their references then point to an asset that doesn't exist anymore and have to be fixed manually.</li>
+</ul>
 <h2 id="search-field">Search Field</h2>
 <p>The <em>Search</em> field in the top-left corner allows you to search for assets by name, path and GUID. The search by path or name is case insensitive. For paths, both slashes and backslashes are allowed. You can also input the GUID of an asset (for example <em>{ 1c47ee4c-0379-4280-85f5-b8cda61941d2 }</em>).</p>
 <h2 id="advanced-search">Advanced Search</h2>
@@ -121,14 +126,19 @@
 <h3 id="filter-to-this-path">Filter to this Path</h3>
 <p>You can right-click on any asset and select <strong>Filter to this Path</strong> to set the folder filter to the path in which the selected asset resides. This is useful when you already see an asset in the browser but are interested in an asset that you know is located next to that asset (same folder or sub-folder).</p>
 <h3 id="hidden-folders">Hidden Folders</h3>
-<p>By default when an asset is located in a folder with a <strong>_data</strong> suffix (e.g. 'MyAssets_data'), it is not displayed in the asset browser, unless you select exactly that folder in the asset browser. This way you can easily hide assets that are rarely needed. Hidden folders are indicated with a grey font.</p>
+<p>Folders with a <strong>_data</strong> suffix (e.g. 'MyAssets_data') and folders whose name starts with a dot (e.g. '.git') are treated as <em>hidden folders</em>. By default, items located in a hidden folder are not displayed in the asset browser. For <em>_data</em> folders this does not apply when you select exactly that folder (or a folder inside it) in the folder tree, folders starting with a dot stay hidden regardless. This way you can easily hide assets that are rarely needed. Hidden folders are indicated with a grey font.</p>
 <p><img src="media/hidden-folders.png" alt="Hidden Folders"></p>
 <p>A common use case is to put <a href="../materials/materials-overview.html">materials</a> and textures that are very specific for a <a href="../graphics/meshes/meshes-overview.html">mesh</a> or <a href="../prefabs/prefabs-overview.html">prefab</a> into a <em>xyz_data</em> subfolder to group the data together, but prevent it from cluttering the asset browser.</p>
-<p>You can toggle this feature by right clicking any folder and selecting <strong>Show items in hidden folders</strong>.</p>
+<p>You can toggle this feature with the <strong>hidden folder button</strong> in the toolbar, to the left of the icon size slider, or by right clicking any folder and selecting <strong>Show items in hidden folders</strong>.</p>
+<p>When searching for the users of an asset (see <a href="#find-asset-references-ref-and-ref-all">Find Asset References</a>), items in <em>_data</em> folders are always included, since references are often located there.</p>
+<h3 id="plugin-directories">Plugin Directories</h3>
+<p>Plugins can provide their own <a href="../projects/data-directories.html">data directories</a>. By default these data directories are hidden entirely, both in the folder tree and in the item view. To display them, right click in the folder tree and enable <strong>Show Plugin Directories</strong>.</p>
 <h2 id="create-asset-documents">Create Asset Documents</h2>
 <p>You can create new asset <a href="../editor/editor-documents.html">documents</a> by right clicking a folder on the left or the empty area of a folder on the right or an existing asset on the right and then selecting <em>New &gt; Asset Type</em>. The advantage over creating a document via <em>File &gt; Create...</em> is that the create file dialog opens directly in the location of the selected asset or folder, which makes it easier to create a new asset next to an existing asset.</p>
 <h2 id="display-assets-in-recently-used-order">Display Assets in Recently Used Order</h2>
 <p>The editor remembers which assets you used recently. The asset browser can list recently used assets at the top. This option can be toggled from the context menu on the right hand side of the asset browser. Note that the state of this option is remembered separately for the asset browser <em>panel</em> and for the asset browser when used as a <em>file picker</em>. In panel mode, it is typically disabled and all assets are sorted alphabetically, in file picker mode, it typically sorts by recently used time.</p>
+<h2 id="asset-specific-actions">Asset Specific Actions</h2>
+<p>Some asset types provide additional operations, which are listed in the <em>Asset</em> sub-menu of the context menu. For example, for <a href="../graphics/meshes/mesh-asset.html">mesh assets</a> this is where you can create LODs, collision meshes and prefabs. Many of these actions also work when multiple assets are selected.</p>
 <h2 id="copy-asset-guid">Copy Asset Guid</h2>
 <p>Sometimes you need the internal <em>GUID</em> (Globally Unique Identifier) of an asset. You can easily copy it to the clipboard by right clicking an asset and selecting <em>Copy Asset Guid</em>.</p>
 <h2 id="transform-assets">Transform Assets</h2>

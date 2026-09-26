@@ -135,6 +135,15 @@
 <p><strong>Format:</strong> Determines whether the texture can store HDR data (10 bit or 16 bit) and whether the texture represents colors (sRGB) or linear data.</p>
 <p><strong>Resolution:</strong> The dimensions of the texture. If set to <code>CVar RT Resolution N</code> the resolution will be read from the <a href="../debugging/cvars.html">CVar</a> <code>r_RenderTargetResolutionN</code>. This can be used to adjust the resolution dynamically.</p>
 <p><strong>CVarResScale:</strong> If the resolution is read from a CVar, this allows to scale it. For instance to create a <em>half resolution</em> render target.</p>
+<h2 id="texture-resolution-limits">Texture Resolution Limits</h2>
+<p>The resolution at which 2D, 3D and cubemap textures are uploaded to the GPU can be reduced at runtime through <a href="../debugging/cvars.html">CVars</a>. This is meant for quality settings, for instance to reduce GPU memory usage on weaker hardware.</p>
+<ul>
+<li><code>Rendering.Textures.DropMips</code> (default <code>0</code>): How many of the highest mipmaps to skip for every texture. This reduces all textures by the same factor, regardless of their size. For example, a value of <code>1</code> loads a 2048 texture at 1024 and a 512 texture at 256.</li>
+<li><code>Rendering.Textures.MinResolution</code> (default <code>64</code>): Textures are never reduced below this resolution by <code>DropMips</code>. Textures that are already smaller than this are not reduced at all. This prevents small textures, from losing all detail.</li>
+<li><code>Rendering.Textures.MaxResolution</code> (default <code>16384</code>): The maximum resolution a texture is uploaded at. Larger textures drop as many mipmaps as needed to fit. This is a hard limit. If it is smaller than <code>MinResolution</code>, it takes precedence.</li>
+</ul>
+<p><code>DropMips</code> is applied first, the two resolution limits then clamp the result.</p>
+<p>All three CVars are saved and restored between runs.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../materials/materials-overview.html">Materials</a></li>

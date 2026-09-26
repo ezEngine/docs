@@ -110,6 +110,14 @@ Debug visualizations are enabled through <a href="../../debugging/cvars.html">CV
 <li><em>transparent</em> = <a href="actors/jolt-trigger-component.html">triggers</a></li>
 </ul>
 <p><img src="media/jolt-debug-geo-types.jpg" alt="Color coding"></p>
+<h2 id="visualize-jolt-surfaces">Visualize Jolt Surfaces</h2>
+<ul>
+<li><code>Jolt.Visualize.Surfaces</code>: Enables visualization of physics collision geometry, color coded by the <a href="../../materials/surfaces.html">surface</a> that is assigned to it.</li>
+</ul>
+<p><img src="media/jolt-surfaces.jpg" alt="Jolt Surfaces"></p>
+<p>The same geometry as with <code>Jolt.Visualize.Geometry</code> is rendered, but instead of using the shape type for the color, the geometry uses the <em>Debug Color</em> that is configured on its <a href="../../materials/surfaces.html">surface asset</a>. Geometry without an assigned surface is rendered in grey.</p>
+<p>Since the colors are freely chosen in the surface assets, it is up to you to pick colors that are easy to tell apart.</p>
+<p>Both visualizations render the same geometry, so only one of them is active at a time. If both CVars are enabled, <code>Jolt.Visualize.Surfaces</code> wins.</p>
 <h2 id="debug-draw-constraints">Debug Draw Constraints</h2>
 <p>The <em>debug draw</em> CVars enable wireframe overlays which are mainly useful to debug issues with constraints. This visualization has a high performance impact and thus should only be used in very small test scenes.</p>
 <p>These debug draw <a href="../../debugging/cvars.html">CVars</a> are available:</p>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>RmlUI Main Menu Component | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="RmlUI Main Menu Component | ezEngine ">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/rmlui-main-menu-component.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="rmlui-main-menu-component">RmlUI Main Menu Component</h1>
+
+<p>The <em>RmlUi Main Menu</em> component (<code>ezRmlUiMainMenuComponent</code>) provides a main menu with a settings page, without any code or UI authoring. Add it to any object in a scene, and pressing <em>ESC</em> opens a menu with <em>Resume</em>, <em>Settings</em> and <em>Exit</em>.</p>
+<p><img src="media/rml-main-menu.jpg" alt="Main Menu"></p>
+<p>This exists so that samples and new projects have a way to leave the application and to change the most common settings. A finished game will usually want its own menu, either by replacing the documents that this component displays, or by building the UI from scratch, as the <a href="../../samples/rts.html">RTS sample</a> does.</p>
+<p><img src="media/rml-settings.jpg" alt="Main Menu"></p>
+<h2 id="how-it-is-opened">How it is opened</h2>
+<p><a href="../runtime/application/game-state.html">ezFallbackGameState</a> searches the world for a main menu component. If it finds one, pressing <em>ESC</em> opens the menu instead of quitting the application. <em>ESC</em> then goes back one page at a time, and closes the menu from the top level page.</p>
+<p><code>Ctrl+Q</code> always quits, no matter whether the menu is open. Inside ezEditor both the <em>Exit</em> button and <code>Ctrl+Q</code> stop the play-the-game mode.</p>
+<p>Note that <code>Ctrl+Q</code> is only registered in development builds. In an exported game the menu's <em>Exit</em> button is the only way out.</p>
+<p>A custom game state can also utilize this main menu component, for an example, see the code of the <a href="../../samples/monster-attack/monster-attack.html">Monster Attack Sample</a>.</p>
+<h2 id="component-properties">Component Properties</h2>
+<p><strong>Menu File:</strong> The document to display for the top level menu. Defaults to the built-in <code>rmlui-menu/ez-main-menu.ezRmlUiAsset</code>.</p>
+<p><strong>Settings File:</strong> The document to display for the settings page. Defaults to the built-in <code>rmlui-menu/ez-app-settings.ezRmlUiAsset</code>. Clearing this leaves the menu without a settings page.</p>
+<p><strong>Sound Groups:</strong> One volume slider is added to the <em>Audio</em> tab for each entry. <em>Label</em> is what the menu shows, <em>Sound Group</em> is what is passed to <code>ezSoundInterface::SetSoundGroupVolume()</code>. What a group name means depends on the sound plugin: <a href="../sound/miniaudio/ma-overview.html">MiniAudio</a> uses the names from its sound group configuration, FMOD expects the GUID of a VCA. The list is empty by default, so the <em>Audio</em> tab only offers the master volume until groups are added. <code>Music</code> and <code>Effects</code> are what the sample projects configure. Without a sound plugin the sliders are disabled.</p>
+<p><strong>Input Sets:</strong> The input sets whose actions the <em>Controls</em> tab offers for rebinding. When this is empty, every input set is listed, except the ones that the engine registers for itself (the console, the debug keys of <code>ezGameApplication</code>, the scene switching of <em>ezPlayer</em>, the menu itself). Set this to the input set that the game's own actions use (<code>Player</code> in the sample projects) to keep the actions of other systems out of the menu.</p>
+<p><strong>Pause World:</strong> Whether the game gets paused while the menu is open.</p>
+<h2 id="saved-settings">Saved settings</h2>
+<p>What the user picks is stored in <a href="../debugging/cvars.html">CVars</a> whose names start with <code>Options.</code>, for example <code>Options.Graphics.ShadowQuality</code> or <code>Options.Audio.MasterVolume</code>. These have the <code>Save</code> flag, so they end up in <code>:appdata/CVars</code> and are read at startup.</p>
+<p>They are deliberately separate from the engine's own CVars: a quality selection is a single number that means 'Medium', while the engine is configured through several unrelated values (shadow atlas size, mip drop, ...). Only the selection is worth saving and showing, the mapping to the engine's CVars is what <code>ezRmlUiMainMenuComponent::ApplySettings()</code> does. A game that offers its own menu would do the same.</p>
+<p>The component applies these settings when it is activated, which is how the settings of a previous run take effect.</p>
+<h2 id="using-the-documents-as-an-rmlui-example">Using the documents as an RmlUi example</h2>
+<p>Besides being a working menu, the two documents show most of what a settings UI needs from <a href="rmlui.html">RmlUi</a>: a tab set, tables, buttons, check boxes, sliders, drop downs, radio buttons, a text field, images, and rows that are generated from C++ at runtime (the sound groups and the key bindings). The component's implementation shows how each widget is read and written.</p>
+<h2 id="replacing-the-documents">Replacing the documents</h2>
+<p>The built-in documents live in <code>Data/Plugins/RmlUiPlugin/rmlui-menu/</code>, next to the default RmlUi styles, so they are available in every project that has the RmlUi plugin enabled. To change how the menu looks, copy them into your project, adjust them, and point the <em>Menu File</em> and <em>Settings File</em> properties at your copies.</p>
+<p>The component addresses the widgets by their element IDs, and the buttons by the identifiers in their <code>onclick</code> and <code>onchange</code> attributes, so those have to be kept. A widget that a document does not contain is simply skipped, which is how a stripped down settings page can be built: remove the rows that should not be offered and leave the rest alone.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="rmlui.html">RmlUi</a></li>
+<li><a href="../input/input-overview.html">Input System</a></li>
+<li><a href="../sound/sound-overview.html">Sound</a></li>
+<li><a href="../../samples/samples-overview.html">Samples</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/docs/ui/rmlui-main-menu-component.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

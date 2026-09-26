@@ -107,6 +107,8 @@
 <li>The <a href="rmlui-canvas3d-component.html">RmlUI Canvas 3D Component</a> (<code>ezRmlUiCanvas3DComponent</code>) renders the UI into a texture applied to a mesh in the scene, allowing UI panels to exist as physical objects in the 3D world.</li>
 </ul>
 <p>Both components support blackboard data binding, event messages, and on-demand rendering. See the individual component pages for their full property reference.</p>
+<h2 id="main-menu">Main Menu</h2>
+<p>The <a href="rmlui-main-menu-component.html">RmlUI Main Menu Component</a> (<code>ezRmlUiMainMenuComponent</code>) provides a ready made main menu with a settings page. Add it to an object in a scene to get <em>Resume</em>, <em>Settings</em> and <em>Exit</em> on <em>ESC</em>, without writing any code. Its documents are in <code>Data/Plugins/RmlUiPlugin/rmlui-menu/</code> and can be replaced with your own.</p>
 <h2 id="debugger">Debugger</h2>
 <p>RmlUi comes with its own <a href="https://mikke89.github.io/RmlUiDoc/pages/cpp_manual/debugger.html">debugger</a>, which shows the element hierarchy of a document, the applied styles, and a log. It can be attached to a context through the <a href="../debugging/cvars.html">CVar</a> <code>RmlUi.DebugContext</code>.</p>
 <p>Set the CVar to the name of the context that should be debugged. The canvas components name their context after the Rml asset that they display, so entering the asset's file name is usually sufficient. The lookup is a case insensitive substring match, so a partial name works as well. Setting the CVar to an empty string closes the debugger again.</p>

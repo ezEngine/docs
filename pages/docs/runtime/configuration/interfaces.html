@@ -99,7 +99,7 @@
 <h3 id="interface-base-class">Interface Base Class</h3>
 <p>First, you need to have a virtual base class that declares the actual interface.</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: singleton-interface -->
-<pre><code class="lang-cpp">/// \brief Pure virtual interface for demonstrating the singleton work flow
+<pre><code class="lang-cpp">/// Pure virtual interface for demonstrating the singleton work flow
 ///
 /// This declaration would typically be in a shared location, that all code can #include
 class PrintInterface
@@ -115,7 +115,7 @@ public:
 <h3 id="interface-implementation">Interface Implementation</h3>
 <p>Next, you need one or more <em>implementations</em> of your interface. You can, of course, have zero implementations, if all you want to provide is the option for future extensibility, and your code should generally be able to handle the fact that no implementation is currently loaded.</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: singleton-impl-declaration -->
-<pre><code class="lang-cpp">/// \brief Implementation of the PrintInterface, just forwards the text to ezLog::Info()
+<pre><code class="lang-cpp">/// Implementation of the PrintInterface, just forwards the text to ezLog::Info()
 ///
 /// This would typically be in a different plugin than the interface and would be allocated by that plugin on startup.
 class PrintImplementation : public PrintInterface

@@ -118,6 +118,8 @@
 <h2 id="selective-mesh-import">Selective Mesh Import</h2>
 <p>Sometimes a <strong>dedicated collider mesh</strong> is embedded in the same source asset as the graphics mesh. You can use the properties <code>MeshIncludeTags</code> and <code>MeshExcludeTags</code> to selectively import only those meshes. See the <a href="../../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset properties</a> for details.</p>
 <p>As an example, if the graphics mesh is called <em>Bunny</em> and the dedicated collider mesh is called <em>$COL_Bunny</em>, you can set the <em>MeshIncludeTags</em> to <code>$COL</code> to only import <em>$COL_Bunny</em> as the collider mesh.</p>
+<h2 id="import-transform">Import Transform</h2>
+<p>Collision mesh assets use the same <code>ImportTransform</code>, <code>UniformScaling</code> and <code>PositionOffset</code> properties as <a href="../../../graphics/meshes/mesh-asset.html#asset-properties">mesh assets</a>. When a collision mesh is created from the same file as a render mesh, these values have to match, otherwise the collider won't line up with the rendered geometry.</p>
 <h2 id="mesh-simplification">Mesh Simplification</h2>
 <p>Collision meshes support mesh simplification to reduce their amount of triangles and vertices. See the <a href="../../../graphics/meshes/mesh-asset.html#asset-properties">mesh asset</a> for details about the parameters.</p>
 <p>The image below shows the original mesh and a simplified collider mesh that has roughly one fourth the number of triangles.</p>

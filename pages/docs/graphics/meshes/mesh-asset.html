@@ -124,6 +124,8 @@
 </li>
 <li><p><code>UniformScaling</code>: Adjusts the size of the mesh, for example to convert a mesh from centimeter to meter scale.</p>
 </li>
+<li><p><code>PositionOffset</code>: Moves all vertices of the mesh by this amount. This can be used to center a mesh, or to place its pivot at the bottom, so that this doesn't need to be done with an additional node in a <a href="../../prefabs/prefabs-overview.html">prefab</a>. The offset is applied after the orientation and scaling, so it is specified in the final coordinate system of the mesh. It also applies to procedurally generated meshes.</p>
+</li>
 <li><p><code>RecalculateNormals</code>, <code>RecalculateTangents</code>: If enabled, information about normals or tangents in the mesh file is ignored, and is instead computed from the vertex data.</p>
 </li>
 <li><p><code>HighPrecision</code>: If enabled, normals, tangents and texture coordinates are stored with higher precision. Leave this at the default (disabled), unless you notice precision issues. Higher precision means the mesh takes up more RAM on the GPU and is slightly slower to render.</p>
@@ -158,6 +160,11 @@
 <h3 id="procedural-mesh-generation">Procedural Mesh Generation</h3>
 <p>Through the <code>PrimitiveType</code> option you can choose to create a mesh procedurally. In this case object specific options appear. Note that by default objects use a <em>detail</em> level of <code>0</code> which means that the editor will pick a decent value, depending on the chosen primitive type.</p>
 <p>Be aware that some <em>detail</em> values seemingly have no effect. For instance, for cones, capsules and cylinders the <em>detail</em> represents the number of subdivisions along the circumference, and therefore can't be lower than 3. Therefore the values <code>1</code>, <code>2</code> and <code>3</code> all produce the same result.</p>
+<h2 id="creating-lods-colliders-and-prefabs-from-a-mesh">Creating LODs, Colliders and Prefabs from a Mesh</h2>
+<p>For mesh and animated mesh assets, the editor can generate related assets automatically. These actions are available from the <em>Asset</em> menu of the mesh asset document, and in the <a href="../../assets/asset-browser.html">asset browser</a> from the <em>Asset</em> sub-menu of the context menu.</p>
+<p><strong>Create LODs:</strong> Creates additional mesh assets that import the same source file with progressively stronger <a href="#asset-properties">mesh simplification</a>. These can be used with the <a href="lod-mesh-component.html">LOD mesh component</a> or the <a href="../../animation/skeletal-animation/lod-animated-mesh-component.html">LOD animated mesh component</a>. The mesh asset itself is LOD 0 and is not modified.</p>
+<p><strong>Create Collider:</strong> Creates a <a href="../../physics/jolt/collision-shapes/jolt-collision-meshes.html">Jolt collision mesh</a> asset from the same source file. Select whether to create a convex hull mesh representation or a full triangle mesh, depending on whether you want to use it for <a href="../../physics/jolt/actors/jolt-dynamic-actor-component.html">dynamic actors</a> or <a href="../../physics/jolt/actors/jolt-static-actor-component.html">static actors</a>.</p>
+<p><strong>Create Prefab:</strong> Creates a <a href="../../prefabs/prefabs-overview.html">prefab</a> that renders the mesh, and optionally sets up physics for it.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="meshes-overview.html">Meshes</a></li>

@@ -127,6 +127,7 @@ void SampleGameState::ConfigureInputActions()
 <p>To build a UI where the player can select an action and then press a key to bind it to that action, have a look at <code>ezInputManager::GetPressedInputSlot()</code>.</p>
 <p><code>ezInputManager::GetAllInputSets()</code> and <code>ezInputManager::GetAllInputActions()</code> enable you to build the UI for all known actions and sets.</p>
 <p>For display purposes there are also <code>ezInputManager::GetInputSlotDisplayName()</code> and <code>ezInputManager::GetActionDisplayName()</code>.</p>
+<p>The <a href="../ui/rmlui-main-menu-component.html">RmlUi Main Menu component</a> contains a working key binding page built this way. It saves the bindings that the player changed to <code>ezGameAppInputConfig::s_sUserConfigFile</code> (<code>:appdata/RuntimeConfigs/InputConfig.ddl</code>), which <code>ezGameApplication</code> applies after the project's own input configuration.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="input-overview.html">Input</a></li>

@@ -95,7 +95,7 @@
 <p>At its top the asset curator panel displays a timeline of recently processed assets. Each bar represents one asset being transformed, with the Y-axis showing the individual worker processes and the X-axis showing time. Periods of inactivity are compressed to keep the view compact, indicated by a diagonal pattern. This makes it easy to see how many assets were processed in parallel and how long each one took.</p>
 <h2 id="transform-issues">Transform Issues</h2>
 <p>If an asset fails to transform for some reason, it will be listed in the view to the bottom left. The most common issue is a missing file reference. For example when a texture source file has been moved or renamed, the texture asset can't find it anymore and thus fails to transform.</p>
-<p>When you select an asset from that list, the log at the bottom right will display any error message from the failed transform. Double click the asset to directly open the document.</p>
+<p>When you select an asset from that list, the log at the bottom right will display any error message from the failed transform. Double click the asset to directly open the document. Right click it for a context menu that allows you to either open the document or to select the asset in the <a href="asset-browser.html">asset browser</a>.</p>
 <p>If <strong>Show Indirect Issues</strong> is disabled (the default), only assets that have problems finding their source files are displayed. Otherwise all assets which failed to transform are displayed, however, most of them will be follow-up issues due to other assets being incomplete.</p>
 <p>Once you fix an asset and make sure it is transformed, the asset curator will no longer show it in the issues list.</p>
 <h2 id="video">Video</h2>
