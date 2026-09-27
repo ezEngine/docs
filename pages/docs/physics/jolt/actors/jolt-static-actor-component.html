@@ -92,6 +92,8 @@
 <p>The <em>Jolt static actor component</em> is used to represent static collision geomtry. Most geometry in a scene should be <em>static</em>, meaning that it never moves, rotates, scales or is animated in any way. Static geometry is generally faster to process, and in the case of physics simulations, only static actors may use <strong>concave</strong> collision geometry.</p>
 <p>All <a href="../collision-shapes/jolt-shapes.html">Jolt shapes</a> that can be found in the hierarchy below the static actor are combined to form the compound shape of the actor. However, if any other actor (static or dynamic) is part of the hierarchy below the static actor, the shapes below that object are ignored for this actor. Additionally, if the static actor itself references a <a href="../collision-shapes/jolt-collision-meshes.html">collision mesh</a>, it will also become part of the actor compound shape. Only static actors are able to reference concave triangle collision meshes.</p>
 <p>If you need your geometry to be able to move, use a <a href="jolt-dynamic-actor-component.html">dynamic actor</a> instead.</p>
+<h2 id="placing-static-actors">Placing Static Actors</h2>
+<p>To place objects with static actors realistically, for example rocks on uneven ground, you can temporarily simulate them in the editor and keep the resulting transform. See how to <a href="../../../editor/run-scene.html#keep-simulation-changes">keep simulation changes</a>. This requires that the actor uses only convex shapes.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>CollisionLayer</code>: The <a href="../collision-shapes/jolt-collision-layers.html">collision layer</a> defines which objects will collide with this actor.</li>

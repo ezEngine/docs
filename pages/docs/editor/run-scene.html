@@ -102,9 +102,12 @@
 <h3 id="pause--step-simulation">Pause / Step Simulation</h3>
 <p>When simulating, you can also press <em>pause</em> to pause the game simulation. Press the <em>play</em> button to make it continue. While paused, the pause button turns into a <em>step</em> button, which allows you to advance the simulation one frame at a time.</p>
 <h3 id="keep-simulation-changes">Keep Simulation Changes</h3>
-<p>The <em>simulate mode</em> is useful to quickly check how some object behaves. It can also be used to simulate physical objects (e.g. boxes falling down) and then save that simulated transform to the scene.</p>
+<p>The <em>simulate mode</em> is useful to quickly check how some object behaves. It can also be used to simulate <a href="../physics/jolt/actors/jolt-dynamic-actor-component.html">physical objects</a> (e.g. boxes falling down) and then save that simulated transform to the scene.</p>
 <p>While the simulation is active, select the objects that you are interested in and press <code>K</code> (or <em>Scene &gt; Utilities &gt; Keep Simulation Changes</em>). Once you stop the simulation, an undoable action is executed that moves the selected objects to the recorded location.</p>
 <p>You can record multiple <em>keep changes</em> actions during one simulation.</p>
+<h4 id="placing-static-objects">Placing Static Objects</h4>
+<p>This also works for <a href="../physics/jolt/actors/jolt-static-actor-component.html">static physics actors</a> and <em>kinematic</em> <a href="../physics/jolt/actors/jolt-dynamic-actor-component.html">dynamic actors</a> whose shapes are all convex (boxes, spheres, capsules, cylinders and convex meshes), which is often used for rocks or furniture, making it possible to place them phyiscally accurate once, but keep them as static objects in game.</p>
+<p>Static actors that use a triangle collision mesh can't be physically simulated this way.</p>
 <h4 id="video-how-to-keep-simulation-changes">Video: How to Keep Simulation Changes</h4>
 <p>Click the image below to watch the video:</p>
 <p><a href="https://www.youtube.com/watch?v=wuKUzgac1Bk"><img src="https://img.youtube.com/vi/wuKUzgac1Bk/0.jpg" alt="video"></a></p>

@@ -99,6 +99,7 @@
 </ul>
 <h2 id="mesh-decal-component">Mesh Decal Component</h2>
 <p>Add a <em>Mesh Decal Component</em> to a game object that has a <a href="../../graphics/meshes/mesh-component.html">mesh component</a>. The component manages decal textures and communicates with the runtime decal atlas.</p>
+<p>The size of the runtime decal atlas texture is configured with the <a href="../../debugging/cvars.html">CVar</a> <code>Rendering.Decals.DynamicAtlasSize</code>. This atlas is shared with <a href="../../graphics/lighting/spot-light-component.html">spot light</a> cookies. If many different textures are in use at the same time, a larger atlas may be necessary.</p>
 <h3 id="component-properties">Component Properties</h3>
 <p><strong>Decals:</strong> An array of decal definitions. Each entry has:</p>
 <ul>

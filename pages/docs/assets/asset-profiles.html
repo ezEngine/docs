@@ -96,8 +96,10 @@
 <p>For the selected profile, the right hand side shows the available options. In the top right you can select for which target platform this profile is meant.</p>
 <h2 id="asset-profile-configs">Asset Profile Configs</h2>
 <p>Below that the available asset profile configs are listed. These can affect various aspect of the engine:</p>
-<h3 id="rendering-options">Rendering Options</h3>
-<p>This allows you to configure some general rendering options that shall be used on this target platform. For example, the <a href="../graphics/lighting/dynamic-shadows.html">dynamic shadows</a>.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>General runtime settings, such as the size of the <a href="../graphics/lighting/dynamic-shadows.html">shadow</a> atlas, are configured through <a href="../debugging/cvars.html">CVars</a>. Platform specific values for those are set up as <a href="../debugging/cvars.html#project-default-values">project default values</a> per asset profile.</p>
+</blockquote>
 <h3 id="render-pipelines">Render Pipelines</h3>
 <p>Here you can specify what the <em>default</em> <a href="../graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a> should be. Different platforms have different rendering capabilities, so you may want to use a different pipeline to target that hardware best.</p>
 <p>Additionally you can add render pipelines to be used for certain use cases. For example in the screenshot above an extra <em>Camera</em> pipeline was added, which uses a simpler render pipeline. This can then be selected on a <a href="../graphics/camera-component.html">camera component</a>, in case it is used for <a href="../graphics/render-to-texture/render-to-texture.html">render to texture (TODO)</a>. Again, you can define per platform, which pipeline to use.</p>
