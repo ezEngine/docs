@@ -94,6 +94,7 @@
 <p>Multiple grids can be placed in a scene. A path search can span several of them, and space that isn't covered by any grid is treated as free, so grids only need to be placed around the areas that contain obstacles.</p>
 <p>Memory usage and voxelization cost grow with the size of the box and with the number of voxels, so use the largest voxel size that still resolves the gaps that objects are supposed to fly through.</p>
 <p>The grid is only voxelized once. Changes to the geometry afterwards are not picked up.</p>
+<p>Make the box large enough to fully contain the geometry that it should cover, and leave a margin of free voxels at its edges. Paths that come from outside the grid enter it through the voxel that the straight line towards the destination hits first. If that part of the boundary is occupied, the path search fails. See <a href="voxel-navigation.html#entering-and-leaving-grids">Entering and Leaving Grids</a>.</p>
 <h2 id="component-properties">Component Properties</h2>
 <ul>
 <li><code>Size</code>: The size of the box in world units. The box is centered on the game object's position.</li>

@@ -149,10 +149,11 @@
 <h2 id="showhide-objects">Show/Hide Objects</h2>
 <p>To temporarily focus on certain objects, it is possible to make objects invisible.</p>
 <ul>
-<li><code>H</code>: Hide the selected objects</li>
+<li><code>H</code>: Hide the selected objects. If all selected objects are already hidden, they are shown again instead. The menu entry changes between <em>Hide Selected</em> and <em>Unhide Selected</em> accordingly.</li>
 <li><code>CTRL + H</code>: Show all hidden objects</li>
 <li><code>SHIFT + H</code>: Hide all objects that are not selected</li>
 </ul>
+<p>Hidden objects can't be picked in the viewport, but they can still be selected in the <em>Scenegraph</em> panel. To show only some of the hidden objects again, select them there and press <code>H</code>.</p>
 <p>Note that 'hide unselected' may hide lighting nodes, which can turn your level very dark. You can either activate <a href="../graphics/lighting/lighting-overview.html">ambient lighting</a> in your scene, or switch the <a href="../editor/editor-views.html#render-modes">render mode</a> to 'Diffuse Color', if necessary.</p>
 <p>The hidden state of objects is not saved in the scene. Also <a href="../editor/run-scene.html">Play-the-Game</a> mode and <a href="../tools/player.html">ezPlayer</a> always show all objects. Similarly, the hidden state only excludes objects from rendering, not from simulation.</p>
 <h2 id="favorite-cameras">Favorite Cameras</h2>

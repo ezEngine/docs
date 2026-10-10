@@ -4642,6 +4642,16 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "pages/docs/graphics/render-pipeline/media/pipeline-subgraph-use.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/docs/graphics/render-pipeline/media/pipeline-subgraph-use.png"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "pages/docs/graphics/render-pipeline/render-pipeline-extractors.md",
       "output": {

@@ -98,7 +98,7 @@
 <li>Add one entry per value to the <code>Values</code> list. For each entry set:
 <ul>
 <li><code>Name</code>: The key to look up in the volumes (must match a key stored in the volume's <a href="../misc/blackboard-template-asset.html">blackboard template</a> or <code>Values</code> list).</li>
-<li><code>DefaultValue</code>: The value to use when no volume is active.</li>
+<li><code>DefaultValue</code>: The value to use when no volume is active. May be left empty, see <a href="#default-value">Default Value</a>.</li>
 <li><code>InterpolationDuration</code>: How long to interpolate between values when transitioning between volumes. Set to zero for instant changes.</li>
 </ul>
 </li>
@@ -113,7 +113,7 @@
 <li><p><code>Values</code>: A list of values to sample. Each entry has:</p>
 <ul>
 <li><code>Name</code>: The key name to look up inside volumes. If <code>WriteToBlackboard</code> is enabled, this is also the key that the value is written to in the blackboard.</li>
-<li><code>DefaultValue</code>: Returned when the owner is outside all volumes.</li>
+<li><code>DefaultValue</code>: The value outside of all volumes. Empty by default, see <a href="#default-value">Default Value</a>.</li>
 <li><code>InterpolationDuration</code>: The time over which the value transitions when moving into or out of a volume.</li>
 </ul>
 </li>
@@ -124,6 +124,16 @@
 <li><p><code>BlackboardName</code>: The name of the <a href="../misc/blackboards.html">blackboard</a> to write to, looked up the same way as <a href="../misc/blackboards.html"><code>ezBlackboardComponent::FindBlackboard</code></a>. Leave empty to write to the world's blackboard.</p>
 </li>
 </ul>
+<h2 id="default-value">Default Value</h2>
+<p><code>DefaultValue</code> decides what happens outside of all volumes:</p>
+<ul>
+<li><strong>Set:</strong> The value moves to the default value. Near a volume's border, it is a mix of the default and the volume's value. Values from volumes are converted to the type of the default value.</li>
+<li><strong>Empty:</strong> The value doesn't change, it keeps the last value that came from a volume. Until the first volume is entered, it has no value at all.</li>
+</ul>
+<p>Leave it empty when whoever reads the value already has its own setting for the outside. For example, the <a href="../effects/fog.html">fog component</a> has its own fog density. With a default value of <code>1</code> for <code>Fog.Density</code>, the fog near a volume's border would blend towards a density of <code>1</code>, instead of towards the fog component's own density.</p>
+<h2 id="strength">Strength</h2>
+<p>When <code>WriteToBlackboard</code> is enabled, every value gets a second blackboard entry with <code>_Strength</code> appended to its name, for example <code>Fog.Density_Strength</code>. It tells how much volumes affect the value at the current position: <code>0</code> outside of all volumes, <code>1</code> fully inside one, and in between in a volume's falloff region. It changes over the same <code>InterpolationDuration</code> as the value.</p>
+<p>The <a href="../effects/fog.html">fog component</a> uses the strength to blend from its own settings to the blackboard value. <a href="../graphics/render-pipeline/render-pipeline-properties.html">Render pipeline properties</a> ignore it and use the value directly.</p>
 <h2 id="scriptable-functions">Scriptable Functions</h2>
 <ul>
 <li><code>RegisterValue(Name, DefaultValue, InterpolationDuration)</code>: Registers a new value to be sampled at runtime. This is an alternative to the <code>Values</code> list that is not serialized.</li>

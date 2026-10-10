@@ -98,6 +98,12 @@
 <li><strong>View Blackboard:</strong> An optional, camera-specific blackboard, configured through the <code>BlackboardName</code> property on the <a href="../camera-component.html">camera component</a>. Entries here take priority over entries with the same key from the world blackboard. This is useful for camera-specific overrides, for instance on a <a href="../render-to-texture/render-to-texture.html">render to texture (TODO)</a> camera that should not be affected by the world's blackboard.</li>
 </ol>
 <p>To find out which <code>&lt;PassName&gt;.&lt;PropertyName&gt;</code> keys are available, inspect the render passes and extractors of the <a href="render-pipeline-overview.html">render pipeline</a> that is in use.</p>
+<p>Pass and extractor names may contain dots themselves. For a key such as <code>Rendering.Pipeline.SSAO.MaxScreenSpaceRadius</code>, every split at a dot is tried, starting with the shortest name, until a pass or extractor with that name is found. The rest of the key is used as the property name.</p>
+<h2 id="switches">Switches</h2>
+<p><a href="render-pipeline-passes.html#switch-pass">Switch passes</a> read their selected value from the same two blackboards, using the entry named in their <code>BlackboardProperty</code>. The view blackboard has priority over the world blackboard here as well. Changing the value of such an entry rebuilds the pipeline's pass graph.</p>
+<h2 id="pipeline-cvars">Pipeline CVars</h2>
+<p>All <a href="../../debugging/cvars.html">CVars</a> whose name starts with <code>Rendering.Pipeline.</code> are automatically copied into the world blackboard, using the full CVar name as the key. Whenever such a CVar changes, the blackboard entry is updated.</p>
+<p>Therefore a pipeline CVar can be used to switch a pipeline feature on or off, or set a property, when a pass or extractor is named like the CVar prefix. This allows exposing graphics settings, without writing code to forward them to the render pipeline. To add a new setting, declare a CVar named <code>Rendering.Pipeline.&lt;Something&gt;</code> and reference it in the render pipeline asset.</p>
 <h2 id="populating-the-blackboard">Populating the Blackboard</h2>
 <p>Rather than writing to the blackboard from code, the recommended approach is to use a <a href="../../gameplay/volume-sampler-component.html">Volume Sampler Component</a> with its <code>WriteToBlackboard</code> property enabled. It samples values out of <a href="../../effects/post-processing/volume-components.html">volume components</a> at the camera's position and writes them into the target blackboard using the matching keys, so that render pipeline properties (such as color grading or exposure) change smoothly depending on which area of a level the camera is in.</p>
 <h2 id="see-also">See Also</h2>
@@ -106,6 +112,7 @@
 <li><a href="../../gameplay/volume-sampler-component.html">Volume Sampler Component</a></li>
 <li><a href="../../misc/blackboards.html">Blackboards</a></li>
 <li><a href="../camera-component.html">Camera Component</a></li>
+<li><a href="../../debugging/cvars.html">CVars</a></li>
 <li><a href="../../effects/fog.html">Fog</a></li>
 </ul>
 

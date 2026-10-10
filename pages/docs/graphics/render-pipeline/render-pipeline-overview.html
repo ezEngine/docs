@@ -107,17 +107,37 @@
 <p>The input and output pins are used to connect which render target a render pass works on. In some cases a pass generates a completely new image, in other cases it forwards an input as its output.</p>
 <p><img src="../media/render-pipeline-bloom-pass.png" alt="Bloom Pass"></p>
 <p>In the image above the <em>TonemapPass</em> takes two inputs, one for the general image to tonemap, and one (optionally) to composite bloom on top of. There are different ways how the bloom image could be generated. In this case, the output from the <em>AntialiasingPass</em> is used both for the tonemapping, as well as for generating bloom. So the output is fed into two render passes. The <em>BloomPass</em> extracts overbright areas and creates a new (temporary) image with the result, which is then given to the <em>TonemapPass</em> as well.</p>
-<p>Note that, although the <em>BloomPass</em> does create a new image, you do not need to give it an input image to write to. It automatically retrieves a <em>scratch texture</em> internally.</p>
 <blockquote>
 <p><strong>NOTE</strong></p>
-<p>All render passes have an 'active' flag, with which they can be deactivated. Depending on what the pass is supposed to do when active, a deactivated pass may do nothing and also output nothing, or it may pass input render targets through as outputs, or it may do a copy of a texture (but nothing else). Some passes also may not support being deactivated.</p>
+<p>Render passes can't be deactivated individually. To disable parts of a pipeline, route around them with a <a href="render-pipeline-passes.html#switch-pass">switch pass</a>. A switch forwards one of its inputs, selected through an integer <a href="../../misc/blackboards.html">blackboard</a> entry, and all passes that only feed unselected inputs are skipped. See <a href="render-pipeline-properties.html#switches">Render Pipeline Properties</a>.</p>
 </blockquote>
 <p>Be aware that <em>render pass nodes</em> are a high level functional unit. They don't map directly to render passes in graphics APIs like Vulkan or D3D12 even though there are definitely similarities.</p>
 <p>For a list of all available pass nodes, see <a href="render-pipeline-passes.html">this page</a>.</p>
+<h3 id="render-scale">Render Scale</h3>
+<p>A view can render the scene at a lower resolution than its output and upscale the result at the end. This reduces the GPU cost on high resolution displays. <a href="render-pipeline-passes.html#source-pass">Source Passes</a> with <code>ApplyRenderScale</code> enabled, create their textures at the reduced size, and an <a href="render-pipeline-passes.html#upscale-pass">Upscale Pass</a> brings the image back to the full size. Everything after the upscale pass, for instance UI, is rendered at full resolution and stays sharp.</p>
+<p>For the main view of a game, the render scale is set through the <a href="../../debugging/cvars.html">CVar</a> <code>App.RenderScale</code>:</p>
+<ul>
+<li><code>0</code> (the default) selects the scale automatically, such that the scene is rendered with about as many pixels as a full HD image (1920x1080).</li>
+<li>A value between <code>0.1</code> and <code>1</code> uses that scale.</li>
+</ul>
+<p>The pixel count that the automatic selection aims for can be changed in code through <code>ezRenderWorld::SetAutoRenderScaleMaxPixels()</code>. For other views the scale is set with <code>ezView::SetRenderScale()</code>, and <code>ezRenderWorld::GetEffectiveRenderScale()</code> computes the automatic value.</p>
+<h3 id="sub-graphs">Sub-Graphs</h3>
+<p>A render pipeline asset can be embedded into another one through a <em>Subgraph</em> node. Its <code>Pipeline</code> property references the render pipeline asset to embed. During asset transform the node is replaced with the contents of the referenced pipeline, so at runtime there is no difference to a pipeline that contains all passes directly. This is used to share parts between multiple pipelines, for example the scene rendering and post-processing steps, which the main and the editor pipeline have in common.</p>
+<p><img src="media/pipeline-subgraph-use.png" alt="Subgraph Use"></p>
+<p>The pins of a <em>Subgraph</em> node are defined by the boundary nodes inside the referenced pipeline: <em>Texture Input</em>, <em>Texture Output</em>, <em>Buffer Input</em> and <em>Buffer Output</em>. The name of each boundary node becomes the name of the corresponding pin.</p>
+<h2 id="default-render-pipelines">Default Render Pipelines</h2>
+<p>The <code>Base</code> data directory contains these render pipelines in <code>RenderPipelines</code>:</p>
+<ul>
+<li><strong>MainRenderPipeline:</strong> The default pipeline for games, configured in the <a href="../../assets/asset-profiles.html#render-pipelines">asset profiles</a>.</li>
+<li><strong>EditorRenderPipeline:</strong> Used by all editor viewports, including the asset previews. Post-processing is skipped in the debug <a href="../../editor/editor-views.html">render modes</a> through a switch.</li>
+<li><strong>Subgraphs:</strong> Shared parts of the pipelines above, such as the depth pre-pass, scene rendering and post-processing.</li>
+</ul>
+<p>Some optional parts of these pipelines are controlled through switches that read <a href="render-pipeline-properties.html#pipeline-cvars">pipeline CVars</a>, for example whether SSAO and screen space shadows are used.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="render-pipeline-passes.html">Render Pipeline Passes</a></li>
 <li><a href="render-pipeline-extractors.html">Render Pipeline Extractors</a></li>
+<li><a href="render-pipeline-properties.html">Render Pipeline Properties</a></li>
 <li><a href="../shaders/shaders-overview.html">Shaders</a></li>
 </ul>
 

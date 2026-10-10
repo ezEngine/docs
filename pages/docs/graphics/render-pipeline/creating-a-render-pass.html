@@ -96,14 +96,14 @@
 <ol>
 <li>A <strong>header</strong> declaring the class, its pins, and any configurable properties.</li>
 <li>An <strong>implementation</strong> with reflection metadata and the <code>AddRenderPasses()</code> override.</li>
-<li>Optionally, <code>Serialize</code>/<code>Deserialize</code> overrides for persistence and <code>AddRenderPassesInactive</code> for inactive state handling.</li>
+<li>Optionally, <code>Serialize</code>/<code>Deserialize</code> overrides for persistence.</li>
 </ol>
 <h2 id="pin-types">Pin Types</h2>
 <p>Pins define the inputs and outputs visible in the render pipeline editor. Declare them as <code>protected</code> members:</p>
 <ul>
 <li><code>ezRenderPipelineNodeInputPin</code> — receives a texture from an upstream node.</li>
 <li><code>ezRenderPipelineNodeOutputPin</code> — produces a new texture for downstream nodes.</li>
-<li><code>ezRenderPipelineNodePassThroughPin</code> — receives a texture and passes it through. The pass renders into the texture without creating a new one. Has both an input and output index.</li>
+<li><code>ezRenderPipelineNodePassThroughPin</code> — receives a texture and passes it through. The pass renders into the texture without creating a new one. Has both an input and output index. Because the texture is modified in place, the pass is executed after all other passes that read the same texture, and only one pass may modify a texture this way.</li>
 </ul>
 <h2 id="minimal-example-copy-texture-pass">Minimal Example: Copy Texture Pass</h2>
 <p>The simplest pass reads one texture and copies it to a new output. This example shows the complete structure.</p>
@@ -152,7 +152,7 @@ EZ_END_DYNAMIC_REFLECTED_TYPE;
 <p><strong>Create outputs or pass through:</strong> For <code>ezRenderPipelineNodeOutputPin</code>, create a new transient texture with <code>graph.CreateTexture()</code>. For <code>ezRenderPipelineNodePassThroughPin</code>, forward the input handle directly as the output.</p>
 <p><strong>Add render graph passes:</strong> Create one or more render graph passes and declare their resource access. For graphics passes, also declare color and depth targets.</p>
 <p><strong>Set the execution callback:</strong> The actual rendering code needs to be placed in the execution callback. Use <code>ctx.ResolveTexture()</code> to convert graph handles to real GPU handles inside the callback.</p>
-<p>If your pass can be toggled off in the editor but downstream passes depend on its output, override <code>AddRenderPassesInactive()</code>. This has the same interface as <code>AddRenderPasses</code> and must still create a valid output texture, typically cleared to a neutral value.</p>
+<p>Passes can't be deactivated individually. To make a pass optional, route around it with a switch pass in the pipeline. Passes that only feed unselected switch inputs are culled and not executed. If a downstream pass may receive an unconnected input this way, it should handle that, for example by binding a neutral fallback texture.</p>
 <!-- BEGIN-DOCS-CODE-SNIPPET: renderpass-add-render-passes -->
 <pre><code class="lang-cpp">ezStatus ezCopyTexturePass::AddRenderPasses(const ezViewData&amp; viewData, const ezCamera&amp; camera, ezRenderGraph&amp; ref_graph, const ezArrayPtr&lt;const ezRenderPipelinePinConnection&gt; inputs, ezArrayPtr&lt;ezRenderPipelinePinConnection&gt; outputs)
 {

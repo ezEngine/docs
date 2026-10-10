@@ -106,6 +106,57 @@
 <p><strong>Press F11</strong> to take a RenderDoc capture. See the <a href="../../debugging/renderdoc.html">RenderDoc integration</a> documentation for details.</p>
 <h2 id="take-a-screenshot">Take a Screenshot</h2>
 <p><strong>Press F12</strong> to take a screenshot. Screenshots are stored in the <code>appdata</code> <a href="../../projects/data-directories.html">data directory</a> (see the <a href="../../debugging/logging.html">log output</a>). On Windows this can be found by typing <code>%appdata%</code> into the Windows Explorer.</p>
+<h2 id="unattended-runs">Unattended Runs</h2>
+<p>All applications built on <code>ezGameApplication</code> understand a set of command line options for running them from a script or by an agent, for example as a smoke test, to render reference screenshots, or while being driven through the <a href="../../tools/mcp-server.html">MCP server</a>. These options are only available in development builds, not in shipping builds.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-unattended</code></td>
+<td>Runs the application in unattended mode, see below.</td>
+</tr>
+<tr>
+<td><code>-runframes &lt;N&gt;</code></td>
+<td>Quits after <code>N</code> rendered frames. Used to check that a project starts up and renders at all. Implies <code>-unattended</code>.</td>
+</tr>
+<tr>
+<td><code>-timeout &lt;seconds&gt;</code></td>
+<td>Quits after this many seconds, no matter what. A safety net in case startup hangs. Sets the return code to <code>2</code> when it triggers. Implies <code>-unattended</code>.</td>
+</tr>
+<tr>
+<td><code>-failonerror</code></td>
+<td>Sets the return code to <code>1</code> if any error was logged during the run. Implies <code>-unattended</code>.</td>
+</tr>
+<tr>
+<td><code>-screenshot &lt;path&gt;</code></td>
+<td>Absolute path to a PNG file that a screenshot is written to, right before quitting. Only useful together with <code>-runframes</code> or <code>-timeout</code>.</td>
+</tr>
+<tr>
+<td><code>-logfile &lt;path&gt;</code></td>
+<td>Absolute path to a text file that the full log is written to.</td>
+</tr>
+<tr>
+<td><code>-fixedtimestep &lt;N&gt;</code></td>
+<td>Advances the clock by a fixed <code>1/N</code> seconds per frame, instead of the time that really elapsed. The application then no longer runs in real time.</td>
+</tr>
+<tr>
+<td><code>-seed &lt;N&gt;</code></td>
+<td>Seeds the random number generator of every world that exists at startup. Together with <code>-fixedtimestep</code> this makes consecutive runs produce identical frames, which is needed to compare screenshots against reference images.</td>
+</tr>
+</tbody>
+</table>
+<p>In unattended mode:</p>
+<ul>
+<li>A failed assert is logged as an error and ends the process, instead of showing a message box that waits for someone to close it. With a debugger attached, the debugger stops at the assert. Applications that install their own assert handler keep it.</li>
+<li>Input from real hardware, such as mouse, keyboard and controllers, is ignored. Only input devices that generate their input programmatically have an effect, for example the input device of the <a href="../../tools/mcp-server.html">MCP server</a>, as well as values injected through <code>ezInputManager::InjectInputSlotValue()</code>.</li>
+<li>The window doesn't take the focus when it opens, and the mouse cursor is neither hidden nor clipped to the window, regardless of what the game requests.</li>
+</ul>
+<p>This allows someone to keep working on the same machine while a script or an agent runs the game, without their input interfering with it.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="application.html">Application</a></li>

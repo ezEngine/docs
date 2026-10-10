@@ -103,7 +103,7 @@
 <p>The engine process that the editor runs the game in serves on the editor's port <strong>+ 1</strong>.</p>
 <h2 id="games">Games</h2>
 <p>A game process starts a server only when asked to, by port:</p>
-<pre><code class="lang-cmd">ezPlayer.exe -project &quot;C:/dev/MyGame&quot; -scene &quot;Scenes/Main.ezScene&quot; -mcpport 7401
+<pre><code class="lang-cmd">ezPlayer.exe -project &quot;C:/dev/MyGame&quot; -scene &quot;Scenes/Main.ezScene&quot; -unattended -mcpport 7401
 </code></pre>
 <p>Without <code>-mcpport</code> no server is started. This works for any game application built on the <a href="../runtime/application/application.html">game application</a> framework, not just <a href="player.html">ezPlayer</a>, because the plugin is loaded on demand when the option is present.</p>
 <h2 id="connecting">Connecting</h2>
@@ -115,7 +115,7 @@
 <ul>
 <li>Every call runs on the main thread of the host and blocks it. Calls happen one at a time, and some - transforming all assets, exporting, compiling C++ - run for minutes.</li>
 <li>The editor suppresses modal dialogs for the duration of a call, so an agent cannot leave the editor waiting on a dialog that nobody will answer, and reports afterwards what was suppressed. Dialogs during startup are not covered by this, which is why an editor that an agent launches itself should be started with <code>-unattended</code>, see <a href="../editor/editor-launch.html#unattended-mode">Unattended Mode</a>.</li>
-<li>Injected input is merged with real input rather than replacing it, so you are never locked out of a game that an agent is driving.</li>
+<li>Injected input is merged with real input rather than replacing it, so you are never locked out of a game that an agent is driving. When the game is started with <code>-unattended</code>, real mouse and keyboard input is ignored instead, and only the agent's input has an effect. A game that an agent launches itself should be started that way, so that it doesn't block on assert message boxes, doesn't take the focus, and isn't affected by someone working on the same machine. See <a href="../runtime/application/common-application-features.html#unattended-runs">Unattended Runs</a>.</li>
 <li>Nothing is saved implicitly, and everything an agent changed in a document can be undone.</li>
 <li>The server is bound to <code>127.0.0.1</code> and is reachable only from the same machine.</li>
 </ul>

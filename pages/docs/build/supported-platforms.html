@@ -91,12 +91,12 @@
 
 <p>ezEngine is developed primarily on Windows 11, using Visual Studio 2022 and 2026 in 64 Bit builds. Therefore this platform has the largest feature set and is the best tested one.</p>
 <p>The code uses C++ 11, 14 and 17 features, but only where broad compiler support is available.</p>
-<p>On Windows, both the D3D11 and Vulkan renderers are built by default, with D3D11 used by default. Pass <code>-renderer Vulkan</code> on the command line to use the Vulkan renderer instead. The editor is currently available on Windows, and being ported to Linux.</p>
+<p>On Windows, the Vulkan renderer is used. The D3D11 renderer is not built by default anymore, but can still be enabled through CMake, see <a href="building-ez.html#renderer-selection">Renderer Selection</a>. The editor is currently available on Windows, and being ported to Linux.</p>
 <p>On Mac, Android and Linux only the base libraries are fully functional. Once the Vulkan renderer is more mature, the goal is to have most features available everywhere.</p>
 <h2 id="hardware-requirements">Hardware Requirements</h2>
 <ul>
 <li>A 64 Bit CPU. There are no 32 Bit builds.</li>
-<li>A GPU with support for either Direct3D 11 or Vulkan 1.1. The Direct3D renderer falls back to lower feature levels if necessary, but not all rendering features work then.</li>
+<li>A GPU with support for Vulkan 1.1. If the D3D11 renderer is built, a GPU with Direct3D 11 support works as well. The Direct3D renderer falls back to lower feature levels if necessary, but not all rendering features work then.</li>
 </ul>
 <p>To build C++ code, whether the engine itself or just a <a href="../custom-code/cpp/cpp-overview.html">game plugin</a>, a supported compiler has to be installed. See the platform specific pages below for details.</p>
 <h2 id="list-of-officially-supported-platforms">List of Officially Supported Platforms</h2>

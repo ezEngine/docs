@@ -134,7 +134,8 @@ ezRenderGraphTextureHandle hMsaaColor = graph.CreateTexture(descMsaa);
 
 // Import persistent non-MSAA resolve target
 ezGALTextureCreationDescription descResolved;
-descResolved.SetAsRenderTarget(64, 64, ezGALResourceFormat::RGBAHalf);
+descResolved.SetAsRenderTarget(128, 128, ezGALResourceFormat::RGBAHalf);
+descResolved.m_uiMipLevelCount = 2;
 ezGALTextureHandle hResolvedGAL = m_pDevice-&gt;CreateTexture(descResolved);
 ezRenderGraphTextureHandle hResolved = graph.ImportTexture(hResolvedGAL);
 </code></pre>
@@ -162,7 +163,7 @@ ezRenderGraphTextureHandle hResolved = graph.ImportTexture(hResolvedGAL);
 <!-- BEGIN-DOCS-CODE-SNIPPET: rendergraph-msaa-barriers -->
 <pre><code class="lang-cpp">auto pass = graph.AddTransferPass(&quot;MsaaColorResolve&quot;);
 pass.ReadTexture(hMsaaColor, {}, ezGALResourceState::ResolveSource);
-pass.WriteTexture(hResolved, {}, ezGALResourceState::ResolveDestination);
+pass.WriteTexture(hResolved, ezGALTextureRange{0, 1, 1, 1}, ezGALResourceState::ResolveDestination);
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <h2 id="execute-callback">Execute Callback</h2>
@@ -181,10 +182,10 @@ pass.WriteTexture(hResolved, {}, ezGALResourceState::ResolveDestination);
 <!-- BEGIN-DOCS-CODE-SNIPPET: rendergraph-msaa-execute-callback -->
 <pre><code class="lang-cpp">pass.SetExecuteCallback([=](const ezRenderGraphContext&amp; ctx)
   {
-  ezGALTextureSubresource subresource;
-  subresource.m_uiMipLevel = 0;
-  subresource.m_uiArraySlice = 0;
-  ctx.GetCommandEncoder()-&gt;ResolveTexture(ctx.ResolveTexture(hResolved), subresource, ctx.ResolveTexture(hMsaaColor), subresource); });
+  ezGALTextureSubresource destinationSubresource;
+  destinationSubresource.m_uiMipLevel = 1;
+  ezGALTextureSubresource sourceSubresource;
+  ctx.GetCommandEncoder()-&gt;ResolveTexture(ctx.ResolveTexture(hResolved), destinationSubresource, ctx.ResolveTexture(hMsaaColor), sourceSubresource); });
 </code></pre>
 <!-- END-DOCS-CODE-SNIPPET -->
 <h2 id="graphics-pass">Graphics Pass</h2>

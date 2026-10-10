@@ -128,7 +128,7 @@
 <p><strong>UseBaseTexture:</strong> If enabled, the <em>Base Texture</em> is used to color the object. This requires proper UV coordinates on the mesh.</p>
 <p><strong>MaskThreshold:</strong> Used for the <em>Masked</em> blend mode (see above).</p>
 <p><strong>UseNormalTexture:</strong> If enabled, the shader uses the <em>Normal Texture</em> to apply <em>normal mapping</em>.</p>
-<p><strong>UseOcclusionTexture:</strong> If enabled, an <em>OcclusionTexture</em> is used to affect lighting and to pronounce crevices. The effect of this can be very subtle.</p>
+<p><strong>UseOcclusionTexture:</strong> If enabled, an <em>OcclusionTexture</em> is used to affect lighting and to pronounce crevices. See <a href="#occlusion-textures">Occlusion Textures</a> below for how to author them.</p>
 <p><strong>Roughness Value:</strong> If no <em>Roughness Texture</em> is given, this value is used for lighting. If a roughness texture is available, this value is multiplied into the texture's value. The rougher a material is (value closer to one), the more <em>diffuse</em> the lighting will be (stone, cloth, etc). The smoother the material is (value closer to zero), the more pronounced specular highlights it will have (glass, ceramic).</p>
 <p><strong>UseRoughnessTexture:</strong> If enabled, the shader uses the <em>Roughness Texture</em> to determine how rough the surface is. The texture's value is multiplied with the <em>Roughness Value</em> so make sure to set that <code>1</code> to get the exact result.</p>
 <p><strong>Metallic Value:</strong> If no <em>Metallic Texture</em> is provided, this is the fallback value. Typically this should be <code>1</code> for metals and <code>0</code> for all other material types.</p>
@@ -140,6 +140,20 @@
 <p>The height texture should store height values in the red channel. Brighter values represent raised areas, darker values represent recessed areas.</p>
 <p><strong>HeightScale:</strong> Controls the strength of the parallax effect. The range is <code>-0.3</code> to <code>0.3</code>, with a default of <code>0.05</code>. Negative values invert the depth direction. Larger absolute values produce a stronger apparent depth but can introduce artifacts at grazing angles.</p>
 <p><strong>PomMaxSteps:</strong> The maximum number of raymarching iterations used to resolve the parallax offset. Higher values produce more accurate results at grazing angles but increase the per-pixel cost. The range is <code>4</code> to <code>64</code>, with a default of <code>16</code>.</p>
+<h3 id="occlusion-textures">Occlusion Textures</h3>
+<p>An occlusion texture (or the red channel of an ORM texture) describes how much a point on the surface is hidden by the small bumps and cracks of the surface itself. White means fully exposed, darker values mean the point lies in a crevice.</p>
+<p>EZ applies occlusion to all kinds of light:</p>
+<ul>
+<li><strong>Ambient light and reflections</strong> are multiplied by the occlusion value. This is combined with <a href="../graphics/render-pipeline/render-pipeline-passes.html#ao-pass">SSAO</a>, if active.</li>
+<li><strong>Direct light</strong> from light sources is reduced as well, using <em>micro shadows</em>. Here the occlusion value is treated as an opening angle: light that hits the surface head-on gets through even in moderately occluded areas, light that comes in at a flat angle gets blocked.</li>
+</ul>
+<p>The effect on direct light is not used by all tools. Texture painting tools and glTF viewers often only apply occlusion to ambient light, so the same texture can look noticeably darker in EZ, especially under strong direct light. For direct light the values roughly have this effect:</p>
+<ul>
+<li><code>1</code>: No effect.</li>
+<li>Around <code>0.7</code>: Light from the front still gets through, light from the side is blocked.</li>
+<li>Below <code>0.7</code>: Direct light is reduced even when it comes from the front, and at <code>0</code> it is blocked entirely.</li>
+</ul>
+<p>So an occlusion texture should be mostly white, with darker values only in actual crevices. A texture that is mid grey or darker everywhere makes the whole surface look unlit. If an existing texture is too dark, brighten it, or reduce the contrast of the baked occlusion, rather than using it as is. Use the <em>Ambient Occlusion</em> <a href="../editor/editor-views.html#ambient-occlusion">render mode</a> to inspect the values.</p>
 <h2 id="material-preview">Material Preview</h2>
 <p>The 3D viewport of the material editor allows you to switch the <a href="../editor/editor-views.html#render-modes">render mode</a> to inspect only specific aspects of the material.</p>
 <p>Using the <em>eye dropdown menu</em> you can also select different meshes for previewing the material on.</p>
