@@ -143,6 +143,99 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/devlog/devlog-overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/devlog/devlog-overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/devlog/media/render-pipeline/editor-pipeline.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/devlog/media/render-pipeline/editor-pipeline.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/devlog/media/render-pipeline/msaa.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/devlog/media/render-pipeline/msaa.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/devlog/media/render-pipeline/simple-pipeline.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/devlog/media/render-pipeline/simple-pipeline.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/devlog/media/render-pipeline/subgraph-asset.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/devlog/media/render-pipeline/subgraph-asset.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/devlog/media/render-pipeline/subgraph-use.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/devlog/media/render-pipeline/subgraph-use.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/devlog/media/render-pipeline/switch-pass.png",
+      "output": {
+        "resource": {
+          "relative_path": "pages/devlog/media/render-pipeline/switch-pass.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "pages/devlog/render-pipeline-switches.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/devlog/render-pipeline-switches.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pages/devlog/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/devlog/toc.html"
+        },
+        ".json": {
+          "relative_path": "pages/devlog/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/docs/ai/AiPlugin/ai-plugin-overview.md",
       "output": {
         ".html": {

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Configurable Render Pipelines | ezEngine </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Configurable Render Pipelines | ezEngine ">
+      
+      <link rel="icon" href="../../assets/images/favicon.svg">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ezEngine/docs-src/blob/main/pages/devlog/render-pipeline-switches.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <!--
+			<img id="logo" class="svg" src="../../assets/images/EZ-text.svg" alt="ezEngine" >
+            ezEngine
+			-->
+			<img id="logo" src="../../assets/images/EZ-text.svg" style="width: 100px; height: 50px;" alt="ezEngine">
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="configurable-render-pipelines">Configurable Render Pipelines</h1>
+
+<p><em>October 2026</em></p>
+<p>Over the course of 2026, the render pipeline infrastructure in EZ went through a series of larger changes. Each of them was useful on its own, but together they changed how we build and configure render pipelines quite a bit. This article gives an overview of the changes. For the latest documentation, see the <a href="../docs/graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a> pages.</p>
+<h2 id="where-we-came-from">Where We Came From</h2>
+<p>A <a href="../docs/graphics/render-pipeline/render-pipeline-overview.html">render pipeline</a> in EZ has always been a graph that you edit visually: passes on the left produce render targets, passes further right consume them, and eventually everything ends up in a <em>Target Pass</em>. That part is very flexible. What was not flexible was everything that happens <em>after</em> you hit save.</p>
+<p><img src="media/render-pipeline/simple-pipeline.png" alt="Simple Pipeline"></p>
+<p>Once a pipeline was set up, it pretty much stayed that way. If a game wanted a graphics option to turn SSAO off, someone had to write C++ code that finds the pass in the pipeline and flips its <em>Active</em> flag. And a disabled pass didn't really go away, either. It still had to provide <em>something</em> on its outputs, so that the passes behind it would keep working.</p>
+<p>Changing MSAA was even worse. The sample count is decided by the passes that create the color and depth targets, so switching it essentially meant using a different pipeline asset.</p>
+<p>And then there was the copy-paste problem. The main pipeline (used by games) and the editor pipeline share most of their logic: depth pre-pass, opaque and transparent geometry, sky, post-processing. But they were separate assets, so every improvement had to be done twice, and inevitably they drifted apart.</p>
+<h2 id="the-foundation-the-render-graph">The Foundation: The Render Graph</h2>
+<p>The first big step had nothing to do with configurability. In June we introduced the <a href="../docs/graphics/render-graph/render-graph.html">render graph</a>. Instead of executing GPU work immediately, each render pass now <em>records</em> what it wants to do: which textures and buffers it reads and writes, and a callback that does the actual work later. The render graph then looks at the whole frame at once:</p>
+<ul>
+<li>It culls passes whose output nobody uses.</li>
+<li>It allocates transient textures and shares memory between textures whose lifetimes don't overlap.</li>
+<li>It figures out all the resource barriers, which is a big deal for Vulkan.</li>
+</ul>
+<p>This was a breaking change for everyone who wrote custom render passes, but it gave us a clean, declarative description of each frame. Without it, much of what follows would have been a lot harder.</p>
+<h2 id="blackboards-instead-of-code">Blackboards Instead of Code</h2>
+<p>The second piece came in July: render pipeline properties can now be driven through <a href="../docs/misc/blackboards.html">blackboards</a>. Every world has a blackboard, and every view can have its own. An entry named <code>TonemapPass.Saturation</code> overrides the <em>Saturation</em> property of the pass named <em>TonemapPass</em>. No C++ needed.</p>
+<p>This also made the old <em>post processing component</em> redundant. The <a href="../docs/gameplay/volume-sampler-component.html">volume sampler component</a> can now write the values it samples into a blackboard, so things like color grading change smoothly when the camera moves through a level.</p>
+<p>Blackboards turned out to be the perfect <em>data channel</em> into the pipeline. That paved the way for the next step.</p>
+<h2 id="sub-graphs">Sub-Graphs</h2>
+<p>In September the pass graph got rewritten from scratch, and with that came <strong>sub-graphs</strong>. A render pipeline asset can now be placed inside another render pipeline asset as a single <em>Subgraph</em> node. Inside the referenced pipeline, special boundary nodes (<em>Texture Input</em>, <em>Texture Output</em> and their buffer variants) define which pins the subgraph node shows on the outside.</p>
+<p>For example, this is the <em>DepthPass</em> subgraph. It takes a depth target as input, primes it in the <em>InitDepth</em> pass and runs the depth pre-pass. The result is exposed through a <em>Texture Output</em> node named <em>Depth</em>:</p>
+<p><img src="media/render-pipeline/subgraph-asset.png" alt="Depth pass subgraph"></p>
+<p>And this is what such a subgraph looks like when it is used elsewhere. It shows up as a single node with <em>Depth</em> input and output pins:</p>
+<p><img src="media/render-pipeline/subgraph-use.png" alt="Using a subgraph"></p>
+<p>Subgraphs only exist in the editor. During asset transform they are inlined, so at runtime there is no difference to a pipeline that contains all passes directly. You don't pay anything for the extra structure.</p>
+<h2 id="switch-nodes">Switch Nodes</h2>
+<p>The same rework also introduced the <strong>switch passes</strong>. A <em>Texture Switch</em> (or <em>Buffer Switch</em>) has several inputs and one output. It reads an integer value from a blackboard entry and forwards the input that matches that value:</p>
+<p><img src="media/render-pipeline/switch-pass.png" alt="Texture switch"></p>
+<p>The interesting part is what happens to everything that is <em>not</em> selected. Because the pass graph knows which passes feed which inputs, every pass that only feeds unselected inputs is culled from the pipeline entirely. It is not just skipped, it is not part of the frame at all. No render targets get allocated for it, and nothing needs to produce a dummy output.</p>
+<p>This also means the pass graph itself can now be <strong>immutable</strong>. Instead of toggling individual passes at runtime, the pipeline asset describes all variants up front, and switches pick one. When a switch value changes, the pass graph gets culled and sorted again. That is not something you'd want to do every frame, but for configuration changes it is cheap enough.</p>
+<p>So the old way of deactivating passes was removed. If you want something to be optional, you route around it with a switch.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<p>Once subgraphs and switches were in place, it was time to clean up our own pipelines. The shared parts were moved into subgraphs, which live in <code>Data/Base/RenderPipelines/Subgraphs</code>:</p>
+<ul>
+<li><strong>Sources:</strong> creates the color and depth targets.</li>
+<li><strong>DepthPass:</strong> depth priming and depth pre-pass.</li>
+<li><strong>SceneRenderPass:</strong> SSAO, screen space shadows, opaque, sky and transparent geometry.</li>
+<li><strong>PostProcessingPass:</strong> anti-aliasing, bloom, light shafts, lens effects and tonemapping.</li>
+<li><strong>SceneMiscPass</strong> and <strong>2dGuiPass</strong>: various things that are rendered on top.</li>
+</ul>
+<p>The main and the editor pipeline now both use these subgraphs and only differ in the parts that are actually different. This is the editor pipeline:</p>
+<p><img src="media/render-pipeline/editor-pipeline.png" alt="Editor render pipeline"></p>
+<p>The editor uses two switches here. One skips post-processing when you look at one of the debug <a href="../docs/editor/editor-views.html">render modes</a> (you don't want tonemapping on your normals). The other only runs the picking pass when picking data actually needs to be updated. Previously the editor had a whole separate debug pipeline for this, which is now gone.</p>
+<h3 id="graphics-settings-through-cvars">Graphics Settings Through CVars</h3>
+<p>Now, who sets the switch values? We wanted graphics settings to be available as <a href="../docs/debugging/cvars.html">CVars</a>, because they can be changed from the console, get saved automatically, and are easy to bind to a UI. So we added a small bridge: every CVar whose name starts with <code>Rendering.Pipeline.</code> is automatically copied into the world blackboard, and kept up to date when it changes.</p>
+<p>That means adding a new graphics option to a pipeline boils down to:</p>
+<ol>
+<li>Declare a CVar named <code>Rendering.Pipeline.Something</code>.</li>
+<li>Put a switch into the pipeline that reads <code>Rendering.Pipeline.Something</code>.</li>
+</ol>
+<p>Nothing else. Out of the box we have these:</p>
+<ul>
+<li><code>Rendering.Pipeline.SSAO</code>: selects between <em>off</em>, the default AO pass and LSAO. Inside the <em>SceneRenderPass</em> subgraph a switch picks the output of one of the AO passes, or no AO at all.</li>
+<li><code>Rendering.Pipeline.SSS</code>: toggles screen space shadows.</li>
+<li><code>Rendering.Pipeline.MSAA</code>: selects off, 2x, 4x or 8x MSAA.</li>
+</ul>
+<p>The same trick works for properties, by the way. Since the SSAO pass is named <code>Rendering.Pipeline.SSAO</code>, the CVar <code>Rendering.Pipeline.SSAO.MaxScreenSpaceRadius</code> directly sets one of its properties.</p>
+<h3 id="msaa">MSAA</h3>
+<p>MSAA was the trickiest one, because it isn't a single pass that can be turned on or off. It affects how the render targets are created at the very beginning, and every pass that touches them afterwards.</p>
+<p>The solution is in the <em>Sources</em> subgraph. It contains one color and one depth source for each MSAA mode, eight source passes in total, and two switches pick the color and depth target for the selected mode. Thanks to culling, only the selected sources ever create a texture.</p>
+<p><img src="media/render-pipeline/msaa.png" alt="MSAA"></p>
+<p>The passes that deal with MSAA, such as the <em>MSAA Resolve Pass</em>, now simply pass their input through when they receive a texture that isn't multi-sampled. So the rest of the pipeline doesn't need to know which mode is active. The resolve pass also got a <em>Guarantee Copy</em> option for cases where the output must be a separate texture, even without MSAA.</p>
+<p>With all of that in place, the <a href="../docs/ui/rmlui-main-menu-component.html">RmlUi main menu component</a> got options for SSAO, screen space shadows and MSAA. All they do is set a CVar.</p>
+<h2 id="bonus-improvement-render-scale">Bonus Improvement: Render Scale</h2>
+<p>One more thing that landed along the way is the <a href="../docs/graphics/render-pipeline/render-pipeline-overview.html#render-scale">render scale</a>. Rendering at native 4K is expensive, so the main pipeline now renders the scene at a lower resolution and upscales the result at the end, optionally with a sharpening filter. By default the scale is picked such that the scene has about as many pixels as a full HD image. The UI is rendered after the upscale pass, so it stays sharp. The scale is set through the CVar <code>App.RenderScale</code>.</p>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>None of this is visible in a game screenshot, but it changed how we can work with render pipelines. The main and editor pipelines share their logic, graphics options are now easy to configure and unused features cost nothing at runtime.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../docs/graphics/render-pipeline/render-pipeline-overview.html">Render Pipeline</a></li>
+<li><a href="../docs/graphics/render-pipeline/render-pipeline-passes.html">Render Pipeline Passes</a></li>
+<li><a href="../docs/graphics/render-pipeline/render-pipeline-properties.html">Render Pipeline Properties</a></li>
+<li><a href="../docs/graphics/render-graph/render-graph.html">Render Graph</a></li>
+<li><a href="../docs/debugging/cvars.html">CVars</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ezEngine/docs-src/blob/main/pages/devlog/render-pipeline-switches.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+		<!--
+          Hello
+		-->
+		  <span class="pull-right">
+			<a href="/privacy-policy.html">Privacy Policy</a>
+			&nbsp;
+			<a href="#top">Back to top</a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_ez" href="https://ezEngine.net"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_github" href="https://github.com/ezEngine/ezEngine" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_bluesky" href="https://bsky.app/profile/ezengine.bsky.social" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_twitter" href="https://twitter.com/ezengineproject" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_discord" href="https://discord.gg/rfJewc5khZ" target="_blank"></a>
+		  </span>
+		  <span class="footer-logo">
+			<a id="logo_youtube" href="https://www.youtube.com/@ezEngine" target="_blank"></a>
+		  </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
