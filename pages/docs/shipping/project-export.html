@@ -137,7 +137,7 @@ The second file is used to determine which <em>data files</em> should get includ
 </blockquote>
 <h2 id="limitations">Limitations</h2>
 <ul>
-<li>At this time it is not analyzed which plugin DLLs are actually needed, instead all DLLs are included. Edit your <code>ProjectBinaries.ezExportFilter</code> to control this.</li>
+<li>Which DLLs are exported is not determined by analyzing what the game actually uses. The core engine DLLs listed in <code>CommonBinaries.ezExportFilter</code> are always included, plus the DLLs of the <a href="../projects/plugin-selection.html">engine plugins</a> that are selected for the project, along with the dependencies their plugin bundles declare. Edit your <code>ProjectBinaries.ezExportFilter</code> to add or remove files.</li>
 <li>The exported package contains no <a href="polishing-your-game.html">shader cache</a>, so shaders are compiled on the machine of every player, during the first launch.</li>
 <li>You currently can't automatically execute custom logic (C++ code, or a script) to finalize the package.</li>
 </ul>

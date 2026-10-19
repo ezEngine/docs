@@ -127,7 +127,7 @@
 <p>The <a href="project-export.html">project export dialog</a> has options that matter for a final package:</p>
 <ul>
 <li><strong>Create Launch Scripts</strong> writes the <code>.bat</code> files for starting the game. For a package that is distributed to players, these are usually not wanted, since the executable can be started directly.</li>
-<li>The <code>ProjectBinaries.ezExportFilter</code> and <code>ProjectData.ezExportFilter</code> files in your project folder control which files end up in the package. All DLLs of the SDK are currently exported, whether the project uses them or not, so this is the place to remove the ones that you don't need.</li>
+<li>The <code>ProjectBinaries.ezExportFilter</code> and <code>ProjectData.ezExportFilter</code> files in your project folder control which files end up in the package. Besides the core engine DLLs, the DLLs of all selected engine plugins are exported, whether the game actually uses them or not, so this is the place to remove the ones that you don't need.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
