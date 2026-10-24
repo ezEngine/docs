@@ -8352,6 +8352,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "pages/samples/demons-cove.md",
+      "output": {
+        ".html": {
+          "relative_path": "pages/samples/demons-cove.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "pages/samples/line-count.md",
       "output": {
         ".html": {
@@ -8406,6 +8416,16 @@
       "output": {
         "resource": {
           "relative_path": "pages/samples/media/cs-histogram.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "pages/samples/media/demons-cove.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "pages/samples/media/demons-cove.jpg"
         }
       },
       "version": ""

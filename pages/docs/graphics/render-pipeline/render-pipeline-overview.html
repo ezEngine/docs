@@ -121,6 +121,9 @@
 <li>A value between <code>0.1</code> and <code>1</code> uses that scale.</li>
 </ul>
 <p>The pixel count that the automatic selection aims for can be changed in code through <code>ezRenderWorld::SetAutoRenderScaleMaxPixels()</code>. For other views the scale is set with <code>ezView::SetRenderScale()</code>, and <code>ezRenderWorld::GetEffectiveRenderScale()</code> computes the automatic value.</p>
+<h3 id="msaa">MSAA</h3>
+<p>The MSAA sample count is a property of the <a href="render-pipeline-passes.html#source-pass">Source Passes</a> that create the color and depth targets. To make it configurable, a pipeline contains one source pass per sample count and selects one of them with a <a href="render-pipeline-passes.html#switch-pass">switch</a>.</p>
+<p>The passes that convert between multi-sampled and regular textures also work with input that has no MSAA: the <a href="render-pipeline-passes.html#msaa-resolve-pass">MSAA Resolve Pass</a> copies it, the <a href="render-pipeline-passes.html#antialiasing-pass">Antialiasing Pass</a> and the <a href="render-pipeline-passes.html#msaa-upscale-pass">MSAA Upscale Pass</a> forward it unchanged. Thus the rest of the pipeline doesn't need a separate branch for rendering without MSAA.</p>
 <h3 id="sub-graphs">Sub-Graphs</h3>
 <p>A render pipeline asset can be embedded into another one through a <em>Subgraph</em> node. Its <code>Pipeline</code> property references the render pipeline asset to embed. During asset transform the node is replaced with the contents of the referenced pipeline, so at runtime there is no difference to a pipeline that contains all passes directly. This is used to share parts between multiple pipelines, for example the scene rendering and post-processing steps, which the main and the editor pipeline have in common.</p>
 <p><img src="media/pipeline-subgraph-use.png" alt="Subgraph Use"></p>
@@ -132,7 +135,7 @@
 <li><strong>EditorRenderPipeline:</strong> Used by all editor viewports, including the asset previews. Post-processing is skipped in the debug <a href="../../editor/editor-views.html">render modes</a> through a switch.</li>
 <li><strong>Subgraphs:</strong> Shared parts of the pipelines above, such as the depth pre-pass, scene rendering and post-processing.</li>
 </ul>
-<p>Some optional parts of these pipelines are controlled through switches that read <a href="render-pipeline-properties.html#pipeline-cvars">pipeline CVars</a>, for example whether SSAO and screen space shadows are used.</p>
+<p>Some optional parts of these pipelines are controlled through switches that read <a href="render-pipeline-properties.html#pipeline-cvars">pipeline CVars</a>, for example whether SSAO and screen space shadows are used, or which <a href="#msaa">MSAA</a> sample count the main pipeline uses.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="render-pipeline-passes.html">Render Pipeline Passes</a></li>

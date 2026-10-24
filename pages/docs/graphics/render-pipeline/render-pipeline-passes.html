@@ -107,6 +107,7 @@
 <p><strong>Required Extractor:</strong> <a href="render-pipeline-extractors.html#visible-objects-extractor">Visible Objects Extractor</a></p>
 <h2 id="antialiasing-pass">Antialiasing Pass</h2>
 <p>Post-process anti-aliasing pass. Performs an advanced resolve of MSAA render targets using a two-pixel-wide B-spline filter. No configurable properties.</p>
+<p>If the input is not multi-sampled, it is forwarded to the output unchanged. The output is then the same texture as the input, see the <a href="#msaa-resolve-pass">MSAA Resolve Pass</a> for what this means for passes that modify the input in place.</p>
 <h2 id="blend-pass">Blend Pass</h2>
 <p>Linearly interpolates between two input textures and writes the result to the output.</p>
 <p><strong>Properties:</strong></p>
@@ -198,13 +199,15 @@
 </ul>
 <p><strong>Required Extractor:</strong> <a href="render-pipeline-extractors.html#clustered-data-extractor">Clustered Data Extractor</a></p>
 <h2 id="msaa-resolve-pass">MSAA Resolve Pass</h2>
-<p>Resolves a multi-sampled render target into a regular texture by averaging the samples. Required before passing MSAA output into passes that cannot process multi-sampled textures.</p>
+<p>Resolves a multi-sampled render target into a regular texture by averaging the samples. Supports color and depth-stencil textures. Required before passing MSAA output into passes that cannot process multi-sampled textures.</p>
+<p>If the input is not multi-sampled, it is copied instead, so the same pipeline works with and without MSAA. See <a href="render-pipeline-overview.html#msaa">MSAA</a>.</p>
 <p><strong>Properties:</strong></p>
 <ul>
-<li><code>IsDepth</code>: Set to <code>true</code> when resolving a depth-stencil texture rather than a color texture.</li>
+<li><code>GuaranteeCopy</code>: Only affects non-multi-sampled input. If enabled (the default), the input is copied into a new texture. If disabled, the input is forwarded to the output, which saves the copy, but then the output is the same texture as the input. Passes that modify the input in place (through a pass-through pin) are only ordered after the passes that read the input directly, not after the passes that read this pass's output. Those may then see the modified content. Only disable this when nothing writes to the input after this pass.</li>
 </ul>
 <h2 id="msaa-upscale-pass">MSAA Upscale Pass</h2>
 <p>Converts a regular texture into a multi-sampled render target by replicating each pixel across all samples. Used when transitioning back from non-MSAA post-processing to an MSAA render target.</p>
+<p>If <code>MsaaMode</code> is <code>None</code>, or the input already has that sample count, the input is forwarded to the output unchanged. An input with a different sample count is reported as an error.</p>
 <p><strong>Properties:</strong></p>
 <ul>
 <li><code>MsaaMode</code>: Target MSAA sample count.</li>
