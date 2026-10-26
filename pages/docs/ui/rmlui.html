@@ -107,6 +107,27 @@
 <li>The <a href="rmlui-canvas3d-component.html">RmlUI Canvas 3D Component</a> (<code>ezRmlUiCanvas3DComponent</code>) renders the UI into a texture applied to a mesh in the scene, allowing UI panels to exist as physical objects in the 3D world.</li>
 </ul>
 <p>Both components support blackboard data binding, event messages, and on-demand rendering. See the individual component pages for their full property reference.</p>
+<h2 id="blackboard-data-binding">Blackboard Data Binding</h2>
+<p>A <a href="../misc/blackboards.html">blackboard</a> can be bound to an RmlUi context as a <a href="https://mikke89.github.io/RmlUiDoc/pages/data_bindings.html">data model</a>. The canvas components do this automatically with <em>Autobind Blackboards</em>, or from C++ through <code>ezRmlUiCanvasComponentBase::AddBlackboardBinding()</code>. The blackboard's name is used as the model name, and every entry becomes a data variable with the entry's name.</p>
+<p>Entries of these types are bound:</p>
+<ul>
+<li>Scalars: <code>bool</code>, integer and floating point types, <code>ezString</code> and <code>ezHashedString</code>.</li>
+<li><code>ezVariantArray</code>: Accessed as an RmlUi array, for instance with <code>data-for</code> or <code>list[2]</code>. <code>list.size</code> returns the number of elements.</li>
+<li><code>ezVariantDictionary</code>: Accessed as an RmlUi struct, using the dictionary keys as member names, for instance <code>player.health</code>.</li>
+</ul>
+<p>Arrays and dictionaries can be nested in each other in any combination, for example <code>{{ inventory[0].name }}</code> for an array of dictionaries. Entries of other types are ignored.</p>
+<pre><code class="lang-html">&lt;body data-model=&quot;HUD&quot;&gt;
+  &lt;p&gt;{{ player.name }}: {{ player.health }}&lt;/p&gt;
+  &lt;div data-for=&quot;item : inventory&quot;&gt;{{ item.name }} x{{ item.count }}&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>Limitations:</p>
+<ul>
+<li>Only top level scalar entries can be written from the UI, for instance through <code>data-value</code>. Arrays, dictionaries and all values nested inside of them are read-only. Change them through the blackboard instead.</li>
+<li><code>data-for</code> can iterate over arrays, but not over the members of a dictionary. Dictionary members have to be accessed by name.</li>
+<li>Only entries that exist when the binding is set up are bound. Entries that are added later are not picked up.</li>
+<li>An entry must not change between scalar, array and dictionary after setup. Changing the value is fine, for example replacing an array with one that has a different number of elements.</li>
+</ul>
 <h2 id="main-menu">Main Menu</h2>
 <p>The <a href="rmlui-main-menu-component.html">RmlUI Main Menu Component</a> (<code>ezRmlUiMainMenuComponent</code>) provides a ready made main menu with a settings page. Add it to an object in a scene to get <em>Resume</em>, <em>Settings</em> and <em>Exit</em> on <em>ESC</em>, without writing any code. The component is part of the <em>Game Components</em> plugin. Its documents are in <code>Data/Plugins/GameComponentsPlugin/rmlui-menu/</code> and can be replaced with your own.</p>
 <h2 id="debugger">Debugger</h2>

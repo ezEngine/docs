@@ -109,13 +109,21 @@
 <p><code>MaterialIndex</code> — The material layer index (0–31) to paint within the brush footprint.</p>
 <p><code>MaterialStrength</code> — Blend weight applied to <em>MaterialIndex</em> at the brush center. 0 disables painting; 1 fully assigns the material within the inner zone.</p>
 <p><img src="media/brushes-paint.jpg" alt="Material Painting"></p>
+<h3 id="overlapping-brushes">Overlapping Brushes</h3>
+<p>On <a href="terrain-patch-component.html">terrain patches</a>, painting brushes are layered on top of each other in order of their <code>Priority</code>, like layers with opacity in an image editor. Each brush first reduces the weight of everything that was painted before it (including the base material) by its own weight, and then adds its material on top. As a result:</p>
+<ul>
+<li>Where a brush paints with full strength, it completely replaces the materials of all lower-priority brushes. For example, a road brush with a higher priority than the surrounding ground brushes keeps its own material at full strength. If the road has a lower priority instead, the other brushes cover it.</li>
+<li>With partial strength, the later brush is dominant. Two overlapping brushes that both paint with a weight of <code>0.5</code> result in <code>0.5</code> for the higher-priority brush, and <code>0.25</code> for the lower-priority one. The base material gets the remaining <code>0.25</code>.</li>
+<li>Each vertex can hold up to four painted materials. If more brushes overlap, a material only replaces the weakest one when its weight is higher, otherwise that brush has no effect at this vertex.</li>
+</ul>
+<p>Use the <code>Priority</code> to define which material ends up on top where brushes overlap.</p>
 <h2 id="noise">Noise</h2>
 <p>Noise affects both geometry and material painting. Noise is used to introduce random patterns to make the result more natural. See the image below for an example where the same brush settings are used, only with varying noise strength and frequency.</p>
 <p><code>NoiseStrength</code> — Amount of noise applied to perturb the brush influence. 0 disables noise.</p>
 <p><code>NoiseFrequency</code> — Spatial frequency of the noise. Small values make the effect very local, producing high-frequency noise, higher values are useful for larger terrain features, like mountains.</p>
 <p><img src="media/brush-noise.jpg" alt="Noise"></p>
 <h2 id="shared-properties">Shared Properties</h2>
-<p><code>Priority</code> — Brush evaluation order. Brushes with higher priority are applied later and win over lower-priority brushes in the same region. It is very rarely necessary to adjust this, but if you have multiple brushes in the same area and one brush doesn't have the effect that you expect it to have, increase its priority, to make it more dominant.</p>
+<p><code>Priority</code> — Brush evaluation order. Brushes with higher priority are applied later and win over lower-priority brushes in the same region. This applies both to height changes and to <a href="#overlapping-brushes">material painting</a>, where a higher-priority brush covers the materials of lower-priority brushes. If you have multiple brushes in the same area and one brush doesn't have the effect that you expect it to have, increase its priority, to make it more dominant.</p>
 <p><code>AffectPatches</code>, <code>AffectVolumes</code> — Whether the brush applies to <a href="terrain-patch-component.html">terrain patches</a> or <a href="terrain-volume-component.html">terrain volumes</a>. By default 2D brushes only affect terrain patches, and 3D brushes only affect volumes.</p>
 <p><code>Tags</code> — When non-empty, the brush only affects terrain objects whose <em>TerrainTags</em> contain at least one matching tag. Empty tags match all terrain objects. This can be used on complex scenarios, to control precisely which brush affects which piece of terrain. For instance, you could place two heightfields above each other and now need to separate between brushes that affect the top or bottom one.</p>
 <h2 id="spline-brushes">Spline Brushes</h2>

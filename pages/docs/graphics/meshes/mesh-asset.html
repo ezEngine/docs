@@ -112,12 +112,13 @@
 <li><p><code>PrimitiveType</code>: This selects how the mesh data is generated. If <code>From File</code> is chosen, you need to also specify the <code>MeshFile</code> property. If you choose a procedural method, other configuration options appear.</p>
 </li>
 <li><p><code>MeshIncludeTags</code>, <code>MeshExcludeTags</code>: Some source assets pack different types of meshes into a single file, for example different LODs or a dedicated collider mesh. These options allow you to select which meshes to import. Both are <em>semicolon-separated</em> lists of strings. Ie <em>A;B</em> represents two <em>tags</em>, <code>A</code> and <code>B</code>.</p>
-<p>If any <em>include tag</em> is specified, only meshes whose names <strong>start or end</strong> with that string are used. For instance, the include tag <code>LOD1</code> means that a mesh named <em>Bunny_LOD1</em> would be imported, but a mesh named <em>Bunny</em> would be skipped.</p>
-<p>If any <em>exclude tag</em> is specified, meshes whose names <strong>start or end</strong> with that string are skipped. However, include tags take precedence.</p>
+<p>Each tag is compared against two names: the name of the mesh itself, and the name of the scene node that the mesh is attached to. In most DCC tools the node (or <em>object</em>) is what users name explicitly, whereas mesh names are often generated. A tag matches if either name <strong>starts or ends</strong> with it. The comparison is case insensitive. Only the node that directly holds the mesh is checked, not its parent nodes.</p>
+<p>If any <em>include tag</em> is specified, only meshes where a tag matches are used. For instance, the include tag <code>LOD1</code> means that a mesh in a node named <em>Bunny_LOD1</em> would be imported, but a mesh in a node named <em>Bunny</em> would be skipped (unless the mesh name itself matches).</p>
+<p>If any <em>exclude tag</em> is specified, meshes where a tag matches are skipped. However, include tags take precedence. If any include tag is set, the exclude tags are ignored.</p>
 <blockquote>
 <p><strong>Note:</strong></p>
-<p>Only <em>mesh names</em> are considered, the names of material slots are not used here.</p>
-<p>If <em>any</em> include or exclude tag is set, the mesh importer writes the names of all found meshes to the <a href="../../debugging/logging.html">editor log</a>. You have to switch the <strong>log filter</strong> to <em>Dev</em> to see these messages. Then <em>force transform</em> the mesh to see the log messages show up. Usually you should use your DCC tool to see and edit mesh names, but this is a quick way to check.</p>
+<p>Only node and mesh names are considered, the names of material slots are not used here.</p>
+<p>If <em>any</em> include or exclude tag is set, the mesh importer writes the names of all found meshes, in the form <code>NodeName::MeshName</code>, to the <a href="../../debugging/logging.html">editor log</a>. You have to switch the <strong>log filter</strong> to <em>Dev</em> to see these messages. Then <em>force transform</em> the mesh to see the log messages show up. Usually you should use your DCC tool to see and edit mesh names, but this is a quick way to check.</p>
 </blockquote>
 </li>
 <li><p><code>ImportTransform</code>, <code>RightDir</code>, <code>UpDir</code>, <code>FlipForwardDir</code>: How to rotate or mirror the mesh during import, so that it is oriented correctly for use in ezEngine. See <a href="#mesh-orientation">Mesh Orientation</a> above.</p>

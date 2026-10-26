@@ -93,7 +93,13 @@
 <h2 id="test-framework">Test Framework</h2>
 <p>The test framework can be built purely for console execution or to have a graphical user interface. If the <a href="../build/cmake-config.html">CMake</a> variable <code>EZ_ENABLE_QT_SUPPORT</code> is set, the test applications will show a GUI (unless skipped via command line).</p>
 <h3 id="command-line-options">Command Line Options</h3>
-<p>Run any test suite with the argument <code>-help</code> to get the full list of available options.</p>
+<p>Run any test suite with the argument <code>-help</code> to get the full list of available options. The most important ones are:</p>
+<ul>
+<li><code>-noGui</code>: Runs the tests in console mode, without the test framework GUI. The tests start on their own and the process exits when they are done, whether they passed or not. This is what automated runs use.</li>
+<li><code>-headless</code>: Tests that support it don't create native windows. Instead they render into offscreen render targets, so image comparison tests still work. This is implemented for <strong>RendererTest</strong> and <strong>GameEngineTest</strong>. Other test suites ignore it, and the <strong>EditorTest</strong> still opens windows.</li>
+<li><code>-agent</code>: Combines <code>-noGui</code> and <code>-headless</code>. Use this when running tests from scripts or coding agents, so that test runs don't open windows that take away the focus.</li>
+<li><code>-filter</code>: Only runs tests and subtests whose name contains the given text (case insensitive). With <code>*</code> or <code>?</code> in the text, the name has to match the wildcard pattern fully.</li>
+</ul>
 <h3 id="test-structure">Test Structure</h3>
 <p>The test framework works with <em>tests</em> and <em>subtests</em>. A <em>test</em> takes care of the slow initialization, like setting up the engine, the <em>subtests</em> then check various functionality, without rerunning the same initialization procedures. Tests and subtests can be disabled to focus on a specific issue.</p>
 <p>All tests are derived from <code>ezTestBaseClass</code> and global instances in code are automatically picked up and shown in the UI. For trivial tests, as used in the FoundationTest application there are additional helper macros <code>EZ_CREATE_SIMPLE_TEST_GROUP</code> and <code>EZ_CREATE_SIMPLE_TEST</code> to add a new test with just two lines of code.</p>
